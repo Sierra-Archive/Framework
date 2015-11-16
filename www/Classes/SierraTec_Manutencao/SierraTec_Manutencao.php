@@ -468,7 +468,7 @@ class SierraTec_Manutencao {
                 
                 $codigo = preg_replace(
                     '/\?>/U', 
-                    'define(\''.$nome_Constante.'\','.$resultado.'); '."\n\n".'?>', 
+                    'define(\''.$nome_Constante.'\', '.$resultado.'); '."\n\n".'?>', 
                     $codigo,
                     1
                 );
@@ -502,7 +502,7 @@ class SierraTec_Manutencao {
             
             $codigo = preg_replace(
                 '/define\(\''.$nome_Constante.'\'([ \t\n\r\f\v]*),([ \t\n\r\f\v]*)([^ \t\n\r\f\v;]*)\);/U', 
-                'define(\''.$nome_Constante.'\'$1,${2}'.$resultado.');', 
+                'define(\''.$nome_Constante.'\'$1, ${2}'.$resultado.');', 
                 $codigo
             );
             return $codigo;

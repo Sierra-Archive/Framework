@@ -1,5 +1,5 @@
 <?php
-define('SYSTEM_VERSION' , '2.14.0');
+define('SYSTEM_VERSION',  '2.14.0');
 /**
  * 0.2.1
  *      -> Não exibe mais Erros de MYSQL

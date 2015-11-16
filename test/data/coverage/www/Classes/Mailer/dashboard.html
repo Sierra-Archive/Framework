@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/ricardo/Pessoal/Programacao/Projetos/Framework/www/Classes/Mailer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../../js/html5shiv.min.js"></script>
+  <script src="../../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../index.html">/home/ricardo/Pessoal/Programacao/Projetos/Framework</a></li>
+        <li><a href="../../index.html">www</a></li>
+        <li><a href="../index.html">Classes</a></li>
+        <li><a href="index.html">Mailer</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="extras/class.html2text.php.html#26">html2text</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#20">ntlm_sasl_client_class</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerLangTest.php.html#23">PHPMailerLangTest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#23">PHPMailerTest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/EasyPeasyICS.php.html#18">EasyPeasyICS</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#35">SMTP</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3350">phpmailerException</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#37">PHPMailer</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#33">POP3</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#40">Mailer</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="class.phpmailer.php.html#37">PHPMailer</a></td><td class="text-right">175980</td></tr>
+       <tr><td><a href="Mailer.php.html#40">Mailer</a></td><td class="text-right">175980</td></tr>
+       <tr><td><a href="class.smtp.php.html#35">SMTP</a></td><td class="text-right">10712</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#23">PHPMailerTest</a></td><td class="text-right">8372</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#26">html2text</a></td><td class="text-right">2862</td></tr>
+       <tr><td><a href="class.pop3.php.html#33">POP3</a></td><td class="text-right">1260</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#20">ntlm_sasl_client_class</a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="test/phpmailerLangTest.php.html#23">PHPMailerLangTest</a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="extras/EasyPeasyICS.php.html#18">EasyPeasyICS</a></td><td class="text-right">30</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="class.smtp.php.html#265"><abbr title="SMTP::startTLS">startTLS</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#187"><abbr title="SMTP::connect">connect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#156"><abbr title="SMTP::edebug">edebug</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#294"><abbr title="SMTP::authenticate">authenticate</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#413"><abbr title="SMTP::hmac">hmac</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#497"><abbr title="SMTP::data">data</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#471"><abbr title="SMTP::close">close</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#445"><abbr title="SMTP::connected">connected</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#142"><abbr title="SMTP::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#410"><abbr title="POP3::catchWarning">catchWarning</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#324"><abbr title="POP3::disconnect">disconnect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#290"><abbr title="POP3::login">login</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#221"><abbr title="POP3::connect">connect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#339"><abbr title="POP3::getResponse">getResponse</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#354"><abbr title="POP3::sendString">sendString</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#393"><abbr title="POP3::displayErrors">displayErrors</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#372"><abbr title="POP3::checkResponse">checkResponse</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#590"><abbr title="SMTP::hello">hello</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#611"><abbr title="SMTP::sendHello">sendHello</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#822"><abbr title="SMTP::getLastReply">getLastReply</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#812"><abbr title="SMTP::getError">getError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#799"><abbr title="SMTP::client_send">client_send</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#836"><abbr title="SMTP::get_lines">get_lines</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#892"><abbr title="SMTP::setVerp">setVerp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#919"><abbr title="SMTP::getDebugOutput">getDebugOutput</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#910"><abbr title="SMTP::setDebugOutput">setDebugOutput</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#901"><abbr title="SMTP::getVerp">getVerp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#782"><abbr title="SMTP::turn">turn</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#768"><abbr title="SMTP::noop">noop</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#667"><abbr title="SMTP::recipient">recipient</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#647"><abbr title="SMTP::quit">quit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#629"><abbr title="SMTP::mail">mail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#683"><abbr title="SMTP::reset">reset</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#696"><abbr title="SMTP::sendCommand">sendCommand</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#757"><abbr title="SMTP::verify">verify</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#746"><abbr title="SMTP::sendAndMail">sendAndMail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#179"><abbr title="POP3::authorise">authorise</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#154"><abbr title="POP3::popBeforeSmtp">popBeforeSmtp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2745"><abbr title="PHPMailer::lang">lang</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2726"><abbr title="PHPMailer::serverHostname">serverHostname</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2712"><abbr title="PHPMailer::rfcDate">rfcDate</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2763"><abbr title="PHPMailer::isError">isError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2775"><abbr title="PHPMailer::fixEOL">fixEOL</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2869"><abbr title="PHPMailer::html2text">html2text</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2816"><abbr title="PHPMailer::msgHTML">msgHTML</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2795"><abbr title="PHPMailer::addCustomHeader">addCustomHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2694"><abbr title="PHPMailer::setError">setError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2683"><abbr title="PHPMailer::clearCustomHeaders">clearCustomHeaders</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2629"><abbr title="PHPMailer::clearCCs">clearCCs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2617"><abbr title="PHPMailer::clearAddresses">clearAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2608"><abbr title="PHPMailer::alternativeExists">alternativeExists</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2641"><abbr title="PHPMailer::clearBCCs">clearBCCs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2653"><abbr title="PHPMailer::clearReplyTos">clearReplyTos</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2674"><abbr title="PHPMailer::clearAttachments">clearAttachments</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2662"><abbr title="PHPMailer::clearAllRecipients">clearAllRecipients</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2890"><abbr title="PHPMailer::_mime_types">_mime_types</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2990"><abbr title="PHPMailer::filenameToType">filenameToType</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3292"><abbr title="PHPMailer::getCcAddresses">getCcAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3282"><abbr title="PHPMailer::getToAddresses">getToAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3219"><abbr title="PHPMailer::DKIM_Add">DKIM_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3302"><abbr title="PHPMailer::getBccAddresses">getBccAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3312"><abbr title="PHPMailer::getReplyToAddresses">getReplyToAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.pop3.php.html#137"><abbr title="POP3::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3337"><abbr title="PHPMailer::doCallback">doCallback</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3322"><abbr title="PHPMailer::getAllRecipientAddresses">getAllRecipientAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3196"><abbr title="PHPMailer::DKIM_BodyC">DKIM_BodyC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3176"><abbr title="PHPMailer::DKIM_HeaderC">DKIM_HeaderC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3088"><abbr title="PHPMailer::secureHeader">secureHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3065"><abbr title="PHPMailer::set">set</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3012"><abbr title="PHPMailer::mb_pathinfo">mb_pathinfo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3103"><abbr title="PHPMailer::normalizeBreaks">normalizeBreaks</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3116"><abbr title="PHPMailer::sign">sign</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3150"><abbr title="PHPMailer::DKIM_Sign">DKIM_Sign</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3129"><abbr title="PHPMailer::DKIM_QP">DKIM_QP</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#928"><abbr title="SMTP::setDebugLevel">setDebugLevel</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#937"><abbr title="SMTP::getDebugLevel">getDebugLevel</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#871"><abbr title="PHPMailerTest::testAltBody">testAltBody</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#840"><abbr title="PHPMailerTest::testMultiEmbeddedImage">testMultiEmbeddedImage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#811"><abbr title="PHPMailerTest::testEmbeddedImage">testEmbeddedImage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#888"><abbr title="PHPMailerTest::testAltBodyAttachment">testAltBodyAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#912"><abbr title="PHPMailerTest::testIcal">testIcal</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#980"><abbr title="PHPMailerTest::testQmailSend">testQmailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#966"><abbr title="PHPMailerTest::testSendmailSend">testSendmailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#949"><abbr title="PHPMailerTest::testMultipleSend">testMultipleSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#790"><abbr title="PHPMailerTest::testHTMLAttachment">testHTMLAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#765"><abbr title="PHPMailerTest::testMsgHTML">testMsgHTML</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#658"><abbr title="PHPMailerTest::testLowPriority">testLowPriority</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#639"><abbr title="PHPMailerTest::testWordWrap">testWordWrap</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#321"><abbr title="PHPMailerTest::testValidate">testValidate</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#673"><abbr title="PHPMailerTest::testMultiplePlainFileAttachment">testMultiplePlainFileAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#695"><abbr title="PHPMailerTest::testPlainStringAttachment">testPlainStringAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#739"><abbr title="PHPMailerTest::testHtml">testHtml</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#713"><abbr title="PHPMailerTest::testQuotedPrintable">testQuotedPrintable</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#999"><abbr title="PHPMailerTest::testMailSend">testMailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1016"><abbr title="PHPMailerTest::testEmptyBody">testEmptyBody</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1260"><abbr title="PHPMailerTest::testDKIM">testDKIM</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1215"><abbr title="PHPMailerTest::testSigning">testSigning</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1205"><abbr title="PHPMailerTest::testBase64">testBase64</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1288"><abbr title="PHPMailerTest::testLineBreaks">testLineBreaks</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1305"><abbr title="PHPMailerTest::testPopBeforeSmtpGood">testPopBeforeSmtpGood</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1360"><abbr title="PHPMailerTest::testMiscellaneous">testMiscellaneous</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1346"><abbr title="PHPMailerTest::testMessageID">testMessageID</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1326"><abbr title="PHPMailerTest::testPopBeforeSmtpBad">testPopBeforeSmtpBad</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1173"><abbr title="PHPMailerTest::testEncodings">testEncodings</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1161"><abbr title="PHPMailerTest::testBCCAddressing">testBCCAddressing</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1074"><abbr title="PHPMailerTest::testDenialOfServiceAttack">testDenialOfServiceAttack</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1049"><abbr title="PHPMailerTest::testSmtpConnect">testSmtpConnect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1031"><abbr title="PHPMailerTest::testSmtpKeepAlive">testSmtpKeepAlive</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1088"><abbr title="PHPMailerTest::testDenialOfServiceAttack2">testDenialOfServiceAttack2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1099"><abbr title="PHPMailerTest::testError">testError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1146"><abbr title="PHPMailerTest::testAddressEscaping">testAddressEscaping</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#1115"><abbr title="PHPMailerTest::testAddressing">testAddressing</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#298"><abbr title="PHPMailerTest::testAuthCRAMMD5">testAuthCRAMMD5</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#281"><abbr title="PHPMailerTest::setAddress">setAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#372"><abbr title="html2text::set_base_url">set_base_url</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#359"><abbr title="html2text::set_allowed_tags">set_allowed_tags</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#346"><abbr title="html2text::p">p</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#396"><abbr title="html2text::_convert">_convert</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#432"><abbr title="html2text::_converter">_converter</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#565"><abbr title="html2text::_convert_blockquotes">_convert_blockquotes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#537"><abbr title="html2text::_convert_pre">_convert_pre</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#490"><abbr title="html2text::_build_link_list">_build_link_list</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#334"><abbr title="html2text::print_text">print_text</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#319"><abbr title="html2text::get_text">get_text</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/EasyPeasyICS.php.html#28"><abbr title="EasyPeasyICS::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#955"><abbr title="SMTP::getTimeout">getTimeout</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.smtp.php.html#946"><abbr title="SMTP::setTimeout">setTimeout</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/EasyPeasyICS.php.html#37"><abbr title="EasyPeasyICS::addEvent">addEvent</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/EasyPeasyICS.php.html#48"><abbr title="EasyPeasyICS::render">render</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#302"><abbr title="html2text::set_html">set_html</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#283"><abbr title="html2text::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#623"><abbr title="html2text::_preg_callback">_preg_callback</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#652"><abbr title="html2text::_preg_pre_callback">_preg_pre_callback</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#69"><abbr title="PHPMailerTest::setUp">setUp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerLangTest.php.html#50"><abbr title="PHPMailerLangTest::testTranslations">testTranslations</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerLangTest.php.html#40"><abbr title="PHPMailerLangTest::setUp">setUp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#123"><abbr title="PHPMailerTest::tearDown">tearDown</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#143"><abbr title="PHPMailerTest::buildBody">buildBody</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#268"><abbr title="PHPMailerTest::addNote">addNote</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#257"><abbr title="PHPMailerTest::addChange">addChange</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#219"><abbr title="PHPMailerTest::checkChanges">checkChanges</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#162"><abbr title="ntlm_sasl_client_class::Step">Step</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#141"><abbr title="ntlm_sasl_client_class::Start">Start</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#25"><abbr title="ntlm_sasl_client_class::Initialize">Initialize</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#684"><abbr title="html2text::_strtoupper">_strtoupper</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#663"><abbr title="html2text::_toupper">_toupper</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#40"><abbr title="ntlm_sasl_client_class::ASCIIToUnicode">ASCIIToUnicode</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#47"><abbr title="ntlm_sasl_client_class::TypeMsg1">TypeMsg1</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#91"><abbr title="ntlm_sasl_client_class::TypeMsg3">TypeMsg3</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#68"><abbr title="ntlm_sasl_client_class::NTLMResponse">NTLMResponse</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2594"><abbr title="PHPMailer::attachmentExists">attachmentExists</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2580"><abbr title="PHPMailer::inlineImageExists">inlineImageExists</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2373"><abbr title="Mailer::encodeQP">encodeQP</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2331"><abbr title="Mailer::base64EncodeWrapMB">base64EncodeWrapMB</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2313"><abbr title="Mailer::hasMultiBytes">hasMultiBytes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2398"><abbr title="Mailer::encodeQPphp">encodeQPphp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2414"><abbr title="Mailer::encodeQ">encodeQ</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2551"><abbr title="Mailer::addStringEmbeddedImage">addStringEmbeddedImage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2506"><abbr title="Mailer::addEmbeddedImage">addEmbeddedImage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2466"><abbr title="Mailer::addStringAttachment">addStringAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2250"><abbr title="Mailer::encodeHeader">encodeHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2214"><abbr title="Mailer::encodeString">encodeString</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1999"><abbr title="Mailer::textLine">textLine</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1988"><abbr title="Mailer::headerLine">headerLine</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1963"><abbr title="Mailer::setMessageType">setMessageType</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2015"><abbr title="Mailer::addAttachment">addAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2058"><abbr title="Mailer::getAttachments">getAttachments</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2176"><abbr title="Mailer::encodeFile">encodeFile</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2071"><abbr title="Mailer::attachAll">attachAll</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2583"><abbr title="Mailer::inlineImageExists">inlineImageExists</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2597"><abbr title="Mailer::attachmentExists">attachmentExists</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2748"><abbr title="Mailer::lang">lang</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2729"><abbr title="Mailer::serverHostname">serverHostname</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2715"><abbr title="Mailer::rfcDate">rfcDate</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2766"><abbr title="Mailer::isError">isError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2778"><abbr title="Mailer::fixEOL">fixEOL</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2872"><abbr title="Mailer::html2text">html2text</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2819"><abbr title="Mailer::msgHTML">msgHTML</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2798"><abbr title="Mailer::addCustomHeader">addCustomHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2697"><abbr title="Mailer::setError">setError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2686"><abbr title="Mailer::clearCustomHeaders">clearCustomHeaders</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2632"><abbr title="Mailer::clearCCs">clearCCs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2620"><abbr title="Mailer::clearAddresses">clearAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2611"><abbr title="Mailer::alternativeExists">alternativeExists</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2644"><abbr title="Mailer::clearBCCs">clearBCCs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2656"><abbr title="Mailer::clearReplyTos">clearReplyTos</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2677"><abbr title="Mailer::clearAttachments">clearAttachments</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2665"><abbr title="Mailer::clearAllRecipients">clearAllRecipients</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1951"><abbr title="Mailer::endBoundary">endBoundary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1924"><abbr title="Mailer::getBoundary">getBoundary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#742"><abbr title="Mailer::addReplyTo">addReplyTo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#731"><abbr title="Mailer::addBCC">addBCC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#719"><abbr title="Mailer::addCC">addCC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#757"><abbr title="Mailer::addAnAddress">addAnAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#800"><abbr title="Mailer::setFrom">setFrom</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#927"><abbr title="Mailer::send">send</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#847"><abbr title="Mailer::validateAddress">validateAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#829"><abbr title="Mailer::getLastMessageID">getLastMessageID</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#707"><abbr title="Mailer::addAddress">addAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#693"><abbr title="Mailer::isQmail">isQmail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#626"><abbr title="Mailer::edebug">edebug</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#603"><abbr title="Mailer::mailPassthru">mailPassthru</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#583"><abbr title="Mailer::__destruct">__destruct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#650"><abbr title="Mailer::isHTML">isHTML</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#663"><abbr title="Mailer::isSMTP">isSMTP</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#681"><abbr title="Mailer::isSendmail">isSendmail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#672"><abbr title="Mailer::isMail">isMail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#949"><abbr title="Mailer::preSend">preSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1017"><abbr title="Mailer::postSend">postSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1544"><abbr title="Mailer::utf8CharBoundary">utf8CharBoundary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1456"><abbr title="Mailer::wrapText">wrapText</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1434"><abbr title="Mailer::addrFormat">addrFormat</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1583"><abbr title="Mailer::setWordWrap">setWordWrap</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1607"><abbr title="Mailer::createHeader">createHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1772"><abbr title="Mailer::createBody">createBody</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1759"><abbr title="Mailer::getSentMIMEMessage">getSentMIMEMessage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1714"><abbr title="Mailer::getMailMIME">getMailMIME</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1418"><abbr title="Mailer::addrAppend">addrAppend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1403"><abbr title="Mailer::getTranslations">getTranslations</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1158"><abbr title="Mailer::getSMTPInstance">getSMTPInstance</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1113"><abbr title="Mailer::mailSend">mailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1056"><abbr title="Mailer::sendmailSend">sendmailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1178"><abbr title="Mailer::smtpSend">smtpSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1248"><abbr title="Mailer::smtpConnect">smtpConnect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1360"><abbr title="Mailer::setLanguage">setLanguage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#1341"><abbr title="Mailer::smtpClose">smtpClose</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2893"><abbr title="Mailer::_mime_types">_mime_types</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#2993"><abbr title="Mailer::filenameToType">filenameToType</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1541"><abbr title="PHPMailer::utf8CharBoundary">utf8CharBoundary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1453"><abbr title="PHPMailer::wrapText">wrapText</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1431"><abbr title="PHPMailer::addrFormat">addrFormat</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1580"><abbr title="PHPMailer::setWordWrap">setWordWrap</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1604"><abbr title="PHPMailer::createHeader">createHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1769"><abbr title="PHPMailer::createBody">createBody</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1756"><abbr title="PHPMailer::getSentMIMEMessage">getSentMIMEMessage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1711"><abbr title="PHPMailer::getMailMIME">getMailMIME</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1415"><abbr title="PHPMailer::addrAppend">addrAppend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1400"><abbr title="PHPMailer::getTranslations">getTranslations</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1155"><abbr title="PHPMailer::getSMTPInstance">getSMTPInstance</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1110"><abbr title="PHPMailer::mailSend">mailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1053"><abbr title="PHPMailer::sendmailSend">sendmailSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1175"><abbr title="PHPMailer::smtpSend">smtpSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1245"><abbr title="PHPMailer::smtpConnect">smtpConnect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1357"><abbr title="PHPMailer::setLanguage">setLanguage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1338"><abbr title="PHPMailer::smtpClose">smtpClose</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1921"><abbr title="PHPMailer::getBoundary">getBoundary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1948"><abbr title="PHPMailer::endBoundary">endBoundary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2370"><abbr title="PHPMailer::encodeQP">encodeQP</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2328"><abbr title="PHPMailer::base64EncodeWrapMB">base64EncodeWrapMB</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2310"><abbr title="PHPMailer::hasMultiBytes">hasMultiBytes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2395"><abbr title="PHPMailer::encodeQPphp">encodeQPphp</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2411"><abbr title="PHPMailer::encodeQ">encodeQ</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2548"><abbr title="PHPMailer::addStringEmbeddedImage">addStringEmbeddedImage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2503"><abbr title="PHPMailer::addEmbeddedImage">addEmbeddedImage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2463"><abbr title="PHPMailer::addStringAttachment">addStringAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2247"><abbr title="PHPMailer::encodeHeader">encodeHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2211"><abbr title="PHPMailer::encodeString">encodeString</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1996"><abbr title="PHPMailer::textLine">textLine</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1985"><abbr title="PHPMailer::headerLine">headerLine</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1960"><abbr title="PHPMailer::setMessageType">setMessageType</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2012"><abbr title="PHPMailer::addAttachment">addAttachment</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2055"><abbr title="PHPMailer::getAttachments">getAttachments</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2173"><abbr title="PHPMailer::encodeFile">encodeFile</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2068"><abbr title="PHPMailer::attachAll">attachAll</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1014"><abbr title="PHPMailer::postSend">postSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#946"><abbr title="PHPMailer::preSend">preSend</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3295"><abbr title="Mailer::getCcAddresses">getCcAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3285"><abbr title="Mailer::getToAddresses">getToAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3222"><abbr title="Mailer::DKIM_Add">DKIM_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3305"><abbr title="Mailer::getBccAddresses">getBccAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3315"><abbr title="Mailer::getReplyToAddresses">getReplyToAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3356"><abbr title="phpmailerException::errorMessage">errorMessage</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3340"><abbr title="Mailer::doCallback">doCallback</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3325"><abbr title="Mailer::getAllRecipientAddresses">getAllRecipientAddresses</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3199"><abbr title="Mailer::DKIM_BodyC">DKIM_BodyC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3179"><abbr title="Mailer::DKIM_HeaderC">DKIM_HeaderC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3091"><abbr title="Mailer::secureHeader">secureHeader</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3068"><abbr title="Mailer::set">set</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3015"><abbr title="Mailer::mb_pathinfo">mb_pathinfo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3106"><abbr title="Mailer::normalizeBreaks">normalizeBreaks</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3119"><abbr title="Mailer::sign">sign</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3153"><abbr title="Mailer::DKIM_Sign">DKIM_Sign</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#3132"><abbr title="Mailer::DKIM_QP">DKIM_QP</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#565"><abbr title="PHPMailer::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#580"><abbr title="PHPMailer::__destruct">__destruct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#754"><abbr title="PHPMailer::addAnAddress">addAnAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#739"><abbr title="PHPMailer::addReplyTo">addReplyTo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#728"><abbr title="PHPMailer::addBCC">addBCC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#797"><abbr title="PHPMailer::setFrom">setFrom</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#826"><abbr title="PHPMailer::getLastMessageID">getLastMessageID</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#924"><abbr title="PHPMailer::send">send</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#844"><abbr title="PHPMailer::validateAddress">validateAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#716"><abbr title="PHPMailer::addCC">addCC</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#704"><abbr title="PHPMailer::addAddress">addAddress</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#647"><abbr title="PHPMailer::isHTML">isHTML</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#623"><abbr title="PHPMailer::edebug">edebug</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#600"><abbr title="PHPMailer::mailPassthru">mailPassthru</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#660"><abbr title="PHPMailer::isSMTP">isSMTP</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#669"><abbr title="PHPMailer::isMail">isMail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#690"><abbr title="PHPMailer::isQmail">isQmail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#678"><abbr title="PHPMailer::isSendmail">isSendmail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Mailer.php.html#568"><abbr title="Mailer::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Mailer.php.html#1607"><abbr title="Mailer::createHeader">createHeader</abbr></a></td><td class="text-right">506</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1604"><abbr title="PHPMailer::createHeader">createHeader</abbr></a></td><td class="text-right">506</td></tr>
+       <tr><td><a href="Mailer.php.html#1456"><abbr title="Mailer::wrapText">wrapText</abbr></a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1453"><abbr title="PHPMailer::wrapText">wrapText</abbr></a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1245"><abbr title="PHPMailer::smtpConnect">smtpConnect</abbr></a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="Mailer.php.html#1248"><abbr title="Mailer::smtpConnect">smtpConnect</abbr></a></td><td class="text-right">420</td></tr>
+       <tr><td><a href="Mailer.php.html#1772"><abbr title="Mailer::createBody">createBody</abbr></a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1769"><abbr title="PHPMailer::createBody">createBody</abbr></a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="class.smtp.php.html#294"><abbr title="SMTP::authenticate">authenticate</abbr></a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#946"><abbr title="PHPMailer::preSend">preSend</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Mailer.php.html#1178"><abbr title="Mailer::smtpSend">smtpSend</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Mailer.php.html#949"><abbr title="Mailer::preSend">preSend</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1175"><abbr title="PHPMailer::smtpSend">smtpSend</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Mailer.php.html#3015"><abbr title="Mailer::mb_pathinfo">mb_pathinfo</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3012"><abbr title="PHPMailer::mb_pathinfo">mb_pathinfo</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="class.smtp.php.html#497"><abbr title="SMTP::data">data</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Mailer.php.html#2071"><abbr title="Mailer::attachAll">attachAll</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="class.smtp.php.html#836"><abbr title="SMTP::get_lines">get_lines</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2068"><abbr title="PHPMailer::attachAll">attachAll</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1053"><abbr title="PHPMailer::sendmailSend">sendmailSend</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Mailer.php.html#1056"><abbr title="Mailer::sendmailSend">sendmailSend</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1110"><abbr title="PHPMailer::mailSend">mailSend</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Mailer.php.html#1113"><abbr title="Mailer::mailSend">mailSend</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="class.smtp.php.html#187"><abbr title="SMTP::connect">connect</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Mailer.php.html#847"><abbr title="Mailer::validateAddress">validateAddress</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#844"><abbr title="PHPMailer::validateAddress">validateAddress</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Mailer.php.html#2250"><abbr title="Mailer::encodeHeader">encodeHeader</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2247"><abbr title="PHPMailer::encodeHeader">encodeHeader</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2816"><abbr title="PHPMailer::msgHTML">msgHTML</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Mailer.php.html#2819"><abbr title="Mailer::msgHTML">msgHTML</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#143"><abbr title="PHPMailerTest::buildBody">buildBody</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Mailer.php.html#1714"><abbr title="Mailer::getMailMIME">getMailMIME</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#219"><abbr title="PHPMailerTest::checkChanges">checkChanges</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1711"><abbr title="PHPMailer::getMailMIME">getMailMIME</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#490"><abbr title="html2text::_build_link_list">_build_link_list</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="class.pop3.php.html#221"><abbr title="POP3::connect">connect</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#69"><abbr title="PHPMailerTest::setUp">setUp</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#565"><abbr title="html2text::_convert_blockquotes">_convert_blockquotes</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#321"><abbr title="PHPMailerTest::testValidate">testValidate</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Mailer.php.html#1017"><abbr title="Mailer::postSend">postSend</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1014"><abbr title="PHPMailer::postSend">postSend</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Mailer.php.html#757"><abbr title="Mailer::addAnAddress">addAnAddress</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#754"><abbr title="PHPMailer::addAnAddress">addAnAddress</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3219"><abbr title="PHPMailer::DKIM_Add">DKIM_Add</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3129"><abbr title="PHPMailer::DKIM_QP">DKIM_QP</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1541"><abbr title="PHPMailer::utf8CharBoundary">utf8CharBoundary</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2211"><abbr title="PHPMailer::encodeString">encodeString</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2173"><abbr title="PHPMailer::encodeFile">encodeFile</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Mailer.php.html#1544"><abbr title="Mailer::utf8CharBoundary">utf8CharBoundary</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2411"><abbr title="PHPMailer::encodeQ">encodeQ</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Mailer.php.html#3222"><abbr title="Mailer::DKIM_Add">DKIM_Add</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Mailer.php.html#3132"><abbr title="Mailer::DKIM_QP">DKIM_QP</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Mailer.php.html#2414"><abbr title="Mailer::encodeQ">encodeQ</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="class.pop3.php.html#290"><abbr title="POP3::login">login</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#623"><abbr title="html2text::_preg_callback">_preg_callback</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Mailer.php.html#2214"><abbr title="Mailer::encodeString">encodeString</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Mailer.php.html#2176"><abbr title="Mailer::encodeFile">encodeFile</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="test/phpmailerLangTest.php.html#50"><abbr title="PHPMailerLangTest::testTranslations">testTranslations</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1580"><abbr title="PHPMailer::setWordWrap">setWordWrap</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2726"><abbr title="PHPMailer::serverHostname">serverHostname</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2012"><abbr title="PHPMailer::addAttachment">addAttachment</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Mailer.php.html#1583"><abbr title="Mailer::setWordWrap">setWordWrap</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Mailer.php.html#2729"><abbr title="Mailer::serverHostname">serverHostname</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Mailer.php.html#2015"><abbr title="Mailer::addAttachment">addAttachment</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Mailer.php.html#1963"><abbr title="Mailer::setMessageType">setMessageType</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Mailer.php.html#2697"><abbr title="Mailer::setError">setError</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Mailer.php.html#800"><abbr title="Mailer::setFrom">setFrom</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3150"><abbr title="PHPMailer::DKIM_Sign">DKIM_Sign</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.pop3.php.html#179"><abbr title="POP3::authorise">authorise</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1960"><abbr title="PHPMailer::setMessageType">setMessageType</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Mailer.php.html#626"><abbr title="Mailer::edebug">edebug</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#797"><abbr title="PHPMailer::setFrom">setFrom</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#68"><abbr title="ntlm_sasl_client_class::NTLMResponse">NTLMResponse</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#623"><abbr title="PHPMailer::edebug">edebug</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2694"><abbr title="PHPMailer::setError">setError</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Mailer.php.html#3153"><abbr title="Mailer::DKIM_Sign">DKIM_Sign</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.smtp.php.html#696"><abbr title="SMTP::sendCommand">sendCommand</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="class.smtp.php.html#445"><abbr title="SMTP::connected">connected</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1921"><abbr title="PHPMailer::getBoundary">getBoundary</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#162"><abbr title="ntlm_sasl_client_class::Step">Step</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#568"><abbr title="Mailer::__construct">__construct</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2503"><abbr title="PHPMailer::addEmbeddedImage">addEmbeddedImage</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#927"><abbr title="Mailer::send">send</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3065"><abbr title="PHPMailer::set">set</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#281"><abbr title="PHPMailerTest::setAddress">setAddress</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#372"><abbr title="html2text::set_base_url">set_base_url</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.smtp.php.html#156"><abbr title="SMTP::edebug">edebug</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2328"><abbr title="PHPMailer::base64EncodeWrapMB">base64EncodeWrapMB</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#603"><abbr title="Mailer::mailPassthru">mailPassthru</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#2331"><abbr title="Mailer::base64EncodeWrapMB">base64EncodeWrapMB</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#2506"><abbr title="Mailer::addEmbeddedImage">addEmbeddedImage</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#600"><abbr title="PHPMailer::mailPassthru">mailPassthru</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#565"><abbr title="PHPMailer::__construct">__construct</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#924"><abbr title="PHPMailer::send">send</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#1924"><abbr title="Mailer::getBoundary">getBoundary</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Mailer.php.html#3068"><abbr title="Mailer::set">set</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="class.smtp.php.html#471"><abbr title="SMTP::close">close</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.smtp.php.html#413"><abbr title="SMTP::hmac">hmac</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#2597"><abbr title="Mailer::attachmentExists">attachmentExists</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3196"><abbr title="PHPMailer::DKIM_BodyC">DKIM_BodyC</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.smtp.php.html#265"><abbr title="SMTP::startTLS">startTLS</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.pop3.php.html#354"><abbr title="POP3::sendString">sendString</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.smtp.php.html#590"><abbr title="SMTP::hello">hello</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3337"><abbr title="PHPMailer::doCallback">doCallback</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.pop3.php.html#372"><abbr title="POP3::checkResponse">checkResponse</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="extras/EasyPeasyICS.php.html#48"><abbr title="EasyPeasyICS::render">render</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#1341"><abbr title="Mailer::smtpClose">smtpClose</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#141"><abbr title="ntlm_sasl_client_class::Start">Start</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#673"><abbr title="PHPMailerTest::testMultiplePlainFileAttachment">testMultiplePlainFileAttachment</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#840"><abbr title="PHPMailerTest::testMultiEmbeddedImage">testMultiEmbeddedImage</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#888"><abbr title="PHPMailerTest::testAltBodyAttachment">testAltBodyAttachment</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#25"><abbr title="ntlm_sasl_client_class::Initialize">Initialize</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#663"><abbr title="html2text::_toupper">_toupper</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#2583"><abbr title="Mailer::inlineImageExists">inlineImageExists</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#3199"><abbr title="Mailer::DKIM_BodyC">DKIM_BodyC</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#302"><abbr title="html2text::set_html">set_html</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#396"><abbr title="html2text::_convert">_convert</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.smtp.php.html#647"><abbr title="SMTP::quit">quit</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#2748"><abbr title="Mailer::lang">lang</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1338"><abbr title="PHPMailer::smtpClose">smtpClose</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2745"><abbr title="PHPMailer::lang">lang</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2594"><abbr title="PHPMailer::attachmentExists">attachmentExists</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2580"><abbr title="PHPMailer::inlineImageExists">inlineImageExists</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#1360"><abbr title="Mailer::setLanguage">setLanguage</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Mailer.php.html#3340"><abbr title="Mailer::doCallback">doCallback</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1357"><abbr title="PHPMailer::setLanguage">setLanguage</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#690"><abbr title="PHPMailer::isQmail">isQmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#678"><abbr title="PHPMailer::isSendmail">isSendmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#980"><abbr title="PHPMailerTest::testQmailSend">testQmailSend</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#583"><abbr title="Mailer::__destruct">__destruct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#684"><abbr title="html2text::_strtoupper">_strtoupper</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2373"><abbr title="Mailer::encodeQP">encodeQP</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#537"><abbr title="html2text::_convert_pre">_convert_pre</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#999"><abbr title="PHPMailerTest::testMailSend">testMailSend</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#359"><abbr title="html2text::set_allowed_tags">set_allowed_tags</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2310"><abbr title="PHPMailer::hasMultiBytes">hasMultiBytes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#432"><abbr title="html2text::_converter">_converter</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2466"><abbr title="Mailer::addStringAttachment">addStringAttachment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#1158"><abbr title="Mailer::getSMTPInstance">getSMTPInstance</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/ntlm_sasl_client.php.html#40"><abbr title="ntlm_sasl_client_class::ASCIIToUnicode">ASCIIToUnicode</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#693"><abbr title="Mailer::isQmail">isQmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#681"><abbr title="Mailer::isSendmail">isSendmail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#1434"><abbr title="Mailer::addrFormat">addrFormat</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#1418"><abbr title="Mailer::addrAppend">addrAppend</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1415"><abbr title="PHPMailer::addrAppend">addrAppend</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#123"><abbr title="PHPMailerTest::tearDown">tearDown</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#811"><abbr title="PHPMailerTest::testEmbeddedImage">testEmbeddedImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1155"><abbr title="PHPMailer::getSMTPInstance">getSMTPInstance</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2313"><abbr title="Mailer::hasMultiBytes">hasMultiBytes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#1431"><abbr title="PHPMailer::addrFormat">addrFormat</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#319"><abbr title="html2text::get_text">get_text</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#650"><abbr title="Mailer::isHTML">isHTML</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="test/phpmailerTest.php.html#790"><abbr title="PHPMailerTest::testHTMLAttachment">testHTMLAttachment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#647"><abbr title="PHPMailer::isHTML">isHTML</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2798"><abbr title="Mailer::addCustomHeader">addCustomHeader</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2872"><abbr title="Mailer::html2text">html2text</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2778"><abbr title="Mailer::fixEOL">fixEOL</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.pop3.php.html#339"><abbr title="POP3::getResponse">getResponse</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.pop3.php.html#393"><abbr title="POP3::displayErrors">displayErrors</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2775"><abbr title="PHPMailer::fixEOL">fixEOL</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2795"><abbr title="PHPMailer::addCustomHeader">addCustomHeader</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2893"><abbr title="Mailer::_mime_types">_mime_types</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#3179"><abbr title="Mailer::DKIM_HeaderC">DKIM_HeaderC</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2890"><abbr title="PHPMailer::_mime_types">_mime_types</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2869"><abbr title="PHPMailer::html2text">html2text</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2993"><abbr title="Mailer::filenameToType">filenameToType</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#3176"><abbr title="PHPMailer::DKIM_HeaderC">DKIM_HeaderC</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#580"><abbr title="PHPMailer::__destruct">__destruct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2644"><abbr title="Mailer::clearBCCs">clearBCCs</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.smtp.php.html#782"><abbr title="SMTP::turn">turn</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2463"><abbr title="PHPMailer::addStringAttachment">addStringAttachment</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.smtp.php.html#799"><abbr title="SMTP::client_send">client_send</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2551"><abbr title="Mailer::addStringEmbeddedImage">addStringEmbeddedImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="extras/class.html2text.php.html#283"><abbr title="html2text::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2990"><abbr title="PHPMailer::filenameToType">filenameToType</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2548"><abbr title="PHPMailer::addStringEmbeddedImage">addStringEmbeddedImage</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.smtp.php.html#629"><abbr title="SMTP::mail">mail</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2632"><abbr title="Mailer::clearCCs">clearCCs</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2641"><abbr title="PHPMailer::clearBCCs">clearBCCs</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2629"><abbr title="PHPMailer::clearCCs">clearCCs</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Mailer.php.html#2620"><abbr title="Mailer::clearAddresses">clearAddresses</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2617"><abbr title="PHPMailer::clearAddresses">clearAddresses</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="class.phpmailer.php.html#2370"><abbr title="PHPMailer::encodeQP">encodeQP</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.1.7</a> using <a href="http://php.net/" target="_top">PHP 5.5.9-1ubuntu4.14</a> and <a href="http://phpunit.de/">PHPUnit 4.7.6</a> at Thu Nov 12 20:25:25 BRST 2015.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([10,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([302,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,419,"<a href=\"Mailer.php.html#40\">Mailer<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3350\">phpmailerException<\/a>"],[0,419,"<a href=\"class.phpmailer.php.html#37\">PHPMailer<\/a>"],[0,35,"<a href=\"class.pop3.php.html#33\">POP3<\/a>"],[0,103,"<a href=\"class.smtp.php.html#35\">SMTP<\/a>"],[0,5,"<a href=\"extras\/EasyPeasyICS.php.html#18\">EasyPeasyICS<\/a>"],[0,53,"<a href=\"extras\/class.html2text.php.html#26\">html2text<\/a>"],[0,19,"<a href=\"extras\/ntlm_sasl_client.php.html#20\">ntlm_sasl_client_class<\/a>"],[0,7,"<a href=\"test\/phpmailerLangTest.php.html#23\">PHPMailerLangTest<\/a>"],[0,91,"<a href=\"test\/phpmailerTest.php.html#23\">PHPMailerTest<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,4,"<a href=\"Mailer.php.html#568\">Mailer::__construct<\/a>"],[0,2,"<a href=\"Mailer.php.html#583\">Mailer::__destruct<\/a>"],[0,4,"<a href=\"Mailer.php.html#603\">Mailer::mailPassthru<\/a>"],[0,5,"<a href=\"Mailer.php.html#626\">Mailer::edebug<\/a>"],[0,2,"<a href=\"Mailer.php.html#650\">Mailer::isHTML<\/a>"],[0,1,"<a href=\"Mailer.php.html#663\">Mailer::isSMTP<\/a>"],[0,1,"<a href=\"Mailer.php.html#672\">Mailer::isMail<\/a>"],[0,2,"<a href=\"Mailer.php.html#681\">Mailer::isSendmail<\/a>"],[0,2,"<a href=\"Mailer.php.html#693\">Mailer::isQmail<\/a>"],[0,1,"<a href=\"Mailer.php.html#707\">Mailer::addAddress<\/a>"],[0,1,"<a href=\"Mailer.php.html#719\">Mailer::addCC<\/a>"],[0,1,"<a href=\"Mailer.php.html#731\">Mailer::addBCC<\/a>"],[0,1,"<a href=\"Mailer.php.html#742\">Mailer::addReplyTo<\/a>"],[0,8,"<a href=\"Mailer.php.html#757\">Mailer::addAnAddress<\/a>"],[0,5,"<a href=\"Mailer.php.html#800\">Mailer::setFrom<\/a>"],[0,1,"<a href=\"Mailer.php.html#829\">Mailer::getLastMessageID<\/a>"],[0,11,"<a href=\"Mailer.php.html#847\">Mailer::validateAddress<\/a>"],[0,4,"<a href=\"Mailer.php.html#927\">Mailer::send<\/a>"],[0,14,"<a href=\"Mailer.php.html#949\">Mailer::preSend<\/a>"],[0,8,"<a href=\"Mailer.php.html#1017\">Mailer::postSend<\/a>"],[0,12,"<a href=\"Mailer.php.html#1056\">Mailer::sendmailSend<\/a>"],[0,12,"<a href=\"Mailer.php.html#1113\">Mailer::mailSend<\/a>"],[0,2,"<a href=\"Mailer.php.html#1158\">Mailer::getSMTPInstance<\/a>"],[0,14,"<a href=\"Mailer.php.html#1178\">Mailer::smtpSend<\/a>"],[0,20,"<a href=\"Mailer.php.html#1248\">Mailer::smtpConnect<\/a>"],[0,3,"<a href=\"Mailer.php.html#1341\">Mailer::smtpClose<\/a>"],[0,3,"<a href=\"Mailer.php.html#1360\">Mailer::setLanguage<\/a>"],[0,1,"<a href=\"Mailer.php.html#1403\">Mailer::getTranslations<\/a>"],[0,2,"<a href=\"Mailer.php.html#1418\">Mailer::addrAppend<\/a>"],[0,2,"<a href=\"Mailer.php.html#1434\">Mailer::addrFormat<\/a>"],[0,21,"<a href=\"Mailer.php.html#1456\">Mailer::wrapText<\/a>"],[0,7,"<a href=\"Mailer.php.html#1544\">Mailer::utf8CharBoundary<\/a>"],[0,6,"<a href=\"Mailer.php.html#1583\">Mailer::setWordWrap<\/a>"],[0,22,"<a href=\"Mailer.php.html#1607\">Mailer::createHeader<\/a>"],[0,10,"<a href=\"Mailer.php.html#1714\">Mailer::getMailMIME<\/a>"],[0,1,"<a href=\"Mailer.php.html#1759\">Mailer::getSentMIMEMessage<\/a>"],[0,16,"<a href=\"Mailer.php.html#1772\">Mailer::createBody<\/a>"],[0,4,"<a href=\"Mailer.php.html#1924\">Mailer::getBoundary<\/a>"],[0,1,"<a href=\"Mailer.php.html#1951\">Mailer::endBoundary<\/a>"],[0,5,"<a href=\"Mailer.php.html#1963\">Mailer::setMessageType<\/a>"],[0,1,"<a href=\"Mailer.php.html#1988\">Mailer::headerLine<\/a>"],[0,1,"<a href=\"Mailer.php.html#1999\">Mailer::textLine<\/a>"],[0,6,"<a href=\"Mailer.php.html#2015\">Mailer::addAttachment<\/a>"],[0,1,"<a href=\"Mailer.php.html#2058\">Mailer::getAttachments<\/a>"],[0,13,"<a href=\"Mailer.php.html#2071\">Mailer::attachAll<\/a>"],[0,7,"<a href=\"Mailer.php.html#2176\">Mailer::encodeFile<\/a>"],[0,7,"<a href=\"Mailer.php.html#2214\">Mailer::encodeString<\/a>"],[0,11,"<a href=\"Mailer.php.html#2250\">Mailer::encodeHeader<\/a>"],[0,2,"<a href=\"Mailer.php.html#2313\">Mailer::hasMultiBytes<\/a>"],[0,4,"<a href=\"Mailer.php.html#2331\">Mailer::base64EncodeWrapMB<\/a>"],[0,2,"<a href=\"Mailer.php.html#2373\">Mailer::encodeQP<\/a>"],[0,1,"<a href=\"Mailer.php.html#2398\">Mailer::encodeQPphp<\/a>"],[0,7,"<a href=\"Mailer.php.html#2414\">Mailer::encodeQ<\/a>"],[0,2,"<a href=\"Mailer.php.html#2466\">Mailer::addStringAttachment<\/a>"],[0,4,"<a href=\"Mailer.php.html#2506\">Mailer::addEmbeddedImage<\/a>"],[0,2,"<a href=\"Mailer.php.html#2551\">Mailer::addStringEmbeddedImage<\/a>"],[0,3,"<a href=\"Mailer.php.html#2583\">Mailer::inlineImageExists<\/a>"],[0,3,"<a href=\"Mailer.php.html#2597\">Mailer::attachmentExists<\/a>"],[0,1,"<a href=\"Mailer.php.html#2611\">Mailer::alternativeExists<\/a>"],[0,2,"<a href=\"Mailer.php.html#2620\">Mailer::clearAddresses<\/a>"],[0,2,"<a href=\"Mailer.php.html#2632\">Mailer::clearCCs<\/a>"],[0,2,"<a href=\"Mailer.php.html#2644\">Mailer::clearBCCs<\/a>"],[0,1,"<a href=\"Mailer.php.html#2656\">Mailer::clearReplyTos<\/a>"],[0,1,"<a href=\"Mailer.php.html#2665\">Mailer::clearAllRecipients<\/a>"],[0,1,"<a href=\"Mailer.php.html#2677\">Mailer::clearAttachments<\/a>"],[0,1,"<a href=\"Mailer.php.html#2686\">Mailer::clearCustomHeaders<\/a>"],[0,5,"<a href=\"Mailer.php.html#2697\">Mailer::setError<\/a>"],[0,1,"<a href=\"Mailer.php.html#2715\">Mailer::rfcDate<\/a>"],[0,6,"<a href=\"Mailer.php.html#2729\">Mailer::serverHostname<\/a>"],[0,3,"<a href=\"Mailer.php.html#2748\">Mailer::lang<\/a>"],[0,1,"<a href=\"Mailer.php.html#2766\">Mailer::isError<\/a>"],[0,2,"<a href=\"Mailer.php.html#2778\">Mailer::fixEOL<\/a>"],[0,2,"<a href=\"Mailer.php.html#2798\">Mailer::addCustomHeader<\/a>"],[0,11,"<a href=\"Mailer.php.html#2819\">Mailer::msgHTML<\/a>"],[0,2,"<a href=\"Mailer.php.html#2872\">Mailer::html2text<\/a>"],[0,2,"<a href=\"Mailer.php.html#2893\">Mailer::_mime_types<\/a>"],[0,2,"<a href=\"Mailer.php.html#2993\">Mailer::filenameToType<\/a>"],[0,13,"<a href=\"Mailer.php.html#3015\">Mailer::mb_pathinfo<\/a>"],[0,4,"<a href=\"Mailer.php.html#3068\">Mailer::set<\/a>"],[0,1,"<a href=\"Mailer.php.html#3091\">Mailer::secureHeader<\/a>"],[0,1,"<a href=\"Mailer.php.html#3106\">Mailer::normalizeBreaks<\/a>"],[0,1,"<a href=\"Mailer.php.html#3119\">Mailer::sign<\/a>"],[0,7,"<a href=\"Mailer.php.html#3132\">Mailer::DKIM_QP<\/a>"],[0,5,"<a href=\"Mailer.php.html#3153\">Mailer::DKIM_Sign<\/a>"],[0,2,"<a href=\"Mailer.php.html#3179\">Mailer::DKIM_HeaderC<\/a>"],[0,3,"<a href=\"Mailer.php.html#3199\">Mailer::DKIM_BodyC<\/a>"],[0,7,"<a href=\"Mailer.php.html#3222\">Mailer::DKIM_Add<\/a>"],[0,1,"<a href=\"Mailer.php.html#3285\">Mailer::getToAddresses<\/a>"],[0,1,"<a href=\"Mailer.php.html#3295\">Mailer::getCcAddresses<\/a>"],[0,1,"<a href=\"Mailer.php.html#3305\">Mailer::getBccAddresses<\/a>"],[0,1,"<a href=\"Mailer.php.html#3315\">Mailer::getReplyToAddresses<\/a>"],[0,1,"<a href=\"Mailer.php.html#3325\">Mailer::getAllRecipientAddresses<\/a>"],[0,3,"<a href=\"Mailer.php.html#3340\">Mailer::doCallback<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3356\">phpmailerException::errorMessage<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#565\">PHPMailer::__construct<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#580\">PHPMailer::__destruct<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#600\">PHPMailer::mailPassthru<\/a>"],[0,5,"<a href=\"class.phpmailer.php.html#623\">PHPMailer::edebug<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#647\">PHPMailer::isHTML<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#660\">PHPMailer::isSMTP<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#669\">PHPMailer::isMail<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#678\">PHPMailer::isSendmail<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#690\">PHPMailer::isQmail<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#704\">PHPMailer::addAddress<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#716\">PHPMailer::addCC<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#728\">PHPMailer::addBCC<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#739\">PHPMailer::addReplyTo<\/a>"],[0,8,"<a href=\"class.phpmailer.php.html#754\">PHPMailer::addAnAddress<\/a>"],[0,5,"<a href=\"class.phpmailer.php.html#797\">PHPMailer::setFrom<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#826\">PHPMailer::getLastMessageID<\/a>"],[0,11,"<a href=\"class.phpmailer.php.html#844\">PHPMailer::validateAddress<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#924\">PHPMailer::send<\/a>"],[0,14,"<a href=\"class.phpmailer.php.html#946\">PHPMailer::preSend<\/a>"],[0,8,"<a href=\"class.phpmailer.php.html#1014\">PHPMailer::postSend<\/a>"],[0,12,"<a href=\"class.phpmailer.php.html#1053\">PHPMailer::sendmailSend<\/a>"],[0,12,"<a href=\"class.phpmailer.php.html#1110\">PHPMailer::mailSend<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#1155\">PHPMailer::getSMTPInstance<\/a>"],[0,14,"<a href=\"class.phpmailer.php.html#1175\">PHPMailer::smtpSend<\/a>"],[0,20,"<a href=\"class.phpmailer.php.html#1245\">PHPMailer::smtpConnect<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#1338\">PHPMailer::smtpClose<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#1357\">PHPMailer::setLanguage<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#1400\">PHPMailer::getTranslations<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#1415\">PHPMailer::addrAppend<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#1431\">PHPMailer::addrFormat<\/a>"],[0,21,"<a href=\"class.phpmailer.php.html#1453\">PHPMailer::wrapText<\/a>"],[0,7,"<a href=\"class.phpmailer.php.html#1541\">PHPMailer::utf8CharBoundary<\/a>"],[0,6,"<a href=\"class.phpmailer.php.html#1580\">PHPMailer::setWordWrap<\/a>"],[0,22,"<a href=\"class.phpmailer.php.html#1604\">PHPMailer::createHeader<\/a>"],[0,10,"<a href=\"class.phpmailer.php.html#1711\">PHPMailer::getMailMIME<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#1756\">PHPMailer::getSentMIMEMessage<\/a>"],[0,16,"<a href=\"class.phpmailer.php.html#1769\">PHPMailer::createBody<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#1921\">PHPMailer::getBoundary<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#1948\">PHPMailer::endBoundary<\/a>"],[0,5,"<a href=\"class.phpmailer.php.html#1960\">PHPMailer::setMessageType<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#1985\">PHPMailer::headerLine<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#1996\">PHPMailer::textLine<\/a>"],[0,6,"<a href=\"class.phpmailer.php.html#2012\">PHPMailer::addAttachment<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2055\">PHPMailer::getAttachments<\/a>"],[0,13,"<a href=\"class.phpmailer.php.html#2068\">PHPMailer::attachAll<\/a>"],[0,7,"<a href=\"class.phpmailer.php.html#2173\">PHPMailer::encodeFile<\/a>"],[0,7,"<a href=\"class.phpmailer.php.html#2211\">PHPMailer::encodeString<\/a>"],[0,11,"<a href=\"class.phpmailer.php.html#2247\">PHPMailer::encodeHeader<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2310\">PHPMailer::hasMultiBytes<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#2328\">PHPMailer::base64EncodeWrapMB<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2370\">PHPMailer::encodeQP<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2395\">PHPMailer::encodeQPphp<\/a>"],[0,7,"<a href=\"class.phpmailer.php.html#2411\">PHPMailer::encodeQ<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2463\">PHPMailer::addStringAttachment<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#2503\">PHPMailer::addEmbeddedImage<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2548\">PHPMailer::addStringEmbeddedImage<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#2580\">PHPMailer::inlineImageExists<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#2594\">PHPMailer::attachmentExists<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2608\">PHPMailer::alternativeExists<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2617\">PHPMailer::clearAddresses<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2629\">PHPMailer::clearCCs<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2641\">PHPMailer::clearBCCs<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2653\">PHPMailer::clearReplyTos<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2662\">PHPMailer::clearAllRecipients<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2674\">PHPMailer::clearAttachments<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2683\">PHPMailer::clearCustomHeaders<\/a>"],[0,5,"<a href=\"class.phpmailer.php.html#2694\">PHPMailer::setError<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2712\">PHPMailer::rfcDate<\/a>"],[0,6,"<a href=\"class.phpmailer.php.html#2726\">PHPMailer::serverHostname<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#2745\">PHPMailer::lang<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#2763\">PHPMailer::isError<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2775\">PHPMailer::fixEOL<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2795\">PHPMailer::addCustomHeader<\/a>"],[0,11,"<a href=\"class.phpmailer.php.html#2816\">PHPMailer::msgHTML<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2869\">PHPMailer::html2text<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2890\">PHPMailer::_mime_types<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#2990\">PHPMailer::filenameToType<\/a>"],[0,13,"<a href=\"class.phpmailer.php.html#3012\">PHPMailer::mb_pathinfo<\/a>"],[0,4,"<a href=\"class.phpmailer.php.html#3065\">PHPMailer::set<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3088\">PHPMailer::secureHeader<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3103\">PHPMailer::normalizeBreaks<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3116\">PHPMailer::sign<\/a>"],[0,7,"<a href=\"class.phpmailer.php.html#3129\">PHPMailer::DKIM_QP<\/a>"],[0,5,"<a href=\"class.phpmailer.php.html#3150\">PHPMailer::DKIM_Sign<\/a>"],[0,2,"<a href=\"class.phpmailer.php.html#3176\">PHPMailer::DKIM_HeaderC<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#3196\">PHPMailer::DKIM_BodyC<\/a>"],[0,7,"<a href=\"class.phpmailer.php.html#3219\">PHPMailer::DKIM_Add<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3282\">PHPMailer::getToAddresses<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3292\">PHPMailer::getCcAddresses<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3302\">PHPMailer::getBccAddresses<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3312\">PHPMailer::getReplyToAddresses<\/a>"],[0,1,"<a href=\"class.phpmailer.php.html#3322\">PHPMailer::getAllRecipientAddresses<\/a>"],[0,3,"<a href=\"class.phpmailer.php.html#3337\">PHPMailer::doCallback<\/a>"],[0,1,"<a href=\"class.pop3.php.html#137\">POP3::__construct<\/a>"],[0,1,"<a href=\"class.pop3.php.html#154\">POP3::popBeforeSmtp<\/a>"],[0,5,"<a href=\"class.pop3.php.html#179\">POP3::authorise<\/a>"],[0,9,"<a href=\"class.pop3.php.html#221\">POP3::connect<\/a>"],[0,7,"<a href=\"class.pop3.php.html#290\">POP3::login<\/a>"],[0,1,"<a href=\"class.pop3.php.html#324\">POP3::disconnect<\/a>"],[0,2,"<a href=\"class.pop3.php.html#339\">POP3::getResponse<\/a>"],[0,3,"<a href=\"class.pop3.php.html#354\">POP3::sendString<\/a>"],[0,3,"<a href=\"class.pop3.php.html#372\">POP3::checkResponse<\/a>"],[0,2,"<a href=\"class.pop3.php.html#393\">POP3::displayErrors<\/a>"],[0,1,"<a href=\"class.pop3.php.html#410\">POP3::catchWarning<\/a>"],[0,1,"<a href=\"class.smtp.php.html#142\">SMTP::__construct<\/a>"],[0,4,"<a href=\"class.smtp.php.html#156\">SMTP::edebug<\/a>"],[0,11,"<a href=\"class.smtp.php.html#187\">SMTP::connect<\/a>"],[0,3,"<a href=\"class.smtp.php.html#265\">SMTP::startTLS<\/a>"],[0,15,"<a href=\"class.smtp.php.html#294\">SMTP::authenticate<\/a>"],[0,3,"<a href=\"class.smtp.php.html#413\">SMTP::hmac<\/a>"],[0,4,"<a href=\"class.smtp.php.html#445\">SMTP::connected<\/a>"],[0,3,"<a href=\"class.smtp.php.html#471\">SMTP::close<\/a>"],[0,13,"<a href=\"class.smtp.php.html#497\">SMTP::data<\/a>"],[0,3,"<a href=\"class.smtp.php.html#590\">SMTP::hello<\/a>"],[0,1,"<a href=\"class.smtp.php.html#611\">SMTP::sendHello<\/a>"],[0,2,"<a href=\"class.smtp.php.html#629\">SMTP::mail<\/a>"],[0,3,"<a href=\"class.smtp.php.html#647\">SMTP::quit<\/a>"],[0,1,"<a href=\"class.smtp.php.html#667\">SMTP::recipient<\/a>"],[0,1,"<a href=\"class.smtp.php.html#683\">SMTP::reset<\/a>"],[0,5,"<a href=\"class.smtp.php.html#696\">SMTP::sendCommand<\/a>"],[0,1,"<a href=\"class.smtp.php.html#746\">SMTP::sendAndMail<\/a>"],[0,1,"<a href=\"class.smtp.php.html#757\">SMTP::verify<\/a>"],[0,1,"<a href=\"class.smtp.php.html#768\">SMTP::noop<\/a>"],[0,2,"<a href=\"class.smtp.php.html#782\">SMTP::turn<\/a>"],[0,2,"<a href=\"class.smtp.php.html#799\">SMTP::client_send<\/a>"],[0,1,"<a href=\"class.smtp.php.html#812\">SMTP::getError<\/a>"],[0,1,"<a href=\"class.smtp.php.html#822\">SMTP::getLastReply<\/a>"],[0,13,"<a href=\"class.smtp.php.html#836\">SMTP::get_lines<\/a>"],[0,1,"<a href=\"class.smtp.php.html#892\">SMTP::setVerp<\/a>"],[0,1,"<a href=\"class.smtp.php.html#901\">SMTP::getVerp<\/a>"],[0,1,"<a href=\"class.smtp.php.html#910\">SMTP::setDebugOutput<\/a>"],[0,1,"<a href=\"class.smtp.php.html#919\">SMTP::getDebugOutput<\/a>"],[0,1,"<a href=\"class.smtp.php.html#928\">SMTP::setDebugLevel<\/a>"],[0,1,"<a href=\"class.smtp.php.html#937\">SMTP::getDebugLevel<\/a>"],[0,1,"<a href=\"class.smtp.php.html#946\">SMTP::setTimeout<\/a>"],[0,1,"<a href=\"class.smtp.php.html#955\">SMTP::getTimeout<\/a>"],[0,1,"<a href=\"extras\/EasyPeasyICS.php.html#28\">EasyPeasyICS::__construct<\/a>"],[0,1,"<a href=\"extras\/EasyPeasyICS.php.html#37\">EasyPeasyICS::addEvent<\/a>"],[0,3,"<a href=\"extras\/EasyPeasyICS.php.html#48\">EasyPeasyICS::render<\/a>"],[0,2,"<a href=\"extras\/class.html2text.php.html#283\">html2text::__construct<\/a>"],[0,3,"<a href=\"extras\/class.html2text.php.html#302\">html2text::set_html<\/a>"],[0,2,"<a href=\"extras\/class.html2text.php.html#319\">html2text::get_text<\/a>"],[0,1,"<a href=\"extras\/class.html2text.php.html#334\">html2text::print_text<\/a>"],[0,1,"<a href=\"extras\/class.html2text.php.html#346\">html2text::p<\/a>"],[0,2,"<a href=\"extras\/class.html2text.php.html#359\">html2text::set_allowed_tags<\/a>"],[0,4,"<a href=\"extras\/class.html2text.php.html#372\">html2text::set_base_url<\/a>"],[0,3,"<a href=\"extras\/class.html2text.php.html#396\">html2text::_convert<\/a>"],[0,2,"<a href=\"extras\/class.html2text.php.html#432\">html2text::_converter<\/a>"],[0,9,"<a href=\"extras\/class.html2text.php.html#490\">html2text::_build_link_list<\/a>"],[0,2,"<a href=\"extras\/class.html2text.php.html#537\">html2text::_convert_pre<\/a>"],[0,9,"<a href=\"extras\/class.html2text.php.html#565\">html2text::_convert_blockquotes<\/a>"],[0,7,"<a href=\"extras\/class.html2text.php.html#623\">html2text::_preg_callback<\/a>"],[0,1,"<a href=\"extras\/class.html2text.php.html#652\">html2text::_preg_pre_callback<\/a>"],[0,3,"<a href=\"extras\/class.html2text.php.html#663\">html2text::_toupper<\/a>"],[0,2,"<a href=\"extras\/class.html2text.php.html#684\">html2text::_strtoupper<\/a>"],[0,3,"<a href=\"extras\/ntlm_sasl_client.php.html#25\">ntlm_sasl_client_class::Initialize<\/a>"],[0,2,"<a href=\"extras\/ntlm_sasl_client.php.html#40\">ntlm_sasl_client_class::ASCIIToUnicode<\/a>"],[0,1,"<a href=\"extras\/ntlm_sasl_client.php.html#47\">ntlm_sasl_client_class::TypeMsg1<\/a>"],[0,5,"<a href=\"extras\/ntlm_sasl_client.php.html#68\">ntlm_sasl_client_class::NTLMResponse<\/a>"],[0,1,"<a href=\"extras\/ntlm_sasl_client.php.html#91\">ntlm_sasl_client_class::TypeMsg3<\/a>"],[0,3,"<a href=\"extras\/ntlm_sasl_client.php.html#141\">ntlm_sasl_client_class::Start<\/a>"],[0,4,"<a href=\"extras\/ntlm_sasl_client.php.html#162\">ntlm_sasl_client_class::Step<\/a>"],[0,1,"<a href=\"test\/phpmailerLangTest.php.html#40\">PHPMailerLangTest::setUp<\/a>"],[0,6,"<a href=\"test\/phpmailerLangTest.php.html#50\">PHPMailerLangTest::testTranslations<\/a>"],[0,9,"<a href=\"test\/phpmailerTest.php.html#69\">PHPMailerTest::setUp<\/a>"],[0,2,"<a href=\"test\/phpmailerTest.php.html#123\">PHPMailerTest::tearDown<\/a>"],[0,10,"<a href=\"test\/phpmailerTest.php.html#143\">PHPMailerTest::buildBody<\/a>"],[0,10,"<a href=\"test\/phpmailerTest.php.html#219\">PHPMailerTest::checkChanges<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#257\">PHPMailerTest::addChange<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#268\">PHPMailerTest::addNote<\/a>"],[0,4,"<a href=\"test\/phpmailerTest.php.html#281\">PHPMailerTest::setAddress<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#298\">PHPMailerTest::testAuthCRAMMD5<\/a>"],[0,8,"<a href=\"test\/phpmailerTest.php.html#321\">PHPMailerTest::testValidate<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#639\">PHPMailerTest::testWordWrap<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#658\">PHPMailerTest::testLowPriority<\/a>"],[0,3,"<a href=\"test\/phpmailerTest.php.html#673\">PHPMailerTest::testMultiplePlainFileAttachment<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#695\">PHPMailerTest::testPlainStringAttachment<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#713\">PHPMailerTest::testQuotedPrintable<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#739\">PHPMailerTest::testHtml<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#765\">PHPMailerTest::testMsgHTML<\/a>"],[0,2,"<a href=\"test\/phpmailerTest.php.html#790\">PHPMailerTest::testHTMLAttachment<\/a>"],[0,2,"<a href=\"test\/phpmailerTest.php.html#811\">PHPMailerTest::testEmbeddedImage<\/a>"],[0,3,"<a href=\"test\/phpmailerTest.php.html#840\">PHPMailerTest::testMultiEmbeddedImage<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#871\">PHPMailerTest::testAltBody<\/a>"],[0,3,"<a href=\"test\/phpmailerTest.php.html#888\">PHPMailerTest::testAltBodyAttachment<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#912\">PHPMailerTest::testIcal<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#949\">PHPMailerTest::testMultipleSend<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#966\">PHPMailerTest::testSendmailSend<\/a>"],[0,2,"<a href=\"test\/phpmailerTest.php.html#980\">PHPMailerTest::testQmailSend<\/a>"],[0,2,"<a href=\"test\/phpmailerTest.php.html#999\">PHPMailerTest::testMailSend<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1016\">PHPMailerTest::testEmptyBody<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1031\">PHPMailerTest::testSmtpKeepAlive<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1049\">PHPMailerTest::testSmtpConnect<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1074\">PHPMailerTest::testDenialOfServiceAttack<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1088\">PHPMailerTest::testDenialOfServiceAttack2<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1099\">PHPMailerTest::testError<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1115\">PHPMailerTest::testAddressing<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1146\">PHPMailerTest::testAddressEscaping<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1161\">PHPMailerTest::testBCCAddressing<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1173\">PHPMailerTest::testEncodings<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1205\">PHPMailerTest::testBase64<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1215\">PHPMailerTest::testSigning<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1260\">PHPMailerTest::testDKIM<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1288\">PHPMailerTest::testLineBreaks<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1305\">PHPMailerTest::testPopBeforeSmtpGood<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1326\">PHPMailerTest::testPopBeforeSmtpBad<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1346\">PHPMailerTest::testMessageID<\/a>"],[0,1,"<a href=\"test\/phpmailerTest.php.html#1360\">PHPMailerTest::testMiscellaneous<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

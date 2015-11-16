@@ -38,8 +38,8 @@ spl_autoload_register(array('AutoLoader', 'loadClass'));
 
 // O meu Particular
 
-define('INI_PATH_TEMP'  , ROOT_PADRAO      .'Ini'      .DS);
-define('DAO_PATH'       , ROOT_PADRAO.'DAO'.DS);
+define('INI_PATH_TEMP',  ROOT_PADRAO      .'Ini'      .DS);
+define('DAO_PATH',  ROOT_PADRAO.'DAO'.DS);
 /**
  * AUTOLOAD
  * Da Include Automaticamente Dependendo da Classe que vai ser Executada
@@ -195,9 +195,9 @@ spl_autoload_register('__autoload'      );
 
 // Continua Configurações
 if (isset($_SERVER['SERVER_NAME'])) {
-    define('SRV_NAME', \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
+    define('SRV_NAME',  \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
 } else {
-    define('SRV_NAME', 'localhost');
+    define('SRV_NAME',  'localhost');
 }
 // CArrega Config
 if (
@@ -213,24 +213,24 @@ if (
     throw new \Exception('Config não encontrado', 2828); //
 }
 // Continua Configurações
-//define('SRV_NAME', \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
+//define('SRV_NAME',  \Framework\App\Sistema_Funcoes::Url_Limpeza($_SERVER['SERVER_NAME']));
 // SISTEMA CONFIG
 /**
  * Endereço de Pasta de Configurações no Servidor
  */
-define('INI_PATH'       , ROOT_PADRAO      .'Ini'      .DS);
+define('INI_PATH',  ROOT_PADRAO      .'Ini'      .DS);
 /**
  * Endereço de Pasta de Classes no Servidor
  */
-define('CLASS_PATH'     , ROOT_PADRAO      .'Classes'  .DS);
+define('CLASS_PATH',  ROOT_PADRAO      .'Classes'  .DS);
 /**
  * Endereço de Pasta de Interfaces no Servidor
  */
-define('INTER_PATH'     , ROOT_PADRAO      .'Interface'.DS);
+define('INTER_PATH',  ROOT_PADRAO      .'Interface'.DS);
 /**
  * Endereço de Pasta de Modulos no Servidor
  */
-define('MOD_PATH'       , ROOT_PADRAO      .'mod'      .DS);
+define('MOD_PATH',  ROOT_PADRAO      .'mod'      .DS);
 /**
  * Trata Erro de Notice - Pega o Erro do Sistema e os Trata como Excessoes
  * 
@@ -340,9 +340,9 @@ function Erro_Email($errno, $errstr, $errfile, $errline) {
     // Verifica Existencia das Constantes
     if (!defined('CLASS_PATH')) {
         if (!defined('ROOT')) {
-            define('ROOT', ROOT_PADRAO);
+            define('ROOT',  ROOT_PADRAO);
         } 
-        define('CLASS_PATH', ROOT      .'Classes'  .DS);
+        define('CLASS_PATH',  ROOT      .'Classes'  .DS);
     }   
     
     // Carrega se Nao tiver carregado
@@ -378,7 +378,7 @@ register_shutdown_function( "Erro_Get_Fatal" );
 /**
  * Carrega Config de Maniputação de Layoult
  */
-define('LAY_CONF', ROOT_PADRAO.'templates'.DS.TEMA_PADRAO.DS.'config'.DS);
+define('LAY_CONF',  ROOT_PADRAO.'templates'.DS.TEMA_PADRAO.DS.'config'.DS);
 if ( file_exists  (LAY_CONF.'config.php')) {
     require_once (LAY_CONF.'config.php');
 } else {
@@ -481,9 +481,9 @@ unset($tempo);
  */
 $textdomain = "Framework";
 if (isset($_GET['locale']) && !empty($_GET['locale'])) {
-    define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
+    define('SISTEMA_LINGUAGEM',  \anti_injection($_GET['locale']));
 } else {
-    define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
+    define('SISTEMA_LINGUAGEM',  SISTEMA_LINGUAGEM_PADRAO);
 }
 putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
 putenv('LANG=' . SISTEMA_LINGUAGEM);

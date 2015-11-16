@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/ricardo/Pessoal/Programacao/Projetos/Framework/www/mod/_Sistema</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../../js/html5shiv.min.js"></script>
+  <script src="../../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../index.html">/home/ricardo/Pessoal/Programacao/Projetos/Framework</a></li>
+        <li><a href="../../index.html">www</a></li>
+        <li><a href="../index.html">mod</a></li>
+        <li><a href="index.html">_Sistema</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="_Sistema_PrincipalV.php.html#3">_Sistema_PrincipalVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#2">_Sistema_RecursoControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalM.php.html#3">_Sistema_PrincipalModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#2">_Sistema_PrincipalControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_Modelo.php.html#2">_Sistema_Modelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoM.php.html#3">_Sistema_RecursoModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoV.php.html#3">_Sistema_RecursoVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroV.php.html#3">_Sistema_erroVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroM.php.html#3">_Sistema_erroModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#3">_Sistema_erroControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_Visual.php.html#2">_Sistema_Visual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginV.php.html#3">_Sistema_LoginVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginM.php.html#3">_Sistema_LoginModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#3">_Sistema_FilialControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_Controle.php.html#2">_Sistema_Controle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminV.php.html#3">_Sistema_AdminVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminM.php.html#3">_Sistema_AdminModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialM.php.html#3">_Sistema_FilialModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialV.php.html#3">_Sistema_FilialVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginC.php.html#3">_Sistema_LoginControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgV.php.html#3">_Sistema_ImgVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgM.php.html#3">_Sistema_ImgModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgC.php.html#3">_Sistema_ImgControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#3">_Sistema_AdminControle</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="_Sistema_AdminC.php.html#3">_Sistema_AdminControle</a></td><td class="text-right">14520</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#2">_Sistema_RecursoControle</a></td><td class="text-right">2652</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#2">_Sistema_PrincipalControle</a></td><td class="text-right">756</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#3">_Sistema_FilialControle</a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#3">_Sistema_erroControle</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="_Sistema_LoginC.php.html#3">_Sistema_LoginControle</a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="_Sistema_FilialM.php.html#3">_Sistema_FilialModelo</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="_Sistema_AdminM.php.html#3">_Sistema_AdminModelo</a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="_Sistema_LoginC.php.html#8"><abbr title="_Sistema_LoginControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginC.php.html#23"><abbr title="_Sistema_LoginControle::_getError">_getError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginC.php.html#5"><abbr title="_Sistema_LoginControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgV.php.html#5"><abbr title="_Sistema_ImgVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgM.php.html#5"><abbr title="_Sistema_ImgModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginM.php.html#5"><abbr title="_Sistema_LoginModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_LoginV.php.html#5"><abbr title="_Sistema_LoginVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#16"><abbr title="_Sistema_PrincipalControle::Home">Home</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#8"><abbr title="_Sistema_PrincipalControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#4"><abbr title="_Sistema_PrincipalControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_Modelo.php.html#4"><abbr title="_Sistema_Modelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgC.php.html#10"><abbr title="_Sistema_ImgControle::Redimensionar">Redimensionar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgC.php.html#8"><abbr title="_Sistema_ImgControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#115"><abbr title="_Sistema_FilialControle::Filiais_Edit2">Filiais_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#96"><abbr title="_Sistema_FilialControle::Filiais_Edit">Filiais_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#81"><abbr title="_Sistema_FilialControle::Filiais_Add2">Filiais_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#63"><abbr title="_Sistema_FilialControle::Filiais_Add">Filiais_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#132"><abbr title="_Sistema_FilialControle::Filiais_Del">Filiais_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#167"><abbr title="_Sistema_FilialControle::Endereco_Filial">Endereco_Filial</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_ImgC.php.html#5"><abbr title="_Sistema_ImgControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialV.php.html#5"><abbr title="_Sistema_FilialVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialM.php.html#8"><abbr title="_Sistema_FilialModelo::Filiais">Filiais</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialM.php.html#5"><abbr title="_Sistema_FilialModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#40"><abbr title="_Sistema_PrincipalControle::Busca">Busca</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#67"><abbr title="_Sistema_PrincipalControle::Relatorio">Relatorio</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#8"><abbr title="_Sistema_erroControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#5"><abbr title="_Sistema_erroControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_Visual.php.html#4"><abbr title="_Sistema_Visual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoV.php.html#5"><abbr title="_Sistema_RecursoVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#30"><abbr title="_Sistema_erroControle::Erro_Puro">Erro_Puro</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#38"><abbr title="_Sistema_erroControle::_getError">_getError</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroV.php.html#5"><abbr title="_Sistema_erroVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroM.php.html#5"><abbr title="_Sistema_erroModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#157"><abbr title="_Sistema_erroControle::Erro_Fluxo">Erro_Fluxo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#150"><abbr title="_Sistema_erroControle::Javascript">Javascript</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoM.php.html#5"><abbr title="_Sistema_RecursoModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#340"><abbr title="_Sistema_RecursoControle::Valida_CNPJ">Valida_CNPJ</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalV.php.html#5"><abbr title="_Sistema_PrincipalVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalM.php.html#5"><abbr title="_Sistema_PrincipalModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#115"><abbr title="_Sistema_PrincipalControle::Release">Release</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#91"><abbr title="_Sistema_PrincipalControle::Estatistica">Estatistica</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#4"><abbr title="_Sistema_RecursoControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#8"><abbr title="_Sistema_RecursoControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#170"><abbr title="_Sistema_RecursoControle::Valida_CPF">Valida_CPF</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#114"><abbr title="_Sistema_RecursoControle::anonymous function">anonymous function</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#93"><abbr title="_Sistema_RecursoControle::Valida_Cep">Valida_Cep</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#27"><abbr title="_Sistema_RecursoControle::Select_Recarrega_Extrangeira">Select_Recarrega_Extrangeira</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#36"><abbr title="_Sistema_FilialControle::Filiais">Filiais</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#16"><abbr title="_Sistema_FilialControle::FilialWidgets">FilialWidgets</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#474"><abbr title="_Sistema_AdminControle::Permissoes_Edit">Permissoes_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#459"><abbr title="_Sistema_AdminControle::Permissoes_Add2">Permissoes_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#441"><abbr title="_Sistema_AdminControle::Permissoes_Add">Permissoes_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#368"><abbr title="_Sistema_AdminControle::Permissoes">Permissoes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#494"><abbr title="_Sistema_AdminControle::Permissoes_Edit2">Permissoes_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#511"><abbr title="_Sistema_AdminControle::Permissoes_Del">Permissoes_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#652"><abbr title="_Sistema_AdminControle::Grupos_Add2">Grupos_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#628"><abbr title="_Sistema_AdminControle::Grupos_Add">Grupos_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#547"><abbr title="_Sistema_AdminControle::Grupos">Grupos</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#539"><abbr title="_Sistema_AdminControle::Grupos_Funcionarios">Grupos_Funcionarios</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#353"><abbr title="_Sistema_AdminControle::Configs_Edit2">Configs_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#334"><abbr title="_Sistema_AdminControle::Configs_Edit">Configs_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#161"><abbr title="_Sistema_AdminControle::Menu_Status">Menu_Status</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#85"><abbr title="_Sistema_AdminControle::Menus">Menus</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#32"><abbr title="_Sistema_AdminControle::AdminWidgets">AdminWidgets</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#13"><abbr title="_Sistema_AdminControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#205"><abbr title="_Sistema_AdminControle::Menus_Add">Menus_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#223"><abbr title="_Sistema_AdminControle::Menus_Add2">Menus_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#307"><abbr title="_Sistema_AdminControle::Configs">Configs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#274"><abbr title="_Sistema_AdminControle::Menus_Del">Menus_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#257"><abbr title="_Sistema_AdminControle::Menus_Edit2">Menus_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#238"><abbr title="_Sistema_AdminControle::Menus_Edit">Menus_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#670"><abbr title="_Sistema_AdminControle::Grupos_Edit">Grupos_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#694"><abbr title="_Sistema_AdminControle::Grupos_Edit2">Grupos_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1187"><abbr title="_Sistema_AdminControle::Endereco_Admin_Grupo">Endereco_Admin_Grupo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1170"><abbr title="_Sistema_AdminControle::Endereco_Admin_Menu">Endereco_Admin_Menu</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1153"><abbr title="_Sistema_AdminControle::Endereco_Admin_Config">Endereco_Admin_Config</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1136"><abbr title="_Sistema_AdminControle::Endereco_Admin_Permissao">Endereco_Admin_Permissao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminM.php.html#5"><abbr title="_Sistema_AdminModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminM.php.html#8"><abbr title="_Sistema_AdminModelo::Configs">Configs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#13"><abbr title="_Sistema_FilialControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#5"><abbr title="_Sistema_FilialControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_Controle.php.html#4"><abbr title="_Sistema_Controle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminV.php.html#5"><abbr title="_Sistema_AdminVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1120"><abbr title="_Sistema_AdminControle::Endereco_Admin">Endereco_Admin</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1085"><abbr title="_Sistema_AdminControle::Newsletter_Del">Newsletter_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#839"><abbr title="_Sistema_AdminControle::Grupo_Permissao_Add2">Grupo_Permissao_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#815"><abbr title="_Sistema_AdminControle::Grupo_Permissao_Add">Grupo_Permissao_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#749"><abbr title="_Sistema_AdminControle::Grupo_Permissao">Grupo_Permissao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#713"><abbr title="_Sistema_AdminControle::Grupos_Del">Grupos_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#859"><abbr title="_Sistema_AdminControle::Grupo_Permissao_Del">Grupo_Permissao_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#884"><abbr title="_Sistema_AdminControle::Newsletter">Newsletter</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1050"><abbr title="_Sistema_AdminControle::Newsletter_Edit2">Newsletter_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1013"><abbr title="_Sistema_AdminControle::Newsletter_Add2">Newsletter_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#986"><abbr title="_Sistema_AdminControle::Newsletter_Edit">Newsletter_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#965"><abbr title="_Sistema_AdminControle::Newsletter_Add">Newsletter_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#5"><abbr title="_Sistema_AdminControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="_Sistema_RecursoC.php.html#27"><abbr title="_Sistema_RecursoControle::Select_Recarrega_Extrangeira">Select_Recarrega_Extrangeira</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#170"><abbr title="_Sistema_RecursoControle::Valida_CPF">Valida_CPF</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#547"><abbr title="_Sistema_AdminControle::Grupos">Grupos</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#884"><abbr title="_Sistema_AdminControle::Newsletter">Newsletter</abbr></a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#85"><abbr title="_Sistema_AdminControle::Menus">Menus</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#368"><abbr title="_Sistema_AdminControle::Permissoes">Permissoes</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#161"><abbr title="_Sistema_AdminControle::Menu_Status">Menu_Status</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#40"><abbr title="_Sistema_PrincipalControle::Busca">Busca</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#93"><abbr title="_Sistema_RecursoControle::Valida_Cep">Valida_Cep</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#749"><abbr title="_Sistema_AdminControle::Grupo_Permissao">Grupo_Permissao</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#340"><abbr title="_Sistema_RecursoControle::Valida_CNPJ">Valida_CNPJ</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#91"><abbr title="_Sistema_PrincipalControle::Estatistica">Estatistica</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#67"><abbr title="_Sistema_PrincipalControle::Relatorio">Relatorio</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="_Sistema_RecursoC.php.html#114"><abbr title="_Sistema_RecursoControle::anonymous function">anonymous function</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#38"><abbr title="_Sistema_erroControle::_getError">_getError</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="_Sistema_FilialM.php.html#8"><abbr title="_Sistema_FilialModelo::Filiais">Filiais</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_LoginC.php.html#23"><abbr title="_Sistema_LoginControle::_getError">_getError</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#36"><abbr title="_Sistema_FilialControle::Filiais">Filiais</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#16"><abbr title="_Sistema_PrincipalControle::Home">Home</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#307"><abbr title="_Sistema_AdminControle::Configs">Configs</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#713"><abbr title="_Sistema_AdminControle::Grupos_Del">Grupos_Del</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_erroC.php.html#8"><abbr title="_Sistema_erroControle::Main">Main</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#132"><abbr title="_Sistema_FilialControle::Filiais_Del">Filiais_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_FilialC.php.html#167"><abbr title="_Sistema_FilialControle::Endereco_Filial">Endereco_Filial</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_LoginC.php.html#8"><abbr title="_Sistema_LoginControle::Main">Main</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_PrincipalC.php.html#115"><abbr title="_Sistema_PrincipalControle::Release">Release</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1136"><abbr title="_Sistema_AdminControle::Endereco_Admin_Permissao">Endereco_Admin_Permissao</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#670"><abbr title="_Sistema_AdminControle::Grupos_Edit">Grupos_Edit</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#694"><abbr title="_Sistema_AdminControle::Grupos_Edit2">Grupos_Edit2</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#815"><abbr title="_Sistema_AdminControle::Grupo_Permissao_Add">Grupo_Permissao_Add</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#652"><abbr title="_Sistema_AdminControle::Grupos_Add2">Grupos_Add2</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#628"><abbr title="_Sistema_AdminControle::Grupos_Add">Grupos_Add</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#274"><abbr title="_Sistema_AdminControle::Menus_Del">Menus_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#511"><abbr title="_Sistema_AdminControle::Permissoes_Del">Permissoes_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#839"><abbr title="_Sistema_AdminControle::Grupo_Permissao_Add2">Grupo_Permissao_Add2</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#859"><abbr title="_Sistema_AdminControle::Grupo_Permissao_Del">Grupo_Permissao_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1153"><abbr title="_Sistema_AdminControle::Endereco_Admin_Config">Endereco_Admin_Config</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1170"><abbr title="_Sistema_AdminControle::Endereco_Admin_Menu">Endereco_Admin_Menu</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1187"><abbr title="_Sistema_AdminControle::Endereco_Admin_Grupo">Endereco_Admin_Grupo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1120"><abbr title="_Sistema_AdminControle::Endereco_Admin">Endereco_Admin</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1085"><abbr title="_Sistema_AdminControle::Newsletter_Del">Newsletter_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1013"><abbr title="_Sistema_AdminControle::Newsletter_Add2">Newsletter_Add2</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminC.php.html#1050"><abbr title="_Sistema_AdminControle::Newsletter_Edit2">Newsletter_Edit2</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="_Sistema_AdminM.php.html#8"><abbr title="_Sistema_AdminModelo::Configs">Configs</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.1.7</a> using <a href="http://php.net/" target="_top">PHP 5.5.9-1ubuntu4.14</a> and <a href="http://phpunit.de/">PHPUnit 4.7.6</a> at Thu Nov 12 20:25:25 BRST 2015.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([24,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([96,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,120,"<a href=\"_Sistema_AdminC.php.html#3\">_Sistema_AdminControle<\/a>"],[0,3,"<a href=\"_Sistema_AdminM.php.html#3\">_Sistema_AdminModelo<\/a>"],[0,1,"<a href=\"_Sistema_AdminV.php.html#3\">_Sistema_AdminVisual<\/a>"],[0,1,"<a href=\"_Sistema_Controle.php.html#2\">_Sistema_Controle<\/a>"],[0,14,"<a href=\"_Sistema_FilialC.php.html#3\">_Sistema_FilialControle<\/a>"],[0,4,"<a href=\"_Sistema_FilialM.php.html#3\">_Sistema_FilialModelo<\/a>"],[0,1,"<a href=\"_Sistema_FilialV.php.html#3\">_Sistema_FilialVisual<\/a>"],[0,3,"<a href=\"_Sistema_ImgC.php.html#3\">_Sistema_ImgControle<\/a>"],[0,1,"<a href=\"_Sistema_ImgM.php.html#3\">_Sistema_ImgModelo<\/a>"],[0,1,"<a href=\"_Sistema_ImgV.php.html#3\">_Sistema_ImgVisual<\/a>"],[0,6,"<a href=\"_Sistema_LoginC.php.html#3\">_Sistema_LoginControle<\/a>"],[0,1,"<a href=\"_Sistema_LoginM.php.html#3\">_Sistema_LoginModelo<\/a>"],[0,1,"<a href=\"_Sistema_LoginV.php.html#3\">_Sistema_LoginVisual<\/a>"],[0,1,"<a href=\"_Sistema_Modelo.php.html#2\">_Sistema_Modelo<\/a>"],[0,27,"<a href=\"_Sistema_PrincipalC.php.html#2\">_Sistema_PrincipalControle<\/a>"],[0,1,"<a href=\"_Sistema_PrincipalM.php.html#3\">_Sistema_PrincipalModelo<\/a>"],[0,1,"<a href=\"_Sistema_PrincipalV.php.html#3\">_Sistema_PrincipalVisual<\/a>"],[0,51,"<a href=\"_Sistema_RecursoC.php.html#2\">_Sistema_RecursoControle<\/a>"],[0,1,"<a href=\"_Sistema_RecursoM.php.html#3\">_Sistema_RecursoModelo<\/a>"],[0,1,"<a href=\"_Sistema_RecursoV.php.html#3\">_Sistema_RecursoVisual<\/a>"],[0,1,"<a href=\"_Sistema_Visual.php.html#2\">_Sistema_Visual<\/a>"],[0,11,"<a href=\"_Sistema_erroC.php.html#3\">_Sistema_erroControle<\/a>"],[0,1,"<a href=\"_Sistema_erroM.php.html#3\">_Sistema_erroModelo<\/a>"],[0,1,"<a href=\"_Sistema_erroV.php.html#3\">_Sistema_erroVisual<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"_Sistema_AdminC.php.html#5\">_Sistema_AdminControle::__construct<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#13\">_Sistema_AdminControle::Main<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#32\">_Sistema_AdminControle::AdminWidgets<\/a>"],[0,11,"<a href=\"_Sistema_AdminC.php.html#85\">_Sistema_AdminControle::Menus<\/a>"],[0,9,"<a href=\"_Sistema_AdminC.php.html#161\">_Sistema_AdminControle::Menu_Status<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#205\">_Sistema_AdminControle::Menus_Add<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#223\">_Sistema_AdminControle::Menus_Add2<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#238\">_Sistema_AdminControle::Menus_Edit<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#257\">_Sistema_AdminControle::Menus_Edit2<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#274\">_Sistema_AdminControle::Menus_Del<\/a>"],[0,3,"<a href=\"_Sistema_AdminC.php.html#307\">_Sistema_AdminControle::Configs<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#334\">_Sistema_AdminControle::Configs_Edit<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#353\">_Sistema_AdminControle::Configs_Edit2<\/a>"],[0,10,"<a href=\"_Sistema_AdminC.php.html#368\">_Sistema_AdminControle::Permissoes<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#441\">_Sistema_AdminControle::Permissoes_Add<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#459\">_Sistema_AdminControle::Permissoes_Add2<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#474\">_Sistema_AdminControle::Permissoes_Edit<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#494\">_Sistema_AdminControle::Permissoes_Edit2<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#511\">_Sistema_AdminControle::Permissoes_Del<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#539\">_Sistema_AdminControle::Grupos_Funcionarios<\/a>"],[0,13,"<a href=\"_Sistema_AdminC.php.html#547\">_Sistema_AdminControle::Grupos<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#628\">_Sistema_AdminControle::Grupos_Add<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#652\">_Sistema_AdminControle::Grupos_Add2<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#670\">_Sistema_AdminControle::Grupos_Edit<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#694\">_Sistema_AdminControle::Grupos_Edit2<\/a>"],[0,3,"<a href=\"_Sistema_AdminC.php.html#713\">_Sistema_AdminControle::Grupos_Del<\/a>"],[0,8,"<a href=\"_Sistema_AdminC.php.html#749\">_Sistema_AdminControle::Grupo_Permissao<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#815\">_Sistema_AdminControle::Grupo_Permissao_Add<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#839\">_Sistema_AdminControle::Grupo_Permissao_Add2<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#859\">_Sistema_AdminControle::Grupo_Permissao_Del<\/a>"],[0,13,"<a href=\"_Sistema_AdminC.php.html#884\">_Sistema_AdminControle::Newsletter<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#965\">_Sistema_AdminControle::Newsletter_Add<\/a>"],[0,1,"<a href=\"_Sistema_AdminC.php.html#986\">_Sistema_AdminControle::Newsletter_Edit<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1013\">_Sistema_AdminControle::Newsletter_Add2<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1050\">_Sistema_AdminControle::Newsletter_Edit2<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1085\">_Sistema_AdminControle::Newsletter_Del<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1120\">_Sistema_AdminControle::Endereco_Admin<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1136\">_Sistema_AdminControle::Endereco_Admin_Permissao<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1153\">_Sistema_AdminControle::Endereco_Admin_Config<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1170\">_Sistema_AdminControle::Endereco_Admin_Menu<\/a>"],[0,2,"<a href=\"_Sistema_AdminC.php.html#1187\">_Sistema_AdminControle::Endereco_Admin_Grupo<\/a>"],[0,1,"<a href=\"_Sistema_AdminM.php.html#5\">_Sistema_AdminModelo::__construct<\/a>"],[0,2,"<a href=\"_Sistema_AdminM.php.html#8\">_Sistema_AdminModelo::Configs<\/a>"],[0,1,"<a href=\"_Sistema_AdminV.php.html#5\">_Sistema_AdminVisual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_Controle.php.html#4\">_Sistema_Controle::__construct<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#5\">_Sistema_FilialControle::__construct<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#13\">_Sistema_FilialControle::Main<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#16\">_Sistema_FilialControle::FilialWidgets<\/a>"],[0,3,"<a href=\"_Sistema_FilialC.php.html#36\">_Sistema_FilialControle::Filiais<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#63\">_Sistema_FilialControle::Filiais_Add<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#81\">_Sistema_FilialControle::Filiais_Add2<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#96\">_Sistema_FilialControle::Filiais_Edit<\/a>"],[0,1,"<a href=\"_Sistema_FilialC.php.html#115\">_Sistema_FilialControle::Filiais_Edit2<\/a>"],[0,2,"<a href=\"_Sistema_FilialC.php.html#132\">_Sistema_FilialControle::Filiais_Del<\/a>"],[0,2,"<a href=\"_Sistema_FilialC.php.html#167\">_Sistema_FilialControle::Endereco_Filial<\/a>"],[0,1,"<a href=\"_Sistema_FilialM.php.html#5\">_Sistema_FilialModelo::__construct<\/a>"],[0,3,"<a href=\"_Sistema_FilialM.php.html#8\">_Sistema_FilialModelo::Filiais<\/a>"],[0,1,"<a href=\"_Sistema_FilialV.php.html#5\">_Sistema_FilialVisual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_ImgC.php.html#5\">_Sistema_ImgControle::__construct<\/a>"],[0,1,"<a href=\"_Sistema_ImgC.php.html#8\">_Sistema_ImgControle::Main<\/a>"],[0,1,"<a href=\"_Sistema_ImgC.php.html#10\">_Sistema_ImgControle::Redimensionar<\/a>"],[0,1,"<a href=\"_Sistema_ImgM.php.html#5\">_Sistema_ImgModelo::__construct<\/a>"],[0,1,"<a href=\"_Sistema_ImgV.php.html#5\">_Sistema_ImgVisual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_LoginC.php.html#5\">_Sistema_LoginControle::__construct<\/a>"],[0,2,"<a href=\"_Sistema_LoginC.php.html#8\">_Sistema_LoginControle::Main<\/a>"],[0,3,"<a href=\"_Sistema_LoginC.php.html#23\">_Sistema_LoginControle::_getError<\/a>"],[0,1,"<a href=\"_Sistema_LoginM.php.html#5\">_Sistema_LoginModelo::__construct<\/a>"],[0,1,"<a href=\"_Sistema_LoginV.php.html#5\">_Sistema_LoginVisual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_Modelo.php.html#4\">_Sistema_Modelo::__construct<\/a>"],[0,1,"<a href=\"_Sistema_PrincipalC.php.html#4\">_Sistema_PrincipalControle::__construct<\/a>"],[0,1,"<a href=\"_Sistema_PrincipalC.php.html#8\">_Sistema_PrincipalControle::Main<\/a>"],[0,3,"<a href=\"_Sistema_PrincipalC.php.html#16\">_Sistema_PrincipalControle::Home<\/a>"],[0,8,"<a href=\"_Sistema_PrincipalC.php.html#40\">_Sistema_PrincipalControle::Busca<\/a>"],[0,6,"<a href=\"_Sistema_PrincipalC.php.html#67\">_Sistema_PrincipalControle::Relatorio<\/a>"],[0,6,"<a href=\"_Sistema_PrincipalC.php.html#91\">_Sistema_PrincipalControle::Estatistica<\/a>"],[0,2,"<a href=\"_Sistema_PrincipalC.php.html#115\">_Sistema_PrincipalControle::Release<\/a>"],[0,1,"<a href=\"_Sistema_PrincipalM.php.html#5\">_Sistema_PrincipalModelo::__construct<\/a>"],[0,1,"<a href=\"_Sistema_PrincipalV.php.html#5\">_Sistema_PrincipalVisual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_RecursoC.php.html#4\">_Sistema_RecursoControle::__construct<\/a>"],[0,1,"<a href=\"_Sistema_RecursoC.php.html#8\">_Sistema_RecursoControle::Main<\/a>"],[0,14,"<a href=\"_Sistema_RecursoC.php.html#27\">_Sistema_RecursoControle::Select_Recarrega_Extrangeira<\/a>"],[0,8,"<a href=\"_Sistema_RecursoC.php.html#93\">_Sistema_RecursoControle::Valida_Cep<\/a>"],[0,5,"<a href=\"_Sistema_RecursoC.php.html#114\">_Sistema_RecursoControle::anonymous function<\/a>"],[0,14,"<a href=\"_Sistema_RecursoC.php.html#170\">_Sistema_RecursoControle::Valida_CPF<\/a>"],[0,8,"<a href=\"_Sistema_RecursoC.php.html#340\">_Sistema_RecursoControle::Valida_CNPJ<\/a>"],[0,1,"<a href=\"_Sistema_RecursoM.php.html#5\">_Sistema_RecursoModelo::__construct<\/a>"],[0,1,"<a href=\"_Sistema_RecursoV.php.html#5\">_Sistema_RecursoVisual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_Visual.php.html#4\">_Sistema_Visual::__construct<\/a>"],[0,1,"<a href=\"_Sistema_erroC.php.html#5\">_Sistema_erroControle::__construct<\/a>"],[0,3,"<a href=\"_Sistema_erroC.php.html#8\">_Sistema_erroControle::Main<\/a>"],[0,1,"<a href=\"_Sistema_erroC.php.html#30\">_Sistema_erroControle::Erro_Puro<\/a>"],[0,4,"<a href=\"_Sistema_erroC.php.html#38\">_Sistema_erroControle::_getError<\/a>"],[0,1,"<a href=\"_Sistema_erroC.php.html#150\">_Sistema_erroControle::Javascript<\/a>"],[0,1,"<a href=\"_Sistema_erroC.php.html#157\">_Sistema_erroControle::Erro_Fluxo<\/a>"],[0,1,"<a href=\"_Sistema_erroM.php.html#5\">_Sistema_erroModelo::__construct<\/a>"],[0,1,"<a href=\"_Sistema_erroV.php.html#5\">_Sistema_erroVisual::__construct<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

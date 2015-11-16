@@ -26,11 +26,9 @@ $('#produtocontrolador1 select').attr('id','produto1');
      */
     public function Select_Recarrega_Extrangeira($dominiosigla,$campo_alterado,$id=0) {
         // Variaveis INICIAIS
-        $extrangeira_outras = Array();
         $html = '';
         $novoid = 0;
         // Configura Json
-        $usados = Array();
         $this->Json_Definir_zerar(false);
         $this->_Visual->Json_Info_Update('Historico', false);
         if ($id==0 || !isset($id)) {

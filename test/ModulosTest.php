@@ -87,7 +87,7 @@ class ModulosTest extends \PHPUnit_Framework_TestCase
     public function testPaginas() {
         // Declara Completo
         if (!defined('LAYOULT_IMPRIMIR')) {
-            define('LAYOULT_IMPRIMIR','AJAX');
+            define('LAYOULT_IMPRIMIR', 'AJAX');
         }
         $Registro = &\Framework\App\Registro::getInstacia();
         // Pega Instancia e Inicia Cache

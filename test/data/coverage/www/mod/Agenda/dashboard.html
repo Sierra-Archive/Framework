@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/ricardo/Pessoal/Programacao/Projetos/Framework/www/mod/Agenda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../../js/html5shiv.min.js"></script>
+  <script src="../../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../../index.html">/home/ricardo/Pessoal/Programacao/Projetos/Framework</a></li>
+        <li><a href="../../index.html">www</a></li>
+        <li><a href="../index.html">mod</a></li>
+        <li><a href="index.html">Agenda</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Agenda_PastaM.php.html#3">Agenda_PastaModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#2">Agenda_PastaControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaV.php.html#3">Agenda_PastaVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_Visual.php.html#2">Agenda_Visual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#2">Agenda_Principal</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_Modelo.php.html#2">Agenda_Modelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_Controle.php.html#2">Agenda_Controle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaV.php.html#3">Agenda_AgendaVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaM.php.html#3">Agenda_AgendaModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#2">Agenda_AtividadesControle</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesM.php.html#3">Agenda_AtividadesModelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesV.php.html#3">Agenda_AtividadesVisual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#2">Agenda_AgendaControle</a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Agenda_PastaC.php.html#2">Agenda_PastaControle</a></td><td class="text-right">930</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#2">Agenda_Principal</a></td><td class="text-right">182</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#2">Agenda_AgendaControle</a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#2">Agenda_AtividadesControle</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Agenda_PastaM.php.html#3">Agenda_PastaModelo</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Agenda_AtividadesM.php.html#3">Agenda_AtividadesModelo</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Agenda_AgendaM.php.html#3">Agenda_AgendaModelo</a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Agenda_AtividadesV.php.html#3">Agenda_AtividadesVisual</a></td><td class="text-right">12</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Agenda_PastaC.php.html#182"><abbr title="Agenda_PastaControle::Pastas_Del">Pastas_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#167"><abbr title="Agenda_PastaControle::Pastas_Edit2">Pastas_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#214"><abbr title="Agenda_PastaControle::Cores">Cores</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#273"><abbr title="Agenda_PastaControle::Cores_Add">Cores_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#290"><abbr title="Agenda_PastaControle::Cores_Add2">Cores_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#149"><abbr title="Agenda_PastaControle::Pastas_Edit">Pastas_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#134"><abbr title="Agenda_PastaControle::Pastas_Add2">Pastas_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#54"><abbr title="Agenda_PastaControle::Pastas_Tabela">Pastas_Tabela</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#79"><abbr title="Agenda_PastaControle::Pastas">Pastas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#93"><abbr title="Agenda_PastaControle::Pastas_Listar">Pastas_Listar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#117"><abbr title="Agenda_PastaControle::Pastas_Add">Pastas_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#305"><abbr title="Agenda_PastaControle::Cores_Edit">Cores_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#323"><abbr title="Agenda_PastaControle::Cores_Edit2">Cores_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#31"><abbr title="Agenda_Principal::Relatorio">Relatorio</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#27"><abbr title="Agenda_Principal::Config">Config</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#35"><abbr title="Agenda_Principal::Estatistica">Estatistica</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#41"><abbr title="Agenda_Principal::Busca">Busca</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#54"><abbr title="Agenda_Principal::Busca_Pastas">Busca_Pastas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#24"><abbr title="Agenda_Principal::Home">Home</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_Visual.php.html#4"><abbr title="Agenda_Visual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#338"><abbr title="Agenda_PastaControle::Cores_Del">Cores_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaM.php.html#17"><abbr title="Agenda_PastaModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaM.php.html#20"><abbr title="Agenda_PastaModelo::Pastas">Pastas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaV.php.html#16"><abbr title="Agenda_PastaVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#46"><abbr title="Agenda_PastaControle::Endereco_Cor">Endereco_Cor</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#39"><abbr title="Agenda_PastaControle::Endereco_Pasta">Endereco_Pasta</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#131"><abbr title="Agenda_AgendaControle::Agendas_Edit2">Agendas_Edit2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#113"><abbr title="Agenda_AgendaControle::Agendas_Edit">Agendas_Edit</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#146"><abbr title="Agenda_AgendaControle::Agendas_Del">Agendas_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaM.php.html#17"><abbr title="Agenda_AgendaModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaM.php.html#20"><abbr title="Agenda_AgendaModelo::Agendas">Agendas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#98"><abbr title="Agenda_AgendaControle::Agendas_Add2">Agendas_Add2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#81"><abbr title="Agenda_AgendaControle::Agendas_Add">Agendas_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#34"><abbr title="Agenda_AgendaControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#39"><abbr title="Agenda_AgendaControle::Endereco_Agenda">Endereco_Agenda</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#46"><abbr title="Agenda_AgendaControle::Agenda">Agenda</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#54"><abbr title="Agenda_AgendaControle::Agendas">Agendas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaV.php.html#16"><abbr title="Agenda_AgendaVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#18"><abbr title="Agenda_AtividadesControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_Controle.php.html#13"><abbr title="Agenda_Controle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesV.php.html#40"><abbr title="Agenda_AtividadesVisual::Show_Atividades">Show_Atividades</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_Modelo.php.html#4"><abbr title="Agenda_Modelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#18"><abbr title="Agenda_PastaControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#34"><abbr title="Agenda_PastaControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesV.php.html#16"><abbr title="Agenda_AtividadesVisual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesM.php.html#19"><abbr title="Agenda_AtividadesModelo::Atividades">Atividades</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#38"><abbr title="Agenda_AtividadesControle::Main">Main</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#43"><abbr title="Agenda_AtividadesControle::Atividades_Abertas">Atividades_Abertas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#90"><abbr title="Agenda_AtividadesControle::Atividades_Tempo">Atividades_Tempo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AtividadesM.php.html#16"><abbr title="Agenda_AtividadesModelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#18"><abbr title="Agenda_AgendaControle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Agenda_AtividadesC.php.html#43"><abbr title="Agenda_AtividadesControle::Atividades_Abertas">Atividades_Abertas</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#214"><abbr title="Agenda_PastaControle::Cores">Cores</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#54"><abbr title="Agenda_Principal::Busca_Pastas">Busca_Pastas</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="_Principal.Class.php.html#41"><abbr title="Agenda_Principal::Busca">Busca</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#54"><abbr title="Agenda_PastaControle::Pastas_Tabela">Pastas_Tabela</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Agenda_AgendaM.php.html#20"><abbr title="Agenda_AgendaModelo::Agendas">Agendas</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Agenda_PastaM.php.html#20"><abbr title="Agenda_PastaModelo::Pastas">Pastas</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Agenda_AtividadesM.php.html#19"><abbr title="Agenda_AtividadesModelo::Atividades">Atividades</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#182"><abbr title="Agenda_PastaControle::Pastas_Del">Pastas_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#338"><abbr title="Agenda_PastaControle::Cores_Del">Cores_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#46"><abbr title="Agenda_PastaControle::Endereco_Cor">Endereco_Cor</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_AtividadesC.php.html#90"><abbr title="Agenda_AtividadesControle::Atividades_Tempo">Atividades_Tempo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#146"><abbr title="Agenda_AgendaControle::Agendas_Del">Agendas_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_AtividadesV.php.html#40"><abbr title="Agenda_AtividadesVisual::Show_Atividades">Show_Atividades</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#39"><abbr title="Agenda_PastaControle::Endereco_Pasta">Endereco_Pasta</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_AgendaC.php.html#39"><abbr title="Agenda_AgendaControle::Endereco_Agenda">Endereco_Agenda</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Agenda_PastaC.php.html#93"><abbr title="Agenda_PastaControle::Pastas_Listar">Pastas_Listar</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.1.7</a> using <a href="http://php.net/" target="_top">PHP 5.5.9-1ubuntu4.14</a> and <a href="http://phpunit.de/">PHPUnit 4.7.6</a> at Thu Nov 12 20:25:25 BRST 2015.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([13,0,0,0,0,0,0,0,0,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([51,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,12,"<a href=\"Agenda_AgendaC.php.html#2\">Agenda_AgendaControle<\/a>"],[0,4,"<a href=\"Agenda_AgendaM.php.html#3\">Agenda_AgendaModelo<\/a>"],[0,1,"<a href=\"Agenda_AgendaV.php.html#3\">Agenda_AgendaVisual<\/a>"],[0,11,"<a href=\"Agenda_AtividadesC.php.html#2\">Agenda_AtividadesControle<\/a>"],[0,4,"<a href=\"Agenda_AtividadesM.php.html#3\">Agenda_AtividadesModelo<\/a>"],[0,3,"<a href=\"Agenda_AtividadesV.php.html#3\">Agenda_AtividadesVisual<\/a>"],[0,1,"<a href=\"Agenda_Controle.php.html#2\">Agenda_Controle<\/a>"],[0,1,"<a href=\"Agenda_Modelo.php.html#2\">Agenda_Modelo<\/a>"],[0,30,"<a href=\"Agenda_PastaC.php.html#2\">Agenda_PastaControle<\/a>"],[0,4,"<a href=\"Agenda_PastaM.php.html#3\">Agenda_PastaModelo<\/a>"],[0,1,"<a href=\"Agenda_PastaV.php.html#3\">Agenda_PastaVisual<\/a>"],[0,1,"<a href=\"Agenda_Visual.php.html#2\">Agenda_Visual<\/a>"],[0,13,"<a href=\"_Principal.Class.php.html#2\">Agenda_Principal<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Agenda_AgendaC.php.html#18\">Agenda_AgendaControle::__construct<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#34\">Agenda_AgendaControle::Main<\/a>"],[0,2,"<a href=\"Agenda_AgendaC.php.html#39\">Agenda_AgendaControle::Endereco_Agenda<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#46\">Agenda_AgendaControle::Agenda<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#54\">Agenda_AgendaControle::Agendas<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#81\">Agenda_AgendaControle::Agendas_Add<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#98\">Agenda_AgendaControle::Agendas_Add2<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#113\">Agenda_AgendaControle::Agendas_Edit<\/a>"],[0,1,"<a href=\"Agenda_AgendaC.php.html#131\">Agenda_AgendaControle::Agendas_Edit2<\/a>"],[0,2,"<a href=\"Agenda_AgendaC.php.html#146\">Agenda_AgendaControle::Agendas_Del<\/a>"],[0,1,"<a href=\"Agenda_AgendaM.php.html#17\">Agenda_AgendaModelo::__construct<\/a>"],[0,3,"<a href=\"Agenda_AgendaM.php.html#20\">Agenda_AgendaModelo::Agendas<\/a>"],[0,1,"<a href=\"Agenda_AgendaV.php.html#16\">Agenda_AgendaVisual::__construct<\/a>"],[0,1,"<a href=\"Agenda_AtividadesC.php.html#18\">Agenda_AtividadesControle::__construct<\/a>"],[0,1,"<a href=\"Agenda_AtividadesC.php.html#38\">Agenda_AtividadesControle::Main<\/a>"],[0,7,"<a href=\"Agenda_AtividadesC.php.html#43\">Agenda_AtividadesControle::Atividades_Abertas<\/a>"],[0,2,"<a href=\"Agenda_AtividadesC.php.html#90\">Agenda_AtividadesControle::Atividades_Tempo<\/a>"],[0,1,"<a href=\"Agenda_AtividadesM.php.html#16\">Agenda_AtividadesModelo::__construct<\/a>"],[0,3,"<a href=\"Agenda_AtividadesM.php.html#19\">Agenda_AtividadesModelo::Atividades<\/a>"],[0,1,"<a href=\"Agenda_AtividadesV.php.html#16\">Agenda_AtividadesVisual::__construct<\/a>"],[0,2,"<a href=\"Agenda_AtividadesV.php.html#40\">Agenda_AtividadesVisual::Show_Atividades<\/a>"],[0,1,"<a href=\"Agenda_Controle.php.html#13\">Agenda_Controle::__construct<\/a>"],[0,1,"<a href=\"Agenda_Modelo.php.html#4\">Agenda_Modelo::__construct<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#18\">Agenda_PastaControle::__construct<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#34\">Agenda_PastaControle::Main<\/a>"],[0,2,"<a href=\"Agenda_PastaC.php.html#39\">Agenda_PastaControle::Endereco_Pasta<\/a>"],[0,2,"<a href=\"Agenda_PastaC.php.html#46\">Agenda_PastaControle::Endereco_Cor<\/a>"],[0,3,"<a href=\"Agenda_PastaC.php.html#54\">Agenda_PastaControle::Pastas_Tabela<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#79\">Agenda_PastaControle::Pastas<\/a>"],[0,2,"<a href=\"Agenda_PastaC.php.html#93\">Agenda_PastaControle::Pastas_Listar<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#117\">Agenda_PastaControle::Pastas_Add<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#134\">Agenda_PastaControle::Pastas_Add2<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#149\">Agenda_PastaControle::Pastas_Edit<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#167\">Agenda_PastaControle::Pastas_Edit2<\/a>"],[0,2,"<a href=\"Agenda_PastaC.php.html#182\">Agenda_PastaControle::Pastas_Del<\/a>"],[0,6,"<a href=\"Agenda_PastaC.php.html#214\">Agenda_PastaControle::Cores<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#273\">Agenda_PastaControle::Cores_Add<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#290\">Agenda_PastaControle::Cores_Add2<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#305\">Agenda_PastaControle::Cores_Edit<\/a>"],[0,1,"<a href=\"Agenda_PastaC.php.html#323\">Agenda_PastaControle::Cores_Edit2<\/a>"],[0,2,"<a href=\"Agenda_PastaC.php.html#338\">Agenda_PastaControle::Cores_Del<\/a>"],[0,1,"<a href=\"Agenda_PastaM.php.html#17\">Agenda_PastaModelo::__construct<\/a>"],[0,3,"<a href=\"Agenda_PastaM.php.html#20\">Agenda_PastaModelo::Pastas<\/a>"],[0,1,"<a href=\"Agenda_PastaV.php.html#16\">Agenda_PastaVisual::__construct<\/a>"],[0,1,"<a href=\"Agenda_Visual.php.html#4\">Agenda_Visual::__construct<\/a>"],[0,1,"<a href=\"_Principal.Class.php.html#24\">Agenda_Principal::Home<\/a>"],[0,1,"<a href=\"_Principal.Class.php.html#27\">Agenda_Principal::Config<\/a>"],[0,1,"<a href=\"_Principal.Class.php.html#31\">Agenda_Principal::Relatorio<\/a>"],[0,1,"<a href=\"_Principal.Class.php.html#35\">Agenda_Principal::Estatistica<\/a>"],[0,4,"<a href=\"_Principal.Class.php.html#41\">Agenda_Principal::Busca<\/a>"],[0,5,"<a href=\"_Principal.Class.php.html#54\">Agenda_Principal::Busca_Pastas<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/ricardo/Pessoal/Programacao/Projetos/Framework/www/App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/nv.d3.min.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="../../js/html5shiv.min.js"></script>
+  <script src="../../js/respond.min.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <header>
+   <div class="container">
+    <div class="row">
+     <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li><a href="../../index.html">/home/ricardo/Pessoal/Programacao/Projetos/Framework</a></li>
+        <li><a href="../index.html">www</a></li>
+        <li><a href="index.html">App</a></li>
+        <li class="active">(Dashboard)</li>
+
+      </ol>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Visual.php.html#10">Visual</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Session.php.html#9">Session</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#9">Modelo</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Boot.php.html#9">Boot</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#6">Controle</a></td><td class="text-right">5%</td></tr>
+       <tr><td><a href="Tempo.php.html#9">Tempo</a></td><td class="text-right">14%</td></tr>
+       <tr><td><a href="Acl.php.html#12">Acl</a></td><td class="text-right">19%</td></tr>
+       <tr><td><a href="Conexao.php.html#36">Conexao</a></td><td class="text-right">19%</td></tr>
+       <tr><td><a href="Cache.php.html#9">Cache</a></td><td class="text-right">21%</td></tr>
+       <tr><td><a href="Request.php.html#9">Request</a></td><td class="text-right">36%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#9">Sistema_Funcoes</a></td><td class="text-right">46%</td></tr>
+       <tr><td><a href="Dao.php.html#9">Dao</a></td><td class="text-right">47%</td></tr>
+       <tr><td><a href="Registro.php.html#9">Registro</a></td><td class="text-right">68%</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#3">Cpf</a></td><td class="text-right">77%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controle.php.html#6">Controle</a></td><td class="text-right">227229</td></tr>
+       <tr><td><a href="Conexao.php.html#36">Conexao</a></td><td class="text-right">95771</td></tr>
+       <tr><td><a href="Visual.php.html#10">Visual</a></td><td class="text-right">91506</td></tr>
+       <tr><td><a href="Acl.php.html#12">Acl</a></td><td class="text-right">18982</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#9">Sistema_Funcoes</a></td><td class="text-right">5015</td></tr>
+       <tr><td><a href="Modelo.php.html#9">Modelo</a></td><td class="text-right">3422</td></tr>
+       <tr><td><a href="Cache.php.html#9">Cache</a></td><td class="text-right">1471</td></tr>
+       <tr><td><a href="Dao.php.html#9">Dao</a></td><td class="text-right">871</td></tr>
+       <tr><td><a href="Boot.php.html#9">Boot</a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="Tempo.php.html#9">Tempo</a></td><td class="text-right">359</td></tr>
+       <tr><td><a href="Request.php.html#9">Request</a></td><td class="text-right">260</td></tr>
+       <tr><td><a href="Session.php.html#9">Session</a></td><td class="text-right">240</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#3">Cpf</a></td><td class="text-right">14</td></tr>
+       <tr><td><a href="Registro.php.html#9">Registro</a></td><td class="text-right">9</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Sistema_Funcoes.php.html#392"><abbr title="Sistema_Funcoes::HTML_min">HTML_min</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#377"><abbr title="Sistema_Funcoes::Seguranca_Gerar_Token">Seguranca_Gerar_Token</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1011"><abbr title="Sistema_Funcoes::Get_Info_Data">Get_Info_Data</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1044"><abbr title="Sistema_Funcoes::Gerar_Senha">Gerar_Senha</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1154"><abbr title="Sistema_Funcoes::Get_Gps">Get_Gps</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#367"><abbr title="Sistema_Funcoes::Seguranca_Gerar_Hash">Seguranca_Gerar_Hash</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#353"><abbr title="Sistema_Funcoes::Seguranca_Usuario_Validar">Seguranca_Usuario_Validar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2354"><abbr title="Visual::Categorias_ShowSelect_AJAX">Categorias_ShowSelect_AJAX</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#20"><abbr title="Sistema_Funcoes::Redirect">Redirect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#194"><abbr title="Sistema_Funcoes::Erro">Erro</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#271"><abbr title="Sistema_Funcoes::Transf_Object_Array">Transf_Object_Array</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2315"><abbr title="Visual::Categorias_ShowSelect">Categorias_ShowSelect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1170"><abbr title="Sistema_Funcoes::Trans_Gps_Number">Trans_Gps_Number</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Tempo.php.html#69"><abbr title="Tempo::Tempo_Pagina">Tempo_Pagina</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#260"><abbr title="Visual::Bloco_Unico_CriaTitulo">Bloco_Unico_CriaTitulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#245"><abbr title="Visual::Bloco_Unico_CriaConteudo">Bloco_Unico_CriaConteudo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#287"><abbr title="Visual::Bloco_Unico_Retornar">Bloco_Unico_Retornar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#304"><abbr title="Visual::Bloco_Unico_Zerar">Bloco_Unico_Zerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#329"><abbr title="Visual::Bloco_Unico_CriaJanela">Bloco_Unico_CriaJanela</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#189"><abbr title="Visual::Bloco_Customizavel">Bloco_Customizavel</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#163"><abbr title="Visual::Javascript_Executar">Javascript_Executar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Tempo.php.html#192"><abbr title="Tempo::Imprimir">Imprimir</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Tempo.php.html#88"><abbr title="Tempo::Salvar">Salvar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#134"><abbr title="Visual::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#149"><abbr title="Visual::get_template_dir">get_template_dir</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#152"><abbr title="Visual::get_template_url">get_template_url</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Session.php.html#86"><abbr title="Session::get">get</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Session.php.html#69"><abbr title="Session::set">set</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#480"><abbr title="Dao::Get_Object_Vars_Public">Get_Object_Vars_Public</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#423"><abbr title="Dao::bd_set">bd_set</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#31"><abbr title="Modelo::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#51"><abbr title="Modelo::Sistema_Menu">Sistema_Menu</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#90"><abbr title="Modelo::Sistema_Menu_Insere">Sistema_Menu_Insere</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#366"><abbr title="Dao::__get">__get</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2256"><abbr title="Visual::Categorias_ShowTab">Categorias_ShowTab</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#183"><abbr title="Dao::Atributo_Del">Atributo_Del</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#101"><abbr title="Dao::Get_Trigger">Get_Trigger</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#246"><abbr title="Dao::Get_Primaria">Get_Primaria</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#266"><abbr title="Dao::Get_Indice_Unico">Get_Indice_Unico</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#321"><abbr title="Dao::Get_Extrangeiras_ComExterna">Get_Extrangeiras_ComExterna</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#171"><abbr title="Modelo::Categorias_Carrega_Opcoes">Categorias_Carrega_Opcoes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#222"><abbr title="Modelo::Categorias_Retorna">Categorias_Retorna</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Request.php.html#147"><abbr title="Request::isAjax">isAjax</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Request.php.html#137"><abbr title="Request::getArgs">getArgs</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#36"><abbr title="Cpf::Generate">Generate</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Session.php.html#22"><abbr title="Session::init">init</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Session.php.html#39"><abbr title="Session::destroy">destroy</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Request.php.html#125"><abbr title="Request::getMetodo">getMetodo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Request.php.html#122"><abbr title="Request::getSubModulo">getSubModulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#304"><abbr title="Modelo::Categorias_RetornaSub">Categorias_RetornaSub</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Modelo.php.html#273"><abbr title="Modelo::Categorias_Permissoes">Categorias_Permissoes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Registro.php.html#52"><abbr title="Registro::destruir">destruir</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Request.php.html#116"><abbr title="Request::getURL">getURL</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Request.php.html#119"><abbr title="Request::getModulo">getModulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#373"><abbr title="Visual::Bloco_Maior_CriaConteudo">Bloco_Maior_CriaConteudo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#388"><abbr title="Visual::Bloco_Maior_CriaTitulo">Bloco_Maior_CriaTitulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1576"><abbr title="Visual::renderizar_Template">renderizar_Template</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1553"><abbr title="Visual::elemento_breadcrumb">elemento_breadcrumb</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1610"><abbr title="Visual::Layolt_Tipo">Layolt_Tipo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1625"><abbr title="Visual::grafico_gerar">grafico_gerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1659"><abbr title="Visual::Show_Tabela_DataTable">Show_Tabela_DataTable</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1540"><abbr title="Visual::renderizar_bloco">renderizar_bloco</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1477"><abbr title="Visual::renderizar_login">renderizar_login</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1239"><abbr title="Visual::Widget_Assimilar">Widget_Assimilar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1223"><abbr title="Visual::Layoult_Abas_Ativar_JS">Layoult_Abas_Ativar_JS</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1252"><abbr title="Visual::Widgets_Assimilar">Widgets_Assimilar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1266"><abbr title="Visual::renderizar">renderizar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1391"><abbr title="Visual::Tema_Elementos_Btn">Tema_Elementos_Btn</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1698"><abbr title="Visual::Show_Tabela_DataTable_Massiva">Show_Tabela_DataTable_Massiva</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1746"><abbr title="Visual::Show_Upload">Show_Upload</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1953"><abbr title="Visual::Json_IncluiTipo">Json_IncluiTipo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1934"><abbr title="Visual::Json_RetiraTipo">Json_RetiraTipo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2072"><abbr title="Visual::Json_Retorna">Json_Retorna</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2190"><abbr title="Visual::Json_Codificar">Json_Codificar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2201"><abbr title="Visual::json_encode">json_encode</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1921"><abbr title="Visual::Json_ExisteTipo">Json_ExisteTipo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1906"><abbr title="Visual::Json_Exist">Json_Exist</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1794"><abbr title="Visual::Js_Calendar_Gerar">Js_Calendar_Gerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1769"><abbr title="Visual::Upload_Janela">Upload_Janela</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1860"><abbr title="Visual::Json_Start">Json_Start</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1878"><abbr title="Visual::Json_Get_Titulo">Json_Get_Titulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1893"><abbr title="Visual::Json_Info_Update">Json_Info_Update</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1206"><abbr title="Visual::Layoult_Home_Widgets_Show">Layoult_Home_Widgets_Show</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1183"><abbr title="Visual::Layoult_Home_Widgets_Add">Layoult_Home_Widgets_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#593"><abbr title="Visual::janelaajax">janelaajax</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#565"><abbr title="Visual::Bloco_Menor_CriaJanela">Bloco_Menor_CriaJanela</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#606"><abbr title="Visual::Blocar">Blocar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#624"><abbr title="Visual::Arquivos_Js">Arquivos_Js</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#649"><abbr title="Visual::Arquivos_Js_Dependencia">Arquivos_Js_Dependencia</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#554"><abbr title="Visual::Bloco_Menor_Zerar">Bloco_Menor_Zerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#538"><abbr title="Visual::Bloco_Menor_Retornar">Bloco_Menor_Retornar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#434"><abbr title="Visual::Bloco_Maior_Zerar">Bloco_Maior_Zerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#417"><abbr title="Visual::Bloco_Maior_Retornar">Bloco_Maior_Retornar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#458"><abbr title="Visual::Bloco_Maior_CriaJanela">Bloco_Maior_CriaJanela</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#496"><abbr title="Visual::Bloco_Menor_CriaConteudo">Bloco_Menor_CriaConteudo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#511"><abbr title="Visual::Bloco_Menor_CriaTitulo">Bloco_Menor_CriaTitulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#674"><abbr title="Visual::Arquivos_Js_Get">Arquivos_Js_Get</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#693"><abbr title="Visual::Arquivos_Js_Get_Dependentes">Arquivos_Js_Get_Dependentes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1072"><abbr title="Visual::tmp_usuario">tmp_usuario</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1015"><abbr title="Visual::retornablocos">retornablocos</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1096"><abbr title="Visual::tmp_menu">tmp_menu</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1109"><abbr title="Visual::js_local">js_local</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#1151"><abbr title="Visual::Layoult_Abas_Carregar">Layoult_Abas_Carregar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#954"><abbr title="Visual::Sistema_Css">Sistema_Css</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#790"><abbr title="Visual::Sistema_Extras">Sistema_Extras</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#707"><abbr title="Visual::Arquivos_Css">Arquivos_Css</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#732"><abbr title="Visual::Arquivos_Css_Dependencia">Arquivos_Css_Dependencia</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#757"><abbr title="Visual::Arquivos_Css_Get">Arquivos_Css_Get</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#775"><abbr title="Visual::Arquivos_Css_Get_Dependentes">Arquivos_Css_Get_Dependentes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2798"><abbr title="Controle::Chamar_Widget">Chamar_Widget</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Dao.php.html#355"><abbr title="Dao::__set">__set</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#227"><abbr title="Conexao::prepare">prepare</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#208"><abbr title="Conexao::Dao_GetColunas_Nome">Dao_GetColunas_Nome</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#290"><abbr title="Conexao::multi_query">multi_query</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#328"><abbr title="Conexao::ultimo_id">ultimo_id</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#341"><abbr title="Conexao::Sql_Log">Sql_Log</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#190"><abbr title="Conexao::Dao_GetColunas">Dao_GetColunas</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#173"><abbr title="Conexao::get_connection">get_connection</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#365"><abbr title="Cache::Shmop_Salvar">Shmop_Salvar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#334"><abbr title="Cache::Arquivos_Apaga">Arquivos_Apaga</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#390"><abbr title="Cache::Shmop_Leitura">Shmop_Leitura</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#414"><abbr title="Cache::Shmop_Expirar_Setar">Shmop_Expirar_Setar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#437"><abbr title="Cache::Shmop_Expirar_Checar">Shmop_Expirar_Checar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#362"><abbr title="Conexao::autoreparo_query">autoreparo_query</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#599"><abbr title="Conexao::Sql_Query">Sql_Query</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#2301"><abbr title="Conexao::anti_injection">anti_injection</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2795"><abbr title="Controle::Widget_Add">Widget_Add</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#53"><abbr title="Controle::__construct">__construct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#103"><abbr title="Controle::Json_Definir_zerar">Json_Definir_zerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#115"><abbr title="Controle::getLibrary">getLibrary</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#2178"><abbr title="Conexao::Tabelas_GetLinks_Recolher">Tabelas_GetLinks_Recolher</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#2157"><abbr title="Conexao::Tabelas_GetCampos_Recolher">Tabelas_GetCampos_Recolher</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#825"><abbr title="Conexao::Sql_Delete">Sql_Delete</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#1701"><abbr title="Conexao::anonymous function">anonymous function</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#874"><abbr title="Conexao::Sql_Update">Sql_Update</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#1250"><abbr title="Conexao::Sql_Contar">Sql_Contar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#1962"><abbr title="Conexao::Tabelas_CapturaExtrangeiras">Tabelas_CapturaExtrangeiras</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#318"><abbr title="Cache::Arquivos_Leitura">Arquivos_Leitura</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#292"><abbr title="Cache::Arquivos_Salvar">Arquivos_Salvar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#776"><abbr title="Acl::Usuario_GetEmail">Usuario_GetEmail</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#762"><abbr title="Acl::Usuario_GetNome">Usuario_GetNome</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#824"><abbr title="Acl::Usuario_Senha_Verificar">Usuario_Senha_Verificar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#873"><abbr title="Acl::Usuario_Login_Sair">Usuario_Login_Sair</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#890"><abbr title="Acl::Usuario_Logar">Usuario_Logar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#748"><abbr title="Acl::Usuario_GetID">Usuario_GetID</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#468"><abbr title="Acl::Get_Permissao_Url">Get_Permissao_Url</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#395"><abbr title="Acl::Get_Config_Publico">Get_Config_Publico</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#374"><abbr title="Acl::Fluxo_Senha_Invalida">Fluxo_Senha_Invalida</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#419"><abbr title="Acl::Get_Permissao_Nome">Get_Permissao_Nome</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#439"><abbr title="Acl::getPermissao">getPermissao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#454"><abbr title="Acl::Get_Permissao_Chave">Get_Permissao_Chave</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#909"><abbr title="Acl::Usuario_GetLogado">Usuario_GetLogado</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#920"><abbr title="Acl::Usuario_GetLogado_Static">Usuario_GetLogado_Static</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Boot.php.html#152"><abbr title="Boot::Desligar">Desligar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Boot.php.html#24"><abbr title="Boot::Iniciar">Iniciar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#106"><abbr title="Cache::Cache_Cod">Cache_Cod</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#251"><abbr title="Cache::Arquivos_Pasta">Arquivos_Pasta</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Cache.php.html#274"><abbr title="Cache::Arquivos_GerarEndereco">Arquivos_GerarEndereco</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#1284"><abbr title="Acl::Sistema_Config_Permissoes_InserirPadrao">Sistema_Config_Permissoes_InserirPadrao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#1135"><abbr title="Acl::Sistema_Modulos_Carregar_Permissoes">Sistema_Modulos_Carregar_Permissoes</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#941"><abbr title="Acl::grupos_inserir">grupos_inserir</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Visual.php.html#2386"><abbr title="Visual::Tema_Tipos">Tema_Tipos</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#1074"><abbr title="Acl::Sistema_Modulos_Configs_Publico">Sistema_Modulos_Configs_Publico</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Acl.php.html#1104"><abbr title="Acl::Sistema_Modulos_Carregar_Menu">Sistema_Modulos_Carregar_Menu</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#131"><abbr title="Controle::Tema_Endereco">Tema_Endereco</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#2223"><abbr title="Conexao::GetSigla">GetSigla</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#533"><abbr title="Controle::Export_Excel">Export_Excel</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#147"><abbr title="Controle::Tema_Endereco_Zerar">Tema_Endereco_Zerar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#593"><abbr title="Controle::Categorias_ShowSelect">Categorias_ShowSelect</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#638"><abbr title="Controle::Upload_Ext_Informacao">Upload_Ext_Informacao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#652"><abbr title="Controle::Upload_Ext">Upload_Ext</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#480"><abbr title="Controle::Export_Imprimir">Export_Imprimir</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#477"><abbr title="Controle::Export_Imprimir_Rodape">Export_Imprimir_Rodape</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#433"><abbr title="Controle::Export_Todos">Export_Todos</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2221"><abbr title="Controle::DAO_Campos_AlternadosDesabilitados">DAO_Campos_AlternadosDesabilitados</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#463"><abbr title="Controle::Export_Pdf_Download">Export_Pdf_Download</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#470"><abbr title="Controle::Export_Imprimir_Titulo">Export_Imprimir_Titulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2296"><abbr title="Controle::DAO_RemoveLinkExtra">DAO_RemoveLinkExtra</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#754"><abbr title="Controle::Upload_Ext_Mime">Upload_Ext_Mime</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2101"><abbr title="Controle::DAO_Campos_TrocaID">DAO_Campos_TrocaID</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2124"><abbr title="Controle::DAO_Campos_TrocaNOME">DAO_Campos_TrocaNOME</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2147"><abbr title="Controle::DAO_Campos_RetiraAlternados">DAO_Campos_RetiraAlternados</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2175"><abbr title="Controle::DAO_Campos_TrocaAlternados">DAO_Campos_TrocaAlternados</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#1698"><abbr title="Controle::Gerador_Formulario_Janela2">Gerador_Formulario_Janela2</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#1559"><abbr title="Controle::Gerador_Formulario_Janela">Gerador_Formulario_Janela</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#875"><abbr title="Controle::Upload">Upload</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#926"><abbr title="Controle::Gerador_Visualizar_Unidade">Gerador_Visualizar_Unidade</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2258"><abbr title="Controle::mysql_MudaLeitura">mysql_MudaLeitura</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#971"><abbr title="Controle::Gerador_Formulario">Gerador_Formulario</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#414"><abbr title="Controle::Gerador_Grafico_Pizza">Gerador_Grafico_Pizza</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#442"><abbr title="Controle::Export_Pdf">Export_Pdf</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#299"><abbr title="Controle::Tema_Travar_GET">Tema_Travar_GET</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#288"><abbr title="Controle::Tema_Travar">Tema_Travar</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2386"><abbr title="Controle::mysql_AtualizaValor">mysql_AtualizaValor</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#207"><abbr title="Controle::Enviar_Email_Anexo">Enviar_Email_Anexo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#305"><abbr title="Controle::Export_Download">Export_Download</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#194"><abbr title="Controle::log">log</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2671"><abbr title="Controle::__destruct">__destruct</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#369"><abbr title="Controle::Gerador_Grafico_Padrao">Gerador_Grafico_Padrao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#360"><abbr title="Controle::Gerador_Notificacao">Gerador_Notificacao</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#2638"><abbr title="Controle::_Permissao_Verificar_Modulo">_Permissao_Verificar_Modulo</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controle.php.html#172"><abbr title="Controle::Enviar_Email">Enviar_Email</a></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Conexao.php.html#747"><abbr title="Conexao::Sql_Insert">Sql_Insert</a></a></td><td class="text-right">2%</td></tr>
+       <tr><td><a href="Acl.php.html#1336"><abbr title="Acl::Sistema_Config_Publico_InserirPadrao">Sistema_Config_Publico_InserirPadrao</a></a></td><td class="text-right">8%</td></tr>
+       <tr><td><a href="Acl.php.html#542"><abbr title="Acl::getGrupo">getGrupo</a></a></td><td class="text-right">10%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1089"><abbr title="Sistema_Funcoes::Detectar_Navegador">Detectar_Navegador</a></a></td><td class="text-right">13%</td></tr>
+       <tr><td><a href="Acl.php.html#50"><abbr title="Acl::__construct">__construct</a></a></td><td class="text-right">13%</td></tr>
+       <tr><td><a href="Conexao.php.html#1305"><abbr title="Conexao::Sql_Select">Sql_Select</a></a></td><td class="text-right">14%</td></tr>
+       <tr><td><a href="Controle.php.html#2423"><abbr title="Controle::mysql_AtualizaValores">mysql_AtualizaValores</a></a></td><td class="text-right">26%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#761"><abbr title="Sistema_Funcoes::Modelo_Data_Soma">Modelo_Data_Soma</a></a></td><td class="text-right">26%</td></tr>
+       <tr><td><a href="Cache.php.html#176"><abbr title="Cache::Salvar">Salvar</a></a></td><td class="text-right">27%</td></tr>
+       <tr><td><a href="Conexao.php.html#261"><abbr title="Conexao::query">query</a></a></td><td class="text-right">30%</td></tr>
+       <tr><td><a href="Acl.php.html#664"><abbr title="Acl::getPermissaoGrupo">getPermissaoGrupo</a></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Conexao.php.html#1032"><abbr title="Conexao::Sql_Select_Comeco">Sql_Select_Comeco</a></a></td><td class="text-right">39%</td></tr>
+       <tr><td><a href="Request.php.html#19"><abbr title="Request::__construct">__construct</a></a></td><td class="text-right">40%</td></tr>
+       <tr><td><a href="Cache.php.html#200"><abbr title="Cache::Deletar">Deletar</a></a></td><td class="text-right">42%</td></tr>
+       <tr><td><a href="Conexao.php.html#104"><abbr title="Conexao::__construct">__construct</a></a></td><td class="text-right">44%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#576"><abbr title="Sistema_Funcoes::Tranf_Tempo_Segundo">Tranf_Tempo_Segundo</a></a></td><td class="text-right">44%</td></tr>
+       <tr><td><a href="Cache.php.html#125"><abbr title="Cache::Ler">Ler</a></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Dao.php.html#343"><abbr title="Dao::__isset">__isset</a></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Conexao.php.html#2234"><abbr title="Conexao::Tabelas">Tabelas</a></a></td><td class="text-right">55%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#518"><abbr title="Sistema_Funcoes::Tranf_Segundo_Tempo">Tranf_Segundo_Tempo</a></a></td><td class="text-right">56%</td></tr>
+       <tr><td><a href="Controle.php.html#2598"><abbr title="Controle::DAO_Campos_Retira">DAO_Campos_Retira</a></a></td><td class="text-right">60%</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#47"><abbr title="Cpf::Transfer_Client">Transfer_Client</a></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Acl.php.html#1230"><abbr title="Acl::Sistema_Modulos_Carregar_Publico">Sistema_Modulos_Carregar_Publico</a></a></td><td class="text-right">68%</td></tr>
+       <tr><td><a href="Cache.php.html#64"><abbr title="Cache::__construct">__construct</a></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#715"><abbr title="Sistema_Funcoes::Tranf_Porc_Float">Tranf_Porc_Float</a></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#676"><abbr title="Sistema_Funcoes::Tranf_Real_Float">Tranf_Real_Float</a></a></td><td class="text-right">77%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#698"><abbr title="Sistema_Funcoes::Tranf_Float_Real">Tranf_Float_Real</a></a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="Controle.php.html#2359"><abbr title="Controle::DAO_Ext_ADD">DAO_Ext_ADD</a></a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Tempo.php.html#41"><abbr title="Tempo::Fechar">Fechar</a></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#737"><abbr title="Sistema_Funcoes::Tranf_Float_Porc">Tranf_Float_Porc</a></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#327"><abbr title="Sistema_Funcoes::Form_Senha_Blindar">Form_Senha_Blindar</a></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#5"><abbr title="Cpf::Validates">Validates</a></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#214"><abbr title="Sistema_Funcoes::DirReplace">DirReplace</a></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Conexao.php.html#982"><abbr title="Conexao::Sql_Select_Dados">Sql_Select_Dados</a></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Dao.php.html#385"><abbr title="Dao::bd_get">bd_get</a></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="Acl.php.html#1048"><abbr title="Acl::Sistema_Modulos_Configs_Funcional">Sistema_Modulos_Configs_Funcional</a></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#77"><abbr title="Sistema_Funcoes::Letra_Aleatoria">Letra_Aleatoria</a></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#301"><abbr title="Sistema_Funcoes::Perm_Modulos">Perm_Modulos</a></a></td><td class="text-right">87%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controle.php.html#971"><abbr title="Controle::Gerador_Formulario">Gerador_Formulario</abbr></a></td><td class="text-right">10712</td></tr>
+       <tr><td><a href="Controle.php.html#1698"><abbr title="Controle::Gerador_Formulario_Janela2">Gerador_Formulario_Janela2</abbr></a></td><td class="text-right">6480</td></tr>
+       <tr><td><a href="Conexao.php.html#1305"><abbr title="Conexao::Sql_Select">Sql_Select</abbr></a></td><td class="text-right">3830</td></tr>
+       <tr><td><a href="Conexao.php.html#362"><abbr title="Conexao::autoreparo_query">autoreparo_query</abbr></a></td><td class="text-right">3540</td></tr>
+       <tr><td><a href="Conexao.php.html#599"><abbr title="Conexao::Sql_Query">Sql_Query</abbr></a></td><td class="text-right">1980</td></tr>
+       <tr><td><a href="Controle.php.html#2671"><abbr title="Controle::__destruct">__destruct</abbr></a></td><td class="text-right">1722</td></tr>
+       <tr><td><a href="Acl.php.html#50"><abbr title="Acl::__construct">__construct</abbr></a></td><td class="text-right">1577</td></tr>
+       <tr><td><a href="Controle.php.html#2423"><abbr title="Controle::mysql_AtualizaValores">mysql_AtualizaValores</abbr></a></td><td class="text-right">1041</td></tr>
+       <tr><td><a href="Visual.php.html#1953"><abbr title="Visual::Json_IncluiTipo">Json_IncluiTipo</abbr></a></td><td class="text-right">812</td></tr>
+       <tr><td><a href="Visual.php.html#1391"><abbr title="Visual::Tema_Elementos_Btn">Tema_Elementos_Btn</abbr></a></td><td class="text-right">756</td></tr>
+       <tr><td><a href="Controle.php.html#1559"><abbr title="Controle::Gerador_Formulario_Janela">Gerador_Formulario_Janela</abbr></a></td><td class="text-right">702</td></tr>
+       <tr><td><a href="Modelo.php.html#90"><abbr title="Modelo::Sistema_Menu_Insere">Sistema_Menu_Insere</abbr></a></td><td class="text-right">702</td></tr>
+       <tr><td><a href="Conexao.php.html#874"><abbr title="Conexao::Sql_Update">Sql_Update</abbr></a></td><td class="text-right">462</td></tr>
+       <tr><td><a href="Conexao.php.html#1032"><abbr title="Conexao::Sql_Select_Comeco">Sql_Select_Comeco</abbr></a></td><td class="text-right">419</td></tr>
+       <tr><td><a href="Visual.php.html#2072"><abbr title="Visual::Json_Retorna">Json_Retorna</abbr></a></td><td class="text-right">380</td></tr>
+       <tr><td><a href="Controle.php.html#2175"><abbr title="Controle::DAO_Campos_TrocaAlternados">DAO_Campos_TrocaAlternados</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Conexao.php.html#1962"><abbr title="Conexao::Tabelas_CapturaExtrangeiras">Tabelas_CapturaExtrangeiras</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Boot.php.html#24"><abbr title="Boot::Iniciar">Iniciar</abbr></a></td><td class="text-right">342</td></tr>
+       <tr><td><a href="Tempo.php.html#88"><abbr title="Tempo::Salvar">Salvar</abbr></a></td><td class="text-right">306</td></tr>
+       <tr><td><a href="Visual.php.html#2190"><abbr title="Visual::Json_Codificar">Json_Codificar</abbr></a></td><td class="text-right">272</td></tr>
+       <tr><td><a href="Visual.php.html#2201"><abbr title="Visual::json_encode">json_encode</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Acl.php.html#468"><abbr title="Acl::Get_Permissao_Url">Get_Permissao_Url</abbr></a></td><td class="text-right">210</td></tr>
+       <tr><td><a href="Conexao.php.html#747"><abbr title="Conexao::Sql_Insert">Sql_Insert</abbr></a></td><td class="text-right">196</td></tr>
+       <tr><td><a href="Controle.php.html#2221"><abbr title="Controle::DAO_Campos_AlternadosDesabilitados">DAO_Campos_AlternadosDesabilitados</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Dao.php.html#423"><abbr title="Dao::bd_set">bd_set</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Visual.php.html#1266"><abbr title="Visual::renderizar">renderizar</abbr></a></td><td class="text-right">156</td></tr>
+       <tr><td><a href="Acl.php.html#542"><abbr title="Acl::getGrupo">getGrupo</abbr></a></td><td class="text-right">134</td></tr>
+       <tr><td><a href="Acl.php.html#1284"><abbr title="Acl::Sistema_Config_Permissoes_InserirPadrao">Sistema_Config_Permissoes_InserirPadrao</abbr></a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#761"><abbr title="Sistema_Funcoes::Modelo_Data_Soma">Modelo_Data_Soma</abbr></a></td><td class="text-right">130</td></tr>
+       <tr><td><a href="Acl.php.html#1336"><abbr title="Acl::Sistema_Config_Publico_InserirPadrao">Sistema_Config_Publico_InserirPadrao</abbr></a></td><td class="text-right">122</td></tr>
+       <tr><td><a href="Request.php.html#19"><abbr title="Request::__construct">__construct</abbr></a></td><td class="text-right">121</td></tr>
+       <tr><td><a href="Controle.php.html#2638"><abbr title="Controle::_Permissao_Verificar_Modulo">_Permissao_Verificar_Modulo</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Controle.php.html#2386"><abbr title="Controle::mysql_AtualizaValor">mysql_AtualizaValor</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Conexao.php.html#825"><abbr title="Conexao::Sql_Delete">Sql_Delete</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Dao.php.html#266"><abbr title="Dao::Get_Indice_Unico">Get_Indice_Unico</abbr></a></td><td class="text-right">110</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1089"><abbr title="Sistema_Funcoes::Detectar_Navegador">Detectar_Navegador</abbr></a></td><td class="text-right">105</td></tr>
+       <tr><td><a href="Visual.php.html#2256"><abbr title="Visual::Categorias_ShowTab">Categorias_ShowTab</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Modelo.php.html#222"><abbr title="Modelo::Categorias_Retorna">Categorias_Retorna</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Modelo.php.html#51"><abbr title="Modelo::Sistema_Menu">Sistema_Menu</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Visual.php.html#1109"><abbr title="Visual::js_local">js_local</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1044"><abbr title="Sistema_Funcoes::Gerar_Senha">Gerar_Senha</abbr></a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Visual.php.html#189"><abbr title="Visual::Bloco_Customizavel">Bloco_Customizavel</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controle.php.html#480"><abbr title="Controle::Export_Imprimir">Export_Imprimir</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Acl.php.html#824"><abbr title="Acl::Usuario_Senha_Verificar">Usuario_Senha_Verificar</abbr></a></td><td class="text-right">72</td></tr>
+       <tr><td><a href="Controle.php.html#207"><abbr title="Controle::Enviar_Email_Anexo">Enviar_Email_Anexo</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controle.php.html#2258"><abbr title="Controle::mysql_MudaLeitura">mysql_MudaLeitura</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1011"><abbr title="Sistema_Funcoes::Get_Info_Data">Get_Info_Data</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controle.php.html#2296"><abbr title="Controle::DAO_RemoveLinkExtra">DAO_RemoveLinkExtra</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Visual.php.html#1477"><abbr title="Visual::renderizar_login">renderizar_login</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Session.php.html#39"><abbr title="Session::destroy">destroy</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#20"><abbr title="Sistema_Funcoes::Redirect">Redirect</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controle.php.html#875"><abbr title="Controle::Upload">Upload</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controle.php.html#533"><abbr title="Controle::Export_Excel">Export_Excel</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#271"><abbr title="Sistema_Funcoes::Transf_Object_Array">Transf_Object_Array</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Controle.php.html#2598"><abbr title="Controle::DAO_Campos_Retira">DAO_Campos_Retira</abbr></a></td><td class="text-right">52</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#518"><abbr title="Sistema_Funcoes::Tranf_Segundo_Tempo">Tranf_Segundo_Tempo</abbr></a></td><td class="text-right">44</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1154"><abbr title="Sistema_Funcoes::Get_Gps">Get_Gps</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Visual.php.html#329"><abbr title="Visual::Bloco_Unico_CriaJanela">Bloco_Unico_CriaJanela</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Acl.php.html#1074"><abbr title="Acl::Sistema_Modulos_Configs_Publico">Sistema_Modulos_Configs_Publico</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controle.php.html#926"><abbr title="Controle::Gerador_Visualizar_Unidade">Gerador_Visualizar_Unidade</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Controle.php.html#2147"><abbr title="Controle::DAO_Campos_RetiraAlternados">DAO_Campos_RetiraAlternados</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Conexao.php.html#227"><abbr title="Conexao::prepare">prepare</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Visual.php.html#1698"><abbr title="Visual::Show_Tabela_DataTable_Massiva">Show_Tabela_DataTable_Massiva</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Conexao.php.html#290"><abbr title="Conexao::multi_query">multi_query</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Visual.php.html#2354"><abbr title="Visual::Categorias_ShowSelect_AJAX">Categorias_ShowSelect_AJAX</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Visual.php.html#2315"><abbr title="Visual::Categorias_ShowSelect">Categorias_ShowSelect</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Visual.php.html#1072"><abbr title="Visual::tmp_usuario">tmp_usuario</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="Visual.php.html#732"><abbr title="Visual::Arquivos_Css_Dependencia">Arquivos_Css_Dependencia</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Conexao.php.html#1701"><abbr title="Conexao::anonymous function">anonymous function</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Modelo.php.html#171"><abbr title="Modelo::Categorias_Carrega_Opcoes">Categorias_Carrega_Opcoes</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Conexao.php.html#1250"><abbr title="Conexao::Sql_Contar">Sql_Contar</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Visual.php.html#707"><abbr title="Visual::Arquivos_Css">Arquivos_Css</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Dao.php.html#321"><abbr title="Dao::Get_Extrangeiras_ComExterna">Get_Extrangeiras_ComExterna</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Cache.php.html#251"><abbr title="Cache::Arquivos_Pasta">Arquivos_Pasta</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Visual.php.html#1151"><abbr title="Visual::Layoult_Abas_Carregar">Layoult_Abas_Carregar</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Dao.php.html#246"><abbr title="Dao::Get_Primaria">Get_Primaria</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Visual.php.html#1659"><abbr title="Visual::Show_Tabela_DataTable">Show_Tabela_DataTable</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Acl.php.html#1104"><abbr title="Acl::Sistema_Modulos_Carregar_Menu">Sistema_Modulos_Carregar_Menu</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Visual.php.html#624"><abbr title="Visual::Arquivos_Js">Arquivos_Js</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Acl.php.html#1135"><abbr title="Acl::Sistema_Modulos_Carregar_Permissoes">Sistema_Modulos_Carregar_Permissoes</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Visual.php.html#1015"><abbr title="Visual::retornablocos">retornablocos</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Visual.php.html#649"><abbr title="Visual::Arquivos_Js_Dependencia">Arquivos_Js_Dependencia</abbr></a></td><td class="text-right">30</td></tr>
+       <tr><td><a href="Cache.php.html#125"><abbr title="Cache::Ler">Ler</abbr></a></td><td class="text-right">26</td></tr>
+       <tr><td><a href="Cache.php.html#176"><abbr title="Cache::Salvar">Salvar</abbr></a></td><td class="text-right">25</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#576"><abbr title="Sistema_Funcoes::Tranf_Tempo_Segundo">Tranf_Tempo_Segundo</abbr></a></td><td class="text-right">23</td></tr>
+       <tr><td><a href="Conexao.php.html#104"><abbr title="Conexao::__construct">__construct</abbr></a></td><td class="text-right">23</td></tr>
+       <tr><td><a href="Modelo.php.html#273"><abbr title="Modelo::Categorias_Permissoes">Categorias_Permissoes</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Acl.php.html#748"><abbr title="Acl::Usuario_GetID">Usuario_GetID</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Visual.php.html#1746"><abbr title="Visual::Show_Upload">Show_Upload</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Acl.php.html#890"><abbr title="Acl::Usuario_Logar">Usuario_Logar</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Visual.php.html#1878"><abbr title="Visual::Json_Get_Titulo">Json_Get_Titulo</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controle.php.html#442"><abbr title="Controle::Export_Pdf">Export_Pdf</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controle.php.html#2101"><abbr title="Controle::DAO_Campos_TrocaID">DAO_Campos_TrocaID</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Visual.php.html#1934"><abbr title="Visual::Json_RetiraTipo">Json_RetiraTipo</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controle.php.html#53"><abbr title="Controle::__construct">__construct</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Cache.php.html#390"><abbr title="Cache::Shmop_Leitura">Shmop_Leitura</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Conexao.php.html#2178"><abbr title="Conexao::Tabelas_GetLinks_Recolher">Tabelas_GetLinks_Recolher</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controle.php.html#2124"><abbr title="Controle::DAO_Campos_TrocaNOME">DAO_Campos_TrocaNOME</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Controle.php.html#305"><abbr title="Controle::Export_Download">Export_Download</abbr></a></td><td class="text-right">20</td></tr>
+       <tr><td><a href="Conexao.php.html#2234"><abbr title="Conexao::Tabelas">Tabelas</abbr></a></td><td class="text-right">18</td></tr>
+       <tr><td><a href="Conexao.php.html#261"><abbr title="Conexao::query">query</abbr></a></td><td class="text-right">13</td></tr>
+       <tr><td><a href="Acl.php.html#762"><abbr title="Acl::Usuario_GetNome">Usuario_GetNome</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Acl.php.html#395"><abbr title="Acl::Get_Config_Publico">Get_Config_Publico</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Acl.php.html#941"><abbr title="Acl::grupos_inserir">grupos_inserir</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controle.php.html#147"><abbr title="Controle::Tema_Endereco_Zerar">Tema_Endereco_Zerar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#1252"><abbr title="Visual::Widgets_Assimilar">Widgets_Assimilar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Boot.php.html#152"><abbr title="Boot::Desligar">Desligar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Conexao.php.html#2157"><abbr title="Conexao::Tabelas_GetCampos_Recolher">Tabelas_GetCampos_Recolher</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#1183"><abbr title="Visual::Layoult_Home_Widgets_Add">Layoult_Home_Widgets_Add</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#1170"><abbr title="Sistema_Funcoes::Trans_Gps_Number">Trans_Gps_Number</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Cache.php.html#334"><abbr title="Cache::Arquivos_Apaga">Arquivos_Apaga</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Conexao.php.html#208"><abbr title="Conexao::Dao_GetColunas_Nome">Dao_GetColunas_Nome</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Conexao.php.html#190"><abbr title="Conexao::Dao_GetColunas">Dao_GetColunas</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#163"><abbr title="Visual::Javascript_Executar">Javascript_Executar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#134"><abbr title="Visual::__construct">__construct</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Cache.php.html#292"><abbr title="Cache::Arquivos_Salvar">Arquivos_Salvar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Cache.php.html#318"><abbr title="Cache::Arquivos_Leitura">Arquivos_Leitura</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controle.php.html#2798"><abbr title="Controle::Chamar_Widget">Chamar_Widget</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controle.php.html#172"><abbr title="Controle::Enviar_Email">Enviar_Email</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Modelo.php.html#304"><abbr title="Modelo::Categorias_RetornaSub">Categorias_RetornaSub</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controle.php.html#754"><abbr title="Controle::Upload_Ext_Mime">Upload_Ext_Mime</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controle.php.html#652"><abbr title="Controle::Upload_Ext">Upload_Ext</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Acl.php.html#776"><abbr title="Acl::Usuario_GetEmail">Usuario_GetEmail</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#1576"><abbr title="Visual::renderizar_Template">renderizar_Template</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#1625"><abbr title="Visual::grafico_gerar">grafico_gerar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Session.php.html#69"><abbr title="Session::set">set</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Acl.php.html#419"><abbr title="Acl::Get_Permissao_Nome">Get_Permissao_Nome</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Session.php.html#86"><abbr title="Session::get">get</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Acl.php.html#439"><abbr title="Acl::getPermissao">getPermissao</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Visual.php.html#1794"><abbr title="Visual::Js_Calendar_Gerar">Js_Calendar_Gerar</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Acl.php.html#1230"><abbr title="Acl::Sistema_Modulos_Carregar_Publico">Sistema_Modulos_Carregar_Publico</abbr></a></td><td class="text-right">11</td></tr>
+       <tr><td><a href="Dao.php.html#385"><abbr title="Dao::bd_get">bd_get</abbr></a></td><td class="text-right">10</td></tr>
+       <tr><td><a href="Cache.php.html#200"><abbr title="Cache::Deletar">Deletar</abbr></a></td><td class="text-right">9</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#301"><abbr title="Sistema_Funcoes::Perm_Modulos">Perm_Modulos</abbr></a></td><td class="text-right">9</td></tr>
+       <tr><td><a href="Controle.php.html#2359"><abbr title="Controle::DAO_Ext_ADD">DAO_Ext_ADD</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1906"><abbr title="Visual::Json_Exist">Json_Exist</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#757"><abbr title="Visual::Arquivos_Css_Get">Arquivos_Css_Get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#693"><abbr title="Visual::Arquivos_Js_Get_Dependentes">Arquivos_Js_Get_Dependentes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#674"><abbr title="Visual::Arquivos_Js_Get">Arquivos_Js_Get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1893"><abbr title="Visual::Json_Info_Update">Json_Info_Update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1223"><abbr title="Visual::Layoult_Abas_Ativar_JS">Layoult_Abas_Ativar_JS</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#775"><abbr title="Visual::Arquivos_Css_Get_Dependentes">Arquivos_Css_Get_Dependentes</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1610"><abbr title="Visual::Layolt_Tipo">Layolt_Tipo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1921"><abbr title="Visual::Json_ExisteTipo">Json_ExisteTipo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1553"><abbr title="Visual::elemento_breadcrumb">elemento_breadcrumb</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Acl.php.html#374"><abbr title="Acl::Fluxo_Senha_Invalida">Fluxo_Senha_Invalida</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#1860"><abbr title="Visual::Json_Start">Json_Start</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Acl.php.html#454"><abbr title="Acl::Get_Permissao_Chave">Get_Permissao_Chave</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#36"><abbr title="Cpf::Generate">Generate</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Registro.php.html#52"><abbr title="Registro::destruir">destruir</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Modelo.php.html#31"><abbr title="Modelo::__construct">__construct</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Request.php.html#137"><abbr title="Request::getArgs">getArgs</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Request.php.html#147"><abbr title="Request::isAjax">isAjax</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#606"><abbr title="Visual::Blocar">Blocar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Cache.php.html#437"><abbr title="Cache::Shmop_Expirar_Checar">Shmop_Expirar_Checar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Dao.php.html#366"><abbr title="Dao::__get">__get</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Dao.php.html#183"><abbr title="Dao::Atributo_Del">Atributo_Del</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controle.php.html#115"><abbr title="Controle::getLibrary">getLibrary</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Conexao.php.html#2301"><abbr title="Conexao::anti_injection">anti_injection</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controle.php.html#360"><abbr title="Controle::Gerador_Notificacao">Gerador_Notificacao</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controle.php.html#369"><abbr title="Controle::Gerador_Grafico_Padrao">Gerador_Grafico_Padrao</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controle.php.html#433"><abbr title="Controle::Export_Todos">Export_Todos</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controle.php.html#414"><abbr title="Controle::Gerador_Grafico_Pizza">Gerador_Grafico_Pizza</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Cache.php.html#365"><abbr title="Cache::Shmop_Salvar">Shmop_Salvar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Session.php.html#22"><abbr title="Session::init">init</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#458"><abbr title="Visual::Bloco_Maior_CriaJanela">Bloco_Maior_CriaJanela</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Cache.php.html#414"><abbr title="Cache::Shmop_Expirar_Setar">Shmop_Expirar_Setar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#287"><abbr title="Visual::Bloco_Unico_Retornar">Bloco_Unico_Retornar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#417"><abbr title="Visual::Bloco_Maior_Retornar">Bloco_Maior_Retornar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#392"><abbr title="Sistema_Funcoes::HTML_min">HTML_min</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#511"><abbr title="Visual::Bloco_Menor_CriaTitulo">Bloco_Menor_CriaTitulo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#538"><abbr title="Visual::Bloco_Menor_Retornar">Bloco_Menor_Retornar</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Visual.php.html#565"><abbr title="Visual::Bloco_Menor_CriaJanela">Bloco_Menor_CriaJanela</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Acl.php.html#664"><abbr title="Acl::getPermissaoGrupo">getPermissaoGrupo</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Cache.php.html#64"><abbr title="Cache::__construct">__construct</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Acl.php.html#1048"><abbr title="Acl::Sistema_Modulos_Configs_Funcional">Sistema_Modulos_Configs_Funcional</abbr></a></td><td class="text-right">5</td></tr>
+       <tr><td><a href="Conexao.php.html#982"><abbr title="Conexao::Sql_Select_Dados">Sql_Select_Dados</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#77"><abbr title="Sistema_Funcoes::Letra_Aleatoria">Letra_Aleatoria</abbr></a></td><td class="text-right">4</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#676"><abbr title="Sistema_Funcoes::Tranf_Real_Float">Tranf_Real_Float</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#715"><abbr title="Sistema_Funcoes::Tranf_Porc_Float">Tranf_Porc_Float</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#698"><abbr title="Sistema_Funcoes::Tranf_Float_Real">Tranf_Float_Real</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#737"><abbr title="Sistema_Funcoes::Tranf_Float_Porc">Tranf_Float_Porc</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#327"><abbr title="Sistema_Funcoes::Form_Senha_Blindar">Form_Senha_Blindar</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Sistema_Funcoes.php.html#214"><abbr title="Sistema_Funcoes::DirReplace">DirReplace</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#5"><abbr title="Cpf::Validates">Validates</abbr></a></td><td class="text-right">3</td></tr>
+       <tr><td><a href="Resource/Validation/Cpf.php.html#47"><abbr title="Cpf::Transfer_Client">Transfer_Client</abbr></a></td><td class="text-right">2</td></tr>
+       <tr><td><a href="Tempo.php.html#41"><abbr title="Tempo::Fechar">Fechar</abbr></a></td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage 2.1.7</a> using <a href="http://php.net/" target="_top">PHP 5.5.9-1ubuntu4.14</a> and <a href="http://phpunit.de/">PHPUnit 4.7.6</a> at Thu Nov 12 20:25:25 BRST 2015.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../../js/jquery.min.js" type="text/javascript"></script>
+  <script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="../../js/holder.min.js" type="text/javascript"></script>
+  <script src="../../js/d3.min.js" type="text/javascript"></script>
+  <script src="../../js/nv.d3.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([4,1,3,1,1,2,0,1,1,0,0,0], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([202,2,4,3,3,4,4,3,3,12,4,43], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[19.838056680162,191,"<a href=\"Acl.php.html#12\">Acl<\/a>"],[0,21,"<a href=\"Boot.php.html#9\">Boot<\/a>"],[21.367521367521,54,"<a href=\"Cache.php.html#9\">Cache<\/a>"],[19.935431799839,431,"<a href=\"Conexao.php.html#36\">Conexao<\/a>"],[5.0951503990178,515,"<a href=\"Controle.php.html#6\">Controle<\/a>"],[47.878787878788,75,"<a href=\"Dao.php.html#9\">Dao<\/a>"],[0,58,"<a href=\"Modelo.php.html#9\">Modelo<\/a>"],[68.75,8,"<a href=\"Registro.php.html#9\">Registro<\/a>"],[36.486486486486,30,"<a href=\"Request.php.html#9\">Request<\/a>"],[77.551020408163,13,"<a href=\"Resource\/Validation\/Cpf.php.html#3\">Cpf<\/a>"],[0,15,"<a href=\"Session.php.html#9\">Session<\/a>"],[46.349206349206,177,"<a href=\"Sistema_Funcoes.php.html#9\">Sistema_Funcoes<\/a>"],[14.018691588785,23,"<a href=\"Tempo.php.html#9\">Tempo<\/a>"],[0,302,"<a href=\"Visual.php.html#10\">Visual<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.scatter.onlyCircles(false);
+    chart.tooltipContent(function(key, y, e, graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[13.973799126638,49,"<a href=\"Acl.php.html#50\">Acl::__construct<\/a>"],[0,2,"<a href=\"Acl.php.html#374\">Acl::Fluxo_Senha_Invalida<\/a>"],[0,3,"<a href=\"Acl.php.html#395\">Acl::Get_Config_Publico<\/a>"],[0,3,"<a href=\"Acl.php.html#419\">Acl::Get_Permissao_Nome<\/a>"],[0,3,"<a href=\"Acl.php.html#439\">Acl::getPermissao<\/a>"],[0,2,"<a href=\"Acl.php.html#454\">Acl::Get_Permissao_Chave<\/a>"],[0,14,"<a href=\"Acl.php.html#468\">Acl::Get_Permissao_Url<\/a>"],[100,1,"<a href=\"Acl.php.html#527\">Acl::compilarAcl<\/a>"],[10.38961038961,13,"<a href=\"Acl.php.html#542\">Acl::getGrupo<\/a>"],[33.333333333333,3,"<a href=\"Acl.php.html#664\">Acl::getPermissaoGrupo<\/a>"],[95,4,"<a href=\"Acl.php.html#699\">Acl::getUsuarioPermissao<\/a>"],[0,4,"<a href=\"Acl.php.html#748\">Acl::Usuario_GetID<\/a>"],[0,3,"<a href=\"Acl.php.html#762\">Acl::Usuario_GetNome<\/a>"],[0,3,"<a href=\"Acl.php.html#776\">Acl::Usuario_GetEmail<\/a>"],[100,2,"<a href=\"Acl.php.html#797\">Acl::Usuario_GetID_Static<\/a>"],[0,8,"<a href=\"Acl.php.html#824\">Acl::Usuario_Senha_Verificar<\/a>"],[0,1,"<a href=\"Acl.php.html#873\">Acl::Usuario_Login_Sair<\/a>"],[0,4,"<a href=\"Acl.php.html#890\">Acl::Usuario_Logar<\/a>"],[0,1,"<a href=\"Acl.php.html#909\">Acl::Usuario_GetLogado<\/a>"],[0,1,"<a href=\"Acl.php.html#920\">Acl::Usuario_GetLogado_Static<\/a>"],[0,3,"<a href=\"Acl.php.html#941\">Acl::grupos_inserir<\/a>"],[87.5,5,"<a href=\"Acl.php.html#1048\">Acl::Sistema_Modulos_Configs_Funcional<\/a>"],[0,6,"<a href=\"Acl.php.html#1074\">Acl::Sistema_Modulos_Configs_Publico<\/a>"],[0,5,"<a href=\"Acl.php.html#1104\">Acl::Sistema_Modulos_Carregar_Menu<\/a>"],[0,5,"<a href=\"Acl.php.html#1135\">Acl::Sistema_Modulos_Carregar_Permissoes<\/a>"],[92.857142857143,11,"<a href=\"Acl.php.html#1166\">Acl::Sistema_Modulos_Carregar_Funcional<\/a>"],[68.571428571429,9,"<a href=\"Acl.php.html#1230\">Acl::Sistema_Modulos_Carregar_Publico<\/a>"],[0,11,"<a href=\"Acl.php.html#1284\">Acl::Sistema_Config_Permissoes_InserirPadrao<\/a>"],[8.5714285714286,12,"<a href=\"Acl.php.html#1336\">Acl::Sistema_Config_Publico_InserirPadrao<\/a>"],[0,18,"<a href=\"Boot.php.html#24\">Boot::Iniciar<\/a>"],[0,3,"<a href=\"Boot.php.html#152\">Boot::Desligar<\/a>"],[71.428571428571,5,"<a href=\"Cache.php.html#64\">Cache::__construct<\/a>"],[0,1,"<a href=\"Cache.php.html#106\">Cache::Cache_Cod<\/a>"],[50,11,"<a href=\"Cache.php.html#125\">Cache::Ler<\/a>"],[27.272727272727,7,"<a href=\"Cache.php.html#176\">Cache::Salvar<\/a>"],[42.857142857143,5,"<a href=\"Cache.php.html#200\">Cache::Deletar<\/a>"],[0,5,"<a href=\"Cache.php.html#251\">Cache::Arquivos_Pasta<\/a>"],[0,1,"<a href=\"Cache.php.html#274\">Cache::Arquivos_GerarEndereco<\/a>"],[0,3,"<a href=\"Cache.php.html#292\">Cache::Arquivos_Salvar<\/a>"],[0,3,"<a href=\"Cache.php.html#318\">Cache::Arquivos_Leitura<\/a>"],[0,3,"<a href=\"Cache.php.html#334\">Cache::Arquivos_Apaga<\/a>"],[0,2,"<a href=\"Cache.php.html#365\">Cache::Shmop_Salvar<\/a>"],[0,4,"<a href=\"Cache.php.html#390\">Cache::Shmop_Leitura<\/a>"],[0,2,"<a href=\"Cache.php.html#414\">Cache::Shmop_Expirar_Setar<\/a>"],[0,2,"<a href=\"Cache.php.html#437\">Cache::Shmop_Expirar_Checar<\/a>"],[44.186046511628,9,"<a href=\"Conexao.php.html#104\">Conexao::__construct<\/a>"],[0,1,"<a href=\"Conexao.php.html#173\">Conexao::get_connection<\/a>"],[100,1,"<a href=\"Conexao.php.html#179\">Conexao::__clone<\/a>"],[0,3,"<a href=\"Conexao.php.html#190\">Conexao::Dao_GetColunas<\/a>"],[0,3,"<a href=\"Conexao.php.html#208\">Conexao::Dao_GetColunas_Nome<\/a>"],[0,6,"<a href=\"Conexao.php.html#227\">Conexao::prepare<\/a>"],[30.769230769231,5,"<a href=\"Conexao.php.html#261\">Conexao::query<\/a>"],[0,6,"<a href=\"Conexao.php.html#290\">Conexao::multi_query<\/a>"],[0,1,"<a href=\"Conexao.php.html#328\">Conexao::ultimo_id<\/a>"],[0,1,"<a href=\"Conexao.php.html#341\">Conexao::Sql_Log<\/a>"],[0,59,"<a href=\"Conexao.php.html#362\">Conexao::autoreparo_query<\/a>"],[0,44,"<a href=\"Conexao.php.html#599\">Conexao::Sql_Query<\/a>"],[0,5,"<a href=\"Conexao.php.html#1701\">Conexao::anonymous function<\/a>"],[2.3809523809524,14,"<a href=\"Conexao.php.html#747\">Conexao::Sql_Insert<\/a>"],[0,10,"<a href=\"Conexao.php.html#825\">Conexao::Sql_Delete<\/a>"],[0,21,"<a href=\"Conexao.php.html#874\">Conexao::Sql_Update<\/a>"],[85.714285714286,4,"<a href=\"Conexao.php.html#982\">Conexao::Sql_Select_Dados<\/a>"],[39.166666666667,41,"<a href=\"Conexao.php.html#1032\">Conexao::Sql_Select_Comeco<\/a>"],[0,5,"<a href=\"Conexao.php.html#1250\">Conexao::Sql_Contar<\/a>"],[14.876033057851,78,"<a href=\"Conexao.php.html#1305\">Conexao::Sql_Select<\/a>"],[100,2,"<a href=\"Conexao.php.html#1671\">Conexao::Sql_Manipulacao_CarregarObjeto<\/a>"],[100,49,"<a href=\"Conexao.php.html#1700\">Conexao::Tabelas_CapturaLinkadas<\/a>"],[0,18,"<a href=\"Conexao.php.html#1962\">Conexao::Tabelas_CapturaExtrangeiras<\/a>"],[100,6,"<a href=\"Conexao.php.html#2057\">Conexao::Extrangeiras_Quebra<\/a>"],[100,7,"<a href=\"Conexao.php.html#2099\">Conexao::Tabelas_Variaveis_Gerar<\/a>"],[100,1,"<a href=\"Conexao.php.html#2146\">Conexao::Tabelas_GetSiglas_Recolher<\/a>"],[0,3,"<a href=\"Conexao.php.html#2157\">Conexao::Tabelas_GetCampos_Recolher<\/a>"],[0,4,"<a href=\"Conexao.php.html#2178\">Conexao::Tabelas_GetLinks_Recolher<\/a>"],[100,2,"<a href=\"Conexao.php.html#2198\">Conexao::Load<\/a>"],[0,1,"<a href=\"Conexao.php.html#2223\">Conexao::GetSigla<\/a>"],[55.555555555556,10,"<a href=\"Conexao.php.html#2234\">Conexao::Tabelas<\/a>"],[0,2,"<a href=\"Conexao.php.html#2301\">Conexao::anti_injection<\/a>"],[100,4,"<a href=\"Conexao.php.html#2308\">Conexao::EscapeSql<\/a>"],[100,4,"<a href=\"Conexao.php.html#2344\">Conexao::logurl<\/a>"],[100,1,"<a href=\"Conexao.php.html#2368\">Conexao::__destruct<\/a>"],[0,4,"<a href=\"Controle.php.html#53\">Controle::__construct<\/a>"],[0,1,"<a href=\"Controle.php.html#103\">Controle::Json_Definir_zerar<\/a>"],[0,2,"<a href=\"Controle.php.html#115\">Controle::getLibrary<\/a>"],[0,1,"<a href=\"Controle.php.html#131\">Controle::Tema_Endereco<\/a>"],[0,3,"<a href=\"Controle.php.html#147\">Controle::Tema_Endereco_Zerar<\/a>"],[0,3,"<a href=\"Controle.php.html#172\">Controle::Enviar_Email<\/a>"],[0,1,"<a href=\"Controle.php.html#194\">Controle::log<\/a>"],[0,7,"<a href=\"Controle.php.html#207\">Controle::Enviar_Email_Anexo<\/a>"],[0,1,"<a href=\"Controle.php.html#288\">Controle::Tema_Travar<\/a>"],[0,1,"<a href=\"Controle.php.html#299\">Controle::Tema_Travar_GET<\/a>"],[0,4,"<a href=\"Controle.php.html#305\">Controle::Export_Download<\/a>"],[0,2,"<a href=\"Controle.php.html#360\">Controle::Gerador_Notificacao<\/a>"],[0,2,"<a href=\"Controle.php.html#369\">Controle::Gerador_Grafico_Padrao<\/a>"],[0,2,"<a href=\"Controle.php.html#414\">Controle::Gerador_Grafico_Pizza<\/a>"],[0,2,"<a href=\"Controle.php.html#433\">Controle::Export_Todos<\/a>"],[0,4,"<a href=\"Controle.php.html#442\">Controle::Export_Pdf<\/a>"],[0,1,"<a href=\"Controle.php.html#463\">Controle::Export_Pdf_Download<\/a>"],[0,1,"<a href=\"Controle.php.html#470\">Controle::Export_Imprimir_Titulo<\/a>"],[0,1,"<a href=\"Controle.php.html#477\">Controle::Export_Imprimir_Rodape<\/a>"],[0,8,"<a href=\"Controle.php.html#480\">Controle::Export_Imprimir<\/a>"],[0,7,"<a href=\"Controle.php.html#533\">Controle::Export_Excel<\/a>"],[0,1,"<a href=\"Controle.php.html#593\">Controle::Categorias_ShowSelect<\/a>"],[0,1,"<a href=\"Controle.php.html#638\">Controle::Upload_Ext_Informacao<\/a>"],[0,3,"<a href=\"Controle.php.html#652\">Controle::Upload_Ext<\/a>"],[0,3,"<a href=\"Controle.php.html#754\">Controle::Upload_Ext_Mime<\/a>"],[0,7,"<a href=\"Controle.php.html#875\">Controle::Upload<\/a>"],[0,6,"<a href=\"Controle.php.html#926\">Controle::Gerador_Visualizar_Unidade<\/a>"],[0,103,"<a href=\"Controle.php.html#971\">Controle::Gerador_Formulario<\/a>"],[90,15,"<a href=\"Controle.php.html#1514\">Controle::Gerador_Formulario_Col_Escondido<\/a>"],[0,26,"<a href=\"Controle.php.html#1559\">Controle::Gerador_Formulario_Janela<\/a>"],[0,80,"<a href=\"Controle.php.html#1698\">Controle::Gerador_Formulario_Janela2<\/a>"],[0,4,"<a href=\"Controle.php.html#2101\">Controle::DAO_Campos_TrocaID<\/a>"],[0,4,"<a href=\"Controle.php.html#2124\">Controle::DAO_Campos_TrocaNOME<\/a>"],[0,6,"<a href=\"Controle.php.html#2147\">Controle::DAO_Campos_RetiraAlternados<\/a>"],[0,18,"<a href=\"Controle.php.html#2175\">Controle::DAO_Campos_TrocaAlternados<\/a>"],[0,12,"<a href=\"Controle.php.html#2221\">Controle::DAO_Campos_AlternadosDesabilitados<\/a>"],[0,7,"<a href=\"Controle.php.html#2258\">Controle::mysql_MudaLeitura<\/a>"],[0,7,"<a href=\"Controle.php.html#2296\">Controle::DAO_RemoveLinkExtra<\/a>"],[90,11,"<a href=\"Controle.php.html#2330\">Controle::DAO_Ext_Alterar<\/a>"],[81.818181818182,6,"<a href=\"Controle.php.html#2359\">Controle::DAO_Ext_ADD<\/a>"],[0,10,"<a href=\"Controle.php.html#2386\">Controle::mysql_AtualizaValor<\/a>"],[26.530612244898,50,"<a href=\"Controle.php.html#2423\">Controle::mysql_AtualizaValores<\/a>"],[60,22,"<a href=\"Controle.php.html#2598\">Controle::DAO_Campos_Retira<\/a>"],[0,10,"<a href=\"Controle.php.html#2638\">Controle::_Permissao_Verificar_Modulo<\/a>"],[0,41,"<a href=\"Controle.php.html#2671\">Controle::__destruct<\/a>"],[0,1,"<a href=\"Controle.php.html#2795\">Controle::Widget_Add<\/a>"],[0,3,"<a href=\"Controle.php.html#2798\">Controle::Chamar_Widget<\/a>"],[100,2,"<a href=\"Dao.php.html#86\">Dao::__construct<\/a>"],[0,1,"<a href=\"Dao.php.html#101\">Dao::Get_Trigger<\/a>"],[100,1,"<a href=\"Dao.php.html#111\">Dao::Get_Engine<\/a>"],[100,1,"<a href=\"Dao.php.html#121\">Dao::Get_Charset<\/a>"],[100,1,"<a href=\"Dao.php.html#131\">Dao::Get_Autoadd<\/a>"],[100,2,"<a href=\"Dao.php.html#141\">Dao::Get_Colunas<\/a>"],[100,1,"<a href=\"Dao.php.html#160\">Dao::Get_LinkTable<\/a>"],[100,1,"<a href=\"Dao.php.html#172\">Dao::Get_StaticTable<\/a>"],[0,2,"<a href=\"Dao.php.html#183\">Dao::Atributo_Del<\/a>"],[100,8,"<a href=\"Dao.php.html#197\">Dao::Get_CarregaMYSQL<\/a>"],[0,5,"<a href=\"Dao.php.html#246\">Dao::Get_Primaria<\/a>"],[0,10,"<a href=\"Dao.php.html#266\">Dao::Get_Indice_Unico<\/a>"],[100,5,"<a href=\"Dao.php.html#297\">Dao::Get_Extrangeiras<\/a>"],[0,5,"<a href=\"Dao.php.html#321\">Dao::Get_Extrangeiras_ComExterna<\/a>"],[50,1,"<a href=\"Dao.php.html#343\">Dao::__isset<\/a>"],[0,1,"<a href=\"Dao.php.html#355\">Dao::__set<\/a>"],[0,2,"<a href=\"Dao.php.html#366\">Dao::__get<\/a>"],[87.5,10,"<a href=\"Dao.php.html#385\">Dao::bd_get<\/a>"],[0,12,"<a href=\"Dao.php.html#423\">Dao::bd_set<\/a>"],[100,1,"<a href=\"Dao.php.html#470\">Dao::Get_Object_Vars<\/a>"],[0,1,"<a href=\"Dao.php.html#480\">Dao::Get_Object_Vars_Public<\/a>"],[100,2,"<a href=\"Dao.php.html#501\">Dao::__destruct<\/a>"],[0,2,"<a href=\"Modelo.php.html#31\">Modelo::__construct<\/a>"],[0,9,"<a href=\"Modelo.php.html#51\">Modelo::Sistema_Menu<\/a>"],[0,26,"<a href=\"Modelo.php.html#90\">Modelo::Sistema_Menu_Insere<\/a>"],[0,5,"<a href=\"Modelo.php.html#171\">Modelo::Categorias_Carrega_Opcoes<\/a>"],[0,9,"<a href=\"Modelo.php.html#222\">Modelo::Categorias_Retorna<\/a>"],[0,4,"<a href=\"Modelo.php.html#273\">Modelo::Categorias_Permissoes<\/a>"],[0,3,"<a href=\"Modelo.php.html#304\">Modelo::Categorias_RetornaSub<\/a>"],[100,1,"<a href=\"Registro.php.html#28\">Registro::__construct<\/a>"],[100,2,"<a href=\"Registro.php.html#39\">Registro::getInstacia<\/a>"],[0,2,"<a href=\"Registro.php.html#52\">Registro::destruir<\/a>"],[100,1,"<a href=\"Registro.php.html#68\">Registro::__set<\/a>"],[100,2,"<a href=\"Registro.php.html#80\">Registro::__get<\/a>"],[40.909090909091,22,"<a href=\"Request.php.html#19\">Request::__construct<\/a>"],[0,1,"<a href=\"Request.php.html#116\">Request::getURL<\/a>"],[0,1,"<a href=\"Request.php.html#119\">Request::getModulo<\/a>"],[0,1,"<a href=\"Request.php.html#122\">Request::getSubModulo<\/a>"],[0,1,"<a href=\"Request.php.html#125\">Request::getMetodo<\/a>"],[0,2,"<a href=\"Request.php.html#137\">Request::getArgs<\/a>"],[0,2,"<a href=\"Request.php.html#147\">Request::isAjax<\/a>"],[85.714285714286,3,"<a href=\"Resource\/Validation\/Cpf.php.html#5\">Cpf::Validates<\/a>"],[0,2,"<a href=\"Resource\/Validation\/Cpf.php.html#36\">Cpf::Generate<\/a>"],[66.666666666667,2,"<a href=\"Resource\/Validation\/Cpf.php.html#47\">Cpf::Transfer_Client<\/a>"],[100,1,"<a href=\"Resource\/Validation\/Cpf.php.html#55\">Cpf::Transfer_Server<\/a>"],[100,5,"<a href=\"Resource\/Validation\/Cpf.php.html#59\">Cpf::calcDigVerif<\/a>"],[0,2,"<a href=\"Session.php.html#22\">Session::init<\/a>"],[0,7,"<a href=\"Session.php.html#39\">Session::destroy<\/a>"],[0,3,"<a href=\"Session.php.html#69\">Session::set<\/a>"],[0,3,"<a href=\"Session.php.html#86\">Session::get<\/a>"],[0,7,"<a href=\"Sistema_Funcoes.php.html#20\">Sistema_Funcoes::Redirect<\/a>"],[100,4,"<a href=\"Sistema_Funcoes.php.html#55\">Sistema_Funcoes::Control_Arq_Ext<\/a>"],[87.5,4,"<a href=\"Sistema_Funcoes.php.html#77\">Sistema_Funcoes::Letra_Aleatoria<\/a>"],[100,2,"<a href=\"Sistema_Funcoes.php.html#103\">Sistema_Funcoes::Letra_LinkDecode<\/a>"],[0,1,"<a href=\"Sistema_Funcoes.php.html#194\">Sistema_Funcoes::Erro<\/a>"],[85.714285714286,3,"<a href=\"Sistema_Funcoes.php.html#214\">Sistema_Funcoes::DirReplace<\/a>"],[100,1,"<a href=\"Sistema_Funcoes.php.html#234\">Sistema_Funcoes::Url_Limpeza<\/a>"],[100,2,"<a href=\"Sistema_Funcoes.php.html#244\">Sistema_Funcoes::Url_Secure<\/a>"],[100,2,"<a href=\"Sistema_Funcoes.php.html#261\">Sistema_Funcoes::VersionPHP<\/a>"],[0,7,"<a href=\"Sistema_Funcoes.php.html#271\">Sistema_Funcoes::Transf_Object_Array<\/a>"],[87.5,9,"<a href=\"Sistema_Funcoes.php.html#301\">Sistema_Funcoes::Perm_Modulos<\/a>"],[83.333333333333,3,"<a href=\"Sistema_Funcoes.php.html#327\">Sistema_Funcoes::Form_Senha_Blindar<\/a>"],[0,1,"<a href=\"Sistema_Funcoes.php.html#353\">Sistema_Funcoes::Seguranca_Usuario_Validar<\/a>"],[0,1,"<a href=\"Sistema_Funcoes.php.html#367\">Sistema_Funcoes::Seguranca_Gerar_Hash<\/a>"],[0,1,"<a href=\"Sistema_Funcoes.php.html#377\">Sistema_Funcoes::Seguranca_Gerar_Token<\/a>"],[0,2,"<a href=\"Sistema_Funcoes.php.html#392\">Sistema_Funcoes::HTML_min<\/a>"],[100,2,"<a href=\"Sistema_Funcoes.php.html#416\">Sistema_Funcoes::Control_Layoult_Valida_Cep<\/a>"],[100,17,"<a href=\"Sistema_Funcoes.php.html#437\">Sistema_Funcoes::Control_Layoult_Valida_Email<\/a>"],[100,5,"<a href=\"Sistema_Funcoes.php.html#468\">Sistema_Funcoes::Tranf_Byte_Otimizado<\/a>"],[100,5,"<a href=\"Sistema_Funcoes.php.html#493\">Sistema_Funcoes::Tranf_Otimizado_Byte<\/a>"],[56.410256410256,18,"<a href=\"Sistema_Funcoes.php.html#518\">Sistema_Funcoes::Tranf_Segundo_Tempo<\/a>"],[44.186046511628,9,"<a href=\"Sistema_Funcoes.php.html#576\">Sistema_Funcoes::Tranf_Tempo_Segundo<\/a>"],[100,1,"<a href=\"Sistema_Funcoes.php.html#630\">Sistema_Funcoes::Tranf_Url_Https<\/a>"],[100,2,"<a href=\"Sistema_Funcoes.php.html#642\">Sistema_Funcoes::Tranf_Distancia_Otimizado<\/a>"],[100,2,"<a href=\"Sistema_Funcoes.php.html#660\">Sistema_Funcoes::Tranf_Otimizado_Distancia<\/a>"],[77.777777777778,3,"<a href=\"Sistema_Funcoes.php.html#676\">Sistema_Funcoes::Tranf_Real_Float<\/a>"],[80,3,"<a href=\"Sistema_Funcoes.php.html#698\">Sistema_Funcoes::Tranf_Float_Real<\/a>"],[77.777777777778,3,"<a href=\"Sistema_Funcoes.php.html#715\">Sistema_Funcoes::Tranf_Porc_Float<\/a>"],[83.333333333333,3,"<a href=\"Sistema_Funcoes.php.html#737\">Sistema_Funcoes::Tranf_Float_Porc<\/a>"],[26.666666666667,17,"<a href=\"Sistema_Funcoes.php.html#761\">Sistema_Funcoes::Modelo_Data_Soma<\/a>"],[0,7,"<a href=\"Sistema_Funcoes.php.html#1011\">Sistema_Funcoes::Get_Info_Data<\/a>"],[0,9,"<a href=\"Sistema_Funcoes.php.html#1044\">Sistema_Funcoes::Gerar_Senha<\/a>"],[13.513513513514,12,"<a href=\"Sistema_Funcoes.php.html#1089\">Sistema_Funcoes::Detectar_Navegador<\/a>"],[0,6,"<a href=\"Sistema_Funcoes.php.html#1154\">Sistema_Funcoes::Get_Gps<\/a>"],[0,3,"<a href=\"Sistema_Funcoes.php.html#1170\">Sistema_Funcoes::Trans_Gps_Number<\/a>"],[100,1,"<a href=\"Tempo.php.html#29\">Tempo::__construct<\/a>"],[83.333333333333,2,"<a href=\"Tempo.php.html#41\">Tempo::Fechar<\/a>"],[100,1,"<a href=\"Tempo.php.html#60\">Tempo::__destruct<\/a>"],[0,1,"<a href=\"Tempo.php.html#69\">Tempo::Tempo_Pagina<\/a>"],[0,17,"<a href=\"Tempo.php.html#88\">Tempo::Salvar<\/a>"],[0,1,"<a href=\"Tempo.php.html#192\">Tempo::Imprimir<\/a>"],[0,3,"<a href=\"Visual.php.html#134\">Visual::__construct<\/a>"],[0,1,"<a href=\"Visual.php.html#149\">Visual::get_template_dir<\/a>"],[0,1,"<a href=\"Visual.php.html#152\">Visual::get_template_url<\/a>"],[0,3,"<a href=\"Visual.php.html#163\">Visual::Javascript_Executar<\/a>"],[0,8,"<a href=\"Visual.php.html#189\">Visual::Bloco_Customizavel<\/a>"],[0,1,"<a href=\"Visual.php.html#245\">Visual::Bloco_Unico_CriaConteudo<\/a>"],[0,1,"<a href=\"Visual.php.html#260\">Visual::Bloco_Unico_CriaTitulo<\/a>"],[0,2,"<a href=\"Visual.php.html#287\">Visual::Bloco_Unico_Retornar<\/a>"],[0,1,"<a href=\"Visual.php.html#304\">Visual::Bloco_Unico_Zerar<\/a>"],[0,6,"<a href=\"Visual.php.html#329\">Visual::Bloco_Unico_CriaJanela<\/a>"],[0,1,"<a href=\"Visual.php.html#373\">Visual::Bloco_Maior_CriaConteudo<\/a>"],[0,1,"<a href=\"Visual.php.html#388\">Visual::Bloco_Maior_CriaTitulo<\/a>"],[0,2,"<a href=\"Visual.php.html#417\">Visual::Bloco_Maior_Retornar<\/a>"],[0,1,"<a href=\"Visual.php.html#434\">Visual::Bloco_Maior_Zerar<\/a>"],[0,2,"<a href=\"Visual.php.html#458\">Visual::Bloco_Maior_CriaJanela<\/a>"],[0,1,"<a href=\"Visual.php.html#496\">Visual::Bloco_Menor_CriaConteudo<\/a>"],[0,2,"<a href=\"Visual.php.html#511\">Visual::Bloco_Menor_CriaTitulo<\/a>"],[0,2,"<a href=\"Visual.php.html#538\">Visual::Bloco_Menor_Retornar<\/a>"],[0,1,"<a href=\"Visual.php.html#554\">Visual::Bloco_Menor_Zerar<\/a>"],[0,2,"<a href=\"Visual.php.html#565\">Visual::Bloco_Menor_CriaJanela<\/a>"],[0,1,"<a href=\"Visual.php.html#593\">Visual::janelaajax<\/a>"],[0,2,"<a href=\"Visual.php.html#606\">Visual::Blocar<\/a>"],[0,5,"<a href=\"Visual.php.html#624\">Visual::Arquivos_Js<\/a>"],[0,5,"<a href=\"Visual.php.html#649\">Visual::Arquivos_Js_Dependencia<\/a>"],[0,2,"<a href=\"Visual.php.html#674\">Visual::Arquivos_Js_Get<\/a>"],[0,2,"<a href=\"Visual.php.html#693\">Visual::Arquivos_Js_Get_Dependentes<\/a>"],[0,5,"<a href=\"Visual.php.html#707\">Visual::Arquivos_Css<\/a>"],[0,5,"<a href=\"Visual.php.html#732\">Visual::Arquivos_Css_Dependencia<\/a>"],[0,2,"<a href=\"Visual.php.html#757\">Visual::Arquivos_Css_Get<\/a>"],[0,2,"<a href=\"Visual.php.html#775\">Visual::Arquivos_Css_Get_Dependentes<\/a>"],[0,1,"<a href=\"Visual.php.html#790\">Visual::Sistema_Extras<\/a>"],[0,1,"<a href=\"Visual.php.html#954\">Visual::Sistema_Css<\/a>"],[0,5,"<a href=\"Visual.php.html#1015\">Visual::retornablocos<\/a>"],[0,6,"<a href=\"Visual.php.html#1072\">Visual::tmp_usuario<\/a>"],[0,1,"<a href=\"Visual.php.html#1096\">Visual::tmp_menu<\/a>"],[0,9,"<a href=\"Visual.php.html#1109\">Visual::js_local<\/a>"],[0,5,"<a href=\"Visual.php.html#1151\">Visual::Layoult_Abas_Carregar<\/a>"],[0,3,"<a href=\"Visual.php.html#1183\">Visual::Layoult_Home_Widgets_Add<\/a>"],[0,1,"<a href=\"Visual.php.html#1206\">Visual::Layoult_Home_Widgets_Show<\/a>"],[0,2,"<a href=\"Visual.php.html#1223\">Visual::Layoult_Abas_Ativar_JS<\/a>"],[0,1,"<a href=\"Visual.php.html#1239\">Visual::Widget_Assimilar<\/a>"],[0,3,"<a href=\"Visual.php.html#1252\">Visual::Widgets_Assimilar<\/a>"],[0,12,"<a href=\"Visual.php.html#1266\">Visual::renderizar<\/a>"],[0,27,"<a href=\"Visual.php.html#1391\">Visual::Tema_Elementos_Btn<\/a>"],[0,7,"<a href=\"Visual.php.html#1477\">Visual::renderizar_login<\/a>"],[0,1,"<a href=\"Visual.php.html#1540\">Visual::renderizar_bloco<\/a>"],[0,2,"<a href=\"Visual.php.html#1553\">Visual::elemento_breadcrumb<\/a>"],[0,3,"<a href=\"Visual.php.html#1576\">Visual::renderizar_Template<\/a>"],[0,2,"<a href=\"Visual.php.html#1610\">Visual::Layolt_Tipo<\/a>"],[0,3,"<a href=\"Visual.php.html#1625\">Visual::grafico_gerar<\/a>"],[0,5,"<a href=\"Visual.php.html#1659\">Visual::Show_Tabela_DataTable<\/a>"],[0,6,"<a href=\"Visual.php.html#1698\">Visual::Show_Tabela_DataTable_Massiva<\/a>"],[0,4,"<a href=\"Visual.php.html#1746\">Visual::Show_Upload<\/a>"],[0,1,"<a href=\"Visual.php.html#1769\">Visual::Upload_Janela<\/a>"],[0,3,"<a href=\"Visual.php.html#1794\">Visual::Js_Calendar_Gerar<\/a>"],[0,2,"<a href=\"Visual.php.html#1860\">Visual::Json_Start<\/a>"],[0,4,"<a href=\"Visual.php.html#1878\">Visual::Json_Get_Titulo<\/a>"],[0,2,"<a href=\"Visual.php.html#1893\">Visual::Json_Info_Update<\/a>"],[0,2,"<a href=\"Visual.php.html#1906\">Visual::Json_Exist<\/a>"],[0,2,"<a href=\"Visual.php.html#1921\">Visual::Json_ExisteTipo<\/a>"],[0,4,"<a href=\"Visual.php.html#1934\">Visual::Json_RetiraTipo<\/a>"],[0,28,"<a href=\"Visual.php.html#1953\">Visual::Json_IncluiTipo<\/a>"],[0,19,"<a href=\"Visual.php.html#2072\">Visual::Json_Retorna<\/a>"],[0,16,"<a href=\"Visual.php.html#2190\">Visual::Json_Codificar<\/a>"],[0,14,"<a href=\"Visual.php.html#2201\">Visual::json_encode<\/a>"],[0,9,"<a href=\"Visual.php.html#2256\">Visual::Categorias_ShowTab<\/a>"],[0,6,"<a href=\"Visual.php.html#2315\">Visual::Categorias_ShowSelect<\/a>"],[0,6,"<a href=\"Visual.php.html#2354\">Visual::Categorias_ShowSelect_AJAX<\/a>"],[0,1,"<a href=\"Visual.php.html#2386\">Visual::Tema_Tipos<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

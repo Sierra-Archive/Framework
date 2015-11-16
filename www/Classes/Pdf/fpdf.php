@@ -9,7 +9,7 @@ namespace Framework\Classes;
 * Author:  Olivier PLATHEY                                                     *
 *******************************************************************************/
 
-define('FPDF_VERSION','1.7');
+define('FPDF_VERSION', '1.7');
 
 class FPDF
 {

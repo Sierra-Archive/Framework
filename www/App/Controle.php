@@ -1574,11 +1574,11 @@ readfile($link);*/
         if (!defined('LAYOULT_POPUP')) {
             if ($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX') {
                 $bloco='All';
-                define('LAYOULT_POPUP', false);
+                define('LAYOULT_POPUP',  false);
             } else if ($bloco==='Popup') {
-                define('LAYOULT_POPUP', true);
+                define('LAYOULT_POPUP',  true);
             } else {
-                define('LAYOULT_POPUP', false);
+                define('LAYOULT_POPUP',  false);
             }
         } else {
             if ($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX') {

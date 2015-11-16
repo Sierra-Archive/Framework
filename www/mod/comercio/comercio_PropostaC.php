@@ -2640,7 +2640,7 @@ class comercio_PropostaControle extends comercio_Controle
             if (is_object($sub)) $sub = Array(0=>$sub);
             reset($sub);
             foreach ($sub as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->id;
+                $tabela['#Id'][$i]          =   '#'.$valor->proposta.' - '.($i+1);
                 $tabela['Obs'][$i]          =   nl2br($valor->obs);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
                 $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Sub proposta'        ,'comercio/Proposta/Propostas_Sub_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,''),$perm_editar).
