@@ -15,13 +15,4 @@
     </filter>
     <logging>
         <log type="testdox-text" target="data/testdox.txt" />
-        <log 
-        type="coverage-html" 
-        target="data/coverage" 
-        charset="UTF-8" 
-        yui="true" 
-        highlight="true"
-        lowUpperBound="35"
-        highUpperBound="70" />
-    </logging>
 </phpunit>

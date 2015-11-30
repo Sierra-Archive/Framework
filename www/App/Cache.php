@@ -272,7 +272,7 @@ class Cache {
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     protected function Arquivos_GerarEndereco($key) {
-        return $this->folder . DS . sha1($key) . '.tmp';
+        return \str_replace('//','/',($this->folder . DS . sha1($key) . '.tmp'));
     }
 
     /**
