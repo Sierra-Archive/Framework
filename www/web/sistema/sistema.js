@@ -410,7 +410,7 @@ var Sierra = (function () {
             params = $(formulario.elements).serialize(),
             //var self = this,
             id = $(formulario),
-            url = formulario.action,
+            url = formulario.action.split(ConfigArquivoPadrao),
             passar = true;
 
         // verifica se existe validor
@@ -462,7 +462,7 @@ var Sierra = (function () {
         });
         // verifica se pode passar
         if (passar === true) {
-            Modelo_Ajax_Chamar(url,params,'POST',true,false,true);
+            Modelo_Ajax_Chamar(url[1],params,'POST',true,false,true);
             Control_Ajax_Popup_Fechar('popup');
             $button.attr('disabled',false);
             //self.reset();
@@ -533,7 +533,7 @@ var Sierra = (function () {
         History.Adapter.bind(window,'statechange',function () { // Note: We are using statechange instead of popstate
             // Log the State
             var State = History.getState(),  // Note: We are using History.getState() instead of event.state
-                url = State.url/*.slice(ConfigArquivoPadrao.length-1)*/;
+                url = State.url.slice(ConfigArquivoPadrao.length-1);
             if (Historico_Controle !== State.data.id) {
                 Historico_Controle = State.data.id;
                 Modelo_Ajax_Chamar(url,'','get',true,true,true);
@@ -672,9 +672,8 @@ var Sierra = (function () {
     
         for (var i in json){
             if(json[i] !== undefined){
-                url = json[i]['Url'];
-                
-                Modelo_Ajax_Chamar(url,'','get',true,true,true);
+                url = json[i]['Url'].split(ConfigArquivoPadrao),
+                Modelo_Ajax_Chamar(url[1],'','get',true,true,true);
             }
         }
     };
@@ -872,17 +871,7 @@ var Sierra = (function () {
             xhr.open("GET", "http://jsperf.com");
             xhr.send(null);
              */
-            console.log(ConfigArquivoPadrao+"ajax/"+url,ConfigArquivoPadrao,url);
-            // Verifica se Contem a url do Sistema e Tira
-            if(url.indexOf(ConfigArquivoPadrao) != -1){
-                url = url.split(ConfigArquivoPadrao);
-                url = ConfigArquivoPadrao+"ajax/"+url[1];
-            }else if(url.indexOf('http') != -1){
-                url = url;
-            }else{
-                url = ConfigArquivoPadrao+"ajax/"+url;
-            }
-            $.ajax({ type: tip, url: url, async: true,  dataType: 'json', data: params,/*complete: function () { 
+            $.ajax({ type: tip, url: ConfigArquivoPadrao+"ajax/"+url, async: true,  dataType: 'json', data: params,/*complete: function () { 
 
             },*/success: function (data) {
                 if (resposta === true) {
@@ -947,7 +936,7 @@ var Sierra = (function () {
             //Historico
             var aleatorio = Math.random();
             Historico_Controle = aleatorio;
-            History.pushState({/*json: data,*/id: aleatorio}, document.title, url);
+            History.pushState({/*json: data,*/id: aleatorio}, document.title, ConfigArquivoPadrao+url);
             //window.location.hash = url;
         }
     };
@@ -958,6 +947,7 @@ var Sierra = (function () {
             eval(link.attr('acao')+'(link);');
         }
         // Corta e Chama AJAX
+        url = url.slice(ConfigArquivoPadrao.length);
         Modelo_Ajax_Chamar(url,'','get',true,false,true);
     };
     
@@ -1536,22 +1526,6 @@ var Sierra = (function () {
         }
         return true;
     };
-    function Control_Layoult_Valida_Hora (date) {
-        var ardt    =   new Array,
-            ExpReg  =   new RegExp("(0[1-9]|1[0-9]|2[0-4])/([0-5][0-9])"),
-            ardt    =   date.split(":"),
-            erro    =   false;
-        if(date==='00:00') return true;
-        if ( date.search(ExpReg) === -1) {
-            erro = true;
-        }
-        
-        
-        if (erro) {
-            return false;
-        }
-        return true;
-    };
     /**
      * 00/0000 Mes ano\\\\
     * 
@@ -1575,7 +1549,7 @@ var Sierra = (function () {
         }
         return true;
     };
-    function Control_Layoult_Valida_DataHora (datetime) {
+    function Control_Layoult_Valida_DataTime (datetime) {
         var ardt        =   new Array,
             ExpReg      =   new RegExp("(0[1-9]|1[0-9]|2[0-4]):[0-5][0-9]:[0-5][0-9]"),
             erro        =   false,
@@ -1979,7 +1953,7 @@ var Sierra = (function () {
                         form_estado     = $(document.getElementById('estado')).find('option'),
                         form_cidade     = $(document.getElementById('cidade')).find('option'),
                         form_bairro     = $(document.getElementById('bairro')).find('option');
-                    if (resultadoCEP["resultado"] !== 0) {
+                    if (resultadoCEP["resultado"] !== 0 && resultadoCEP["resultado"] !== '0') {
                         form_pais.each(function () {
                             if ($(this).text() === pais) {
                                 ++pais_achado;
@@ -2041,6 +2015,7 @@ var Sierra = (function () {
                             Modelo_Ajax_Chamar('locais/localidades/cep',link,'POST',true,false,false);
                         }
                     }else{
+                        Control_PopMgs_Abrir('erro','Cep Inválido','Esse cep não foi reconhecido pelos Corrêios');
                         $(document.getElementById('endereco')).focus();
                     }
                 });				

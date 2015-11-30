@@ -74,7 +74,7 @@ class usuario_mensagem_OrigemControle extends usuario_mensagem_Controle
             foreach ($origens as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Origem'        ,'usuario_mensagem/Origem/Origens_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Origem ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Origem ?'));
                 ++$i;
             }
             if($export!==false){

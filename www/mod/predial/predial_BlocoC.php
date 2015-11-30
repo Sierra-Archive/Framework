@@ -43,7 +43,7 @@ class predial_BlocoControle extends predial_Controle
         foreach ($blocos as &$valor) {
             $tabela['Nome'][$i]             = $valor->nome;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bloco'        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bloco'       ,'predial/Bloco/Blocos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bloco ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bloco'       ,'predial/Bloco/Blocos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bloco ?'));
             ++$i;
         }
         return Array($tabela,$i);

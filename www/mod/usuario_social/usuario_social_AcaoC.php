@@ -93,8 +93,8 @@ class usuario_social_AcaoControle extends usuario_social_Controle
                 $tabela['Data'][$i]             = $valor->data;
                 $tabela['Vitima'][$i]           = $valor->vitima2;
                 $tabela['Alvo'][$i]             = $valor->alvo2;
-                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'usuario_social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    ,'')).
-                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ação'       ,'usuario_social/Acao/Acoes_Del/'.$valor->id.'/'.$persona_id     ,'Deseja realmente deletar essa Ação ?'));
+                $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'usuario_social/Acao/Acoes_Edit/'.$valor->id.'/'    ,'')).
+                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ação'       ,'usuario_social/Acao/Acoes_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Ação ?'));
                 ++$i;
             }
             $titulo = 'Listagem de Ações ('.$i.')';
@@ -132,7 +132,7 @@ class usuario_social_AcaoControle extends usuario_social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Acoes_Add($persona_id=false){
+    public function Acoes_Add(/*$persona_id=false*/){
         // Carrega Config
         $titulo1    = 'Adicionar Ação';
         $titulo2    = 'Salvar Ação';
@@ -149,20 +149,20 @@ class usuario_social_AcaoControle extends usuario_social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Acoes_Add2($persona_id=false){
+    public function Acoes_Add2(/*$persona_id=false*/){
         $titulo     = 'Ação adicionada com Sucesso';
         $dao        = 'Usuario_Social_Acao';
         $funcao     = '$this->Acao('.$persona_id.');';
         $sucesso1   = 'Inserção bem sucedida';
         $sucesso2   = 'Ação cadastrado com sucesso.';
-       if($artista===false){
+       /* if($artista===false){
             $funcao     = '$this->Acao(0);';
             $alterar    = Array();
         }else{
-            $persona_id = (int) $persona_id;
-            $alterar    = Array('alvo'=>$persona_id);
+            $artista = (int) $artista;
+            $alterar    = Array('artista'=>$artista);
             $funcao     = '$this->Acao('.$persona_id.');';
-        }
+        }*/
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -206,7 +206,7 @@ class usuario_social_AcaoControle extends usuario_social_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Acoes_Del($id,$persona_id=false){
+    public function Acoes_Del($id){
         global $language;
         
     	$id = (int) $id;
@@ -229,7 +229,7 @@ class usuario_social_AcaoControle extends usuario_social_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
-        $this->Acao($persona_id);
+        $this->Acao();
         
         $this->_Visual->Json_Info_Update('Titulo', 'Ação deletada com Sucesso');  
         $this->_Visual->Json_Info_Update('Historico', false);  

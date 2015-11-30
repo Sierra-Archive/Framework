@@ -74,7 +74,7 @@ class usuario_social_TelefoneControle extends usuario_social_Controle
                 $tabela['Numero'][$i]           = $valor->telefone;
                 $tabela['Obs'][$i]              = $valor->obs;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Telefone'        ,'usuario_social/Telefone/Telefones_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Telefone'       ,'usuario_social/Telefone/Telefones_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Telefone ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Telefone'       ,'usuario_social/Telefone/Telefones_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Telefone ?'));
                 ++$i;
             }
             if($export!==false){

@@ -45,7 +45,7 @@ class predial_AnimalControle extends predial_Controle
             $tabela['Apartamento'][$i]      = $valor->apart2;
             $tabela['Nome'][$i]             = $valor->nome;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Animal'        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Animal'       ,'predial/Animal/Animais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Animal ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Animal'       ,'predial/Animal/Animais_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Animal ?'));
             ++$i;
         }
         return Array($tabela,$i);

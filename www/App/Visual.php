@@ -73,7 +73,7 @@ class Visual
     * @version 2.0
     */
     public function __construct($naozerado=true) {
-        $imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
+        //$imprimir = new \Framework\App\Tempo('Construcao Visual - SEM SMARTY');
         if($naozerado){
             self::$config_template    = config_template();
             $this->_Registro        = &\Framework\App\Registro::getInstacia();
@@ -737,7 +737,7 @@ class Visual
         '<div id="escondido">'.
         '</div>'.
         '<div class="growlUI" style="display:none;">'.
-            '<h1>SierraTecnologia</h1> <h2>Ricardo Sierra <sierra.csi@gmail.com></h2>'.
+            '<h1>Growl Notification</h1> <h2>Have a nice day!</h2>'.
         '</div>'.
         '<div id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">'.
             '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="popuptitulo">Popup</h3></div>'.
@@ -979,7 +979,8 @@ class Visual
         'ConfigArquivoPadrao = \''.SISTEMA_URL.SISTEMA_DIR.'\';'.
         'Config_Form_Maiusculo = '.$maiusculo.';'.
         'UserLogado = ';
-            if($this->_Acl===false || $this->_Acl->logado===false || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id==''){
+            //if($this->_Acl===false || $this->_Acl->logado===false || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id==''){
+	    if(!is_object($this->_Acl) || $this->_Acl->logado===false || !is_object($this->_Acl->logado_usuario) || !isset($this->_Acl->logado_usuario->id) || $this->_Acl->logado_usuario->id==''){
                 $html .= '0';
             }
             else{
@@ -1104,7 +1105,7 @@ class Visual
      * @version 0.0.1
      */
     public function renderizar(&$calendario = 0,$config_dia = 0,$config_mes = 0,$config_ano = 0,$config_dataixi = 0) {
-        $imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
+        //$imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
 	// logado =2 ajax
         $params = array(
             'site_titulo'   => $this->Json_Get_Titulo(),
@@ -1243,40 +1244,29 @@ class Visual
      * @version 0.0.1
      */
     public function renderizar_login(){
-        if(LAYOULT_IMPRIMIR=='AJAX'){
-            $form = new \Framework\Classes\Form('Formlogin',SISTEMA_DIR_INT,''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
-            $form->Input_Novo('Login','sistema_login','','text', '',30, '');
-            $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
-            $this->_Visual->Blocar($form->retorna_form('Entrar'));
-            $this->_Visual->Bloco_Menor_CriaJanela('Login');
-            
-            echo $this->_Visual->Json_Retorna();
-            return true;
-        }else{
-            // logado =2 ajax
-            $params = array(
-                'site_titulo'   => 'Entrar',
-                'url_css'       => $this->template_url.'css/',
-                'url_js'        => $this->template_url.'js/',
-                'url_img'       => $this->template_url.'img/',
-                'url_assets'    => $this->template_url.'assets/',
-                'menu'          => '',
-                'sistema'       => array(
-                    'css'           => $this->Sistema_Css(),
-                    'extras'        => $this->Sistema_Extras()
-                )/*,
-                'template'  => array(
-                    'usuario'       => $this->tmp_usuario(),
-                    'menu'          => $this->tmp_menu(),
-                    'Bloco_Unico'   => $this->Bloco_Unico_Retornar(),
-                    'Bloco_Maior'   => $this->Bloco_Maior_Retornar(),
-                    'Bloco_Menor'   => $this->Bloco_Menor_Retornar()
-                )*/
-            );
-
-            //$this->clear_cache($this->template_dir.'page_login.tpl');
-            $this->renderizar_Template('page_login',$params,false);
-        }
+        // logado =2 ajax
+        $params = array(
+            'site_titulo'   => 'Entrar',
+            'url_css'       => $this->template_url.'css/',
+            'url_js'        => $this->template_url.'js/',
+            'url_img'       => $this->template_url.'img/',
+            'url_assets'    => $this->template_url.'assets/',
+            'menu'          => '',
+            'sistema'       => array(
+                'css'           => $this->Sistema_Css(),
+                'extras'        => $this->Sistema_Extras()
+            )/*,
+            'template'  => array(
+                'usuario'       => $this->tmp_usuario(),
+                'menu'          => $this->tmp_menu(),
+                'Bloco_Unico'   => $this->Bloco_Unico_Retornar(),
+                'Bloco_Maior'   => $this->Bloco_Maior_Retornar(),
+                'Bloco_Menor'   => $this->Bloco_Menor_Retornar()
+            )*/
+        );
+        
+        //$this->clear_cache($this->template_dir.'page_login.tpl');
+        $this->renderizar_Template('page_login',$params,false);
     }
     /**
      * 
@@ -1288,7 +1278,7 @@ class Visual
      * @version 0.0.1
      */
     public function renderizar_bloco($tpl,$params = Array()){
-        $imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
+        //$imprimir = new \Framework\App\Tempo('Renderizar bloco Visual - SEM SMARTY');
         //$this->clear_cache($this->template_dir.$tpl.'.tpl');
         return $this->renderizar_Template($tpl,$params);
     }
@@ -1806,7 +1796,7 @@ class Visual
      * @version 0.0.1
      */
     public function Json_Retorna(){
-        $imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
+        //$imprimir = new \Framework\App\Tempo('Retornar Json Visual - SEM SMARTY');
         if($this->jsonativado===false){
             $this->Json_Start();
         }
@@ -1937,7 +1927,7 @@ class Visual
                 $acesso = '';
                 if(!empty($valor['acesso'])){
                     foreach ($valor['acesso'] as &$valor2){
-                        $oacesso = \Categoria_Acesso_DAO::Mod_Acesso_Get($valor2);
+                        $oacesso = Categoria_Acesso_DAO::Mod_Acesso_Get($valor2);
                         if($acesso==''){
                             $acesso .= $oacesso['nome'];
                         }

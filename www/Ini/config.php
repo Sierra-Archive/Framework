@@ -15,7 +15,7 @@ if(!defined('SISTEMA_CACHE_PAGINAS')){
 
 // RESTRITO AO SISTEMA
 if(!defined('SISTEMA_CFG_VERSION')){
-    define('SISTEMA_CFG_VERSION',        3.0); // 
+    define('SISTEMA_CFG_VERSION',        '0.4.0'); // 
 }
 
 
@@ -30,8 +30,8 @@ if(!defined('SISTEMA_EXPORTAR_EXCEL')){
 
 
 // Linguagem Do Sistema
-if(!defined('SISTEMA_LINGUAGEM')){
-    define('SISTEMA_LINGUAGEM',        'ptBR'); 
+if(!defined('SISTEMA_LINGUAGEM_PADRAO')){
+    define('SISTEMA_LINGUAGEM_PADRAO',        'pt_BR'); 
 }
 // Modulo, Submodulo, e Metodo da Pagina Inicial
 if(!defined('DEFAULT_MODULO')){
@@ -65,6 +65,17 @@ if(!defined('SIS_EMAIL_SMTP_USER')){
 if(!defined('SIS_EMAIL_SMTP_SENHA')){
     define('SIS_EMAIL_SMTP_SENHA'           , 'rds123');
 }
+if(!defined('SISTEMA_EMAIL')){
+    define('SISTEMA_EMAIL'                  , 'contato@ricardosierra.com.br');
+}
+if(!defined('SISTEMA_EMAIL_RECEBER')){
+    define('SISTEMA_EMAIL_RECEBER'          , 'sierra.csi@gmail.com');
+}
+// Recebe os Erros do Sistema
+if(!defined('SISTEMA_EMAIL_ADMINISTRADOR')){
+    define('SISTEMA_EMAIL_ADMINISTRADOR'          , 'sierra.csi@gmail.com');
+}
+
 
 
 if(!defined('ROOT')){
@@ -198,6 +209,9 @@ if(!defined('MYSQL_CURSO')){
 if(!defined('MYSQL_CURSO_TURMA')){
     define('MYSQL_CURSO_TURMA'                          , 'Curso_Turma');
 }
+if(!defined('MYSQL_CURSO_TURMA_INSCRICAO')){
+    define('MYSQL_CURSO_TURMA_INSCRICAO'                , 'Curso_Turma_Inscricao');
+}
 
 //COMERCIO VENDAS
 if(  !defined('MYSQL_COMERCIO_VENDA_MESA')){
@@ -216,6 +230,13 @@ if(  !defined('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES')){
     define('MYSQL_COMERCIO_VENDA_CARRINHO_COMPOSICOES'  , 'Comercio_Venda_Carrinho_Composicoes');
 }
 
+// LOCOMOCAO
+if(  !defined('MYSQL_LOCOMOCAO_ENTREGA')){
+    define('MYSQL_LOCOMOCAO_ENTREGA'                    , 'Locomocao_Entrega');
+}
+if(  !defined('MYSQL_LOCOMOCAO_ENTREGA_PONTO')){
+    define('MYSQL_LOCOMOCAO_ENTREGA_PONTO'             , 'Locomocao_Entrega_Ponto');
+}
 // TRANSPORTE
 if(  !defined('MYSQL_TRANSPORTE_ARMAZEM')){
     define('MYSQL_TRANSPORTE_ARMAZEM'                  , 'Transporte_Armazem');
@@ -260,6 +281,9 @@ if(  !defined('MYSQL_GRAMATICA')){
 if(  !defined('MYSQL_GRAMATICA_PREPOSICAO')){
     define('MYSQL_GRAMATICA_PREPOSICAO'                 , 'Gramatica_Preposicao');
 }
+if(  !defined('MYSQL_GRAMATICA_SUBSTANTIVO')){
+    define('MYSQL_GRAMATICA_SUBSTANTIVO'                , 'Gramatica_Substantivo');
+}
 
 
 //FRAMEWORK
@@ -273,22 +297,6 @@ if(  !defined('MYSQL_UNIVERSAL_VIVO_CPF')){
     define('MYSQL_UNIVERSAL_VIVO_CPF'                       , 'Universal_Vivo_Cpf');
 }
 
-// PROJETOS
-if(  !defined('MYSQL_PROJETO_TAREFA')){
-    define('MYSQL_PROJETO_TAREFA'                       , 'Projeto_Tarefa');
-}
-if(  !defined('MYSQL_FRAMEWORK_MODULOS')){
-    define('MYSQL_FRAMEWORK_MODULOS'                    , 'Framework_Modulos');
-}
-if(  !defined('MYSQL_FRAMEWORK_SUBMODULO')){
-    define('MYSQL_FRAMEWORK_SUBMODULO'                  , 'Framework_SubModulos');
-}
-if(  !defined('MYSQL_FRAMEWORK_METODO')){
-    define('MYSQL_FRAMEWORK_METODO'                     , 'Framework_Metodos');
-}
-if(  !defined('MYSQL_FRAMEWORK_MODULO_CONFIG')){
-    define('MYSQL_FRAMEWORK_MODULO_CONFIG'              , 'Framework_Modulo_Config');
-}
 if(  !defined('MYSQL_LOG_FALHA')){
     define('MYSQL_LOG_LOGIN_FALHA'                      , 'Log_Login_Falha');
 }
@@ -311,8 +319,8 @@ if(  !defined('MYSQL_EVENTO_MANIFESTACAO_TERRITORIAL')){
 
 
 // AGENDA
-if(  !defined('MYSQL_AGENDA_COMPROMISSO')){
-    define('MYSQL_AGENDA_COMPROMISSO'                   , 'Agenda_Compromisso');
+if(  !defined('MYSQL_AGENDA')){
+    define('MYSQL_AGENDA'                   , 'Agenda');
 }
 if(  !defined('MYSQL_AGENDA_ATIVIDADE_HORA')){
     define('MYSQL_AGENDA_ATIVIDADE'                     , 'Agenda_Atividade');
@@ -453,6 +461,9 @@ if(!defined('MYSQL_COMERCIO_SERVICO_SUPORTE')){
     define('MYSQL_COMERCIO_SERVICO_SUPORTE'             , 'Comercio_Servico_Suporte'); 
 }
 // MODULO USUARIOS
+if(!defined('MYSQL_USUARIO_EXPEDIENTE')){
+    define('MYSQL_USUARIO_EXPEDIENTE'                   , 'Usuario_Expediente');
+}
 if(!defined('MYSQL_USUARIO_ANEXO')){
     define('MYSQL_USUARIO_ANEXO'                        , 'Usuario_Anexo');
 }
@@ -543,6 +554,10 @@ if(!defined('MYSQL_CAT')){
     define('MYSQL_LOGURL',                                  'log_url');
 } if(!defined('MYSQL_LOG_SQL')){
     define('MYSQL_LOG_SQL',                                 'log_sql');
+} if(!defined('MYSQL_SIS_FILIAL')){
+    define('MYSQL_SIS_FILIAL',                              'Sistema_Filial');
+}if(!defined('MYSQL_SIS_CONFIG')){
+    define('MYSQL_SIS_CONFIG',                              'Sistema_Config');
 } if(!defined('MYSQL_SIS_GRUPO')){
     define('MYSQL_SIS_GRUPO',                               'Sistema_Grupo');
 } if(!defined('MYSQL_SIS_GRUPO_PERMISSAO')){
@@ -551,6 +566,9 @@ if(!defined('MYSQL_CAT')){
     define('MYSQL_SIS_PERMISSAO',                           'Sistema_Permissao');
 } if(!defined('MYSQL_USUARIO_PERMISSAO')){
     define('MYSQL_USUARIO_PERMISSAO',                       'Usuario_Permissao');
+}
+if(!defined('MYSQL_SIS_LOGIN_ESQUECISENHA')){
+    define('MYSQL_SIS_LOGIN_ESQUECISENHA',                  'Sistema_Login_Esquecisenha');
 }
 
 // BASICOS
@@ -598,50 +616,44 @@ if(!defined('MYSQL_FINANCEIRO_FINANCEIRO_FORMA')){
     define('MYSQL_FINANCEIRO_BANCO'                     , 'Financeiro_Banco');
 }
 // AUTO ATUALIZADOS
-if(!defined('MYSQL_USUARIO_SOCIAL')){
-    define('MYSQL_USUARIO_SOCIAL'                       , 'Usuario_Social');
-} if(!defined('MYSQL_USUARIO_SOCIAL_COMENTARIO')){
-    define('MYSQL_USUARIO_SOCIAL_COMENTARIO'            , 'Usuario_Social_Comentario');
-} if(!defined('MYSQL_USUARIO_SOCIAL_FICOU')){
-    define('MYSQL_USUARIO_SOCIAL_FICOU'                 , 'Usuario_Social_Ficou');
-}if(!defined('MYSQL_USUARIO_SOCIAL_FICOU_COMENTARIO')){
-    define('MYSQL_USUARIO_SOCIAL_FICOU_COMENTARIO'      , 'Usuario_Social_Ficou_Comentario');
-}if(!defined('MYSQL_USUARIO_SOCIAL_CARACTERISTICA')){
-    define('MYSQL_USUARIO_SOCIAL_CARACTERISTICA'        , 'Usuario_Social_Caracteristica');
-}if(!defined('MYSQL_USUARIO_SOCIAL_CARACTERISTICA_ACAO')){
-    define('MYSQL_USUARIO_SOCIAL_CARACTERISTICA_ACAO'   , 'Usuario_Social_Caracteristica_Acao');
-}if(!defined('MYSQL_USUARIO_SOCIAL_TELEFONE')){
-    define('MYSQL_USUARIO_SOCIAL_TELEFONE'              , 'Usuario_Social_Telefone');
-}if(!defined('MYSQL_USUARIO_SOCIAL_TELEFONE_CHAMADA')){
-    define('MYSQL_USUARIO_SOCIAL_TELEFONE_CHAMADA'      , 'Usuario_Social_Telefone_Chamada');
-}if(!defined('MYSQL_USUARIO_SOCIAL_ACAO')){
-    define('MYSQL_USUARIO_SOCIAL_ACAO'                  , 'Usuario_Social_Acao');
-}if(!defined('MYSQL_USUARIO_SOCIAL_ACAO_PARTICIPANTE')){
-    define('MYSQL_USUARIO_SOCIAL_ACAO_PARTICIPANTE'     , 'Usuario_Social_Acao_Participante');
-}if(!defined('MYSQL_USUARIO_SOCIAL_ACAO_PRESENTE')){
-    define('MYSQL_USUARIO_SOCIAL_ACAO_PRESENTE'         , 'Usuario_Social_Acao_Presente');
+if(!defined('MYSQL_SOCIAL')){
+    define('MYSQL_SOCIAL'                       , 'Social');
+} if(!defined('MYSQL_SOCIAL_COMENTARIO')){
+    define('MYSQL_SOCIAL_COMENTARIO'            , 'Social_Comentario');
+} if(!defined('MYSQL_SOCIAL_FICOU')){
+    define('MYSQL_SOCIAL_FICOU'                 , 'Social_Ficou');
+}if(!defined('MYSQL_SOCIAL_FICOU_COMENTARIO')){
+    define('MYSQL_SOCIAL_FICOU_COMENTARIO'      , 'Social_Ficou_Comentario');
+}if(!defined('MYSQL_SOCIAL_CARACTERISTICA')){
+    define('MYSQL_SOCIAL_CARACTERISTICA'        , 'Social_Caracteristica');
+}if(!defined('MYSQL_SOCIAL_CARACTERISTICA_ACAO')){
+    define('MYSQL_SOCIAL_CARACTERISTICA_ACAO'   , 'Social_Caracteristica_Acao');
+}if(!defined('MYSQL_USUARIO_TELEFONE')){
+    define('MYSQL_USUARIO_TELEFONE'              , 'Usuario_Telefone');
+}if(!defined('MYSQL_USUARIO_TELEFONE_CHAMADA')){
+    define('MYSQL_USUARIO_TELEFONE_CHAMADA'      , 'Usuario_Telefone_Chamada');
+}if(!defined('MYSQL_SOCIAL_ACAO')){
+    define('MYSQL_SOCIAL_ACAO'                  , 'Social_Acao');
+}if(!defined('MYSQL_SOCIAL_ACAO_PARTICIPANTE')){
+    define('MYSQL_SOCIAL_ACAO_PARTICIPANTE'     , 'Social_Acao_Participante');
+}if(!defined('MYSQL_SOCIAL_ACAO_PRESENTE')){
+    define('MYSQL_SOCIAL_ACAO_PRESENTE'         , 'Social_Acao_Presente');
 }
 // AUTO NAO USADOS
 if(!defined('MYSQL_USUARIO_AGENDA_PASTA')){
     define('MYSQL_USUARIO_AGENDA_PASTA',         'Agenda_Pasta');
 } if(!defined('MYSQL_USUARIO_AGENDA_PASTA_COR')){
     define('MYSQL_USUARIO_AGENDA_PASTA_COR',     'Agenda_Pasta_Cor');
-} if(!defined('MYSQL_PROJ')){
-    define('MYSQL_PROJ',                         'Projeto');
-} if(!defined('MYSQL_PROJETO_COMENTARIO')){
-    define('MYSQL_PROJETO_COMENTARIO',           'Projeto_Comentario');
-} if(!defined('MYSQL_PROJ_CONT')){
-    define('MYSQL_PROJ_CONT',                    'Projeto_Contas');
-} if(!defined('MYSQL_USUARIO_SOCIAL_TIPO')){
-    define('MYSQL_USUARIO_SOCIAL_TIPO',          'Usuario_social_tipo');
-} if(!defined('MYSQL_USUARIO_SOCIAL_HIST_FACE')){
-    define('MYSQL_USUARIO_SOCIAL_HIST_FACE',     'Usuario_social_Historico_Face');
-} if(!defined('MYSQL_USUARIO_SOCIAL_HIST_FACE_MGS')){
-    define('MYSQL_USUARIO_SOCIAL_HIST_FACE_MGS', 'Usuario_social_Historico_Face_Mensagens');
-} if(!defined('MYSQL_USUARIO_SOCIAL_RELACOES')){
-    define('MYSQL_USUARIO_SOCIAL_RELACOES',      'Usuario_social_Relacoes');
-} if(!defined('MYSQL_USUARIO_AGENDA_COMPROMISSOS')){
-    define('MYSQL_USUARIO_AGENDA_COMPROMISSOS',  'agenda_compromissos');
+} if(!defined('MYSQL_SOCIAL_TIPO')){
+    define('MYSQL_SOCIAL_TIPO',          'Usuario_social_tipo');
+} if(!defined('MYSQL_SOCIAL_HIST_FACE')){
+    define('MYSQL_SOCIAL_HIST_FACE',     'Usuario_social_Historico_Face');
+} if(!defined('MYSQL_SOCIAL_HIST_FACE_MGS')){
+    define('MYSQL_SOCIAL_HIST_FACE_MGS', 'Usuario_social_Historico_Face_Mensagens');
+} if(!defined('MYSQL_SOCIAL_RELACOES')){
+    define('MYSQL_SOCIAL_RELACOES',      'Usuario_social_Relacoes');
+} if(!defined('MYSQL_USUARIO_AGENDAS')){
+    define('MYSQL_USUARIO_AGENDAS',  'agenda_compromissos');
 } if(!defined('MYSQL_USUARIO_AGENDA_ATIVIDADES')){
     define('MYSQL_USUARIO_AGENDA_ATIVIDADES',    'Agenda_Atividades');
 }
@@ -696,6 +708,26 @@ if(!defined('MYSQL_SIS_LOCALIZACAO_PAIZES')){
     define('MYSQL_SIS_LOCAIS_TIPOS',             'local_tipos');
 }
 
+//Simuladores
+if(!defined('MYSQL_SIMULADOR')){
+    define('MYSQL_SIMULADOR',              'Simulador'); 
+}
+if(!defined('MYSQL_SIMULADOR_ASSISTIR')){
+    define('MYSQL_SIMULADOR_ASSISTIR',     'Simulador_Assistir'); 
+}
+if(!defined('MYSQL_SIMULADOR_TAG')){
+    define('MYSQL_SIMULADOR_TAG',          'Simulador_Tag'); 
+}
+if(!defined('MYSQL_SIMULADOR_TAG_CONEXAO')){
+    define('MYSQL_SIMULADOR_TAG_CONEXAO',  'Simulador_Tag_Conexao'); 
+}
+if(!defined('MYSQL_SIMULADOR_PERGUNTA')){
+    define('MYSQL_SIMULADOR_PERGUNTA',     'Simulador_Pergunta'); 
+}
+if(!defined('MYSQL_SIMULADOR_PERGUNTA_RESPOSTA')){
+    define('MYSQL_SIMULADOR_PERGUNTA_RESPOSTA',     'Simulador_Pergunta_Resposta'); 
+}
+
 // MIDIAS, EVENTOS, NOTICIAS 
 if(!defined('MYSQL_NOTICIAS')){
     define('MYSQL_NOTICIAS'           , 'Noticia');
@@ -725,11 +757,31 @@ if(!defined('MYSQL_MUSICA_ALBUM_ARTISTA')){
 
 
 
-// MODULO SEGURANCA
-if(!defined('MYSQL_SEGURANCA_SENHA')){
-    define('MYSQL_SEGURANCA_SENHA'     , 'Seguranca_Senha');
+// MODULO DESENVOLVIMENTO
+if(!defined('MYSQL_DESENVOLVIMENTO_SENHA')){
+    define('MYSQL_DESENVOLVIMENTO_SENHA'     , 'Desenvolvimento_Senha');
+} if(!defined('MYSQL_PROJ')){
+    define('MYSQL_PROJ',                         'Desenvolvimento_Projeto');
+} if(!defined('MYSQL_DESENVOLVIMENTO_COMENTARIO')){
+    define('MYSQL_DESENVOLVIMENTO_COMENTARIO',           'Desenvolvimento_Projeto_Comentario');
+} if(!defined('MYSQL_PROJ_CONT')){
+    define('MYSQL_PROJ_CONT',                    'Desenvolvimento_Projeto_Contas');
 }
-
+if(  !defined('MYSQL_DESENVOLVIMENTO_TAREFA')){
+    define('MYSQL_DESENVOLVIMENTO_TAREFA'                       , 'Desenvolvimento_Projeto_Tarefa');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULOS')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULOS'                    , 'Desenvolvimento_Framework_Modulos');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_SUBMODULO')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_SUBMODULO'                  , 'Desenvolvimento_Framework_SubModulos');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_METODO')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_METODO'                     , 'Desenvolvimento_Framework_Metodos');
+}
+if(  !defined('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULO_CONFIG')){
+    define('MYSQL_DESENVOLVIMENTO_FRAMEWORK_MODULO_CONFIG'              , 'Desenvolvimento_Framework_Modulo_Config');
+}
 
 
 

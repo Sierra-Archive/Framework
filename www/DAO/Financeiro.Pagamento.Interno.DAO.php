@@ -278,7 +278,7 @@ final Class Financeiro_Pagamento_Interno_DAO extends Framework\App\Dao
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
-                        'class'             => ''
+                        'class'             => 'obrigatorio'
                     )
                 )
             ),Array(

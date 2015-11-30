@@ -138,8 +138,8 @@ $config_Menu = function (){
                 'Filhos'                => false,
             ),),
         ),
-        'Relatório' => Array(
-            'Nome'                  => 'Relatório',
+        'Relatórios' => Array(
+            'Nome'                  => 'Relatórios',
             'Filhos'                => Array('Estoque'=>Array(
                 'Nome'                  => 'Estoque',
                 'Link'                  => 'comercio/Estoque/Estoques',
@@ -949,12 +949,6 @@ $config_Funcional = function (){
             'Nome'                  => 'Se possui Biblioteca em Propostas',
             'Desc'                  => 'Se possui Biblioteca em Propostas',
             'chave'                 => 'comercio_Propostas_Biblioteca',
-            'Valor'                 => false,
-        ),
-        'comercio_Propostas_Biblioteca_Automatico'  => Array(
-            'Nome'                  => 'Se cria Biblioteca automaticamente em Propostas',
-            'Desc'                  => 'Se cria Biblioteca automaticamente  em Propostas',
-            'chave'                 => 'comercio_Propostas_Biblioteca_Automatico',
             'Valor'                 => false,
         ),
         /**

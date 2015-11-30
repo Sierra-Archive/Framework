@@ -77,7 +77,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
                 $tabela['Nome'][$i]             = $valor->nome;
                 $tabela['Email do Setor'][$i]   = $valor->email;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Setor ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Setor ?'));
                 ++$i;
             }
             if($export!==false){

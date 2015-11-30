@@ -81,10 +81,10 @@ $config_Permissoes = function (){
             'Nome'                  => 'Midia (Artistas) - Deletar',
             'Desc'                  => '',
             'Chave'                 => 'Musica_Artista_Artistas_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Musica/Artista/Artistas_Del', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Musica/Artista/Artistas_del', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'Musica', // Modulo Referente
             'SubModulo'             => 'Artista',   // Submodulo Referente
-            'Metodo'                => 'Artistas_Del',  // Metodos referentes separados por virgula
+            'Metodo'                => 'Artistas_del',  // Metodos referentes separados por virgula
         ),
         
         Array(

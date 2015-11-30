@@ -44,7 +44,7 @@ class predial_VeiculoControle extends predial_Controle
             $tabela['Placa'][$i]            = $valor->placa;
             $tabela['Marca'][$i]            = $valor->marca;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Veiculo'        ,'predial/Veiculo/Veiculos_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Veiculo'       ,'predial/Veiculo/Veiculos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Veiculo'       ,'predial/Veiculo/Veiculos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
             ++$i;
         }
         return Array($tabela,$i);

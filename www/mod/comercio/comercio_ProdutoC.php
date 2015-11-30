@@ -113,7 +113,7 @@ class comercio_ProdutoControle extends comercio_Controle
                     $tabela['Funções'][$i]   = '';
                 }
                 $tabela['Funções'][$i]   .= $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio/Produto/Produtos_Edit/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
+                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio/Produto/Produtos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
                 ++$i;
             }
             $ordem = Array($ordem,'asc');

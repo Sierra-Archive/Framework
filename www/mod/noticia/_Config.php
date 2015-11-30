@@ -32,7 +32,7 @@ $config_Menu = function (){
 $config_Permissoes = function (){
     return Array(
         Array(
-            'Nome'                  => 'Noticias - Administrar Noticias',
+            'Nome'                  => 'Administrar Noticias',
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias',
             'End'                   => 'noticia/Admin/Noticias', // Endereco que deve conter a url para permitir acesso
@@ -41,7 +41,7 @@ $config_Permissoes = function (){
             'Metodo'                => '*',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Noticias - Add Noticias',
+            'Nome'                  => 'Add Noticias',
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias_Add', // CHave unica nunca repete, chave primaria
             'End'                   => 'noticia/Admin/Noticias_Add', // Endereco que deve conter a url para permitir acesso
@@ -50,16 +50,16 @@ $config_Permissoes = function (){
             'Metodo'                => 'Noticias_Add,Noticias_Add2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Noticias - Editar Noticias',
+            'Nome'                  => 'Editar Noticias',
             'Desc'                  => '',
-            'Chave'                 => 'noticia_Admin_Noticias_Edit', // CHave unica nunca repete, chave primaria
+            'Chave'                 => 'noticia_Admin_Edit', // CHave unica nunca repete, chave primaria
             'End'                   => 'noticia/Admin/Noticias_Edit', // Endereco que deve conter a url para permitir acesso // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'noticia', // Modulo Referente // Modulo Referente
             'SubModulo'             => 'Admin',   // Submodulo Referente   // Submodulo Referente
             'Metodo'                => 'Noticias_Edit,Noticias_Edit2',  // Metodos referentes separados por virgula
         ),
         Array(
-            'Nome'                  => 'Noticias - Deletar Noticias',
+            'Nome'                  => 'Deletar Noticias',
             'Desc'                  => '',
             'Chave'                 => 'noticia_Admin_Noticias_Del', // CHave unica nunca repete, chave primaria
             'End'                   => 'noticia/Admin/Noticias_Del', // Endereco que deve conter a url para permitir acesso

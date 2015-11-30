@@ -72,7 +72,7 @@ class usuario_social_CaracteristicaControle extends usuario_social_Controle
                 $tabela['Nome'][$i]            = $valor->nome;
                 $tabela['Descriçao'][$i]        = $valor->descricao;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Caracteristica'        ,'usuario_social/Caracteristica/Caracteristicas_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caracteristica'       ,'usuario_social/Caracteristica/Caracteristicas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Caracteristica ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Caracteristica'       ,'usuario_social/Caracteristica/Caracteristicas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Caracteristica ?'));
                 ++$i;
             }
             if($export!==false){

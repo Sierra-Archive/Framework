@@ -51,7 +51,7 @@ class noticia_AdminControle extends noticia_Controle
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$valor->destaque   ,Array($texto   ,'noticia/Admin/Destaques/'.$valor->id.'/'    ,'')).'</span>';
             $tabela['Funções'][$i]      .= $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Noticia'        ,'noticia/Admin/Noticias_Edit/'.$valor->id.'/'    ,'')).
-                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Noticia'       ,'noticia/Admin/Noticias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Noticia ?'));
+                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Noticia'       ,'noticia/Admin/Noticias_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Noticia ?'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -84,7 +84,7 @@ class noticia_AdminControle extends noticia_Controle
             list($tabela,$i) = self::Noticias_Tabela($noticia);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Noticias');
+                self::Export_Todos($export,$tabela, 'Blocos');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela
@@ -140,7 +140,7 @@ class noticia_AdminControle extends noticia_Controle
         $dao        = 'Noticia';
         $funcao     = '$this->Noticias();';
         $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Noticia cadastrada com sucesso.';
+        $sucesso2   = 'Noticia cadastrado com sucesso.';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
@@ -174,7 +174,7 @@ class noticia_AdminControle extends noticia_Controle
         $titulo     = 'Noticia Alterada com Sucesso';
         $dao        = Array('Noticia',$id);
         $funcao     = '$this->Noticias();';
-        $sucesso1   = 'Noticia Alterada com Sucesso';
+        $sucesso1   = 'Noticia Alterado com Sucesso';
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);

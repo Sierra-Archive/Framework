@@ -44,7 +44,7 @@ class predial_SalaoControle extends predial_Controle
             $tabela['Observação'][$i]       = $valor->obs;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local de Reserva'        ,'predial/Salao/Saloes_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local de Reserva'       ,'predial/Salao/Saloes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local de Reserva ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local de Reserva'       ,'predial/Salao/Saloes_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local de Reserva ?'));
             ++$i;
         }
         return Array($tabela,$i);

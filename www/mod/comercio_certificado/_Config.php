@@ -32,8 +32,8 @@ $config_Menu = function (){
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'briefcase',
                 'Filhos'                => false,
-            ),'Relatório'=>Array(
-                'Nome'                  => 'Relatório',
+            ),'Relatórios'=>Array(
+                'Nome'                  => 'Relatórios',
                 'Link'                  => 'usuario/Admin/Main',
                 'Gravidade'             => 7,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -67,8 +67,8 @@ $config_Menu = function (){
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'usd',
                 'Filhos'                => false,
-            ),'Relatório'=>Array(
-                'Nome'                  => 'Relatório',
+            ),'Relatórios'=>Array(
+                'Nome'                  => 'Relatórios',
                 'Link'                  => '#',
                 'Gravidade'             => 7,
                 'Img'                   => 'turboadmin/m-dashboard.png',
@@ -125,10 +125,10 @@ $config_Permissoes = function (){
             'Nome'                  => 'Certificações (Produtos) - Deletar',
             'Desc'                  => '',
             'Chave'                 => 'comercio_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => 'comercio_certificado/Produto/Produtos_Del', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'comercio_certificado/Produto/Produtos_del', // Endereco que deve conter a url para permitir acesso
             'Modulo'                => 'comercio_certificado', // Modulo Referente
             'SubModulo'             => 'Produto',   // Submodulo Referente
-            'Metodo'                => 'Produtos_Del',  // Metodos referentes separados por virgula
+            'Metodo'                => 'Produtos_del',  // Metodos referentes separados por virgula
         ),
         
         // Propostas

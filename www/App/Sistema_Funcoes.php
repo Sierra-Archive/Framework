@@ -231,7 +231,7 @@ Class Sistema_Funcoes {
             return false;
         }
         // Verifica se Modulo é permitido
-        if($modulo!='_Sistema' && function_exists('config_modulos') && !array_key_exists($modulo,config_modulos())){
+        if($modulo!='_Sistema' && !array_key_exists($modulo,config_modulos())){
             return false;
         }else{
             return true;
@@ -440,7 +440,7 @@ Class Sistema_Funcoes {
     public static function Tranf_Float_Real($float){
         if(strpos($float, 'R$')!==false) return $float;
         $float = (float) $float;
-        return ($float>=0?'R$'.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
+        return ($float>=0?'R$ '.number_format($float, 2, ',', '.'):'<span class="text-error">- R$ '.number_format($float*-1, 2, ',', '.').'</span>');
     }
     public static function Tranf_Porc_Float($porc){
         if($porc==='') return 0.0;
@@ -705,6 +705,9 @@ Class Sistema_Funcoes {
      * 
      * @param type $info (mes, ano, dia, semana, etc...
      * @param type $data
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     static public function Get_Info_Data($info, $data){
         if($info=='mes_nome'){
@@ -727,6 +730,151 @@ Class Sistema_Funcoes {
         }
         
         return false;
+    }
+    /**
+     * Geradores
+     * Gera Senha Automaticamente
+     * 
+     * @param type $tamanho
+     * @param type $forca
+     * @return string
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    static public function Gerar_Senha($tamanho=8, $forca=6) {
+    
+        $vogais             = '2357';
+        $consoantes         = '014689';
+        
+        if ($forca >= 2) {
+            $consoantes .= 'bcdfghjklmnpqrstvwxz';
+        }
+        if ($forca >= 3) {
+            $vogais .= 'aeiouy';
+        }
+        if ($forca >= 5) {
+            $consoantes    .= 'BCDFGHJKLMNPQRSTVWXZ';
+        }
+        if ($forca >= 6) {
+            $vogais        .= "AEIOUY";
+        }
+        if ($forca >= 8 ) {
+            $vogais .= '*@';
+        }
+        if ($forca >= 10 ) {
+            $vogais .= '-!#%$';
+        }
+
+        $senha = '';
+        $alt = time() % 2;
+        for ($i = 0; $i < $tamanho; $i++) {
+            if ($alt == 1) {
+                $senha .= $consoantes[(rand() % strlen($consoantes))];
+                $alt = 0;
+            } else {
+                $senha .= $vogais[(rand() % strlen($vogais))];
+                $alt = 1;
+            }
+        }
+        return $senha;
+    }
+    /**
+     * Detecta Navegador
+     * 
+     * @return type
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Detectar_Navegador()
+    {
+        if(!isset($_SERVER['HTTP_USER_AGENT']) || empty($_SERVER['HTTP_USER_AGENT'])) {
+            return array(
+                'name' => 'Desconhecido',
+                'version' => 'Desconhecido',
+                'platform' => 'Desconhecido',
+                'userAgent' => ''
+            );
+        }
+        $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);
+
+        if (preg_match('/opera/', $userAgent)) {
+            $name = 'opera';
+        }
+        elseif (preg_match('/webkit/', $userAgent)) {
+            $name = 'safari';
+        }
+        elseif (preg_match('/msie/', $userAgent)) {
+            $name = 'msie';
+        }
+        elseif (preg_match('/mozilla/', $userAgent) && !preg_match('/compatible/', $userAgent)) {
+            $name = 'mozilla';
+        }
+        else {
+            $name = 'Desconhecido';
+        }
+
+        if (preg_match('/.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/', $userAgent, $matches)) {
+            $version = $matches[1];
+        }
+        else {
+            $version = 'Desconhecido';
+        }
+
+        if (preg_match('/linux/', $userAgent)) {
+            $platform = 'linux';
+        }
+        elseif (preg_match('/macintosh|mac os x/', $userAgent)) {
+            $platform = 'mac';
+        }
+        elseif (preg_match('/windows|win32/', $userAgent)) {
+            $platform = 'windows';
+        }
+        else {
+            $platform = 'unrecognized';
+        }
+
+        return array(
+            'Nome'          => $name,
+            'Versão'        => $version,
+            'Plataforma'    => $platform,
+            'UserAgent'     => $userAgent
+        );
+    }
+    /**
+     * Captura GPS
+     * 
+     * @param type $exifCoord
+     * @param type $hemi
+     * @return type
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Get_Gps($exifCoord, $hemi) {
+        $degrees = count($exifCoord) > 0 ? self::Trans_Gps_Number($exifCoord[0]) : 0;
+        $minutes = count($exifCoord) > 1 ? self::Trans_Gps_Number($exifCoord[1]) : 0;
+        $seconds = count($exifCoord) > 2 ? self::Trans_Gps_Number($exifCoord[2]) : 0;
+        $flip = ($hemi == 'W' or $hemi == 'S') ? -1 : 1;
+        return $flip * ($degrees + $minutes / 60 + $seconds / 3600);
+    }
+    /**
+     * Trata GPS
+     * 
+     * @param type $coordPart
+     * @return int
+     * 
+     * @version 0.4.2
+     * @author Ricardo Sierra <web@ricardosierra.com.br>
+     */
+    public static function Trans_Gps_Number($coordPart) {
+        $parts = explode('/', $coordPart);
+        if (count($parts) <= 0)
+            return 0;
+        if (count($parts) == 1)
+            return $parts[0];
+        return floatval($parts[0]) / floatval($parts[1]);
     }
 }
 

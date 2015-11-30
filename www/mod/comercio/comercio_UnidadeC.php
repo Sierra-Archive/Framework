@@ -63,7 +63,7 @@ class comercio_UnidadeControle extends comercio_Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome da Unidade'][$i]      = $valor->nome;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Unidade'       ,'comercio/Unidade/Unidades_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Unidade ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Unidade'       ,'comercio/Unidade/Unidades_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Unidade ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

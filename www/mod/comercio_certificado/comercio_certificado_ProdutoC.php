@@ -78,7 +78,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 $tabela['Sigla'][$i]     = $valor->sigla;
                 $tabela['Descrição'][$i] = $valor->obs;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
                 ++$i;
             }
             return $html.$this->_Visual->Show_Tabela_DataTable($tabela,'',false);

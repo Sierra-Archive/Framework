@@ -2,6 +2,8 @@
 final Class Comercio_Proposta_DAO extends Framework\App\Dao 
 {
     protected $id;
+    protected $propostaReferencia;
+    protected $propostaNewId;
     protected $propostatipo;
     protected $cliente;
     protected $cuidados;
@@ -19,37 +21,37 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
     protected $status;
     protected $valor;
     protected $obs;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_COMERCIO_PROPOSTA;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'CPRO';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 255,
+                'mysql_tamanho'     => 11,
                 'mysql_null'        => false,
                 'mysql_default'     => false,
                 'mysql_primary'     => true,
@@ -59,7 +61,59 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
+            ),
+            Array(
+                'mysql_titulo'      => 'propostaReferencia',
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 11,
+                'mysql_null'        => true, // true NULL, false, NOT NULL
+                'mysql_default'     => '0',//false -> NONE, outro -> default
+                'mysql_primary'     => false, // chave primaria
+                'mysql_estrangeira' => 'CPRO.id|CPRO.propostaNewId', // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => 'comercio/Proposta/Propostas_Add', //0 ninguem, 1 admin, 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Proposta'),
+                    'valor_padrao'      => '0',
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha uma Proposta',
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'propostaNewId',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 100,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => 'Vazio', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Identificador'),
+                    'valor_padrao'      => 'Vazio',
+                    'readonly'          => false,
+                    'aviso'             => __('Apenas letras'),
+                    'formtipo'          => 'input',
+                    'form_escondido'    => true,    // Vai aparecer, quando trocar select
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => 'obrigatorio'
+                    )
+                )
             ),
             Array(
                 'mysql_titulo'      => 'propostatipo',
@@ -74,9 +128,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Proposta',
+                    'Nome'              => __('Tipo de Proposta'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -110,16 +164,16 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
-                        'class'             => 'obrigatorio'
+                    'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'select',
+                    'select'             => array(
+                        'class'             => 'obrigatorio',
+                        'infonulo'          => 'Escolha um Cliente',
                     )
                 )
             ),
@@ -138,10 +192,10 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'          => false, //'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Vendedor',
+                    'Nome'              => __('Vendedor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'obrigatorio',
+                    'aviso'             => __('obrigatorio'),
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
@@ -162,9 +216,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Referência',
+                    'Nome'              => __('Referência'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -190,9 +244,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Telefone',
+                    'Nome'              => __('Telefone'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -214,7 +268,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROSI', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Btus', // Nome no FOrmulario
+                    'Nome'              => __('Btus'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -223,7 +277,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkar'            => 'proposta', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'btu',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            'distancia','suporte','tipocondensadora','infra','tipoevaporadora','tipodreno','obs'
+                            'distancia', 'suporte', 'tipocondensadora', 'infra', 'tipoevaporadora', 'tipodreno', 'obs'
                         ),
                         'form_escondido'    => true,    // Vai aparecer, quando trocar select
                         'infonulo'          => 'Escolha pelo menos um Btu para Instalar',
@@ -236,7 +290,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROP', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Produtos Vendidos', // Nome no FOrmulario
+                    'Nome'              => __('Produtos Vendidos'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -262,7 +316,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROS', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Serviço', // Nome no FOrmulario
+                    'Nome'              => __('Serviço'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -285,7 +339,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROST', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Serviços', // Nome no FOrmulario
+                    'Nome'              => __('Serviços'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -294,7 +348,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkar'            => 'proposta', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'servicotipo',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            false //'diarias_qnt','diarias_valor'
+                            false //'diarias_qnt', 'diarias_valor'
                         ),
                         'form_escondido'    => 'apagar', // Apagar = Vai Apagar Após a troca
                         'infonulo'          => 'Escolha pelo menos um Serviço',
@@ -308,7 +362,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROM', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Mão de Obra', // Nome no FOrmulario
+                    'Nome'              => __('Mão de Obra'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -317,7 +371,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                         'Linkar'            => 'proposta', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'grupo',// CAmpo a ser encaixado id do link
                         'Campos'            => Array(
-                            'maodeobra_qnt','maodeobra_dias','maodeobra_diaria','maodeobra_depreciacao','maodeobra_passagem','maodeobra_alimentacao'
+                            'maodeobra_qnt', 'maodeobra_dias', 'maodeobra_diaria', 'maodeobra_depreciacao', 'maodeobra_passagem', 'maodeobra_alimentacao'
                         ),
                         'form_escondido'    => 'apagar', // Apagar = Vai Apagar Após a troca
                         'infonulo'          => 'Escolha pelo menos um Tipo de Serviço',
@@ -337,13 +391,13 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Porc_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Porc({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Comissão',
+                    'Nome'              => __('Comissão'),
                     'Mascara'           => 'Porc',
                     'valor_padrao'      => \Framework\App\Sistema_Funcoes::Tranf_Float_Porc(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')),
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -363,13 +417,13 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Porc_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Porc({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Porcentagem de Imposto',
+                    'Nome'              => __('Porcentagem de Imposto'),
                     'Mascara'           => 'Porc',
                     'valor_padrao'      => \Framework\App\Sistema_Funcoes::Tranf_Float_Porc(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto')),
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -390,13 +444,13 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Gasto Extra',
+                    'Nome'              => __('Gasto Extra'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -416,13 +470,13 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Porc_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Porc({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Porcentagem de Lucro',
+                    'Nome'              => __('Porcentagem de Lucro'),
                     'Mascara'           => 'Porc',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -442,13 +496,13 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Porc_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Porc({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Porcentagem de Desconto',
+                    'Nome'              => __('Porcentagem de Desconto'),
                     'Mascara'           => 'Porc',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -470,13 +524,13 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor Final',
+                    'Nome'              => __('Valor Final'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -499,9 +553,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Financeiro/Pagamento/Formas_Add/', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Financeiro/Pagamento/Formas_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Forma de Pagamento',
+                    'Nome'              => __('Forma de Pagamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -525,9 +579,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Financeiro/Pagamento/Condicoes_Add/', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Financeiro/Pagamento/Condicoes_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Condição de Pagamento',
+                    'Nome'              => __('Condição de Pagamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -550,9 +604,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Validade da Proposta',
+                    'Nome'              => __('Validade da Proposta'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -574,7 +628,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROC', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Checklist', // Nome no FOrmulario
+                    'Nome'              => __('Checklist'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -595,7 +649,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                     'Pai'               => 'CPRO', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CPROF', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Funcionários', // Nome no FOrmulario
+                    'Nome'              => __('Funcionários'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -626,9 +680,9 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Status',
+                    'Nome'              => __('Status'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -673,7 +727,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos
             ),
             Array(
                 'mysql_titulo'      => 'obs',
@@ -689,7 +743,7 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -703,4 +757,4 @@ final Class Comercio_Proposta_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

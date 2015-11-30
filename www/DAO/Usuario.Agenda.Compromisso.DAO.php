@@ -101,7 +101,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_DataHora',
+                    'validar'           => 'Control_Layoult_Valida_DataTime',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio masc_data_hora'
@@ -128,7 +128,7 @@ final Class Usuario_Agenda_Compromisso_DAO extends Framework\App\Dao
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_DataHora',
+                    'validar'           => 'Control_Layoult_Valida_DataTime',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio masc_data_hora'

@@ -70,7 +70,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
             $tabela['Descriçao'][$i]        = $valor->descricao;
             $tabela['Preço'][$i]            = $valor->preco;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$titulo2        ,'comercio_servicos/Servico/Servicos_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo2       ,'comercio_servicos/Servico/Servicos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar ess'.$titulo_com_sexo.' ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo2       ,'comercio_servicos/Servico/Servicos_del/'.$valor->id.'/'     ,'Deseja realmente deletar ess'.$titulo_com_sexo.' ?'));
             ++$i;
         }
         return Array($tabela,$i);

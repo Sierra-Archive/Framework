@@ -523,10 +523,10 @@ class usuario_AdminControle extends usuario_Controle
     /**
     * Deleta usuario
     * 
-    * @name usuarios_Del
+    * @name usuarios_del
     * @access public
     * 
-    * @uses usuarios_AdminModelo::$usuarios_Del
+    * @uses usuarios_AdminModelo::$usuarios_del
     * @uses \Framework\App\Visual::$Json_IncluiTipo
     * @uses usuarios_AdminControle::$usuarios_lista
     * 
@@ -554,12 +554,18 @@ class usuario_AdminControle extends usuario_Controle
                 }else if($usuario->grupo==CFG_TEC_IDFUNCIONARIO){
                     $tipo = 'funcionario';
                     $tipo2 = 'Funcionário';
+                }else{
+                    $tipo = 'usuario';
+                    $tipo2 = 'Usuário';
                 }
             }else{
                 if($tipo==='cliente'){
                     $tipo2 = 'Cliente';
                 }else if($tipo==='funcionario'){
                     $tipo2 = 'Funcionário';
+                }else{
+                    $tipo = 'usuario';
+                    $tipo2 = 'Usuário';
                 }
             }
 
@@ -606,7 +612,7 @@ class usuario_AdminControle extends usuario_Controle
         self::Usuarios_Edit2($id,'cliente');
     }
     public function Cliente_Del($id){
-        self::usuarios_Del($id,'cliente');
+        self::usuarios_del($id,'cliente');
     }
     public function Funcionario_Add($categoria = 0){
         self::Usuarios_Add($categoria,'funcionario');
@@ -621,7 +627,7 @@ class usuario_AdminControle extends usuario_Controle
         self::Usuarios_Edit2($id,'funcionario');
     }
     public function Funcionario_Del($id){
-        self::usuarios_Del($id,'funcionario');
+        self::usuarios_del($id,'funcionario');
     }
     
     public function usuarios_pendentes($tipo='cnh'){
@@ -653,7 +659,7 @@ class usuario_AdminControle extends usuario_Controle
                 $tabela['Funções'][$i] = '<a confirma="Deseja Realmente Aprovar?" title="Aprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/sim/"><img border="0" src="'.WEB_URL.'img/icons/status1.png"></a>'.
                 '<a confirma="Deseja Realmente Desaprovar?" title="Desaprovar" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_pendente_aprovar/'.$usuarios[$indice]['id'].'/'.$tipo.'/nao/"><img border="0" src="'.WEB_URL.'img/icons/status2.png"></a>'.
                 '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_del/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -752,7 +758,7 @@ class usuario_AdminControle extends usuario_Controle
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
                 $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Usuario'        ,'usuario/Admin/Usuarios_Comentario_Edit/'.$usuario_id.'/'.$valor->id.'/'.$tipo    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_Del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'));
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Usuario'       ,'usuario/Admin/Usuarios_Comentario_del/'.$usuario_id.'/'.$valor->id.'/'.$tipo     ,'Deseja realmente deletar esse Comentário desse '.$nomedisplay_sing.' ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));

@@ -118,7 +118,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Veiculo'    ,'usuario_veiculo/Veiculo/Veiculos_Popup/'.$valor->id.'/'    ,'')).*/
                                            $this->_Visual->Tema_Elementos_Btn('Zoom'            ,Array('Visualizar Veiculo'                     ,'usuario_veiculo/Veiculo/Veiculos_View/'.$valor->id.'/'    ,'')).
                                            $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Veiculo'                         ,'usuario_veiculo/Veiculo/Veiculos_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Veiculo'                        ,'usuario_veiculo/Veiculo/Veiculos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Veiculo'                        ,'usuario_veiculo/Veiculo/Veiculos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
                 ++$i;
             }
             if($export!==false){
@@ -495,7 +495,7 @@ class usuario_veiculo_VeiculoControle extends usuario_veiculo_Controle
                 $tabela['Data do Acontecimento'][$i]=   $valor->data;
                 $tabela['Data Registrado'][$i]      =   $valor->log_date_add;
                 $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Evento de Veiculo'        ,'usuario_veiculo/Veiculo/Veiculos_Evento_Edit/'.$veiculo_id.'/'.$valor->id.'/'    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Evento de Veiculo'       ,'usuario_veiculo/Veiculo/Veiculos_Evento_Del/'.$veiculo_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento de desse Veiculo ?'));
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Evento de Veiculo'       ,'usuario_veiculo/Veiculo/Veiculos_Evento_del/'.$veiculo_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento de desse Veiculo ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

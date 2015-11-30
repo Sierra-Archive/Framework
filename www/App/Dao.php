@@ -28,12 +28,6 @@ abstract class Dao implements \DaoInterface
             static::$objetocarregado    = true;
         }
     }
-    
-    // Triggers
-    public static function Get_Trigger(){
-        return Array();
-    }
-    
     public static function Get_Engine(){
         return 'InnoDB';
     }
@@ -215,10 +209,6 @@ abstract class Dao implements \DaoInterface
         }
         if(empty($extrangeiras)) return false;
         else             return $extrangeiras;
-    }
-    final public function __isset($name)
-    {
-        return isset($this->$name);
     }
     final public function __set($nome,$resultado){
         $this->$nome = $resultado;

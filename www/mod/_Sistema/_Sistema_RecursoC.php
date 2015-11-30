@@ -42,7 +42,6 @@ $('#produtocontrolador1 select').attr('id','produto1');
         // Inicia Classe, Gera suas colunas e acha a coluna alterada
         $alterado = $dominio['classe'].'_DAO';
         $alterado = new $alterado();
-        // PRimeiro Foreach
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
         foreach($alterado as $indice=>&$valor){
             if($indice!==$campo_alterado){
@@ -111,7 +110,7 @@ $('#produtocontrolador1 select').attr('id','produto1');
         }
         // Captura Informacoes e Cria UNIVERSAL
         $universal = new \Universal_Vivo_Cep_DAO();
-        //var_dump($xml,$resultado[0]);
+        var_dump($xml,$resultado[0]);
         $estado = (Array) $xml->uf;
         $cidade = (Array) $xml->cidade;
         $bairro = (Array) $xml->bairro;

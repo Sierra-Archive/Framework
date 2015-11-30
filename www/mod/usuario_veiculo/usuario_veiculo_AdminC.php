@@ -102,7 +102,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
                 <a title="Editar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_carregajanelaEdit/'.$valor['id'].'/" acao="">
                 <img alt="Editar" src="'.WEB_URL.'img/turboadmin/icon_edit.png">
                 </a>
-                <a confirma="Deseja realmente deletar esse veiculo?" title="Deletar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_Del/'.$valor['id'].'/" acao="">
+                <a confirma="Deseja realmente deletar esse veiculo?" title="Deletar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_del/'.$valor['id'].'/" acao="">
                 <img alt="Deletar" src="'.WEB_URL.'img/turboadmin/icon_bad.png">
                 </a>';
                 ++$i;
@@ -118,10 +118,10 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     /**
     * Deleta Veiculo
     * 
-    * @name veiculos_Del
+    * @name veiculos_del
     * @access public
     * 
-    * @uses usuario_veiculo_AdminModelo::$veiculos_Del
+    * @uses usuario_veiculo_AdminModelo::$veiculos_del
     * @uses \Framework\App\Visual::$Json_IncluiTipo
     * @uses usuario_veiculo_AdminControle::$veiculos_lista
     * 
@@ -130,11 +130,11 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 2.0
     */
-    public function veiculos_Del($id){
+    public function veiculos_del($id){
         global $language;
         
     	$id = (int) $id;
-    	$sucesso = $this->_Modelo->veiculos_Del($id);
+    	$sucesso = $this->_Modelo->veiculos_del($id);
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',

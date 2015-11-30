@@ -66,7 +66,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
                 //$tabela['#Id'][$i]       = '#'.$valor->id;
                 $tabela['Nome'][$i]      = $valor->nome;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Marca/Marcas_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Marca/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Marca/Marcas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

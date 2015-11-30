@@ -48,7 +48,7 @@ class predial_AdvertenciaControle extends predial_Controle
             $tabela['Data do Ocorrido'][$i] = $valor->data_acontecimento;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Advertência'        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Advertência'       ,'predial/Advertencia/Advertencias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Advertência ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Advertência'       ,'predial/Advertencia/Advertencias_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Advertência ?'));
             ++$i;
         }
         return Array($tabela,$i);

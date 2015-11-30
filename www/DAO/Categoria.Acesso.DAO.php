@@ -87,6 +87,11 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
     }
     private static function Mod_Acesso(){
         return Array(
+            'Agenda_financas'               => Array(                
+                'nome'      =>  'Tipo de Finanças',  
+                'chave_nome'=>  'Financeiro',              
+                'chave'     =>  'Agenda_financas',
+             ),
             'Agenda|Pasta'                  => Array(                
                 'nome'      =>  'Tipo de Pasta',   
                 'chave_nome'=>  'Pastas',             
@@ -122,13 +127,11 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave_nome'=>  'Finanças',             
                 'chave'     =>  'Financeiro_Financa',
              ),
-            // Modulos de Noticias
             'noticia'                       => Array(                
                 'nome'      =>  'Tipo de Noticia',   
                 'chave_nome'=>  'Noticias',             
                 'chave'     =>  'noticia',
              ),
-            // Modulos de Gerencia de Predios
             'predial|Advertencia'           => Array(                
                 'nome'      =>  'Tipo de Advertência',  
                 'chave_nome'=>  'Advertência',              
@@ -159,7 +162,6 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave_nome'=>  'Veiculos',             
                 'chave'     =>  'predial_Veiculo',
              ),
-            // Modulos de Projetos
             'projeto'                       => Array(                
                 'nome'      =>  'Tipo de Projeto',   
                 'chave_nome'=>  'Projetos',             
@@ -170,8 +172,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'chave_nome'=>  'Tarefas de Projetos',             
                 'chave'     =>  'projeto_Tarefa',
              ),
-            // Modulos de Usuario
-            'usuario|grupo'       => Array(                
+            'usuario'       => Array(                
                 'nome'      =>  'Tipo de Grupo',  
                 'chave_nome'=>  'Grupos',              
                 'chave'     =>  'usuario_grupo',
@@ -185,36 +186,6 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'nome'      =>  'Tipo de Equipamento', 
                 'chave_nome'=>  'Equipamentos',               
                 'chave'     =>  'usuario_veiculo_Equipamento',
-             ),
-            // Modulos de Transporte
-            'Transporte|Caminhao'   => Array(                
-                'nome'      =>  'Tipo de Autonômo', 
-                'chave_nome'=>  'Caminhões',               
-                'chave'     =>  'Transporte_Caminhao',
-             ),
-            // Modulos de Transporte
-            'Transporte|Armazem'   => Array(                
-                'nome'      =>  'Tipo de Armazém', 
-                'chave_nome'=>  'Armazens',               
-                'chave'     =>  'Transporte_Armazem',
-             ),
-            // Modulos de Transporte
-            'Transporte|Transportadora'   => Array(                
-                'nome'      =>  'Tipo de Transportadora', 
-                'chave_nome'=>  'Transportadoras',               
-                'chave'     =>  'Transporte_Transportadora',
-             ),
-            // Modulos de Transporte
-            'Transporte|Fornecedor'   => Array(                
-                'nome'      =>  'Tipo de Fornecedor', 
-                'chave_nome'=>  'Fornecedores',               
-                'chave'     =>  'Transporte_Fornecedor',
-             ),
-            // Modulos de Noticias
-            'Seguranca'                       => Array(                
-                'nome'      =>  'Tipo de Segurança',   
-                'chave_nome'=>  'Segurança',             
-                'chave'     =>  'Seguranca',
              ),
         );
     }
@@ -232,7 +203,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
             foreach($percorrer as &$value){
                 if(strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
-            throw new \Exception('Categoria de Acesso não encontrado. Tipo:'.$tipo,404);
+            throw new \Exception('Categoria de Acesso não encontrado.',404);
         }else{
             $array = Array();
             // Percorre os modulos que aceitam categorias
@@ -250,7 +221,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 // Verifica se o modulo é permitido
                 if(\Framework\App\Sistema_Funcoes::Perm_Modulos($modulo,$submodulo)){
                    $array[] = $value;
-                }
+                } 
             }
             return $array;
         }
@@ -259,11 +230,11 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
         // Percorre os modulos que aceitam categorias
         $percorrer = self::Mod_Acesso();
         foreach($percorrer as &$value){
-            if(strtoupper($chave)===strtoupper($value['chave'])){
+            if($chave==$value['chave']){
                 return $value['nome'];
             }
         }
-        throw new \Exception('Categoria de Acesso não encontrado. '.$chave,404);
+        throw new \Exception('Categoria de Acesso não encontrado.',404);
     }
     public static function Mod_Acesso_Get_Chave(){
         $repassar = self::Mod_Acesso_Get();

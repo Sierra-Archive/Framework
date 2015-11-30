@@ -17,14 +17,14 @@ class banner_AdminModelo extends banner_Modelo
         parent::__construct();
     }
     /**
-     * @name banners_Del
+     * @name banners_del
      * @param type $id
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    /*public function banners_Del($id){
+    /*public function banners_del($id){
         $this->db->query('UPDATE '.MYSQL_BANNERS.' SET deletado=1, status=0 WHERE id='.$id);
         
         return 1;

@@ -77,7 +77,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
                 $tabela['Nome'][$i]                 = $valor->nome;
                 $tabela['Tempo de Resposta'][$i]    = $valor->tempocli.' horas';
                 $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Assunto'        ,'usuario_mensagem/Assunto/Assuntos_Edit/'.$valor->id.'/'    ,'')).
-                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Assunto ?'));
+                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Assunto'       ,'usuario_mensagem/Assunto/Assuntos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Assunto ?'));
                 ++$i;
             }
             if($export!==false){

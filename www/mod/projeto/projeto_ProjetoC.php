@@ -504,7 +504,7 @@ class projeto_ProjetoControle extends projeto_Controle
         }
         
         $i = 0;
-        $html = '<a title="Adicionar Comentário de Projeto" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'projeto/Projeto/Projetos_Comentario_Add/'.$projeto_id.'">Adicionar novo comentário nesse Projeto</a><div class="space15"></div>';
+        $this->_Visual->Blocar('<a title="Adicionar Comentário de Projeto" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'projeto/Projeto/Projetos_Comentario_Add/'.$projeto_id.'">Adicionar novo comentário nesse Projeto</a><div class="space15"></div>');
         $comentario = $this->_Modelo->db->Sql_Select('Projeto_Comentario',$where);
         if($comentario!==false && !empty($comentario)){
             if(is_object($comentario)) $comentario = Array(0=>$comentario);
@@ -514,13 +514,13 @@ class projeto_ProjetoControle extends projeto_Controle
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
                 $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Projeto'        ,'projeto/Projeto/Projetos_Comentario_Edit/'.$projeto_id.'/'.$valor->id.'/'    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Projeto'       ,'projeto/Projeto/Projetos_Comentario_Del/'.$projeto_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Projeto ?'));
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Projeto'       ,'projeto/Projeto/Projetos_Comentario_del/'.$projeto_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Projeto ?'));
                 ++$i;
             }
-            $html .= $this->_Visual->Show_Tabela_DataTable($tabela,'', false, false, Array(Array(0,'desc')));
+            $html = $this->_Visual->Show_Tabela_DataTable($tabela,'', false, false, Array(Array(0,'desc')));
             unset($tabela);
         }else{
-            $html .= '<center><b><font color="#FF0000" size="5">Nenhum Comentário do Projeto</font></b></center>';
+            $html = '<center><b><font color="#FF0000" size="5">Nenhum Comentário do Projeto</font></b></center>';
         }
         
         $titulo = 'Comentários do Projeto ('.$i.')';

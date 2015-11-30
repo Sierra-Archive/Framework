@@ -17,9 +17,6 @@ final Class Usuario_Social_DAO extends Framework\App\Dao
     protected $bairro;
     protected $numero;
     protected $complemento;
-    protected $favorito;
-    protected $paixao;
-    protected $confianca;
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
         return MYSQL_USUARIO_SOCIAL;
     }
@@ -453,90 +450,6 @@ final Class Usuario_Social_DAO extends Framework\App\Dao
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => ''
-                    )
-                )
-            ),
-            Array(
-                'mysql_titulo'      => 'favorito',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 15,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Favorito',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'range',
-                        'class'             => '',
-                        'range_min'         => '0',
-                        'range_max'         => '5',
-                    )
-                )
-            ),
-            Array(
-                'mysql_titulo'      => 'paixao',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 15,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Paixão',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => '',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'range',
-                        'class'             => '',
-                        'range_min'         => '0',
-                        'range_max'         => '5',
-                    )
-                )
-            ),
-            Array(
-                'mysql_titulo'      => 'confianca',
-                'mysql_tipovar'     => 'int', //varchar, int, 
-                'mysql_tamanho'     => 15,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
-                'edicao'            => Array(
-                    'Nome'              => 'Confiança',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => 'obrigatorio',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'range',
-                        'class'             => '',
-                        'range_min'         => '0',
-                        'range_max'         => '5',
                     )
                 )
             )

@@ -65,7 +65,7 @@ class Financeiro_BancoControle extends Financeiro_Controle
                 $tabela['Nome'][$i]      = $valor->nome;
                 $tabela['Funções'][$i]   = /*$this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Banco'    ,'Financeiro/Banco/Bancos_View/'.$valor->id.'/'    ,'')).*/
                                            $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Banco'        ,'Financeiro/Banco/Bancos_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Banco'       ,'Financeiro/Banco/Bancos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Banco ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Banco'       ,'Financeiro/Banco/Bancos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Banco ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

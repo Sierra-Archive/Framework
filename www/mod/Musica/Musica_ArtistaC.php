@@ -59,7 +59,7 @@ class Musica_ArtistaControle extends Musica_Controle
             $tabela['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Artista/Status/'.$valor->id.'/'    ,'')).'</span>';
             $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Albuns do Artista'    ,'Musica/Album/Albuns/'.$valor->id.'/'    ,'')).
                                                         $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Artista'        ,'Musica/Artista/Artistas_Edit/'.$valor->id.'/'    ,'')).
-                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Artista'       ,'Musica/Artista/Artistas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Artista ?'));
+                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Artista'       ,'Musica/Artista/Artistas_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Artista ?'));
             ++$i;
         }
         return Array($tabela,$i);

@@ -46,7 +46,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
             $tabela['Qnt de Unidades'][$i]          =   $valor->unidades;
             $tabela['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Empreendimento'    ,'Engenharia/Unidade/Main/'.$valor->id.'/'    ,'')).
                                                         $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Empreendimento'        ,'Engenharia/Empreendimento/Empreendimentos_Edit/'.$valor->id.'/'    ,'')).
-                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Empreendimento'       ,'Engenharia/Empreendimento/Empreendimentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Empreendimento ?'));
+                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Empreendimento'       ,'Engenharia/Empreendimento/Empreendimentos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Empreendimento ?'));
             ++$i;
         }
         return Array($tabela,$i);

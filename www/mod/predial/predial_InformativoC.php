@@ -45,7 +45,7 @@ class predial_InformativoControle extends predial_Controle
             $tabela['Data Inicio'][$i]      = $valor->data_inicio;
             $tabela['Data Fim'][$i]      = $valor->data_fim;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Informativo'        ,'predial/Informativo/Informativos_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Informativo'       ,'predial/Informativo/Informativos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Informativo ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Informativo'       ,'predial/Informativo/Informativos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Informativo ?'));
             ++$i;
         }
         return Array($tabela,$i);

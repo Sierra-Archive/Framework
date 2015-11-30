@@ -45,7 +45,7 @@ final Class Session {
             self::init();
         }
         if(isset($_SESSION[$clave])){
-            return \anti_injection($_SESSION[$clave]);
+            return $_SESSION[$clave];
         }
         return false;
     }

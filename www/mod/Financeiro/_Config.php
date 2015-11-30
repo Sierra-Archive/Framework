@@ -12,20 +12,10 @@ $config_Modulo = function (){
 };
 $config_Menu = function (){
     return Array(
-        'Relatório' => Array(
+        'Relatórios' => Array(
             'Filhos'                => Array('Financeiro'=>Array(
                 'Nome'                  => 'Financeiro',
                 'Link'                  => 'Financeiro/Relatorio/Relatorio',
-                'Gravidade'             => 3,
-                'Img'                   => 'money',
-                'Icon'                  => 'money',
-                'Filhos'                => false,
-            ),),
-        ),
-        'Gráfico' => Array(
-            'Filhos'                => Array('Gráfico'=>Array(
-                'Nome'                  => 'Financeiro',
-                'Link'                  => 'Financeiro/Relatorio/Grafico_Relatorio',
                 'Gravidade'             => 2,
                 'Img'                   => 'money',
                 'Icon'                  => 'money',
@@ -263,15 +253,6 @@ $config_Permissoes = function (){
             'Modulo'                => 'Financeiro', // Modulo Referente
             'SubModulo'             => 'Relatorio',   // Submodulo Referente
             'Metodo'                => 'Relatorio',  // Metodos referentes separados por virgula
-        ),
-        Array(
-            'Nome'                  => 'Financeiro (Gráfico) -  Visualizar',
-            'Desc'                  => '',
-            'Chave'                 => 'Financeiro_Relatorio_Grafico_Relatorio',
-            'End'                   => 'Financeiro/Relatorio/Grafico_Relatorio', // Endereco que deve conter a url para permitir acesso
-            'Modulo'                => 'Financeiro', // Modulo Referente
-            'SubModulo'             => 'Relatorio',   // Submodulo Referente
-            'Metodo'                => 'Grafico_Relatorio',  // Metodos referentes separados por virgula
         ),
         
         // Financas

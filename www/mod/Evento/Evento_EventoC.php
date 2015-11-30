@@ -61,7 +61,7 @@ class Evento_EventoControle extends Evento_Controle
             }
             $tabela['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    ,'')).'</span>'.            
                                             $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    ,'')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'));
+                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'));
             ++$i;
         }
         return Array($tabela,$i);
@@ -92,7 +92,7 @@ class Evento_EventoControle extends Evento_Controle
             list($tabela,$i) = self::Eventos_Tabela($eventos);
             // SE exportar ou mostra em tabela
             if($export!==false){
-                self::Export_Todos($export,$tabela, 'Eventos');
+                self::Export_Todos($export,$tabela, 'Blocos');
             }else{
                 $this->_Visual->Show_Tabela_DataTable(
                     $tabela,     // Array Com a Tabela

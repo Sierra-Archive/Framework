@@ -69,24 +69,24 @@ class Musica_VideoControle extends Musica_Controle
                 if($album!==false && $album!=0){
                     if($musica!==false && $musica!=0){
                         $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
-                        $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
+                        $del_url    = 'Musica/Video/Videos_del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
                     }else{
                         $tabela['Musica'][$i]   = $valor->musica2;
                         $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
-                        $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
+                        $del_url    = 'Musica/Video/Videos_del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
                     }
                 }else{
                     $tabela['Album'][$i]     = $valor->album2;
                     $tabela['Musica'][$i]   = $valor->musica2;
                     $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/';
-                    $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/';
+                    $del_url    = 'Musica/Video/Videos_del/'.$valor->id.'/'.$valor->artista.'/';
                 }
             }else{
                 $tabela['Artista'][$i]   = $valor->artista2;
                 $tabela['Album'][$i]     = $valor->album2;
                 $tabela['Musica'][$i]   = $valor->musica2;
                 $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/';
-                $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/';
+                $del_url    = 'Musica/Video/Videos_del/'.$valor->id.'/';
             }
             if($valor->foto==='' || $valor->foto===false){
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';

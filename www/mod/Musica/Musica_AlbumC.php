@@ -53,10 +53,10 @@ class Musica_AlbumControle extends Musica_Controle
                 
                 $tabela['Artista'][$i]   = $valor->artista2;
                 $edit_url   = 'Musica/Album/Albuns_Edit/'.$valor->id.'/';
-                $del_url    = 'Musica/Album/Albuns_Del/'.$valor->id.'/';
+                $del_url    = 'Musica/Album/Albuns_del/'.$valor->id.'/';
             }else{
                 $edit_url   = 'Musica/Album/Albuns_Edit/'.$valor->id.'/'.$valor->artista.'/';
-                $del_url    = 'Musica/Album/Albuns_Del/'.$valor->id.'/'.$valor->artista.'/';
+                $del_url    = 'Musica/Album/Albuns_del/'.$valor->id.'/'.$valor->artista.'/';
             }
             if($valor->foto==='' || $valor->foto===false){
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';

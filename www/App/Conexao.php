@@ -159,9 +159,8 @@ final class Conexao
      */
     public function query($sql,$autoreparo=true) 
     {
-        $tempo = new \Framework\App\Tempo('Conexao Query');
+        //$tempo = new \Framework\App\Tempo('Conexao Query');
         $passar = true;
-        //echo "\n\n<br><br>".$sql;
         while(!$re = $this->mysqli->query($sql)) {
             $erro = $this->mysqli->error;
             if(SISTEMA_DEBUG===true){
@@ -175,37 +174,6 @@ final class Conexao
         }
         //var_dump($sql,'final',$re);
         return $re;
-    }
-    public function multi_query($sql,$autoreparo=true) 
-    {
-        $tempo = new \Framework\App\Tempo('Conexao MultiQuery');
-        $passar = true;
-        //echo "\n\n<br><br>".$sql;
-        if ($this->mysqli->multi_query($sql/*,MYSQLI_ASYNC*/)) {
-            //return true;
-            do {
-                /* store first result set */
-                if ($result = $this->mysqli->store_result()) {
-                    /*while ($row = $result->fetch_row()) {
-                        printf("%s\n", $row[0]);
-                    }*/
-                    $result->free();
-                }
-                /* print divider */
-                if ($this->mysqli->more_results()) {
-                    //printf("-----------------\n");
-                }else break;
-            } while ($this->mysqli->next_result());
-        }else{
-            $erro = $this->mysqli->error;
-            if(SISTEMA_DEBUG===true){
-                echo '#QUERY:'.$sql.'n\n<br \>ERRO:'.$erro."\n\n<br \><br \>";
-            }
-            throw new \Exception('Erro de Query MULTIPLA: '.$erro,3110);
-        }
-        //var_dump($sql,'final',$re);
-        return true;
-        
     }
     public function ultimo_id(){
         return $this->mysqli->insert_id;
@@ -221,7 +189,7 @@ final class Conexao
      * #update ... Invez de fazxer varias conexoes, armazena tudo em uma variavel, e faz uma conexao só no final
      */
     protected function Sql_Log($tabela,$campos,$valores,$tipo='Update'){
-        $tempo = new \Framework\App\Tempo('Log');
+        //$tempo = new \Framework\App\Tempo('Log');
         $query = 'INSERT INTO '.MYSQL_LOG_SQL.' (tabela,campos,valores) VALUES (\''.$tabela.'\',\''.$campos.'\',\''.$valores.'\',\''.APP_HORA.'\')';
         $this->query($query,true);
         
@@ -420,7 +388,7 @@ final class Conexao
                             $inf_campo .= $valor['mysql_tipovar'];		
                             // text e blog nao aceita default
                             if(strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false){
-                                if(isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME'){
+                                if($valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE'){
                                     $inf_campo .= '('.$valor['mysql_tamanho'].')';
                                 }
                                 if($valor['mysql_null'] === false && $valor['mysql_default'] !== false){
@@ -525,7 +493,7 @@ final class Conexao
                         $query .= '`'.$valor['mysql_titulo'].'` '.$valor['mysql_tipovar'];		
                         // text e blog nao aceita default
                         if(strpos($valor['mysql_tipovar'], 'TEXT')===false && strpos($valor['mysql_tipovar'], 'BLOG')===false){
-                            if(isset($valor['mysql_tamanho']) && $valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE' && $valor['mysql_tipovar']!='TIME'){
+                            if($valor['mysql_tamanho']  !==false && $valor['mysql_tipovar']!='DATETIME' && $valor['mysql_tipovar']!='DATE'){
                                 $query .= '('.$valor['mysql_tamanho'].')';
                             }
                             if($valor['mysql_null'] === false && $valor['mysql_default'] !== false && $valor['mysql_autoadd']===false){
@@ -626,10 +594,10 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Sql_Inserir(&$Objeto,$tempo=true,$retorna=false){
+    public function Sql_Inserir(&$Objeto,$tempo=true){
         if($tempo){
             $temponome  = 'Inserir';
-            $tempo2   = new \Framework\App\Tempo($temponome);
+            //$imprimir   = new \Framework\App\Tempo($temponome);
         }
         if(is_object($Objeto)){
             $sql = 'Insert '.call_user_func(array($Objeto, 'Get_Nome')).' ';
@@ -666,26 +634,13 @@ final class Conexao
                     else            $sql2 .= ', '.$valor_add;
                 }
             }
-            $sql .= $sql1.') VALUES '.$sql2.');';
-            //echo $sql;
-            if($retorna){
-                return $sql;
-            }else{
-                return $this->query($sql);
-            }
-            
+            $sql .= $sql1.') VALUES '.$sql2.')';
+            $this->query($sql);
             return true;
         }else if(is_array($Objeto)){
-            $sql = '';
             foreach($Objeto as &$valor){
-                $sql .= $this->Sql_Inserir($valor,true,true);
+                $this->Sql_Inserir($valor);
             }
-            if($retorna){
-                return $sql;
-            }else{
-                return $this->multi_query($sql);
-            }
-            
             return true;
         }else{
             return false;
@@ -732,7 +687,7 @@ final class Conexao
                 $sql .= '; ';
             }
             // Executa as Querys
-            $this->multi_query($sql,true);
+            $this->query($sql,true);
         }
         return true;
     }
@@ -751,24 +706,17 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
-    public function Sql_Update(&$Objeto, $log=true,$tempo=true,$retornar=false){
+    public function Sql_Update(&$Objeto, $log=true,$tempo=true){
         if($tempo){
             $temponome  = 'Update';
-            $tempo2   = new \Framework\App\Tempo($temponome);
+            //$imprimir   = new \Framework\App\Tempo($temponome);
         }
         $tempo = new \Framework\App\Tempo('Conexao_Update');  
         if(is_array($Objeto)){
             reset($Objeto);
-            $sql = '';
             while (key($Objeto) !== null) {
-                $sql .= $this->Sql_Update($Objeto[key($Objeto)],true,true,true);
+                self::Sql_Update($Objeto[key($Objeto)]);
                 next($Objeto);
-            }            
-            // Executa ou retorna sql
-            if($retornar){
-                return $sql;
-            }else{
-                return $this->multi_query($sql,true);
             }
             return true;
         }else if(is_object($Objeto)){
@@ -812,21 +760,13 @@ final class Conexao
                 next($primarias);
             }
             // Executa query #update
-            if($retornar){
-                return $sql.';';
-            }else{
-                return $this->query($sql,true);
-            }
+            $this->query($sql,true);
             return true;
         }else{
             $edicao = explode('|', $Objeto);
             
             $sql = 'UPDATE '.call_user_func(array($edicao[0].'_DAO', 'Get_Nome')).' SET '.$edicao[1].', log_date_edit=\''.APP_HORA.'\', log_user_edit=\''.\Framework\App\Acl::Usuario_GetID_Static().'\' WHERE '.$edicao[2];
-            if($retornar){
-                return $sql.';';
-            }else{
-                return $this->query($sql,true);
-            }
+            $this->query($sql,true);
         }
     }
     private function Sql_Select_Comeco($class_dao,$campos){
@@ -1056,7 +996,7 @@ final class Conexao
         if($limit===false) $limit = 0;
         /*if($tempo){
             $temponome  = $class_dao.' - '.  serialize($condicao).$limit.$order_by;
-            $tempo2   = new \Framework\App\Tempo('Select Completo');
+            //$imprimir   = new \Framework\App\Tempo('Select Completo');
         }*/
         //echo "\n\n\n".$class_dao;
         $tempo = new \Framework\App\Tempo('Conexao_Select');   
@@ -1330,7 +1270,7 @@ final class Conexao
         
         // Executa query
         // 
-        //echo $sql."<br><br>\n\n\n";
+        //if(!$tempo) echo $sql."<br><br>\n\n\n";
         if($tempo){
             unset($condicaotempo);
         }
@@ -1734,7 +1674,7 @@ final class Conexao
      * @version 0.0.1
      */
     private static function Tabelas_Variaveis_Gerar(){
-        $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
+        //$tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
         $tabelas        = &self::$tabelas;
         $siglas         = &self::$tabelas_siglas;
         $links          = &self::$tabelas_Links;
@@ -1855,64 +1795,38 @@ final class Conexao
      * @version 0.0.1
      */
     protected function Tabelas(){
+        //$tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
         $tabelas        = &self::$tabelas;
         $tabelas_ext    = &self::$tabelas_ext;
-        if(defined('TEMP_DEPENDENCIA_DAO')){
-            $arquivos = unserialize(TEMP_DEPENDENCIA_DAO);
-            var_dump($arquivos);
-            if(!empty($arquivos)){
-                foreach($arquivos as $arquivo){
-                    $arquivo = $arquivo.'_DAO';
-                    $arquivo_nome           = $arquivo::Get_Nome();
-                    $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
-                    $sigla = &$tabelas[$arquivo_nome]['sigla'];
-
-                    // Aproveita o while e Pega as extrangeiras
-                    $resultado_unico = new $arquivo();
-                    $extrangeira    = $resultado_unico->Get_Extrangeiras();
-                    if($extrangeira!==false){
-                        reset($extrangeira);
-                        while (key($extrangeira) !== null) {
-                            $current = current($extrangeira);
-                            list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
-
-                            // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
-                            $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
-                            next($extrangeira);
-                        }
+        
+        // Carrega Todos os DAO
+        $diretorio = dir(DAO_PATH);  
+        
+        // Percorre Diretório
+        while($arquivo = $diretorio -> read()){
+            if(strpos($arquivo, 'DAO.php')!==false){
+                $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
+                $arquivo_nome           = $arquivo::Get_Nome();
+                $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
+                $sigla = &$tabelas[$arquivo_nome]['sigla'];
+                
+                // Aproveita o while e Pega as extrangeiras
+                $resultado_unico = new $arquivo();
+                $extrangeira    = $resultado_unico->Get_Extrangeiras();
+                if($extrangeira!==false){
+                    reset($extrangeira);
+                    while (key($extrangeira) !== null) {
+                        $current = current($extrangeira);
+                        list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
+                        
+                        // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
+                        $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
+                        next($extrangeira);
                     }
                 }
             }
-        }else{
-            $tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
-            // Carrega Todos os DAO
-            $diretorio = dir(DAO_PATH);
-            // Percorre Diretório
-            while($arquivo = $diretorio -> read()){
-                if(strpos($arquivo, 'DAO.php')!==false){
-                    $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
-                    $arquivo_nome           = $arquivo::Get_Nome();
-                    $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
-                    $sigla = &$tabelas[$arquivo_nome]['sigla'];
-
-                    // Aproveita o while e Pega as extrangeiras
-                    $resultado_unico = new $arquivo();
-                    $extrangeira    = $resultado_unico->Get_Extrangeiras();
-                    if($extrangeira!==false){
-                        reset($extrangeira);
-                        while (key($extrangeira) !== null) {
-                            $current = current($extrangeira);
-                            list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
-
-                            // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
-                            $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
-                            next($extrangeira);
-                        }
-                    }
-                }
-            }
-            $diretorio -> close();
         }
+        $diretorio -> close();       
     }
     /**
     * Retorna Subcategorias que sao de outras tabelas
@@ -1935,13 +1849,48 @@ final class Conexao
     private function logurl(){
         global $_SERVER;
         $idusuario = \Framework\App\Acl::Usuario_GetID_Static();
-        $cliente_navegador      = $_SERVER["HTTP_USER_AGENT"];
-        $cliente_ip             = $_SERVER['REMOTE_ADDR'];
-        $server_post            = serialize($_POST);
-        $server_get             = serialize($_GET);
-        $server_requisitado     = $_SERVER['HTTP_HOST'];
-        $server_scriptname      = $_SERVER['SCRIPT_FILENAME'];
+        $cliente_navegador      = htmlspecialchars(serialize(\Framework\App\Conexao::anti_injection(Sistema_Funcoes::Detectar_Navegador())), ENT_QUOTES);
+        $cliente_ip             = isset($_SERVER['REMOTE_ADDR']) ? strtolower($_SERVER['REMOTE_ADDR']) : 'Desconhecido';
+        $server_post            = htmlspecialchars(serialize(\Framework\App\Conexao::anti_injection($_POST)), ENT_QUOTES);
+        $server_get             = htmlspecialchars(serialize(\Framework\App\Conexao::anti_injection($_GET)), ENT_QUOTES);
+        $server_requisitado     = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'Desconhecido';
+        $server_scriptname      = isset($_SERVER['SCRIPT_FILENAME']) ? strtolower($_SERVER['SCRIPT_FILENAME']) : 'Desconhecido';
         $this->query('INSERT INTO '.MYSQL_LOGURL.' (servidor,ip,cliente_pc,url,server_get,server_post,user,tempo,cfg_localscript,log_date_add) VALUES (\''.$server_requisitado.'\',\''.$cliente_ip.'\',\''.$cliente_navegador.'\',\''.SERVER_URL.'\',\''.$server_get.'\',\''.$server_post.'\',\''.$idusuario.'\',\''.(microtime(true)-TEMPO_COMECO).'\',\''.$server_scriptname.'\',\''.APP_HORA.'\')');
+    }
+    /**
+     *     SEGURANÇA - Antiinjection
+     * @param type $sql
+     * @return type
+     * 
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.4.2
+     */
+    static public function anti_injection($sql,$tags=false){
+        $Registro = &\Framework\App\Registro::getInstacia();
+        if($Registro->_Conexao===false){
+            $Registro->_Conexao = new \Framework\App\Conexao();
+        }
+	if(!is_object($Registro->_Conexao)){ return $sql; }
+        return $Registro->_Conexao->EscapeSql($sql,$tags);
+    }
+    public function EscapeSql($sql,$tags=false){
+	return $sql;
+         if(is_array($sql)){
+             $seg = Array();
+             foreach($sql as $indice=>&$valor){
+                 $seg[$this->EscapeSql($indice)] = $this->EscapeSql($valor,$tags);
+             }
+             $sql = $seg;
+         }else{
+            // remove palavras que contenham sintaxe sql
+            $sql = addcslashes($this->mysqli->real_escape_string($sql), '%_');
+            if($tags===false){
+                $sql = strip_tags($sql);//tira tags html e php
+            }
+         }
+         return $sql;
+        
     }
     /**
     * Destruidor

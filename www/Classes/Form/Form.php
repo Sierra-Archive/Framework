@@ -41,7 +41,7 @@ class Form
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 2.0
     */
-    public function __construct($id = 'formulario',$endereco = '', $classe='', $layoult="mini",$ColunaTipo='horizontal',$autocomplete='on') { //layoult pode ser comprimido, completo, ajax
+    public function __construct($id = 'formulario',$endereco = '', $classe='', $layoult="mini",$ColunaTipo='horizontal') { //layoult pode ser comprimido, completo, ajax
         // Puxa Registro
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->_Visual     = &$this->_Registro->_Visual;
@@ -66,8 +66,7 @@ class Form
                 'end'               => $endereco.$extra,
                 'layoult'           => $this->layoult,
                 'form_dependencia'  => $this->form_dependencia,
-                'ColunaForm'        => $ColunaTipo,
-                'AutoComplete'      => $autocomplete
+                'ColunaForm'        => $ColunaTipo
             )
         );
         $this->form = $this->_Visual->renderizar_bloco('template_form',$config);

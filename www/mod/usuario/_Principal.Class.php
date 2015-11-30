@@ -74,7 +74,7 @@ class usuario_Principal implements PrincipalInterface
                     '<a confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
                 }
                 $tabela['Funções'][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_del/'.$valor->id.'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($tabela);;

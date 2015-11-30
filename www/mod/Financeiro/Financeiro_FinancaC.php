@@ -63,7 +63,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
                 $tabela['Valor'][$i]            = $valor->valor;
                 $tabela['Data Pago'][$i]        = $valor->data;
                 /*$tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Finança'        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Finança'       ,'Financeiro/Financa/Financas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Finança ?'));*/
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Finança'       ,'Financeiro/Financa/Financas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Finança ?'));*/
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, true, Array(Array(0,'asc')));

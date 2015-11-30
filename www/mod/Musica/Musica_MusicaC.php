@@ -59,17 +59,17 @@ class Musica_MusicaControle extends Musica_Controle
                 $tabela['Album'][$i]   = $valor->album2;
                 $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/';
                 $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/';
-                $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/';
+                $del_url    = 'Musica/Musica/Musicas_del/'.$valor->id.'/';
             }else{
                 if($album===false || $album==0){
                     $tabela['Album'][$i]   = $valor->album2;
                     $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/'.$valor->album.'/';
                     $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/'.$valor->artista.'/';
-                    $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/'.$valor->artista.'/';
+                    $del_url    = 'Musica/Musica/Musicas_del/'.$valor->id.'/'.$valor->artista.'/';
                 }else{
                     $view_url   = 'Musica/Video/Videos/'.$valor->artista.'/'.$valor->album.'/'.$valor->id.'/';
                     $edit_url   = 'Musica/Musica/Musicas_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
-                    $del_url    = 'Musica/Musica/Musicas_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->i.'/';
+                    $del_url    = 'Musica/Musica/Musicas_del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->i.'/';
                 }
             }
             $tabela['Musica'][$i]           = $valor->nome;

@@ -83,10 +83,6 @@ class Modelo
         foreach($menu as &$valor){
             // Inicia Dao Inserir
             $inserir                = new \Sistema_Menu_DAO();
-            // Se nao existir cria erro
-            if(!isset($valor['Link'])){
-                throw new \Exception('Erro no Código: '.  serialize($valor),2800);
-            }
             // SE for Duplo, pega só um 
             if(is_array($valor['Link']))         $valor['Link']         = $valor['Link'][0];
             if(is_array($valor['Nome']))         $valor['Nome']         = $valor['Nome'][0];

@@ -51,10 +51,10 @@ class Engenharia_UnidadeControle extends Engenharia_Controle
                 
                 $tabela['Empreendimento'][$i]   = $valor->empreendimento2;
                 $edit_url   = 'Engenharia/Unidade/Unidades_Edit/'.$valor->id.'/';
-                $del_url    = 'Engenharia/Unidade/Unidades_Del/'.$valor->id.'/';
+                $del_url    = 'Engenharia/Unidade/Unidades_del/'.$valor->id.'/';
             }else{
                 $edit_url   = 'Engenharia/Unidade/Unidades_Edit/'.$valor->id.'/'.$valor->empreendimento.'/';
-                $del_url    = 'Engenharia/Unidade/Unidades_Del/'.$valor->id.'/'.$valor->empreendimento.'/';
+                $del_url    = 'Engenharia/Unidade/Unidades_del/'.$valor->id.'/'.$valor->empreendimento.'/';
             }
             $tabela['Unidade'][$i]          = $valor->unidade;
             $tabela['Metragem'][$i]         = $valor->metragem;

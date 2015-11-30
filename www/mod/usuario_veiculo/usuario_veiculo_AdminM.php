@@ -18,14 +18,14 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
       parent::__construct();
     }
     /**
-     * @name veiculos_Del
+     * @name veiculos_del
      * @param type $id
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function veiculos_Del($id){
+    public function veiculos_del($id){
 
         $this->db->query('UPDATE '.MYSQL_USUARIO_VEICULO.' SET deletado=1 WHERE deletado!=1 AND id='.$id);
         

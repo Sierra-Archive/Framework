@@ -114,7 +114,7 @@ class usuario_social_PersonaControle extends usuario_social_Controle
                 $tabela['Sexo'][$i]             = $sexo;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Ficada de Pessoa'        ,'usuario_social/Persona/Personas_View/'.$valor->id.'/'    ,'')).
                                                   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pessoa'        ,'usuario_social/Persona/Personas_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pessoa'       ,'usuario_social/Persona/Personas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Pessoa ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pessoa'       ,'usuario_social/Persona/Personas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Pessoa ?'));
                 ++$i;
             }
             if($export!==false){
@@ -292,7 +292,7 @@ class usuario_social_PersonaControle extends usuario_social_Controle
                 $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
                 $tabela['Data'][$i]         =   $valor->log_date_add;
                 $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Persona'        ,'usuario_social/Persona/Personas_Comentario_Edit/'.$persona_id.'/'.$valor->id.'/'    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Persona'       ,'usuario_social/Persona/Personas_Comentario_Del/'.$persona_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Persona ?'));
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Persona'       ,'usuario_social/Persona/Personas_Comentario_del/'.$persona_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Persona ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));

@@ -56,7 +56,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    ,'')).
                                               $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'));
             ++$i;
         }
         return Array($tabela,$i);

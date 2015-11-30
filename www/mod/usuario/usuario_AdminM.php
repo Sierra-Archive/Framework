@@ -17,7 +17,7 @@ class usuario_AdminModelo extends usuario_Modelo
         parent::__construct();
     }
     /**
-     * @name usuarios_Del
+     * @name usuarios_del
      * @param type $id
      * @return int
      * 
@@ -26,7 +26,7 @@ class usuario_AdminModelo extends usuario_Modelo
      * 
      * #update
      */
-    /*public function usuarios_Del($id){
+    /*public function usuarios_del($id){
 
         $this->db->query('UPDATE '.MYSQL_USUARIOS.' SET deletado=1, ativado=0 WHERE id='.$id);
         

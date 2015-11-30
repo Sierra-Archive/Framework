@@ -65,7 +65,7 @@ class Enquete_RespostaControle extends Enquete_Controle
             $tabela['Votos'][$i]            = $valor->qnt_votos.' / '.$qnt_votos_totais;
             $tabela['Data Registrado'][$i]  = $valor->log_date_add;
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Resposta'        ,'Enquete/Resposta/Respostas_Edit/'.$valor->enquete.'/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,'Enquete/Resposta/Respostas_Del/'.$valor->enquete.'/'.$valor->id.'/'     ,'Deseja realmente deletar essa Resposta ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Resposta'       ,'Enquete/Resposta/Respostas_del/'.$valor->enquete.'/'.$valor->id.'/'     ,'Deseja realmente deletar essa Resposta ?'));
             ++$i;
         }
         return Array($tabela,$i);

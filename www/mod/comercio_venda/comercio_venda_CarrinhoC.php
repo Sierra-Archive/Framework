@@ -557,7 +557,7 @@ class comercio_venda_CarrinhoControle extends comercio_venda_Controle
                 $tabela['Status'][$i]    = ($valor->status==1)?'Funcionando':'Parada';
                 $tabela['Ocupado'][$i]   = ($valor->ocupado==1)?'Ocupado':'Livre';
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Mesa'        ,'comercio_venda/Carrinho/Mesas_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Mesa'       ,'comercio_venda/Carrinho/Mesas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mesa ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Mesa'       ,'comercio_venda/Carrinho/Mesas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Mesa ?'));
                 ++$i;
             }
             if($export!==false){

@@ -10,6 +10,11 @@ class locais_localidadesControle extends locais_Controle
     }
     public function cep(){
         // Controla
+        if(isset($_POST['pais'])){
+            $pais = \anti_injection($_POST['pais']);
+        }else{
+            $pais = '1'; // Brasil
+        }
         if(isset($_POST['estado'])){
             $estado = \anti_injection($_POST['estado']);
         }else{
@@ -50,11 +55,26 @@ class locais_localidadesControle extends locais_Controle
         };
         // Estado
         if($estado!='falso'){
-            $where      =   Array('sigla'=>$estado);
+            $where      =   Array('sigla'=>$estado,'pais'=>$pais);
             $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', $where, 1);
-            $id_estado = $opcoes->id;
-            $where      =   Array('!sigla'=>$estado,'!id'=>$id_estado,'pais'=>$opcoes->pais);
+            $where      =   Array('!sigla'=>$estado);
+            // Verifica Se Estado Escolhido Existe
+            if(is_object($opcoes)){
+                $id_estado = $opcoes->id;
+                $where['pais'] = $opcoes->pais;
+                $where['!id'] = $id_estado;
+            }else{
+                $mensagem = 'Estado não Existe '."\n";
+                $mensagem .= 'Estado: '.$estado."\n";
+                $mensagem .= 'Cidade: '.$cidade."\n";
+                $mensagem .= 'Bairro: '.$bairro;
+                self::log($mensagem, 'Informações');
+                $id_estado = false;
+                $where['pais'] = $pais;
+                $cidade = 'falso';
+            }
             $html       =   $imprimir($opcoes,1);
+            // Procura as outras opcoes
             $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Estado', $where);
             $html       .=  $imprimir($opcoes);
             // Json
@@ -68,8 +88,21 @@ class locais_localidadesControle extends locais_Controle
             if($cidade!='falso'){
                 $where      =   Array('estado'=>$id_estado,'nome'=>$cidade);
                 $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', $where, 1);
-                $id_cidade = $opcoes->id;
-                $where      =   Array('!nome'=>$cidade,'!id'=>$id_cidade,'estado'=>$id_estado);
+                $where      =   Array('estado'=>$id_estado);
+                // Verifica Se Estado Escolhido Existe
+                if(is_object($opcoes)){
+                    $id_cidade = $opcoes->id;
+                    $where['!nome'] = $cidade;
+                    $where['!id'] = $id_cidade;
+                }else{
+                    $mensagem = 'Cidade não Existe '."\n";
+                    $mensagem .= 'Estado: '.$estado."\n";
+                    $mensagem .= 'Cidade: '.$cidade."\n";
+                    $mensagem .= 'Bairro: '.$bairro;
+                    self::log($mensagem, 'Informações');
+                    $id_cidade = false;
+                    $bairro = 'falso';
+                }
                 $html       =   $imprimir($opcoes,1);
                 $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Cidade', $where);
                 $html       .=  $imprimir($opcoes);
@@ -82,10 +115,21 @@ class locais_localidadesControle extends locais_Controle
                 $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 // Bairro
                 if($bairro!='falso'){
+                    // Procura Selecionado
                     $where      =   Array('cidade'=>$id_cidade,'nome'=>$bairro);
                     $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where, 1);
-                    $where      =   Array('!nome'=>$bairro,'!id'=>$opcoes->id,'cidade'=>$id_cidade);
+                    $where      =   Array('!nome'=>$bairro,'cidade'=>$id_cidade);
+                    if(is_object($opcoes)){
+                        $where['!id'] = $opcoes->id;
+                    }else{
+                        $mensagem = 'Bairro não Existe '."\n";
+                        $mensagem .= 'Estado: '.$estado."\n";
+                        $mensagem .= 'Cidade: '.$cidade."\n";
+                        $mensagem .= 'Bairro: '.$bairro;
+                        self::log($mensagem, 'Informações');
+                    }
                     $html       =   $imprimir($opcoes,1);
+                    // Procura Outros Resultados e Imprimi
                     $opcoes     =   $this->_Modelo->db->Sql_Select('Sistema_Local_Bairro', $where);
                     $html       .=  $imprimir($opcoes);
                     // Json
@@ -97,14 +141,28 @@ class locais_localidadesControle extends locais_Controle
                     $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
                 }
             }
+        }else{
+            //Cep Não Reconhecido
+            $mensagens = array(
+                "tipo"              => 'erro',
+                "mgs_principal"     => __('Cep Inválido'),
+                "mgs_secundaria"    => __('Cep não Reconhecido pelos Corrêios')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Javascript_Executar(
+                    '$("#cep").css(\'border\', \'2px solid #FFAEB0\').focus();'
+            );
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->layoult_zerar = false; 
+            return false;
         }
         $this->_Visual->Json_Info_Update('Historico', false);
     }/*
     public function bairro_popup(){
-        global $language;
+        
         // CADASTRA EVENTOS
         $form = new \Framework\Classes\Form('popcadastrarbairro','locais/localidades/bairro_inserir/','formajax');
-        $form->Input_Novo($language['usuarios']['form']['nome'],'nome','','text', 30);	
+        $form->Input_Novo(__('Nome'),'nome','','text', 30);	
         $form->Select_Novo('Zona do Bairro','zona');
         $form->Select_Opcao('Norte','norte',0);
         $form->Select_Opcao('Leste','leste',0);
@@ -121,11 +179,11 @@ class locais_localidadesControle extends locais_Controle
                 'title' => 'Cadastrar Bairro',
                 'botoes' => array(
                     '0' => array(
-                        'text' => $language['formularios']['cadastrar'],
+                        'text' => __('Salvar'),
                         'clique' =>  'var params = $("#popcadastrarbairro").serialize();  Control_PopMgs_Carregando(\'total\');  Modelo_Ajax_Chamar(\'locais/localidades/bairro_inserir\',params,\'POST\',true);$(this).dialog(\'close\');'
                     ),
                     '1' => array(
-                        'text' => $language['formularios']['cancelar'],
+                        'text' => __('Cancelar'),
                         'clique' => '$(this).dialog(\'close\');'
                     )
                 ),
@@ -134,14 +192,13 @@ class locais_localidadesControle extends locais_Controle
             $this->_Visual->Json_IncluiTipo('Popup',$popup);
             echo $this->_Visual->Json_Retorna();
         }else{
-            $formulario = $form->retorna_form($language['formularios']['cadastrar']);
+            $formulario = $form->retorna_form(__('Salvar'));
             $this->_Visual->Blocar($formulario);
-            $this->_Visual->Bloco_Maior_CriaJanela('Cadastrar Bairro');
+            $this->_Visual->Bloco_Maior_CriaJanela(__('Cadastrar Bairro'));
             $this->_Visual->renderizar(1,$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi);
         }	
     }
     public function bairro_inserir(){
-        global $language;
         // CARREGA VARIAIVES DO FORMULARIO E VARIAVIES PADROES
         $nome = \anti_injection($_POST["nome"]);
         $zona = \anti_injection($_POST["zona"]);
@@ -157,8 +214,8 @@ class locais_localidadesControle extends locais_Controle
         if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['usuarios']['cadastro']['sucesso1'],
-                "mgs_secundaria" => $language['usuarios']['cadastro']['sucesso2']
+                "mgs_principal" => __('Cadastro realizado com sucesso'),
+                "mgs_secundaria" => __('Confira seu email para pegar sua senha.')
             );
             $tamanho = sizeof($bairros);
             for($i=0;$i<$tamanho;++$i){
@@ -175,8 +232,8 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
@@ -187,106 +244,101 @@ class locais_localidadesControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
-    public function Paises(){
+    public function Países(){
         $i = 0;
-        $this->_Visual->Blocar('<a title="Adicionar Pais" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo Pais</a><div class="space15"></div>');
+        $this->_Visual->Blocar('<a title="Adicionar País" class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'locais/localidades/Paises_Add">Adicionar novo País</a><div class="space15"></div>');
         $setores = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais');
         if($setores!==false && !empty($setores)){
             if(is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
-                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pais'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pais'       ,'locais/localidades/Paises_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Pais ?'));
+                $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar País'        ,'locais/localidades/Paises_Edit/'.$valor->id.'/'    ,'')).
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar País'       ,'locais/localidades/Paises_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse País ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);
             unset($tabela);
         }else{       
-            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Pais</font></b></center>');
+            $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum País</font></b></center>');
         }
-        $titulo = 'Listagem de Paises ('.$i.')';
+        $titulo = __('Listagem de Paises').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Paises');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Países'));
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Pais';
-        $titulo2    = 'Salvar Pais';
+        $titulo1    = __('Adicionar País');
+        $titulo2    = __('Salvar País');
         $formid     = 'form_Sistema_Admin_Paises';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Paises_Add2/';
         $campos = Sistema_Local_Pais_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
-     * 
-     * @global Array $language
+     * Retorno de Add Paises
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Add2(){
-        $titulo     = 'Pais Adicionado com Sucesso';
+        $titulo     = __('País Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Pais';
         $funcao     = '$this->Paises();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Pais cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('País cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Edit($id){
         // Carrega Config
-        $titulo1    = 'Editar Pais (#'.$id.')';
-        $titulo2    = 'Alteração de Pais';
+        $titulo1    = 'Editar País (#'.$id.')';
+        $titulo2    = __('Alteração de País');
         $formid     = 'form_Sistema_AdminC_PaisEdit';
-        $formbt     = 'Alterar Pais';
+        $formbt     = __('Alterar País');
         $formlink   = 'locais/localidades/Paises_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Pais',$id);
         $campos = Pais_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
     }
     /**
-     * 
-     * @global Array $language
-     * @param type $id
+     * Retorno de Editar Paises
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Edit2($id){
-        $titulo     = 'Pais Editado com Sucesso';
+        $titulo     = __('País Editado com Sucesso');
         $dao        = Array('Sistema_Local_Pais',$id);
         $funcao     = '$this->Paises();';
-        $sucesso1   = 'Pais Alterado com Sucesso.';
+        $sucesso1   = __('País Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
-     * 
-     * @global Array $language
-     * @param type $id
+     * Deletar Paises
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Paises_Del($id){
-        global $language;
-        
     	$id = (int) $id;
         // Puxa setor e deleta
         $setor = $this->_Modelo->db->Sql_Select('Sistema_Local_Pais', Array('id'=>$id));
@@ -295,27 +347,27 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Pais deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('País deletado com sucesso')
             );
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
         $this->Paises();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Pais deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('País deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados(){
         $i = 0;
@@ -335,55 +387,55 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Estado</font></b></center>');
         }
-        $titulo = 'Listagem de Estados ('.$i.')';
+        $titulo = __('Listagem de Estados').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Estados');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Estados'));
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Estado';
-        $titulo2    = 'Salvar Estado';
+        $titulo1    = __('Adicionar Estado');
+        $titulo2    = __('Salvar Estado');
         $formid     = 'form_Sistema_Admin_Estados';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Estados_Add2/';
         $campos = Sistema_Local_Estado_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Add2(){
-        $titulo     = 'Estado Adicionado com Sucesso';
+        $titulo     = __('Estado Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Estado';
         $funcao     = '$this->Estados();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Estado cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Estado cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Estado (#'.$id.')';
-        $titulo2    = 'Alteração de Estado';
+        $titulo2    = __('Alteração de Estado');
         $formid     = 'form_Sistema_AdminC_EstadoEdit';
-        $formbt     = 'Alterar Estado';
+        $formbt     = __('Alterar Estado');
         $formlink   = 'locais/localidades/Estados_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Estado',$id);
         $campos = Sistema_Local_Estado_DAO::Get_Colunas();
@@ -391,29 +443,29 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
-     * @param type $id
+     * 
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Edit2($id){
-        $titulo     = 'Estado Editado com Sucesso';
+        $titulo     = __('Estado Editado com Sucesso');
         $dao        = Array('Sistema_Local_Estado',$id);
         $funcao     = '$this->Estados();';
-        $sucesso1   = 'Estado Alterado com Sucesso.';
+        $sucesso1   = __('Estado Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
      * 
-     * @global Array $language
-     * @param type $id
+     * 
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Estados_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -423,27 +475,27 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Estado deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Estado deletado com sucesso')
             );
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
         $this->Estados();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Estado deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Estado deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades(){
         $i = 0;
@@ -463,55 +515,55 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Cidade</font></b></center>');
         }
-        $titulo = 'Listagem de Cidades ('.$i.')';
+        $titulo = __('Listagem de Cidades').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Cidades');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Cidades'));
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Cidade';
-        $titulo2    = 'Salvar Cidade';
+        $titulo1    = __('Adicionar Cidade');
+        $titulo2    = __('Salvar Cidade');
         $formid     = 'form_Sistema_Admin_Cidades';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Cidades_Add2/';
         $campos = Sistema_Local_Cidade_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Add2(){
-        $titulo     = 'Cidade Adicionada com Sucesso';
+        $titulo     = __('Cidade Adicionada com Sucesso');
         $dao        = 'Sistema_Local_Cidade';
         $funcao     = '$this->Cidades();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Cidade cadastrada com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Cidade cadastrada com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Cidade (#'.$id.')';
-        $titulo2    = 'Alteração de Cidade';
+        $titulo2    = __('Alteração de Cidade');
         $formid     = 'form_Sistema_AdminC_CidadeEdit';
-        $formbt     = 'Alterar Cidade';
+        $formbt     = __('Alterar Cidade');
         $formlink   = 'locais/localidades/Cidades_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Cidade',$id);
         $campos = Sistema_Local_Cidade_DAO::Get_Colunas();
@@ -519,29 +571,29 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
-     * @param type $id
+     * 
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Edit2($id){
-        $titulo     = 'Cidade Editada com Sucesso';
+        $titulo     = __('Cidade Editada com Sucesso');
         $dao        = Array('Sistema_Local_Cidade',$id);
         $funcao     = '$this->Cidades();';
-        $sucesso1   = 'Cidade Alterada com Sucesso.';
+        $sucesso1   = __('Cidade Alterada com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
      * 
-     * @global Array $language
-     * @param type $id
+     * 
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Cidades_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -551,27 +603,27 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Cidade deletada com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Cidade deletada com sucesso')
             );
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
         $this->Cidades();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Cidade deletada com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Cidade deletada com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros(){
         $i = 0;
@@ -591,55 +643,55 @@ class locais_localidadesControle extends locais_Controle
         }else{
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Bairro</font></b></center>');
         }
-        $titulo = 'Listagem de Bairros ('.$i.')';
+        $titulo = __('Listagem de Bairros').' ('.$i.')';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         
         //Carrega Json
-        $this->_Visual->Json_Info_Update('Titulo','Administrar Bairros');
+        $this->_Visual->Json_Info_Update('Titulo', __('Administrar Bairros'));
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Add(){
         // Carrega Config
-        $titulo1    = 'Adicionar Bairro';
-        $titulo2    = 'Salvar Bairro';
+        $titulo1    = __('Adicionar Bairro');
+        $titulo2    = __('Salvar Bairro');
         $formid     = 'form_Sistema_Admin_Bairros';
-        $formbt     = 'Salvar';
+        $formbt     = __('Salvar');
         $formlink   = 'locais/localidades/Bairros_Add2/';
         $campos = Sistema_Local_Bairro_DAO::Get_Colunas();
         \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
     }
     /**
      * 
-     * @global Array $language
+     * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Add2(){
-        $titulo     = 'Bairro Adicionado com Sucesso';
+        $titulo     = __('Bairro Adicionado com Sucesso');
         $dao        = 'Sistema_Local_Bairro';
         $funcao     = '$this->Bairros();';
-        $sucesso1   = 'Inserção bem sucedida';
-        $sucesso2   = 'Bairro cadastrado com sucesso.';
+        $sucesso1   = __('Inserção bem sucedida');
+        $sucesso2   = __('Bairro cadastrado com sucesso.');
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
     }
     /**
      * 
-     * @param type $id
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Edit($id){
         // Carrega Config
         $titulo1    = 'Editar Bairro (#'.$id.')';
-        $titulo2    = 'Alteração de Bairro';
+        $titulo2    = __('Alteração de Bairro');
         $formid     = 'form_Sistema_AdminC_BairroEdit';
-        $formbt     = 'Alterar Bairro';
+        $formbt     = __('Alterar Bairro');
         $formlink   = 'locais/localidades/Bairros_Edit2/'.$id;
         $editar     = Array('Sistema_Local_Bairro',$id);
         $campos = Sistema_Local_Bairro_DAO::Get_Colunas();
@@ -647,29 +699,29 @@ class locais_localidadesControle extends locais_Controle
     }
     /**
      * 
-     * @global Array $language
-     * @param type $id
+     * 
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Edit2($id){
-        $titulo     = 'Bairro Editado com Sucesso';
+        $titulo     = __('Bairro Editado com Sucesso');
         $dao        = Array('Sistema_Local_Bairro',$id);
         $funcao     = '$this->Bairros();';
-        $sucesso1   = 'Bairro Alterado com Sucesso.';
+        $sucesso1   = __('Bairro Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
         $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);   
     }
     /**
      * 
-     * @global Array $language
-     * @param type $id
+     * 
+     * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 3.1.1
      */
     public function Bairros_Del($id){
-        global $language;
+        
         
     	$id = (int) $id;
         // Puxa setor e deleta
@@ -679,21 +731,21 @@ class locais_localidadesControle extends locais_Controle
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',
-                "mgs_principal" => 'Deletado',
-                "mgs_secundaria" => 'Bairro deletado com sucesso'
+                "mgs_principal" => __('Deletado'),
+                "mgs_secundaria" => __('Bairro deletado com sucesso')
             );
     	}else{
             $mensagens = array(
                 "tipo" => 'erro',
-                "mgs_principal" => $language['mens_erro']['erro'],
-                "mgs_secundaria" => $language['mens_erro']['erro']
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Erro')
             );
         }
         $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
         
         $this->Bairros();
         
-        $this->_Visual->Json_Info_Update('Titulo', 'Bairro deletado com Sucesso');  
+        $this->_Visual->Json_Info_Update('Titulo', __('Bairro deletado com Sucesso'));  
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }

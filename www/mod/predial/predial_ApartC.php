@@ -46,7 +46,7 @@ class predial_ApartControle extends predial_Controle
                 $tabela['Morador'][$i]          = '<p class="text-error">Não Registrado</p>';
             }
             $tabela['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Apartamento'        ,'predial/Apart/Aparts_Edit/'.$valor->id.'/'    ,'')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Apartamento'       ,'predial/Apart/Aparts_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Apartamento ?'));
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Apartamento'       ,'predial/Apart/Aparts_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Apartamento ?'));
             ++$i;
         }
         return Array($tabela,$i);

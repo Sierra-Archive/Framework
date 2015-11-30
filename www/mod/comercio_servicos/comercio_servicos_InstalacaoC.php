@@ -111,7 +111,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
                 $tabela['Valor Add de Gás'][$i]     = $valor->valor_gas;
                 $tabela['Valor Add de Linha'][$i]   = $valor->valor_linha;
                 $tabela['Funções'][$i]              = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Btu / Equipamento'        ,'comercio_servicos/Instalacao/Btu_Edit/'.$valor->id.'/'    ,'')).
-                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Btu / Equipamento'       ,'comercio_servicos/Instalacao/Btu_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Btu ?'));
+                                                      $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Btu / Equipamento'       ,'comercio_servicos/Instalacao/Btu_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Btu ?'));
                 ++$i;
             }
             if($export!==false){
@@ -260,7 +260,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
                 $tabela['Tipo'][$i]             = $valor->nome;
                 $tabela['Valor'][$i]            = $valor->valor;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Suporte'        ,'comercio_servicos/Instalacao/Suporte_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Suporte'       ,'comercio_servicos/Instalacao/Suporte_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Suporte ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Suporte'       ,'comercio_servicos/Instalacao/Suporte_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Suporte ?'));
                 ++$i;
             }
             if($export!==false){

@@ -75,12 +75,6 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                     'formtipo'          => 'input', // input, select, textarea
                     'input'             => array( // Indice respectivamente -> input, select, textarea, igual acima
                         'tipo'              => 'text', // text, password, hidden, etc..
-                        /**
-                         * Caso o tipo seja range pode ter mais dois em seguida
-                         * 
-                        'range_min'         => '0',
-                        'range_max'         => '5',
-                         */
                         'class'             => 'obrigatorio', // obrigatorio -> Torna o Campo Obrigatorio
                                                               // Tambem Pode Colocar qualquer outra classe, que ira entrar no input
                     ),

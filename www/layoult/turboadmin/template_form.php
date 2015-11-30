@@ -6,9 +6,9 @@
     }
 
     if($params['Opcao']['end']!=''){ ?>
-        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> action="<?php echo $params['Opcao']['url']; ?><?php echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
+        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> action="<?php echo $params['Opcao']['url']; ?><?php echo $params['Opcao']['end']; ?>" method="post" enctype="multipart/form-data">
     <?php }else{ ?>
-        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data" autocomplete="<?php echo $params['Opcao']['AutoComplete']; ?>">
+        <form id="<?php echo $params['Opcao']['id']; ?>"<?php echo $c['a']['s']; ?> action="<?php echo $params['Opcao']['url']; ?>" method="post" enctype="multipart/form-data">
     <?php } ?>
     <?php if($params['Opcao']['layoult']==='full'){ ?><ul class="align-list"><?php } ?>
 

@@ -1,5 +1,4 @@
 <?php  
-$tempo = new \Framework\App\Tempo('AutoLoad');
 /**
  *  SISTEMA DE AUTO LOAD
  * @param type $class
@@ -11,17 +10,6 @@ define('DAO_PATH'       , ROOT_PADRAO.'DAO'.DS);
 // AUTOLOAD
 function __autoload($class){
     $original = $class;
-    
-    // Carrega Dao
-    if(strpos($class, '_DAO')!==false){
-        $class = str_replace(Array('_'), Array('.'), $class);
-        if( file_exists  (DAO_PATH . $class.'.php')){
-            require_once (DAO_PATH . $class.'.php');
-        }else{
-            throw new \Exception('Classe Dao não encontrada'.$class, 2802);
-            return true;
-        }
-    }
     
     // Se for Classe App
     if(strpos($class, 'Framework\App')!==false){
@@ -49,6 +37,17 @@ function __autoload($class){
         }
     }
     
+    // Carrega Dao
+    if(strpos($class, '_DAO')!==false){
+        $class = str_replace(Array('_'), Array('.'), $class);
+        if( file_exists  (DAO_PATH . $class.'.php')){
+            require_once (DAO_PATH . $class.'.php');
+        }else{
+            throw new \Exception('Classe Dao não encontrada'.$class, 2802);
+            return true;
+        }
+    }
+    
     // Principal
     if(substr($class, -10)==='_Principal'){
         $class = str_replace('_Principal', '', $class);
@@ -67,7 +66,7 @@ function __autoload($class){
             require_once (INTER_PATH.$class.'.Interface.php');
             return true;
         }else{
-            throw new \Exception('Interface não encontrada: '.$class, 2802);
+            throw new \Exception('Interface não encontrada'.$class, 2802);
         }
     }
     
@@ -115,8 +114,6 @@ function __autoload($class){
     if($submodulo!=''){
         if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php')){
             require_once (MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php');
-        }else if( file_exists  (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php')){
-            require_once (MOD_PATH . $modulo.DS.$modulo.'_'.ucwords($submodulo).$tipo[0].'.php');
         }else{
             throw new \Exception('Classe Submodulo não encontrada: '.MOD_PATH . $modulo.DS.$modulo.'_'.$submodulo.$tipo[0].'.php', 2802);
         }
@@ -138,19 +135,25 @@ if(
   ){
     require_once (INI_PATH_TEMP.SRV_NAME.'/config.php');
     require_once (INI_PATH_TEMP.SRV_NAME.'/config_modulos.php');
-    
-    require_once (INI_PATH_TEMP.'config.php');
 }else{
-    require_once (INI_PATH_TEMP.'config.php');
+    
+    // SISTEMA CONFIG
+    define('INI_PATH'       , ROOT_PADRAO      .'Ini'      .DS);
+    define('LIB_PATH'       , ROOT_PADRAO      .'libs'     .DS);
+    define('CLASS_PATH'     , ROOT_PADRAO      .'Classes'  .DS);
+    define('INTER_PATH'     , ROOT_PADRAO      .'Interface'.DS);
+    define('MOD_PATH'       , ROOT_PADRAO      .'mod'      .DS);
     throw new \Exception('Config não encontrado', 2828); //
 }
+require_once (INI_PATH_TEMP.'config.php');
+
+    
 // SISTEMA CONFIG
 define('INI_PATH'       , ROOT      .'Ini'      .DS);
 define('LIB_PATH'       , ROOT      .'libs'     .DS);
 define('CLASS_PATH'     , ROOT      .'Classes'  .DS);
 define('INTER_PATH'     , ROOT      .'Interface'.DS);
 define('MOD_PATH'       , ROOT      .'mod'      .DS);
-
 
 /***********************************************************
  * CONTROLE DE ERROS
@@ -161,7 +164,7 @@ define('MOD_PATH'       , ROOT      .'mod'      .DS);
 // Fuder tudo com Variavies nao inicializadas, afim de nao deixar ter perda de performace
 function Erro_Get_Leve($error, $message,$_1,$_2)
 {
-    //echo var_dump($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
+    echo var_dump($message.'<br>Arquivo: '.$_1.'<br>Linha:'.$_2,3100);
     if(SISTEMA_DEBUG===true){
         if($error == 8)
         {
@@ -197,25 +200,65 @@ function Erro_Get_Fatal() {
 }
 function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace = false) {
     require_once APP_PATH . 'Funcao'.'.php';
-    if($trace===false) $trace = print_r( debug_backtrace( false ), true );
+    if($trace===false) $trace = debug_backtrace( false );
+    
     
     if(isset($_GET['url'])){
-        $url = \anti_injection($_GET['url']);
+        $url = htmlspecialchars($_GET['url']);
     }else{
         $url = '';
     }
 
-    $content  = '<table><thead bgcolor=\'#c8c8c8\'><th>Item</th><th>Descricao</th></thead><tbody>';
-    $content .= '<tr valign=\'top\'><td><b>Error</b></td><td><pre>'.$errstr.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Errno</b></td><td><pre>'.$errno.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Arquivo</b></td><td>'.$errfile.'</td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Linha</b></td><td>'.$errline.'</td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Traco</b></td><td><pre>'.$trace.'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Previa</b></td><td><pre>'.$previ.'</pre></td></tr>';
+    $content  = '<table><thead bgcolor=\'#c8c8c8\'><th>Item</th><th>Descrição</th></thead><tbody>';
+    $content .= '<tr valign=\'top\'><td><b>Error</b></td><td><pre>'.htmlspecialchars($errstr, ENT_QUOTES).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Errno</b></td><td><pre>'.htmlspecialchars($errno, ENT_QUOTES).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Arquivo</b></td><td>'.htmlspecialchars($errfile, ENT_QUOTES).'</td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Linha</b></td><td>'.htmlspecialchars($errline, ENT_QUOTES).'</td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Previa</b></td><td><pre>'.htmlspecialchars($previ, ENT_QUOTES).'</pre></td></tr>';
     $content .= '<tr valign=\'top\'><td><b>Extra</b></td><td><pre>-----------</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.\anti_injection($url).'</pre></td></tr>';
-    $content .= '<tr valign=\'top\'><td><b>Logado</b></td><td><pre>'.\Framework\App\Session::get(SESSION_ADMIN_LOG).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Logado</b></td><td><pre>'.SESSION_ADMIN_LOG.'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>Url</b></td><td><pre>'.htmlspecialchars($url).'</pre></td></tr>';
+    $content .= '<tr valign=\'top\'><td><b>POST</b></td><td><pre>'.htmlspecialchars(print_r($_POST,true)).'</pre></td></tr>';
     $content .= '</tbody></table>';
+    
+    
+    if(is_array($trace)){
+        $content .= '<h2>Traço</h2>';
+        $content .= '<table><thead bgcolor=\'#c8c8c8\'><th>Arquivo/Linha</th><th>Função</th><th>Argumentos</th></thead><tbody>';
+        while(!empty($trace)){
+            $linha = array_pop($trace);
+            if(isset($linha['file'])){
+                $file = $linha['file'];
+            }else{
+                $file = 'Nao Reconhecido';
+            }
+            if(isset($linha['line'])){
+                $line = $linha['line'];
+            }else{
+                $line = 'Nao Reconhecido';
+            }
+            if(isset($linha['function'])){
+                $function = $linha['function'];
+            }else{
+                $function = 'Nao Reconhecido';
+            }
+            $content .= '<tr valign=\'top\'><td><b>'.$linha['file'].':'.$linha['line'].'</b></td>'.
+                    '<td><pre>'.$linha['function'].'</pre></td>';
+            
+            $content .= '<td>';
+            $i = 1;
+            foreach($linha['args'] as &$valor){
+                if($i>1) $content .= '<br>';
+                $content .= '<b>'.$i.':</b> '.htmlspecialchars(print_r($valor,true), ENT_QUOTES);
+                ++$i;
+            }
+            $content .= '</td>';
+            
+            $content .= '</tr>';
+        }
+        $content .= '</tbody></table>';
+    }
+    
 
     return $content;
 }
@@ -269,16 +312,13 @@ define('LIBS_PATH',         ROOT.'libs'.DS);
 define('ARQ_URL',           URL_PATH.'arq'.US.SRV_NAME_SQL.US);
 define('ARQ_PATH',          ROOT.'arq'.DS.SRV_NAME_SQL.DS);
 define('CACHE_PATH',        ROOT.'Cache'.DS.SRV_NAME_SQL.DS);
-define('LANG_PATH',         ROOT.'lang'.DS.SISTEMA_LINGUAGEM.DS);
-
-define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
-define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
+define('LANG_PATH',         ROOT.'i18n'.DS);
 // Cria e da Permissao na Pasta de Arquivos principal
 if(!is_dir(ROOT.'arq'.DS)){
     mkdir (ROOT.'arq'.DS, 0777 );
 }
-if(!is_dir(ROOT.'Temp'.DS)){
-    mkdir (ROOT.'Temp'.DS, 0777 );
+if(!is_dir(ROOT.'Cache'.DS)){
+    mkdir (ROOT.'Cache'.DS, 0777 );
 }
 //chmod (URL_PATH.'arq'.DS, 0777 );
 // Permissao de Pasta do Servidor
@@ -288,9 +328,6 @@ if(!is_dir(ARQ_PATH)){
 if(!is_dir(CACHE_PATH)){
     mkdir (CACHE_PATH, 0777 );
 }
-if(!is_dir(TEMP_PATH)){
-    mkdir (TEMP_PATH, 0777 );
-}
 
 // Linguagem e Pacote de Funcoes
 require_once    APP_PATH . 'Funcao.php';
@@ -299,83 +336,36 @@ define('SERVER_URL',           $_SERVER['REQUEST_URI']);
 
 
 
-
-
-
-
-// SE TIVER CONFIGURACAO GERADA PELO FRAMEWORK ABRE
-if(file_exists(INI_PATH.SRV_NAME.DS.'_temp.php')){
-    require_once(INI_PATH.SRV_NAME.DS.'_temp.php');
+/**
+ * Carrega Funções de Internaciolização
+ */
+$textdomain = "Framework";
+if (isset($_GET['locale']) && !empty($_GET['locale'])){
+    define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
+}else{
+    define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
+}
+putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
+putenv('LANG=' . SISTEMA_LINGUAGEM);
+putenv('LC_ALL=' . SISTEMA_LINGUAGEM);
+putenv('LC_MESSAGES=' . SISTEMA_LINGUAGEM);
+require_once(LIBS_PATH.'i18n'.DS.'gettext.inc');
+_setlocale(LC_ALL, SISTEMA_LINGUAGEM);
+_setlocale(LC_CTYPE, SISTEMA_LINGUAGEM);
+_bindtextdomain($textdomain, LANG_PATH);
+_bind_textdomain_codeset($textdomain, 'UTF-8');
+_textdomain($textdomain);
+/**
+ * Além de Traduzir o Texto, ele da um Echo Automaticamente
+ * 
+ * @param string $string Texto a Ser Traduzido
+ * 
+ * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+ * @version 3.1.1
+ */
+function _e($string) {
+  echo __($string);
 }
 
 
-
-
-
-
-
-
-
-
-unset($tempo);
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-$tempo = new \Framework\App\Tempo('Teeste1');
-$i = 0;
-$config = Array();
-while($i<1000){
-    $config_Modulo = function (){
-        return Array(
-            'Nome'                      =>  'Agenda',
-            'Descrição'                 =>  '',
-            'System_Require'            =>  '2.21.1',
-            'Version'                   =>  '0.0.1',
-            'Dependencias'              =>  false,
-        );
-    };
-    ++$i;
-    $config    = array_merge_recursive($config,$config_Modulo()   );
-}
-unset($tempo);
-
-$tempo = new \Framework\App\Tempo('Teeste2');
-$i = 0;
-$config = Array();
-while($i<1000){
-    $config_Modulo = Array(
-        'Nome'                      =>  'Agenda',
-        'Descrição'                 =>  '',
-        'System_Require'            =>  '2.21.1',
-        'Version'                   =>  '0.0.1',
-        'Dependencias'              =>  false,
-    );
-    ++$i;
-    $config    = array_merge_recursive($config,$config_Modulo   );
-}
-unset($tempo);
-
-$tempo = new \Framework\App\Tempo('Teeste3');
-$i = 0;
-$config = Array();
-while($i<1000){
-    $config['Nome']= 'Agenda';
-    $config['Descrição']                 =  '';
-     $config['System_Require']            =  '2.21.1';
-     $config['Version']                   =  '0.0.1';
-    $config['Dependencias']              =  false;
-    ++$i;
-}
-unset($tempo);*/
 ?>

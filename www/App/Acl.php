@@ -34,8 +34,8 @@ class Acl{
         $this->_Registro    = &\Framework\App\Registro::getInstacia();
         $this->_db          = &$this->_Registro->_Conexao;
         $this->_Request     = &$this->_Registro->_Request;
-        $tempo = new \Framework\App\Tempo('Acl - Construct');
-        if($id!==false){
+        //$tempo = new \Framework\App\Tempo('Acl - Construct');
+        if($id){
             // Caso esteja carregando de outro usuario
             $this->_id = (int) $id;
         }else{
@@ -61,16 +61,18 @@ class Acl{
                 \Framework\App\Controle::Tema_Travar();
             }else
             // CASO NAO TENHA FEITO LOGIN, E NEM PREENCHIDO O 
-            if(!isset($_POST['sistema_login']) && !isset($_POST['sistema_senha']) && \Framework\App\Session::get(SESSION_ADMIN_LOG)===false && \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false){
+            if((!isset($_POST['sistema_login']) || !isset($_POST['sistema_senha'])) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false)){
                 $this->logado           = false;
             }else
             // Caso nao tenha sessao quer dizer que tem POST
             // se nao tiver sessao, verifica se o post foi acessado, caso contrario verifica se a sessao corresponde ao usuario e senha
-            if(isset($_POST['sistema_login']) && isset($_POST['sistema_senha']) && (\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)=='')){
+            if(\Framework\App\Session::get(SESSION_ADMIN_LOG)===false || \Framework\App\Session::get(SESSION_ADMIN_SENHA)===false || \Framework\App\Session::get(SESSION_ADMIN_LOG)=='' || \Framework\App\Session::get(SESSION_ADMIN_SENHA)==''){
                 // Puxa Login E senha e verifica cadastro
+	if(!isset($_POST['sistema_login']) || !isset($_POST['sistema_senha'])){
+                $this->logado           = false;
+            }else{
                 $login = \anti_injection($_POST['sistema_login']);
                 $senha = \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['sistema_senha']);
-                //var_dump($login,$senha);
                 $this->logado = $this->Usuario_Senha_Verificar($login, $senha);
                 
                 // Avisa se login nao teve resultado
@@ -119,7 +121,7 @@ class Acl{
                 }else{
                     $this->_id = \Framework\App\Session::get(SESSION_ADMIN_ID);
                 }
-            }else{
+            }}else{
                 $usuario = \Framework\App\Session::get(SESSION_ADMIN_LOG);
                 $senha   = \Framework\App\Session::get(SESSION_ADMIN_SENHA);
                 $this->logado = $this->Usuario_Senha_Verificar($usuario, $senha);
@@ -133,10 +135,16 @@ class Acl{
                 }
             }
             // SE A PAGINA FOR PROIBIDA PARA USUARIOS DESLOGADOS TRAVA
-            if(TEMA_LOGIN===true && $this->logado===false && $this->_Request->getSubModulo()!=='erro' && $this->_Request->getSubModulo()!=='Recurso' && $this->_Request->getSubModulo()!=='localidades'){
-                $visual = new \Framework\App\Visual();
-                $visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
-                \Framework\App\Controle::Tema_Travar();
+            if($this->logado===false && TEMA_LOGIN===true && $this->_Request->getSubModulo()!=='erro'){
+                
+                if(LAYOULT_IMPRIMIR==='AJAX'){
+                    \Framework\App\Sistema_Funcoes::Erro('5060');
+                    \Framework\App\Controle::Tema_Travar();
+                }else{
+                    $visual = new \Framework\App\Visual();
+                    $visual->renderizar_login(/*$this->calendario,$this->config_dia,$this->config_mes,$this->config_ano,$this->config_dataixi*/);
+                    \Framework\App\Controle::Tema_Travar();
+                }
             }            
         }
         self::$Sis_Permissao = $this->_db->Sql_Select('Sistema_Permissao');
@@ -684,9 +692,7 @@ class Acl{
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Menu');
         // Le todos arquivos Menus dos modulos permitidos
         $ponteiro   = Array('_Sistema' => '_Sistema');
-        if(function_exists('config_modulos')){
-            $ponteiro   = array_merge($ponteiro,config_modulos());
-        }
+        $ponteiro   = array_merge($ponteiro,config_modulos());
         $config     = Array();
         reset($ponteiro);
         while (key($ponteiro) !== null) {
@@ -708,9 +714,7 @@ class Acl{
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Permissoes');
         // Le todos arquivos Menus dos modulos permitidos
         $ponteiro   = Array('_Sistema' => '_Sistema');
-        if(function_exists('config_modulos')){
-            $ponteiro   = array_merge($ponteiro,config_modulos());
-        }
+        $ponteiro   = array_merge($ponteiro,config_modulos());
         $config     = Array();
         reset($ponteiro);
         while (key($ponteiro) !== null) {
@@ -743,9 +747,7 @@ class Acl{
         $tempo = new \Framework\App\Tempo('\Framework\App\Acl::Sistema_Modulos_Configs->Funcional_Completo');
         // Le todos arquivos Menus dos modulos permitidos
         $ponteiro   = Array('_Sistema' => '_Sistema');
-        if(function_exists('config_modulos')){
-            $ponteiro   = array_merge($ponteiro,config_modulos());
-        }
+        $ponteiro   = array_merge($ponteiro,config_modulos());
         $config     = Array();
         reset($ponteiro);
         while (key($ponteiro) !== null) {

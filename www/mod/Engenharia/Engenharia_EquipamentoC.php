@@ -76,7 +76,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
                 $tabela['Data Aquisição'][$i]       =   $valor->data_aquisicao;
                 $tabela['Valor'][$i]                =   $valor->valor;
                 $tabela['Funções'][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    ,'')).
-                                                        $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'Engenharia/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Equipamento ?'));
+                                                        $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'Engenharia/Equipamento/Equipamentos_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Equipamento ?'));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($tabela);

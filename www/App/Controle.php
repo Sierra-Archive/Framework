@@ -12,7 +12,7 @@ abstract class Controle
     protected $_Visual;
     protected $_request;
     
-    protected $_Acl;
+    protected $_acl;
     
     protected $sistema_linguagem = 'ptBR';
     
@@ -61,16 +61,16 @@ abstract class Controle
         
         /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
         $manutencao->Atualizacao_Version(2.2);
-        */
-       /* $manutencao = new \Framework\Classes\SierraTec_Manutencao();
-        $manutencao->Tranferencia_DB_Servidor('Fenix_Atls');
-        exit;/**/
+        exit;*/
+        /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
+        $manutencao->Tranferencia_DB_Servidor('SiTec');
+        exit;*/
         
         /*$face = new \Framework\Classes\SierraTec_Facebook();
         $face->Armazena();
         
-        exit;*/
-        /*$manutencao = new \Framework\Classes\SierraTec_Manutencao();
+        exit;
+        $manutencao = new \Framework\Classes\SierraTec_Manutencao();
         $manutencao->Manutencao();*/
         
         /*$framework = new \Framework\Classes\SierraTec_Manutencao();
@@ -140,8 +140,127 @@ abstract class Controle
         }
     }
     /**
-     * Trava o Código e para de Executar tudo
+     * Envia Email
+     * @param type $texto
+     * @param type $assunto
+     * @param type $email
+     * @param type $nome
+     * @return type
      * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public static function Enviar_Email($texto,$assunto='Sem Assunto',$email=false,$nome=false){
+        require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
+        if($email===false) $email = SISTEMA_EMAIL_RECEBER;
+        if($nome===false) $nome = __('Administrador');
+        $mailer = new \Framework\Classes\Email();
+        $send	= $mailer->setTo($email, $nome)
+                    ->setSubject($assunto.' - '.SISTEMA_NOME)
+                    ->setFrom(SISTEMA_EMAIL, SISTEMA_NOME)
+                    ->addGenericHeader('X-Mailer', 'PHP/' . phpversion())
+                    ->addGenericHeader('Content-Type', 'text/html; charset="utf-8"')
+                    ->setMessage($texto)
+                    ->setWrap(78)->send();
+        return $send;
+    }
+    /**
+     * Enviar Log
+     * @param type $mensagem
+     * @param type $tipo (Informações,Aviso,Erro,Falha de Auditoria,Auditoria bem-sucesida)
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    public static function log($mensagem,$tipo){
+        self::Enviar_Email($mensagem,'Log - Tipo:'.$tipo);
+    }
+    /**
+     * Envia Email com ANexo para um Usuario do SIstema
+     * 
+     * @param int $id Chave Primária (Id do Registro)
+     * @param type $arquivo
+     * @param type $nomearquivo
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 3.1.1
+     */
+    protected function Enviar_Email_Anexo($id,$arquivo,$nomearquivo){
+        $arquivo = \anti_injection($arquivo);
+        $nomearquivo = \anti_injection($nomearquivo);
+        // Envia Email
+        $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$id),1);
+        $nome = $usuario->nome;
+        // Add Email normal e alternativo para enviar 
+        
+        
+        // NOVO SEND
+        $mail = new \Framework\Classes\Mailer();
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host         = SIS_EMAIL_SMTP_HOST;  // Specify main and backup server
+        $mail->SMTPAuth     = true;                               // Enable SMTP authentication
+        $mail->Username     = SIS_EMAIL_SMTP_USER;                            // SMTP username
+        $mail->Password     = SIS_EMAIL_SMTP_SENHA;                           // SMTP password
+        $mail->SMTPSecure   = 'tls';                            // Enable encryption, 'ssl' also accepted
+
+        $mail->From = SISTEMA_EMAIL;
+        $mail->FromName = SISTEMA_NOME;
+        
+        $enviar = '';
+        if($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)){
+            $enviar .= $usuario->email.'-';
+            $mail->addAddress($usuario->email, $nome);  // Add a recipient
+        }
+        if($usuario->email2!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email2)){
+            $enviar .= $usuario->email2.'-';
+            $mail->addAddress($usuario->email2, $nome);  // Add a recipient
+        }
+        if($enviar==''){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => __('Erro'),
+                "mgs_secundaria" => __('Nenhum Email válido do cliente para enviar anexo !')
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+            $this->_Visual->Json_Info_Update('Historico', false);
+            $this->Json_Definir_zerar(false);
+        }else{
+            $amensagem = '<strong><b>Arquivo em Anexo:</b> '.  $nomearquivo.'</strong>';
+            // Enviar Email 
+            
+            
+            // Continua Mandando
+            /*$mail->addReplyTo('info@example.com', 'Information');
+            $mail->addCC('cc@example.com');
+            $mail->addBCC('bcc@example.com');*/
+
+            $mail->WordWrap     = 50;                                 // Set word wrap to 50 characters
+            $mail->addAttachment(ARQ_PATH.$arquivo, $nomearquivo);    // Optional name
+            $mail->isHTML(true);                                  // Set email format to HTML
+
+            $mail->Subject      = 'Anexo de Chamado - '.SISTEMA_NOME;
+            $mail->Body         = $amensagem;
+            $mail->AltBody      = __('Arquivo em Anexo');
+            if($mail->send()){
+                $mensagens = array(
+                    "tipo" => 'sucesso',
+                    "mgs_principal" => __('Anexo enviado com Sucesso'),
+                    "mgs_secundaria" => __('Voce enviou um Anexo com sucesso.')
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_Info_Update('Titulo','Enviado com Sucesso.');
+            }else{
+                $mensagens = array(
+                    "tipo" => 'erro',
+                    "mgs_principal" => __('Erro'),
+                    "mgs_secundaria" => __('Email não foi enviado !')
+                );
+                $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+                $this->_Visual->Json_Info_Update('Titulo','Erro ao Enviar.');
+            }
+        }
+    }
+    /**
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
@@ -151,17 +270,12 @@ abstract class Controle
         Boot::Desligar();
     }
     /**
-     * Retorna se o Layoult está travado de retornar HTML ou nao !
-     * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
     public static function &Tema_Travar_GET(){
         return self::$sistema_travado;
     }
-    /**
-     * Efetua Download de Certo Aquivo
-     */
     public static function Export_Download($endereco,$arquivo_nome='Relatorio'){
 	// Define o tempo máximo de execução em 0 para as conexões lentas
 	set_time_limit(0);
@@ -230,70 +344,7 @@ readfile($link);*/
 	// Envia o arquivo para o cliente
 	readfile($arquivoLocal);
     }
-    protected function Gerador_Grafico_Padrao($titulo,$x_nome='EixoX',$y_nome='EixoY',$dados=Array(),$tipo = 'points',$larg=600,$alt=400, $convert_real=true){
-        // Se nao existir cria
-        $folder     = TEMP_PATH.'Grafico';
-        $folder_url = TEMP_URL.'Grafico';
-        if(!file_exists($folder))
-        {
-            mkdir($folder, 0777);
-        }
-
-
-        // Inclui funcao
-        //require_once("libs/phplot/phplot.php");
-        $plot = new \Framework\Classes\PHPlot($larg, $alt);
-        $plot->SetTitle(utf8_decode($titulo));
-        $plot->SetXTitle(utf8_decode($x_nome));
-        $plot->SetYTitle(utf8_decode($y_nome));
-        
-        // Passar para Real
-        // setar o valores no eixo Y no formato moeda
-        // este metodo aceita uma função quando o parametro custom é setado
-        $plot->SetYLabelType('custom', '\Framework\App\Sistema_Funcoes::Tranf_Float_Real');
-
-
-        /*# Definimos os dados do gráfico
-        $dados = array(
-                array('Janeiro', 10),
-                array('Fevereiro', 5),
-                array('Março', 4),
-                array('Abril', 8),
-                array('Maio', 7),
-                array('Junho', 5),
-        );*/
-        $nome_Arquivo       = md5(serialize($dados)).'.png';
-        $nome_Arquivo_url   = $folder_url.US.$nome_Arquivo;
-        $nome_Arquivo       = $folder.DS.$nome_Arquivo;
-        $plot->SetIsInline(true);
-        $plot->SetDataValues($dados);
-        $plot->SetOutputFile($nome_Arquivo);
-
-        # Mostramos o gráfico na tela
-        //$plot->SetPlotType($tipo); //points, pie, bars
-
-        $plot->DrawGraph();
-        return $nome_Arquivo_url;
-    }
-    protected function Gerador_Grafico_Pizza($titulo,$x_nome='EixoX',$y_nome='EixoY',$x_dados=Array(),$y_dados=Array(),$tipo = 'points',$larg=300,$alt=200){
-        // Inclui funcao
-        require_once("libs/phplot/phplot.php");
-
-        $larg = $_GET['larg'];
-        $alt = $_GET['alt'];
-        $titulo = $_GET['titulo'];
-        $data = unserialize($_GET['data']);
-        $settings = unserialize($_GET['settings']);
-
-        $plot = new PHPlot($larg, $alt);
-        $plot->SetTitle($titulo);
-        $plot->SetDataValues($data);
-        $plot->SetDataType('text-data-single');
-        $plot->SetPlotType('pie');
-        foreach ($data as $row) $plot->SetLegend($row[0]);
-        $plot->SetCallback('draw_graph', 'draw_data_table', $settings);
-        $plot->DrawGraph();
-    }
+    
     protected function Export_Todos($tipo,&$conteudo,$arquivo_nome='Relatorio'){
         $tipo = (string) 'Export_'.$tipo;
         if(is_callable(array($this,$tipo))){
@@ -415,7 +466,7 @@ readfile($link);*/
                 if(!isset($valor[$i]) || $valor[$i]==''){
                     $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
                 }else{
-                    $html .= utf8_decode($valor[$i]);
+                    $html .= $valor[$i];
                 }
                 $html .= '</td>';
             }
@@ -663,40 +714,6 @@ readfile($link);*/
         }
         return false;
     }
-    public function Gerador_Visualizar_Unidade(&$objeto, $titulo = 'Sem Titulo'){
-        $objeto_Classe = get_class($objeto);
-        $colunas = $objeto_Classe::Gerar_Colunas();
-        $html = '';
-
-        // Roda as Colunas
-        foreach ($colunas as $value) {
-            $valor      = &$value['mysql_titulo'];
-            $valor2     = $valor.'2';
-            if(isset($value['edicao']['Nome']) && isset($objeto->$valor)){
-                if($objeto->$valor2!=''){
-                    $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor2.'</p>';
-                }else if($objeto->$valor!=''){
-                    $html .= '<p style="clear:left;"><label style="width:120px; float:left;"><b>'.$value['edicao']['Nome'].':</b></label> '.$objeto->$valor.'</p>';
-                }
-            }
-        }
-
-        
-        // Formula Json
-        $conteudo = array(
-            'id' => 'popup',
-            'title' => $titulo,
-            'botoes' => array(
-                array(
-                    'text' => 'Fechar Janela',
-                    'clique' => '$( this ).dialog( "close" );'
-                )
-            ),
-            'html' => $html
-        );
-        $this->_Visual->Json_IncluiTipo('Popup',$conteudo);
-        $this->_Visual->Json_Info_Update('Historico', false);
-    }
     /**
      * Gera um Formulario em cima do Layoult escolhido e do Banco de Dados escolhido..
      * O Objeto Dao pode ter sido modificado (campos removidos para fins de personalização)
@@ -708,8 +725,8 @@ readfile($link);*/
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.2
      */
-    static function Gerador_Formulario(&$objeto,&$form,$cache=true){
-        $tempo = new \Framework\App\Tempo('Controle Gerador Formulario');
+    static function Gerador_Formulario(&$objeto,&$form){
+        //$tempo = new \Framework\App\Tempo('Controle Gerador Formulario');
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo    = $Registro->_Modelo;
         $extrangeiras = Array();
@@ -718,11 +735,11 @@ readfile($link);*/
         foreach ($objeto as &$valor){
                 
             // Pega Link extra
-            if(isset($valor['linkextra']) && $valor['linkextra']!==false && $valor['linkextra']!==''){
+            if(isset($valor['linkextra']) && $valor['linkextra']!==false){
                 // Verifica se Tem Permissao
                 $permitir = explode('/', $valor['linkextra']);
                 $permitir = $permitir[0];
-                if(\Framework\App\Sistema_Funcoes::Perm_Modulos($permitir)===true){
+                if(!\Framework\App\Sistema_Funcoes::Perm_Modulos($permitir)){
                     $linkextra = $valor['linkextra'];
                 }else{
                     $linkextra = '';
@@ -860,7 +877,7 @@ readfile($link);*/
                         self::DAO_Campos_TrocaID($colunas_temporaria,'{id}');
                         // Puxa CAmpos Javascript
                         $form_js = new \Framework\Classes\Form();
-                        $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js,false);
+                        $javascript_campos = self::Gerador_Formulario($colunas_temporaria, $form_js);
                         $javascript_campos = str_replace(Array('"','\n','\r','    '), Array('\"','','',''), $javascript_campos);
                         $javascript_campos = preg_replace('/\s/',' ',trim($javascript_campos));
                     }else{
@@ -905,7 +922,7 @@ readfile($link);*/
                             // Separa os Span
                             $html .= $form->addtexto('</span><span id="'.$tabelalinkada['SelectMultiplo']['Linkado'].'controlador_'.$valor2.'">');
                             // PEga os CAmpos Extrangeiros
-                            self::Gerador_Formulario($colunas_temporaria, $form,false);
+                            self::Gerador_Formulario($colunas_temporaria, $form);
                         }
                     }
                 }
@@ -1008,6 +1025,9 @@ readfile($link);*/
                         $html .= $form->Select_Opcao($valor2['nome'],$valor2['value'],$selecionado);
                     }
                 }
+                
+                // Atualiza se Tiver Dependente
+                self::DAO_Ext_Alterar($objeto,$valor['mysql_titulo']);
                 
                 // Captura Selects da Chave Extrangeira
                 $resultado = $Modelo->db->Tabelas_CapturaExtrangeiras($valor);
@@ -1189,7 +1209,7 @@ readfile($link);*/
         $Controle = &$registro->_Controle;
         $Modelo = &$registro->_Modelo;
         $Visual = &$registro->_Visual;
-        $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
+        //$tempo = new \Framework\App\Tempo('Controle Gerador Form Janela');
         
         // Define Popup
         if(isset($_GET['formselect']) && $_GET['formselect']!=''){
@@ -1199,19 +1219,13 @@ readfile($link);*/
         }
         
         // Se nao for ajax sai do Popup
-        if(!defined('LAYOULT_POPUP')){
-            if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
-                $bloco='All';
-                define('LAYOULT_POPUP', false);
-            }else if($bloco==='Popup'){
-                define('LAYOULT_POPUP', true);
-            }else{
-                define('LAYOULT_POPUP', false);
-            }
+        if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
+            $bloco='All';
+            define('LAYOULT_POPUP', false);
+        }else if($bloco==='Popup'){
+            define('LAYOULT_POPUP', true);
         }else{
-            if($bloco==='Popup' && LAYOULT_IMPRIMIR!=='AJAX'){
-                $bloco='All';
-            }
+            define('LAYOULT_POPUP', false);
         }
         
         if(!is_array($campos)){
@@ -1254,8 +1268,8 @@ readfile($link);*/
             self::mysql_AtualizaValores($campos, $objeto,$id);
         }
         // Puxa Form
-        $form = new \Framework\Classes\Form($formid,$formlink,'formajax',"mini",'horizontal','off');
-        \Framework\App\Controle::Gerador_Formulario($campos, $form, true);
+        $form = new \Framework\Classes\Form($formid,$formlink,'formajax');
+        \Framework\App\Controle::Gerador_Formulario($campos, $form);
         // Carrega formulario
         if($bloco==='html'){
             return $form->retorna_form($formbt);
@@ -1315,7 +1329,7 @@ readfile($link);*/
      */
     protected function Gerador_Formulario_Janela2($titulo,$dao,$funcao = '',$sucesso1,$sucesso2,$colocar=false,$erro1 = '',$erro2 = ''){
         global $language;
-        $tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
+        //$tempo = new \Framework\App\Tempo('Controle Gerador Form Janela2');
         // Variaveis
         $camponovo = false;
         // Verifica se é pra Add ou Editar
@@ -1864,25 +1878,43 @@ readfile($link);*/
      * @param type $alterar
      * @return boolean
      */
-    static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar){
-        // Ainda funciona com array
+    static function DAO_Ext_Alterar(&$objeto,$campomysql,$alterar=false){
+        // Procura pelo Objeto dentro do Array
+        $pattern = '/{(.+)}/U';
         if(is_array($objeto)){
             foreach ($objeto as &$valor){
                 if(isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
-                    $valor['mysql_estrangeira'] = preg_replace('/{(.+)}/U', $alterar, $valor['mysql_estrangeira']);
+                    if($alterar===false){
+                        $busca = Array();
+                        preg_match($pattern, $valor['mysql_estrangeira'], $busca, PREG_OFFSET_CAPTURE);
+                        if($busca===false || empty($busca)) return false;
+                        // Procura Pelo Valor dela
+                        foreach ($objeto as &$valor2){
+                            if(isset($valor2['mysql_titulo']) && $valor2['mysql_titulo']===$busca[1][0]){
+                                // Substitui
+                                $valor['mysql_estrangeira'] = preg_replace($pattern, $valor2['edicao']['valor_padrao'], $valor['mysql_estrangeira']);
+                                return true;
+                            }
+                        }
+                    }else{
+                        $valor['mysql_estrangeira'] = preg_replace($pattern, $alterar, $valor['mysql_estrangeira']);
+                    }
                 }
             }
         }// Agora tbm funciona com objetos
         else{
             return false;
         }
-        return true;
+        return false;
     }
     static function DAO_Ext_ADD(&$objeto,$campomysql,$add){
         // Ainda funciona com array
         if(is_array($objeto)){
             foreach ($objeto as &$valor){
                 if(isset($valor['mysql_estrangeira']) && $valor['mysql_titulo']==$campomysql){
+                    if(substr_count($valor['mysql_estrangeira'], '|')>=2){ // 2){
+                        throw new \Exception('Extrangeira Ja possue 3 ou mais Caracteristicas'.$valor['mysql_titulo'],2800);
+                    }
                     $valor['mysql_estrangeira'] = $valor['mysql_estrangeira'].'|'.$add;
                 }
             }
@@ -2202,12 +2234,13 @@ readfile($link);*/
                 $endereco_html .= self::$config_template['Buscar'];
             }
             // cria form se nao tiver logado
-            if(TEMA_LOGIN===false && $this->_Acl->logado===false && $this->_request->getSubModulo()!=='erro' && $this->_request->getSubModulo()!=='Recurso' && $this->_request->getSubModulo()!=='localidades'){
+            if($this->_Acl->logado===false){
                 $form = new \Framework\Classes\Form('Formlogin','',''); //formajax /'.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET
                 $form->Input_Novo('Login','sistema_login','','text', '',30, '');
                 $form->Input_Novo('Senha','sistema_senha','','password', 30, '','');
                 $this->_Visual->Blocar($form->retorna_form('Entrar'));
                 $this->_Visual->Bloco_Menor_CriaJanela('Login');
+                return true;
             }
             /*// carrega menu estatisticas se exister antes de encerrar tudo
             if(file_exists(MOD_PATH.''.\anti_injection(SISTEMA_MODULO).'/StatC.php')){

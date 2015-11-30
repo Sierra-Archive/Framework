@@ -34,6 +34,26 @@ class comercio_Principal implements PrincipalInterface
         $Registro = &\Framework\App\Registro::getInstacia();
         $modelo = $Registro->_Modelo;
         $Visual = $Registro->_Visual;
+
+		\Framework\App\Visual::Layoult_Home_Widgets_Add(
+                'O.S', 
+                'comercio/Proposta/Propostas/OS', 
+                'truck', 
+                0, 
+                'block-yellow', 
+                false, 
+                150
+            );
+
+		\Framework\App\Visual::Layoult_Home_Widgets_Add(
+                'Propostas', 
+                'comercio/Proposta/Propostas/Propostas', 
+                'truck', 
+                1, 
+                'block-yellow', 
+                false, 
+                150
+            );
         
         // Fornecedor
         if(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor')){

@@ -2,6 +2,9 @@
 namespace Framework\App;
 /**
  * Sistema de cache
+ *
+ * @author Thiago Belem <contato@thiagobelem.net>
+ * @link http://blog.thiagobelem.net/
  */
 class Cache {
 
@@ -25,9 +28,6 @@ class Cache {
      */
     private $folder;
 
-    //memcache
-    private $memcache_tempo = 60; // ainda nao implementado 
-    
     /**
      * Construtor
      *
@@ -43,7 +43,7 @@ class Cache {
      */
     public function __construct($folder = null) {
         // Tenta Conectar Memcache, se nao faz pelo hd mesmo
-        if(class_exists('\Memcached')){
+        if(class_exists('Memcached')){
             self::$cache = new \Memcached();
             $retorno = self::$cache->addServer('localhost', 11211);
             if($retorno!==false){
@@ -51,7 +51,7 @@ class Cache {
                 self::$tipo_performace = 'rapido';
                 /*// checando dados no cache e carregando em $rows
                 if (!($rows = $cache->get('lista_usuarios'))) {
-                    if ($cache->getResultCode() == \Memcached::RES_NOTFOUND) {
+                    if ($cache->getResultCode() == Memcached::RES_NOTFOUND) {
                         // dados não encontrados no cache.
                         // inserir no cache dados obtidos no banco
                         // obter lista de usuarios do banco de dados
@@ -82,7 +82,7 @@ class Cache {
      */
     protected function Cache_Cod($name) {
         // maintain list of caches here
-        static::$Cod=array(
+        $id=array(
             'Conexao'       => 1001,
             'Framework'     => 1002
         );
@@ -100,18 +100,19 @@ class Cache {
         $retorno = false;
         if(self::$tipo==='Memcache'){
             // SE FOR DEBUG DELETA CACHE
-            /*if(SISTEMA_DEBUG===TRUE){
+            if(SISTEMA_DEBUG===TRUE){
                 self::$cache->delete(sha1($key));
                 return false;
-            }*/
+            }
             $retorno = self::$cache->get(sha1($key));
             if (!($retorno)) {
-                if (self::$cache->getResultCode() == \Memcached::RES_NOTFOUND) {
+                if (self::$cache->getResultCode() == Memcached::RES_NOTFOUND) {
                     return false;
                 }else{
                     return false;
                 }
             }else{
+                var_dump(unserialize($retorno));
                 return unserialize($retorno);
             }
 
@@ -125,9 +126,7 @@ class Cache {
                 return $this->Arquivos_Leitura($key);
             }
         }
-        
-        
-        // SE nao Faz de Arquivo (MAIS LENTA)
+        // SE nao Faz de Arquivo
         return $this->Arquivos_Leitura($key);
     }
     public function Salvar($key, &$content, $time = null, $ram=false){
@@ -160,10 +159,10 @@ class Cache {
                 else  $this->Arquivos_Leitura($key);
             }
             catch(Exception $e){*/
-                return $this->Arquivos_Apaga($key, $content, $time);
+                return $this->Arquivos_Salvar($key, $content, $time);
             //}
         }
-        return $this->Arquivos_Apaga($key, $content, $time);
+        return $this->Arquivos_Salvar($key, $content, $time);
     }
 
 
@@ -230,12 +229,11 @@ class Cache {
      * @return boolean Se o cache foi salvo
      */
     protected function Arquivos_Salvar($key, &$content, $time = null) {
-        $tempo = new \Framework\App\Tempo('Cache - Salvar '.$key);
+        //$tempo = new \Framework\App\Tempo('Cache - Salvar '.$key);
         $time = strtotime(!is_null($time) ? $time.' seconds' : self::$time.' seconds');
 
         // Gera o nome do arquivo
         $filename = $this->Arquivos_GerarEndereco($key);
-        //echo "\n\n Nome do Arquivo: $filename";
 
         // Cria o arquivo com o conteúdo
         return  file_put_contents($filename, serialize($content))
@@ -253,7 +251,7 @@ class Cache {
      * @return mixed Se o cache foi encontrado retorna o seu valor, caso contrário retorna NULL
      */
     protected function Arquivos_Leitura($key) {
-        $tempo = new \Framework\App\Tempo('Cache - Leitura '.$key);
+        //$tempo = new \Framework\App\Tempo('Cache - Leitura '.$key);
         $filename = $this->Arquivos_GerarEndereco($key);
         if (file_exists($filename) && is_readable($filename)) {
             return unserialize(file_get_contents($filename));
@@ -287,7 +285,7 @@ class Cache {
 
     // TIPO SHMOD
     protected function Shmop_Salvar($name, &$data, $timeout) {
-        $tempo = new \Framework\App\Tempo('CacheRAM - Salvar '.$name);
+        //$tempo = new \Framework\App\Tempo('CacheRAM - Salvar '.$name);
         // delete cache
         $id=shmop_open($this->Cache_Cod($name), "a", 0, 0);
         shmop_delete($id);
@@ -305,7 +303,7 @@ class Cache {
     }
 
     protected function Shmop_Leitura($name) {
-        $tempo = new \Framework\App\Tempo('CacheRAM - Leitura '.$name);
+        //$tempo = new \Framework\App\Tempo('CacheRAM - Leitura '.$name);
         if (!$this->Shmop_Expirar_Checar($name)) {
             $id=shmop_open($this->Cache_Cod($name), "a", 0, 0);
 

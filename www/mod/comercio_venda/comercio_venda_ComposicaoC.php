@@ -101,7 +101,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 $tabela['Produtos Usados'][$i] = $produtos_usados_array[$valor->id];
                 $tabela['Preço'][$i]     = $valor->preco;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Cardápio ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cardápio'       ,'comercio_venda/Composicao/Composicoes_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Cardápio ?'));
                 ++$i;
             }
             if($export!==false){

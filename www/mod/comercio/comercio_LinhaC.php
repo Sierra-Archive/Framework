@@ -78,7 +78,7 @@ class comercio_LinhaControle extends comercio_Controle
                 $tabela['Marca'][$i]     = $valor->marca2;
                 $tabela['Nome'][$i]      = $valor->nome;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Linha ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Linha ?'));
                 ++$i;
             }
             if($export!==false){

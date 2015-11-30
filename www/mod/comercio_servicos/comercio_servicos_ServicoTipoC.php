@@ -62,7 +62,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
             foreach ($setores as $indice=>&$valor) {
                 $tabela['Nome'][$i]             = $valor->nome;
                 $tabela['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Tipo de Serviço'        ,'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/'.$valor->id.'/'    ,'')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Tipo de Serviço'       ,'comercio_servicos/ServicoTipo/Servico_Tipo_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tipo de Serviço ?'));
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Tipo de Serviço'       ,'comercio_servicos/ServicoTipo/Servico_Tipo_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tipo de Serviço ?'));
                 ++$i;
             }
             if($export!==false){

@@ -5,30 +5,29 @@
  */
 
 /**
- *     SEGURANÇA - Antiinjection
+ *     SEGURANÇA
  * @param type $sql
  * @return type
  * 
  * @version 0.2 -> Alterado para caso receba um Array, usar recursao para fazer antiinfection em todos
  */
-function anti_injection($sql,$tags=false){
+function anti_injection ($sql){
      if(is_array($sql)){
          $seg = Array();
          foreach($sql as $indice=>&$valor){
-             $seg[\anti_injection($indice)] = \anti_injection($valor,$tags);
+             $seg[\anti_injection($indice)] = \anti_injection($valor);
          }
-         $sql = $seg;
      }else{
-        /*// remove palavras que contenham sintaxe sql
-        $sql = mysql_real_escape_string($sql);
-        if($tags===false){
-            $sql = strip_tags($sql);//tira tags html e php
-        }*/
+        // remove palavras que contenham sintaxe sql
+        $seg = preg_replace("/(from|select|insert|delete|where|drop table|show tables|#|\*|--|\\\\)/i", '', $sql);
+        $seg = trim($seg);//limpa espa�os vazio
+        $seg = strip_tags($seg);//tira tags html e php
+        $seg = addslashes($seg);//Adiciona barras invertidas a uma string
      }
-     return $sql;
+     return $seg;
 }
 /**
- * Criptografia Fraca
+ * Descriptografa
  * @param type $x
  * @return type
  */
@@ -147,7 +146,7 @@ function orderMultiDimensionalArray(&$toOrderArray, $field, $inverse = false) {
  * @param type $data
  * @return type
  */
-// Cria uma função que retorna o timestamp de uma data
+// Cria uma função que retorna o timestamp de uma data no formato DD/MM/AAAA
 function Data_geraTimestamp($data,$quebra=true) {
     $data = trim($data);
     // Formato: 23/09/2013 00:00:00 ou 2013-09-23 00:00:00
@@ -208,19 +207,8 @@ function Data_CalculaDiferenca($data_inicial,$data_final){
     // Calcula a diferença de segundos entre as duas datas:
     $diferenca = $time_final - $time_inicial;
 
-    // Calcula a diferença de horas
+    // Calcula a diferença de dias
     $dias = (int)floor( $diferenca / (60 * 60));
-    return $dias;
-}
-function Data_CalculaDiferenca_Em_Segundos($data_inicial,$data_final){
-    // Usa a função criada e pega o timestamp das duas datas:
-    $time_inicial = Data_geraTimestamp($data_inicial);
-    $time_final = Data_geraTimestamp($data_final);
-    // Calcula a diferença de segundos entre as duas datas:
-    $diferenca = $time_final - $time_inicial;
-
-    // Calcula a diferença de segundos
-    $dias = (int)floor( $diferenca );
     return $dias;
 }
 /**

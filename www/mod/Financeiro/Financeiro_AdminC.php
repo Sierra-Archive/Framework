@@ -104,7 +104,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
             $tabela['Funções'][$i] = '<a confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
             '<a confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
             '<a title="Editar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_carregajanelaEdit/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-            '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+            '<a confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/usuarios_del/'.$usuarios[$indice]['id'].'/"><img border="0" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
             ++$i;
         }
         $this->_Visual->Show_Tabela_DataTable($tabela);
@@ -114,10 +114,10 @@ class Financeiro_AdminControle extends Financeiro_Controle
     /**
     * Deleta Veiculo
     * 
-    * @name pagamentos_Del
+    * @name pagamentos_del
     * @access public
     * 
-    * @uses pagamentos_AdminModelo::$pagamentos_Del
+    * @uses pagamentos_AdminModelo::$pagamentos_del
     * @uses \Framework\App\Visual::$Json_IncluiTipo
     * @uses pagamentos_AdminControle::$pagamentos_lista
     * 
@@ -126,11 +126,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 2.0
     */
-    public function pagamentos_Del($id){
+    public function pagamentos_del($id){
         global $language;
         
     	$id = (int) $id;
-    	$sucesso = $this->_Modelo->pagamentos_Del($id);
+    	$sucesso = $this->_Modelo->pagamentos_del($id);
     	if($sucesso===true){
             $mensagens = array(
                 "tipo" => 'sucesso',

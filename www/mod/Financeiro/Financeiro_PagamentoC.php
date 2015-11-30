@@ -525,7 +525,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $tabela['Nome'][$i]      = $valor->nome;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Visualizar'      ,Array('Visualizar Condições de Pagamento','Financeiro/Pagamento/Condicoes/'.$valor->id.'/'    ,'')).
                                            $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Forma de Pagamento'        ,'Financeiro/Pagamento/Formas_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Forma de Pagamento'       ,'Financeiro/Pagamento/Formas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Forma de Pagamento ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Forma de Pagamento'       ,'Financeiro/Pagamento/Formas_del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Forma de Pagamento ?'));
                 ++$i;
             }
             if($export!==false){
@@ -1120,7 +1120,7 @@ class Financeiro_PagamentoControle extends Financeiro_Controle
                 $funcao = 'Endereco_'.$tema;
                 self::$funcao(true);
                 $this->Tema_Endereco('Visualizar '.$titulo);
-                // Coloca COnteudo em Janela
+                // Coloca COnteudo em Blocos
                 $this->_Visual->Blocar($html);
                 if($layoult==='Unico'){
                     $this->_Visual->Bloco_Unico_CriaJanela($titulo.' #'.$identificador->id);

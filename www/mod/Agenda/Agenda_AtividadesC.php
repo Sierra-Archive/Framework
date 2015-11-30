@@ -35,77 +35,177 @@ class Agenda_AtividadesControle extends Agenda_Controle
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
     * @version 2.0
     */
-    public function Main(){    
-        return false;
+    public function Main(){
+        // CARREGA ATIVIDADES
+        $atividades = array();
+        $this->_Modelo->Atividades_retorna($atividades, $this->config_ano.'-'.$this->config_mes.'-'.$this->config_dia.' 00:00:00', $this->config_ano.'-'.$this->config_mes.'-'.$this->config_dia.' 23:59:59');
+        $this->_Visual->Blocar(Agenda_AtividadesVisual::Show_Atividades($atividades));   
+        $this->_Visual->Bloco_Maior_CriaJanela('Atividades');
+        unset($atividades); // LIMPA MEMÓRIA
+
+        // cadastro de local
+        self::Atividades_formcadastro($this, $this->_Modelo, $this->_Visual, $this->config_dataixi);
+
+        // ORGANIZA E MANDA CONTEUDO
+        $this->_Visual->Json_Info_Update('Titulo','Atividades');        
     }
-    
-    
-    static function Atividades_Abertas($tipo='Unico'){     
-        $i = 0;
-        // Botao Add
-        $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora','AAH.dt_fim=\'0000-00-00 00:00:00\'');
-        if($atividades!==false && !empty($atividades)){
-            
-            if(is_object($atividades)) $atividades = Array(0=>$atividades);
-            reset($atividades);
-            foreach ($atividades as $indice=>&$valor) {
-                //$tabela['#Id'][$i]       = '#'.$valor->id;
-                $tabela['Tipo de Compromisso'][$i]        =   $valor->atividade2;
-                $tabela['Inicio'][$i]                  =   $valor->dt_inicio;
-                $tabela['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array('Editar Atividade'        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    ,''));
-                ++$i;
-            }
+    /**
+    * Função para Retornar Formulario de Cadastro de Atividades
+    * 
+    * @name Atividades_formcadastro
+    * @access public
+    * @static
+    * 
+    * @param Class $controle Classe Controle Atual passada por Ponteiro
+    * @param Class $modelo Classe Modelo Atual passada por Ponteiro
+    * @param Class $Visual Classe Visual Atual passada por Ponteiro
+    * @param date $data Data para Cadastro de Atividade
+    * 
+    * @uses $language
+    * @uses locais_locaisModelo::$local_retorna Carrega Locais para o Select do Formulario
+    * @uses usuario_social_Modelo Carrega Persona Modelo
+    * @uses usuario_social_Modelo::$retorna_usuario_social Retorna Pessoas
+    * @uses Form Carrega Novo Formulário
+    * @uses \Framework\Classes\Form::$Input_Novo Coloca os Novos Inputs
+    * @uses \Framework\Classes\Form::$Select_Novo Add Novo Select
+    * @uses \Framework\Classes\Form::$Select_Opcao Coloca os option do Select
+    * @uses \Framework\Classes\Form::$retorna_form Retorna Formulario
+    * @uses \Framework\Classes\Form::$addtexto Add html div para novas Usuario_social no Formulario
+    * @uses \Framework\App\Visual::$blocar Add html ao bloco de conteudo
+    * @uses \Framework\App\Visual::$novajaneladir Add html do bloco a uma Janela Lateral Direita
+    * @uses Control::$Categorias_ShowSelect Retorna Formulario
+    * 
+    * @return void
+    * 
+    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+    * @version 2.0
+    */
+    static function Atividades_formcadastro(&$controle, &$modelo, &$Visual, $data){
+        global $language;
+        $registro = \Framework\App\Registro::getInstacia();
+        $_Acl = $registro->_Acl();
+
+        // CARREGA LOCALIDADES
+        $selectlocais = array();
+        locais_locaisModelo::local_retorna($modelo, $selectlocais);
+
+        // CARREGA USUARIO_SOCIAL
+        $usuario_socialM = new usuario_social_Modelo();
+        $usuario_social = array();
+        $qnt = 0;
+        $qnt = $usuario_socialM->retorna_usuario_social($usuario_social, $_Acl->logado_usuario->id);
         
-            if($export!==false){
-                self::Export_Todos($export,$tabela, 'Atividades Abertas');
-            }else{
-                $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    true,        // true -> Add ao Bloco, false => Retorna html
-                    true,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        }else{           
-            $Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Atividade Aberta</font></b></center>');
+        // FORMULARIO DE CADASTRO DE ATIVIDADES
+        $form = new \Framework\Classes\Form('AtividadesFormEnvio','Agenda/Atividades/Atividade_inserir/','formajax');
+        $form->Input_Novo('Data Inicio','dt_inicio',$data,'text', 10,'obrigatorio', '', false,'','','Data','', false);   
+        $form->Input_Novo('Hora Inicio','hr_inicio','','text', 8,'obrigatorio masc_hora');   
+        $form->Input_Novo('Data Fim','dt_fim',$data,'text', 10,'obrigatorio', '', false,'','','Data','', false);    
+        $form->Input_Novo('Hora Fim','hr_fim','','text', 8,'obrigatorio masc_hora');  
+                
+	// select de categorias
+        $controle->Categorias_ShowSelect($form, 'financas');
+        
+        // COMEÇO DOS SELECT DE LOCALIDADES
+        $form->Select_Novo($language['palavras']['locais'],'local','selectlocais');
+        $tamanho = sizeof($selectlocais);
+        for($i=0;$i<$tamanho;++$i){
+            if($selectlocais[$i]['valor']==1) $select = 1; else  $select = 0;
+            $form->Select_Opcao($selectlocais[$i]['nome'],$selectlocais[$i]['id'],$select);
         }
-        $titulo = 'Arquivo de Pastas ('.$i.')';
-        if($tipo==='Unico'){
-            $Visual->Bloco_Unico_CriaJanela($titulo);
-        }else{
-            $Visual->Bloco_Maior_CriaJanela($titulo);
-        }
+        $form->Select_Fim();
+        
+        // select de pessoas
+        $form->addtexto('<div id="molde_usuario_social">');
+        $form->Select_Novo($language['financas']['pers'],'selectusuario_social[]','', '', '', 'var novohtml = $(\'#molde_usuario_social\').html().split(\'<!--Comeca Select-->\'); $(\'#novas_usuario_social\').append(\'<label class=form>\'+novohtml[2]+\'</label>\'); return false;');
+        usuario_social_Visual::Usuario_social_ShowSelect($usuario_social,$form);
+        $form->Select_Fim();
+        $form->addtexto('</div><div id="novas_usuario_social"></div>');
+        
+        $form->Input_Novo($language['Agenda']['Atividades']['Obs'],'obs','','text', 1000);  
+        // FINAL DOS SELECT DE LOCALIDADES
+        $formulario = $form->retorna_form($language['formularios']['cadastrar']);
+ 
+        $Visual->Blocar($formulario);
+        $Visual->Bloco_Maior_CriaJanela($language['Agenda']['Atividades']['Cadastro']);
+
+        $Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario(\'dt_inicio\',\''.$data.'\');Sierra.Control_Layoult_Calendario(\'dt_fim\',\''.$data.'\');');
+
     }
-    
-    
-    
-    
-    
-    public function Atividades_Tempo($atividade){     
-        // Procura em Atividades Tempo, com tempo inicial mas sem tempo final
-        $atv_tempo = $this->_Modelo->db->Sql_Select('Agenda_Atividade_Hora');
+    /**
+    /*
+     * 
+     * 
+     *                 A FAZERRRRRRRRRRRRRRRR
+     * 
+     * 
+     * 
+     * 
+    * Função para gravar Relações entre tabelas e usuario_social, é uma funcao static e é chamada por diversos oturos modulos
+    * 
+    * @name Atividade_inserir
+    * @access public
+    * 
+    * @post $_POST["nome"]
+    * @post $_POST["dt_inicio"]
+    * @post $_POST["hr_inicio"]
+    * @post $_POST["dt_fim"]
+    * @post $_POST["hr_fim"]
+    * @post $_POST["descricao"]
+    * @post $_POST["local"]
+    * 
+    * @uses $language
+    * @uses Agenda_AtividadesModelo::$Atividade_inserir Inseri Atividade    
+    * @uses Agenda_AtividadesModelo::$Atividades_retorna Carrega Todas as Atividades Referentes
+    * @uses Agenda_AtividadesVisual::$Show_Atividades Exibe Todas as Atividades Referentes
+    * @uses usuario_social_Modelo::$Inserir_Pers_Relacao Add Usuario_social Referentes
+    * @uses \Framework\App\Visual::$blocar
+    * @uses \Framework\App\Visual::$novajanela
+    * 
+    * @return int Retorna 1 se insercao for concluida com sucesso. 
+    * 
+    * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+    * @version
+    */
+    public function Atividade_inserir(){
+        global $language;
+        $nome = \anti_injection($_POST["nome"]);
+        $dt_inicio = data_hora_brasil_eua(\anti_injection($_POST["dt_inicio"].' '.$_POST["hr_inicio"]));
+        $dt_fim = data_hora_brasil_eua(\anti_injection($_POST["dt_fim"].' '.$_POST["hr_fim"]));
+        //data_hora_brasil_eua()
+        $obs = \anti_injection($_POST["obs"]);
+        $local = (int) $_POST["local"];
+        $categoria = \anti_injection($_POST["categoria"]);
         
-        // Se nao Achar adicionar um com tempo
-        if($atv_tempo===false){
-            $atv_tempo = new Agenda_Atividade_Hora_DAO();
-            
-            $atv_tempo->atividade = 0;
-            $atv_tempo->dt_inicio = APP_HORA;
-            $atv_tempo->dt_fim = '0000-00-00 00-00-00';
-            $atv_tempo->total = 0;
-            
-            $this->_Modelo->db->Sql_Insert($atv_tempo);
-        }else{
-            $atv_tempo->dt_fim = APP_HORA;
-            $atv_tempo->total = Data_CalculaDiferenca_Em_Segundos($atv_tempo->dt_inicio,$atv_tempo->dt_fim);
-            $this->_Modelo->db->Sql_Update($atv_tempo);
+        // ADD USUARIO_SOCIAL
+        $idinserido =  $this->_Modelo->Atividade_inserir($dt_inicio,$dt_fim,$obs,$local, $categoria);
+        foreach ($_POST["selectusuario_social"] as $personaid) {
+            if($personaid!=0) usuario_social_Modelo::Inserir_Pers_Relacao($this->_Modelo, $this->_Acl->Usuario_GetID(), MYSQL_USUARIO_AGENDA_ATIVIDADES, $idinserido, $personaid);
         }
+
+        // CARREGA ATIVIDADES
+        $atividades = array();
+        $this->_Modelo->Atividades_retorna($atividades, $this->config_ano.'-'.$this->config_mes.'-'.$this->config_dia.' 00:00:00', $this->config_ano.'-'.$this->config_mes.'-'.$this->config_dia.' 23:59:59');
+        $this->_Visual->Blocar(Agenda_AtividadesVisual::Show_Atividades($atividades));   
+        $this->_Visual->Bloco_Maior_CriaJanela('Atividades');
+        unset($atividades); // LIMPA MEMÓRIA
+        
+        // Mostra Mensagem para o Usuario
+        if($sucesso===true){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => 'Atividade inserida com Sucesso',
+                "mgs_secundaria" => $nome.' foi add a base de dados...'
+            );
+        }else{
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+        }
+        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        echo $this->_Visual->Json_Retorna();
+    
     }
 }
 ?>

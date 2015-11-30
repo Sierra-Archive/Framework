@@ -109,7 +109,7 @@ class comercio_FornecedorControle extends comercio_Controle
                 $tabela['Funções'][$i]   =  /*$this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Fornecedor'        ,'comercio/Fornecedor/Fornecedores_Popup/'.$valor->id.'/'    ,'')).*/
                                             $this->_Visual->Tema_Elementos_Btn('Zoom'       ,Array('Visualizar Comentários do Fornecedor'       ,'comercio/Fornecedor/Fornecedores_View/'.$valor->id.'/'    ,'')).
                                             $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Fornecedor'                          ,'comercio/Fornecedor/Fornecedores_Edit/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Fornecedor'                         ,'comercio/Fornecedor/Fornecedores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Fornecedor ? Isso irá afetar o sistema!'));
+                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Fornecedor'                         ,'comercio/Fornecedor/Fornecedores_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Fornecedor ? Isso irá afetar o sistema!'));
                 ++$i;
             }
             if($export!==false){
@@ -338,7 +338,7 @@ class comercio_FornecedorControle extends comercio_Controle
                 $tabela['Comentário'][$i]   =   $valor->comentario;
                 $tabela['Data'][$i]         =   $valor->log_date_add;
                 $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Fornecedor'        ,'comercio/Fornecedor/Fornecedores_Comentario_Edit/'.$fornecedor_id.'/'.$valor->id.'/'    ,'')).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Fornecedor'       ,'comercio/Fornecedor/Fornecedores_Comentario_Del/'.$fornecedor_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Fornecedor ?'));
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Fornecedor'       ,'comercio/Fornecedor/Fornecedores_Comentario_del/'.$fornecedor_id.'/'.$valor->id.'/'     ,'Deseja realmente deletar esse Comentário desse Fornecedor ?'));
                 ++$i;
             }
             if($export!==false){
