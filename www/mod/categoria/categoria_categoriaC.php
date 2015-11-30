@@ -91,7 +91,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         if ($parent!=$id) {
             $sucesso =  $this->_Modelo->Categorias_alterar($id, $nome, $parent, $mod_acc);
-            if ($sucesso === TRUE) {
+            if ($sucesso === true) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Categoria alterada com Sucesso'),
@@ -118,7 +118,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Categoria alterada com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     
     }
     /**
@@ -139,7 +139,7 @@ class categoria_categoriaControle extends categoria_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Categorias_ShowTab($tipo='') {
         $table = Array();
@@ -168,9 +168,9 @@ class categoria_categoriaControle extends categoria_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
-    public function Categorias_formcadastro($modulo = FALSE) {
+    public function Categorias_formcadastro($modulo = false) {
         
         $form = new \Framework\Classes\Form('adminformcategoriasend',SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Main/salvar/', 'formajax');
         
@@ -226,13 +226,13 @@ class categoria_categoriaControle extends categoria_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Categorias_formulario(&$form, $tipo='' , $nome = '', $parent = 0) {
       
         $categorias = $this->_Modelo->Categorias_Retorna($tipo,0,1);
         // CADASTRA
-        $form->Input_Novo('Nome', 'nome', $nome,'text', 30, 'obrigatorio ');
+        $form->Input_Novo(__('Nome'), 'nome', $nome,'text', 30, 'obrigatorio ');
         
         // COMEÇO DOS SELECT DE CATEGORIAS PAI
         $form->Select_Novo('Categoria Pai', 'parent', 'selectcategorias');
@@ -245,7 +245,7 @@ class categoria_categoriaControle extends categoria_Controle
         $acc = categoria_Controle::Categorias_CarregaModulosTotais();
         $form->Select_Novo('Modulo Aceito', 'mod_acc', 'mod_acc');
         $j = 0;
-        foreach($acc as &$valor) {
+        foreach ($acc as &$valor) {
             if ($j==0) $form->Select_Opcao($valor['chave_nome'], $valor['chave_nome'],1);
             else  $form->Select_Opcao($valor['chave_nome'], $valor['chave_nome'],0);
             ++$j;
@@ -268,11 +268,11 @@ class categoria_categoriaControle extends categoria_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Categorias_inserir() {
         if (!isset($_POST["nome"]) || !isset($_POST["parent"]) || !isset($_POST["mod_acc"])) {
-            return FALSE;
+            return false;
         }
         
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
@@ -281,7 +281,7 @@ class categoria_categoriaControle extends categoria_Controle
         
         $sucesso =  $this->_Modelo->Categorias_inserir($nome, $parent, $mod_acc);
         
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Categoria inserida com Sucesso'),
@@ -296,7 +296,7 @@ class categoria_categoriaControle extends categoria_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         $this->_Visual->Json_Info_Update('Titulo', __('Categoria inserida com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     
     }
 }

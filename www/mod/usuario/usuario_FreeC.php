@@ -13,7 +13,7 @@ class usuario_FreeControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -31,7 +31,7 @@ class usuario_FreeControle extends usuario_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main($tipo = 'associado') {
         $tipocadastro = \Framework\App\Conexao::anti_injection($tipo);
@@ -67,13 +67,13 @@ class usuario_FreeControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
-    public function usuarios_carregajanelaadd($tipocadastro = FALSE) {
+    public function usuarios_carregajanelaadd($tipocadastro = false) {
         // Carrega Config
         $formlink   = 'usuario/Free/usuarios_inserir/'.$tipocadastro;
         $campos = Usuario_DAO::Get_Colunas();
-        if ($tipocadastro === FALSE) {
+        if ($tipocadastro === false) {
             $titulo1    = __('Se tornar Usuário');
             $titulo2    = __('Salvar Usuário');
             $formid     = 'form_free_cadastroUsuario';
@@ -104,7 +104,7 @@ class usuario_FreeControle extends usuario_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function usuarios_inserir($tipo = 'cliente') {
         
@@ -121,7 +121,7 @@ class usuario_FreeControle extends usuario_Controle
         } else {
             $existeemail = usuario_Modelo::VerificaExtEmail($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['email']));
             $existelogin = usuario_Modelo::VerificaExtLogin($this->_Modelo,\Framework\App\Conexao::anti_injection($_POST['login']));
-            if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email'])) === FALSE) {
+            if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email(\Framework\App\Conexao::anti_injection($_POST['email'])) === false) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -129,7 +129,7 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-             } else if ($existeemail === TRUE) {
+             } else if ($existeemail === true) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -137,7 +137,7 @@ class usuario_FreeControle extends usuario_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
                 $this->_Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-            } else if ($existelogin === TRUE) {
+            } else if ($existelogin === true) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
@@ -169,14 +169,14 @@ class usuario_FreeControle extends usuario_Controle
                 //insere usuario
                 $sucesso =  $this->_Modelo->usuarios_inserir();
 
-                if ($sucesso === TRUE) {
+                if ($sucesso === true) {
                     $mensagens = array(
                         "tipo" => 'sucesso',
                         "mgs_principal" => __('Inserção bem sucedida'),
                         "mgs_secundaria" => __('Voce foi cadastrado com sucesso.')
                     );
                     // loga usuario
-                    $this->_Modelo->Usuario_Logar(\Framework\App\Conexao::anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],TRUE));  
+                    $this->_Modelo->Usuario_Logar(\Framework\App\Conexao::anti_injection($_POST['login']), \Framework\App\Sistema_Funcoes::Form_Senha_Blindar($_POST['senha'],true));  
                     // boleto
                     // Mensagem Para nao Associados
                     $mgm = '<br>Seja bem vindo.'.

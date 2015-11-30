@@ -10,23 +10,23 @@ class social_VisualizarVisual extends social_Visual
         $table = array();
         $i = 0;
         foreach ($tipon as $indice=>&$valor) {
-            $table['Nome'][$i] = $valor;
+            $table[__('Nome')][$i] = $valor;
             ++$i;
         }
         $i=0;
         foreach ($tipo as $indice=>&$valor) {
-            $table['Quantidade'][$i] = $valor;
+            $table[__('Quantidade')][$i] = $valor;
             ++$i;
         }
         $i = 0;
         foreach ($tipos as $indice=>&$valor) {
-            $table['Pontos'][$i] = $valor;
+            $table[__('Pontos')][$i] = $valor;
             ++$i;
         }
         $this->novatabela("relatorio", $table);
     }
     public function exibe_persona(&$persona) {
-        $this->blocos .= '<a href="javascript:popup()"><a href="http://www.facebook.com/profile.php?id='.$persona['id_face'].'" target="_blank"><img alt="'.__('Foto de Perfil').' src="http://graph.facebook.com/'.$persona['id_face'].'/picture"></a>';
+        $this->blocos .= '<a href="javascript:popup()"><a href="http://www.facebook.com/profile.php?id='.$persona['id_face'].'" target="_blank"><img alt="'.__('Foto de Perfil').'" src="http://graph.facebook.com/'.$persona['id_face'].'/picture"></a>';
         $this->blocos .= $persona['nome'];
         if ($persona['fis_sexo']==0) $this->blocos .= __('Feminino');
         else $this->blocos .= __('Masculino');

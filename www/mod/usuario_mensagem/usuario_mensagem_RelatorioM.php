@@ -11,7 +11,7 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();
@@ -68,15 +68,15 @@ class usuario_mensagem_RelatorioModelo extends usuario_mensagem_Modelo
                     } else {
                         return 'Novos Chamados';
                     }
-                    return FALSE;
+                    return false;
                 },
                 'search' => function( $search ) {
-                    if (strpos(strtolower('Finalizado'), strtolower($search)) !== FALSE) {
+                    if (strpos(strtolower('Finalizado'), strtolower($search)) !== false) {
                         return '1';
-                    } else if (strpos(strtolower('Novos Chamados'), strtolower($search)) !== FALSE) {
+                    } else if (strpos(strtolower('Novos Chamados'), strtolower($search)) !== false) {
                         return '0';
                     }
-                    return FALSE;
+                    return false;
                 }),
             array( 'db' => 'log_date_add', 'dt' => 5 ),
             array( 'db' => 'log_date_edit', 'dt' => 6 )/*,

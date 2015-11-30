@@ -34,7 +34,7 @@ class Table extends Border
      *
      * @var bool
      */
-    private $isFirstRow = FALSE;
+    private $isFirstRow = false;
 
     /**
      * Style for first row
@@ -134,7 +134,7 @@ class Table extends Border
         // Clone first row from table style, but with certain properties disabled
         if ($firstRowStyle !== null && is_array($firstRowStyle)) {
             $this->firstRowStyle = clone $this;
-            $this->firstRowStyle->isFirstRow = TRUE;
+            $this->firstRowStyle->isFirstRow = true;
             unset($this->firstRowStyle->firstRowStyle);
             unset($this->firstRowStyle->borderInsideHSize);
             unset($this->firstRowStyle->borderInsideHColor);
@@ -298,7 +298,7 @@ class Table extends Border
      */
     public function setBorderInsideHColor($value = null)
     {
-        return $this->setTableOnlyProperty('borderInsideHColor', $value, FALSE);
+        return $this->setTableOnlyProperty('borderInsideHColor', $value, false);
     }
 
     /**
@@ -340,7 +340,7 @@ class Table extends Border
      */
     public function setBorderInsideVColor($value = null)
     {
-        return $this->setTableOnlyProperty('borderInsideVColor', $value, FALSE);
+        return $this->setTableOnlyProperty('borderInsideVColor', $value, false);
     }
 
     /**
@@ -574,7 +574,7 @@ class Table extends Border
      */
     private function getTableOnlyProperty($property)
     {
-        if ($this->isFirstRow === FALSE) {
+        if ($this->isFirstRow === false) {
             return $this->$property;
         }
 
@@ -592,10 +592,10 @@ class Table extends Border
      * @param bool $isNumeric
      * @return self
      */
-    private function setTableOnlyProperty($property, $value, $isNumeric = TRUE)
+    private function setTableOnlyProperty($property, $value, $isNumeric = true)
     {
-        if ($this->isFirstRow === FALSE) {
-            if ($isNumeric === TRUE) {
+        if ($this->isFirstRow === false) {
+            if ($isNumeric === true) {
                 $this->$property = $this->setNumericVal($value, $this->$property);
             } else {
                 $this->$property = $value;

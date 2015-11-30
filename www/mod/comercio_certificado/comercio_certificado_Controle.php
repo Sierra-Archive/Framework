@@ -10,7 +10,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -23,16 +23,16 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      */
     public function Usuarios_Produtos($id = 0) {
         if ($id==0) {
-            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Add('cliente')     ,TRUE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->_Visual->ErroShow()        , FALSE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->_Visual->ErroShow()        , FALSE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('5', $this->_Visual->ErroShow()        , FALSE);
+            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Add('cliente')     ,true);
+            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->_Visual->ErroShow()        , false);
+            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->_Visual->ErroShow()        , false);
+            \Framework\App\Visual::Layoult_Abas_Carregar('5', $this->_Visual->ErroShow()        , false);
             $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Usuários'));
             $this->_Visual->Json_Info_Update('Historico',0);
         } else {
-            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente', $id), FALSE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->Propostas_DashBoard($id)   ,TRUE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->Periodicas($id)   , FALSE);
+            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente', $id), false);
+            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->Propostas_DashBoard($id)   ,true);
+            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->Periodicas($id)   , false);
             // Editar Aba 5
             $this->Usuario_UpdateInfo($id);
             // Joga pro Json se nao for o caso de popup
@@ -47,15 +47,15 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      */
     public function Usuarios_Mostrar($id = 0) {
         if ($id==0) {
-            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Add('cliente')     ,TRUE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->_Visual->ErroShow()        , FALSE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->_Visual->ErroShow()        , FALSE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('5', $this->_Visual->ErroShow()        , FALSE);
+            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Add('cliente')     ,true);
+            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->_Visual->ErroShow()        , false);
+            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->_Visual->ErroShow()        , false);
+            \Framework\App\Visual::Layoult_Abas_Carregar('5', $this->_Visual->ErroShow()        , false);
             $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Usuários'));
         } else {
-            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente', $id),TRUE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->Propostas_DashBoard($id)   , FALSE);
-            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->Periodicas($id)   , FALSE);
+            \Framework\App\Visual::Layoult_Abas_Carregar('2',self::Usuarios_Edit('cliente', $id),true);
+            \Framework\App\Visual::Layoult_Abas_Carregar('3', $this->Propostas_DashBoard($id)   , false);
+            \Framework\App\Visual::Layoult_Abas_Carregar('4', $this->Periodicas($id)   , false);
             // Editar Aba 5
             $this->Usuario_UpdateInfo($id);
             // Titulo
@@ -78,7 +78,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $campos = Usuario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'obs',1);
         $usuario = $Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if ($usuario === FALSE) {
+        if ($usuario === false) {
             throw new \Exception('Usuário não existe', 8010);
         }
         self::mysql_AtualizaValores($campos, $usuario);
@@ -109,7 +109,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         self::mysql_AtualizaValores($usuario);
         $sucesso =  $Modelo->db->Sql_Update($usuario);
         
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),
@@ -122,10 +122,10 @@ class comercio_certificado_Controle extends \Framework\App\Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $Controle->Json_Definir_zerar(FALSE);
+        $Controle->Json_Definir_zerar(false);
         $Visual->Json_IncluiTipo('Mensagens', $mensagens);    
     }
-    public static function Usuarios_Add($tipo = FALSE) {
+    public static function Usuarios_Add($tipo = false) {
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_DAO::Get_Colunas();
         // Retira os de clientes
@@ -159,7 +159,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $campos = Usuario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'senha');
         $usuario = $Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
-        if ($usuario === FALSE) throw new \Exception('Usuário não existe', 8010);
+        if ($usuario === false) throw new \Exception('Usuário não existe', 8010);
         self::mysql_AtualizaValores($campos, $usuario);
         // Cria Formulario
         $form = new \Framework\Classes\Form('form_Sistema_AdminC_UsuarioEdit', 'comercio_certificado/Proposta/Usuarios_Edit2/'.$tipo.'/'.$id.'/', 'formajax');
@@ -182,9 +182,9 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Usuarios_Add2($tipo = FALSE) {
+    public function Usuarios_Add2($tipo = false) {
         
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
@@ -202,32 +202,32 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         }
         $existeemail = usuario_Modelo::VerificaExtEmail($Modelo, $email);
         $existelogin = usuario_Modelo::VerificaExtLogin($Modelo, $login);
-        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email) === FALSE && $tipo!='cliente') {
+        if (\Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($email) === false && $tipo!='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Inválido')
             );
             $Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            $this->layoult_zerar = FALSE;
+            $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-         } else if ($existeemail === TRUE && ($tipo!='cliente' || $email!='')) {
+         } else if ($existeemail === true && ($tipo!='cliente' || $email!='')) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Email Ja Existe')
             );
             $Visual->Json_IncluiTipo('Mensagens', $mensagens); 
-            $this->layoult_zerar = FALSE;
+            $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#email").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if ($existelogin === TRUE && $tipo!='cliente') {
+        } else if ($existelogin === true && $tipo!='cliente') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Login ja existe')
             );
             $Visual->Json_IncluiTipo('Mensagens', $mensagens); 
-            $this->layoult_zerar = FALSE;
+            $this->layoult_zerar = false;
             $Visual->Javascript_Executar('$("#login").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
             $tipousuario = \Framework\App\Conexao::anti_injection($tipo);
@@ -250,7 +250,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
                         "mgs_secundaria" => __('Senha Inválida')
                     );
                     $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                    $this->layoult_zerar = FALSE;
+                    $this->layoult_zerar = false;
                     return;
                 }
             }
@@ -261,6 +261,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
 
             
             //insere usuario
+            $usuario->grupo = CFG_TEC_IDCLIENTE;
             $sucesso =  $Modelo->db->Sql_Insert($usuario);
 
             // Recarrega Main
@@ -268,7 +269,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
             $this->Usuarios_Produtos($idusuario->id);
             comercio_certificado_PropostaControle::RecarregaLocalizar();
 
-            if ($sucesso === TRUE) {
+            if ($sucesso === true) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Inserção bem sucedida'),
@@ -289,7 +290,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Usuarios_Edit2($tipo='usuario', $id) {
         
@@ -302,7 +303,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $this->Usuarios_Produtos($id);
         comercio_certificado_PropostaControle::RecarregaLocalizar();
         
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),

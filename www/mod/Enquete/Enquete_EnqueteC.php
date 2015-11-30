@@ -15,16 +15,16 @@ class Enquete_EnqueteControle extends Enquete_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Enquete/Enquete/Enquetes');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Enquete($true= TRUE ) {
+    static function Endereco_Enquete($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Enquetes'),'Enquete/Enquete/Enquetes');
         } else {
             $_Controle->Tema_Endereco(__('Enquetes'));
@@ -46,21 +46,21 @@ class Enquete_EnqueteControle extends Enquete_Controle
             $resp_votos = $Modelo->db->Sql_Select('Enquete_Voto',Array(
                 'enquete'   =>  $valor->id
             ));
-            if ($resp_votos === FALSE) {
+            if ($resp_votos === false) {
                 $resp_votos_res = 0;
             } else if (is_object($resp_votos)) {
                 $resp_votos_res = 1;
             } else {
                 $resp_votos_res = count($resp_votos);
             }
-            $table['Tipo de Enquete'][$i]  = $valor->categoria2;
-            $table['Pergunta'][$i]         = $valor->nome;
+            $table[__('Tipo de Enquete')][$i]  = $valor->categoria2;
+            $table[__('Pergunta')][$i]         = $valor->nome;
             $table['Nº de Votos'][$i]      = ($resp_votos_res==1)?$resp_votos_res.' Voto':$resp_votos_res.' Votos';
-            $table['Observação'][$i]       = $valor->obs;
-            $table['Data Registrado'][$i]  = $valor->log_date_add;
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Enquete'    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    , ''), $perm_view).
-                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Enquete'        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Enquete'       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Enquete ?'), $permissionDelete);
+            $table[__('Observação')][$i]       = $valor->obs;
+            $table[__('Data Registrado')][$i]  = $valor->log_date_add;
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Visualizar' ,Array(__('Visualizar Enquete')    ,'Enquete/Resposta/Respostas/'.$valor->id.'/'    , ''), $perm_view).
+                                              $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Enquete')        ,'Enquete/Enquete/Enquetes_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Enquete')       ,'Enquete/Enquete/Enquetes_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Enquete ?')), $permissionDelete);
             ++$i;
         }
         return Array($table, $i);
@@ -68,10 +68,10 @@ class Enquete_EnqueteControle extends Enquete_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Enquetes($export = FALSE) {
-        self::Endereco_Enquete(FALSE);
+    public function Enquetes($export = false) {
+        self::Endereco_Enquete(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -81,17 +81,17 @@ class Enquete_EnqueteControle extends Enquete_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Enquete/Enquete/Enquetes',
             )
         )));
         // Conexao
         $enquetes = $this->_Modelo->db->Sql_Select('Enquete');
-        if ($enquetes !== FALSE && !empty($enquetes)) {
+        if ($enquetes !== false && !empty($enquetes)) {
             list($table, $i) = self::Enquetes_Tabela($enquetes);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Enquetes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -119,7 +119,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Enquetes_Add() {
         self::Endereco_Enquete();
@@ -136,7 +136,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Enquetes_Add2() {
         $titulo     = __('Enquete Adicionada com Sucesso');
@@ -151,7 +151,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Enquetes_Edit($id) {
         self::Endereco_Enquete();
@@ -170,7 +170,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Enquetes_Edit2($id) {
         $titulo     = __('Enquete Editada com Sucesso');
@@ -186,7 +186,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Enquetes_Del($id) {
         
@@ -196,7 +196,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $enquete = $this->_Modelo->db->Sql_Select('Enquete', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($enquete);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -214,7 +214,7 @@ class Enquete_EnqueteControle extends Enquete_Controle
         $this->Enquetes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Enquete deletada com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
 }
 

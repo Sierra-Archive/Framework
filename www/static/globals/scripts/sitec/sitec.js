@@ -25,16 +25,7 @@ Storage.prototype.getObject = function(key) {
 var Sierra = (function () {
     "use strict";
     // VARIAVEIS PRIMARIAS
-    var SiteHash                    = '', 
-        SiteCarregando              = false,
-        Historico_Controle          = '0',
-        
-        // Cache Interno Para quem nao tem HTML5
-        Cache                       = {}, 
-        
-        MsgFila                     = new Array(), 
-        MgsAtivo                    = 0, 
-        Config_Formulario_Vazios    = [
+    var Config_Formulario_Vazios    = [
             "",                   // Vazio Normal
             "__/__/____",         // DATA
             "__/__/____ __:__:__",// DATA HORA
@@ -56,149 +47,7 @@ var Sierra = (function () {
     * Funções Usadas Pela Classe
     * METODOS PRIVADOS
     * 
-    */
-    /**
-    * 
-    * @param {type} needle
-    * @param {type} haystack
-    * @returns {Boolean}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-    */
-    function Sessao_Ler(nome) {
-        if(Cache['SierraTec_'+nome]!=undefined) {
-            return Cache['SierraTec_'+nome][1];
-        }
-        return false;
-    }
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Sessao_Gravar(nome,valor) {
-        Cache['SierraTec_'+nome] = new Array('SierraTec_'+nome,valor);
-        return true;
-    }  
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Sessao_Deletar(nome) {
-        if(nome===false) {
-            Cache = {};
-        } else {
-            Cache['SierraTec_'+nome] = undefined;
-        }
-        return true;
-    }    
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Cache_Ler(nome) {
-        if (Modernizr.localstorage===true) {
-            if (window.localStorage.getItem('SierraTec_'+nome)) {
-                return window.localStorage.getObject('SierraTec_'+nome);
-            }
-            return false;
-        } else {
-            return Sessao_Ler(nome);
-        }
-    }
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Cache_Gravar(nome,valor) {
-        if (Modernizr.localstorage) {
-            try { 
-                window.localStorage.setObject('SierraTec_'+nome, valor);
-            } catch(e) {
-                console.log(e);
-                return false;
-            }
-            return true;
-        } else {
-            return Sessao_Gravar(nome,valor);
-        }
-    }  
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Cache_Deletar(nome) {
-        if (Modernizr.localstorage) {
-            if(nome===false) {
-                window.localStorage.clear();
-            } else {
-                window.localStorage.removeItem('SierraTec_'+nome);
-            }
-            return true;
-        } else {
-            return Sessao_Deletar(nome);
-        }
-    }    
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Cookie_Salvar(name,value) {    //função universal para criar cookie
-
-        var expires,
-            exdays = 70,
-            date;
-        date = new Date(); //  criando o COOKIE com a data atual
-        date.setTime(date.getTime()+(exdays*24*60*60*1000));
-        expires = date.toUTCString();
-        document.cookie = name+"="+value+"; expires="+expires+"; path=/";
-    }
-    
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Cookie_Ler(strCookie) {
-        var strNomeIgual = strCookie + "=";
-        var arrCookies = document.cookie.split(';');
-
-        for(var i = 0; i < arrCookies.length; i++)
-        {
-            var strValorCookie = arrCookies[i];
-            while(strValorCookie.charAt(0) == ' ')
-            {
-                strValorCookie = strValorCookie.substring(1, strValorCookie.length);
-            }
-            if(strValorCookie.indexOf(strNomeIgual) == 0)
-            {
-                return strValorCookie.substring(strNomeIgual.length, strValorCookie.length);
-            }
-        }
-        return false;
-    } 
-    /**
-     * 
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
- 
-    * @param {type} name
-    * @returns {undefined}    */
-    function Cookie_Apagar(name)
-    {
-        setCookie(name,-1); // deletando o cookie encontrado a partir do mostraCookie
-    } 
-   /**
-    * 
-    * Verifica Se possue no Array
-    * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-    */
-   function inArray(needle, haystack) {
-       "use strict";
-       var length = haystack.length, i;
-       for (i = 0; i < length; i++) {
-           if (haystack[i] === needle) {
-               return true;
-           }
-       }
-       return false;
-   }
+    */  
     /**
      * Calendario
      * @param {type} data
@@ -413,7 +262,7 @@ var Sierra = (function () {
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
     documento.on("click", 'div.modal-header > button.close', function () {
-            Control_Ajax_Popup_Fechar('popup');
+            ElementsPopup.Control_Ajax_Popup_Fechar('popup');
     });
     /**
      * TRANSFORMA LINKS PRA AJAX
@@ -473,10 +322,10 @@ var Sierra = (function () {
             obrigatorio     = elemento.hasClass('obrigatorio'),
             validar         = true,
             passar          = 1;
-        if (obrigatorio === true && inArray(valor,Config_Formulario_Vazios) === true && esta_escondido !== 'ativado') {
+        if (obrigatorio === true && $.inArray(valor,Config_Formulario_Vazios)!==-1 && esta_escondido !== 'ativado') {
             elemento.addClass('obrigatoriomarcado').focus();
             passar = 0;
-        }else if (inArray(valor,Config_Formulario_Vazios) === false && funcao_valida !== undefined && funcao_valida !== 'undefined' && esta_escondido !== 'ativado') {
+        }else if ($.inArray(valor,Config_Formulario_Vazios)===-1 && funcao_valida !== undefined && funcao_valida !== 'undefined' && esta_escondido !== 'ativado') {
             validar = Control_Layoult_Validar(elemento,funcao_valida,valor);
             if (validar === false) passar = 0;
         }
@@ -530,7 +379,7 @@ var Sierra = (function () {
                      passar = false;
                 }
             }
-            if (funcao_valida !== undefined && inArray(valor,Config_Formulario_Vazios) === false && funcao_valida !== 'undefined' && esta_escondido !== 'ativado') {
+            if (funcao_valida !== undefined && $.inArray(valor,Config_Formulario_Vazios)===-1 && funcao_valida !== 'undefined' && esta_escondido !== 'ativado') {
                 validar = Control_Layoult_Validar(elemento,funcao_valida,valor);
                 
                 if (validar === false) { 
@@ -549,7 +398,7 @@ var Sierra = (function () {
                 identificador_a_tamanho     = identificador_a.length,*/
                 identificador_ch            = identificador.children(".chosen-drop"),
                 identificador_ch_tamanho    = identificador_ch.length;
-            if (inArray(valor, Config_Formulario_Vazios) === true  && esta_escondido !== 'ativado') {
+            if ($.inArray(valor, Config_Formulario_Vazios)!==-1  && esta_escondido !== 'ativado') {
                 passar = false;
                 Control_PopMgs_Abrir('erro','Campo Obrigatório Vazio','Por favor Preencha Todos os Campos');
                 // Aplica a cor de fundo
@@ -575,8 +424,9 @@ var Sierra = (function () {
         });
         // verifica se pode passar
         if (passar === true) {
-            Modelo_Ajax_Chamar(url,params,'POST',true,false,true);
-            Control_Ajax_Popup_Fechar('popup');
+            console.log('Control Form Tratar');
+            NavigationCall.init(url,params,'POST',true,false,true);
+            ElementsPopup.Control_Ajax_Popup_Fechar('popup');
             $button.attr('disabled',false);
             //self.reset();
             return true;
@@ -649,10 +499,11 @@ var Sierra = (function () {
             // Log the State
             var State = History.getState(),  // Note: We are using History.getState() instead of event.state
                 url = State.url/*.slice(ConfigArquivoPadrao.length-1)*/;
-            if (Historico_Controle !== State.data.id) {
-                Historico_Controle = State.data.id;
-                Modelo_Ajax_Chamar(url,'','get',true,true,true);
-                /*Modelo_Ajax_JsonTratar(
+            if (NavigationUrl.historyControl !== State.data.id) {
+                console.log('Historico Chamar',NavigationUrl.historyControl,State);
+                NavigationUrl.historyControl = State.data.id;
+                NavigationCall.init(url,'','get',true,true,true);
+                /*JsonTratar(
                     State.url,
                     ''State.data.json,
                     'Voltar'
@@ -704,19 +555,6 @@ var Sierra = (function () {
     /**
      * 
      * @param {type} tipo
-     * @returns {undefined}
-     */
-    function Control_PopMgs_Carregando () {
-        NProgress.start();
-        SiteCarregando = true;
-    };
-    function Control_PopMgs_Carregando_Fechar () {
-        SiteCarregando = false;
-        NProgress.done();
-    };
-    /**
-     * 
-     * @param {type} tipo
      * @param {type} mensagem_principal
      * @param {type} mensagem_secundaria
      * @returns {undefined}
@@ -731,318 +569,6 @@ var Sierra = (function () {
             toastr.warning(mensagem_secundaria, mensagem_principal);
         } else {
             toastr.info(mensagem_secundaria, mensagem_principal);
-        }
-    };
-    
-    /**
-     * FUNCOES DE RETORNO
-     * 
-     * @param {type} id
-     * @returns {undefined}@author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Popup_Fechar (id) {
-        var identificador = $(document.getElementById(id)).removeClass('in');
-        window.setTimeout(function () {
-            identificador.css('display','none');
-        }, 500);
-    };
-    /**
-     * ['Popup']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Popup (json) {
-        var head        = '',
-            body        = '',
-            footer      = '',
-            popup       = $(document.getElementById(json['id'])),
-            popup2      = popup.children(".modal-dialog").children(".modal-content"),
-            i           = 0,
-            tam = Object.keys(json['botoes']).length;
-        // Percorre Botoes e os fazem
-        for(; i<tam; ++i) {
-            if (json['botoes'][i]['clique'] === '$( this ).dialog( "close" );') {
-                footer += '<button class="btn" data-dismiss="modal" aria-hidden="true" onCLick="Sierra.Control_Ajax_Popup_Fechar(\''+json["id"]+'\');">'+json['botoes'][i]['text']+'</button>';
-            } else {
-                footer += '<button class="btn btn-primary" onClick="'+json['botoes'][i]['clique']+'">'+json['botoes'][i]['text']+'</button>';
-            }
-        }
-        popup2.children(".modal-header").children("#popuptitulo").html(json['title']);
-        popup2.children(".modal-body").html('<div class="row">'+json['html']+'</div>');
-        popup2.children(".modal-footer").html(footer);
-        popup.css('display','block').addClass('in');
-    };
-    /**
-     * ['Conteudo']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Conteudo (json) {
-        var cod         = '',
-            script      = '';
-    
-        for (var i in json) {
-            if(json[i] !== undefined) {
-                $(json[i]['location']).html(json[i]['html']);
-                script += json[i]['js'];
-            }
-        }
-        if (script !== '') {
-            $('body').append('<script type="text/javascript">'+script+'</script>');
-        }
-    };
-    /**
-     * ['Redirect']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Redirect (json) {
-        var cod         = '',
-            script      = '',
-            url         = [];
-    
-        for (var i in json) {
-            if(json[i] !== undefined) {
-                url = json[i]['Url'];
-                
-                Modelo_Ajax_Chamar(url,'','get',true,true,true);
-            }
-        }
-    };
-    /**
-     * ['Select']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Select (json) {
-        var i           = 0,
-            tam         = Object.keys(json).length,
-            i2          = 0,
-            tam2,
-            identificador;
-        for (var i in json) {
-            identificador = $(document.getElementById(json[i]['id']));
-            tam2 = Object.keys(json[i]['valores']).length;
-            identificador.find('option').remove();
-            for(; i2<tam2; ++i2) {
-                identificador.append(
-                    new Option(
-                        json[i]['valores']['nome'], 
-                        json[i]['valores']['valor'], 
-                        true, 
-                        true
-                    )
-                );
-            }
-        }
-    };
-    /**
-     * ['JavascriptInterno']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Css (json) {
-        var script      = '',
-            cache = Cache_Ler('Dependencias_Css');
-    
-        if(cache===false) {
-            cache = new Array();
-        } else {
-            cache = cache.split('|');
-        }
-        for (var i in json) {
-            // VErifica se ja esta carregado
-            if(!inArray(json[i],cache)) {
-                // Adiciona ao Cache
-                cache.push(json[i]);
-                
-                if (script !== '') {
-                    script += ',';
-                }
-                script += json[i]+'.css';
-            }
-        }
-        if (script !== '') {
-            // Salva Cache
-            Cache_Gravar('Dependencias_Css',cache.join('|'));
-            
-            $('head').append('<link href="'+ConfigArquivoPadrao+'static/min/?f='+script+'" rel="stylesheet" />');
-        }
-    };
-    /**
-     * ['JavascriptInterno']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_JavascriptInterno (json) {
-        var script      = '';
-        for (var i in json) {
-            script += json[i];
-        }
-        if (script !== '') {
-            $('body').append('<script type="text/javascript">'+script+'</script>');
-        }
-    };
-    /**
-     * ['Javascript']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Javascript (json) {
-        var script = '',
-            cache = Cache_Ler('Dependencias_Js');
-    
-        if(cache===false) {
-            cache = new Array();
-        } else {
-            cache = cache.split('|');
-        }
-        
-        for (var i in json) {
-            // VErifica se ja esta carregado
-            if(!inArray(json[i],cache)) {
-                // Adiciona ao Cache
-                cache.push(json[i]);
-                
-                if (script !== '') {
-                    script += ',';
-                }
-                // ADiciona ao codigo
-                script += json[i]+'.js';
-            }
-        }
-        
-        if(script!=='') {
-            // Salva Cache
-            Cache_Gravar('Dependencias_Js',cache.join('|'));
-
-            $('head').append('<script type="text/javascript" src="'+ConfigArquivoPadrao+'static/min/?f='+script+'"></script>');
-        }
-        //eval(cod);
-    };
-    /**
-     * ['Mensagens']
-     * @param {type} json
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Control_Ajax_Mensagens (json) {
-        var cod = '';
-        for (var i in json) {
-            Control_PopMgs_Abrir(json[i]['tipo'],json[i]['mgs_principal'],json[i]['mgs_secundaria']);
-        }
-        return true;
-    };
-    
-    /******************************
-    *  Funcao: Controle das requisições e o resultado delas
-    *  Criador: Ricardo Rebello Sierra (2011-10-29)
-    ********************************/
-    /**
-     * FUNCAO PRA CHAMAR AJAX
-     * @param {type} url
-     * @param {type} data
-     * @param {type} navegador
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Modelo_Ajax_JsonTratar (url, data, navegador) {
-        var cod = '',
-            i   = 0,
-            tam;
-        if (data !== null && typeof(data) === "object") {
-            // Verifica se foi chamado pelo historico do navegador
-            if (typeof(navegador) === "undefined") {
-                navegador = false; //False
-            }
-            // Verifica Titulo
-            if (data['Info']['Titulo'] !== '') {
-                document.title = data['Info']['Titulo'];
-                document.getElementById('Framework_Titulo').innerHTML = data['Info']['Titulo'];
-            }
-            // Atualiza Link se tiver historico e nao for via navegador
-            if (navegador === false && data['Info']['Historico'] === true) {
-                Control_Link_Atualizar(url/*, data*/);
-            }
-            // Chama os Tipos de Json
-            tam = Object.keys(data['Info']['Tipo']).length;
-            for(;i<tam;++i) {
-                cod += 'Control_Ajax_'+data['Info']['Tipo'][i]+'(data[\''+data['Info']['Tipo'][i]+'\']);';
-            }
-            eval(cod);
-            Control_Layoult_Recarrega();
-        }else if(typeof(data) === "string") {
-            Modelo_Ajax_JsonTratar(url, JSON.parse(data), navegador);
-        } else {
-            console.log('Erro',data);
-        }
-    };
-    /**
-     * 
-     * @param {type} url
-     * @param {type} params
-     * @param {type} tip
-     * @param {type} resposta
-     * @param {type} historico 
-     * @param {bool} carregando caso true aparece mensagem carregando
-     * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-     */
-    function Modelo_Ajax_Chamar (url, params, tip, resposta, historico,carregando) {
-        console.time('Acao_LINK');
-        var retorno = false;
-        //retorno = Cache_Ler(url);
-        if(retorno!==false) {
-            Json(url,retorno,historico);
-        } else {
-            if(carregando===true) {
-                Control_PopMgs_Carregando();
-            }
-            /* 
-            * XMLHttpRequest2 (html5) -> Opera Mini ainda nao suporta, nao usar por enquanto
-            var xhr = new XMLHttpRequest();
-            xhr.onload = function() {
-              //done
-            }
-            xhr.open("GET", "http://jsperf.com");
-            xhr.send(null);
-             */
-            // Verifica se Contem http ou www se nao tiver acrescenta url do sistema
-            if(url.indexOf('http://') === -1 && url.indexOf('www.') === -1) {
-                url = ConfigArquivoPadrao+url;
-            }
-            
-            $.ajax({ type: tip, url: url, async: true,  dataType: 'json', data: params,/*complete: function () { 
-
-            },*/success: function (data) {
-                if (resposta === true) {
-                    Cache_Gravar(url,data);
-                    Modelo_Ajax_JsonTratar(url,data,historico);
-                }
-                // Agora Tira o CArregando
-                if (SiteCarregando === true) {
-                    Control_PopMgs_Carregando_Fechar();
-                }
-            }, error: function(req) {
-                // Tira Carregando pra nao travar o Sistema:
-                if (SiteCarregando === true) {
-                    Control_PopMgs_Carregando_Fechar();
-                }
-                // Trata o Erro
-                if(req.status === 200 && resposta===true) {
-                    // Caso Pagina Exista, mas JSON Esteja incorreto
-                    Modelo_Ajax_Chamar('_Sistema/erro/Javascript','html='+req.responseText,'POST',false,false,false);
-                } else {
-                    // Página não existe
-                }
-            }});
         }
     };
     /***************************************************************
@@ -1073,37 +599,20 @@ var Sierra = (function () {
     *                                                              *
     ***************************************************************/
     /**
-    * Atualiza Hash e Historico
-    * 
-    * @param {type} url
-    * @param {type} data
-    * @returns {undefined}
-     * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
-    */
-    function Control_Link_Atualizar (url/*, data*/) {
-        if (url !== SiteHash) {
-            SiteHash = url;
-            //Historico
-            var aleatorio = Math.random();
-            Historico_Controle = aleatorio;
-            History.pushState({/*json: data,*/id: aleatorio}, document.title, url);
-            //window.location.hash = url;
-        }
-    };
-    /**
      * 
      * @param {type} link
      * @returns {undefined}
      * @author Ricardo Rebello Sierra <contato@ricardosierra.com.br>
      */
     function Control_Link_Dinamico (link) {
+        console.log('Control Link Dinamico');
         // exibe carregando, captura url e executa acao caso exista
         var url = link.attr('href');
         if (link.attr('data-acao') !== '' && link.attr('data-acao') !== 'undefined') {
             eval(link.attr('data-acao')+'(link);');
         }
         // Corta e Chama AJAX
-        Modelo_Ajax_Chamar(url,'','get',true,false,true);
+        NavigationCall.init(url,'','get',true,false,true);
     };
     
     
@@ -2072,26 +1581,16 @@ var Sierra = (function () {
     return {
         // Funções Usadas pelo Objeto que serão publicas
         Control_Form_Tratar                 : Control_Form_Tratar,
-        Control_Ajax_Popup_Fechar           : Control_Ajax_Popup_Fechar,
         Control_Layoult_Recarrega           : Control_Layoult_Recarrega,
         Control_Layoult_Recarrega_Formulario: Control_Layoult_Recarrega_Formulario,
         Control_Link_Dinamico               : Control_Link_Dinamico,
-        
-        Modelo_Ajax_Chamar                  : Modelo_Ajax_Chamar,
-        Modelo_Ajax_JsonTratar              : Modelo_Ajax_JsonTratar,
         
         Visual_Formulario_Mascara           : Visual_Formulario_Mascara,
         Visual_Layoult_UniForm_Selectiona   : Visual_Layoult_UniForm_Selectiona,
         
         Visual_Tratamento_Maiusculo_Primeira: Visual_Tratamento_Maiusculo_Primeira,
         
-        // Caches
-        Sessao_Ler                          : Sessao_Ler,
-        Sessao_Gravar                       : Sessao_Gravar,
-        Sessao_Deletar                      : Sessao_Deletar,
-        Cache_Ler                           : Cache_Ler,
-        Cache_Gravar                        : Cache_Gravar,
-        Cache_Deletar                       : Cache_Deletar,
+        Control_PopMgs_Abrir: Control_PopMgs_Abrir,
         
         Converter_Real_Float: function (valor) {
             valor = valor.replace("R$ ","");
@@ -2318,7 +1817,8 @@ var Sierra = (function () {
                             } else {
                                 link += 'bairro=falso&';
                             }
-                            Modelo_Ajax_Chamar('locais/localidades/cep',link,'POST',true,false,false);
+                            console.log('Puxando Cep');
+                            NavigationCall.init('locais/localidades/cep',link,'POST',true,false,false);
                         }
                     } else {
                         Control_PopMgs_Abrir('erro','Cep Inválido','Esse cep não foi reconhecido pelos Corrêios');
@@ -2456,7 +1956,8 @@ var Sierra = (function () {
                  },
                 'onAllComplete' : function (event,data)
                 {
-                    Modelo_Ajax_Chamar(modulo+'/'+sub+'/'+acao+'_UploadVer/'+camada+'/'+id+'/','','GET',true,false,false);
+                            console.log('Modelo Upload');
+                    NavigationCall.init(modulo+'/'+sub+'/'+acao+'_UploadVer/'+camada+'/'+id+'/','','GET',true,false,false);
                 }
             });
         },

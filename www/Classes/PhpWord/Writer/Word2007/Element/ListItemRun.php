@@ -44,7 +44,7 @@ class ListItemRun extends AbstractElement
         $xmlWriter->startElement('w:pPr');
         $paragraphStyle = $element->getParagraphStyle();
         $styleWriter = new ParagraphStyleWriter($xmlWriter, $paragraphStyle);
-        $styleWriter->setIsInline(TRUE);
+        $styleWriter->setIsInline(true);
         $styleWriter->write();
 
         $xmlWriter->startElement('w:numPr');

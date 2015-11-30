@@ -20,7 +20,7 @@ class Minify_HTML {
     /**
      * @var boolean
      */
-    protected $_jsCleanComments = TRUE;
+    protected $_jsCleanComments = true;
 
     /**
      * "Minify" an HTML page

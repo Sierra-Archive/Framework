@@ -11,7 +11,7 @@ class DireitoModelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public $campos = Array();
     public function __construct() {
@@ -26,7 +26,7 @@ class DireitoModelo extends \Framework\App\Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Listar($table, $table_campo, &$resultado) {
         $i = 0;
@@ -46,7 +46,7 @@ class DireitoModelo extends \Framework\App\Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Contar($table) {
         $i = 0;

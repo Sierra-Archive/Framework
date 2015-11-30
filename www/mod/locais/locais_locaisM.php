@@ -11,7 +11,7 @@ class locais_locaisModelo extends locais_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -30,7 +30,7 @@ class locais_locaisModelo extends locais_Modelo
     * @return int $i Quantidades de Registros
     *
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function local_retorna(&$Modelo, &$array) {
         global $tabsql;

@@ -36,7 +36,7 @@ class PagSeguroConfig
 
     private function __construct()
     {
-        define('ALLOW_PAGSEGURO_CONFIG',  TRUE);
+        define('ALLOW_PAGSEGURO_CONFIG',  true);
 
         require_once PagSeguroLibrary::getPath() .
             DIRECTORY_SEPARATOR . "config" . DIRECTORY_SEPARATOR . "PagSeguroConfig.php";
@@ -166,7 +166,7 @@ class PagSeguroConfig
 
     public static function activeLog($fileName = null)
     {
-        self::setData('log', 'active', TRUE);
+        self::setData('log', 'active', true);
         self::setData('log', 'fileLocation', $fileName ? $fileName : '');
         LogPagSeguro::reLoad();
     }

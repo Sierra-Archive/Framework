@@ -10,7 +10,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -23,7 +23,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @return int
      * 
      */
-    public function Mensagens_Retorna(&$array, $proprietario=0, $ticket=0, $tipodemensagem = FALSE) {
+    public function Mensagens_Retorna(&$array, $proprietario=0, $ticket=0, $tipodemensagem = false) {
         $i =0;
         $array = Array();
         if ($proprietario==0 && $ticket==1) {
@@ -75,9 +75,9 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             );
         }
         $mensagens = $this->db->Sql_Select('Usuario_Mensagem', $where,0,'log_date_edit DESC');
-        if ($mensagens !== FALSE) {
+        if ($mensagens !== false) {
             if (is_object($mensagens)) $mensagens = Array($mensagens);
-            foreach($mensagens as &$campo) {
+            foreach ($mensagens as &$campo) {
                 $j = $this->db->Sql_Select('Usuario_Mensagem',
                     Array(
                         'id_mensagem' => $campo->id
@@ -85,7 +85,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
                     1,
                     'id DESC'
                 );
-                if ($j === FALSE || $j->escritor==$campo->escritor) {
+                if ($j === false || $j->escritor==$campo->escritor) {
                     ++$i;
                 } else {
                     unset($campo);
@@ -124,7 +124,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         $sql = $this->db->query('SELECT id, escritor, escritor_nome, resposta, log_date_add FROM '.MYSQL_USUARIOS_MENS_RESP.' WHERE deletado!=1 AND id_mensagem='.$mensagemid.' ORDER BY log_date_add');
         
         if (is_object($respostas)) $respostas = Array(0=>$respostas);
-        if ($respostas !== FALSE && !empty($respostas)) {
+        if ($respostas !== false && !empty($respostas)) {
             reset($respostas);
             foreach ($respostas as $campo) {
                 if ($para==0 && $campo->escritor!=$de) {
@@ -193,23 +193,23 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @static
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function Mensagem_TipoChamado(&$mensagem) {
-        $tipo = FALSE;
+        $tipo = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         // Proteção contra erros
-        if (!is_object($mensagem)) return FALSE;
+        if (!is_object($mensagem)) return false;
         // Captura Assunto
         /*$where = Array(
             'id' => $mensagem->assunto
         );
         $assunto = $Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', $where,1);
-        if (!is_object($assunto))return FALSE;*/
-        if (Data_geraTimestamp($mensagem->log_date_edit, FALSE) !== FALSE) {
+        if (!is_object($assunto))return false;*/
+        if (Data_geraTimestamp($mensagem->log_date_edit, false) !== false) {
             $dataapassar = $mensagem->log_date_edit;
-        } else if (Data_geraTimestamp($mensagem->log_date_add, FALSE) !== FALSE) {
+        } else if (Data_geraTimestamp($mensagem->log_date_add, false) !== false) {
             $dataapassar = $mensagem->log_date_add;
         } else {
             if ($mensagem->finalizado==1) {
@@ -221,7 +221,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             }
         }
         // Se tiver data valida, continua, se nao bota como esgotado direto
-        if ($tipo === FALSE) {
+        if ($tipo === false) {
             $datapassada = Data_CalculaDiferenca($dataapassar,APP_HORA);
             if ($mensagem->finalizado==1) {
                 $tipo = 'fin';
@@ -240,35 +240,35 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
         }
         return Array($tipo, $datapassada);
     }
-    public static function Mensagem_TipoChamado_GET(&$array, $tipodemensagem = FALSE) {
+    public static function Mensagem_TipoChamado_GET(&$array, $tipodemensagem = false) {
         if ( is_object($array) ) $array = Array($array);
         if (     empty($array) ) return 0;
-        foreach($array as $indice=>&$valor) {
+        foreach ($array as $indice=>&$valor) {
             $valor->lido                            = self::Mensagem_RespNova($valor->id, $valor->escritor);
             list($valor->tipo, $valor->datapassada)  = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
             if ($valor->tipo=='nov') {
-                if ($tipodemensagem === FALSE || $tipodemensagem=='nov') {
+                if ($tipodemensagem === false || $tipodemensagem=='nov') {
                     $valor->tipo = __('Chamado Novo');
                 } else {
                     unset($array[$indice]);
                 }
             }
             else if ($valor->tipo=='fin') {
-                if ($tipodemensagem === FALSE || $tipodemensagem=='fin') {
+                if ($tipodemensagem === false || $tipodemensagem=='fin') {
                     $valor->tipo = __('Finalizado');
                 } else {
                     unset($array[$indice]);
                 }
             }
             else if ($valor->tipo=='lim') {
-                if ($tipodemensagem === FALSE || $tipodemensagem=='lim') {
+                if ($tipodemensagem === false || $tipodemensagem=='lim') {
                     $valor->tipo = __('Tempo Limite');
                 } else {
                     unset($array[$indice]);
                 }
             }
             else if ($valor->tipo=='esg') {
-                if ($tipodemensagem === FALSE || $tipodemensagem=='esg') {
+                if ($tipodemensagem === false || $tipodemensagem=='esg') {
                     $valor->tipo = __('Esgotado');
                 } else {
                     unset($array[$indice]);
@@ -283,7 +283,7 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     protected static function Mensagem_RespNova($mensagem=0, $escritor=0) {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -312,8 +312,8 @@ class usuario_mensagem_Modelo extends \Framework\App\Modelo
             );
         }
         $array = $Modelo->db->Sql_Select('Usuario_Mensagem_Resposta', $where,1,'ordem DESC');
-        if (!is_array($array) || count($array)==0) return FALSE;
-        if ($array->lido==0) return TRUE;
+        if (!is_array($array) || count($array)==0) return false;
+        if ($array->lido==0) return true;
     }
     
     

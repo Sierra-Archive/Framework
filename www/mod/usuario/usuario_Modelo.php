@@ -10,7 +10,7 @@ class usuario_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -28,7 +28,7 @@ class usuario_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
      * #update
     */
     
@@ -41,7 +41,7 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function usuarios_inserir($tipo = 'cliente') {
         GLOBAL $config;
@@ -72,9 +72,9 @@ class usuario_Modelo extends \Framework\App\Modelo
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND email=\''.$email.'\''); //P.categoria
         while ($campo = $sql->fetch_object()) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
     /**
      * 
@@ -90,9 +90,9 @@ class usuario_Modelo extends \Framework\App\Modelo
         FROM '.MYSQL_USUARIOS.'
         WHERE deletado!=1 AND login=\''.$login.'\''); //P.categoria
         while ($campo = $sql->fetch_object()) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
     /**
      * 
@@ -118,7 +118,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $text = 'CONFIG_CLI_'.$motivoid.'_NOME';
-        return Array('Pagamento do Plano', $text);
+        return Array(__('Pagamento do Plano'), $text);
     }
     
     
@@ -139,18 +139,18 @@ class usuario_Modelo extends \Framework\App\Modelo
      * @param type $export
      * @throws \Exception
      */
-    protected function Usuario_Listagem($grupo = FALSE, $ativado = FALSE, $gravidade=0, $inverter = FALSE) {
+    protected function Usuario_Listagem($grupo = false, $ativado = false, $gravidade=0, $inverter = false) {
         $url_ver = 'usuario/Perfil/Perfil_Show';
         $url_editar='usuario/Admin/Usuarios_Edit';
         $url_deletar='usuario/Admin/Usuarios_Del';
-        if ($grupo === FALSE) {
+        if ($grupo === false) {
             $categoria = 0;
             if ($inverter) {
                 $where = 'ativado!='.$ativado;
             } else {
                 $where = 'ativado='.$ativado;
             }
-            if ($ativado === FALSE) {
+            if ($ativado === false) {
                 $where = '';
             }
             $nomedisplay        = __('Usuários ');
@@ -164,22 +164,24 @@ class usuario_Modelo extends \Framework\App\Modelo
             $sql_grupos = $this->db->Sql_Select('Sistema_Grupo', 'categoria='.$categoria,0, '', 'id');
             $grupos_id = Array();
             if (is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
-            if ($sql_grupos !== FALSE && !empty($sql_grupos)) {
+            if ($sql_grupos !== false && !empty($sql_grupos)) {
                 foreach ($sql_grupos as &$valor) {
                     $grupos_id[] = $valor->id;
                 }
             }
             
-            if (empty($grupos_id)) return _Sistema_erroControle::Erro_Fluxo('Grupos não existe',404);
+            if (empty($grupos_id)){
+                throw new \Exception('Grupos não existe',404);
+            }
             
             // cria where de acordo com parametros
             if ($inverter) {
-                $where = 'grupo NOT IN ('.implode(', ', $grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo NOT IN ('.implode(',', $grupos_id).') AND ativado='.$ativado;
             } else {
-                $where = 'grupo IN ('.implode(', ', $grupos_id).') AND ativado='.$ativado;
+                $where = 'grupo IN ('.implode(',', $grupos_id).') AND ativado='.$ativado;
             }
             
-            if ($ativado === FALSE) {
+            if ($ativado === false) {
                 $where = explode(' AND ', $where);
                 $where = $where[0];
             }
@@ -190,14 +192,14 @@ class usuario_Modelo extends \Framework\App\Modelo
         }
         
         $linkextra = '';
-        if ($grupo !== FALSE && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter === FALSE) {
+        if ($grupo !== false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter === false) {
             $linkextra = '/cliente';
             $link = 'usuario/Admin/ListarCliente';
             $link_editar = 'usuario/Admin/Cliente_Edit';
             $link_deletar = 'usuario/Admin/Cliente_Del';
             $link_add = 'usuario/Admin/Cliente_Add/'.$categoria;
         }
-        else if ($grupo !== FALSE && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter === FALSE) {
+        else if ($grupo !== false && $grupo[0]==CFG_TEC_CAT_ID_FUNCIONARIOS && $inverter === false) {
             $linkextra = '/funcionario';
             $link = 'usuario/Admin/ListarFuncionario';
             $link_editar = 'usuario/Admin/Funcionario_Edit';
@@ -231,26 +233,26 @@ class usuario_Modelo extends \Framework\App\Modelo
         $permissionDelete           = $this->_Registro->_Acl->Get_Permissao_Url($url_deletar);
 
         // Verifica Grupo
-        $Ativado_Grupo = FALSE;
+        $Ativado_Grupo = false;
         if (is_array($usuario_Admin_Grupo)) {
-            if ($grupo === FALSE || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))) {
-                $Ativado_Grupo = TRUE;
+            if ($grupo === false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Grupo))) {
+                $Ativado_Grupo = true;
             }
         } else {
-            if ($usuario_Admin_Grupo === TRUE) {
-                $Ativado_Grupo = TRUE;
+            if ($usuario_Admin_Grupo === true) {
+                $Ativado_Grupo = true;
             }
         }
 
         // Verifica foto
-        $Ativado_Foto = FALSE;
+        $Ativado_Foto = false;
         if (is_array($usuario_Admin_Foto)) {
-            if ($grupo === FALSE || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))) {
-                $Ativado_Foto = TRUE;
+            if ($grupo === false || (is_array($grupo) && in_array($grupo[0], $usuario_Admin_Foto))) {
+                $Ativado_Foto = true;
             }
         } else {
-            if ($usuario_Admin_Foto === TRUE) {
-                $Ativado_Foto = TRUE;
+            if ($usuario_Admin_Foto === true) {
+                $Ativado_Foto = true;
             }
         }
         
@@ -272,15 +274,15 @@ class usuario_Modelo extends \Framework\App\Modelo
         
         
 
-        if ($Ativado_Grupo === TRUE) {
+        if ($Ativado_Grupo === true) {
             ++$numero;
             $columns[] = array( 'db' => 'grupo2', 'dt' => $numero); //'Grupo';
         }
-        if ($Ativado_Foto === TRUE) {
+        if ($Ativado_Foto === true) {
             ++$numero;
             $columns[] = array( 'db' => 'foto', 'dt' => $numero,
                 'formatter' => function($d, $row) {
-                    if ($d==='' || $d === FALSE) {
+                    if ($d==='' || $d === false) {
                         $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
                     } else {
                         $foto = $d;
@@ -308,7 +310,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             $nome = '<a href="'.URL_PATH.'usuario_mensagem/Suporte/Mostrar_Cliente/'.$valor->id.'/">'.$nome.' ('.usuario_mensagem_SuporteModelo::Suporte_MensagensCliente_Qnt($valor->id).')</a>';
         }
         // Mostra Nome
-        $table['Nome'][$i]             = $nome;
+        $table[__('Nome')][$i]             = $nome;
          * 
          */
         
@@ -339,7 +341,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             if ($telefone!='') $telefone .= '<br>';
             $telefone .= $valor->celular3;
         }
-        $table['Contato'][$i]         = $telefone;*/
+        $table[__('Contato')][$i]         = $telefone;*/
         
         // EMAIL #UPDATE
         
@@ -354,7 +356,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             if ($email!='') $email .= '<br>';
             $email .= $valor->email2;
         }
-        $table['Email'][$i]      =  $email;*/
+        $table[__('Email')][$i]      =  $email;*/
         
         
         
@@ -363,7 +365,7 @@ class usuario_Modelo extends \Framework\App\Modelo
             ++$numero;
             $columns[] = array( 'db' => 'id', 'dt' => $numero,
                 'formatter' => function($d, $row) {
-                    return Financeiro_Modelo::Carregar_Saldo(Framework\App\Registro::getInstacia()->_Modelo, $d, TRUE);
+                    return Financeiro_Modelo::Carregar_Saldo(Framework\App\Registro::getInstacia()->_Modelo, $d, true);
                 }
             ); //'Saldo';
         }
@@ -374,7 +376,7 @@ class usuario_Modelo extends \Framework\App\Modelo
         ++$numero;
         $columns[] = array( 'db' => 'log_date_add', 'dt' => $numero,
             'formatter' => function($d, $row) {
-                if (strpos($d, APP_DATA_BR) !== FALSE) {
+                if (strpos($d, APP_DATA_BR) !== false) {
                     return '<b>'.$d.'</b>';
                 } else {
                     return $d;
@@ -393,26 +395,26 @@ class usuario_Modelo extends \Framework\App\Modelo
         // Visualizar
         if ($perm_view) {
             ++$funcoes_qnt;
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar '.$nomedisplay_sing.'\'        ,\''.$url_ver.'/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar '.$nomedisplay_sing.'\'        ,\''.$url_ver.'/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),true);';
         }
         
         // Comentario de Usuario
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Comentarios') && $perm_comentario) {
             if ($funcoes_qnt>2) {
-                $table['Funções'][$i]     .=   '<br>';
+                $table[__('Funções')][$i]     .=   '<br>';
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(\'Histórico\'        ,\'usuario/Admin/Usuarios_Comentario/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\',\'file\',\'inverse\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(\'Histórico\'        ,\'usuario/Admin/Usuarios_Comentario/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\',\'file\',\'inverse\'),true);';
         }
         // Anexo de Usuario
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Anexo') && $perm_anexo) {
             if ($funcoes_qnt>2) {
-                $table['Funções'][$i]     .=   '<br>';
+                $table[__('Funções')][$i]     .=   '<br>';
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(\'Anexos\'        ,\'usuario/Anexo/Anexar/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\',\'file\',\'inverse\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'     ,Array(\'Anexos\'        ,\'usuario/Anexo/Anexar/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\',\'file\',\'inverse\'),true);';
         }
         // Email para Usuario
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Email') && $perm_email) {
@@ -421,7 +423,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Email\'     ,Array(\'Enviar email para '.$nomedisplay_sing.'\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Email\'     ,Array(\'Enviar email para '.$nomedisplay_sing.'\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),true);';
         }
         // Email para Setor
         if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem') && $usuario_mensagem_EmailSetor && $perm_email) {
@@ -430,10 +432,10 @@ class usuario_Modelo extends \Framework\App\Modelo
                 $funcoes_qnt = 0;
             }
             ++$funcoes_qnt;
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Email\'     ,Array(\'Enviar email para Setor\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/Setor/\'    ,\'\',\'envelope\',\'danger\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Email\'     ,Array(\'Enviar email para Setor\'        ,\'usuario/Admin/Usuarios_Email/\'.$row[\'id\'].\''.$linkextra.'/Setor/\'    ,\'\',\'envelope\',\'danger\'),true);';
         }
         // Verifica se Possue Status e Mostra
-        if ($usuario_Admin_Ativado_Listar !== FALSE && $permissionStatus) {
+        if ($usuario_Admin_Ativado_Listar !== false && $permissionStatus) {
             if ($funcoes_qnt>2) {
                 $function .= ' $html .= \'<br>\';';
                 $funcoes_qnt = 0;
@@ -446,7 +448,7 @@ class usuario_Modelo extends \Framework\App\Modelo
                 $function .= ' $ativado = \'0\';';
                 $function .= ' $texto = \''.$usuario_Admin_Ativado_Listar[0].'\';';
             $function .= ' }';
-            $function .= ' $html .= \'<span id="status\'.$row[\'id\'].\'">\'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Status\'.$ativado     ,Array($texto        ,\'usuario/Admin/Status/\'.$row[\'id\'].\'/\'    ,\'\'),TRUE).\'</span>\';';
+            $function .= ' $html .= \'<span id="status\'.$row[\'id\'].\'">\'.Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Status\'.$ativado     ,Array($texto        ,\'usuario/Admin/Status/\'.$row[\'id\'].\'/\'    ,\'\'),true).\'</span>\';';
 
         }
         if ($funcoes_qnt>2) {
@@ -457,10 +459,10 @@ class usuario_Modelo extends \Framework\App\Modelo
         // Editar e Deletar
         $funcoes_qnt = $funcoes_qnt+2;
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$nomedisplay_sing.'\'        ,\''.$url_editar.'/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$nomedisplay_sing.'\'        ,\''.$url_editar.'/\'.$row[\'id\'].\''.$linkextra.'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$nomedisplay_sing.'\'       ,\''.$url_deletar.'/\'.$row[\'id\'].\''.$linkextra.'/\'     ,\'Deseja realmente deletar essa '.$nomedisplay_sing.'?\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$nomedisplay_sing.'\'       ,\''.$url_deletar.'/\'.$row[\'id\'].\''.$linkextra.'/\'     ,\'Deseja realmente deletar essa '.$nomedisplay_sing.'?\'),true);';
         }
 
         ++$numero;

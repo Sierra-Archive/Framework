@@ -17,11 +17,11 @@ class Evento_Principal implements \Framework\PrincipalInterface
      * @return void 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
-        return TRUE;
+        return true;
     }
     static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
@@ -30,38 +30,38 @@ class Evento_Principal implements \Framework\PrincipalInterface
                 '<i class="fa fa-building"></i>'.
             '</a>'.
         '</li>');
-        return TRUE;
+        return true;
     }      
     /**
      * 
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
     static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Eventos
         $result = self::Busca_Eventos($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Retorna
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return FALSE;
+            return false;
         }
     }
     
@@ -76,7 +76,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $eventos = $Modelo->db->Sql_Select('Evento', $where);
-        if ($eventos === FALSE) return FALSE;
+        if ($eventos === false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -85,14 +85,14 @@ class Evento_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Evento/Evento/Eventos',
             )
         )));
         if (is_object($eventos)) $eventos = Array(0=>$eventos);
-        if ($eventos !== FALSE && !empty($eventos)) {
+        if ($eventos !== false && !empty($eventos)) {
             list($table, $i) = Evento_EventoControle::Eventos_Tabela($eventos);
             $Visual->Show_Tabela_DataTable($table);
         } else {    
@@ -105,7 +105,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -120,7 +120,7 @@ class Evento_Principal implements \Framework\PrincipalInterface
             'building', 
             $evento_qnt, 
             'block-red', 
-            FALSE, 
+            false, 
             400
         );
     }

@@ -2,9 +2,9 @@
 final Class Foto_Referencia_DAO extends Framework\App\Dao 
 {
     protected $foto;
-    protected $table;
-    protected $tableid;
-    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected $tabela;
+    protected $tabelaid;
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_FOTO_REFERENCIA;
     }
     /**
@@ -12,7 +12,7 @@ final Class Foto_Referencia_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return FALSE;
+        return false;
     }
     public static function Get_Sigla() {
         return 'FR';
@@ -40,21 +40,21 @@ final Class Foto_Referencia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'foto',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => TRUE,
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => true,
                 'mysql_indice_unico'=> 'foto',
                 'mysql_estrangeira' => 'F.id|F.nome', // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => FALSE,
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => false,
                 'edicao'            => Array(
                     'Nome'              => __('Foto'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
@@ -66,32 +66,32 @@ final Class Foto_Referencia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'tabela',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => FALSE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => TRUE,
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => true,
                 'mysql_indice_unico'=> 'foto',
-                'mysql_estrangeira' => FALSE, // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => FALSE
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => false
             ),Array(
                 'mysql_titulo'      => 'tabelaid',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => TRUE,
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => true,
                 'mysql_indice_unico'=> 'foto',
-                'mysql_estrangeira' => FALSE, // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'         => FALSE
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'linkextra'         => false
             )
         );
     }

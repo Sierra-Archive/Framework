@@ -13,7 +13,7 @@ class social_AcaoControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,15 +29,15 @@ class social_AcaoControle extends social_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
-        return FALSE; 
+        return false; 
     }
-    protected static function Endereco_Acao($true= TRUE ) {
+    protected static function Endereco_Acao($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Açoes'),'social/Acao/Acoes');
         } else {
             $_Controle->Tema_Endereco(__('Açoes'));
@@ -46,28 +46,28 @@ class social_AcaoControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Acao($persona_id = FALSE, $export = FALSE) {
-        self::Acao_Stat($persona_id,'Unico', $export = FALSE);
+    public function Acao($persona_id = false, $export = false) {
+        self::Acao_Stat($persona_id,'Unico', $export = false);
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Ações'));
     }
-    public static function Acao_Stat($persona_id = FALSE, $tipo='Unico', $export = FALSE) {
+    public static function Acao_Stat($persona_id = false, $tipo='Unico', $export = false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
         $i = 0;
-        if ($persona_id==0) $persona_id = FALSE;
-        if ($persona_id === FALSE) {
-            self::Endereco_Acao(FALSE);
+        if ($persona_id==0) $persona_id = false;
+        if ($persona_id === false) {
+            self::Endereco_Acao(false);
             $where = Array();
         } else {
             $where = Array(Array('vitima'=>$persona_id,'alvo'=>$persona_id));
         }
         
         // add botao
-        if ($persona_id === FALSE) {
+        if ($persona_id === false) {
             $extra = '/0';
         } else {
             $extra = '/'.$persona_id;
@@ -79,26 +79,26 @@ class social_AcaoControle extends social_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'social/Acao/Acao'.$extra,
             )
         )));
         $acoes = $Modelo->db->Sql_Select('Social_Acao', $where);
-        if ($acoes !== FALSE && !empty($acoes)) {
+        if ($acoes !== false && !empty($acoes)) {
             if (is_object($acoes)) $acoes = Array(0=>$acoes);
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
-                $table['Data'][$i]             = $valor->data;
-                $table['Vitima'][$i]           = $valor->vitima2;
-                $table['Alvo'][$i]             = $valor->alvo2;
-                $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Ação'        ,'social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    , '')).
-                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Ação'       ,'social/Acao/Acoes_Del/'.$valor->id.'/'.$persona_id     ,'Deseja realmente deletar essa Ação ?'));
+                $table[__('Data')][$i]             = $valor->data;
+                $table[__('Vitima')][$i]           = $valor->vitima2;
+                $table[__('Alvo')][$i]             = $valor->alvo2;
+                $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Ação')        ,'social/Acao/Acoes_Edit/'.$valor->id.'/'.$persona_id    , '')).
+                                                  $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Ação')       ,'social/Acao/Acoes_Del/'.$valor->id.'/'.$persona_id     , __('Deseja realmente deletar essa Ação ?')));
                 ++$i;
             }
             $titulo = __('Listagem de Ações').' ('.$i.')';
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, $titulo);
             } else {
                 $Visual->Show_Tabela_DataTable(
@@ -130,9 +130,9 @@ class social_AcaoControle extends social_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Acoes_Add($persona_id = FALSE) {
+    public function Acoes_Add($persona_id = false) {
         // Carrega Config
         $titulo1    = __('Adicionar Ação');
         $titulo2    = __('Salvar Ação');
@@ -147,15 +147,15 @@ class social_AcaoControle extends social_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Acoes_Add2($persona_id = FALSE) {
+    public function Acoes_Add2($persona_id = false) {
         $titulo     = __('Ação adicionada com Sucesso');
         $dao        = 'Social_Acao';
         $function     = '$this->Acao('.$persona_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Ação cadastrado com sucesso.');
-        if ($persona_id === FALSE) {
+        if ($persona_id === false) {
             $function     = '$this->Acao(0);';
             $alterar    = Array();
         } else {
@@ -170,7 +170,7 @@ class social_AcaoControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Acoes_Edit($id) {
         // Carrega Config
@@ -188,7 +188,7 @@ class social_AcaoControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Acoes_Edit2($id) {
         $titulo     = __('Ação editado com Sucesso');
@@ -204,9 +204,9 @@ class social_AcaoControle extends social_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Acoes_Del($id, $persona_id = FALSE) {
+    public function Acoes_Del($id, $persona_id = false) {
         
         
     	$id = (int) $id;
@@ -214,7 +214,7 @@ class social_AcaoControle extends social_Controle
         $setor = $this->_Modelo->db->Sql_Select('Social_Acao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -232,7 +232,7 @@ class social_AcaoControle extends social_Controle
         $this->Acao($persona_id);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Ação deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

@@ -4,10 +4,10 @@ class Evento_EventoControle extends Evento_Controle
     public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Evento($true= TRUE ) {
+    static function Endereco_Evento($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Eventos'),'Evento/Evento/Eventos');
         } else {
             $_Controle->Tema_Endereco(__('Eventos'));
@@ -24,11 +24,11 @@ class Evento_EventoControle extends Evento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Evento/Evento/Eventos');
-        return FALSE;
+        return false;
     }
     static function Eventos_Tabela(&$eventos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -43,11 +43,11 @@ class Evento_EventoControle extends Evento_Controle
         $permissionDelete = $Registro->_Acl->Get_Permissao_Url('Evento/Evento/Eventos_Del');
 
         foreach ($eventos as &$valor) {
-            $table['Nome do Evento'][$i]           =   $valor->nome;
-            $table['Local'][$i]                    =   $valor->local2;
-            $table['Data Inicio'][$i]              =   $valor->data_inicio;
-            $table['Data Fim'][$i]                 =   $valor->data_fim;
-            $table['Data Registrado'][$i]          =   $valor->log_date_add;
+            $table[__('Nome do Evento')][$i]           =   $valor->nome;
+            $table[__('Local')][$i]                    =   $valor->local2;
+            $table[__('Data Inicio')][$i]              =   $valor->data_inicio;
+            $table[__('Data Fim')][$i]                 =   $valor->data_fim;
+            $table[__('Data Registrado')][$i]          =   $valor->log_date_add;
             if ($valor->status==1 || $valor->status=='1') {
                 $valor->status='1';
                 $texto = 'Ativado';
@@ -56,8 +56,8 @@ class Evento_EventoControle extends Evento_Controle
                 $texto = __('Desativado');
             }
             $destaque                                     = $valor->destaque;
-            if ($permissionStatus)    $table['Funções'][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    , '')).'</span>';
-            else                $table['Funções'][$i] = '';
+            if ($permissionStatus)    $table[__('Funções')][$i]                   =   '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$valor->status     ,Array($texto        ,'Evento/Evento/Status/'.$valor->id.'/'    , '')).'</span>';
+            else                $table[__('Funções')][$i] = '';
             
             if ($destaque==1) {
                 $destaque = 1;
@@ -66,9 +66,9 @@ class Evento_EventoControle extends Evento_Controle
                 $destaque = 0;
                 $texto = __('Não está em destaque');
             }
-            $table['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    , ''), $permissionFeatured).'</span>'.            
-                                            $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Evento'        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
-                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Evento'       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Evento ?'), $permissionDelete);
+            $table[__('Funções')][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Evento/Evento/Destaques/'.$valor->id.'/'    , ''), $permissionFeatured).'</span>'.            
+                                            $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Evento')        ,'Evento/Evento/Eventos_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                            $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Evento')       ,'Evento/Evento/Eventos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Evento ?')), $permissionDelete);
             ++$i;
         }
         return Array($table, $i);
@@ -76,11 +76,11 @@ class Evento_EventoControle extends Evento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Eventos($export = FALSE) {
+    public function Eventos($export = false) {
         $i = 0;
-        self::Endereco_Evento(FALSE);
+        self::Endereco_Evento(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Evento',
@@ -88,24 +88,24 @@ class Evento_EventoControle extends Evento_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Evento/Evento/Eventos',
             )
         )));
         $eventos = $this->_Modelo->db->Sql_Select('Evento');
-        if ($eventos !== FALSE && !empty($eventos)) {
+        if ($eventos !== false && !empty($eventos)) {
             list($table, $i) = self::Eventos_Tabela($eventos);
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Eventos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -115,7 +115,7 @@ class Evento_EventoControle extends Evento_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Evento para exportar');
             } else {
                 $mensagem = __('Nenhum Evento');
@@ -131,7 +131,7 @@ class Evento_EventoControle extends Evento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Eventos_Add() {
         self::Endereco_Evento();
@@ -149,7 +149,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Eventos_Add2() {
         $titulo     = __('Evento Adicionado com Sucesso');
@@ -164,7 +164,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Eventos_Edit($id) {
         // Chama o Endereco
@@ -187,7 +187,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Eventos_Edit2($id) {
         $titulo     = __('Evento Editado com Sucesso');
@@ -203,7 +203,7 @@ class Evento_EventoControle extends Evento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Eventos_Del($id) {
         
@@ -215,7 +215,7 @@ class Evento_EventoControle extends Evento_Controle
         // Envia evento pro metodo deletar do sql, e grava boleano em variavel sucesso
         $sucesso =  $this->_Modelo->db->Sql_Delete($evento);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -234,16 +234,16 @@ class Evento_EventoControle extends Evento_Controle
         // Titulo
         $this->_Visual->Json_Info_Update('Titulo', __('Evento deletado com Sucesso'));
         // Bota pra nao gravar historico
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id = FALSE) {
-        if ($id === FALSE) {
+    public function Status($id = false) {
+        if ($id === false) {
             return _Sistema_erroControle::Erro_Fluxo('Evento não informado:'. $id,404);
         }
         // Pesquisa o evento no dao
         $resultado = $this->_Modelo->db->Sql_Select('Evento', Array('id'=>$id),1);
         // Caso falso, da erro 404
-        if ($resultado === FALSE || !is_object($resultado)) {
+        if ($resultado === false || !is_object($resultado)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse Evento não existe:'. $id,404);
         }
         // Altera o Valor do Status
@@ -281,15 +281,15 @@ class Evento_EventoControle extends Evento_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Destaques($id = FALSE) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Destaques($id = false) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Evento', Array('id'=>$id),1);
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         if ($resultado->destaque==1 || $resultado->destaque=='1') {
             $resultado->destaque='0';
@@ -320,7 +320,7 @@ class Evento_EventoControle extends Evento_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

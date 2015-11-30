@@ -45,7 +45,7 @@ class EasyPeasyICS {
 	}//function
 	
 	
-	public function render($output = TRUE) {
+	public function render($output = true) {
 		
 		//start Variable
 		$ics = "";
@@ -58,10 +58,10 @@ X-WR-CALNAME:".$this->calendarName."
 PRODID:-//hacksw/handcal//NONSGML v1.0//EN";
 		
 		//Add events
-		foreach($this->events as $event) {
+		foreach ($this->events as $event) {
 			$ics .= "
 BEGIN:VEVENT
-UID:". md5(uniqid(mt_rand(), TRUE)) ."@EasyPeasyICS.php
+UID:". md5(uniqid(mt_rand(), true)) ."@EasyPeasyICS.php
 DTSTAMP:" . gmdate('Ymd').'T'. gmdate('His') . "Z
 DTSTART:".gmdate('Ymd', $event["start"])."T".gmdate('His', $event["start"])."Z
 DTEND:".gmdate('Ymd', $event["end"])."T".gmdate('His', $event["end"])."Z

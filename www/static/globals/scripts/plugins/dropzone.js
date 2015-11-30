@@ -15,7 +15,7 @@ var dropToUpload = {
         $(id).dropzone({
             url: url,
             success: function(file,response) {
-                Sierra.Modelo_Ajax_JsonTratar(url,response,false);
+                JsonTratar(url,response,false);
                 if (file.previewElement) {
                     return file.previewElement.classList.add("dz-success");
                 }

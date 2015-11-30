@@ -29,21 +29,21 @@ class Row extends AbstractStyle
      *
      * @var bool
      */
-    private $tblHeader = FALSE;
+    private $tblHeader = false;
 
     /**
      * Table row cannot break across pages
      *
      * @var bool
      */
-    private $cantSplit = FALSE;
+    private $cantSplit = false;
 
     /**
      * Table row exact height
      *
      * @var bool
      */
-    private $exactHeight = FALSE;
+    private $exactHeight = false;
 
     /**
      * Create a new row style
@@ -68,7 +68,7 @@ class Row extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setTblHeader($value = TRUE)
+    public function setTblHeader($value = true)
     {
         $this->tblHeader = $this->setBoolVal($value, $this->tblHeader);
 
@@ -91,7 +91,7 @@ class Row extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setCantSplit($value = TRUE)
+    public function setCantSplit($value = true)
     {
         $this->cantSplit = $this->setBoolVal($value, $this->cantSplit);
 
@@ -114,7 +114,7 @@ class Row extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setExactHeight($value = TRUE)
+    public function setExactHeight($value = true)
     {
         $this->exactHeight = $this->setBoolVal($value, $this->exactHeight);
 

@@ -4,43 +4,43 @@ namespace Framework\App;
  * Tratamento de Sessão
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 0.4.2
+ * @version 0.4.24
  */
 final Class Session {
     /**
      *
      * @var type 
      */
-    private static $Iniciado = FALSE;
+    private static $Iniciado = false;
     /**
      * 
      * @return boolean
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function init() {
-        if (self::$Iniciado === TRUE) {
-            return TRUE;
+        if (self::$Iniciado === true) {
+            return true;
         }
-        self::$Iniciado = TRUE;
+        self::$Iniciado = true;
         
         session_start();
         
-        return TRUE;
+        return true;
     }
     /**
      * 
      * @param type $clave
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
-    public static function destroy($clave = FALSE) {
-        if (self::$Iniciado !== TRUE) {
+    public static function destroy($clave = false) {
+        if (self::$Iniciado !== true) {
             self::init();
         }
-        if ($clave === FALSE) {
+        if ($clave === false) {
             session_destroy();
         } else {
             if (is_array($clave)) {
@@ -63,34 +63,34 @@ final Class Session {
      * @param type $valor
      * @return boolean
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function set($clave, $valor) {
-        if (self::$Iniciado !== TRUE) {
+        if (self::$Iniciado !== true) {
             self::init();
         }
         if (!empty($clave)) {
             $_SESSION[$clave] = $valor;
         }
-        return FALSE;
+        return false;
     }
     /**
      * 
      * @param type $clave
      * @return boolean
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function get($clave) {
-        if (self::$Iniciado !== TRUE) {
+        if (self::$Iniciado !== true) {
             self::init();
         }
         if (isset($_SESSION[$clave])) {
             return \Framework\App\Conexao::anti_injection($_SESSION[$clave]);
         }
-        return FALSE;
+        return false;
     }
 }
 

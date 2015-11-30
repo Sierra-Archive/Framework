@@ -153,7 +153,7 @@ class PagSeguroTransactionSearchResult
         $transaction['TotalPages'] = $this->totalPages;
         $transaction['Transactions in this page'] = $this->resultsInThisPage;
 
-        return "PagSeguroTransactionSearchResult: " . var_export($transaction, TRUE);
+        return "PagSeguroTransactionSearchResult: " . var_export($transaction, true);
 
     }
 }

@@ -13,7 +13,7 @@ class Direito_RelatorioControle extends Direito_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -30,7 +30,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Main() {
         // FORMULARIO PARA O PASSO 1
@@ -57,7 +57,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param type $tipo
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Impressao($tipo = -1, $id1=0, $id2=0) {
         if ($tipo==-1) $tipo = \Framework\App\Conexao::anti_injection($_POST['selecttipoimpressao']);
@@ -83,8 +83,8 @@ class Direito_RelatorioControle extends Direito_Controle
             if ($id1==0) $id1 = data_eua_brasil(APP_DATA);
             if ($id2==0) $id2 = date('d/m/Y', strtotime("+1 days"));
             $this->_Visual->Javascript_Executar('Sierra.Control_Layoult_Calendario_Intervalo_SemLimite(\'data_inicial\',\'data_final\',\''.$id1.'\',\''.$id2.'\');');
-            $form->Input_Novo('Data Inicial', 'data_inicial', $id1,'text', 10,'obrigatorio', '', FALSE, '', '', 'Data', '', FALSE);
-            $form->Input_Novo('Data Final', 'data_final',  $id2,'text', 10,'obrigatorio', '', FALSE, '', '', 'Data', '', FALSE);
+            $form->Input_Novo(__('Data Inicial'), 'data_inicial', $id1,'text', 10,'obrigatorio', '', false, '', '', 'Data', '', false);
+            $form->Input_Novo(__('Data Final'), 'data_final',  $id2,'text', 10,'obrigatorio', '', false, '', '', 'Data', '', false);
         }
         // POR FASE
         else if ($tipo==1) {
@@ -195,7 +195,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Relatorio_Audiencia($inicialdia = 0, $inicialmes = 0, $inicialano = 0, $finaldia = 0, $finalmes = 0, $finalano = 0, $imprimir = 'false') {
         // Caso nao tenha vindo por GET entao tenta pegar por POST
@@ -217,7 +217,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($imprimir=='false') {
             $this->Impressao(0,data_eua_brasil($inicial),data_eua_brasil($final));
             if ($i!=0 && $inicial!=0 && $final!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.data_eua_brasil($inicial).'/'.data_eua_brasil($final).'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.data_eua_brasil($inicial).'/'.data_eua_brasil($final).'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
@@ -232,7 +232,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Relatorio_Fase($id = 0, $imprimir = 'false') {
         if ($id==0) {
@@ -244,7 +244,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($imprimir=='false') {
             $this->Impressao(1, $id);
             if ($i!=0 && $id!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
@@ -258,7 +258,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Relatorio_Comarca($id = 0, $imprimir = 'false') {
         if ($id==0) {
@@ -270,7 +270,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($imprimir=='false') {
             $this->Impressao(2, $id);
             if ($i!=0 && $id!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
@@ -284,7 +284,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Relatorio_Vara($id = 0, $imprimir = 'false') {
         if ($id==0) {
@@ -296,7 +296,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($imprimir=='false') {
             $this->Impressao(3, $id);
             if ($i!=0 && $id!=0) {            
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$id.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
@@ -310,7 +310,7 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Relatorio_Vara_Comarca($idvara = 0, $idcomarca = 0, $imprimir = 'false') {
         if ($idvara==0) {
@@ -326,7 +326,7 @@ class Direito_RelatorioControle extends Direito_Controle
         if ($imprimir=='false') {
             $this->Impressao(4, $idvara, $idcomarca);
             if ($i!=0 && $idvara!=0 && $idcomarca!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$idvara.'/'.$idcomarca.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/'.SISTEMA_MET.'/'.$idvara.'/'.$idcomarca.'/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
         }
@@ -340,14 +340,14 @@ class Direito_RelatorioControle extends Direito_Controle
      * @param INT $id
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Relatorio_SemAlt($imprimir = 'false') {
         $processos = Array();
         $i = $this->_Modelo->Relatorio_SemAlt($processos);
         if ($imprimir=='false') {
             if ($i!=0) {
-                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Relatorio_SemAlt/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return FALSE;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
+                $this->_Visual->Blocar('<a href="#" onclick="window.open(\''.URL_PATH.SISTEMA_MODULO.'/'.SISTEMA_SUB.'/Relatorio_SemAlt/imprimir/\',\'Janela\',\'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,width=800,height=550\'); return false;"><img src="'.WEB_URL.'img/icons/imprimir.gif" width="121" height="34"></a>');
                 $this->_Visual->Bloco_Maior_CriaJanela(__('Imprimir Dados Acima?'), '',40);
             }
             // Imprimi Numeros a Direita

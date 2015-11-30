@@ -44,7 +44,7 @@ class Chart extends AbstractStyle
      *
      * @var bool
      */
-    private $is3d = FALSE;
+    private $is3d = false;
 
     /**
      * Create a new instance
@@ -118,7 +118,7 @@ class Chart extends AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function set3d($value = TRUE)
+    public function set3d($value = true)
     {
         $this->is3d = $this->setBoolVal($value, $this->is3d);
 

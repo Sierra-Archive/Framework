@@ -11,7 +11,7 @@ class comercio_venda_CarrinhoVisual extends comercio_vendaVisual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();

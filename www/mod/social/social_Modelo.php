@@ -23,7 +23,7 @@ class social_Modelo extends \Framework\App\Modelo
     * @return int Retorna 1 se insercao for concluida com sucesso. 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public static function Inserir_Pers_Relacao(&$model, $user, $table, $table_id, $persona) {
         GLOBAL $config;

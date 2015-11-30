@@ -63,7 +63,7 @@ abstract class AbstractWriter implements WriterInterface
      *
      * @var bool
      */
-    private $useDiskCaching = FALSE;
+    private $useDiskCaching = false;
 
     /**
      * Disk caching directory
@@ -153,7 +153,7 @@ abstract class AbstractWriter implements WriterInterface
      * @return self
      * @throws \Framework\Classes\PhpWord\Exception\Exception
      */
-    public function setUseDiskCaching($value = FALSE, $directory = null)
+    public function setUseDiskCaching($value = false, $directory = null)
     {
         $this->useDiskCaching = $value;
 
@@ -282,8 +282,8 @@ abstract class AbstractWriter implements WriterInterface
 
         // @codeCoverageIgnoreStart
         // Can't find any test case. Uncomment when found.
-        if ($zip->open($filename, ZipArchive::OVERWRITE) !== TRUE) {
-            if ($zip->open($filename, ZipArchive::CREATE) !== TRUE) {
+        if ($zip->open($filename, ZipArchive::OVERWRITE) !== true) {
+            if ($zip->open($filename, ZipArchive::CREATE) !== true) {
                 throw new \Exception("Could not open '{$filename}' for writing.");
             }
         }
@@ -306,7 +306,7 @@ abstract class AbstractWriter implements WriterInterface
         $fileHandle = fopen($filename, 'w');
         // @codeCoverageIgnoreStart
         // Can't find any test case. Uncomment when found.
-        if ($fileHandle === FALSE) {
+        if ($fileHandle === false) {
             throw new \Exception("Could not open '{$filename}' for writing.");
         }
         // @codeCoverageIgnoreEnd
@@ -375,14 +375,14 @@ abstract class AbstractWriter implements WriterInterface
      */
     protected function addFileToPackage($zipPackage, $source, $target)
     {
-        $isArchive = strpos($source, 'zip://') !== FALSE;
+        $isArchive = strpos($source, 'zip://') !== false;
         $actualSource = null;
         if ($isArchive) {
             $source = substr($source, 6);
             list($zipFilename, $imageFilename) = explode('#', $source);
 
             $zip = new ZipArchive;
-            if ($zip->open($zipFilename) !== FALSE) {
+            if ($zip->open($zipFilename) !== false) {
                 if ($zip->locateName($imageFilename)) {
                     $zip->extractTo($this->getTempDir(), $imageFilename);
                     $actualSource = $this->getTempDir() . DIRECTORY_SEPARATOR . $imageFilename;

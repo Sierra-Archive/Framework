@@ -11,7 +11,7 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();
@@ -30,7 +30,7 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */#update
     public function Indicados_Retorna($antecessor=0, $nivel=0) {
         $array = Array();
@@ -42,8 +42,8 @@ class usuario_rede_ListarModelo extends usuario_rede_Modelo
         );
         $registros = $this->db->Sql_Select('Usuario', $where,0,'id,nome,grupo');
         if (is_object($registros)) $registros = Array($registros);
-        if ($registros !== FALSE) {
-            foreach($registros as &$campo) {
+        if ($registros !== false) {
+            foreach ($registros as &$campo) {
                 $array[$i]['id'] = $campo->id;
                 $array[$i]['nome'] = $campo->nome;
                 $array[$i]['grupo'] = $campo->grupo;

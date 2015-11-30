@@ -10,7 +10,7 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,7 +29,7 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
     * @return array $indicados Array com os valores da rede
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function Retorna_num_Indicados($Modelo, $user) {
         // zera contadores
@@ -88,7 +88,7 @@ class usuario_rede_Modelo extends \Framework\App\Modelo
             $ranking[$i]['id'] = $campo->id;
             $ranking[$i]['nome'] = $campo->nome;
             //$ranking[$i]['PRIMARIO'] = $campo->PRIMARIO;
-            $ranking[$i]['PRIMARIO'] = number_format($campo->PRIMARIO/$total*100, 2, ', ', ' ');
+            $ranking[$i]['PRIMARIO'] = number_format($campo->PRIMARIO/$total*100, 2, ',', ' ');
             ++$i;
         }
         return $i;

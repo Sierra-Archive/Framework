@@ -13,7 +13,7 @@ class banner_AdminControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -32,7 +32,7 @@ class banner_AdminControle extends banner_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         // carrega lista de banners
@@ -48,7 +48,7 @@ class banner_AdminControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Banners_Listar($categoria=0, $ativado=1) {
         $banners = Array();
@@ -58,15 +58,15 @@ class banner_AdminControle extends banner_Controle
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
-                $table['Id'][$i]        = $valor['id'];
-                $table['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
-                $table['Categoria'][$i] = $valor['categoria'];
-                $table['Nome'][$i]    = $valor['nome'];
-                $table['Url'][$i]       = $valor['url'];
-                $table['Ixibições'][$i] = $valor['ixi'].' / '.$valor['limite_ixi'];
-                $table['Cliques'][$i]   = $valor['cliq'].' / '.$valor['limite_cliq'];
-                $table['Funções'][$i]   = '<a title="Editar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Edit/'.$valor['id'].'/"><img alt'.__('Editar Banner').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a data-confirma="Deseja realmente deletar esse banner?" title="Deletar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Del/'.$valor['id'].'/"><img alt'.__('Deletar Banner').'  src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                $table[__('Id')][$i]        = $valor['id'];
+                $table[__('Foto')][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
+                $table[__('Categoria')][$i] = $valor['categoria'];
+                $table[__('Nome')][$i]    = $valor['nome'];
+                $table[__('Url')][$i]       = $valor['url'];
+                $table[__('Ixibições')][$i] = $valor['ixi'].' / '.$valor['limite_ixi'];
+                $table[__('Cliques')][$i]   = $valor['cliq'].' / '.$valor['limite_cliq'];
+                $table[__('Funções')][$i]   = '<a title="Editar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Edit/'.$valor['id'].'/"><img alt="'.__('Editar Banner').'" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                '<a data-confirma="Deseja realmente deletar esse banner?" title="Deletar Banner" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'banner/Admin/Banners_Del/'.$valor['id'].'/"><img alt="'.__('Deletar Banner').'  src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($table);
@@ -100,7 +100,7 @@ class banner_AdminControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Banners_Add() {
         // Carrega Config
@@ -110,14 +110,14 @@ class banner_AdminControle extends banner_Controle
         $formbt     = __('Salvar');
         $formlink   = 'banner/Admin/Banners_Add2/';
         $campos     = Banner_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, FALSE,'right');
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, false,'right');
     }
     /**
      * 
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Banners_Add2() {
         $titulo     = __('Banner Adicionado com Sucesso');
@@ -132,7 +132,7 @@ class banner_AdminControle extends banner_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Banners_Edit($id) {
         // Carrega Config
@@ -150,7 +150,7 @@ class banner_AdminControle extends banner_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Banners_Edit2($id) {
         $titulo     = __('Banner Editado com Sucesso');
@@ -174,14 +174,14 @@ class banner_AdminControle extends banner_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Banners_Del($id) {
         
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->Banners_Del($id);
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -199,7 +199,7 @@ class banner_AdminControle extends banner_Controle
         $this->Main();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Banner deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 

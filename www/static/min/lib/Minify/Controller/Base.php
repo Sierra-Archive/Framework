@@ -40,17 +40,17 @@ abstract class Minify_Controller_Base {
      */
     public function getDefaultMinifyOptions() {
         return array(
-            'isPublic' => TRUE
+            'isPublic' => true
             ,'encodeOutput' => function_exists('gzdeflate')
             ,'encodeMethod' => null // determine later
             ,'encodeLevel' => 9
             ,'minifierOptions' => array() // no minifier options
             ,'contentTypeCharset' => 'utf-8'
             ,'maxAge' => 1800 // 30 minutes
-            ,'rewriteCssUris' => TRUE
-            ,'bubbleCssImports' => FALSE
-            ,'quiet' => FALSE // serve() will send headers and output
-            ,'debug' => FALSE
+            ,'rewriteCssUris' => true
+            ,'bubbleCssImports' => false
+            ,'quiet' => false // serve() will send headers and output
+            ,'debug' => false
             
             // if you override these, the response codes MUST be directly after
             // the first space.
@@ -96,16 +96,16 @@ abstract class Minify_Controller_Base {
      */
     public static function _fileIsSafe($file, $safeDirs)
     {
-        $pathOk = FALSE;
+        $pathOk = false;
         foreach ((array)$safeDirs as $safeDir) {
             if (strpos($file, $safeDir) === 0) {
-                $pathOk = TRUE;
+                $pathOk = true;
                 break;
             }
         }
         $base = basename($file);
         if (! $pathOk || ! is_file($file) || $base[0] === '.') {
-            return FALSE;
+            return false;
         }
         list($revExt) = explode('.', strrev($base));
         return in_array(strrev($revExt), array('js', 'css', 'html', 'txt'));
@@ -122,7 +122,7 @@ abstract class Minify_Controller_Base {
     {
         foreach ((array)$allowDirs as $allowDir) {
             if (strpos($file, $allowDir) === 0) {
-                return TRUE;
+                return true;
             }
         }
         throw new \Exception("File '$file' is outside \$allowDirs. If the path is"

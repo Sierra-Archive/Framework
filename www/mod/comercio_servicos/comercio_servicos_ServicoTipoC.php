@@ -13,7 +13,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,16 +29,16 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/ServicoTipo/Servico_Tipo');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Servico_Tipo($true= TRUE ) {
+    static function Endereco_Servico_Tipo($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Tipos de Serviços'),'comercio_servicos/Servico_Tipo/Servico_Tipo');
         } else {
             $_Controle->Tema_Endereco(__('Tipos de Serviços'));
@@ -47,18 +47,18 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servico_Tipo() {
-        self::Endereco_Servico_Tipo(FALSE);
-        $table_colunas = Array();
+        self::Endereco_Servico_Tipo(false);
+        $tableColumns = Array();
 
-        $table_colunas[] = __('Nome');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Nome');
+        $tableColumns[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio_servicos/ServicoTipo/Servico_Tipo');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio_servicos/ServicoTipo/Servico_Tipo');
         $titulo = __('Listagem de Serviços');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add', 'nome'=>'Adicionar Tipo de Serviço'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/ServicoTipo/Servico_Tipo_Add",'icon'=>'add', 'nome' => __('Adicionar Tipo de Serviço')));
 
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Tipos de Serviços'));
@@ -66,7 +66,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servico_Tipo_Add() {
         // Carrega Config
@@ -83,7 +83,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servico_Tipo_Add2() {
         $titulo     = __('Tipo de Serviço adicionada com Sucesso');
@@ -98,7 +98,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servico_Tipo_Edit($id) {
         // Carrega Config
@@ -116,7 +116,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servico_Tipo_Edit2($id) {
         $titulo     = __('Tipo de Serviço editada com Sucesso');
@@ -132,7 +132,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servico_Tipo_Del($id) {
         
@@ -142,7 +142,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico_Tipo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -160,7 +160,7 @@ class comercio_servicos_ServicoTipoControle extends comercio_servicos_Controle
         $this->Servico_Tipo();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Tipo de Serviço deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

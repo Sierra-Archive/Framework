@@ -13,7 +13,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -33,10 +33,10 @@ class Agenda_AtividadesControle extends Agenda_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {    
-        return FALSE;
+        return false;
     }
     
     
@@ -44,19 +44,19 @@ class Agenda_AtividadesControle extends Agenda_Controle
         $i = 0;
         // Botao Add
         $atividades = $Modelo->db->Sql_Select('Agenda_Atividade_Hora', 'AAH.dt_fim=\'0000-00-00 00:00:00\'');
-        if ($atividades !== FALSE && !empty($atividades)) {
+        if ($atividades !== false && !empty($atividades)) {
             
             if (is_object($atividades)) $atividades = Array(0=>$atividades);
             reset($atividades);
             foreach ($atividades as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Tipo de Compromisso'][$i]        =   $valor->atividade2;
-                $table['Inicio'][$i]                  =   $valor->dt_inicio;
-                $table['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array('Editar Atividade'        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    , ''));
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Tipo de Compromisso')][$i]        =   $valor->atividade2;
+                $table[__('Inicio')][$i]                  =   $valor->dt_inicio;
+                $table[__('Funções')][$i]              =   $Visual->Tema_Elementos_Btn('Personalizar'     ,Array(__('Editar Atividade')        ,'Agenda/Compromisso/Compromissos_Edit/'.$valor->id.'/'    , ''));
                 ++$i;
             }
         
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Atividades Abertas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -92,7 +92,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
         $atv_tempo = $this->_Modelo->db->Sql_Select('Agenda_Atividade_Hora');
         
         // Se nao Achar adicionar um com tempo
-        if ($atv_tempo === FALSE) {
+        if ($atv_tempo === false) {
             $atv_tempo = new Agenda_Atividade_Hora_DAO();
             
             $atv_tempo->atividade = 0;

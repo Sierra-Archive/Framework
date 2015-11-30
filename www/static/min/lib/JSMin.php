@@ -245,7 +245,7 @@ class JSMin {
                         }
 
                         if ($this->a === '/') { // end pattern
-                            break; // while (TRUE)
+                            break; // while (true)
                         } elseif ($this->a === '\\') {
                             $this->output .= $this->a;
                             $this->a = $this->get();
@@ -270,26 +270,26 @@ class JSMin {
     {
         if (false !== strpos("(,=:[!&|?+-~*{;", $this->a)) {
             // we obviously aren't dividing
-            return TRUE;
+            return true;
         }
         if ($this->a === ' ' || $this->a === "\n") {
             $length = strlen($this->output);
             if ($length < 2) { // weird edge case
-                return TRUE;
+                return true;
             }
             // you can't divide a keyword
             if (preg_match('/(?:case|else|in|return|typeof)$/', $this->output, $m)) {
                 if ($this->output === $m[0]) { // odd but could happen
-                    return TRUE;
+                    return true;
                 }
                 // make sure it's a keyword, not end of an identifier
                 $charBeforeKeyword = substr($this->output, $length - strlen($m[0]) - 1, 1);
                 if (! $this->isAlphaNum($charBeforeKeyword)) {
-                    return TRUE;
+                    return true;
                 }
             }
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -360,7 +360,7 @@ class JSMin {
     protected function consumeSingleLineComment()
     {
         $comment = '';
-        while (TRUE) {
+        while (true) {
             $get = $this->get();
             $comment .= $get;
             if (ord($get) <= self::ORD_LF) { // end of line reached

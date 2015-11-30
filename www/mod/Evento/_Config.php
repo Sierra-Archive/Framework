@@ -5,7 +5,7 @@ $configModule = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  FALSE,
+        'Dependencias'              =>  false,
     );
 };
 $configMenu = function () {
@@ -16,13 +16,13 @@ $configMenu = function () {
             'Gravidade'             => 80,
             'Img'                   => '',
             'Icon'                  => 'building',
-            'Filhos'                => Array('Eventos'=>Array(
+            'Filhos'                => Array(__('Eventos')=>Array(
                 'Nome'                  => __('Eventos'),
                 'Link'                  => 'Evento/Evento/Eventos',
                 'Gravidade'             => 90,
                 'Img'                   => '',
                 'Icon'                  => 'building',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             )),
         ),
     );
@@ -33,16 +33,16 @@ $config_Permissoes = function () {
             'Nome'                  => __('Eventos - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento',
-            'End'                   => 'Evento/Evento', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Evento/Evento', // Endereco da url de permissão
             'Modulo'                => 'Evento', // Modulo Referente
             'SubModulo'             => 'Evento',   // Submodulo Referente
-            'Metodo'                => '*',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => '*',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Eventos - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Evento/Evento/Eventos_Add', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Evento/Evento/Eventos_Add', // Endereco da url de permissão
             'Modulo'                => 'Evento', // Modulo Referente
             'SubModulo'             => 'Evento',   // Submodulo Referente
             'Metodo'                => 'Eventos_Add,Eventos_Add2',  // Metodos referentes separados por virgula
@@ -51,7 +51,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Eventos - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Evento/Evento/Eventos_Edit', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Evento/Evento/Eventos_Edit', // Endereco da url de permissão
             'Modulo'                => 'Evento', // Modulo Referente
             'SubModulo'             => 'Evento',// Submodulo Referente
             'Metodo'                => 'Eventos_Edit,Eventos_Edit2',  // Metodos referentes separados por virgula
@@ -60,7 +60,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Eventos - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Evento_Evento_Eventos_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Evento/Evento/Eventos_Del', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Evento/Evento/Eventos_Del', // Endereco da url de permissão
             'Modulo'                => 'Evento', // Modulo Referente
             'SubModulo'             => 'Evento',   // Submodulo Referente
             'Metodo'                => 'Eventos_Del',  // Metodos referentes separados por virgula
@@ -73,7 +73,7 @@ $config_Permissoes = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function () {
+$configFunctional = function () {
     return Array();
 };
 /**
@@ -82,7 +82,7 @@ $config_Funcional = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function () {
+$configPublic = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

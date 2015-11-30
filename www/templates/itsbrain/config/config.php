@@ -2,7 +2,7 @@
 function itsbrain_config() {
     return Array(
         'plugins'           => Array(
-            'abas_inverter'         => FALSE,
+            'abas_inverter'         => false,
             'abas_id'               => 'tabs-',
             'abas_ativar'           => function ($id) {
                 $id = (int) $id;
@@ -16,8 +16,8 @@ function itsbrain_config() {
         'javascript'        => Array(
             'datatable_sdom'            => "<'datatable-header'fl>t<'datatable-footer'ip>",
             'datatable_sPaginationType' => 'full_numbers',
-            'datatable_bJQueryUI'       => FALSE,
-            'datatable_bAutoWidth'      => FALSE,
+            'datatable_bJQueryUI'       => false,
+            'datatable_bAutoWidth'      => false,
         )
     );
 }

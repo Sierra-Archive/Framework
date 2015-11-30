@@ -15,16 +15,16 @@ class Simulador_TagControle extends Simulador_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Simulador/Tag/Tags');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Tag($true= TRUE ) {
+    static function Endereco_Tag($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Tag'),'Simulador/Tag/Tags');
         } else {
             $_Controle->Tema_Endereco(__('Tag'));
@@ -38,7 +38,7 @@ class Simulador_TagControle extends Simulador_Controle
         $Visual     = &$Registro->_Visual;
         $table = Array();
         $i = 0;
-        if ($tags !== FALSE) {
+        if ($tags !== false) {
             // Percorre Tags
             if (is_object($tags)) $tags = Array(0=>$tags);
             reset($tags);
@@ -47,15 +47,15 @@ class Simulador_TagControle extends Simulador_Controle
                 $permissionDelete = \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
 
                 foreach ($tags as &$valor) {
-                    $table['Id'][$i]    = $valor->id;
-                    $table['Nome'][$i]      = $valor->nome;
-                    $table['Tipo de Resultado'][$i]      = $valor->resultado_tipo;
-                    $table['Observação'][$i]      = $valor->obs;
+                    $table[__('Id')][$i]    = $valor->id;
+                    $table[__('Nome')][$i]      = $valor->nome;
+                    $table[__('Tipo de Resultado')][$i]      = $valor->resultado_tipo;
+                    $table[__('Observação')][$i]      = $valor->obs;
                     
-                    $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Caracteristica')        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
+                    $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Caracteristica')        ,'Simulador/Tag/Tags_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
                                                       $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Caracteristica')       ,'Simulador/Tag/Tags_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar essa Caracteristica ?')), $permissionDelete);
 
-                    $function .= $table['Funções'][$i];
+                    $function .= $table[__('Funções')][$i];
                     ++$i;
                 }
             }
@@ -64,7 +64,7 @@ class Simulador_TagControle extends Simulador_Controle
             unset($table['Funções']);
         }
         // Desconta Primeiro Registro
-        if ($raiz !== FALSE && $raiz!=0) {
+        if ($raiz !== false && $raiz!=0) {
             $i = $i-1;
         }
         // Retorna List
@@ -73,10 +73,10 @@ class Simulador_TagControle extends Simulador_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Tags($raiz = FALSE) {
-        self::Endereco_Tag(FALSE);
+    public function Tags($raiz = false) {
+        self::Endereco_Tag(false);
         
         // Processa Tag
         list($titulo, $html, $i) = $this->Tags_Processar($raiz);
@@ -86,7 +86,7 @@ class Simulador_TagControle extends Simulador_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Caracteristicas'));
     }
-    private function Tags_Processar($raiz = FALSE) {
+    private function Tags_Processar($raiz = false) {
         return self::Tags_Processar_Static($raiz);
     }
     private static function Tags_Processar_Static() {
@@ -97,15 +97,15 @@ class Simulador_TagControle extends Simulador_Controle
         $endereco = __('Caracteristica');
         $i = 0;
         
-        $table_colunas = Array();
+        $tableColumns = Array();
 
-        $table_colunas[] = __('Id');
-        $table_colunas[] = __('Nome');
-        $table_colunas[] = __('Tipo de Resultado');
-        $table_colunas[] = __('Observação');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Id');
+        $tableColumns[] = __('Nome');
+        $tableColumns[] = __('Tipo de Resultado');
+        $tableColumns[] = __('Observação');
+        $tableColumns[] = __('Funções');
 
-        $html = $_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Simulador/Tag/Tags', '', FALSE, FALSE);
+        $html = $_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'Simulador/Tag/Tags', '', false, false);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo, $html, $i);
@@ -113,7 +113,7 @@ class Simulador_TagControle extends Simulador_Controle
     /**
      * ADD SOMENTE PASTA
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tags_Add($raiz = 0) {
         self::Endereco_Tag();
@@ -132,7 +132,7 @@ class Simulador_TagControle extends Simulador_Controle
      * ADD SOMENTE PASTA
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tags_Add2($raiz = 0) {
         $titulo     = __('Caracteristica Adicionada com Sucesso');
@@ -147,13 +147,13 @@ class Simulador_TagControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tags_Edit($id, $raiz=0) {
         self::Endereco_Tag();
         // Recupera Caracteristica
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag', '{sigla}id=\''.$id.'\'',1);
-        if ($resultado === FALSE) {
+        if ($resultado === false) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Caracteristica não existe:'. $raiz,404);
         }
         // Carrega Config
@@ -180,17 +180,17 @@ class Simulador_TagControle extends Simulador_Controle
         $this->_Visual->Blocar(\Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar,'html'));
         
         $this->Tema_Endereco($titulo1);
-        $this->_Visual->Json_Info_Update('Historico', TRUE);
+        $this->_Visual->Json_Info_Update('Historico', true);
         $this->_Visual->Json_Info_Update('Titulo', $titulo1);
         $this->_Visual->Bloco_Unico_CriaJanela($titulo2, '',10,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
         
-        return TRUE;
+        return true;
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tags_Edit2($id, $raiz=0) {
         $titulo     = __('Editado com Sucesso');
@@ -205,7 +205,7 @@ class Simulador_TagControle extends Simulador_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tags_Del($id, $raiz=0) {
     	$id = (int) $id;
@@ -213,7 +213,7 @@ class Simulador_TagControle extends Simulador_Controle
         $tag = $this->_Modelo->db->Sql_Select('Simulador_Tag', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($tag);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -231,7 +231,7 @@ class Simulador_TagControle extends Simulador_Controle
         $this->Tags($raiz);
         
         $this->_Visual->Json_Info_Update('Titulo', 'Caracteristica deletado com Sucesso');
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
     /**
      * Adicionar Tag Dinamica a Item de Outro Modulo
@@ -241,21 +241,21 @@ class Simulador_TagControle extends Simulador_Controle
      * @param boolean $retornar Se Escreve ou retorna html
      * @return string
      */
-    static function Tag_Dinamica($motivo, $motivoid, $camada, $retornar= TRUE ) {
-        $existe = FALSE;
-        if ($retornar==='false') $retornar = FALSE;
+    static function Tag_Dinamica($motivo, $motivoid, $camada, $retornar= true ) {
+        $existe = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a tag!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Simulador_Tag_Conexao', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
-            $existe = TRUE;
+            $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if ($existe === FALSE) {
+        if ($existe === false) {
             $html = self::Tag_Dinamica_Add($motivo, $motivoid, $camada);
         } else {
-            /*list($titulo, $html, $i)*/$html = self::Tags_Processar_Static($resultado->tag, FALSE);
+            /*list($titulo, $html, $i)*/$html = self::Tags_Processar_Static($resultado->tag, false);
             $html = '<span id="tag_arquivos_mostrar">'.$html[1].'</span>'.
                     $Registro->_Visual->Upload_Janela(
                         'tag',
@@ -269,7 +269,7 @@ class Simulador_TagControle extends Simulador_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);*/
         }
         
-        if ($retornar === TRUE) {
+        if ($retornar === true) {
             return $html;
         } else {
             $conteudo = array(
@@ -292,13 +292,13 @@ class Simulador_TagControle extends Simulador_Controle
         self::DAO_Campos_Retira($campos, 'motivo');
         self::DAO_Campos_Retira($campos, 'motivoid');
         // Chama Formulario
-       return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, FALSE,'html', FALSE);
+       return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, false,'html', false);
     }
     public function Tag_Dinamica_Add2($motivo, $motivoid, $camada) {
         $resultado = $this->_Modelo->db->Sql_Select('Simulador_Tag_Conexao', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
-            SimuladorControle::Tag_Dinamica($motivo, $motivoid, $camada, FALSE);
-            return TRUE;
+            SimuladorControle::Tag_Dinamica($motivo, $motivoid, $camada, false);
+            return true;
         }
         $titulo     = __('Conexão de Tag Feita com Sucesso');
         $dao        = 'Simulador_Tag_Conexao';

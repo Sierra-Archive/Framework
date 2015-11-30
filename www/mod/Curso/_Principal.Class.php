@@ -17,43 +17,43 @@ class Curso_Principal implements \Framework\PrincipalInterface
      * @return void 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
-        return TRUE;
+        return true;
     }
     static function Widget(&$_Controle) {
-        return TRUE;
+        return true;
     }     
     /**
      * 
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
     static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Cursos
         $result = self::Busca_Cursos($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Busca Turmas
         $result = self::Busca_Turmas($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         
@@ -61,7 +61,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return FALSE;
+            return false;
         }
     }
     
@@ -75,11 +75,11 @@ class Curso_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $cursos = $Modelo->db->Sql_Select('Curso', $where);
-        if ($cursos === FALSE) return FALSE;
+        if ($cursos === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Curso" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Curso/Cursos_Add">Adicionar novo Curso</a><div class="space15"></div>');
         if (is_object($cursos)) $cursos = Array(0=>$cursos);
-        if ($cursos !== FALSE && !empty($cursos)) {
+        if ($cursos !== false && !empty($cursos)) {
             list($table, $i) = Curso_CursoControle::Cursos_Tabela($cursos);
             $Visual->Show_Tabela_DataTable($table);
         } else {         
@@ -96,11 +96,11 @@ class Curso_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Curso_Turma', $where);
-        if ($albuns === FALSE) return FALSE;
+        if ($albuns === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Turma" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Curso/Turma/Turmas_Add">Adicionar nova Turma</a><div class="space15"></div>');
         if (is_object($albuns)) $albuns = Array(0=>$albuns);
-        if ($albuns !== FALSE && !empty($albuns)) {
+        if ($albuns !== false && !empty($albuns)) {
             list($table, $i) = Curso_TurmaControle::Turmas_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($table);
         } else {        
@@ -113,7 +113,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -128,7 +128,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
             'group', 
             $curso_qnt, 
             'block-orange', 
-            FALSE, 
+            false, 
             14
         );
         // Turmas
@@ -140,7 +140,7 @@ class Curso_Principal implements \Framework\PrincipalInterface
             'hdd', 
             $turma_qnt, 
             'block-yellow', 
-            FALSE, 
+            false, 
             16
         );
     }

@@ -4,7 +4,7 @@ namespace Framework\App;
  * Class singleton, ela garante a existencia de apenas uma instancia de cada classe
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 0.4.2
+ * @version 0.4.24
  */
 class Registro
 {
@@ -22,7 +22,7 @@ class Registro
     /**
      * Para ninguem poder acessar a classe
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     private function __construct() {
@@ -33,7 +33,7 @@ class Registro
      * singleton
      * @return type
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public static function &getInstacia() {
@@ -46,12 +46,12 @@ class Registro
      * 
      * @param type $sessao
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function destruir($sessao) {
         if (isset($this->_data[$sessao])) {
-            $this->_data[$sessao] = FALSE;
+            $this->_data[$sessao] = false;
             unset($this->_data[$sessao]);
         }/*else{
             echo $sessao;
@@ -62,11 +62,10 @@ class Registro
      * @param type $nome
      * @param type $valor
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function __set($nome, $valor) {
-        //var_dump($nome, $valor);
         $this->_data[$nome] = $valor;
     }
     /**
@@ -74,14 +73,14 @@ class Registro
      * @param type $nome
      * @return type
      * 
-     * @version 0.4.2
+     * @version 0.4.24
      * @author Ricardo Sierra <web@ricardosierra.com.br>
      */
     public function &__get($nome) {
         if (isset($this->_data[$nome])) {
             return $this->_data[$nome];
         } else {
-            $this->_data[$nome] = FALSE;
+            $this->_data[$nome] = false;
             return $this->_data[$nome];
         }
     }

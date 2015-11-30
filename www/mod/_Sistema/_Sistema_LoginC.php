@@ -20,7 +20,7 @@ class _Sistema_LoginControle extends _Sistema_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
-    private function _getError($codigo = FALSE) {
+    private function _getError($codigo = false) {
         if ($codigo) {
             $codigo = (int) $codigo;
         } else {

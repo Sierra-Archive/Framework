@@ -10,7 +10,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @uses \Framework\App\Visual::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -31,7 +31,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
     * @uses usuario_rede_Visual::$Show_TabRedeIndicados
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function num_Indicados(&$Modelo, &$Visual, $usuario) {
         $valores = usuario_rede_Modelo::Retorna_num_Indicados($Modelo, $usuario);
@@ -42,7 +42,7 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[0]['titulo'] = __('Medidor de Indicados');
         $graficos[0]['alt'] = 400;
         $graficos[0]['larg'] = 500;
-        $graficos[0]['headers'] = array('Nome', 'Valor');
+        $graficos[0]['headers'] = array('Nome',__('Valor'));
         $graficos[0]['itens'][] = array('Primarios', $valores['primario']);
         $graficos[0]['itens'][] = array('Secundarios', $valores['secundario']);
         $graficos[0]['itens'][] = array('Terciarios', $valores['terciario']);
@@ -51,8 +51,8 @@ class usuario_rede_Controle extends \Framework\App\Controle
         $graficos[1]['titulo'] = __('Medidor de planos');
         $graficos[1]['alt'] = 400;
         $graficos[1]['larg'] = 400;
-        $graficos[1]['headers'] = array('Nome', 'Valor');
-        foreach($valores['associado'] as $indice=>&$valor) {
+        $graficos[1]['headers'] = array('Nome',__('Valor'));
+        foreach ($valores['associado'] as $indice=>&$valor) {
             $grupo = \Framework\App\Registro::getInstacia()->_Conexao->Sql_Select('Sistema_Grupo', '{sigla}id=\''.$indice.'\'');
             $graficos[1]['itens'][] = array($grupo->nome, $valor);
         }
@@ -68,8 +68,8 @@ class usuario_rede_Controle extends \Framework\App\Controle
             reset($ranking);
             $i = 0;
             foreach ($ranking as $indice=>&$valor) {
-                $table['Associado'][$i] = ($i+1).'º '.$ranking[$indice]['nome'];
-                $table['Primarios'][$i] = str_pad($ranking[$indice]['PRIMARIO'], 5, "0", STR_PAD_LEFT).' %';
+                $table[__('Associado')][$i] = ($i+1).'º '.$ranking[$indice]['nome'];
+                $table[__('Primarios')][$i] = str_pad($ranking[$indice]['PRIMARIO'], 5, "0", STR_PAD_LEFT).' %';
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($table);

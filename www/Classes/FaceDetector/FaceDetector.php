@@ -26,7 +26,7 @@
  * $detector = new FaceDetector();
  * $detector->scan("test.jpg");
  * $faces = $detector->getFaces();
- * foreach($faces as $face)
+ * foreach ($faces as $face)
  * {
  * 	echo "Face found at x: {$face['x']}, y: {$face['y']}, width: {$face['width']}, height: {$face['height']}<br />\n"; 
  * }
@@ -64,15 +64,15 @@ class FaceDetector
 		
 		$stagesNode = $xml->children()->children()->stages;
 		
-		foreach($stagesNode->children() as $stageNode)
+		foreach ($stagesNode->children() as $stageNode)
 		{
 			$stage = new Stage(floatval($stageNode->stage_threshold));
 				
-			foreach($stageNode->trees->children() as $treeNode)
+			foreach ($stageNode->trees->children() as $treeNode)
 			{
 				$feature = new Feature(floatval($treeNode->_->threshold), floatval($treeNode->_->left_val), floatval($treeNode->_->right_val), $this->classifierSize);
 				
-				foreach($treeNode->_->feature->rects->_ as $r)
+				foreach ($treeNode->_->feature->rects->_ as $r)
 				{
 					$feature->add(Rect::fromString(strval($r)));
 				}
@@ -178,14 +178,14 @@ class FaceDetector
                 {
                     for($j = 0; $j < $size_height; $j += $step)
                     {
-                        $pass = TRUE;
+                        $pass = true;
                         $k = 0;
-                        foreach($this->stages as $s)
+                        foreach ($this->stages as $s)
                         {
 
                             if (!$s->pass($grayImage, $squares, $i, $j, $scale))
                             {
-                                $pass = FALSE;
+                                $pass = false;
                                 //echo $k."\n";
                                 break;
                             }
@@ -208,7 +208,7 @@ class FaceDetector
 	 * @param bool desire more confidence what a face is, gives less results
 	 * @return array found faces
 	 */	
-	public function getFaces($moreConfidence = FALSE)
+	public function getFaces($moreConfidence = false)
 	{
 		return $this->merge($this->foundRects, 2 + intval($moreConfidence));
 	}	
@@ -222,7 +222,7 @@ class FaceDetector
 	 * @return bool|resource if filename given, image will be saved to disk, otherwise image ressource
 	 * @throws Exception
 	 */		
-	public function getImage($fileName = null, $moreConfidence = FALSE, $showAllRects = FALSE)
+	public function getImage($fileName = null, $moreConfidence = false, $showAllRects = false)
 	{
 		$canvas = imagecreatetruecolor($this->width, $this->height);
 		imagecopyresampled($canvas, $this->imagem, 0, 0, 0, 0, $this->width, $this->height, $this->width, $this->height);
@@ -232,14 +232,14 @@ class FaceDetector
 		
 		if ($showAllRects)
 		{
-			foreach($this->foundRects as $r)
+			foreach ($this->foundRects as $r)
 			{
 				imagerectangle( $canvas, $r['x'], $r['y']  , $r['x']+$r['width']  , $r['y']+$r['height'], $blue);
 			}
 		}
 		
 		$rects = $this->merge($this->foundRects, 2 + intval($moreConfidence));
-		foreach($rects as $r)
+		foreach ($rects as $r)
 		{
 			imagerectangle( $canvas, $r['x'], $r['y']  , $r['x']+$r['width']  , $r['y']+$r['height'], $red);
 		}
@@ -278,12 +278,12 @@ class FaceDetector
 		
 		for($i = 0; $i < count($rects); $i++)
 		{
-			$found = FALSE;
+			$found = false;
 			for($j = 0; $j < $i; $j++)
 			{
 				if ($this->equals($rects[$j], $rects[$i]))
 				{
-					$found = TRUE;
+					$found = true;
 					$ret[$i] = $ret[$j];
 				}
 			}
@@ -341,7 +341,7 @@ class FaceDetector
 			$r2['width'] <= (int)( $r1['width'] * 1.2 ) &&
 			(int)( $r2['width'] * 1.2 ) >= $r1['width'] )
 		{
-			return TRUE;
+			return true;
 		}
 		
 		if ( $r1['x'] >= $r2['x'] &&
@@ -349,10 +349,10 @@ class FaceDetector
 			$r1['y'] >= $r2['y'] &&
 			$r1['y'] + $r1['height'] <= $r2['y'] + $r2['height'] )
 		{
-			return TRUE;
+			return true;
 		}
 		
-		return FALSE;
+		return false;
 	}	
 }
 
@@ -462,7 +462,7 @@ class Stage
             
             
 		$sum = 0;
-		foreach($this->features as $f)
+		foreach ($this->features as $f)
 		{
 			$sum += $f->getVal($grayImage, $squares, $i, $j, $scale);
 		}

@@ -16,65 +16,65 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Financeiro($true= TRUE ) {
+    static function Endereco_Financeiro($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Financeiro');
         $link = '_Sistema/Principal/Home';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Pagar($true= TRUE ) {
+    static function Endereco_Pagar($true= true ) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('À Pagar');
         $link = 'Financeiro/Usuario/Pagar';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Receber($true= TRUE ) {
+    static function Endereco_Receber($true= true ) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('À Receber');
         $link = 'Financeiro/Usuario/Receber';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Pago($true= TRUE ) {
+    static function Endereco_Pago($true= true ) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Pagas');
         $link = 'Financeiro/Usuario/Pago';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Recebido($true= TRUE ) {
+    static function Endereco_Recebido($true= true ) {
         self::Endereco_Financeiro();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Recebidos');
         $link = 'Financeiro/Usuario/Recebido';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -91,24 +91,24 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
-        return FALSE;
+        return false;
     }
     /**
      * Contas a Pagar
      */
-    public function Pagar($export = FALSE) {
-        self::Endereco_Pagar(FALSE);
+    public function Pagar($export = false) {
+        self::Endereco_Pagar(false);
         
         // Exportar
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Financeiro/Usuario/Pagar',
             )
         )));
@@ -120,12 +120,12 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             'entrada_motivo'     => 'Usuario',
             'entrada_motivoid'   => $usuarioid,
         );
-        list($table, $i) = $this->Movimentacao_Interna($where,'Mini', FALSE, '', FALSE);
+        list($table, $i) = $this->Movimentacao_Interna($where,'Mini', false, '', false);
         $titulo = $titulo.' ('.$i.')';
         if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à pagar</font></b></center>');
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Contas à pagar');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -138,16 +138,16 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Receber($export = FALSE) {
-        self::Endereco_Receber(FALSE);
+    public function Receber($export = false) {
+        self::Endereco_Receber(false);
         
         // Exportar
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Financeiro/Usuario/Receber',
             )
         )));
@@ -164,7 +164,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta à Receber</font></b></center>');
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Contas à Receber');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -174,16 +174,16 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
         $this->_Visual->Json_Info_Update('Titulo', $titulo); 
     }
-    public function Pago($export = FALSE) {
-        self::Endereco_Pago(FALSE);
+    public function Pago($export = false) {
+        self::Endereco_Pago(false);
         
         // Exportar
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Financeiro/Usuario/Pago',
             )
         )));
@@ -200,7 +200,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         if ($i==0) {          
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Paga</font></b></center>');
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Contas Pagas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -213,16 +213,16 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
     /**
      * Contas a Receber
      */
-    public function Recebido($export = FALSE) {
-        self::Endereco_Recebido(FALSE);
+    public function Recebido($export = false) {
+        self::Endereco_Recebido(false);
         
         // Exportar
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Financeiro/Usuario/Recebido',
             )
         )));
@@ -239,7 +239,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         if ($i==0 ) {
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Conta Recebida</font></b></center>');
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Contas Recebidas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -263,14 +263,14 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         self::DAO_Campos_Retira($campos, 'forma_pagar');
         self::DAO_Campos_Retira($campos, 'forma_condicao');
         self::mysql_MudaLeitura($campos, Array('valor', 'dt_vencimento', 'num_parcela'));
-        return TRUE;
+        return true;
     }
     /**
      * Altera Usuario pra Pago ou pra Nao pago !
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Financeiro_Usuario($motivo, $motivo_id, $pago) {
         // Carrega Modelo
@@ -287,11 +287,11 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * @param type $dataini
      * @param type $datafin
      */
-    public function Financeiros_Pagar($id = FALSE, $localizacao = FALSE, $dataini = FALSE, $datafin = FALSE) {
+    public function Financeiros_Pagar($id = false, $localizacao = false, $dataini = false, $datafin = false) {
         $html = '';
         
         $html .= '<!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
-        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return FALSE;">
+        <form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
         <!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
         <input type="hidden" name="code" value="C4C306DAE9E9F3D7747E3FB32285EA9C" />
         <input type="image" src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
@@ -310,14 +310,14 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
      * @param type $layoult
      * @throws Exception
      */
-    public function Financeiro_View($id = FALSE, $layoult='Unico') {
+    public function Financeiro_View($id = false, $layoult='Unico') {
         $html = '<span style="text-transform:uppercase;">';
 
 
         // Puxca Financeiro
         $identificador = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno',Array('id'=>(int) $id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador === FALSE) {
+        if ($identificador === false) {
             return _Sistema_erroControle::Erro_Fluxo('Pagamento não Existe',404);
         }
         $identificador->id;
@@ -362,11 +362,11 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
         
         if ($layoult!=='Imprimir') {            
             $html .= $this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-                FALSE,
+                false,
                 Array(
-                    'Print'     => TRUE,
-                    'Pdf'       => FALSE,
-                    'Excel'     => FALSE,
+                    'Print'     => true,
+                    'Pdf'       => false,
+                    'Excel'     => false,
                     'Link'      => 'Financeiro/Usuario/Financeiro_View/'.$identificador->id.'/'.$tema,
                 )
             ));
@@ -402,7 +402,7 @@ class Financeiro_UsuarioControle extends Financeiro_Controle
             } else {
                 // Coloca Endereco
                 $function = 'Endereco_'.$tema;
-                self::$function(TRUE);
+                self::$function(true);
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janela
                 $this->_Visual->Blocar($html);

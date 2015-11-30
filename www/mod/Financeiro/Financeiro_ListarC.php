@@ -24,7 +24,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -38,7 +38,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         Financeiro_Controle::Saldo_Carregar($this->_Modelo, $this->_Visual, $this->_Acl->Usuario_GetID());
@@ -61,12 +61,12 @@ class Financeiro_ListarControle extends Financeiro_Controle
             reset($movimentacoes);
             $i = 0;
             foreach ($movimentacoes as $indice=>&$valor) {
-                $table['Referência'][$i] = $valor['nome'];
-                $table['Data'][$i] = date_replace($valor['log_date_add'], "d/m/y | H:m");
+                $table[__('Referência')][$i] = $valor['nome'];
+                $table[__('Data')][$i] = date_replace($valor['log_date_add'], "d/m/y | H:m");
                 if ($valor['positivo']==1) {
-                    $table['Valor'][$i] = '<font color="#0000FF">+ R$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
+                    $table[__('Valor')][$i] = '<font color="#0000FF">+ '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor['valor']).'</font>';
                 } else {
-                    $table['Valor'][$i] = '<font color="#FF0000">- RR$$ '.number_format($valor['valor'], 2, ', ', '.').'</font>';
+                    $table[__('Valor')][$i] = '<font color="#FF0000">- '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor['valor']).'</font>';
                 }
                 ++$i;
             }
@@ -85,13 +85,13 @@ class Financeiro_ListarControle extends Financeiro_Controle
             reset($movimentacoes);
             $i = 0;
             foreach ($movimentacoes as $indice=>&$valor) {
-                $table['Referência'][$i] = $valor['nome'];
-                $table['Situação'][$i] = $valor['situacao'];
-                $table['Data Venc'][$i] = date_replace($valor['dt_vencimento'], "d/m/y");
-                $table['Data Pgto'][$i] = date_replace($valor['dt_pago'], "d/m/y");
-                $table['Valor'][$i] = $valor['valor'];
+                $table[__('Referência')][$i] = $valor['nome'];
+                $table[__('Situação')][$i] = $valor['situacao'];
+                $table[__('Data Venc')][$i] = date_replace($valor['dt_vencimento'], "d/m/y");
+                $table[__('Data Pgto')][$i] = date_replace($valor['dt_pago'], "d/m/y");
+                $table[__('Valor')][$i] = $valor['valor'];
                 if ($valor['situacao']!='Pago') {
-                    $table['Boleto'][$i] = '<a href="'.LIBS_URL.'boleto/boleto_itau.php?clientenome='.$this->_Acl->logado_usuario->nome.
+                    $table[__('Boleto')][$i] = '<a href="'.LIBS_URL.'boleto/boleto_itau.php?clientenome='.$this->_Acl->logado_usuario->nome.
                     '&endereco='.$this->_Acl->logado_usuario->endereco.
                     '&numero='.$this->_Acl->logado_usuario->numero.
                     '&complemento='.$this->_Acl->logado_usuario->complemento.
@@ -101,7 +101,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
                     '&cep='.$this->_Acl->logado_usuario->cep.
                     '&valor='.$valor['valor'].'" target="_BLANK">Abrir Boleto</a>';
                 } else {
-                    $table['Boleto'][$i] = '';
+                    $table[__('Boleto')][$i] = '';
                 }
                 ++$i;
             }
@@ -123,7 +123,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     }
     static function sacar_formcadastro() {
         $form = new \Framework\Classes\Form('financeiro_sacar_form', 'Financeiro/Listar/sacar_inserir/', 'formajax');
-        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia', '', 'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE);
+        $form->Input_Novo(__('Quantia a Sacar (Em Reais)'),'sacar_quantia', '', 'text', 30, 'obrigatorio', '', false, '', '', 'Numero', '', false);
         
         $formulario = $form->retorna_form('Realizar Saque');
 
@@ -139,7 +139,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         global $config;
         
         if (!isset($_POST["sacar_quantia"])) {
-            return FALSE;
+            return false;
         }
         
         // Para verificar erro
@@ -167,7 +167,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         } else {
             $sucesso =  $this->_Modelo->sacar_inserir($quantia);
             // mostra mensagem de sucesso
-            if ($sucesso === TRUE) {
+            if ($sucesso === true) {
                 $mgm = 'Usuario Realizou um saque no sistema, com saldo suficiente e ja descontado de seu saldo<br>'.
                         '<br><br>#Id: #'.$this->_Acl->Usuario_GetID().
                         '<br>Nome: '.$this->_Acl->logado_usuario->nome.
@@ -212,8 +212,8 @@ class Financeiro_ListarControle extends Financeiro_Controle
     }
     static function transferencia_formcadastro() {
         $form = new \Framework\Classes\Form('financeiro_transferencia_form', 'Financeiro/Listar/transferencia_inserir/', 'formajax');
-        $form->Input_Novo('Login do Usuario', 'login', '', 'text', 30, 'obrigatorio');
-        $form->Input_Novo('Quantia a Transferir (Em Reais)', 'transferir_quantia', '', 'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE);
+        $form->Input_Novo(__('Login do Usuario'), 'login', '', 'text', 30, 'obrigatorio');
+        $form->Input_Novo('Quantia a Transferir (Em Reais)', 'transferir_quantia', '', 'text', 30, 'obrigatorio', '', false, '', '', 'Numero', '', false);
         
         $formulario = $form->retorna_form('Transferir Quantia');
 
@@ -221,7 +221,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
     }
     public function transferencia_inserir() {
         if (!isset($_POST["login"]) || !isset($_POST["transferir_quantia"])) {
-            return FALSE;
+            return false;
         }
         $erro = 1;
         // captura variaveis
@@ -247,7 +247,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
             $this->_Visual->Javascript_Executar('$("#quantia").css(\'border\', \'2px solid #FFAEB0\').focus();');
-        } else if ($existelogin === FALSE) {
+        } else if ($existelogin === false) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Erro'),
@@ -258,7 +258,7 @@ class Financeiro_ListarControle extends Financeiro_Controle
         } else {
             $sucesso =  $this->_Modelo->transferencia_inserir($login, $quantia);
             // mostra mensagem de sucesso
-            if ($sucesso === TRUE) {
+            if ($sucesso === true) {
                 $mensagens = array(
                     "tipo" => 'sucesso',
                     "mgs_principal" => __('Transferência Realizada'),

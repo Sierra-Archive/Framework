@@ -179,7 +179,7 @@ class PagSeguroAuthorizationRequest
      * @param bool $onlyAuthorizationCode
      * @return PagSeguroAuthorizationService Data
      */
-    public function register(PagSeguroCredentials $credentials, $onlyAuthorizationCode = FALSE)
+    public function register(PagSeguroCredentials $credentials, $onlyAuthorizationCode = false)
     {
         return PagSeguroAuthorizationService::createAuthorizationRequest($credentials, $this, $onlyAuthorizationCode);
     }
@@ -209,7 +209,7 @@ class PagSeguroAuthorizationRequest
             $find = strpos($url, $item);
 
             if ($find)
-                return FALSE;
+                return false;
             else
                 return $url;
         }

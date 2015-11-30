@@ -15,18 +15,18 @@ class predial_BlocoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Bloco/Blocos');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Bloco($true= TRUE ) {
+    static function Endereco_Bloco($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Blocos');
         $link = 'predial/Bloco/Blocos';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -40,9 +40,9 @@ class predial_BlocoControle extends predial_Controle
         if (is_object($blocos)) $blocos = Array(0=>$blocos);
         reset($blocos);
         foreach ($blocos as &$valor) {
-            $table['Nome'][$i]             = $valor->nome;
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Bloco'        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    , '')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Bloco'       ,'predial/Bloco/Blocos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Bloco ?'));
+            $table[__('Nome')][$i]             = $valor->nome;
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Bloco')        ,'predial/Bloco/Blocos_Edit/'.$valor->id.'/'    , '')).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Bloco')       ,'predial/Bloco/Blocos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Bloco ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -50,10 +50,10 @@ class predial_BlocoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Blocos($export = FALSE) {
-        self::Endereco_Bloco(FALSE);
+    public function Blocos($export = false) {
+        self::Endereco_Bloco(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -62,16 +62,16 @@ class predial_BlocoControle extends predial_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Bloco/Blocos',
             )
         )));
         $blocos = $this->_Modelo->db->Sql_Select('Predial_Bloco');
-        if ($blocos !== FALSE && !empty($blocos)) {
+        if ($blocos !== false && !empty($blocos)) {
             list($table, $i) = self::Blocos_Tabela($blocos);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Blocos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -89,7 +89,7 @@ class predial_BlocoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Blocos_Add() {
         self::Endereco_Bloco();
@@ -107,7 +107,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Blocos_Add2() {
         $titulo     = __('Bloco Adicionado com Sucesso');
@@ -122,7 +122,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Blocos_Edit($id) {
         self::Endereco_Bloco();
@@ -141,7 +141,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Blocos_Edit2($id) {
         $titulo     = __('Bloco Editado com Sucesso');
@@ -157,7 +157,7 @@ class predial_BlocoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Blocos_Del($id) {
         
@@ -167,7 +167,7 @@ class predial_BlocoControle extends predial_Controle
         $bloco = $this->_Modelo->db->Sql_Select('Predial_Bloco', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($bloco);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -185,7 +185,7 @@ class predial_BlocoControle extends predial_Controle
         $this->Blocos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Bloco deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

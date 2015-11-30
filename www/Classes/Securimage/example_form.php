@@ -40,9 +40,9 @@ $GLOBALS['ct_msg_subject'] = __('Securimage Test Contact Form');
 
 process_si_contact_form(); // Process the form, if it was submitted
 
-if (isset($_SESSION['ctform']['error']) &&  $_SESSION['ctform']['error'] == TRUE): /* The last form submission had 1 or more errors */ ?>
+if (isset($_SESSION['ctform']['error']) &&  $_SESSION['ctform']['error'] == true): /* The last form submission had 1 or more errors */ ?>
 <div class="error">There was a problem with your submission.  Errors are displayed below in red.</div><br />
-<?php elseif (isset($_SESSION['ctform']['success']) && $_SESSION['ctform']['success'] == TRUE): /* form was processed successfully */ ?>
+<?php elseif (isset($_SESSION['ctform']['success']) && $_SESSION['ctform']['success'] == true): /* form was processed successfully */ ?>
 <div class="success">The captcha was correct and the message has been sent!  The captcha was solved in <?php echo $_SESSION['ctform']['timetosolve'] ?> seconds.</div><br />
 <?php endif; ?>
 
@@ -110,7 +110,7 @@ function process_si_contact_form()
   if ($_SERVER['REQUEST_METHOD'] == 'POST' && @$_POST['do'] == 'contact') {
   	// if the form has been submitted
 
-    foreach($_POST as $key => $value) {
+    foreach ($_POST as $key => $value) {
       if (!is_array($key)) {
       	// sanitize the input data
         if ($key != 'ct_message') $value = strip_tags($value);
@@ -127,7 +127,7 @@ function process_si_contact_form()
 
     $errors = array();  // initialize empty error array
 
-    if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == FALSE) {
+    if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {
       // only check for errors if the form is not in debug mode
 
       if (strlen($name) < 3) {
@@ -155,7 +155,7 @@ function process_si_contact_form()
       require_once dirname(__FILE__) . '/Securimage.php';
       $securimage = new Securimage();
 
-      if ($securimage->check($captcha) == FALSE) {
+      if ($securimage->check($captcha) == false) {
         $errors['captcha_error'] = 'Incorrect security code entered<br />';
       }
     }
@@ -175,14 +175,14 @@ function process_si_contact_form()
 
       $message = wordwrap($message, 70);
 
-      if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == FALSE) {
+      if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {
       	// send the message with mail()
         mail($GLOBALS['ct_recipient'], $GLOBALS['ct_msg_subject'], $message, "From: {$GLOBALS['ct_recipient']}\r\nReply-To: {$email}\r\nContent-type: text/html; charset=UTF-8\r\nMIME-Version: 1.0");
       }
 
       $_SESSION['ctform']['timetosolve'] = $securimage->getTimeToSolve();
-      $_SESSION['ctform']['error'] = FALSE;  // no error with form
-      $_SESSION['ctform']['success'] = TRUE; // message sent
+      $_SESSION['ctform']['error'] = false;  // no error with form
+      $_SESSION['ctform']['success'] = true; // message sent
     } else {
       // save the entries, this is to re-populate the form
       $_SESSION['ctform']['ct_name'] = $name;       // save name from the form submission
@@ -190,14 +190,14 @@ function process_si_contact_form()
       $_SESSION['ctform']['ct_URL'] = $URL;         // save URL
       $_SESSION['ctform']['ct_message'] = $message; // save message
 
-      foreach($errors as $key => $error) {
+      foreach ($errors as $key => $error) {
       	// set up error messages to display with each field
         $_SESSION['ctform'][$key] = "<span class=\"error\">$error</span>";
       }
 
-      $_SESSION['ctform']['error'] = TRUE; // set error floag
+      $_SESSION['ctform']['error'] = true; // set error floag
     }
   } // POST
 }
 
-$_SESSION['ctform']['success'] = FALSE; // clear success value after running
+$_SESSION['ctform']['success'] = false; // clear success value after running

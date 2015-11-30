@@ -8,8 +8,8 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
     protected $mascara;
     protected $max;
     
-    protected static $objetocarregado     = FALSE;     
-    protected static $mysql_colunas       = FALSE;     
+    protected static $objetocarregado     = false;     
+    protected static $mysql_colunas       = false;     
     protected static $mysql_outside       = Array();     
     protected static $mysql_inside        = Array(); 
     protected static $campos_naoaceita_config  = Array('chave');
@@ -22,7 +22,7 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return FALSE;
+        return false;
     }
     public static function Get_Sigla() {
         return 'SC';
@@ -45,20 +45,20 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'chave',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => TRUE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => true,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Chave'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => TRUE,
+                    'valor_padrao'      => false,
+                    'readonly'          => true,
                     'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -71,20 +71,20 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Nome Completo'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -97,20 +97,20 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'descricao',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Descrição'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -123,20 +123,20 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'valor',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
                 'edicao'            => Array(
                     'Nome'              => __('Valor'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -149,30 +149,30 @@ final Class Sistema_Config_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'mascara',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 30,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => '', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
             ),
             Array(
                 'mysql_titulo'      => 'max',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 100, // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos
             )
         );

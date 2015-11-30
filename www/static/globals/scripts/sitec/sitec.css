@@ -1,5 +1,10 @@
 
-// Altura pra Modal
+/*Form vertical, tem label de 100 %*/
+.form-vertical > .form-group > label {
+    width: 100px;
+}
+
+/*Altura pra Modal*/
 .modal-dialog > .modal-content > .modal-body > .row {
     overflow: auto; 
     max-height:500px;
@@ -34,7 +39,7 @@ Proprias
 
 
 
-// tabela mover a direita
+/*tabela mover a direita*/
 table .left {
     text-align:left  !important;
 }
@@ -106,12 +111,12 @@ span.sep {
 }
 
 
-// Formularios
+/*Formularios*/
 .obrigatoriomarcado {
     border: 2px solid #FFAEB0 !important;
 }
 
-//.btn-inverse,.btn-inverse:hover{text-shadow:0 -1px 0 rgba(0,0,0,.25);color:#fff}
+/*.btn-inverse,.btn-inverse:hover{text-shadow:0 -1px 0 rgba(0,0,0,.25);color:#fff}*/
 
 
 .btn-inverse {

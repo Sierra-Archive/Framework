@@ -196,7 +196,7 @@ class PagSeguroDirectPaymentRequest
             $sender->setEmail($email);
             $sender->setPhone(new PagSeguroPhone($areaCode, $number));
             $sender->addDocument($documentType, $documentValue);
-            if ($ip === TRUE) {
+            if ($ip === true) {
                 $sender->getIP();
             }
             $this->sender = $sender;
@@ -332,7 +332,7 @@ class PagSeguroDirectPaymentRequest
      * @param array|object|bool $shipping
      * @return float sun of total items amount
      */
-    public function getItemsTotalAmount($items, $shipping = FALSE)
+    public function getItemsTotalAmount($items, $shipping = false)
     {
 
         foreach ($items as $item)
@@ -920,7 +920,7 @@ class PagSeguroDirectPaymentRequest
         $request['Reference'] = $this->reference;
         $request['SenderEmail'] = $email;
 
-        return "PagSeguroPaymentRequest: " . var_export($request, TRUE);
+        return "PagSeguroPaymentRequest: " . var_export($request, true);
     }
 
     /***

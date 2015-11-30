@@ -8,11 +8,11 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Main() {
         //\Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Pedido/Pedidos');
-        return FALSE;
+        return false;
     }
     /**
      * Aceita um Pedido (->)
@@ -20,17 +20,17 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @param type $status
      * @throws \Exception
      */
-    public function Arma_Ped_Novas_Aceitar($id = FALSE, $status=1) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Arma_Ped_Novas_Aceitar($id = false, $status=1) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         if ($resultado->status==1 ||$resultado->status==2) {
             // Voce não pode alterar
-            return FALSE;
+            return false;
         }
         if ($status==1) {
             $resultado->status='1';
@@ -46,8 +46,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}pedido=\''.$pedido.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar !== FALSE) {
-                    foreach($procurar as &$valor) {
+                if ($procurar !== false) {
+                    foreach ($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -55,8 +55,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar !== FALSE) {
-                    foreach($procurar as &$valor) {
+                if ($procurar !== false) {
+                    foreach ($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -82,13 +82,13 @@ class Transporte_PedidoControle extends Transporte_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * Enviar Pedido (->)
      */
     public function Arma_Ped_Add() {
-        //self::Endereco_Noticia(TRUE);
+        //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Pedido');
         $titulo2    = __('Salvar Pedido');
@@ -103,7 +103,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Arma_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
@@ -119,7 +119,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Arma_Ped_Del($id) {
         
@@ -127,20 +127,20 @@ class Transporte_PedidoControle extends Transporte_Controle
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($pedido === FALSE || $pedido->status!='0') {
+        if ($pedido === false || $pedido->status!='0') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            $this->_Visual->Json_Info_Update('Historico', FALSE);  
-            return FALSE;
+            $this->_Visual->Json_Info_Update('Historico', false);  
+            return false;
         }
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido);
         
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -161,51 +161,51 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->Pedidos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Arma_Ped_Aceitas($export = FALSE) {
+    public function Arma_Ped_Aceitas($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Aceitas',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Armazem'][$i] = '#'.$valor->log_user_id;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Armazem')][$i] = '#'.$valor->log_user_id;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Aceitar')        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array(__('Recusar')        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -215,7 +215,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -227,44 +227,44 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
-    public function Arma_Ped_Novas($export = FALSE) {
+    public function Arma_Ped_Novas($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Novas',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Armazem'][$i] = '#'.$valor->log_user_id;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Armazem')][$i] = '#'.$valor->log_user_id;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Aceitar')        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array(__('Recusar')        ,'Transporte/Pedido/Arma_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -274,7 +274,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
             } else {
                 $mensagem = __('Nenhuma nova Proposta');
@@ -286,9 +286,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
-    public function Arma_Ped_Minhas($export = FALSE) {
+    public function Arma_Ped_Minhas($export = false) {
         $i = 0;
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Pedido',
@@ -296,37 +296,37 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Minhas',
             )
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Ped_Del');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Descrição'][$i]       = $valor->descricao_carga;
-                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
-                                                ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
-                                                ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Arma_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $permissionDelete);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Descrição')][$i]       = $valor->descricao_carga;
+                $table[__('Dimensões')][$i]       = '<b>'.__('Altura:').'</b>'.$valor->altura.
+                                                ' cm<br><b>'.__('Comprimento:').'</b>'.$valor->comprimento.
+                                                ' cm<br><b>'.__('Largura:').'</b>'.$valor->largura.' cm<br><b>'.__('Volume:').'</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Cancelar Pedido')       ,'Transporte/Pedido/Arma_Ped_Del/'.$valor->id.'/'     , __('Deseja realmente Cancelar esse Pedido ?')), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -336,7 +336,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Cadastrado');
@@ -348,43 +348,43 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
-    public function Arma_Sol_Solicitacoes($export = FALSE) {
+    public function Arma_Sol_Solicitacoes($export = false) {
         $i = 0;
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Ped_Minhas',
             )
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}status=\'0\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Add');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Descrição'][$i]       = $valor->descricao_carga;
-                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
-                                                ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
-                                                ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Arma_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Descrição')][$i]       = $valor->descricao_carga;
+                $table[__('Dimensões')][$i]       = '<b>'.__('Altura:').'</b>'.$valor->altura.
+                                                ' cm<br><b>'.__('Comprimento:').'</b>'.$valor->comprimento.
+                                                ' cm<br><b>'.__('Largura:').'</b>'.$valor->largura.' cm<br><b>'.__('Volume:').'</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Fazer Proposta')        ,'Transporte/Pedido/Arma_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -394,7 +394,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Pendente');
@@ -434,41 +434,41 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     
     
-    public function Arma_Sol_PedAceitos($export = FALSE) {
+    public function Arma_Sol_PedAceitos($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Sol_PedAceitos',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Fornecedor')][$i] = '#'.$valor->fornecedor2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -478,7 +478,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -490,41 +490,41 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
-    public function Arma_Sol_PedRecusados($export = FALSE) {
+    public function Arma_Sol_PedRecusados($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Sol_PedRecusados',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'2\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Fornecedor')][$i] = '#'.$valor->fornecedor2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -534,7 +534,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Recusada');
@@ -546,43 +546,43 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
-    public function Arma_Sol_PedPendente($export = FALSE) {
+    public function Arma_Sol_PedPendente($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Arma_Sol_PedPendente',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Arma_Sol_Del');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Arma_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $permissionDelete);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Fornecedor')][$i] = '#'.$valor->fornecedor2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Cancelar Proposta')       ,'Transporte/Pedido/Arma_Sol_Del/'.$valor->id.'/'     , __('Deseja realmente Cancelar essa Proposta ?')), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -592,7 +592,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Pendente');
@@ -614,25 +614,25 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Arma_Sol_Add($pedido = FALSE) {
-        if ($pedido === FALSE) return FALSE;
+    public function Arma_Sol_Add($pedido = false) {
+        if ($pedido === false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido === FALSE || $pedido->status!=0) {
+            if ($pedido === false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
         }
-        //self::Endereco_Noticia(TRUE);
+        //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Proposta de Pedido');
         $titulo2    = __('Salvar Proposta de Pedido');
@@ -650,22 +650,22 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Arma_Sol_Add2($pedido = FALSE) {
-        if ($pedido === FALSE) return FALSE;
+    public function Arma_Sol_Add2($pedido = false) {
+        if ($pedido === false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido === FALSE || $pedido->status!=0) {
+            if ($pedido === false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
         }
         $titulo     = __('Proposta enviada com Sucesso');
@@ -681,7 +681,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Arma_Sol_Del($id) {
         
@@ -690,30 +690,30 @@ class Transporte_PedidoControle extends Transporte_Controle
         // Puxa Transporte e deleta
         $pedido_lance    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
         
-        if ($pedido_lance === FALSE || $pedido_lance->status!=0) {
+        if ($pedido_lance === false || $pedido_lance->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            return FALSE;
+            return false;
         }
         
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Armazem_Pedido', '{sigla}id=\''.$pedido_lance->pedido.'\'',1);
-        if ($pedido === FALSE || $pedido->status!=0) {
+        if ($pedido === false || $pedido->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            return FALSE;
+            return false;
         }
         
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido_lance);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -731,7 +731,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->Arma_Sol_Solicitacoes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
     
@@ -745,17 +745,17 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @param type $status
      * @throws \Exception
      */
-    public function Trans_Ped_Novas_Aceitar($id = FALSE, $status=1) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Trans_Ped_Novas_Aceitar($id = false, $status=1) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         if ($resultado->status==1 ||$resultado->status==2) {
             // Voce não pode alterar
-            return FALSE;
+            return false;
         }
         if ($status==1) {
             $resultado->status='1';
@@ -771,8 +771,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}pedido=\''.$pedido.'\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar !== FALSE) {
-                    foreach($procurar as &$valor) {
+                if ($procurar !== false) {
+                    foreach ($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -780,8 +780,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar !== FALSE) {
-                    foreach($procurar as &$valor) {
+                if ($procurar !== false) {
+                    foreach ($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -807,13 +807,13 @@ class Transporte_PedidoControle extends Transporte_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * Enviar Pedido (->)
      */
     public function Trans_Ped_Add() {
-        //self::Endereco_Noticia(TRUE);
+        //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Pedido');
         $titulo2    = __('Salvar Pedido');
@@ -828,7 +828,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Trans_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
@@ -844,7 +844,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Trans_Ped_Del($id) {
         
@@ -852,20 +852,20 @@ class Transporte_PedidoControle extends Transporte_Controle
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($pedido === FALSE || $pedido->status!='0') {
+        if ($pedido === false || $pedido->status!='0') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            $this->_Visual->Json_Info_Update('Historico', FALSE);  
-            return FALSE;
+            $this->_Visual->Json_Info_Update('Historico', false);  
+            return false;
         }
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido);
         
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -886,51 +886,51 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->Pedidos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Trans_Ped_Aceitas($export = FALSE) {
+    public function Trans_Ped_Aceitas($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Aceitas',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Transportadora'][$i] = '#'.$valor->log_user_id;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Transportadora')][$i] = '#'.$valor->log_user_id;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Aceitar')        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array(__('Recusar')        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -940,7 +940,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -952,44 +952,44 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
-    public function Trans_Ped_Novas($export = FALSE) {
+    public function Trans_Ped_Novas($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Novas',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}fornecedor=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Transportadora'][$i] = '#'.$valor->log_user_id;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Transportadora')][$i] = '#'.$valor->log_user_id;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Aceitar')        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array(__('Recusar')        ,'Transporte/Pedido/Trans_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -999,7 +999,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
             } else {
                 $mensagem = __('Nenhuma nova Proposta');
@@ -1011,9 +1011,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
-    public function Trans_Ped_Minhas($export = FALSE) {
+    public function Trans_Ped_Minhas($export = false) {
         $i = 0;
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Pedido',
@@ -1021,37 +1021,37 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Minhas',
             )
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Ped_Del');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Descrição'][$i]       = $valor->descricao_carga;
-                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
-                                                ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
-                                                ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Trans_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $permissionDelete);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Descrição')][$i]       = $valor->descricao_carga;
+                $table[__('Dimensões')][$i]       = '<b>'.__('Altura:').'</b>'.$valor->altura.
+                                                ' cm<br><b>'.__('Comprimento:').'</b>'.$valor->comprimento.
+                                                ' cm<br><b>'.__('Largura:').'</b>'.$valor->largura.' cm<br><b>'.__('Volume:').'</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Cancelar Pedido')       ,'Transporte/Pedido/Trans_Ped_Del/'.$valor->id.'/'     , __('Deseja realmente Cancelar esse Pedido ?')), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1061,7 +1061,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Cadastrado');
@@ -1073,43 +1073,43 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
-    public function Trans_Sol_Solicitacoes($export = FALSE) {
+    public function Trans_Sol_Solicitacoes($export = false) {
         $i = 0;
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Ped_Minhas',
             )
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}status=\'0\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Add');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Descrição'][$i]       = $valor->descricao_carga;
-                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
-                                                ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
-                                                ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Trans_Sol_Add/'.$valor->id.'/'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Descrição')][$i]       = $valor->descricao_carga;
+                $table[__('Dimensões')][$i]       = '<b>'.__('Altura:').'</b>'.$valor->altura.
+                                                ' cm<br><b>'.__('Comprimento:').'</b>'.$valor->comprimento.
+                                                ' cm<br><b>'.__('Largura:').'</b>'.$valor->largura.' cm<br><b>'.__('Volume:').'</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Fazer Proposta')        ,'Transporte/Pedido/Trans_Sol_Add/'.$valor->id.'/'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1119,7 +1119,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Pendente');
@@ -1159,41 +1159,41 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     
     
-    public function Trans_Sol_PedAceitos($export = FALSE) {
+    public function Trans_Sol_PedAceitos($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Sol_PedAceitos',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Fornecedor')][$i] = '#'.$valor->fornecedor2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1203,7 +1203,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -1215,41 +1215,41 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
-    public function Trans_Sol_PedRecusados($export = FALSE) {
+    public function Trans_Sol_PedRecusados($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Sol_PedRecusados',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'2\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Fornecedor')][$i] = '#'.$valor->fornecedor2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1259,7 +1259,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Recusada');
@@ -1271,43 +1271,43 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
-    public function Trans_Sol_PedPendente($export = FALSE) {
+    public function Trans_Sol_PedPendente($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Trans_Sol_PedPendente',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Trans_Sol_Del');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Fornecedor'][$i] = '#'.$valor->fornecedor2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Trans_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $permissionDelete);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Fornecedor')][$i] = '#'.$valor->fornecedor2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Cancelar Proposta')       ,'Transporte/Pedido/Trans_Sol_Del/'.$valor->id.'/'     , __('Deseja realmente Cancelar essa Proposta ?')), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1317,7 +1317,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Pendente');
@@ -1339,25 +1339,25 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Trans_Sol_Add($pedido = FALSE) {
-        if ($pedido === FALSE) return FALSE;
+    public function Trans_Sol_Add($pedido = false) {
+        if ($pedido === false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido === FALSE || $pedido->status!=0) {
+            if ($pedido === false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
         }
-        //self::Endereco_Noticia(TRUE);
+        //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Proposta de Pedido');
         $titulo2    = __('Salvar Proposta de Pedido');
@@ -1375,22 +1375,22 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Trans_Sol_Add2($pedido = FALSE) {
-        if ($pedido === FALSE) return FALSE;
+    public function Trans_Sol_Add2($pedido = false) {
+        if ($pedido === false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido === FALSE || $pedido->status!=0) {
+            if ($pedido === false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
         }
         $titulo     = __('Proposta enviada com Sucesso');
@@ -1406,7 +1406,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Trans_Sol_Del($id) {
         
@@ -1415,30 +1415,30 @@ class Transporte_PedidoControle extends Transporte_Controle
         // Puxa Transporte e deleta
         $pedido_lance    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
         
-        if ($pedido_lance === FALSE || $pedido_lance->status!=0) {
+        if ($pedido_lance === false || $pedido_lance->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            return FALSE;
+            return false;
         }
         
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Transportadora_Pedido', '{sigla}id=\''.$pedido_lance->pedido.'\'',1);
-        if ($pedido === FALSE || $pedido->status!=0) {
+        if ($pedido === false || $pedido->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            return FALSE;
+            return false;
         }
         
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido_lance);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -1456,7 +1456,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->Trans_Sol_Solicitacoes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 
 
@@ -1466,17 +1466,17 @@ class Transporte_PedidoControle extends Transporte_Controle
      * @param type $status
      * @throws \Exception
      */
-    public function Caminho_Ped_Novas_Aceitar($id = FALSE, $status=1) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Caminho_Ped_Novas_Aceitar($id = false, $status=1) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         if ($resultado->status==1 ||$resultado->status==2) {
             // Voce não pode alterar
-            return FALSE;
+            return false;
         }
         if ($status==1) {
             $resultado->status='1';
@@ -1492,8 +1492,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}pedido=\''.$pedido.'\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar !== FALSE) {
-                    foreach($procurar as &$valor) {
+                if ($procurar !== false) {
+                    foreach ($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -1501,8 +1501,8 @@ class Transporte_PedidoControle extends Transporte_Controle
                 // Caso Aceita o Resto ele Recusa
                 $procurar = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
                 if (is_object($procurar)) $procurar = array($procurar);
-                if ($procurar !== FALSE) {
-                    foreach($procurar as &$valor) {
+                if ($procurar !== false) {
+                    foreach ($procurar as &$valor) {
                         $valor->status = '2';
                     }
                     $this->_Modelo->db->Sql_Update($procurar);
@@ -1528,13 +1528,13 @@ class Transporte_PedidoControle extends Transporte_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * Enviar Pedido (->)
      */
     public function Caminho_Ped_Add() {
-        //self::Endereco_Noticia(TRUE);
+        //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Pedido');
         $titulo2    = __('Salvar Pedido');
@@ -1549,7 +1549,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Caminho_Ped_Add2() {
         $titulo     = __('Pedido enviado com Sucesso');
@@ -1565,7 +1565,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Caminho_Ped_Del($id) {
         
@@ -1573,20 +1573,20 @@ class Transporte_PedidoControle extends Transporte_Controle
     	$id = (int) $id;
         // Puxa Transporte e deleta
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
-        if ($pedido === FALSE || $pedido->status!='0') {
+        if ($pedido === false || $pedido->status!='0') {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar esse Pedido')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            $this->_Visual->Json_Info_Update('Historico', FALSE);  
-            return FALSE;
+            $this->_Visual->Json_Info_Update('Historico', false);  
+            return false;
         }
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido);
         
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -1607,51 +1607,51 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->Pedidos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Caminho_Ped_Aceitas($export = FALSE) {
+    public function Caminho_Ped_Aceitas($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Aceitas',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Caminhoneiro')][$i] = '#'.$valor->log_user_id;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Aceitar')        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array(__('Recusar')        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1661,7 +1661,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -1673,44 +1673,44 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas dos Meus Pedidos'));
     }
-    public function Caminho_Ped_Novas($export = FALSE) {
+    public function Caminho_Ped_Novas($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Novas',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}transportadora=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Novas_Aceitar');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Caminhoneiro'][$i] = '#'.$valor->log_user_id;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Aceitar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
-                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array('Recusar'        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Caminhoneiro')][$i] = '#'.$valor->log_user_id;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Aceitar')        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/1'    , ''), $permissionStatus).
+                                            $this->_Visual->Tema_Elementos_Btn('Status0'     ,Array(__('Recusar')        ,'Transporte/Pedido/Caminho_Ped_Novas_Aceitar/'.$valor->id.'/2'    , ''), $permissionStatus);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Novas Propostas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1720,7 +1720,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma nova Proposta para exportar');
             } else {
                 $mensagem = __('Nenhuma nova Proposta');
@@ -1732,9 +1732,9 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Novas Propostas dos Meus Pedidos'));
     }
-    public function Caminho_Ped_Minhas($export = FALSE) {
+    public function Caminho_Ped_Minhas($export = false) {
         $i = 0;
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Pedido',
@@ -1742,37 +1742,37 @@ class Transporte_PedidoControle extends Transporte_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Minhas',
             )
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Ped_Del');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Descrição'][$i]       = $valor->descricao_carga;
-                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
-                                                ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
-                                                ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Pedido'       ,'Transporte/Pedido/Caminho_Ped_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar esse Pedido ?'), $permissionDelete);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Descrição')][$i]       = $valor->descricao_carga;
+                $table[__('Dimensões')][$i]       = '<b>'.__('Altura:').'</b>'.$valor->altura.
+                                                ' cm<br><b>'.__('Comprimento:').'</b>'.$valor->comprimento.
+                                                ' cm<br><b>'.__('Largura:').'</b>'.$valor->largura.' cm<br><b>'.__('Volume:').'</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Cancelar Pedido')       ,'Transporte/Pedido/Caminho_Ped_Del/'.$valor->id.'/'     , __('Deseja realmente Cancelar esse Pedido ?')), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Pedidos Cadastrados');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1782,7 +1782,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Pedido Cadastrado para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Cadastrado');
@@ -1794,43 +1794,43 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Meus Pedidos'));
     }
-    public function Caminho_Sol_Solicitacoes($export = FALSE) {
+    public function Caminho_Sol_Solicitacoes($export = false) {
         $i = 0;
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Ped_Minhas',
             )
         )));
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}status=\'0\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $perm_add = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Add');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Descrição'][$i]       = $valor->descricao_carga;
-                $table['Dimensões'][$i]       = '<b>Altura:</b>'.$valor->altura.
-                                                ' cm<br><b>Comprimento:</b>'.$valor->comprimento.
-                                                ' cm<br><b>Largura:</b>'.$valor->largura.' cm<br><b>Volume:</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array('Fazer Proposta'        ,'Transporte/Pedido/Caminho_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Descrição')][$i]       = $valor->descricao_carga;
+                $table[__('Dimensões')][$i]       = '<b>'.__('Altura:').'</b>'.$valor->altura.
+                                                ' cm<br><b>'.__('Comprimento:').'</b>'.$valor->comprimento.
+                                                ' cm<br><b>'.__('Largura:').'</b>'.$valor->largura.' cm<br><b>'.__('Volume:').'</b>'.$valor->altura*$valor->comprimento*$valor->largura.' cm³';
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Status1'     ,Array(__('Fazer Proposta')        ,'Transporte/Pedido/Caminho_Sol_Add/'.$valor->id.'/'    , ''), $perm_add);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Pedidos pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1840,7 +1840,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Pedido pendente para exportar');
             } else {
                 $mensagem = __('Nenhum Pedido Pendente');
@@ -1880,41 +1880,41 @@ class Transporte_PedidoControle extends Transporte_Controle
     
     
     
-    public function Caminho_Sol_PedAceitos($export = FALSE) {
+    public function Caminho_Sol_PedAceitos($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Sol_PedAceitos',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'1\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Transportadora'][$i] = '#'.$valor->transportadora2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Transportadora')][$i] = '#'.$valor->transportadora2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Aceitas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1924,7 +1924,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Aceita para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Aceita');
@@ -1936,41 +1936,41 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Aceitas'));
     }
-    public function Caminho_Sol_PedRecusados($export = FALSE) {
+    public function Caminho_Sol_PedRecusados($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Sol_PedRecusados',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'2\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Transportadora'][$i] = '#'.$valor->transportadora2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Transportadora')][$i] = '#'.$valor->transportadora2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Recusadas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -1980,7 +1980,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Recusada para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Recusada');
@@ -1992,43 +1992,43 @@ class Transporte_PedidoControle extends Transporte_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Propostas Recusadas'));
     }
-    public function Caminho_Sol_PedPendente($export = FALSE) {
+    public function Caminho_Sol_PedPendente($export = false) {
         
-        //self::Endereco_Noticia(FALSE);
+        //self::Endereco_Noticia(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Transporte/Pedido/Caminho_Sol_PedPendente',
             )
         )));
         $i = 0;
         $pedido = $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}status=\'0\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'');
         if (is_object($pedido)) $pedido = Array(0=>$pedido);
-        if ($pedido !== FALSE && !empty($pedido)) {
+        if ($pedido !== false && !empty($pedido)) {
             $i = 0;
             reset($pedido);
             $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Transporte/Pedido/Caminho_Sol_Del');
             foreach ($pedido as &$valor) {                
-                $table['Id'][$i]           = '#'.$valor->id;
-                $table['Pedido'][$i] = '#'.$valor->pedido2;
-                $table['Transportadora'][$i] = '#'.$valor->transportadora2;
-                $table['Valor'][$i]       = $valor->valor;
-                $table['Observação'][$i]       = $valor->obs;
-                $table['Funções'][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Cancelar Proposta'       ,'Transporte/Pedido/Caminho_Sol_Del/'.$valor->id.'/'     ,'Deseja realmente Cancelar essa Proposta ?'), $permissionDelete);
+                $table[__('Id')][$i]           = '#'.$valor->id;
+                $table[__('Pedido')][$i] = '#'.$valor->pedido2;
+                $table[__('Transportadora')][$i] = '#'.$valor->transportadora2;
+                $table[__('Valor')][$i]       = $valor->valor;
+                $table[__('Observação')][$i]       = $valor->obs;
+                $table[__('Funções')][$i]      = $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Cancelar Proposta')       ,'Transporte/Pedido/Caminho_Sol_Del/'.$valor->id.'/'     , __('Deseja realmente Cancelar essa Proposta ?')), $permissionDelete);
                 ++$i;
             }
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Propostas Pendentes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -2038,7 +2038,7 @@ class Transporte_PedidoControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhuma Proposta Pendente para exportar');
             } else {
                 $mensagem = __('Nenhuma Proposta Pendente');
@@ -2060,25 +2060,25 @@ class Transporte_PedidoControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Caminho_Sol_Add($pedido = FALSE) {
-        if ($pedido === FALSE) return FALSE;
+    public function Caminho_Sol_Add($pedido = false) {
+        if ($pedido === false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido === FALSE || $pedido->status!=0) {
+            if ($pedido === false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
         }
-        //self::Endereco_Noticia(TRUE);
+        //self::Endereco_Noticia(true);
         // Carrega Config
         $titulo1    = __('Adicionar Proposta de Pedido');
         $titulo2    = __('Salvar Proposta de Pedido');
@@ -2096,22 +2096,22 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Caminho_Sol_Add2($pedido = FALSE) {
-        if ($pedido === FALSE) return FALSE;
+    public function Caminho_Sol_Add2($pedido = false) {
+        if ($pedido === false) return false;
         else{
             $pedido = (int) $pedido;
             
             $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido.'\'',1);
-            if ($pedido === FALSE || $pedido->status!=0) {
+            if ($pedido === false || $pedido->status!=0) {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Erro'),
                     "mgs_secundaria" => __('Você não pode Adicionar uma Solicitação a este pedido')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
         }
         $titulo     = __('Proposta enviada com Sucesso');
@@ -2127,7 +2127,7 @@ class Transporte_PedidoControle extends Transporte_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Caminho_Sol_Del($id) {
         
@@ -2136,30 +2136,30 @@ class Transporte_PedidoControle extends Transporte_Controle
         // Puxa Transporte e deleta
         $pedido_lance    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido_Lance', '{sigla}id=\''.$id.'\' AND {sigla}log_user_add=\''.$this->_Acl->Usuario_GetID().'\'',1);
         
-        if ($pedido_lance === FALSE || $pedido_lance->status!=0) {
+        if ($pedido_lance === false || $pedido_lance->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            return FALSE;
+            return false;
         }
         
         $pedido    =  $this->_Modelo->db->Sql_Select('Transporte_Caminhoneiro_Pedido', '{sigla}id=\''.$pedido_lance->pedido.'\'',1);
-        if ($pedido === FALSE || $pedido->status!=0) {
+        if ($pedido === false || $pedido->status!=0) {
             $mensagens = array(
                 "tipo" => 'erro',
                 "mgs_principal" => __('Erro'),
                 "mgs_secundaria" => __('Você não pode deletar')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-            return FALSE;
+            return false;
         }
         
         $sucesso =  $this->_Modelo->db->Sql_Delete($pedido_lance);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -2177,7 +2177,7 @@ class Transporte_PedidoControle extends Transporte_Controle
         $this->Caminho_Sol_Solicitacoes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Proposta Cancelada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

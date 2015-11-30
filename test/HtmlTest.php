@@ -1,6 +1,6 @@
 <?php
 
-require_once("..".DS."vendor".DS."autoload.php");
+require_once("..".DS."www".DS."Lib".DS."autoload.php");
 
 use \Kevintweber\PhpunitMarkupValidators\Assert\AssertHTML5;
 

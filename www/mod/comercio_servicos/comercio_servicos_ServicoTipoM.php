@@ -11,7 +11,7 @@ class comercio_servicos_ServicoTipoModelo extends comercio_servicos_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,10 +27,10 @@ class comercio_servicos_ServicoTipoModelo extends comercio_servicos_Modelo
         
         $function = '';
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Produto\'        ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Tipo de Serviço ?\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Produto\'       ,\'comercio_servicos/ServicoTipo/Servico_Tipo_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar esse Tipo de Serviço ?\'),true);';
         }
 
         $columns = Array();

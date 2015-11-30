@@ -11,7 +11,7 @@ class predial_SalaoModelo extends predial_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -24,12 +24,12 @@ class predial_SalaoModelo extends predial_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function retorna_Agendadatas(&$datas, $veiculo=0) {
         
         #update
-        return FALSE;
+        return false;
         
         GLOBAL $tabsql, $config;
         $i = 0;
@@ -66,7 +66,7 @@ class predial_SalaoModelo extends predial_Modelo
         
         // percorre todas as ultimas datas gravadas e acrescenta as datas
         reset($ultimasdatas);
-        foreach($ultimasdatas as $key=>$value) {
+        foreach ($ultimasdatas as $key=>$value) {
             $datas[$i]['Id'] = $key;
             $datas[$i]['Titulo'] = $veiculotitulo[$key];
             $datas[$i]['DataInicial'] = date('Y-m-d', strtotime("+1 days",strtotime($value)));

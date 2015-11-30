@@ -11,16 +11,16 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
     }
-    public function Bibliotecas($raiz = FALSE) {
+    public function Bibliotecas($raiz = false) {
         // Table's primary key
         $primaryKey = 'id';
         $table = 'Biblioteca';
-        if ($raiz === FALSE) {
+        if ($raiz === false) {
             $raiz = 0;
         }
         $where = 'parent=\''.$raiz.'\'';
@@ -32,13 +32,13 @@ class biblioteca_BibliotecaModelo extends biblioteca_Modelo
         
         $function = '';
         $function .= ' if ($row[\'tipo\']==1) { ';
-            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(__(\'Visualizar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas/\'.$d    ,\'\'),TRUE);';
-            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),TRUE);';
-            if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),TRUE);';
+            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(__(\'Visualizar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas/\'.$d    ,\'\'),true);';
+            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
+            if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar essa pasta ?\')),true);';
         $function .= ' } else { ';
-            if ($perm_baixar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Baixar\'     ,Array(__(\'Download de Arquivo\')   ,\'biblioteca/Biblioteca/Download/\'.$d    ,\'\'),TRUE);';
-            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),TRUE);';
-            if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar esse arquivo ?\')),TRUE);';
+            if ($perm_baixar) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Baixar\'     ,Array(__(\'Download de Arquivo\')   ,\'biblioteca/Biblioteca/Download/\'.$d    ,\'\'),true);';
+            if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Arquivo\')        ,\'biblioteca/Biblioteca/Bibliotecas_Edit/\'.$d.\'/'.$raiz.'\'    ,\'\'),true);';
+            if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Arquivo\')       ,\'biblioteca/Biblioteca/Bibliotecas_Del/\'.$d.\'/'.$raiz.'\'     ,__(\'Deseja realmente deletar esse arquivo ?\')),true);';
         $function .= ' } ';
         $columns = Array();
         

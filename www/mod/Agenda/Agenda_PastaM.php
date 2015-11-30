@@ -11,7 +11,7 @@ class Agenda_PastaModelo extends Agenda_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      * 
      */
     public function __construct() {
@@ -27,8 +27,8 @@ class Agenda_PastaModelo extends Agenda_Modelo
         $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Agenda/Pasta/Pastas_Del');
         
         $function = '';
-        if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Agenda/Pasta/Pastas_Edit/\'.$d    ,\'\'),TRUE);';
-        if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Agenda/Pasta/Pastas_Del/\'.$d     ,__(\'Deseja realmente deletar essa Pasta ?\')),TRUE);';
+        if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Agenda/Pasta/Pastas_Edit/\'.$d    ,\'\'),true);';
+        if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Agenda/Pasta/Pastas_Del/\'.$d     ,__(\'Deseja realmente deletar essa Pasta ?\')),true);';
         $columns = Array();
         
         $numero = -1;

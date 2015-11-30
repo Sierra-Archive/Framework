@@ -50,7 +50,7 @@ class Minify_Lines {
         $numLines = count($lines);
         // determine left padding
         $padTo = strlen((string) $numLines); // e.g. 103 lines = 3 digits
-        $inComment = FALSE;
+        $inComment = false;
         $i = 0;
         $newLines = array();
         while (null !== ($line = array_shift($lines))) {

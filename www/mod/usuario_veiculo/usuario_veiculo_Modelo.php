@@ -10,7 +10,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -30,17 +30,17 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
-    public function retorna_veiculos(&$veiculos, $categoriasdividir = FALSE) {
+    public function retorna_veiculos(&$veiculos, $categoriasdividir = false) {
         GLOBAL $tabsql;
-        if ($categoriasdividir === TRUE) $i = Array();
+        if ($categoriasdividir === true) $i = Array();
         else                          $i = 0;
         $sql = $this->db->query(' SELECT C.nome AS CATEGORIA, V.id, V.foto, V.ano, V.modelo, M.nome as MARCA, V.cc, V.valor1, V.valor2, V.valor3, V.franquia
         FROM '.MYSQL_USUARIO_VEICULO.' V, '.MYSQL_CAT.' C, '.MYSQL_USUARIO_VEICULO_MARCAS.' M
         WHERE V.deletado=0 && V.categoria=C.id && V.marca=M.id ORDER BY V.cc'); //P.categoria
         while ($campo = $sql->fetch_object()) {
-            if ($categoriasdividir === TRUE) {
+            if ($categoriasdividir === true) {
                 if (!isset($i[$campo->CATEGORIA])) $i[$campo->CATEGORIA]=0;
                 $vei = &$veiculos[$campo->CATEGORIA][$i[$campo->CATEGORIA]];
             } else {
@@ -58,7 +58,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
             $vei['valor2'] = $campo->valor2;
             $vei['valor3'] = $campo->valor3;
             $vei['franquia'] = $campo->franquia;
-            if ($categoriasdividir === TRUE)   ++$i[$campo->CATEGORIA];
+            if ($categoriasdividir === true)   ++$i[$campo->CATEGORIA];
             else                            ++$i;
         }
         return $i;
@@ -79,7 +79,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function retorna_veiculo($id) {
         GLOBAL $tabsql;
@@ -116,7 +116,7 @@ class usuario_veiculo_Modelo extends \Framework\App\Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function retorna_marcas(&$marcas) {
         $i = 0;

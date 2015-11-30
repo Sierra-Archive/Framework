@@ -4,10 +4,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Empreendimento($true= TRUE ) {
+    static function Endereco_Empreendimento($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Empreendimentos'),'Engenharia/Empreendimento/Empreendimentos');
         } else {
             $_Controle->Tema_Endereco(__('Empreendimentos'));
@@ -24,11 +24,11 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Empreendimento/Empreendimentos');
-        return FALSE;
+        return false;
     }
     static function Empreendimentos_Tabela(&$empreendimentos) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -38,15 +38,15 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         if (is_object($empreendimentos)) $empreendimentos = Array(0=>$empreendimentos);
         reset($empreendimentos);
         foreach ($empreendimentos as &$valor) {
-            $table['Nome do Empreendimento'][$i]   =   $valor->nome;
-            $table['Especificações'][$i]           =   $valor->obs;
-            $table['Data Inicio'][$i]              =   $valor->data_inicio;
-            $table['Data Fim'][$i]                 =   $valor->data_fim;
-            $table['Data Entrega'][$i]             =   $valor->data_entrega;
-            $table['Qnt de Unidades'][$i]          =   $valor->unidades;
-            $table['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Empreendimento'    ,'Engenharia/Unidade/Unidades/'.$valor->id.'/'    , '')).
-                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Empreendimento'        ,'Engenharia/Empreendimento/Empreendimentos_Edit/'.$valor->id.'/'    , '')).
-                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Empreendimento'       ,'Engenharia/Empreendimento/Empreendimentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Empreendimento ?'));
+            $table[__('Nome do Empreendimento')][$i]   =   $valor->nome;
+            $table[__('Especificações')][$i]           =   $valor->obs;
+            $table[__('Data Inicio')][$i]              =   $valor->data_inicio;
+            $table[__('Data Fim')][$i]                 =   $valor->data_fim;
+            $table[__('Data Entrega')][$i]             =   $valor->data_entrega;
+            $table[__('Qnt de Unidades')][$i]          =   $valor->unidades;
+            $table[__('Funções')][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array(__('Visualizar Empreendimento')    ,'Engenharia/Unidade/Unidades/'.$valor->id.'/'    , '')).
+                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Empreendimento')        ,'Engenharia/Empreendimento/Empreendimentos_Edit/'.$valor->id.'/'    , '')).
+                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Empreendimento')       ,'Engenharia/Empreendimento/Empreendimentos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Empreendimento ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -54,10 +54,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Empreendimentos($export = FALSE) {
-        self::Endereco_Empreendimento(FALSE);
+    public function Empreendimentos($export = false) {
+        self::Endereco_Empreendimento(false);
         $i = 0;
         
         // Botao 1
@@ -68,23 +68,23 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Engenharia/Empreendimento/Empreendimentos',
             )
         )));
         $empreendimentos = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento');
-        if ($empreendimentos !== FALSE && !empty($empreendimentos)) {
+        if ($empreendimentos !== false && !empty($empreendimentos)) {
             list($table, $i) = self::Empreendimentos_Tabela($empreendimentos);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Empreendimentos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -105,7 +105,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimentos_Add() {
         self::Endereco_Empreendimento();
@@ -122,7 +122,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimentos_Add2() {
         $titulo     = __('Empreendimento Adicionado com Sucesso');
@@ -137,7 +137,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimentos_Edit($id) {
         self::Endereco_Empreendimento();
@@ -155,7 +155,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimentos_Edit2($id) {
         $titulo     = __('Empreendimento Editado com Sucesso');
@@ -171,7 +171,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimentos_Del($id) {
         
@@ -181,7 +181,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $empreendimento = $this->_Modelo->db->Sql_Select('Engenharia_Empreendimento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($empreendimento);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -199,7 +199,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
         $this->Empreendimentos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Empreendimento deletado com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
     
     
@@ -210,7 +210,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Estoque_Retirar() {
         
@@ -227,10 +227,10 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Estoque_Retirar2() {
-        if (!isset($_POST['idproduto']) || !isset($_POST['qnt'])) return FALSE;
+        if (!isset($_POST['idproduto']) || !isset($_POST['qnt'])) return false;
         
         $idproduto  = (int) $_POST['idproduto'];
         $qnt        = (int) $_POST['qnt'];
@@ -241,7 +241,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
                 "mgs_secundaria" => __('Quantidade não disponivel em Estoque')
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
-            $this->layoult_zerar = FALSE;
+            $this->layoult_zerar = false;
             $this->_Visual->Javascript_Executar('$("#qnt").css(\'border\', \'2px solid #FFAEB0\').focus();');
         } else {
             $titulo     = __('Produto retirado do estoque com Sucesso');
@@ -265,7 +265,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimento_Receber() {
         
@@ -281,7 +281,7 @@ class Engenharia_EmpreendimentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Empreendimento_Receber2() {
         

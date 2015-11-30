@@ -38,6 +38,6 @@ $PagSeguroConfig['application'] = array();
 $PagSeguroConfig['application']['charset'] = "UTF-8"; // UTF-8, ISO-8859-1
 
 $PagSeguroConfig['log'] = array();
-$PagSeguroConfig['log']['active'] = FALSE;
+$PagSeguroConfig['log']['active'] = false;
 // Informe o path completo (relativo ao path da lib) para o arquivo, ex.: ../PagSeguroLibrary/logs.txt
 $PagSeguroConfig['log']['fileLocation'] = "";

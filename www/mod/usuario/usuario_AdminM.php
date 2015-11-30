@@ -10,7 +10,7 @@ class usuario_AdminModelo extends usuario_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      * 
      */
     public function __construct() {
@@ -22,7 +22,7 @@ class usuario_AdminModelo extends usuario_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      * 
      * #update
      */
@@ -46,9 +46,9 @@ class usuario_AdminModelo extends usuario_Modelo
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
             if ($saldo<0) {
-                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ', ', '.').'</font>';
+                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($saldo).'</font>';
             } else {
-                $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ', ', '.');
+                $usuarios[$i]['saldo'] = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($saldo);
             }
             ++$i;
         }
@@ -84,9 +84,9 @@ class usuario_AdminModelo extends usuario_Modelo
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
 
             if ($saldo<0) {
-                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ', ', '.').'</font>';
+                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($saldo).'</font>';
             } else {
-                $usuarios[$i]['saldo'] = 'R$ '.number_format($saldo, 2, ', ', '.');
+                $usuarios[$i]['saldo'] = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($saldo);
             }
             ++$i;
         }
@@ -110,16 +110,16 @@ class usuario_AdminModelo extends usuario_Modelo
      */
     
     public function ListarCliente() {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')), FALSE,20, FALSE);
-        return TRUE;
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_CLIENTES,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Cliente_nome')), false,20, false);
+        return true;
     }
     public function ListarFuncionario() {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')), FALSE,10, FALSE,'Funcionario');
-        return TRUE;
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_FUNCIONARIOS,\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Funcionario_nome')), false,10, false,'Funcionario');
+        return true;
     }
     public function ListarUsuario() {
-        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'), FALSE,10, FALSE);
-        return TRUE;
+        $this->Usuario_Listagem(Array(CFG_TEC_CAT_ID_ADMIN,'Usuários'), false,10, false);
+        return true;
     }
     
 }

@@ -18,6 +18,29 @@ Desenvolvedor: Ricardo Rebello Sierra <sierra.csi@gmail.com>
 /***************************************************************************************\
 *                                                                                       *
 *                                                                                       *
+*                                       EnTREGA                                         *
+*                                                                                       *
+*                                                                                       *
+\***************************************************************************************/
+ARQUIVO_TMP="/tmp/arquivos-hmw-$$.txt"; find ./ -type f -name \*.php > $ARQUIVO_TMP; xgettext -k_e -k__ -L PHP --from-code utf-8 --no-wrap -d i18n/Framework -o i18n/Framework.pot -f $ARQUIVO_TMP; rm -f $ARQUIVO_TMP
+msginit -l pt_BR --no-wrap --no-translator -o i18n/pt_BR/LC_MESSAGES/Framework.po -i i18n/Framework.pot
+msgfmt -c -o i18n/pt_BR/LC_MESSAGES/Framework.mo i18n/pt_BR/LC_MESSAGES/Framework.po
+//BUSca as TRADUCOES NO GOOGLE TRANSLATE TOOL
+// SUbstituir "Project-Id-Version: PACKAGE VERSION por version
+msgfmt -c -o i18n/pt_PT/LC_MESSAGES/Framework.mo i18n/pt_PT/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/en_US/LC_MESSAGES/Framework.mo i18n/en_US/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/ar/LC_MESSAGES/Framework.mo i18n/ar/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/de/LC_MESSAGES/Framework.mo i18n/de/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/es/LC_MESSAGES/Framework.mo i18n/es/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/fr/LC_MESSAGES/Framework.mo i18n/fr/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/it/LC_MESSAGES/Framework.mo i18n/it/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/ja/LC_MESSAGES/Framework.mo i18n/ja/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/ru/LC_MESSAGES/Framework.mo i18n/ru/LC_MESSAGES/Framework.po;
+msgfmt -c -o i18n/zh-Hans/LC_MESSAGES/Framework.mo i18n/zh-Hans/LC_MESSAGES/Framework.po;
+
+/***************************************************************************************\
+*                                                                                       *
+*                                                                                       *
 *                                       ARQUITETURA                                         *
 *                                                                                       *
 *                                                                                       *

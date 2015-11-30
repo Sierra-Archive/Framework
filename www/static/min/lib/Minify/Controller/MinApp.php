@@ -31,7 +31,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
         $cOptions = array_merge(
             array(
                 'allowDirs' => '//'
-                ,'groupsOnly' => FALSE
+                ,'groupsOnly' => false
                 ,'groups' => array()
                 ,'noMinPattern' => '@[-\\.]min\\.(?:js|css)$@i' // matched against basename
             )
@@ -44,12 +44,12 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
         if (isset($_GET['g'])) {
             // add group(s)
             $this->selectionId .= 'g=' . $_GET['g'];
-            $keys = explode(', ', $_GET['g']);
+            $keys = explode(',', $_GET['g']);
             if ($keys != array_unique($keys)) {
                 $this->log("Duplicate group key found.");
                 return $options;
             }
-            $keys = explode(', ', $_GET['g']);
+            $keys = explode(',', $_GET['g']);
             foreach ($keys as $key) {
                 if (! isset($cOptions['groups'][$key])) {
                     $this->log("A group configuration for \"{$key}\" was not found");
@@ -117,7 +117,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
                 $this->log($e->getMessage());
                 return $options;
             }
-            $files = explode(', ', $_GET['f']);
+            $files = explode(',', $_GET['f']);
             if ($files != array_unique($files)) {
                 $this->log("Duplicate files were specified");
                 return $options;
@@ -169,7 +169,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
             if ($this->selectionId) {
                 $this->selectionId .= '_f=';
             }
-            $this->selectionId .= implode(', ', $basenames) . $ext;
+            $this->selectionId .= implode(',', $basenames) . $ext;
         }
         if ($sources) {
             if (null !== $firstMissingResource) {
@@ -201,7 +201,7 @@ class Minify_Controller_MinApp extends Minify_Controller_Base {
         $spec['filepath'] = $file;
         if ($cOptions['noMinPattern'] && preg_match($cOptions['noMinPattern'], basename($file))) {
             if (preg_match('~\.css$~i', $file)) {
-                $spec['minifyOptions']['compress'] = FALSE;
+                $spec['minifyOptions']['compress'] = false;
             } else {
                 $spec['minifier'] = '';
             }

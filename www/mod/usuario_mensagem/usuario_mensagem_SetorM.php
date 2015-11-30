@@ -11,7 +11,7 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,16 +27,16 @@ class usuario_mensagem_SetorModelo extends usuario_mensagem_Modelo
         
         if ($permissionEdit && $permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    , ''),TRUE).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Setor')        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    , ''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Setor')       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     , __('Deseja realmente deletar essa Setor ?')),true);
             };
         } else if ($permissionEdit) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Setor'        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    , ''),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Setor')        ,'usuario_mensagem/Setor/Setores_Edit/'.$d.'/'    , ''),true);
             };
         } else if ($permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Setor'       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     ,'Deseja realmente deletar essa Setor ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Setor')       ,'usuario_mensagem/Setor/Setores_Del/'.$d.'/'     , __('Deseja realmente deletar essa Setor ?')),true);
             };
         } else {
             $function = function( $d, $row ) {

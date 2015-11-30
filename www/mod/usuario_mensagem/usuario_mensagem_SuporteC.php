@@ -13,26 +13,26 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
         parent::__construct();
     }
-    static function Endereco_Suporte($true= TRUE ) {
+    static function Endereco_Suporte($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Chamados'),'usuario_mensagem/Suporte/Mensagens/');
         } else {
             $_Controle->Tema_Endereco(__('Chamados'));
         }
     }
-    static function Endereco_Suporte_Listar($true= TRUE, $id) {
+    static function Endereco_Suporte_Listar($true= true, $id) {
         self::Endereco_Suporte();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Visualizar Chamado'),'usuario_mensagem/Suporte/VisualizadordeMensagem/'.$id);
         } else {
             $_Controle->Tema_Endereco(__('Visualizar Chamado'));
@@ -61,15 +61,15 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Suporte/Mensagens/');
-        return FALSE;
+        return false;
     }
     public function Mensagens() {
         $nome = __('Tickets');
-        self::Endereco_Suporte(FALSE);
+        self::Endereco_Suporte(false);
         $id = (int) $this->_Acl->Usuario_GetID();
         if ($id>0) {
             $this->Mensagenslistar();
@@ -81,11 +81,11 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
             $this->_Visual->Json_Info_Update('Titulo', $nome);
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
-    public function Mensagens_Mostrar($tipodemensagem = FALSE) {
+    public function Mensagens_Mostrar($tipodemensagem = false) {
         $titulo = $this->Mensagenslistar(0, $tipodemensagem);
         $this->Tema_Endereco($titulo);
         // ORGANIZA E MANDA CONTEUDO
@@ -95,7 +95,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $grupo  (-1 = Admin)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function MensagensSetores($grupo = 0) {
         $i = 0;
@@ -111,7 +111,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         if (is_object($mensagens)) {
             $mensagens = Array(0=>$mensagens);
         }
-        if (!empty($mensagens) && $mensagens !== FALSE) {
+        if (!empty($mensagens) && $mensagens !== false) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($this->_Visual, $mensagens, $admin);
         } else {
             if ($grupo==0) {
@@ -128,7 +128,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $this->_Visual->Bloco_Unico_CriaJanela($titulo);
     }
     public function Mostrar_Cliente($cliente = 0, $retorno='Unico') {
-        self::Endereco_Suporte(TRUE);
+        self::Endereco_Suporte(true);
         $this->Tema_Endereco(__('Visualizar Chamados de Cliente'));
         self::MensagensdeCliente($cliente, $retorno);
         // ORGANIZA E MANDA CONTEUDO
@@ -138,7 +138,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
      * 
      * @param type $cliente
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function MensagensdeCliente($cliente = 0, $retorno='Unico') {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -153,7 +153,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         }
         usuario_mensagem_SuporteModelo::Suporte_MensagensCliente($mensagens, $usuario,1);
         if (is_object($mensagens)) $mensagens = Array(0=>$mensagens);
-        if (!empty($mensagens) && $mensagens !== FALSE) {
+        if (!empty($mensagens) && $mensagens !== false) {
             $i = usuario_mensagem_Controle::Mensagens_TabelaMostrar($Visual, $mensagens, $admin);
         } else {
             $Visual->Blocar('<center><b><font color="#FF0000" size="5">'.__('Não possui chamados.').'</font></b></center>');
@@ -209,9 +209,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             'jpeg',
         ); // File extensions
         $dir = 'usuario_mensagem'.DS.'Chamados_Anexos'.DS;
-        $ext = $this->Upload($dir, $fileTypes, FALSE);
-        $this->layoult_zerar = FALSE;
-        if ($ext !== FALSE) {
+        $ext = $this->Upload($dir, $fileTypes, false);
+        $this->layoult_zerar = false;
+        if ($ext !== false) {
             
             $arquivo = new \Usuario_Mensagem_Anexo_DAO();
             $arquivo->mensagem      = $mensagem;
@@ -220,7 +220,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $arquivo->nome          = $ext[2];
             $this->_Modelo->db->Sql_Insert($arquivo);
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
-            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->_Visual->Json_Info_Update('Historico', false);
             // Tras de Volta e Atualiza via Json
             list($titulo, $html, $i) = $this->Anexos_Processar($mensagem);
             $conteudo = array(
@@ -237,14 +237,14 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
-            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
-    private function Anexos_Processar($mensagem = FALSE) {
+    private function Anexos_Processar($mensagem = false) {
         // Anexo
-        if ($mensagem !== FALSE && $mensagem!=0) {
+        if ($mensagem !== false && $mensagem!=0) {
             $resultado_mensagens = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$mensagem),1);
-            if ($resultado_mensagens === FALSE) {
+            if ($resultado_mensagens === false) {
                 return _Sistema_erroControle::Erro_Fluxo('Essa mensagem não existe:'. $mensagem,404);
             }
             // Condicao de Query
@@ -257,7 +257,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $html = '';
         // COntinua
         $anexos = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo', $where);
-        if ($anexos !== FALSE && !empty($anexos)) {
+        if ($anexos !== false && !empty($anexos)) {
             // Percorre Anexos
             if (is_object($anexos)) $anexos = Array(0=>$anexos);
             reset($anexos);
@@ -275,7 +275,7 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
                     }
                 }
             }
-            $html .= $this->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            $html .= $this->_Visual->Show_Tabela_DataTable($table, '', false);
             unset($table);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">'.__('Nenhum Anexo').'</font></b></center>';            
@@ -283,9 +283,9 @@ class usuario_mensagem_SuporteControle extends usuario_mensagem_Controle
         $titulo = __('Anexos').' (<span id="anexo_arquivos_num">'.$i.'</span>)';
         return Array($titulo, $html, $i);
     }
-    public function Download($anexo, $mensagem = FALSE) {
+    public function Download($anexo, $mensagem = false) {
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Anexo', '{sigla}id=\''.$anexo.'\'',1);
-        if ($resultado_arquivo === FALSE || !is_object($resultado_arquivo)) {
+        if ($resultado_arquivo === false || !is_object($resultado_arquivo)) {
             return _Sistema_erroControle::Erro_Fluxo('Esse anexo não existe:'. $anexo,404);
         }
         $endereco = 'usuario_mensagem'.DS.'Chamados_Anexos'.DS.strtolower($resultado_arquivo->endereco.'.'.$resultado_arquivo->ext);

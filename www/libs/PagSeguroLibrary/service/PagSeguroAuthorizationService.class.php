@@ -144,6 +144,6 @@ class PagSeguroAuthorizationService
                 break;
 
         }
-        return (isset($authorizationReturn) ? $authorizationReturn : FALSE);
+        return (isset($authorizationReturn) ? $authorizationReturn : false);
     }
 }

@@ -26,22 +26,22 @@
 class StreamReader {
   // should return a string [FIXME: perhaps return array of bytes?]
   function read($bytes) {
-    return FALSE;
+    return false;
   }
 
   // should return new position
   function seekto($position) {
-    return FALSE;
+    return false;
   }
 
   // returns current position
   function currentpos() {
-    return FALSE;
+    return false;
   }
 
   // returns length of entire stream (limit for seekto()s)
   function length() {
-    return FALSE;
+    return false;
   }
 };
 
@@ -94,11 +94,11 @@ class FileReader {
       $this->_fd = fopen($filename,'rb');
       if (!$this->_fd) {
         $this->error = 3; // Cannot read file, probably permissions
-        return FALSE;
+        return false;
       }
     } else {
       $this->error = 2; // File doesn't exist
-      return FALSE;
+      return false;
     }
   }
 
@@ -151,14 +151,14 @@ class CachedFileReader extends StringReader {
 
       if (!$fd) {
         $this->error = 3; // Cannot read file, probably permissions
-        return FALSE;
+        return false;
       }
       $this->_str = fread($fd, $length);
       fclose($fd);
 
     } else {
       $this->error = 2; // File doesn't exist
-      return FALSE;
+      return false;
     }
   }
 };

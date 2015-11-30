@@ -17,7 +17,7 @@ class noticia_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
         // Noticias
@@ -29,10 +29,10 @@ class noticia_Principal implements \Framework\PrincipalInterface
             'rss', 
             $noticia_qnt, 
             'block-green', 
-            FALSE, 
+            false, 
             360
         );
-        return TRUE;
+        return true;
     }
     static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
@@ -41,33 +41,33 @@ class noticia_Principal implements \Framework\PrincipalInterface
                 '<i class="fa fa-rss"></i>'.
             '</a>'.
         '</li>');
-        return TRUE;
+        return true;
     } 
     
     static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Noticias
         $result = self::Busca_Noticias($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Retorna
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return FALSE;
+            return false;
         }
     }
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     /***********************
      * BUSCAS
@@ -79,11 +79,11 @@ class noticia_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $noticias = $Modelo->db->Sql_Select('Noticia', $where);
-        if ($noticias === FALSE) return FALSE;
+        if ($noticias === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Noticia" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Noticia/Admin/Noticias_Add">Adicionar novo Noticia</a><div class="space15"></div>');
         if (is_object($noticias)) $noticias = Array(0=>$noticias);
-        if ($noticias !== FALSE && !empty($noticias)) {
+        if ($noticias !== false && !empty($noticias)) {
             list($table, $i) = noticia_AdminControle::Noticias_Tabela($noticias);
             $Visual->Show_Tabela_DataTable($table);
         } else {   

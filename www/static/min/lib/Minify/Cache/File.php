@@ -6,7 +6,7 @@
 
 class Minify_Cache_File {
     
-    public function __construct($path = '', $fileLocking = FALSE)
+    public function __construct($path = '', $fileLocking = false)
     {
         if (! $path) {
             $path = self::tmp();
@@ -37,9 +37,9 @@ class Minify_Cache_File {
         if ($data !== $this->fetch($id)) {
             @unlink($file);
             $this->_log("Minify_Cache_File: Post-write read failed for '$file'");
-            return FALSE;
+            return false;
         }
-        return TRUE;
+        return true;
     }
     
     /**

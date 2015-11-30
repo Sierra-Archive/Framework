@@ -15,18 +15,18 @@ class predial_AdvertenciaControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Advertencia/Advertencias');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Advertencia($true= TRUE ) {
+    static function Endereco_Advertencia($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Advertencias');
         $link = 'predial/Advertencia/Advertencias';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -40,14 +40,14 @@ class predial_AdvertenciaControle extends predial_Controle
         if (is_object($advertencias)) $advertencias = Array(0=>$advertencias);
         reset($advertencias);
         foreach ($advertencias as &$valor) {
-            $table['Bloco'][$i]            = $valor->bloco2;
-            $table['Apartamento'][$i]      = $valor->apart2;
-            $table['Nome'][$i]             = $valor->nome;
-            $table['Descrição'][$i]        = $valor->descricao;
-            $table['Data do Ocorrido'][$i] = $valor->data_acontecimento;
-            $table['Data Registrado'][$i]  = $valor->log_date_add;
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Advertência'        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    , '')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Advertência'       ,'predial/Advertencia/Advertencias_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Advertência ?'));
+            $table[__('Bloco')][$i]            = $valor->bloco2;
+            $table[__('Apartamento')][$i]      = $valor->apart2;
+            $table[__('Nome')][$i]             = $valor->nome;
+            $table[__('Descrição')][$i]        = $valor->descricao;
+            $table[__('Data do Ocorrido')][$i] = $valor->data_acontecimento;
+            $table[__('Data Registrado')][$i]  = $valor->log_date_add;
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Advertência')        ,'predial/Advertencia/Advertencias_Edit/'.$valor->id.'/'    , '')).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Advertência')       ,'predial/Advertencia/Advertencias_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Advertência ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -55,7 +55,7 @@ class predial_AdvertenciaControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Advertencias() {
         self::Endereco_Advertencia();
@@ -68,15 +68,15 @@ class predial_AdvertenciaControle extends predial_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Advertencia/Advertencias',
             )
         )));
         // Busca
         $advertencias = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia');
-        if ($advertencias !== FALSE && !empty($advertencias)) {
+        if ($advertencias !== false && !empty($advertencias)) {
             list($table, $i) = self::Advertencias_Tabela($advertencias);
             $this->_Visual->Show_Tabela_DataTable($table);
             unset($table);
@@ -92,10 +92,10 @@ class predial_AdvertenciaControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Advertencias_Add() {
-        self::Endereco_Advertencia(FALSE);
+        self::Endereco_Advertencia(false);
         // Carrega Config
         $titulo1    = __('Adicionar Advertência');
         $titulo2    = __('Salvar Advertência');
@@ -110,7 +110,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Advertencias_Add2() {
         $titulo     = __('Advertência Adicionada com Sucesso');
@@ -120,11 +120,11 @@ class predial_AdvertenciaControle extends predial_Controle
         $sucesso2   = __('Advertência cadastrada com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             // Pega o Correio
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', Array(),1,'id DESC');
             // Captura Apartamento Responsavel
-            $enviar = FALSE;
+            $enviar = false;
             $apartamento  = $this->_Modelo->db->Sql_Select(
                 'Predial_Bloco_Apart', 
                 Array(
@@ -141,7 +141,7 @@ class predial_AdvertenciaControle extends predial_Controle
                     "mgs_secundaria" => __('Apartamento não existe.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
             if (is_int($apartamento->morador) && $apartamento->morador!=0) {
                 $usuario  = $this->_Modelo->db->Sql_Select(
@@ -149,7 +149,7 @@ class predial_AdvertenciaControle extends predial_Controle
                     Array('id'=>$apartamento->morador),
                     1
                 );
-                if ($usuario !== FALSE) {
+                if ($usuario !== false) {
                     $nome = $usuario->nome;
                     $enviar = '';
                     if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)) {
@@ -161,7 +161,7 @@ class predial_AdvertenciaControle extends predial_Controle
                 }
             }
             // Avisa que nao foi, ou manda 
-            if ($enviar === FALSE || $enviar=='') {
+            if ($enviar === false || $enviar=='') {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Advertência não Enviada'),
@@ -203,10 +203,10 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Advertencias_Edit($id) {
-        self::Endereco_Advertencia(FALSE);
+        self::Endereco_Advertencia(false);
         // Carrega Config
         $titulo1    = 'Editar Advertência (#'.$id.')';
         $titulo2    = __('Alteração de Advertência');
@@ -222,7 +222,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Advertencias_Edit2($id) {
         $titulo     = __('Advertência Editada com Sucesso');
@@ -238,7 +238,7 @@ class predial_AdvertenciaControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Advertencias_Del($id) {
         
@@ -248,7 +248,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $advertencia = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($advertencia);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -266,7 +266,7 @@ class predial_AdvertenciaControle extends predial_Controle
         $this->Advertencias();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Advertência deletada com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
     
     
@@ -283,10 +283,10 @@ class predial_AdvertenciaControle extends predial_Controle
         if (is_object($advertencias)) $advertencias = Array(0=>$advertencias);
         reset($advertencias);
         foreach ($advertencias as &$valor) {
-            $table['Nome'][$i]             = $valor->nome;
-            $table['Descrição'][$i]        = $valor->descricao;
-            $table['Data do Ocorrido'][$i] = $valor->data_acontecimento;
-            $table['Data Registrado'][$i]  = $valor->log_date_add;
+            $table[__('Nome')][$i]             = $valor->nome;
+            $table[__('Descrição')][$i]        = $valor->descricao;
+            $table[__('Data do Ocorrido')][$i] = $valor->data_acontecimento;
+            $table[__('Data Registrado')][$i]  = $valor->log_date_add;
             ++$i;
         }
         return Array($table, $i);
@@ -294,18 +294,18 @@ class predial_AdvertenciaControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Personalizados($apartamento) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $i = 0;
         // Botao Add
         $html = $Registro->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
-            FALSE,
+            false,
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Advertencia/Advertencias',
             )
         ));
@@ -314,9 +314,9 @@ class predial_AdvertenciaControle extends predial_Controle
             'apart' =>   (int) $apartamento
         );
         $advertencias = $Registro->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Advertencia', $where);
-        if ($advertencias !== FALSE && !empty($advertencias)) {
+        if ($advertencias !== false && !empty($advertencias)) {
             list($table, $i) = self::Personalizados_Tabela($advertencias);
-            $html .= $Registro->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            $html .= $Registro->_Visual->Show_Tabela_DataTable($table, '', false);
             unset($table);
         } else {            
             $html .= '<center><b><font color="#FF0000" size="3">Nenhuma Advertência para seu Apartamento</font></b></center>';

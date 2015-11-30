@@ -19,21 +19,21 @@ class Agenda_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
-        Agenda_PastaControle::Pastas_Listar(FALSE, $Modelo, $Visual,'Maior');
+        Agenda_PastaControle::Pastas_Listar(false, $Modelo, $Visual,'Maior');
     }
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     /***********************
      * BUSCAS
@@ -42,13 +42,13 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Pastas
         $result = self::Busca_Pastas($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return FALSE;
+            return false;
         }
     }
     static function Busca_Pastas($controle, $Modelo, $Visual, $busca) {
@@ -59,7 +59,7 @@ class Agenda_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $pastas = $Modelo->db->Sql_Select('Usuario_Agenda_Pasta', $where);
-        if ($pastas === FALSE) return FALSE;
+        if ($pastas === false) return false;
         // Botao Add
         $Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -68,15 +68,15 @@ class Agenda_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Agenda/Pasta/Pastas',
             )
         )));
         // Conexao
         if (is_object($pastas)) $pastas = Array(0=>$pastas);
-        if ($pastas !== FALSE && !empty($pastas)) {
+        if ($pastas !== false && !empty($pastas)) {
             list($table, $i) = Agenda_PastaControle::Pastas_Tabela($pastas);
             $Visual->Show_Tabela_DataTable($table);
         } else { 

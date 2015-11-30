@@ -13,7 +13,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,43 +29,43 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Equipamento/Equipamentos');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Equipamento($true= TRUE ) {
+    static function Endereco_Equipamento($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $link   = 'usuario_veiculo/Equipamento/Equipamentos';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Equipamentos'), $link);
         } else {
             $_Controle->Tema_Endereco(__('Equipamentos'));
         }
     }
-    static function Endereco_Equipamento_Marca($true= TRUE ) {
+    static function Endereco_Equipamento_Marca($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Marcas');
         $link   = 'usuario_veiculo/Equipamento/Marcas';
         // Chama Equipamento
-        self::Endereco_Equipamento(TRUE);
-        if ($true === TRUE) {
+        self::Endereco_Equipamento(true);
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Endereco_Equipamento_Modelo($true= TRUE ) {
+    static function Endereco_Equipamento_Modelo($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Modelos');
         $link   = 'usuario_veiculo/Equipamento/Modelos';
         // Chama Equipamento
-        self::Endereco_Equipamento_Marca(TRUE);
-        if ($true === TRUE) {
+        self::Endereco_Equipamento_Marca(true);
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -74,11 +74,11 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Equipamentos($export = FALSE) {
+    public function Equipamentos($export = false) {
         $i = 0;
-        self::Endereco_Equipamento(FALSE);
+        self::Endereco_Equipamento(false);
         $titulo = __('Equipamentos');
         $titulo2 = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -88,30 +88,30 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'usuario_veiculo/Equipamento/Equipamentos',
             )
         )));
         $equipamentos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento');
-        if ($equipamentos !== FALSE && !empty($equipamentos)) {
+        if ($equipamentos !== false && !empty($equipamentos)) {
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Tipo de Equipamento'][$i]      =   $valor->categoria2;
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Tipo de Equipamento')][$i]      =   $valor->categoria2;
                 $table[CFG_TXT_EQUIPAMENTOS_NOME][$i]  =   $valor->nome;
-                $table['Validade'][$i]                 =   $valor->validade;
-                $table['Observações'][$i]              =   $valor->obs;
+                $table[__('Validade')][$i]                 =   $valor->validade;
+                $table[__('Observações')][$i]              =   $valor->obs;
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Status')) {
-                    $table['Status'][$i]     =  '<span class="statusEquipamentos'.$valor->id.'">'.self::labelEquipamentos($valor).'</span>';
+                    $table[__('Status')][$i]     =  '<span class="statusEquipamentos'.$valor->id.'">'.self::labelEquipamentos($valor).'</span>';
                 }
-                $table['Funções'][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
-                                                        $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'usuario_veiculo/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Equipamento ?'));
+                $table[__('Funções')][$i]                  =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Equipamento')        ,'usuario_veiculo/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
+                                                        $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Equipamento')       ,'usuario_veiculo/Equipamento/Equipamentos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Equipamento ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Equipamentos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -137,25 +137,25 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         }
         
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor') === FALSE) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Fornecedor') === false) {
             self::DAO_Campos_Retira($campos,'fornecedor');
         }
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento_Marca') === FALSE) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_veiculo_Equipamento_Marca') === false) {
             self::DAO_Campos_Retira($campos,'marca');
             self::DAO_Campos_Retira($campos,'modelo');
         }
     }
-    public function StatusEquipamentos($id = FALSE) {
+    public function StatusEquipamentos($id = false) {
         
-        if ($id === FALSE) {
-            return FALSE;
+        if ($id === false) {
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', 'id = '.$id,1);
         
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         
         if ($resultado->status=='0') { // de aprovada para Aprovada em Execução
@@ -192,9 +192,9 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public static function labelEquipamentos($objeto, $link= TRUE ) {
+    public static function labelEquipamentos($objeto, $link= true ) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -210,7 +210,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
             $nometipo = __('Em uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link === TRUE) {
+        if ($link === true) {
             $html = '<a href="'.URL_PATH.'usuario_veiculo/Equipamento/StatusEquipamentos/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -218,10 +218,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Add() {   
-        self::Endereco_Equipamento(TRUE);   
+        self::Endereco_Equipamento(true);   
         $titulo = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo);  
         // Carrega Config
@@ -239,7 +239,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Add2() {
         $titulo_plural = __('Equipamentos');
@@ -256,12 +256,12 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Edit($id) {
         $titulo_plural = __('Equipamentos');
         $titulo_singular = \Framework\Classes\Texto::Transformar_Plural_Singular($titulo_plural);  
-        self::Endereco_Equipamento(TRUE);     
+        self::Endereco_Equipamento(true);     
         // Carrega Config
         $titulo1    = 'Editar '.$titulo_singular.' (#'.$id.')';
         $titulo2    = 'Alteração de '.$titulo_singular;
@@ -278,7 +278,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Edit2($id) {
         $titulo_plural = __('Equipamentos');
@@ -296,7 +296,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Del($id) {
         
@@ -308,7 +308,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -326,15 +326,15 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $this->Equipamentos();
         
         $this->_Visual->Json_Info_Update('Titulo', $titulo_singular.' deletado com Sucesso');  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Marcas($export = FALSE) {
-        self::Endereco_Equipamento_Marca(FALSE);
+    public function Marcas($export = false) {
+        self::Endereco_Equipamento_Marca(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -343,24 +343,24 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'usuario_veiculo/Equipamento/Marcas',
             )
         )));
         $marcas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Marca');
-        if ($marcas !== FALSE && !empty($marcas)) {
+        if ($marcas !== false && !empty($marcas)) {
             if (is_object($marcas)) $marcas = Array(0=>$marcas);
             reset($marcas);
             foreach ($marcas as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Nome'][$i]      = $valor->nome;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Equipamento/Marcas_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Equipamento/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Nome')][$i]      = $valor->nome;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Marca')        ,'usuario_veiculo/Equipamento/Marcas_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Marca')       ,'usuario_veiculo/Equipamento/Marcas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Marca ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Equipamentos - Marcas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -378,10 +378,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Add() {
-        self::Endereco_Equipamento_Marca(TRUE);
+        self::Endereco_Equipamento_Marca(true);
         // Carrega Config
         $titulo1    = __('Adicionar Marca');
         $titulo2    = __('Salvar Marca');
@@ -396,7 +396,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Add2() {
         $titulo     = __('Marca Adicionada com Sucesso');
@@ -411,10 +411,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Edit($id) {
-        self::Endereco_Equipamento_Marca(TRUE);
+        self::Endereco_Equipamento_Marca(true);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
         $titulo2    = __('Alteração de Marca');
@@ -430,7 +430,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
@@ -446,7 +446,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Del($id) {
         
@@ -456,7 +456,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $marca = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($marca);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -474,16 +474,16 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $this->Marcas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Modelos($export = FALSE) {
+    public function Modelos($export = false) {
         $i = 0;
-        self::Endereco_Equipamento_Modelo(FALSE);
+        self::Endereco_Equipamento_Modelo(false);
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
                 'Adicionar Modelo',
@@ -491,25 +491,25 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'usuario_veiculo/Equipamento/Modelos',
             )
         )));
         $modelos = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo');
-        if ($modelos !== FALSE && !empty($modelos)) {
+        if ($modelos !== false && !empty($modelos)) {
             if (is_object($modelos)) $modelos = Array(0=>$modelos);
             reset($modelos);
             foreach ($modelos as $indice=>&$valor) {
-                //$table['#Id'][$i]     = '#'.$valor->id;
-                $table['Marca'][$i]     = $valor->marca2;
-                $table['Nome'][$i]      = $valor->nome;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Modelo'        ,'usuario_veiculo/Equipamento/Modelos_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Modelo'       ,'usuario_veiculo/Equipamento/Modelos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Modelo ?'));
+                //$table[__('#Id')][$i]     = '#'.$valor->id;
+                $table[__('Marca')][$i]     = $valor->marca2;
+                $table[__('Nome')][$i]      = $valor->nome;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Modelo')        ,'usuario_veiculo/Equipamento/Modelos_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Modelo')       ,'usuario_veiculo/Equipamento/Modelos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Modelo ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Equipamentos - Modelos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -527,10 +527,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modelos_Add() {
-        self::Endereco_Equipamento_Modelo(TRUE);
+        self::Endereco_Equipamento_Modelo(true);
         // Carrega Config
         $titulo1    = __('Adicionar Modelo');
         $titulo2    = __('Salvar Modelo');
@@ -545,7 +545,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modelos_Add2() {
         $titulo     = __('Modelo Adicionado com Sucesso');
@@ -560,10 +560,10 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modelos_Edit($id) {
-        self::Endereco_Equipamento_Modelo(TRUE);
+        self::Endereco_Equipamento_Modelo(true);
         // Carrega Config
         $titulo1    = 'Editar Modelo (#'.$id.')';
         $titulo2    = __('Alteração de Modelo');
@@ -579,7 +579,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modelos_Edit2($id) {
         $titulo     = __('Modelo Editada com Sucesso');
@@ -595,7 +595,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modelos_Del($id) {
         
@@ -605,7 +605,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $Modelo = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Equipamento_Modelo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($Modelo);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -623,7 +623,7 @@ class usuario_veiculo_EquipamentoControle extends usuario_veiculo_Controle
         $this->Modelos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Modelo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

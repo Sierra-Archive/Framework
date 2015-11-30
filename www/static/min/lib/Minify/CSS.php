@@ -23,11 +23,11 @@ class Minify_CSS {
      * 
      * @param array $options available options:
      * 
-     * 'preserveComments': (default TRUE) multi-line comments that begin
+     * 'preserveComments': (default true) multi-line comments that begin
      * with "/*!" will be preserved with newlines before and after to
      * enhance readability.
      *
-     * 'removeCharsets': (default TRUE) remove all @charset at-rules
+     * 'removeCharsets': (default true) remove all @charset at-rules
      * 
      * 'prependRelativePath': (default null) if given, this string will be
      * prepended to all relative URIs in import/url declarations
@@ -56,9 +56,9 @@ class Minify_CSS {
     public static function minify($css, $options = array()) 
     {
         $options = array_merge(array(
-            'compress' => TRUE,
-            'removeCharsets' => TRUE,
-            'preserveComments' => TRUE,
+            'compress' => true,
+            'removeCharsets' => true,
+            'preserveComments' => true,
             'currentDir' => null,
             'docRoot' => $_SERVER['DOCUMENT_ROOT'],
             'prependRelativePath' => null,

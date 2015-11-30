@@ -5,7 +5,7 @@ $configModule = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  FALSE,
+        'Dependencias'              =>  false,
     );
 };
 $configMenu = function () {
@@ -16,7 +16,7 @@ $configMenu = function () {
             'Gravidade'             => 90,
             'Img'                   => '',
             'Icon'                  => 'folder-open',
-            'Filhos'                => FALSE,
+            'Filhos'                => false,
         ),
     );
 };
@@ -26,7 +26,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Biblioteca - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas',
-            'End'                   => 'biblioteca/Biblioteca/Bibliotecas', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'biblioteca/Biblioteca/Bibliotecas', // Endereco da url de permissão
             'Modulo'                => 'biblioteca', // Modulo Referente
             'SubModulo'             => 'biblioteca',   // Submodulo Referente
             'Metodo'                => 'Bibliotecas',  // Metodos referentes separados por virgula
@@ -35,7 +35,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Biblioteca - Add'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Add', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Add', // Endereco da url de permissão
             'Modulo'                => 'biblioteca', // Modulo Referente
             'SubModulo'             => 'Biblioteca',   // Submodulo Referente
             'Metodo'                => 'Bibliotecas_Add,Bibliotecas_Add2',  // Metodos referentes separados por virgula
@@ -44,7 +44,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Biblioteca - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Edit', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Edit', // Endereco da url de permissão
             'Modulo'                => 'biblioteca', // Modulo Referente
             'SubModulo'             => 'Biblioteca',// Submodulo Referente
             'Metodo'                => 'Bibliotecas_Edit,Bibliotecas_Edit2',  // Metodos referentes separados por virgula
@@ -53,7 +53,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Biblioteca - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'biblioteca_Biblioteca_Bibliotecas_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Del', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'biblioteca/Biblioteca/Bibliotecas_Del', // Endereco da url de permissão
             'Modulo'                => 'biblioteca', // Modulo Referente
             'SubModulo'             => 'Biblioteca',   // Submodulo Referente
             'Metodo'                => 'Bibliotecas_Del',  // Metodos referentes separados por virgula
@@ -66,7 +66,7 @@ $config_Permissoes = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function () {
+$configFunctional = function () {
     return Array();
 };
 /**
@@ -75,7 +75,7 @@ $config_Funcional = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function () {
+$configPublic = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

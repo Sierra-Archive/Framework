@@ -13,7 +13,7 @@ class comercio_UnidadeControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,18 +29,18 @@ class comercio_UnidadeControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Unidade/Unidades/');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Unidade($true= TRUE ) {
+    static function Endereco_Unidade($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Unidades');
         $link = 'comercio/Unidade/Unidades';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,21 +49,21 @@ class comercio_UnidadeControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Unidades() {
-        self::Endereco_Unidade(FALSE);
+        self::Endereco_Unidade(false);
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Unidade" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Unidade/Unidades_Add">Adicionar nova Unidade</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Comercio_Unidade');
-        if ($linhas !== FALSE && !empty($linhas)) {
+        if ($linhas !== false && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Nome da Unidade'][$i]      = $valor->nome;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Unidade'        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Unidade'       ,'comercio/Unidade/Unidades_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Unidade ?'));
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Nome da Unidade')][$i]      = $valor->nome;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Unidade')        ,'comercio/Unidade/Unidades_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Unidade')       ,'comercio/Unidade/Unidades_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Unidade ?')));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($table);
@@ -80,10 +80,10 @@ class comercio_UnidadeControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Unidades_Add() {
-        self::Endereco_Unidade(TRUE);
+        self::Endereco_Unidade(true);
         // Carrega Config
         $titulo1    = __('Adicionar Unidade');
         $titulo2    = __('Salvar Unidade');
@@ -98,7 +98,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Unidades_Add2() {
         $titulo     = __('Unidade Adicionada com Sucesso');
@@ -113,10 +113,10 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Unidades_Edit($id) {
-        self::Endereco_Unidade(TRUE);
+        self::Endereco_Unidade(true);
         // Carrega Config
         $titulo1    = 'Editar Unidade (#'.$id.')';
         $titulo2    = __('Alteração de Unidade');
@@ -132,7 +132,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Unidades_Edit2($id) {
         $titulo     = __('Unidade Editada com Sucesso');
@@ -148,7 +148,7 @@ class comercio_UnidadeControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Unidades_Del($id) {
         
@@ -158,7 +158,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Unidade', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -176,7 +176,7 @@ class comercio_UnidadeControle extends comercio_Controle
         $this->Unidades();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Unidade deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

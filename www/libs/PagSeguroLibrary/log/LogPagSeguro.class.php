@@ -64,10 +64,10 @@ class LogPagSeguro
      * @throws Exception
      * @return boolean
      */
-    public static function createFile($logFile = FALSE)
+    public static function createFile($logFile = false)
     {
         if (!self::$active) {
-            return FALSE;
+            return false;
         }
         $defaultPath = PagSeguroLibrary::getPath();
         $defaultName = 'PagSeguro.log';
@@ -83,11 +83,11 @@ class LogPagSeguro
             }
 
             fclose($f);
-            return TRUE;
+            return true;
         } catch (Exception $e) {
             echo $e->getMessage() . " - Can't create log file. Permission denied. File location: " .
                 self::$fileLocation;
-            return FALSE;
+            return false;
         }
 
     }
@@ -187,14 +187,14 @@ class LogPagSeguro
     public static function getHtml($negativeOffset = null, $reverse = null)
     {
         if (!self::$active) {
-            return FALSE;
+            return false;
         }
         if (file_exists(self::$fileLocation) && $file = file(self::$fileLocation)) {
             if ($negativeOffset !== null) {
-                $file = array_slice($file, (-$negativeOffset), null, TRUE);
+                $file = array_slice($file, (-$negativeOffset), null, true);
             }
             if ($reverse) {
-                $file = array_reverse($file, TRUE);
+                $file = array_reverse($file, true);
             }
             $content = "";
             foreach ($file as $key => $value) {

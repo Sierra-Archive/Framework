@@ -10,7 +10,7 @@ class Direito_Controle extends \Framework\App\Controle
     * @uses View::$menu
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -20,7 +20,7 @@ class Direito_Controle extends \Framework\App\Controle
      * Listagem Generica para Todos os Processos
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Listar_Processos(&$processos, $titulo = '', $imprimir = 'false') {
         $i = 0;
@@ -44,11 +44,11 @@ class Direito_Controle extends \Framework\App\Controle
                         array("nome" => $valor['ATRASO'])
                     ));
                 } else {
-                    $table['Data'][$i] = data_hora_eua_brasil($valor['DATA']);
+                    $table[__('Data')][$i] = data_hora_eua_brasil($valor['DATA']);
                     $table['Autor / Reu'][$i] = $valor['AUTOR'].' / '.$valor['REU'];
                     $table['Comarca / Vara'][$i] = $valor['COMARCA'].' / '.$valor['VARA'];
-                    $table['Fases'][$i] = $valor['FASE'];
-                    $table['Dias em Atraso'][$i] = $valor['ATRASO'];
+                    $table[__('Fases')][$i] = $valor['FASE'];
+                    $table[__('Dias em Atraso')][$i] = $valor['ATRASO'];
                 }
                 ++$i;
             }
@@ -75,7 +75,7 @@ class Direito_Controle extends \Framework\App\Controle
      * IMPRIME NUMEROS DO SISTEMA A DIREITA DA TELA
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Meus_Numeros() {
         // Chama NUmero de Processos, Reus e Autores e Manda pro VIEW imprimir

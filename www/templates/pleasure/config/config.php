@@ -10,7 +10,7 @@ function pleasure_config() {
             </form>
         </li>',
         'plugins'           => Array(
-            'abas_inverter'         => TRUE,
+            'abas_inverter'         => true,
             'abas_id'               => 'windows_tab_',
             'abas_ativar'           => function ($id) {
                 return '$(".nav-tabs > li").removeClass("active");
@@ -26,8 +26,8 @@ function pleasure_config() {
         'javascript'        => Array(
             'datatable_sdom'            => "<'container-fluid'<'col-sm-6'l><'col-sm-6'f>r>t<'container-fluid'<'col-sm-6'i><'col-sm-6'p>>",
             'datatable_sPaginationType' => 'bootstrap',
-            'datatable_bJQueryUI'       => FALSE,
-            'datatable_bAutoWidth'      => TRUE,
+            'datatable_bJQueryUI'       => false,
+            'datatable_bAutoWidth'      => true,
         )
     );
 }

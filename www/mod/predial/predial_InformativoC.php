@@ -15,18 +15,18 @@ class predial_InformativoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Informativo/Informativos');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Informativo($true= TRUE ) {
+    static function Endereco_Informativo($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Informativos');
         $link = 'predial/Informativo/Informativos';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -40,14 +40,14 @@ class predial_InformativoControle extends predial_Controle
         if (is_object($informativos)) $informativos = Array(0=>$informativos);
         reset($informativos);
         foreach ($informativos as &$valor) {
-            $table['Bloco'][$i]            = $valor->bloco2;
-            $table['Apartamento'][$i]      = $valor->apart2;
-            $table['Nome'][$i]             = $valor->nome;
-            $table['Descrição'][$i]        = $valor->descricao;
-            $table['Data Inicio'][$i]      = $valor->data_inicio;
-            $table['Data Fim'][$i]      = $valor->data_fim;
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Informativo'        ,'predial/Informativo/Informativos_Edit/'.$valor->id.'/'    , '')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Informativo'       ,'predial/Informativo/Informativos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Informativo ?'));
+            $table[__('Bloco')][$i]            = $valor->bloco2;
+            $table[__('Apartamento')][$i]      = $valor->apart2;
+            $table[__('Nome')][$i]             = $valor->nome;
+            $table[__('Descrição')][$i]        = $valor->descricao;
+            $table[__('Data Inicio')][$i]      = $valor->data_inicio;
+            $table[__('Data Fim')][$i]      = $valor->data_fim;
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Informativo')        ,'predial/Informativo/Informativos_Edit/'.$valor->id.'/'    , '')).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Informativo')       ,'predial/Informativo/Informativos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Informativo ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -55,10 +55,10 @@ class predial_InformativoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Informativos() {
-        self::Endereco_Informativo(FALSE);
+        self::Endereco_Informativo(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -68,15 +68,15 @@ class predial_InformativoControle extends predial_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Informativo/Informativos',
             )
         )));
         // Busca
         $informativos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo');
-        if ($informativos !== FALSE && !empty($informativos)) {
+        if ($informativos !== false && !empty($informativos)) {
             list($table, $i) = self::Informativos_Tabela($informativos);
             $this->_Visual->Show_Tabela_DataTable($table);
             unset($table);
@@ -92,7 +92,7 @@ class predial_InformativoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Informativos_Add() {
         self::Endereco_Informativo();
@@ -113,7 +113,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Informativos_Add2() {
         $titulo     = __('Informativo Adicionado com Sucesso');
@@ -123,11 +123,11 @@ class predial_InformativoControle extends predial_Controle
         $sucesso2   = __('Informativo cadastrado com sucesso.');
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             // Pega o Informativo
             $identificador  = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo', Array(),1,'id DESC');
             // Captura Apartamento Responsavel
-            $enviar = FALSE;
+            $enviar = false;
             $apartamento  = $this->_Modelo->db->Sql_Select(
                 'Predial_Bloco_Apart', 
                 Array(
@@ -144,7 +144,7 @@ class predial_InformativoControle extends predial_Controle
                     "mgs_secundaria" => __('Apartamento não existe.')
                 );
                 $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
-                return FALSE;
+                return false;
             }
             if (is_int($apartamento->morador) && $apartamento->morador!=0) {
                 $usuario  = $this->_Modelo->db->Sql_Select(
@@ -152,7 +152,7 @@ class predial_InformativoControle extends predial_Controle
                     Array('id'=>$apartamento->morador),
                     1
                 );
-                if ($usuario !== FALSE) {
+                if ($usuario !== false) {
                     $nome = $usuario->nome;
                     $enviar = '';
                     if ($usuario->email!='' && \Framework\App\Sistema_Funcoes::Control_Layoult_Valida_Email($usuario->email)) {
@@ -164,7 +164,7 @@ class predial_InformativoControle extends predial_Controle
                 }
             }
             // Avisa que nao foi, ou manda 
-            if ($enviar === FALSE || $enviar=='') {
+            if ($enviar === false || $enviar=='') {
                 $mensagens = array(
                     "tipo" => 'erro',
                     "mgs_principal" => __('Informativo não Enviado'),
@@ -203,7 +203,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Informativos_Edit($id) {
         self::Endereco_Informativo();
@@ -227,7 +227,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Informativos_Edit2($id) {
         $titulo     = __('Informativo Editado com Sucesso');
@@ -243,7 +243,7 @@ class predial_InformativoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Informativos_Del($id) {
         
@@ -253,7 +253,7 @@ class predial_InformativoControle extends predial_Controle
         $informativo = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Informativo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($informativo);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -271,7 +271,7 @@ class predial_InformativoControle extends predial_Controle
         $this->Informativos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Informativo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

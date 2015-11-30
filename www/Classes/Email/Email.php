@@ -464,7 +464,7 @@ class Email
     $to = (is_array($this->_to) && !empty($this->_to))
         ? join(", ", $this->_to) : false;
 
-    if ($to === FALSE) {
+    if ($to === false) {
       throw new \RuntimeException(
           'Unable to send, no To address has been set.'
       );
@@ -488,7 +488,7 @@ class Email
    */
   public function debug()
   {
-    return '<pre>'.print_r($this, TRUE).'</pre>';
+    return '<pre>'.print_r($this, true).'</pre>';
   }
 
   /**
@@ -498,7 +498,7 @@ class Email
    */
   public function __toString()
   {
-    return print_r($this, TRUE);
+    return print_r($this, true);
   }
 
   /**

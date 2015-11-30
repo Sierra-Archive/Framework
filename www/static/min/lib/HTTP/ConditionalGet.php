@@ -13,7 +13,7 @@
  * list($updateTime, $content) = getDbUpdateAndContent();
  * $cg = new HTTP_ConditionalGet(array(
  *     'lastModifiedTime' => $updateTime
- *     ,'isPublic' => TRUE
+ *     ,'isPublic' => true
  * ));
  * $cg->sendHeaders();
  * if ($cg->cacheIsValid) {
@@ -24,7 +24,7 @@
  * 
  * E.g. Shortcut for the above
  * <code>
- * HTTP_ConditionalGet::check($updateTime, TRUE); // exits if client has cache
+ * HTTP_ConditionalGet::check($updateTime, true); // exits if client has cache
  * echo $content;
  * </code>
  *
@@ -75,8 +75,8 @@ class HTTP_ConditionalGet {
     /**
      * @param array $spec options
      * 
-     * 'isPublic': (bool) if FALSE, the Cache-Control header will contain
-     * "private", allowing only browser caching. (default FALSE)
+     * 'isPublic': (bool) if false, the Cache-Control header will contain
+     * "private", allowing only browser caching. (default false)
      * 
      * 'lastModifiedTime': (int) if given, both ETag AND Last-Modified headers
      * will be sent with content. This is recommended.
@@ -99,7 +99,7 @@ class HTTP_ConditionalGet {
      * 
      * 'invalidate': (bool) if true, the client cache will be considered invalid
      * without testing. Effectively this disables conditional GET. 
-     * (default FALSE)
+     * (default false)
      * 
      * 'maxAge': (int) if given, this will set the Cache-Control max-age in 
      * seconds, and also set the Expires header to the equivalent GMT date. 
@@ -126,7 +126,7 @@ class HTTP_ConditionalGet {
         }
         $etagAppend = '';
         if (isset($spec['encoding'])) {
-            $this->_stripEtag = TRUE;
+            $this->_stripEtag = true;
             $this->_headers['Vary'] = 'Accept-Encoding';
             if ('' !== $spec['encoding']) {
                 if (0 === strpos($spec['encoding'], 'x-')) {
@@ -227,13 +227,13 @@ class HTTP_ConditionalGet {
      * @param int $lastModifiedTime if given, both ETag AND Last-Modified headers
      * will be sent with content. This is recommended.
      *
-     * @param bool $isPublic (default FALSE) if true, the Cache-Control header 
+     * @param bool $isPublic (default false) if true, the Cache-Control header 
      * will contain "public", allowing proxies to cache the content. Otherwise 
      * "private" will be sent, allowing only browser caching.
      *
      * @param array $options (default empty) additional options for constructor
      */
-    public static function check($lastModifiedTime = null, $isPublic = FALSE, $options = array())
+    public static function check($lastModifiedTime = null, $isPublic = false, $options = array())
     {
         if (null !== $lastModifiedTime) {
             $options['lastModifiedTime'] = (int)$lastModifiedTime;
@@ -266,7 +266,7 @@ class HTTP_ConditionalGet {
     protected $_headers = array();
     protected $_lmTime = null;
     protected $_etag = null;
-    protected $_stripEtag = FALSE;
+    protected $_stripEtag = false;
 
     /**
      * @param string $hash
@@ -299,7 +299,7 @@ class HTTP_ConditionalGet {
             // lmTime is copied to ETag, so this condition implies that the
             // server sent neither ETag nor Last-Modified, so the client can't 
             // possibly has a valid cache.
-            return FALSE;
+            return false;
         }
         $isValid = ($this->resourceMatchedEtag() || $this->resourceNotModified());
         if ($isValid) {
@@ -314,12 +314,12 @@ class HTTP_ConditionalGet {
     protected function resourceMatchedEtag()
     {
         if (!isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
-            return FALSE;
+            return false;
         }
         $clientEtagList = get_magic_quotes_gpc()
             ? stripslashes($_SERVER['HTTP_IF_NONE_MATCH'])
             : $_SERVER['HTTP_IF_NONE_MATCH'];
-        $clientEtags = explode(', ', $clientEtagList);
+        $clientEtags = explode(',', $clientEtagList);
         
         $compareTo = $this->normalizeEtag($this->_etag);
         foreach ($clientEtags as $clientEtag) {
@@ -327,10 +327,10 @@ class HTTP_ConditionalGet {
                 // respond with the client's matched ETag, even if it's not what
                 // we would've sent by default
                 $this->_headers['ETag'] = trim($clientEtag);
-                return TRUE;
+                return true;
             }
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -351,7 +351,7 @@ class HTTP_ConditionalGet {
     protected function resourceNotModified()
     {
         if (!isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
-            return FALSE;
+            return false;
         }
         // strip off IE's extra data (semicolon)
         list($ifModifiedSince) = explode(';', $_SERVER['HTTP_IF_MODIFIED_SINCE'], 2);
@@ -359,8 +359,8 @@ class HTTP_ConditionalGet {
             // Apache 2.2's behavior. If there was no ETag match, send the 
             // non-encoded version of the ETag value.
             $this->_headers['ETag'] = $this->normalizeEtag($this->_etag);
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
 }

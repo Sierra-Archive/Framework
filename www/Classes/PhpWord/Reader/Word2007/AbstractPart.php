@@ -36,8 +36,8 @@ abstract class AbstractPart
      */
     const READ_VALUE = 'attributeValue';            // Read attribute value
     const READ_EQUAL = 'attributeEquals';           // Read `true` when attribute value equals specified value
-    const READ_TRUE  = 'attributeTrue';             // Read `true` when element exists
-    const READ_FALSE = 'attributeFalse';            // Read `false` when element exists
+    const READ_true  = 'attributeTrue';             // Read `true` when element exists
+    const READ_false = 'attributeFalse';            // Read `false` when element exists
     const READ_SIZE  = 'attributeMultiplyByTwo';    // Read special attribute value for Font::$size
 
     /**
@@ -114,7 +114,7 @@ abstract class AbstractPart
 
         // PreserveText
         if ($xmlReader->elementExists('w:r/w:instrText', $domNode)) {
-            $ignoreText = FALSE;
+            $ignoreText = false;
             $textContent = '';
             $fontStyle = $this->readFontStyle($xmlReader, $domNode);
             $nodes = $xmlReader->getElements('w:r', $domNode);
@@ -123,15 +123,15 @@ abstract class AbstractPart
                 if ($xmlReader->elementExists('w:fldChar', $node)) {
                     $fldCharType = $xmlReader->getAttribute('w:fldCharType', $node, 'w:fldChar');
                     if ($fldCharType == 'begin') {
-                        $ignoreText = TRUE;
+                        $ignoreText = true;
                     } elseif ($fldCharType == 'end') {
-                        $ignoreText = FALSE;
+                        $ignoreText = false;
                     }
                 }
                 if (!is_null($instrText)) {
                     $textContent .= '{' . $instrText . '}';
                 } else {
-                    if ($ignoreText === FALSE) {
+                    if ($ignoreText === false) {
                         $textContent .= $xmlReader->getValue('w:t', $node);
                     }
                 }
@@ -327,10 +327,10 @@ abstract class AbstractPart
             'hanging'         => array(self::READ_VALUE, 'w:ind', 'w:hanging'),
             'spaceAfter'      => array(self::READ_VALUE, 'w:spacing', 'w:after'),
             'spaceBefore'     => array(self::READ_VALUE, 'w:spacing', 'w:before'),
-            'widowControl'    => array(self::READ_FALSE, 'w:widowControl'),
-            'keepNext'        => array(self::READ_TRUE,  'w:keepNext'),
-            'keepLines'       => array(self::READ_TRUE,  'w:keepLines'),
-            'pageBreakBefore' => array(self::READ_TRUE,  'w:pageBreakBefore'),
+            'widowControl'    => array(self::READ_false, 'w:widowControl'),
+            'keepNext'        => array(self::READ_true,  'w:keepNext'),
+            'keepLines'       => array(self::READ_true,  'w:keepLines'),
+            'pageBreakBefore' => array(self::READ_true,  'w:pageBreakBefore'),
         );
 
         return $this->readStyleDefs($xmlReader, $styleNode, $styleDefs);
@@ -364,16 +364,16 @@ abstract class AbstractPart
             'size'                => array(self::READ_SIZE,  'w:sz'),
             'color'               => array(self::READ_VALUE, 'w:color'),
             'underline'           => array(self::READ_VALUE, 'w:u'),
-            'bold'                => array(self::READ_TRUE,  'w:b'),
-            'italic'              => array(self::READ_TRUE,  'w:i'),
-            'strikethrough'       => array(self::READ_TRUE,  'w:strike'),
-            'doubleStrikethrough' => array(self::READ_TRUE,  'w:dstrike'),
-            'smallCaps'           => array(self::READ_TRUE,  'w:smallCaps'),
-            'allCaps'             => array(self::READ_TRUE,  'w:caps'),
+            'bold'                => array(self::READ_true,  'w:b'),
+            'italic'              => array(self::READ_true,  'w:i'),
+            'strikethrough'       => array(self::READ_true,  'w:strike'),
+            'doubleStrikethrough' => array(self::READ_true,  'w:dstrike'),
+            'smallCaps'           => array(self::READ_true,  'w:smallCaps'),
+            'allCaps'             => array(self::READ_true,  'w:caps'),
             'superScript'         => array(self::READ_EQUAL, 'w:vertAlign', 'w:val', 'superscript'),
             'subScript'           => array(self::READ_EQUAL, 'w:vertAlign', 'w:val', 'subscript'),
             'fgColor'             => array(self::READ_VALUE, 'w:highlight'),
-            'rtl'                 => array(self::READ_TRUE,  'w:rtl'),
+            'rtl'                 => array(self::READ_true,  'w:rtl'),
         );
 
         return $this->readStyleDefs($xmlReader, $styleNode, $styleDefs);
@@ -484,10 +484,10 @@ abstract class AbstractPart
 
         if ($method == self::READ_SIZE) {
             $style = $attributeValue / 2;
-        } elseif ($method == self::READ_TRUE) {
-            $style = TRUE;
-        } elseif ($method == self::READ_FALSE) {
-            $style = FALSE;
+        } elseif ($method == self::READ_true) {
+            $style = true;
+        } elseif ($method == self::READ_false) {
+            $style = false;
         } elseif ($method == self::READ_EQUAL) {
             $style = $attributeValue == $expected;
         }

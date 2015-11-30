@@ -47,9 +47,9 @@ class PagSeguroCurrencies
      */
     public static function checkCurrencyAvailabilityByIsoCode($currency_iso_code)
     {
-        $available = FALSE;
+        $available = false;
         if (array_search(strtoupper($currency_iso_code), self::$currencies)) {
-            $available = TRUE;
+            $available = true;
         }
         return $available;
     }
@@ -61,9 +61,9 @@ class PagSeguroCurrencies
      */
     public static function checkCurrencyAvailabilityByName($name)
     {
-        $available = FALSE;
+        $available = false;
         if (array_key_exists(strtoupper($name), self::$currencies)) {
-            $available = TRUE;
+            $available = true;
         }
         return $available;
     }

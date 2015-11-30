@@ -66,7 +66,7 @@ class PagSeguroDocuments
         if (isset(self::$availableDocumentList[$documentType])) {
             return self::$availableDocumentList[$documentType];
         } else {
-            return FALSE;
+            return false;
         }
     }
 

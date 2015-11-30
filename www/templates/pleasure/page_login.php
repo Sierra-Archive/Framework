@@ -84,7 +84,7 @@
 
 			<div id="pane-forgot-password" class="panel-body">
                             <h2><?php _e('Esqueci minha Senha'); ?></h2>
-                            <form id="FormEsqueciSenha" action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha= TRUE" method="post" enctype="multipart/form-data" autocomplete="on">
+                            <form id="FormEsqueciSenha" action="<?php echo URL_PATH.SISTEMA_DIR_INT; ?>?sistema_esquecisenha= true" method="post" enctype="multipart/form-data" autocomplete="on">
 				<div class="form-group">
 					<div class="inputer">
 						<div class="input-wrapper">
@@ -100,7 +100,7 @@
 			</div><!--#pane-forgot-password.panel-body-->
 
 			<?php /*<div id="pane-create-account" class="panel-body">
-				<h2>Create a New Account</h2>
+				<h2>'.__('Create a New Account').'</h2>
 				<div class="form-group">
 					<div class="inputer">
 						<div class="input-wrapper">

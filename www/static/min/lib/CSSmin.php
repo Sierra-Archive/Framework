@@ -40,7 +40,7 @@ class CSSmin
      * @param bool|int $raise_php_limits
      * If true, PHP settings will be raised if needed
      */
-    public function __construct($raise_php_limits = TRUE)
+    public function __construct($raise_php_limits = true)
     {
         // Set suggested PHP limits
         $this->memory_limit = 128 * 1048576; // 128MB in bytes
@@ -57,7 +57,7 @@ class CSSmin
      * @param int|bool $linebreak_pos
      * @return string
      */
-    public function run($css = '', $linebreak_pos = FALSE)
+    public function run($css = '', $linebreak_pos = false)
     {
         if (empty($css)) {
             return '';
@@ -376,7 +376,7 @@ class CSSmin
         // Some source control tools don't like it when files containing lines longer
         // than, say 8000 characters, are checked in. The linebreak option is used in
         // that case to split long lines after a specific column.
-        if ($linebreak_pos !== FALSE && (int) $linebreak_pos >= 0) {
+        if ($linebreak_pos !== false && (int) $linebreak_pos >= 0) {
             $linebreak_pos = (int) $linebreak_pos;
             $start_index = $i = 0;
             while ($i < strlen($css)) {
@@ -434,18 +434,18 @@ class CSSmin
             $start_index = $index + 4; // "url(".length()
             $end_index = $last_index - 1;
             $terminator = $m[1]; // ', " or empty (not quoted)
-            $found_terminator = FALSE;
+            $found_terminator = false;
 
             if (strlen($terminator) === 0) {
                 $terminator = ')';
             }
 
-            while ($found_terminator === FALSE && $end_index+1 <= $max_index) {
+            while ($found_terminator === false && $end_index+1 <= $max_index) {
                 $end_index = $this->index_of($css, $terminator, $end_index + 1);
 
                 // endIndex == 0 doesn't really apply here
                 if ($end_index > 0 && substr($css, $end_index - 1, 1) !== '\\') {
-                    $found_terminator = TRUE;
+                    $found_terminator = true;
                     if (')' != $terminator) {
                         $end_index = $this->index_of($css, ')', $end_index);
                     }
@@ -586,12 +586,12 @@ class CSSmin
     {
         // Support for percentage values rgb(100%, 0%, 45%);
         if ($this->index_of($matches[1], '%') >= 0) {
-            $rgbcolors = explode(', ', str_replace('%', '', $matches[1]));
+            $rgbcolors = explode(',', str_replace('%', '', $matches[1]));
             for ($i = 0; $i < count($rgbcolors); $i++) {
                 $rgbcolors[$i] = $this->round_number(floatval($rgbcolors[$i]) * 2.55);
             }
         } else {
-            $rgbcolors = explode(', ', $matches[1]);
+            $rgbcolors = explode(',', $matches[1]);
         }
 
         // Values outside the sRGB color space should be clipped (0-255)
@@ -610,7 +610,7 @@ class CSSmin
 
     private function hsl_to_hex($matches)
     {
-        $values = explode(', ', str_replace('%', '', $matches[1]));
+        $values = explode(',', str_replace('%', '', $matches[1]));
         $h = floatval($values[0]);
         $s = floatval($values[1]);
         $l = floatval($values[2]);
@@ -699,7 +699,7 @@ class CSSmin
     {
         $index = strpos($haystack, $needle, $offset);
 
-        return ($index !== FALSE) ? $index : -1;
+        return ($index !== false) ? $index : -1;
     }
 
     /**
@@ -712,9 +712,9 @@ class CSSmin
      * @param int|bool $end index (optional)
      * @return string
      */
-    private function str_slice($str, $start = 0, $end = FALSE)
+    private function str_slice($str, $start = 0, $end = false)
     {
-        if ($end !== FALSE && ($start < 0 || $end <= 0)) {
+        if ($end !== false && ($start < 0 || $end <= 0)) {
             $max = strlen($str);
 
             if ($start < 0) {
@@ -734,8 +734,8 @@ class CSSmin
             }
         }
 
-        $slice = ($end === FALSE) ? substr($str, $start) : substr($str, $start, $end - $start);
-        return ($slice === FALSE) ? '' : $slice;
+        $slice = ($end === false) ? substr($str, $start) : substr($str, $start, $end - $start);
+        return ($slice === false) ? '' : $slice;
     }
 
     /**

@@ -4,7 +4,7 @@ namespace Framework\App;
  * Class Pai dos Modelos, Responsavél pelo tratamento e exibicoes dos Dados do Sistema
  * 
  * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
- * @version 0.4.2
+ * @version 0.4.24
  */
 class Modelo
 {
@@ -14,7 +14,7 @@ class Modelo
     public              $_request;    
     public              $_Cache;    
     public              $_Acl;    
-    public      static  $config = FALSE;    
+    public      static  $config = false;    
     /**
     * Construtor
     * 
@@ -26,12 +26,12 @@ class Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         $this->_Registro = &\Framework\App\Registro::getInstacia();
         $this->db = &$this->_Registro->_Conexao;
-        if ($this->db === FALSE) {
+        if ($this->db === false) {
             $this->db = new Conexao();
         }
         $this->_request     = &$this->_Registro->_Request;
@@ -46,12 +46,12 @@ class Modelo
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Sistema_Menu($parent=0) {
         $where = Array('parent'=>$parent, 'status'  =>    '1');
         $menu = $this->db->Sql_Select('Sistema_Menu', $where,0, '', 'id,link,ext,nome,img,icon,gravidade');
-        if ($menu === FALSE && $parent==0) {
+        if ($menu === false && $parent==0) {
             $configmenu = \Framework\App\Acl::Sistema_Modulos_Carregar_Menu();
             $this->Sistema_Menu_Insere($configmenu);
             // fim da Leitura
@@ -59,23 +59,23 @@ class Modelo
             $menu = $this->db->Sql_Select('Sistema_Menu', $where);
         }
         
-        if ($menu === FALSE)           return FALSE;
+        if ($menu === false)           return false;
         if (is_object($menu))        $menu = Array($menu);
         // Verifica todos valores e acrescenta os corretos
-        foreach($menu as $indice=>&$valor) {
-            if (strpos($valor->link, 'www.') !== FALSE || strpos($valor->link, 'http:') !== FALSE) {
+        foreach ($menu as $indice=>&$valor) {
+            if (strpos($valor->link, 'www.') !== false || strpos($valor->link, 'http:') !== false) {
                 $valor->link            = $valor->link;
-                $valor->ext            = TRUE;
+                $valor->ext            = true;
             } else {
                 $valor->link            = URL_PATH.$valor->link;
-                $valor->ext            = FALSE;
+                $valor->ext            = false;
             }
             $valor->ativo           = 0;
             $valor->filhos          = $this->Sistema_Menu($valor->id);
         }
-        if (empty($menu)) return FALSE;
+        if (empty($menu)) return false;
         $menu = \Framework\App\Sistema_Funcoes::Transf_Object_Array($menu);
-        orderMultiDimensionalArray($menu, 'gravidade', TRUE);
+        orderMultiDimensionalArray($menu, 'gravidade', true);
         return $menu;
     }
     /**
@@ -85,14 +85,14 @@ class Modelo
      * @param type $parent
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     protected function Sistema_Menu_Insere(&$menu, $modulo='_Sistema', $parent=0) {
         
         $parent = (int) $parent;
         if (!is_int($parent)) $parent = 0;
-        if (!is_array($menu) || empty($menu)) return FALSE;
-        foreach($menu as &$valor) {
+        if (!is_array($menu) || empty($menu)) return false;
+        foreach ($menu as &$valor) {
             // Inicia Dao Inserir
             $inserir                = new \Sistema_Menu_DAO();
             // Se nao existir cria erro
@@ -105,8 +105,8 @@ class Modelo
             if (is_array($valor['Img']))          $valor['Img']          = $valor['Img'][0];
             if (is_array($valor['Icon']))         $valor['Icon']         = $valor['Icon'][0];
             if (is_array($valor['Gravidade']))    $valor['Gravidade']    = $valor['Gravidade'][0];
-            if (isset($valor['Filhos']) && is_array($valor['Filhos']) && isset($valor['Filhos'][0]) && $valor['Filhos'][0] === FALSE) {
-                $valor['Filhos']     = FALSE;
+            if (isset($valor['Filhos']) && is_array($valor['Filhos']) && isset($valor['Filhos'][0]) && $valor['Filhos'][0] === false) {
+                $valor['Filhos']     = false;
             }
             
             
@@ -137,11 +137,11 @@ class Modelo
             $inserir->gravidade     = $valor['Gravidade'];
             $inserir->status        = '1';
             
-            $trava = FALSE;
+            $trava = false;
             if (isset($valor['Permissao_Func']) && is_array($valor['Permissao_Func'])) {
-                foreach($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc) {
+                foreach ($valor['Permissao_Func'] as $indicepermfunc=>&$permfunc) {
                     if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional($indicepermfunc)!==$permfunc) {
-                        $trava = TRUE;
+                        $trava = true;
                     }
                 }
             }
@@ -149,14 +149,14 @@ class Modelo
             
             // Insere e Faz recursividade para os filhos
             $this->db->Sql_Insert($inserir);
-            if (isset($valor['Filhos']) && $valor['Filhos'] !== FALSE && is_array($valor['Filhos'])) {
+            if (isset($valor['Filhos']) && $valor['Filhos'] !== false && is_array($valor['Filhos'])) {
                 $identificador  = $this->db->Sql_Select('Sistema_Menu', Array(),1,'id DESC');
                 $identificador  = $identificador->id;
                 
                 $this->Sistema_Menu_Insere($valor['Filhos'], $modulo, $identificador);
             }
         }
-        return TRUE;
+        return true;
     }
     /**
      * Função Responsavel por Preencher as Opções para Form generico
@@ -217,7 +217,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Categorias_Retorna($tipo='', $parent=0, $cadastro=0)
     {
@@ -268,7 +268,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Categorias_Permissoes($categoria='')
     {
@@ -299,7 +299,7 @@ class Modelo
     * @return Array $array
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Categorias_RetornaSub($categoria, $subtab, $acesso)
     {

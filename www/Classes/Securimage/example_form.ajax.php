@@ -108,7 +108,7 @@ process_si_contact_form();
 			}
 		});
 
-        return FALSE;
+        return false;
     }
 </script>
 
@@ -123,7 +123,7 @@ function process_si_contact_form()
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && @$_POST['do'] == 'contact') {
         // if the form has been submitted
 
-        foreach($_POST as $key => $value) {
+        foreach ($_POST as $key => $value) {
             if (!is_array($key)) {
                 // sanitize the input data
                 if ($key != 'ct_message') $value = strip_tags($value);
@@ -140,7 +140,7 @@ function process_si_contact_form()
 
         $errors = array();  // initialize empty error array
 
-        if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == FALSE) {
+        if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {
             // only check for errors if the form is not in debug mode
 
             if (strlen($name) < 3) {
@@ -168,7 +168,7 @@ function process_si_contact_form()
             require_once dirname(__FILE__) . '/Securimage.php';
             $securimage = new Securimage();
 
-            if ($securimage->check($captcha) == FALSE) {
+            if ($securimage->check($captcha) == false) {
                 $errors['captcha_error'] = __('Incorrect security code entered');
             }
         }
@@ -186,7 +186,7 @@ function process_si_contact_form()
                      . "Time: $time<br />"
                      . "Browser: {$_SERVER['HTTP_USER_AGENT']}<br />";
 
-            if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == FALSE) {
+            if (isset($GLOBALS['DEBUG_MODE']) && $GLOBALS['DEBUG_MODE'] == false) {
                 // send the message with mail()
                 mail($GLOBALS['ct_recipient'], $GLOBALS['ct_msg_subject'], $message, "From: {$GLOBALS['ct_recipient']}\r\nReply-To: {$email}\r\nContent-type: text/html; charset=ISO-8859-1\r\nMIME-Version: 1.0");
             }
@@ -195,7 +195,7 @@ function process_si_contact_form()
             die(json_encode($return));
         } else {
             $errmsg = '';
-            foreach($errors as $key => $error) {
+            foreach ($errors as $key => $error) {
                 // set up error messages to display with each field
                 $errmsg .= " - {$error}\n";
             }

@@ -31,7 +31,7 @@ class Chart extends AbstractElement
      *
      * @var bool
      */
-    protected $collectionRelation = TRUE;
+    protected $collectionRelation = true;
 
     /**
      * Type
@@ -66,7 +66,7 @@ class Chart extends AbstractElement
     {
         $this->setType($type);
         $this->addSeries($categories, $values);
-        $this->style = $this->setNewStyle(new ChartStyle(), $style, TRUE);
+        $this->style = $this->setNewStyle(new ChartStyle(), $style, true);
     }
 
     /**

@@ -32,7 +32,7 @@ abstract class AbstractReader implements ReaderInterface
      *
      * @var bool
      */
-    protected $readDataOnly = TRUE;
+    protected $readDataOnly = true;
 
     /**
      * File pointer
@@ -49,7 +49,7 @@ abstract class AbstractReader implements ReaderInterface
     public function isReadDataOnly()
     {
         // return $this->readDataOnly;
-        return TRUE;
+        return true;
     }
 
     /**
@@ -58,7 +58,7 @@ abstract class AbstractReader implements ReaderInterface
      * @param bool $value
      * @return self
      */
-    public function setReadDataOnly($value = TRUE)
+    public function setReadDataOnly($value = true)
     {
         $this->readDataOnly = $value;
         return $this;
@@ -80,7 +80,7 @@ abstract class AbstractReader implements ReaderInterface
 
         // Open file
         $this->fileHandle = fopen($filename, 'r');
-        if ($this->fileHandle === FALSE) {
+        if ($this->fileHandle === false) {
             throw new Exception("Could not open file " . $filename . " for reading.");
         }
     }
@@ -97,13 +97,13 @@ abstract class AbstractReader implements ReaderInterface
         try {
             $this->openFile($filename);
         } catch (Exception $e) {
-            return FALSE;
+            return false;
         }
         if (is_resource($this->fileHandle)) {
             fclose($this->fileHandle);
         }
 
-        return TRUE;
+        return true;
     }
 
     /**

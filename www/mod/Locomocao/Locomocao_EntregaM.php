@@ -32,10 +32,10 @@ class Locomocao_EntregaModelo extends Locomocao_Modelo
 
         $function = '';
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Entrega\')        ,\'Locomocao/Entrega/Entregas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Entrega\')        ,\'Locomocao/Entrega/Entregas_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Entrega\')       ,\'Locomocao/Entrega/Entregas_Del/\'.$d.\'/\'     ,__(\'Deseja realmente deletar essa Entrega ?\')),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Entrega\')       ,\'Locomocao/Entrega/Entregas_Del/\'.$d.\'/\'     ,__(\'Deseja realmente deletar essa Entrega ?\')),true);';
         }
         
         ++$numero;

@@ -11,7 +11,7 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      * 
      */
     public function __construct() {
@@ -37,16 +37,16 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         
         if ($permissionEdit && $permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),TRUE).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condiçao de Pagamento ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Condição de Pagamento')        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Condição de Pagamento')       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     , __('Deseja realmente deletar essa Condiçao de Pagamento ?')),true);
             };
         } else if ($permissionEdit) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Condição de Pagamento'        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Condição de Pagamento')        ,'Financeiro/Pagamento/Condicoes_Edit/'.$d.'/'    , ''),true);
             };
         } else if ($permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Condição de Pagamento'       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     ,'Deseja realmente deletar essa Condição de Pagamento ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Condição de Pagamento')       ,'Financeiro/Pagamento/Condicoes_Del/'.$d.'/'     , __('Deseja realmente deletar essa Condição de Pagamento ?')),true);
             };
         } else {
             $function = function( $d, $row ) {
@@ -91,13 +91,13 @@ class Financeiro_PagamentoModelo extends Financeiro_Modelo
         
         $function = '';
         if ($perm_condicoes) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar Condições de Pagamento\'        ,\'Financeiro/Pagamento/Condicoes/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\'     ,Array(\'Visualizar Condições de Pagamento\'        ,\'Financeiro/Pagamento/Condicoes/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Forma de Pagamento\'        ,\'Financeiro/Pagamento/Formas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar Forma de Pagamento\'        ,\'Financeiro/Pagamento/Formas_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Forma de Pagamento\'       ,\'Financeiro/Pagamento/Formas_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Forma de Pagamento ?\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar Forma de Pagamento\'       ,\'Financeiro/Pagamento/Formas_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar essa Forma de Pagamento ?\'),true);';
         }
         
         $columns = array();

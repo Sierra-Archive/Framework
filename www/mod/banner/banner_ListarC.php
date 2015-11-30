@@ -13,7 +13,7 @@ class banner_ListarControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,7 +29,7 @@ class banner_ListarControle extends banner_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         $this->Banners_Listar();
@@ -58,11 +58,11 @@ class banner_ListarControle extends banner_Controle
             reset($banners);
             
             foreach ($banners as $indice=>&$valor) {                
-                $table['Id'][$i]        = $valor['id'];
-                $table['Foto'][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
-                $table['Categoria'][$i] = $valor['categoria'];
-                $table['Nome'][$i]    = $valor['nome'];
-                $table['Url'][$i]       = $valor['url'];
+                $table[__('Id')][$i]        = $valor['id'];
+                $table[__('Foto')][$i]      = $this->_Visual->Show_Upload('banner', 'Admin', 'Banner', 'BannerImagem'.$valor['id'], $valor['foto'],'banner'.DS, $valor['id']);
+                $table[__('Categoria')][$i] = $valor['categoria'];
+                $table[__('Nome')][$i]    = $valor['nome'];
+                $table[__('Url')][$i]       = $valor['url'];
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($table);

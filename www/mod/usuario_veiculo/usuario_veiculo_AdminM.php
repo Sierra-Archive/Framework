@@ -11,7 +11,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      * 
      */
     public function __construct() {
@@ -23,7 +23,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function veiculos_Del($id) {
 
@@ -51,7 +51,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function veiculos_inserir($categoria, $ano, $modelo, $marca, $cc, $valor1, $valor2, $valor3, $franquia, $obs) {
         global $config;
@@ -120,7 +120,7 @@ class usuario_veiculo_AdminModelo extends usuario_veiculo_Modelo
      * @uses \Framework\App\Modelo::$db
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function marcas_inserir($nome) {
         global $config;

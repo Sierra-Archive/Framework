@@ -13,7 +13,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,16 +29,16 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/Servico/Servico');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Servico($true= TRUE ) {
+    static function Endereco_Servico($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'),'comercio_servicos/Servico/Servico');
         } else {
             $_Controle->Tema_Endereco(\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo'));
@@ -47,13 +47,13 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Servico($export = FALSE) {
-        self::Endereco_Servico(FALSE);
+    public function Servico($export = false) {
+        self::Endereco_Servico(false);
         $titulo = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2 = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2) === TRUE) {
+        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2) === true) {
             $titulo_com_sexo        = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
             $titulo_com_sexo_mudo   = ' '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         } else {
@@ -61,20 +61,20 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
             $titulo_com_sexo_mudo   = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         }
         
-        $table_colunas = Array();
+        $tableColumns = Array();
 
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_ServicoTipo')) {
-            $table_colunas[] = 'Tipo d'.$titulo_com_sexo;
+            $tableColumns[] = 'Tipo d'.$titulo_com_sexo;
         }
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_nome')) {
-            $table_colunas[] = __('Nome');
+            $tableColumns[] = __('Nome');
         }
         
-        $table_colunas[] = __('Descriçao');
-        $table_colunas[] = __('Preço');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Descriçao');
+        $tableColumns[] = __('Preço');
+        $tableColumns[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio_servicos/Servico/Servico');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio_servicos/Servico/Servico');
         $titulo = 'Listagem de '.$titulo;
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Servico/Servicos_Add",'icon'=>'add', 'nome'=>'Adicionar nov'.$titulo_com_sexo));
         
@@ -84,7 +84,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servicos_Add() {
         self::Endereco_Servico();
@@ -106,7 +106,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servicos_Add2() {
         $titulo     = __('Adicionado com Sucesso');
@@ -121,7 +121,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servicos_Edit($id) {
         self::Endereco_Servico();
@@ -144,7 +144,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servicos_Edit2($id) {
         $titulo     = __('Editado com Sucesso');
@@ -160,7 +160,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Servicos_Del($id) {
         
@@ -169,7 +169,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Servico', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -187,7 +187,7 @@ class comercio_servicos_ServicoControle extends comercio_servicos_Controle
         $this->Servico();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 

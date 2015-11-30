@@ -40,7 +40,7 @@ require_once dirname(__FILE__) . '/Securimage.php';
 // if using database, adjust these options as necessary and change $img = new Securimage(); to $img = new Securimage($options);
 // see test.mysql.php or test.sqlite.php for examples
 $options = array(
-    'use_database'    => TRUE,
+    'use_database'    => true,
     'database_name'   => '',
     'database_user'   => '',
     'database_driver' => Securimage::SI_DRIVER_MYSQL
@@ -49,9 +49,9 @@ $options = array(
 $img = new Securimage();
 
 // Other audio settings
-//$img->audio_use_sox   = TRUE;
-//$img->audio_use_noise = TRUE;
-//$img->degrade_audio   = FALSE;
+//$img->audio_use_sox   = true;
+//$img->audio_use_noise = true;
+//$img->degrade_audio   = false;
 //$img->sox_binary_path = 'sox';
 
 // To use an alternate language, uncomment the following and download the files from phpcaptcha.org

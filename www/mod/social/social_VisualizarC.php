@@ -25,8 +25,8 @@ class social_VisualizarControle extends social_Controle
             usort($acoes, "ordenar");
             reset($acoes);
             foreach ($acoes as $indice=>&$valor) {
-                $table['Data'][$i] = $acoes[$indice]['data'];
-                $table['Tipo'][$i] = $acoes[$indice]['tiponome'];
+                $table[__('Data')][$i] = $acoes[$indice]['data'];
+                $table[__('Tipo')][$i] = $acoes[$indice]['tiponome'];
                 $table['Observa��o'][$i] = $acoes[$indice]['obs'];
 
                 // se variavel nao existe ele cria
@@ -36,10 +36,10 @@ class social_VisualizarControle extends social_Controle
                 // verifica os tipso e add
                 if ($acoes[$indice]['positivo']==1) {
                     $tipos[$acoes[$indice]['tipo']] = $tipos[$acoes[$indice]['tipo']] + $acoes[$indice]['gravidade'];
-                    $table['Pontos'][$i] = '+ '.$acoes[$indice]['gravidade'];
+                    $table[__('Pontos')][$i] = '+ '.$acoes[$indice]['gravidade'];
                 } else {
                     $tipos[$acoes[$indice]['tipo']] = $tipos[$acoes[$indice]['tipo']] - $acoes[$indice]['gravidade'];
-                    $table['Pontos'][$i] = '- '.$acoes[$indice]['gravidade'];
+                    $table[__('Pontos')][$i] = '- '.$acoes[$indice]['gravidade'];
                 }
                 $tipon[$acoes[$indice]['tipo']] = $acoes[$indice]['tiponome'];
                 ++$tipo[$acoes[$indice]['tipo']];

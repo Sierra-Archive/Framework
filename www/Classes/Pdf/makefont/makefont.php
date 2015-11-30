@@ -48,7 +48,7 @@ function LoadMap($enc)
 	if (empty($a))
 		Error('Encoding not found: '.$enc);
 	$map = array_fill(0, 256, array('uv'=>-1, 'name'=>'.notdef'));
-	foreach($a as $line)
+	foreach ($a as $line)
 	{
 		$e = explode(' ', rtrim($line));
 		$c = hexdec(substr($e[0],1));
@@ -134,7 +134,7 @@ function GetInfoFromType1($file, $embed, $map)
 	$a = file($afm);
 	if (empty($a))
 		Error('AFM file empty or not readable');
-	foreach($a as $line)
+	foreach ($a as $line)
 	{
 		$e = explode(' ', rtrim($line));
 		if (count($e)<2)
@@ -309,7 +309,7 @@ function MakeDefinitionFile($file, $type, $enc, $embed, $map, $info)
 	SaveToFile($file, $s, 't');
 }
 
-function MakeFont($fontfile, $enc='cp1252', $embed= TRUE )
+function MakeFont($fontfile, $enc='cp1252', $embed= true )
 {
 	// Generate a font definition file
 	if (get_magic_quotes_runtime())
@@ -367,7 +367,7 @@ if (PHP_SAPI=='cli')
 	if ($argc>=4)
 		$embed = ($argv[3]=='true' || $argv[3]=='1');
 	else
-		$embed = TRUE;
+		$embed = true;
 	MakeFont($fontfile, $enc, $embed);
 }
 ?>

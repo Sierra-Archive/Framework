@@ -11,7 +11,7 @@
  * @author Stephen Clay <steve@mrclay.org>
  */
 class Minify_HTML_Helper {
-    public $rewriteWorks = TRUE;
+    public $rewriteWorks = true;
     public $minAppUri = '/min';
     public $groupsConfigFile = '';
 
@@ -20,22 +20,22 @@ class Minify_HTML_Helper {
      * 
      * @param string|array $keyOrFiles a group key or array of filepaths/URIs
      * @param array $opts options:
-     *   'farExpires' : (default TRUE) append a modified timestamp for cache revving
-     *   'debug' : (default FALSE) append debug flag
+     *   'farExpires' : (default true) append a modified timestamp for cache revving
+     *   'debug' : (default false) append debug flag
      *   'charset' : (default 'UTF-8') for htmlspecialchars
      *   'minAppUri' : (default '/min') URI of min directory
-     *   'rewriteWorks' : (default TRUE) does mod_rewrite work in min app?
+     *   'rewriteWorks' : (default true) does mod_rewrite work in min app?
      *   'groupsConfigFile' : specify if different
      * @return string
      */
     public static function getUri($keyOrFiles, $opts = array())
     {
         $opts = array_merge(array( // default options
-            'farExpires' => TRUE
-            ,'debug' => FALSE
+            'farExpires' => true
+            ,'debug' => false
             ,'charset' => 'UTF-8'
             ,'minAppUri' => '/min'
-            ,'rewriteWorks' => TRUE
+            ,'rewriteWorks' => true
             ,'groupsConfigFile' => ''
         ), $opts);
         $h = new self;
@@ -58,7 +58,7 @@ class Minify_HTML_Helper {
      * @param bool $debug
      * @return string
      */
-    public function getRawUri($farExpires = true, $debug = FALSE)
+    public function getRawUri($farExpires = true, $debug = false)
     {
         $path = rtrim($this->minAppUri, '/') . '/';
         if (! $this->rewriteWorks) {
@@ -84,7 +84,7 @@ class Minify_HTML_Helper {
      * @param array $files
      * @param bool $checkLastModified
      */
-    public function setFiles($files, $checkLastModified = TRUE)
+    public function setFiles($files, $checkLastModified = true)
     {
         $this->_groupKey = null;
         if ($checkLastModified) {
@@ -110,7 +110,7 @@ class Minify_HTML_Helper {
      * @param string $key
      * @param bool $checkLastModified
      */
-    public function setGroup($key, $checkLastModified = TRUE)
+    public function setGroup($key, $checkLastModified = true)
     {
         $this->_groupKey = $key;
         if ($checkLastModified) {
@@ -119,7 +119,7 @@ class Minify_HTML_Helper {
             }
             if (is_file($this->groupsConfigFile)) {
                 $gc = (require $this->groupsConfigFile);
-                $keys = explode(', ', $key);
+                $keys = explode(',', $key);
                 foreach ($keys as $key) {
                     if (isset($gc[$key])) {
                         $this->_lastModified = self::getLastModified($gc[$key], $this->_lastModified);
@@ -194,7 +194,7 @@ class Minify_HTML_Helper {
     protected static function _getShortestUri($paths, $minRoot = '/min/') {
         $pos = 0;
         $base = '';
-        while (TRUE) {
+        while (true) {
             $c = self::_getCommonCharAtPos($paths, $pos);
             if ($c === '') {
                 break;
@@ -204,7 +204,7 @@ class Minify_HTML_Helper {
             ++$pos;
         }
         $base = preg_replace('@[^/]+$@', '', $base);
-        $uri = $minRoot . 'f=' . implode(', ', $paths);
+        $uri = $minRoot . 'f=' . implode(',', $paths);
         
         if (substr($base, -1) === '/') {
             // we have a base dir!
@@ -214,7 +214,7 @@ class Minify_HTML_Helper {
                 $basedPaths[$i] = substr($paths[$i], strlen($base));
             }
             $base = substr($base, 0, strlen($base) - 1);
-            $bUri = $minRoot . 'b=' . $base . '&f=' . implode(', ', $basedPaths);
+            $bUri = $minRoot . 'b=' . $base . '&f=' . implode(',', $basedPaths);
 
             $uri = strlen($uri) < strlen($bUri)
                 ? $uri

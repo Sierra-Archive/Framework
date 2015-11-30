@@ -689,7 +689,7 @@ class Collection
 	}
 
 	/**
-	 * Separates falsey values (e.g., FALSE, null, 0, empty strings) from truthy
+	 * Separates falsey values (e.g., false, null, 0, empty strings) from truthy
 	 * values (everything else) and returns both sets.
 	 *
 	 * The callback function takes two parameters:
@@ -794,14 +794,14 @@ class Collection
 		{
 			foreach ($items as $key => &$item)
 			{
-				if (call_user_func($callback, $item, $key) === FALSE)
+				if (call_user_func($callback, $item, $key) === false)
 				{
-					return FALSE;
+					return false;
 				}
 			}
 		}
 
-		return TRUE;
+		return true;
 	}
 
 	/**
@@ -844,13 +844,13 @@ class Collection
 		{
 			foreach ($items as $key => &$item)
 			{
-				if (call_user_func($callback, $item, $key) !== FALSE)
+				if (call_user_func($callback, $item, $key) !== false)
 				{
-					return TRUE;
+					return true;
 				}
 			}
 
-			return FALSE;
+			return false;
 		}
 	}
 
@@ -869,7 +869,7 @@ class Collection
 	 *     there is no match. The default value is `false`.
 	 * @return mixed The first item in the collection that passes the test.
 	 */
-	public function find($callback, $fallback = FALSE)
+	public function find($callback, $fallback = false)
 	{
 		$this->rewind();
 
@@ -1080,7 +1080,7 @@ class Collection
 	 * @param boolean $test_key Test the key instead of the value.
 	 * @return Collection A collection containing all matching items.
 	 */
-	public function grep($pattern, $test_key = FALSE)
+	public function grep($pattern, $test_key = false)
 	{
 		$collect = array();
 		$collection = $this->to_array();
@@ -1108,7 +1108,7 @@ class Collection
 	 * @param boolean $test_key Test the key instead of the value.
 	 * @return Collection A collection containing all non-matching items.
 	 */
-	public function ungrep($pattern, $test_key = FALSE)
+	public function ungrep($pattern, $test_key = false)
 	{
 		$collect = array();
 		$collection = $this->to_array();
@@ -1137,7 +1137,7 @@ class Collection
 	 */
 	public function grepKey($pattern)
 	{
-		return $this->grep($pattern, TRUE);
+		return $this->grep($pattern, true);
 	}
 
 	/**
@@ -1153,7 +1153,7 @@ class Collection
 	 */
 	public function ungrepKey($pattern)
 	{
-		return $this->ungrep($pattern, TRUE);
+		return $this->ungrep($pattern, true);
 	}
 
 
@@ -1178,7 +1178,7 @@ class Collection
 	 * @return mixed The last result in the collection. Returns `false` if there
 	 *     are no items in the collection.
 	 */
-	public function slice($begin, $length = null, $preserve = FALSE)
+	public function slice($begin, $length = null, $preserve = false)
 	{
 		return new self(
 			array_slice($this->to_array(), $begin, $length, $preserve)
@@ -1275,7 +1275,7 @@ class Collection
 	 * @return Collection The collection with all flattenable entities flattened
 	 *     and indexes starting at zero.
 	 */
-	public function flatten($deep = FALSE)
+	public function flatten($deep = false)
 	{
 		$collection = $this->collection->getArrayCopy();
 		$flattened = array();
@@ -1519,7 +1519,7 @@ class Collection
 	 *     of the keys. A value of `false` will not.
 	 * @return Collection A collection with the contents in the reverse order.
 	 */
-	public function reverse($preserve_keys = FALSE)
+	public function reverse($preserve_keys = false)
 	{
 		return new self(array_reverse($this->to_array(), $preserve_keys));
 	}
@@ -1639,11 +1639,11 @@ class Collection
 		{
 			if (!in_array($argument, $items))
 			{
-				return FALSE;
+				return false;
 			}
 		}
 
-		return TRUE;
+		return true;
 	}
 
 	/**
@@ -1666,11 +1666,11 @@ class Collection
 		{
 			if (!in_array($argument, $keys))
 			{
-				return FALSE;
+				return false;
 			}
 		}
 
-		return TRUE;
+		return true;
 	}
 
 	/**
@@ -1848,7 +1848,7 @@ class Collection
 	 */
 	public function mergeArray(array $array)
 	{
-		return $this->merge(new self($array, TRUE));
+		return $this->merge(new self($array, true));
 	}
 
 	/**
@@ -1860,8 +1860,8 @@ class Collection
 	 */
 	public function mergeJSON($json)
 	{
-		$array = json_decode($json, TRUE);
-		return $this->merge(new self($array, TRUE));
+		$array = json_decode($json, true);
+		return $this->merge(new self($array, true));
 	}
 
 	/**
@@ -1874,8 +1874,8 @@ class Collection
 	 */
 	public function mergeStdClass(stdClass $stdclass)
 	{
-		$array = json_decode(json_encode($stdclass), TRUE);
-		return $this->merge(new self($array, TRUE));
+		$array = json_decode(json_encode($stdclass), true);
+		return $this->merge(new self($array, true));
 	}
 
 
@@ -1890,8 +1890,8 @@ class Collection
 	 */
 	public static function fromJSON($json)
 	{
-		$array = json_decode($json, TRUE);
-		return new self($array, TRUE);
+		$array = json_decode($json, true);
+		return new self($array, true);
 	}
 
 	/**
@@ -1904,7 +1904,7 @@ class Collection
 	 */
 	public static function fromStdClass(stdClass $stdclass)
 	{
-		$array = json_decode(json_encode($stdclass), TRUE);
-		return new self($array, TRUE);
+		$array = json_decode(json_encode($stdclass), true);
+		return new self($array, true);
 	}
 }

@@ -5,7 +5,7 @@ $configModule = function () {
         'Descrição'                 =>  'Módulo Criado para o Calculo de Locomocao assim como cadastro de motoboys e entrega por emcomenda.',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  FALSE,
+        'Dependencias'              =>  false,
     );
 };
 $configMenu = function () {
@@ -16,13 +16,13 @@ $configMenu = function () {
             'Gravidade'             => 6,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'truck',
-            'Filhos'                => Array('Todas as Entregas'=>Array(
+            'Filhos'                => Array(__('Todas as Entregas')=>Array(
                 'Nome'                  => __('Todas as Entregas'),
                 'Link'                  => 'Locomocao/Entrega/Entregas',
                 'Gravidade'             => 5,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'truck',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ))
         )
     );
@@ -35,7 +35,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Locomoção (Entrega) - Listagem'),
             'Desc'                  => '',
             'Chave'                 => 'Locomocao_Entrega_Entregas',
-            'End'                   => 'Locomocao/Entrega/Entregas', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Locomocao/Entrega/Entregas', // Endereco da url de permissão
             'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Entrega',   // Submodulo Referente
             'Metodo'                => 'Entregas'  // Metodos referentes separados por virgula
@@ -44,7 +44,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Locomoção (Entrega) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Locomocao_Entrega_Entregas_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Locomocao/Entrega/Entregas_Add', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Locomocao/Entrega/Entregas_Add', // Endereco da url de permissão
             'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Entrega',   // Submodulo Referente
             'Metodo'                => 'Entregas_Add,Entregas_Add2'  // Metodos referentes separados por virgula
@@ -53,7 +53,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Locomoção (Entrega) - Add'),
             'Desc'                  => '',
             'Chave'                 => 'Locomocao_Entrega_Entregas_Add', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Locomocao/Entrega/Entregas_Add', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Locomocao/Entrega/Entregas_Add', // Endereco da url de permissão
             'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Entrega',   // Submodulo Referente
             'Metodo'                => 'Entregas_Add,Entregas_Add2'  // Metodos referentes separados por virgula
@@ -62,7 +62,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Locomoção (Entrega) - Editar'),
             'Desc'                  => '',
             'Chave'                 => 'Locomocao_Entrega_Entregas_Edit', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Locomocao/Entrega/Entregas_Edit', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Locomocao/Entrega/Entregas_Edit', // Endereco da url de permissão
             'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Entrega',// Submodulo Referente
             'Metodo'                => 'Entregas_Edit,Entregas_Edit2'  // Metodos referentes separados por virgula
@@ -71,7 +71,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Locomoção (Entrega) - Deletar'),
             'Desc'                  => '',
             'Chave'                 => 'Locomocao_Entrega_Entregas_Del', // CHave unica nunca repete, chave primaria
-            'End'                   => 'Locomocao/Entrega/Entregas_Del', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'Locomocao/Entrega/Entregas_Del', // Endereco da url de permissão
             'Modulo'                => 'Locomocao', // Modulo Referente
             'SubModulo'             => 'Entrega',   // Submodulo Referente
             'Metodo'                => 'Entregas_Del'  // Metodos referentes separados por virgula
@@ -84,13 +84,13 @@ $config_Permissoes = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function () {
+$configFunctional = function () {
     return Array(
         /*'Locomocao_Avancado'  => Array(
             'Nome'                  => 'Locomocao -> Avancado',
             'Desc'                  => __('Se Carrega ou nao Permissao em Avancado e se aparece no menu'),
             'chave'                 => 'Locomocao_Avancado',
-            'Valor'                 => TRUE,  // FALSE, true, ou array com os grupos que pode
+            'Valor'                 => true,  // false, true, ou array com os grupos que pode
         ),*/
     );
 };
@@ -100,7 +100,7 @@ $config_Funcional = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function () {
+$configPublic = function () {
     return Array(
         'Locomocao_Entrega_Kmminbase'  => Array(
             'Nome'                  => __('Km Min Ret. Base'),

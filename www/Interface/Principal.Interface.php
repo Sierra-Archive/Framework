@@ -13,10 +13,10 @@ interface PrincipalInterface
     static function Config();
     //Ainda nao Implementado
     // Vai Ser Responsavel pelo Relatório do Modulo de Forma Genérica
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE);
+    static function Relatorio($data_inicio, $data_final, $filtro = false);
     //Ainda nao Implementado
     // Vai Ser Responsavel pela Estatistica do Modulo de Forma Genérica
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE);
+    static function Estatistica($data_inicio, $data_final, $filtro = false);
     
     //Ainda nao Implementado
     // Opcional

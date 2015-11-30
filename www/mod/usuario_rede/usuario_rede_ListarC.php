@@ -13,7 +13,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -33,7 +33,7 @@ class usuario_rede_ListarControle extends usuario_rede_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         if ($this->_Acl->Usuario_GetID()!==0) {

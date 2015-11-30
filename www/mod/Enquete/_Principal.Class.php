@@ -17,34 +17,34 @@ class Enquete_Principal implements \Framework\PrincipalInterface
      * @return void 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
         Enquete_ShowControle::Show();
-        return TRUE;
+        return true;
     }
     /**
      * 
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -59,7 +59,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
             'comments-alt', 
             $enquete_qnt, 
             'block-red', 
-            FALSE, 
+            false, 
             260
         );
     }
@@ -72,19 +72,19 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         $i = 0;
         // Busca Enquetes
         $result = self::Busca_Enquetes($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Busca Respostas
         $result = self::Busca_Respostas($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Retorna
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return FALSE;
+            return false;
         }
     }
     static function Busca_Enquetes($controle, $Modelo, $Visual, $busca) {
@@ -94,7 +94,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $enquetes = $Modelo->db->Sql_Select('Enquete', $where);
-        if ($enquetes === FALSE) return FALSE;
+        if ($enquetes === false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -103,14 +103,14 @@ class Enquete_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Enquete/Enquete/Enquetes',
             )
         )));
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
-        if ($enquetes !== FALSE && !empty($enquetes)) {
+        if ($enquetes !== false && !empty($enquetes)) {
             list($table, $i) = Enquete_EnqueteControle::Enquetes_Tabela($enquetes);
             $Visual->Show_Tabela_DataTable($table);
         } else {     
@@ -126,7 +126,7 @@ class Enquete_Principal implements \Framework\PrincipalInterface
         );
         $i = 0;
         $enquetes = $Modelo->db->Sql_Select('Enquete_Resposta', $where);
-        if ($enquetes === FALSE) return FALSE;
+        if ($enquetes === false) return false;
         // add botao
         $Visual->Blocar($Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -135,14 +135,14 @@ class Enquete_Principal implements \Framework\PrincipalInterface
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Enquete/Resposta/Respostas',
             )
         )));
         if (is_object($enquetes)) $enquetes = Array(0=>$enquetes);
-        if ($enquetes !== FALSE && !empty($enquetes)) {
+        if ($enquetes !== false && !empty($enquetes)) {
             list($table, $i) = Enquete_RespostaControle::Respostas_Tabela($enquetes);
             $Visual->Show_Tabela_DataTable($table);
         } else {  

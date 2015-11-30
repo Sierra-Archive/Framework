@@ -13,7 +13,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,18 +27,18 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Setor/Setores/');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Setor($true= TRUE ) {
+    static function Endereco_Setor($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Setores');
         $link = 'usuario_mensagem/Setor/Setores';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -47,17 +47,17 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Setores($export = FALSE) {
-        self::Endereco_Setor(FALSE);
+    public function Setores($export = false) {
+        self::Endereco_Setor(false);
         
         $table = Array(
-            'Grupo', 'Nome', 'Email do Setor', 'Funções'
+            __('Grupo'), __('Nome'), __('Email do Setor'),__('Funções')
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Setor/Setores');
         $titulo = __('Listagem de Setores').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add', 'nome'=>'Adicionar Setor'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Setor/Setores_Add",'icon'=>'add', 'nome' => __('Adicionar Setor')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Setores'));
@@ -65,10 +65,10 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Setores_Add() {
-        self::Endereco_Setor(TRUE);
+        self::Endereco_Setor(true);
         // Carrega Config
         $titulo1    = __('Adicionar Setor');
         $titulo2    = __('Salvar Setor');
@@ -82,10 +82,10 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Setores_Edit($id) {
-        self::Endereco_Setor(TRUE);
+        self::Endereco_Setor(true);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_Mensagem_Setor_DAO::Get_Colunas();
@@ -108,7 +108,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Setores_Add2() {
         $titulo     = __('Setor Adicionado com Sucesso');
@@ -124,7 +124,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Setores_Edit2($id) {
         
@@ -136,7 +136,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         // Atualiza
         $this->Setores();
         // Mensagem
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Setor Alterado com Sucesso'),
@@ -152,14 +152,14 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);  
         //Json
         $this->_Visual->Json_Info_Update('Titulo', __('Setor Editado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);    
+        $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Setores_Del($id) {
         
@@ -169,7 +169,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Setor', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -187,7 +187,7 @@ class usuario_mensagem_SetorControle extends usuario_mensagem_Controle
         $this->Setores();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Setor deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

@@ -13,7 +13,7 @@ class usuario_ExpedienteControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,10 +27,10 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Main() {
-        return FALSE; 
+        return false; 
     }
     /**
      * Escreve Link de Auxilio para o Usuário
@@ -38,12 +38,12 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param bollean $true Se Adiciona Link ou nao ao Endereço
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    static function Endereco_Expediente($true= TRUE ) {
+    static function Endereco_Expediente($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Expediente'),'usuario/Expediente/Expediente');
         } else {
             $_Controle->Tema_Endereco(__('Expediente'));
@@ -53,10 +53,10 @@ class usuario_ExpedienteControle extends usuario_Controle
      * LIstagem de Todos os Expedientes
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Expediente($export = FALSE) {
-        self::Endereco_Expediente(FALSE);
+    public function Expediente($export = false) {
+        self::Endereco_Expediente(false);
         $i = 0;
         // add botao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -66,25 +66,25 @@ class usuario_ExpedienteControle extends usuario_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'usuario/Expediente/Expedientes',
             )
         )));
         $expedientes = $this->_Modelo->db->Sql_Select('Usuario_Expediente');
-        if ($expedientes !== FALSE && !empty($expedientes)) {
+        if ($expedientes !== false && !empty($expedientes)) {
             if (is_object($expedientes)) $expedientes = Array(0=>$expedientes);
             reset($expedientes);
             foreach ($expedientes as $indice=>&$valor) {
-                $table['Pessoa'][$i]           = $valor->persona2;
-                $table['Numero'][$i]           = $valor->expediente;
-                $table['Obs'][$i]              = $valor->obs;
-                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Expediente'        ,'usuario/Expediente/Expedientes_Edit/'.$valor->id.'/'    , '')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Expediente'       ,'usuario/Expediente/Expedientes_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Expediente ?'));
+                $table[__('Pessoa')][$i]           = $valor->persona2;
+                $table[__('Numero')][$i]           = $valor->expediente;
+                $table[__('Obs')][$i]              = $valor->obs;
+                $table[__('Funções')][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Expediente')        ,'usuario/Expediente/Expedientes_Edit/'.$valor->id.'/'    , '')).
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Expediente')       ,'usuario/Expediente/Expedientes_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Expediente ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Expedientes');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -117,7 +117,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * Retorna Formulário para Cadastro de Expediente
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Expedientes_Add() {
         self::Endereco_Expediente();
@@ -136,7 +136,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Expedientes_Add2() {
         $titulo     = __('Expediente adicionada com Sucesso');
@@ -152,7 +152,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Expedientes_Edit($id) {
         self::Endereco_Expediente();
@@ -173,7 +173,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param int $id Chave Primária (Id do Registro)
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Expedientes_Edit2($id) {
         $titulo     = __('Expediente editada com Sucesso');
@@ -190,7 +190,7 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param int $id Registro do Expediente
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Expedientes_Del($id) {
         
@@ -200,7 +200,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $setor = $this->_Modelo->db->Sql_Select('Usuario_Expediente', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -218,7 +218,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $this->Expediente();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Expediente deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * Lista todos os Funcionários Disponiveis
@@ -227,12 +227,12 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public static function Disponivel($tipobloco='Unico', $span= TRUE ) {
+    public static function Disponivel($tipobloco='Unico', $span= true ) {
         $Registro = Framework\App\Registro::getInstacia();
 
-        if ($span === TRUE) {
+        if ($span === true) {
             $html = '<span id="usuario_Expediente_Disponiveis">';
         } else {
             $html = '';
@@ -256,19 +256,19 @@ class usuario_ExpedienteControle extends usuario_Controle
             '',
             '',
             '',
-            FALSE,
-            FALSE,
+            false,
+            false,
             'obrigatorio',
             __('Escolha um Funcionário')
         );
-        /*if ($valor['edicao']['valor_padrao'] === FALSE) {
+        /*if ($valor['edicao']['valor_padrao'] === false) {
             $html .= $form->Select_Opcao('', '',1);
         } else {
             $html .= $form->Select_Opcao('', '',0);
         }*/
         if (is_array($Registros_usuario)) {
             foreach ($Registros_usuario as &$valor) {
-                if (array_search($valor->id, $usuarios_nao_podem) === FALSE) {
+                if (array_search($valor->id, $usuarios_nao_podem) === false) {
                     $form->Select_Opcao($valor->nome, $valor->id,0);
                 }
             }
@@ -277,15 +277,15 @@ class usuario_ExpedienteControle extends usuario_Controle
         $html .= $form->retorna_form('Abrir Expediente').'<br><br>';
         
         // Carrega Tabela
-        $table_colunas = Array();
-        $table_colunas[] = __('Id');
-        $table_colunas[] = __('Funcionário');
-        $table_colunas[] = __('Inicio');
-        $table_colunas[] = __('Fim');
-        $table_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'usuario/Expediente/Expedientes', '', FALSE);
+        $tableColumns = Array();
+        $tableColumns[] = __('Id');
+        $tableColumns[] = __('Funcionário');
+        $tableColumns[] = __('Inicio');
+        $tableColumns[] = __('Fim');
+        $tableColumns[] = __('Funções');
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'usuario/Expediente/Expedientes', '', false);
         
-        if ($span === TRUE) {
+        if ($span === true) {
             $html .= '</span>';
         }
         
@@ -302,7 +302,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         } else {
             return $html;
         }
-        return TRUE;
+        return true;
     }
     /**
      * Lista todos os Funcionários Disponiveis
@@ -311,12 +311,12 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @return boolean
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public static function Almoco($tipobloco='Unico', $span= TRUE ) {
+    public static function Almoco($tipobloco='Unico', $span= true ) {
         $Registro = Framework\App\Registro::getInstacia();
 
-        if ($span === TRUE) {
+        if ($span === true) {
             $html = '<span id="usuario_Expediente_Almoco">';
         } else {
             $html = '';
@@ -325,14 +325,14 @@ class usuario_ExpedienteControle extends usuario_Controle
         
         
         // Carrega Tabela
-        $table_colunas = Array();
-        $table_colunas[] = __('Id');
-        $table_colunas[] = __('Funcionário');
-        $table_colunas[] = __('Horário de Saida');
-        $table_colunas[] = __('Funções');
-        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'usuario/Expediente/Expedientes/1/sim', '', FALSE);
+        $tableColumns = Array();
+        $tableColumns[] = __('Id');
+        $tableColumns[] = __('Funcionário');
+        $tableColumns[] = __('Horário de Saida');
+        $tableColumns[] = __('Funções');
+        $html .= $Registro->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'usuario/Expediente/Expedientes/1/sim', '', false);
         
-        if ($span === TRUE) {
+        if ($span === true) {
             $html .= '</span>';
         }
         
@@ -349,7 +349,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         } else {
             return $html;
         }
-        return TRUE;
+        return true;
     }
     /**
      * Pega um Usuario qualquer e Abre um Expediente Rapidamente pra Ele
@@ -357,10 +357,10 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param int $usuario Id do Usuario
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Expediente_Add_Rapido($usuario = FALSE) {
-        if ($usuario === FALSE) {
+    public function Expediente_Add_Rapido($usuario = false) {
+        if ($usuario === false) {
             $usuario = (int) $_POST['usuario'];
         } else {
             $usuario = (int) $usuario;
@@ -370,7 +370,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         $expediente->inicio = APP_HORA_BR;
         
         $sucesso =  $this->_Modelo->db->Sql_Insert($expediente);
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Iniciado'),
@@ -386,16 +386,16 @@ class usuario_ExpedienteControle extends usuario_Controle
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         // Recarrega
-        $table_colunas = Array(__('Id'),__('Funcionário'),__('Inicio'),__('Fim'),__('Status'),__('Funções'));
+        $tableColumns = Array(__('Id'),__('Funcionário'),__('Inicio'),__('Fim'),__('Status'),__('Funções'));
         $conteudo = array(
             'location'  =>  '#usuario_Expediente_Disponiveis',
             'js'        =>  '',
-            'html'      => self::Disponivel(FALSE, FALSE)
+            'html'      => self::Disponivel(false, false)
         );
         $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Expediente Iniciado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * Altera Status de um Expediente
@@ -404,9 +404,9 @@ class usuario_ExpedienteControle extends usuario_Controle
      * @param type $status
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Expedientes_StatusAlterar($id = FALSE, $status=0) {
+    public function Expedientes_StatusAlterar($id = false, $status=0) {
         $id = (int) $id;
         $expediente = $this->_Modelo->db->Sql_Select('Usuario_Expediente', '{sigla}id=\''.$id.'\'');
         
@@ -419,7 +419,7 @@ class usuario_ExpedienteControle extends usuario_Controle
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Disponiveis',
                 'js'        =>  '',
-                'html'      => self::Disponivel(FALSE, FALSE)
+                'html'      => self::Disponivel(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else if ($status==1) {
@@ -429,14 +429,14 @@ class usuario_ExpedienteControle extends usuario_Controle
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Disponiveis',
                 'js'        =>  '',
-                'html'      => self::Disponivel(FALSE, FALSE)
+                'html'      => self::Disponivel(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             // Recarrega Almoco
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Almoco',
                 'js'        =>  '',
-                'html'      => self::Almoco(FALSE, FALSE)
+                'html'      => self::Almoco(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
@@ -446,18 +446,18 @@ class usuario_ExpedienteControle extends usuario_Controle
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Disponiveis',
                 'js'        =>  '',
-                'html'      => self::Disponivel(FALSE, FALSE)
+                'html'      => self::Disponivel(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             // Recarrega Almoco
             $conteudo = array(
                 'location'  =>  '#usuario_Expediente_Almoco',
                 'js'        =>  '',
-                'html'      => self::Almoco(FALSE, FALSE)
+                'html'      => self::Almoco(false, false)
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         }
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Iniciado'),
@@ -474,7 +474,7 @@ class usuario_ExpedienteControle extends usuario_Controle
         
         
         $this->_Visual->Json_Info_Update('Titulo', __('Expediente Iniciado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

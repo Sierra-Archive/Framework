@@ -5,7 +5,7 @@ class _Sistema_erroControle extends _Sistema_Controle
     public function __construct() {
         parent::__construct();
     }
-    public function Main($codigo = FALSE) {
+    public function Main($codigo = false) {
         if (LAYOULT_IMPRIMIR=='AJAX') {
             $mensagens = array(
                 "tipo" => 'erro',
@@ -28,14 +28,14 @@ class _Sistema_erroControle extends _Sistema_Controle
         $this->_Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
     }
     static function Erro_Puro($codigo) {
-        $Visual = new \Framework\App\Visual(FALSE);
+        $Visual = new \Framework\App\Visual(false);
         $Visual->Blocar(self::_getError($codigo));
         $Visual->Bloco_Unico_CriaJanela('Erro '.$codigo);
         $Visual->Json_Info_Update('Titulo', __('Erro ').$codigo);
         $Visual->renderizar();
         self::Tema_Travar();
     }
-    private static function _getError($codigo = FALSE) {
+    private static function _getError($codigo = false) {
         if ($codigo) {
             $codigo = (int) $codigo;
         } else {
@@ -155,7 +155,11 @@ Server Errors
      * Pode ser feito por testes ou pelo usuario
      */
     static function Erro_Fluxo($nome, $erro) {
-        return FALSE;
+
+        \Framework\App\Registro::getInstacia()->_Visual->Blocar($nome);
+        \Framework\App\Registro::getInstacia()->_Visual->Bloco_Unico_CriaJanela('Erro');
+        
+        return false;
     }
 }
 ?>

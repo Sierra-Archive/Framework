@@ -50,14 +50,14 @@ class Arg {
     public function getDefaultSpec()
     {
         return array(
-            'mayHaveValue' => FALSE,
-            'mustHaveValue' => FALSE,
-            'assertFile' => FALSE,
-            'assertDir' => FALSE,
-            'assertReadable' => FALSE,
-            'assertWritable' => FALSE,
-            'useAsInfile' => FALSE,
-            'useAsOutfile' => FALSE,
+            'mayHaveValue' => false,
+            'mustHaveValue' => false,
+            'assertFile' => false,
+            'assertDir' => false,
+            'assertReadable' => false,
+            'assertWritable' => false,
+            'useAsInfile' => false,
+            'useAsOutfile' => false,
         );
     }
 
@@ -69,7 +69,7 @@ class Arg {
     /**
      * @var bool
      */
-    protected $required = FALSE;
+    protected $required = false;
 
     /**
      * @var string
@@ -79,12 +79,12 @@ class Arg {
     /**
      * @param bool $isRequired
      */
-    public function __construct($isRequired = FALSE)
+    public function __construct($isRequired = false)
     {
         $this->spec = $this->getDefaultSpec();
         $this->required = (bool) $isRequired;
         if ($isRequired) {
-            $this->spec['mustHaveValue'] = TRUE;
+            $this->spec['mustHaveValue'] = true;
         }
     }
 
@@ -96,7 +96,7 @@ class Arg {
      */
     public function useAsOutfile()
     {
-        $this->spec['useAsOutfile'] = TRUE;
+        $this->spec['useAsOutfile'] = true;
         return $this->assertFile()->assertWritable();
     }
 
@@ -108,7 +108,7 @@ class Arg {
      */
     public function useAsInfile()
     {
-        $this->spec['useAsInfile'] = TRUE;
+        $this->spec['useAsInfile'] = true;
         return $this->assertFile()->assertReadable();
     }
 
@@ -157,9 +157,9 @@ class Arg {
     public function __call($name, array $args = array())
     {
         if (array_key_exists($name, $this->spec)) {
-            $this->spec[$name] = TRUE;
+            $this->spec[$name] = true;
             if ($name === 'assertFile' || $name === 'assertDir') {
-                $this->spec['mustHaveValue'] = TRUE;
+                $this->spec['mustHaveValue'] = true;
             }
         } else {
             throw new BadMethodCallException('Method does not exist');

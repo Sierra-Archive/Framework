@@ -5,19 +5,19 @@ $configModule = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '0.2.1',
-        'Dependencias'              =>  FALSE,
+        'Dependencias'              =>  false,
     );
 };
 $configMenu = function () {
     return Array(
         'Relatório'=>Array(
-            'Filhos'                => Array('Processos'=>Array(
+            'Filhos'                => Array(__('Processos')=>Array(
                 'Nome'                  => __('Processos'),
                 'Link'                  => 'Direito/Relatorio/Main',
                 'Gravidade'             => 70,
                 'Img'                   => 'menusuperior/varas.png',
                 'Icon'                  => '',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),),
         ),
     );
@@ -41,7 +41,7 @@ $config_Permissoes = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function () {
+$configFunctional = function () {
     return Array();
 };
 /**
@@ -50,7 +50,7 @@ $config_Funcional = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function () {
+$configPublic = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

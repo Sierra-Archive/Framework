@@ -11,7 +11,7 @@ class comercio_EstoqueModelo extends comercio_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -28,10 +28,10 @@ class comercio_EstoqueModelo extends comercio_Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
-        if ($retirada === FALSE) {
-            return Array('Entrada Não existente', 'Não existe');
+        if ($retirada === false) {
+            return Array(__('Entrada Não existente'), __('Não existe'));
         }
-        return Array('Entrada de Nota Fiscal', 'Fornecedor '.$retirada->fornecedor2);
+        return Array(__('Entrada de Nota Fiscal'), __('Fornecedor ').$retirada->fornecedor2);
     }
     /**
      * 
@@ -42,15 +42,15 @@ class comercio_EstoqueModelo extends comercio_Modelo
     static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;
         if ($motivoid===0) {
-            return Array('Compra não existe no banco de dados.', 'Não existe');
+            return Array(__('Compra não existe no banco de dados.'), 'Não existe');
         }
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $material = $_Modelo->db->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$motivoid),1);
-        if ($material === FALSE) {
-            return Array('Compra não existe no banco de dados.', 'Não existe');
+        if ($material === false) {
+            return Array(__('Compra não existe no banco de dados.'), 'Não existe');
         }
-        return Array('Compra de Nota Fiscal '.$material->documento,'Fornecedor '.$material->fornecedor2);
+        return Array(__('Compra de Nota Fiscal ').$material->documento,'Fornecedor '.$material->fornecedor2);
     }
     
     public function Material_Entrada() {
@@ -64,16 +64,16 @@ class comercio_EstoqueModelo extends comercio_Modelo
         
         if ($permissionEdit && $permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    , ''),TRUE).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Entrada de NFE')        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    , ''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Entrada de NFE')       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     , __('Deseja realmente deletar essa Entrada de NFE ?')),true);
             };
         } else if ($permissionEdit) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    , ''),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Entrada de NFE')        ,'comercio/Estoque/Material_Entrada_Edit/'.$d.'/'    , ''),true);
             };
         } else if ($permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Entrada de NFE')       ,'comercio/Estoque/Material_Entrada_Del/'.$d.'/'     , __('Deseja realmente deletar essa Entrada de NFE ?')),true);
             };
         } else {
             $function = function( $d, $row ) {
@@ -92,13 +92,13 @@ class comercio_EstoqueModelo extends comercio_Modelo
                 } else {
                     $documento = __('Recibo');
                 }
-                $table['Número'][$i]           = $valor->numero;
-                $table['Documento'][$i]        = $documento;
-                $table['Fornecedor'][$i]       = $valor->fornecedor2;
-                $table['Data'][$i]             = $valor->data;
-                $table['Valor'][$i]            = $valor->valor;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Entrada de NFE'        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Entrada de NFE'       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Entrada de NFE ?'), $permissionDelete);
+                $table[__('Número')][$i]           = $valor->numero;
+                $table[__('Documento')][$i]        = $documento;
+                $table[__('Fornecedor')][$i]       = $valor->fornecedor2;
+                $table[__('Data')][$i]             = $valor->data;
+                $table[__('Valor')][$i]            = $valor->valor;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Entrada de NFE')        ,'comercio/Estoque/Material_Entrada_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Entrada de NFE')       ,'comercio/Estoque/Material_Entrada_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Entrada de NFE ?')), $permissionDelete);
                 ++$i;*/
         $columns = array(
             array( 'db' => 'numero', 'dt' => 0 ),

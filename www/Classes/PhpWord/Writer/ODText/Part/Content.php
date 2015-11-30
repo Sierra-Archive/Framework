@@ -143,7 +143,7 @@ class Content extends AbstractPart
         $paragraphStyleCount = 0;
         if (count($styles) > 0) {
             foreach ($styles as $style) {
-                if ($style->isAuto() === TRUE) {
+                if ($style->isAuto() === true) {
                     $styleClass = str_replace('\\Style\\', '\\Writer\\ODText\\Style\\', get_class($style));
                     if (class_exists($styleClass)) {
                         /** @var \Framework\Classes\PhpWord\Writer\ODText\Style\AbstractStyle $styleWriter Type hint */

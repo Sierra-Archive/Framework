@@ -10,7 +10,7 @@ class Engenharia_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,7 +27,7 @@ class Engenharia_Modelo extends \Framework\App\Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Engenharia_Estoque_Retirada',Array('id'=>$motivoid),1);
-        return Array('Gasto com Empreendimento', 'Empreendimento'.$retirada->idempreendimento2);
+        return Array(__('Gasto com Empreendimento'), __('Empreendimento').$retirada->idempreendimento2);
     }
     static function Financeiro_Motivo_Exibir($motivoid) {
         $motivoid = (int) $motivoid;

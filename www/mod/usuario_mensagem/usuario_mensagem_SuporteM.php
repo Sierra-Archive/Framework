@@ -11,7 +11,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();
@@ -23,7 +23,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte_MensagensSetor(&$array, $grupo=0) {
         $array = Array();
@@ -37,7 +37,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $setoreswhere = Array();
             if (is_object($setores)) $setores = Array($setores);
             if (!empty($setores)) {
-                foreach($setores as $valor) {
+                foreach ($setores as $valor) {
                     $setoreswhere[$i] = $valor->id;
                     ++$i;
                 }
@@ -61,7 +61,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $i = 0;
             $assuntoswhere = Array();
             if (is_object($assuntos)) $assuntos = Array($assuntos);
-            foreach($assuntos as $valor) {
+            foreach ($assuntos as $valor) {
                 $assuntoswhere[$i] = $valor->id;
                 ++$i;
             }
@@ -87,7 +87,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
      * @return type
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function Suporte_MensagensCliente(&$array, $cliente=0) {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -106,9 +106,9 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
         }
         // Puxa Banco de Dados
         $array = $Modelo->db->Sql_Select('Usuario_Mensagem', $where);
-        if ($array !== FALSE) {
+        if ($array !== false) {
             if (is_object($array)) $array = Array($array);
-            foreach($array as &$valor) {
+            foreach ($array as &$valor) {
                 $valor->lido = self::Mensagem_RespNova($valor->id, $valor->escritor);
                 list($valor->tipo, $valor->tempopassado) = usuario_mensagem_Modelo::Mensagem_TipoChamado($valor);
                 if ($valor->tipo=='nov') $valor->tipo = __('Chamado Novo');
@@ -130,7 +130,7 @@ class usuario_mensagem_SuporteModelo extends usuario_mensagem_Modelo
             $where = 'cliente='.$cliente;
         } else {
             // mostra todas as suas mensagens
-            $where = FALSE;
+            $where = false;
         }
         // Puxa Banco de Dados
         return $Modelo->db->Sql_Contar('Usuario_Mensagem', $where);

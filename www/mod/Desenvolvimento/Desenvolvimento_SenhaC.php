@@ -11,20 +11,20 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
     }
-    protected function Endereco_Senha($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Senha($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Senhas'),'Desenvolvimento/Senha/Senhas');
         } else {
             $this->Tema_Endereco(__('Senhas'));
         }
     }
-    protected function Endereco_Senha_Todas($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Senha_Todas($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Todas as Senhas'),'Desenvolvimento/Senha/Senhas_Todas');
         } else {
             $this->Tema_Endereco(__('Todas as Senhas'));
@@ -39,25 +39,25 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
-        return FALSE;
+        return false;
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Senhas($export = FALSE) {
-        $this->Endereco_Senha(FALSE);
+    public function Senhas($export = false) {
+        $this->Endereco_Senha(false);
         $i = 0;
         $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
         $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
         // EM uso
         $table = Array(
-            'Id', 'Categoria', 'Url', 'Login', 'Senha'
+            __('Id'), __('Categoria'), __('Url'), __('Login'), __('Senha')
         );
         if ($permissionFeatured)  $table[] = __('Destaque');
         if ($permissionStatus)    $table[] = __('Status');
@@ -67,11 +67,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         
         
         $titulo = __('Listagem de Senhas');  //(<span id="DataTable_Contador">0</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Add",'icon'=>'add', 'nome' => __('Adicionar Senha')));
         
         // Antigas
         $table = Array(
-            'Id', 'Categoria', 'Url', 'Login', 'Senha'
+            __('Id'), __('Categoria'), __('Url'), __('Login'), __('Senha')
         );
         if ($permissionFeatured)  $table[] = __('Destaque');
         if ($permissionStatus)    $table[] = __('Status');
@@ -87,7 +87,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Add() {
         $this->Endereco_Senha();
@@ -105,7 +105,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Add2() {
         $titulo     = __('Senha Adicionada com Sucesso');
@@ -120,7 +120,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Edit($id) {
         $this->Endereco_Senha();
@@ -139,7 +139,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Edit2($id) {
         $titulo     = __('Senha Editada com Sucesso');
@@ -155,7 +155,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Del($id) {
         
@@ -165,7 +165,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $senha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($senha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -183,7 +183,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->Senhas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Senha deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
     
@@ -192,16 +192,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Status($id = FALSE) {
+    public function Status($id = false) {
         
-        if ($id === FALSE) {
-            return FALSE;
+        if ($id === false) {
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         
         // troca Resutlado
@@ -241,7 +241,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
@@ -249,7 +249,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Statuslabel($objeto, $link= TRUE ) {
+    public static function Statuslabel($objeto, $link= true ) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -261,7 +261,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status') !== FALSE) {
+        if ($link === true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status') !== false) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -271,16 +271,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Destaque($id = FALSE) {
+    public function Destaque($id = false) {
         
-        if ($id === FALSE) {
-            return FALSE;
+        if ($id === false) {
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         
         // troca Resutlado
@@ -312,7 +312,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
@@ -320,7 +320,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Destaquelabel($objeto, $link= TRUE ) {
+    public static function Destaquelabel($objeto, $link= true ) {
         $destaque = $objeto->destaque;
         $id = $objeto->id;
         if ($destaque=='0') {
@@ -331,7 +331,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque') !== FALSE) {
+        if ($link === true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque') !== false) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;
@@ -344,16 +344,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         if (is_object($Senhas_Todas)) $Senhas_Todas = Array(0=>$Senhas_Todas);
         reset($Senhas_Todas);
         foreach ($Senhas_Todas as $indice=>&$valor) {
-            $table['#Id'][$i]          =   '#'.$valor->id;
-            $table['Categoria'][$i]    =   $valor->categoria2;
-            $table['Url'][$i]          =   $valor->url;
-            $table['Login'][$i]        =   $valor->login;
-            $table['Senha'][$i]        =   $valor->senha;
-            $table['Destaque'][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
-            $table['Status'][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
-            $table['Adicionada em'][$i]=   $valor->log_date_add;
-            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Senha'        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$valor->id.'/'    , '')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Senha'       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Senha ?'));
+            $table[__('#Id')][$i]          =   '#'.$valor->id;
+            $table[__('Categoria')][$i]    =   $valor->categoria2;
+            $table[__('Url')][$i]          =   $valor->url;
+            $table[__('Login')][$i]        =   $valor->login;
+            $table[__('Senha')][$i]        =   $valor->senha;
+            $table[__('Destaque')][$i]     = '<span class="destaque'.$valor->id.'">'.self::Destaquelabel($valor).'</span>';
+            $table[__('Status')][$i]       = '<span class="status'.$valor->id.'">'.self::Statuslabel($valor).'</span>';
+            $table[__('Adicionada em')][$i]=   $valor->log_date_add;
+            $table[__('Funções')][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Senha')        ,'Desenvolvimento/Senha/Senhas_Todas_Edit/'.$valor->id.'/'    , '')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Senha')       ,'Desenvolvimento/Senha/Senhas_Todas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Senha ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -361,17 +361,17 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Senhas_Todas($export = FALSE) {
-        $this->Endereco_Senha_Todas(FALSE);
+    public function Senhas_Todas($export = false) {
+        $this->Endereco_Senha_Todas(false);
         $i = 0;
         $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status');
         $permissionFeatured = $this->_Registro->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque');
         
         // Usadas
         $table = Array(
-            'Id', 'Responsável', 'Categoria', 'Url', 'Login', 'Senha'
+            __('Id'), __('Responsável'), __('Categoria'), __('Url'), __('Login'), __('Senha')
         );
         if ($permissionFeatured)  $table[] = __('Destaque');
         if ($permissionStatus)    $table[] = __('Status');
@@ -380,11 +380,11 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->_Visual->Show_Tabela_DataTable_Massiva($table,'Desenvolvimento/Senha/Senhas_Todas');
         
         $titulo = __('Listagem de Todas as Senhas');  //(<span id="DataTable_Contador">0</span>)
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add', 'nome'=>'Adicionar Senha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Desenvolvimento/Senha/Senhas_Todas_Add",'icon'=>'add', 'nome' => __('Adicionar Senha')));
         
         // Antigas
         $table = Array(
-            'Id', 'Responsável', 'Categoria', 'Url', 'Login', 'Senha'
+            __('Id'), __('Responsável'), __('Categoria'), __('Url'), __('Login'), __('Senha')
         );
         if ($permissionFeatured)  $table[] = __('Destaque');
         if ($permissionStatus)    $table[] = __('Status');
@@ -400,7 +400,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Todas_Add() {
         $this->Endereco_Senha_Todas();
@@ -418,7 +418,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Todas_Add2() {
         $titulo     = __('Senha Adicionada com Sucesso');
@@ -433,7 +433,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Todas_Edit($id) {
         $this->Endereco_Senha_Todas();
@@ -452,7 +452,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Todas_Edit2($id) {
         $titulo     = __('Senha Editada com Sucesso');
@@ -468,7 +468,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Senhas_Todas_Del($id) {
         
@@ -478,7 +478,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $senha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($senha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -496,7 +496,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
         $this->Senhas_Todas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Senha deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
     
@@ -505,16 +505,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Status_Todas($id = FALSE) {
+    public function Status_Todas($id = false) {
         
-        if ($id === FALSE) {
-            return FALSE;
+        if ($id === false) {
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         
         // troca Resutlado
@@ -552,7 +552,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
@@ -560,7 +560,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Statuslabel_Todas($objeto, $link= TRUE ) {
+    public static function Statuslabel_Todas($objeto, $link= true ) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -572,7 +572,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Em Uso');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status') !== FALSE) {
+        if ($link === true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Status') !== false) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Status_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -582,16 +582,16 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function Destaque_Todas($id = FALSE) {
+    public function Destaque_Todas($id = false) {
         
-        if ($id === FALSE) {
-            return FALSE;
+        if ($id === false) {
+            return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Desenvolvimento_Senha', Array('id'=>$id),1);
         
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         
         // troca Resutlado
@@ -623,7 +623,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             );
             $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
@@ -631,7 +631,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
      * @param type $link
      * @return string
      */
-    public static function Destaquelabel_Todas($objeto, $link= TRUE ) {
+    public static function Destaquelabel_Todas($objeto, $link= true ) {
         $destaque = $objeto->destaque;
         $id = $objeto->id;
         if ($destaque=='0') {
@@ -642,7 +642,7 @@ class Desenvolvimento_SenhaControle extends Desenvolvimento_Controle
             $nometipo = __('Destaque');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link === TRUE && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque') !== FALSE) {
+        if ($link === true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('Desenvolvimento/Senha/Destaque') !== false) {
             $html = '<a href="'.URL_PATH.'Desenvolvimento/Senha/Destaque_Todas/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Destaque?">'.$html.'</a>';
         }
         return $html;

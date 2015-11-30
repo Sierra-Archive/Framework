@@ -64,7 +64,7 @@ class PagSeguroInstallmentParser extends PagSeguroServiceParser
     {
     	$err = new stdClass();
     	$err->message = key($error);
-    	$err->status = TRUE;
+    	$err->status = true;
 
     	return $err;
     }

@@ -15,7 +15,7 @@ class Enquete_ShowControle extends Enquete_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         // ORGANIZA E MANDA CONTEUDO
@@ -23,7 +23,7 @@ class Enquete_ShowControle extends Enquete_Controle
     }
     static function Show($bloco='right', $id_min=0) {
         // Verifica Permissao
-        if (\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Chave('Enquete_Show') === FALSE) return FALSE;
+        if (\Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Chave('Enquete_Show') === false) return false;
         
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
@@ -34,30 +34,30 @@ class Enquete_ShowControle extends Enquete_Controle
                 1/*,
                 'rand()'*/
         );
-        if ($enquetes === FALSE) return FALSE;
+        if ($enquetes === false) return false;
         $titulo2 = $enquetes->nome;
         $respostas = $Modelo->db->Sql_Select('Enquete_Resposta',Array(
             'enquete'       =>  $enquetes->id),
             0
         );    
-        if ($respostas === FALSE) {
+        if ($respostas === false) {
             return self::Show($bloco, $enquetes->id);
         }
-        if (is_object($respostas)) return FALSE;
-        if (\Framework\App\Acl::Usuario_GetID_Static()==0) return FALSE;
+        if (is_object($respostas)) return false;
+        if (\Framework\App\Acl::Usuario_GetID_Static()==0) return false;
         $voto = $Modelo->db->Sql_Select('Enquete_Voto',Array(
             'enquete'       =>  $enquetes->id,
             'usuario'       =>  \Framework\App\Acl::Usuario_GetID_Static()
         ),1);  
-        if ($voto !== FALSE) {
+        if ($voto !== false) {
             $retorno = self::Show($bloco, $enquetes->id);
-            if ($retorno === FALSE) {
+            if ($retorno === false) {
                 $Visual->Blocar('<span id="home_Enquete_Show">'.self::Show_Resposta($enquetes, $respostas).'</span>');
                 // Mostra Conteudo
                 if ($bloco=='All')   $Visual->Bloco_Unico_CriaJanela($titulo2, '',0); //,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);'
                 if ($bloco=='right') $Visual->Bloco_Menor_CriaJanela($titulo2, '',0);
                 if ($bloco=='left')  $Visual->Bloco_Maior_CriaJanela($titulo2, '',0);
-                return TRUE;
+                return true;
             }
             return $retorno;
         }
@@ -73,7 +73,7 @@ class Enquete_ShowControle extends Enquete_Controle
             '',
             false
         );
-        foreach($respostas as &$valor) {
+        foreach ($respostas as &$valor) {
             $form->Radio_Opcao($valor->nome, $valor->id,0);
         }
         // Fecha Radio
@@ -96,14 +96,14 @@ class Enquete_ShowControle extends Enquete_Controle
         ));
         if (is_object($respostas)) $respostas = Array($respostas);
         if (is_object($votos)) $votos = Array($votos);
-        if ($votos === FALSE) {
+        if ($votos === false) {
             $total_votos = 0;
         } else {
             $total_votos = count($votos);
         }
         // Zera Votos
         $contagem_votos = Array();
-        foreach($respostas as &$valor) {
+        foreach ($respostas as &$valor) {
             $contagem_votos[$valor->id] = 0;
         }
         // Captura Cores
@@ -112,13 +112,13 @@ class Enquete_ShowControle extends Enquete_Controle
         $cor = 0;
         // Percorre Votos
         if (!empty($votos)) {
-            foreach($votos as &$valor) {
+            foreach ($votos as &$valor) {
                 $contagem_votos[$valor->resposta] = 1+$contagem_votos[$valor->resposta];
             }
         }
         // Percorre Respostas
         $html = '<ul class="list-unstyled">';
-        foreach($respostas as &$valor) {
+        foreach ($respostas as &$valor) {
             if (!isset($contagem_votos[$valor->id]) || $total_votos==0) {
                 $os_votos  = 0;
                 $porc = 0;
@@ -140,8 +140,8 @@ class Enquete_ShowControle extends Enquete_Controle
         $html .= '</ul>';
         return $html;
     }
-    public function Votar($enquete = FALSE) {
-        if ($enquete === FALSE) {
+    public function Votar($enquete = false) {
+        if ($enquete === false) {
             return _Sistema_erroControle::Erro_Fluxo('Enquete nao Especificada',404);
         }
         $enquete = (int) $enquete;
@@ -150,21 +150,21 @@ class Enquete_ShowControle extends Enquete_Controle
                 Array('id'  => $enquete),
                 1
         );
-        if ($enquetes === FALSE) {
+        if ($enquetes === false) {
             return _Sistema_erroControle::Erro_Fluxo('Enquete nao Existe',404);
         }
         $respostas = $this->_Modelo->db->Sql_Select('Enquete_Resposta',Array(
             'enquete'       =>  $enquete),
             0
         );    
-        if ($respostas === FALSE) {
+        if ($respostas === false) {
             return _Sistema_erroControle::Erro_Fluxo('Enquete sem respostas',404);
         }
         $voto = $this->_Modelo->db->Sql_Select('Enquete_Voto',Array(
             'enquete'       =>  $enquete,
             'usuario'       =>  \Framework\App\Acl::Usuario_GetID_Static()
         ),1);  
-        if ($voto !== FALSE) {
+        if ($voto !== false) {
             throw new \Exception('Já votou nessa enquete', 9010);
         }
         $voto_do_malandro = (int) $_POST['votar'];
@@ -174,7 +174,7 @@ class Enquete_ShowControle extends Enquete_Controle
         $gravar_voto->resposta  = $voto_do_malandro;
         $this->_Modelo->db->Sql_Insert($gravar_voto);
         // Nao Zera Layoult
-        $this->layoult_zerar = FALSE;
+        $this->layoult_zerar = false;
         // Mostra Resposta
         $conteudo = array(
             'location'  => '#home_Enquete_Show',
@@ -182,7 +182,7 @@ class Enquete_ShowControle extends Enquete_Controle
             'html'      => self::Show_Resposta($enquetes, $respostas)
         );
         $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
         $this->_Visual->Json_Info_Update('Titulo', __('Voto computado com Sucesso'));
     }
 }

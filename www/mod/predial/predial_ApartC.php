@@ -15,18 +15,18 @@ class predial_ApartControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Apart/Aparts');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Apart($true= TRUE ) {
+    static function Endereco_Apart($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Apartamentos');
         $link = 'predial/Apart/Aparts';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -40,15 +40,15 @@ class predial_ApartControle extends predial_Controle
         if (is_object($apartamentos)) $apartamentos = Array(0=>$apartamentos);
         reset($apartamentos);
         foreach ($apartamentos as &$valor) {
-            $table['Bloco'][$i]            = $valor->bloco2;
-            $table['Número'][$i]           = $valor->num;
+            $table[__('Bloco')][$i]            = $valor->bloco2;
+            $table[__('Número')][$i]           = $valor->num;
             if ($valor->morador!=0 && $valor->morador2!=NULL) {
-                $table['Morador'][$i]          = $valor->morador2;
+                $table[__('Morador')][$i]          = $valor->morador2;
             } else {
-                $table['Morador'][$i]          = '<p class="text-error">Não Registrado</p>';
+                $table[__('Morador')][$i]          = '<p class="text-error">Não Registrado</p>';
             }
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Apartamento'        ,'predial/Apart/Aparts_Edit/'.$valor->id.'/'    , '')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Apartamento'       ,'predial/Apart/Aparts_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Apartamento ?'));
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Apartamento')        ,'predial/Apart/Aparts_Edit/'.$valor->id.'/'    , '')).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Apartamento')       ,'predial/Apart/Aparts_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Apartamento ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -56,10 +56,10 @@ class predial_ApartControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Aparts() {
-        self::Endereco_Apart(FALSE);
+        self::Endereco_Apart(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -69,15 +69,15 @@ class predial_ApartControle extends predial_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Apart/Aparts',
             )
         )));
         // Busca
         $apartamentos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart');
-        if ($apartamentos !== FALSE && !empty($apartamentos)) {
+        if ($apartamentos !== false && !empty($apartamentos)) {
             list($table, $i) = self::Aparts_Tabela($apartamentos);
             $this->_Visual->Show_Tabela_DataTable($table);
             unset($table);
@@ -93,7 +93,7 @@ class predial_ApartControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Aparts_Add() {
         self::Endereco_Apart();
@@ -111,7 +111,7 @@ class predial_ApartControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Aparts_Add2() {
         $titulo     = __('Apartamento Adicionado com Sucesso');
@@ -126,7 +126,7 @@ class predial_ApartControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Aparts_Edit($id) {
         self::Endereco_Apart();
@@ -145,7 +145,7 @@ class predial_ApartControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Aparts_Edit2($id) {
         $titulo     = __('Apartamento Editado com Sucesso');
@@ -161,7 +161,7 @@ class predial_ApartControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Aparts_Del($id) {
         
@@ -171,7 +171,7 @@ class predial_ApartControle extends predial_Controle
         $apartamento = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($apartamento);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -189,7 +189,7 @@ class predial_ApartControle extends predial_Controle
         $this->Aparts();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Apartamento deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

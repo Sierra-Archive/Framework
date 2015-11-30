@@ -7,9 +7,9 @@
 # Variables
 APPENV=local
 DBHOST=localhost
-DBNAME=dbname
-DBUSER=dbuser
-DBPASSWD=test123
+DBNAME=Pessoal_Sitec
+DBUSER=root
+DBPASSWD=
 
 echo -e "\n--- Mkay, installing now... ---\n"
 

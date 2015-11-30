@@ -51,7 +51,7 @@ class Title extends AbstractElement
      *
      * @var bool
      */
-    protected $collectionRelation = TRUE;
+    protected $collectionRelation = true;
 
     /**
      * Create a new Title Element

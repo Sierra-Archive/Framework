@@ -13,7 +13,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -52,7 +52,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         // carrega lista de veiculos
@@ -78,7 +78,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function veiculos_lista() {
         $veiculos = Array();
@@ -88,17 +88,17 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
             $i = 0;           
             
             foreach ($veiculos as $indice=>&$valor) {
-                $table['Id'][$i] = $valor['id'];
-                $table['Foto'][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'], $valor['foto'],'usuario_veiculo'.DS, $valor['id']);
-                $table['Categoria'][$i] = $valor['categoria'];
-                $table['Ano'][$i] = $valor['ano'];
-                $table['Moto'][$i] = $valor['marca'].' '.$valor['modelo'];
-                $table['CC'][$i] = $valor['cc'];
-                $table['Até 3 dias<br>Entre 3 e 10 dias<br>+10 dias'][$i] = 'R$'.number_format($valor['valor1'], 2, ', ', '.').
-                '<br>R$'.number_format($valor['valor2'], 2, ', ', '.').
-                '<br>R$'.number_format($valor['valor3'], 2, ', ', '.');
-                $table['Franquia'][$i] = 'R$'.number_format($valor['franquia'], 2, ', ', '.');
-                $table['Funções'][$i] = '
+                $table[__('Id')][$i] = $valor['id'];
+                $table[__('Foto')][$i] = $this->_Visual->Show_Upload('usuario_veiculo', 'Admin', 'Veiculos', 'VeiculoImagem'.$valor['id'], $valor['foto'],'usuario_veiculo'.DS, $valor['id']);
+                $table[__('Categoria')][$i] = $valor['categoria'];
+                $table[__('Ano')][$i] = $valor['ano'];
+                $table[__('Moto')][$i] = $valor['marca'].' '.$valor['modelo'];
+                $table[__('CC')][$i] = $valor['cc'];
+                $table['Até 3 dias<br>Entre 3 e 10 dias<br>+10 dias'][$i] = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor['valor1']).
+                '<br>'.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor['valor2']).
+                '<br>'.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor['valor3']);
+                $table[__('Franquia')][$i] = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor['franquia']);
+                $table[__('Funções')][$i] = '
                 <a title="Editar" class="lajax explicar-titulo" href="'.URL_PATH.'usuario_veiculo/Admin/veiculos_carregajanelaEdit/'.$valor['id'].'/" data-acao="">
                 <img alt="Editar" src="'.WEB_URL.'img/turboadmin/icon_edit.png">
                 </a>
@@ -128,14 +128,14 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function veiculos_Del($id) {
         
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->veiculos_Del($id);
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -171,7 +171,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function veiculos_carregajanelaadd() {
         // carrega marcas
@@ -222,7 +222,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
     */
     static function veiculos_form(&$controle, &$Visual, &$form, &$selectmarcas, $categoria = 0, $ano = '', $modelo = '', $marca = '', $cc = '', $valor1 = '', $valor2 = '', $valor3 = '', $franquia = '', $obs = '') {
         
@@ -231,17 +231,17 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
 	// select de categorias
         $controle->Categorias_ShowSelect($form, 'objetos', $categoria);
         
-        $form->Input_Novo('Ano do Veiculo', 'ano', $ano,'text', 4, 'obrigatorio', '', FALSE, '', '', 'Ano', '', FALSE); 
-        $form->Input_Novo('Modelo do Veiculo', 'modelo', $modelo,'text', 30, 'obrigatorio'); 
+        $form->Input_Novo(__('Ano do Veiculo'), 'ano', $ano,'text', 4, 'obrigatorio', '', false, '', '', 'Ano', '', false); 
+        $form->Input_Novo(__('Modelo do Veiculo'), 'modelo', $modelo,'text', 30, 'obrigatorio'); 
         // select de pessoas
         $form->Select_Novo('Marca', 'selectmarcas', 'selectmarcas');
         $Visual->Marcas_ShowSelect($selectmarcas, $form, $marca);
         $form->Select_Fim();
-        $form->Input_Novo('Cilindradas', 'cc', $cc,'text', 11, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
-        $form->Input_Novo('Valor da Diária até 3 Dias', 'valor1', $valor1,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
-        $form->Input_Novo('Valor da Diária de 3 a 9 Dias', 'valor2', $valor2,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
-        $form->Input_Novo('Valor Acima de 10 dias', 'valor3', $valor3,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
-        $form->Input_Novo('Valor da Franquia', 'franquia', $franquia,'text', 30, 'obrigatorio', '', FALSE, '', '', 'Numero', '', FALSE); 
+        $form->Input_Novo(__('Cilindradas'), 'cc', $cc,'text', 11, 'obrigatorio', '', false, '', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor da Diária até 3 Dias', 'valor1', $valor1,'text', 30, 'obrigatorio', '', false, '', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor da Diária de 3 a 9 Dias', 'valor2', $valor2,'text', 30, 'obrigatorio', '', false, '', '', 'Numero', '', false); 
+        $form->Input_Novo('Valor Acima de 10 dias', 'valor3', $valor3,'text', 30, 'obrigatorio', '', false, '', '', 'Numero', '', false); 
+        $form->Input_Novo(__('Valor da Franquia'), 'franquia', $franquia,'text', 30, 'obrigatorio', '', false, '', '', 'Numero', '', false); 
 
 
         $form->Input_Novo(__('Observação'),'obs', $obs,'text', 1000);
@@ -269,10 +269,10 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function veiculos_inserir() {
-        if (!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return FALSE;
+        if (!isset($_POST["categoria"]) || !isset($_POST["ano"]) || !isset($_POST["modelo"]) || !isset($_POST["selectmarcas"]) || !isset($_POST["cc"]) || !isset($_POST["valor1"])|| !isset($_POST["valor2"]) || !isset($_POST["valor3"]) || !isset($_POST["franquia"]) || !isset($_POST["obs"])) return false;
         
         $categoria = \Framework\App\Conexao::anti_injection($_POST["categoria"]);
         $ano = (int) $_POST["ano"];
@@ -289,7 +289,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $this->veiculos_lista();
         
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -309,7 +309,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function veiculos_alterar($id) {
         
@@ -331,7 +331,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         
         $this->Main();
         
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Alteração bem sucedida'),
@@ -366,7 +366,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function marcas_carregajanelaadd() {
         
@@ -391,13 +391,13 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function marcas_formcadastro() {
         
        
         $form = new \Framework\Classes\Form('adminformmarcassend', 'usuario_veiculo/Admin/marcas_inserir/', 'formajax');
-        $form->Input_Novo('Nome da Marca', 'nome', '', 'text', 30, 'obrigatorio'); 
+        $form->Input_Novo(__('Nome da Marca'), 'nome', '', 'text', 30, 'obrigatorio'); 
         
         $formulario = $form->retorna_form(__('Salvar'));
 
@@ -412,7 +412,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
      * 
      */
     public function marcas_inserir() {
-        if (!isset($_POST["nome"])) return FALSE;
+        if (!isset($_POST["nome"])) return false;
         
         $nome = \Framework\App\Conexao::anti_injection($_POST["nome"]);
         $sucesso =  $this->_Modelo->marcas_inserir($nome);
@@ -427,7 +427,7 @@ class usuario_veiculo_AdminControle extends usuario_veiculo_Controle
         );
         $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // mostra mensagem de sucesso
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),

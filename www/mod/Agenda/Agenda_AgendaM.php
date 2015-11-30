@@ -11,7 +11,7 @@ class Agenda_AgendaModelo extends Agenda_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      * 
      */
     public function __construct() {
@@ -48,10 +48,10 @@ class Agenda_AgendaModelo extends Agenda_Modelo
 
         $function = '';
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Agenda\')        ,\'Agenda/Agenda/Agendas_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Agenda\')        ,\'Agenda/Agenda/Agendas_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Agenda\')        ,\'Agenda/Agenda/Agendas_Del/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Agenda\')        ,\'Agenda/Agenda/Agendas_Del/\'.$d.\'/\'    ,\'\'),true);';
         }
         
         ++$numero;

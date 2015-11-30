@@ -10,7 +10,7 @@ class SierraTec_Estatistica {
      */
     public function Gera_Estatistica(&$tables) {
         // Para cada tabela
-        foreach($tables as &$valor) {
+        foreach ($tables as &$valor) {
             $this->Gera_Estatistica_Tabela($table, $valor);
         }
     }
@@ -20,16 +20,16 @@ class SierraTec_Estatistica {
      * @param type $campos
      * #update
      */
-    private function Gera_Estatistica_Tabela($table, $campos, $total, $nivel=0, $query_condicao = FALSE) {
+    private function Gera_Estatistica_Tabela($table, $campos, $total, $nivel=0, $query_condicao = false) {
         
         // Para cada Campo
-        foreach($campos as &$valor) {
+        foreach ($campos as &$valor) {
             
             // Conta elementos de campo atual distinto
             $resultado = 'qurey';
             
             // Para Cada Resultado faz Estatica com o filho
-            foreach($resultado as $Registro) {
+            foreach ($resultado as $Registro) {
                 if ($tipo=='int') {
                     $query = $coluna.'='.$resultado;
                 } else if ($tipo=='float') {
@@ -40,7 +40,7 @@ class SierraTec_Estatistica {
                     continue;
                 }
                     
-                if ($query_condicao !== FALSE) {
+                if ($query_condicao !== false) {
                     $query = $query_condicao.' AND '.$query;
                 }
                 

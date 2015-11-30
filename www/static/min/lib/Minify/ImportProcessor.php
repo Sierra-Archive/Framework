@@ -51,7 +51,7 @@ class Minify_ImportProcessor {
         $this->_previewsDir = $previewsDir;
     }
 
-    private function _getContent($file, $is_imported = FALSE)
+    private function _getContent($file, $is_imported = false)
     {
         $file = realpath($file);
         if (! $file
@@ -122,7 +122,7 @@ class Minify_ImportProcessor {
                 . strtr($url, '/', DIRECTORY_SEPARATOR);
         }
         $obj = new Minify_ImportProcessor(dirname($file), $this->_currentDir);
-        $content = $obj->_getContent($file, TRUE);
+        $content = $obj->_getContent($file, true);
         if ('' === $content) {
             // failed. leave in place for CSS, comment for JS
             return self::$_isCss

@@ -6,7 +6,7 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
     protected $nome;
     protected $parcelas;
     protected $entrada;
-    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_FINANCEIRO_FINANCEIRO_FORMA_CONDICAO;
     }
     /**
@@ -14,7 +14,7 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return FALSE;
+        return false;
     }
     public static function Get_Sigla() {
         return 'FPFC';
@@ -37,35 +37,35 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 255,
-                'mysql_null'        => FALSE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => TRUE,
-                'mysql_estrangeira' => FALSE, // chave estrangeira
-                'mysql_autoadd'     => TRUE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => true,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => true,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'forma_pagar',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_primary'     => false,  // chave primaria
                 'mysql_estrangeira' => 'FPF.id|FPF.nome', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => 'Financeiro/Pagamento/Formas_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Forma de Pagamento'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
@@ -77,20 +77,20 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => FALSE,
-                'mysql_estrangeira' => FALSE, // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Nome da Condição'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -103,19 +103,19 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'parcelas',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 3,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 1, // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'N° de Parcelas',
                     'valor_padrao'      => 0,
-                    'readonly'          => FALSE,
+                    'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'            => array(
@@ -253,21 +253,21 @@ final Class Financeiro_Pagamento_Forma_Condicao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'entrada',
                 'mysql_tipovar'     => 'float', //varchar, int, 
                 'mysql_tamanho'     => 8,
-                'mysql_null'        => TRUE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => FALSE,
-                'mysql_estrangeira' => FALSE, // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Porc_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Porc({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Entrada'),
                     'Mascara'           => 'Porc',
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(

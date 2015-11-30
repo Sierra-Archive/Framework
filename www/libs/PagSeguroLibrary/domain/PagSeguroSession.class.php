@@ -59,7 +59,7 @@ class PagSeguroSession
         $session = array();
         $session['id'] = $this->id;
 
-        $session = "Session: " . var_export($session, TRUE);
+        $session = "Session: " . var_export($session, true);
 
         return $session;
     }

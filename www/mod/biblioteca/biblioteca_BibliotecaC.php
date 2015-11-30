@@ -15,31 +15,31 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'biblioteca/Biblioteca/Bibliotecas');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Biblioteca($true= TRUE ) {
+    static function Endereco_Biblioteca($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Biblioteca'),'biblioteca/Biblioteca/Bibliotecas');
         } else {
             $_Controle->Tema_Endereco(__('Biblioteca'));
         }
     }
-    public function Download($id, $raiz = FALSE) {
+    public function Download($id, $raiz = false) {
         $resultado_arquivo = $this->_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$id),1);
-        if ($resultado_arquivo === FALSE || !is_object($resultado_arquivo)) {
+        if ($resultado_arquivo === false || !is_object($resultado_arquivo)) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Arquivo não existe:'. $raiz,404);
         } else if ($resultado_arquivo->tipo==1) {
             return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não pode baixar:'. $raiz,404);
         }
         $endereco = 'bibliotecas'.DS.strtolower($resultado_arquivo->arquivo.'.'.$resultado_arquivo->ext);
         self::Export_Download($endereco, $resultado_arquivo->nome.'.'.$resultado_arquivo->ext);
-        if ($raiz !== FALSE) {
+        if ($raiz !== false) {
             $this->Bibliotecas($raiz);
         }
     }
@@ -51,21 +51,21 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $Visual     = &$Registro->_Visual;
         $table = Array();
         $i = 0;
-        if ($raiz !== FALSE && $raiz!=0) {
+        if ($raiz !== false && $raiz!=0) {
             $resultado_pasta = $Modelo->db->Sql_Select('Biblioteca', Array('id'=>$raiz),1);
-            if ($resultado_pasta === FALSE) {
+            if ($resultado_pasta === false) {
                 return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
             }
-            $table['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt'.__('Voltar para Diretório Anterior').'  /></a>';
-            $table['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
-            $table['Descrição'][$i]        = '';
-            $table['Tamanho'][$i]          = '';
-            $table['Criador'][$i]          = '';
-            $table['Data'][$i]  = '';
-            $table['Funções'][$i]          = '';
+            $table[__('Tipo')][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao=""><img src="'.WEB_URL.'img'.US.'arquivos'.US.'pastavoltar.png" alt="'.__('Voltar para Diretório Anterior').'  /></a>';
+            $table[__('Nome')][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$resultado_pasta->parent.'" border="1" class="lajax" data-acao="">Voltar para a Pasta Anterior</a>';
+            $table[__('Descrição')][$i]        = '';
+            $table[__('Tamanho')][$i]          = '';
+            $table[__('Criador')][$i]          = '';
+            $table[__('Data')][$i]  = '';
+            $table[__('Funções')][$i]          = '';
             ++$i;
         }
-        if ($bibliotecas !== FALSE) {
+        if ($bibliotecas !== false) {
             // Percorre Bibliotecas
             if (is_object($bibliotecas)) $bibliotecas = Array(0=>$bibliotecas);
             reset($bibliotecas);
@@ -103,26 +103,26 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                     }
                     
                     if ($valor->tipo==1) {
-                        $table['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt'.__('Abrir Diretório').'  /></a>';
-                        $table['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
+                        $table[__('Tipo')][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao=""><img src="'.$foto.'" alt="'.__('Abrir Diretório').'  /></a>';
+                        $table[__('Nome')][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Bibliotecas/'.$valor->id.'/" border="1" class="lajax" data-acao="">'.$valor->nome.'</a>';
                     } else {
-                        $table['Tipo'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Extensão ').$tipo.'" /></a>';
-                        $table['Nome'][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
+                        $table[__('Tipo')][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK"><img src="'.$foto.'" alt="'.__('Fazer Download de Extensão ').$tipo.'" /></a>';
+                        $table[__('Nome')][$i]             = '<a href="'.URL_PATH.'biblioteca/Biblioteca/Download/'.$valor->id.'/" border="1" target="_BLANK">'.$valor->nome.'</a>';
                     }
-                    $table['Descrição'][$i]        = $valor->obs;
-                    $table['Tamanho'][$i]          = \Framework\App\Sistema_Funcoes::Tranf_Byte_Otimizado($tamanho);
-                    $table['Criador'][$i]          = $valor->usuario2;
-                    $table['Data'][$i]             = $valor->log_date_add;
+                    $table[__('Descrição')][$i]        = $valor->obs;
+                    $table[__('Tamanho')][$i]          = \Framework\App\Sistema_Funcoes::Tranf_Byte_Otimizado($tamanho);
+                    $table[__('Criador')][$i]          = $valor->usuario2;
+                    $table[__('Data')][$i]             = $valor->log_date_add;
                     
                     if ($valor->tipo==1) {
-                        $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Pasta')        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
+                        $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Pasta')        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
                                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Pasta')       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar essa pasta ?')), $permissionDelete);
                     } else {
-                        $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array(__('Download de Arquivo')   ,'biblioteca/Biblioteca/Download/'.$valor->id    , ''), $perm_download).
+                        $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Baixar'     ,Array(__('Download de Arquivo')   ,'biblioteca/Biblioteca/Download/'.$valor->id    , ''), $perm_download).
                                                           $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Arquivo')        ,'biblioteca/Biblioteca/Bibliotecas_Edit/'.$valor->id.'/'.$raiz    , ''), $permissionEdit).
                                                           $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Arquivo')       ,'biblioteca/Biblioteca/Bibliotecas_Del/'.$valor->id.'/'.$raiz     ,__('Deseja realmente deletar esse arquivo ?')), $permissionDelete);
                     }
-                    $function .= $table['Funções'][$i];
+                    $function .= $table[__('Funções')][$i];
                     ++$i;
                 }
             }
@@ -131,7 +131,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             unset($table['Funções']);
         }
         // Desconta Primeiro Registro
-        if ($raiz !== FALSE && $raiz!=0) {
+        if ($raiz !== false && $raiz!=0) {
             $i = $i-1;
         }
         // Retorna List
@@ -140,10 +140,10 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Bibliotecas($raiz = FALSE) {
-        self::Endereco_Biblioteca(FALSE);
+    public function Bibliotecas($raiz = false) {
+        self::Endereco_Biblioteca(false);
         // Bloca o Upload
         $this->_Visual->Blocar(
             $this->_Visual->Upload_Janela(
@@ -170,19 +170,19 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Listagem de Biblíotecas'));
     }
-    private function Bibliotecas_Processar($raiz = FALSE) {
+    private function Bibliotecas_Processar($raiz = false) {
         return self::Bibliotecas_Processar_Static($raiz);
     }
-    private static function Bibliotecas_Processar_Static($raiz = FALSE) {
+    private static function Bibliotecas_Processar_Static($raiz = false) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $_Visual = &$Registro->_Visual;
         // Biblioteca
         $endereco = (string) '';
         $html     = (string) '';
-        if ($raiz !== FALSE && $raiz!=='0' && $raiz!==0) {
+        if ($raiz !== false && $raiz!=='0' && $raiz!==0) {
             $resultado_pasta = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$raiz.'\'',1);
-            if ($resultado_pasta === FALSE) {
+            if ($resultado_pasta === false) {
                 return _Sistema_erroControle::Erro_Fluxo('Essa Pasta não existe:'. $raiz,404);
             } else if ($resultado_pasta->tipo!=1) {
                 return _Sistema_erroControle::Erro_Fluxo('Não é uma pasta:'. $raiz,404);
@@ -193,7 +193,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                             $resultado_pasta->nome.'</a> / '.$endereco;
             while (is_int($enderecopai) && $enderecopai!=0) {
                 $resultado_pasta2 = $_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$enderecopai.'\'',1);
-                if ($resultado_pasta2 === FALSE) {
+                if ($resultado_pasta2 === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Pasta Pai não existe:'. $enderecopai,404);
                 } else if ($resultado_pasta->tipo!=1) {
                     return _Sistema_erroControle::Erro_Fluxo('O pai Não é uma pasta:'. $enderecopai,404);
@@ -219,23 +219,23 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'biblioteca/Biblioteca/Bibliotecas/'.$raiz,
             )
         )));
         $bibliotecas = $_Modelo->db->Sql_Select('Biblioteca', $where);
-        if ($bibliotecas !== FALSE && !empty($bibliotecas) || $raiz !== FALSE) {
+        if ($bibliotecas !== false && !empty($bibliotecas) || $raiz !== false) {
             list($table, $i) = self::Bibliotecas_Tabela($bibliotecas, $raiz);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, $titulo);
             } else {
                 $html .= $_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
-                    FALSE,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // true -> Add ao Bloco, false => Retorna html
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'asc'
@@ -248,19 +248,19 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $html .= '<center><b><font color="#FF0000" size="5">'.__('Nenhum Arquivo/Pasta').'</font></b></center>';            
         }*/
         
-        $table_colunas = Array();
+        $tableColumns = Array();
 
-        $table_colunas[] = __('Tipo');
-        $table_colunas[] = __('Extensão');
-        $table_colunas[] = __('Nome');
-        $table_colunas[] = __('Descrição');
-        $table_colunas[] = __('Tamanho');
-        $table_colunas[] = __('Criador');
-        $table_colunas[] = __('Data');
-        $table_colunas[] = __('End. do Arquivo');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Tipo');
+        $tableColumns[] = __('Extensão');
+        $tableColumns[] = __('Nome');
+        $tableColumns[] = __('Descrição');
+        $tableColumns[] = __('Tamanho');
+        $tableColumns[] = __('Criador');
+        $tableColumns[] = __('Data');
+        $tableColumns[] = __('End. do Arquivo');
+        $tableColumns[] = __('Funções');
 
-        $html = $_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'biblioteca/Biblioteca/Bibliotecas/'.$raiz, '', FALSE, FALSE);
+        $html = $_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'biblioteca/Biblioteca/Bibliotecas/'.$raiz, '', false, false);
         
         $titulo = $endereco.' (<span id="DataTable_Contador">0</span>)';
         return Array($titulo, $html, $i);
@@ -268,7 +268,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
     /**
      * ADD SOMENTE PASTA
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Bibliotecas_Add($raiz = 0) {
         self::Endereco_Biblioteca();
@@ -295,7 +295,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * ADD SOMENTE PASTA
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Bibliotecas_Add2($raiz = 0) {
         $titulo     = __('Pasta Adicionada com Sucesso');
@@ -317,13 +317,13 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Bibliotecas_Edit($id, $raiz=0) {
         self::Endereco_Biblioteca();
         // Recupera Arquivo
         $resultado = $this->_Modelo->db->Sql_Select('Biblioteca', '{sigla}id=\''.$id.'\'',1);
-        if ($resultado === FALSE) {
+        if ($resultado === false) {
             return _Sistema_erroControle::Erro_Fluxo('Esse arquivo/pasta não existe:'. $raiz,404);
         }
         // Carrega Config
@@ -350,7 +350,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $this->_Visual->Blocar(\Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar,'html'));
         
         $this->Tema_Endereco($titulo1);
-        $this->_Visual->Json_Info_Update('Historico', TRUE);
+        $this->_Visual->Json_Info_Update('Historico', true);
         $this->_Visual->Json_Info_Update('Titulo', $titulo1);
         $this->_Visual->Bloco_Unico_CriaJanela($titulo2, '',10,'Sierra.Control_Form_Tratar($(\'#'.$formid.'\')[0]);');
         
@@ -461,7 +461,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Bibliotecas_Edit2($id, $raiz=0) {
         $titulo     = __('Editado com Sucesso');
@@ -476,7 +476,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Bibliotecas_Del($id, $raiz=0) {
     	$id = (int) $id;
@@ -484,7 +484,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $biblioteca = $this->_Modelo->db->Sql_Select('Biblioteca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($biblioteca);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -502,7 +502,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $this->Bibliotecas($raiz);
         
         $this->_Visual->Json_Info_Update('Titulo', 'Pasta/Arquivo deletado com Sucesso');
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
     /**
      * 
@@ -512,8 +512,8 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         $parent = (int) $parent;
         
         $dir = 'bibliotecas'.DS;
-        $ext = $this->Upload($dir, FALSE, FALSE);
-        if ($ext !== FALSE) {
+        $ext = $this->Upload($dir, false, false);
+        if ($ext !== false) {
             $arquivo = new \Biblioteca_DAO();
             $arquivo->parent        = $parent;
             $arquivo->ext           = \Framework\App\Sistema_Funcoes::Control_Arq_Ext($ext[0]);
@@ -524,7 +524,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $arquivo->usuario       = $this->_Acl->Usuario_GetID();
             $this->_Modelo->db->Sql_Insert($arquivo);
             $this->_Visual->Json_Info_Update('Titulo', __('Upload com Sucesso'));
-            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->_Visual->Json_Info_Update('Historico', false);
             // Atualiza Parent
             if ($parent!==0) {
                 self::Bibliotecas_AtualizaTamanho_Pai($parent);
@@ -539,7 +539,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $this->_Visual->Json_Info_Update('Titulo', __('Erro com Upload'));
-            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
     /**
@@ -550,21 +550,21 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
      * @param boolean $retornar Se Escreve ou retorna html
      * @return string
      */
-    static function Biblioteca_Dinamica($motivo, $motivoid, $camada, $retornar= TRUE ) {
-        $existe = FALSE;
-        if ($retornar==='false') $retornar = FALSE;
+    static function Biblioteca_Dinamica($motivo, $motivoid, $camada, $retornar= true ) {
+        $existe = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Biblioteca_Acesso', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
-            $existe = TRUE;
+            $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if ($existe === FALSE) {
+        if ($existe === false) {
             $html = self::Biblioteca_Dinamica_Add($motivo, $motivoid, $camada);
         } else {
-            /*list($titulo, $html, $i)*/$html = self::Bibliotecas_Processar_Static($resultado->biblioteca, FALSE);
+            /*list($titulo, $html, $i)*/$html = self::Bibliotecas_Processar_Static($resultado->biblioteca, false);
             $html = '<span id="biblioteca_arquivos_mostrar">'.$html[1].'</span>'.
                     $Registro->_Visual->Upload_Janela(
                         'biblioteca',
@@ -578,7 +578,7 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
             $this->_Visual->Bloco_Unico_CriaJanela($titulo);*/
         }
         
-        if ($retornar === TRUE) {
+        if ($retornar === true) {
             return $html;
         } else {
             $conteudo = array(
@@ -601,13 +601,13 @@ class biblioteca_BibliotecaControle extends biblioteca_Controle
         self::DAO_Campos_Retira($campos, 'motivo');
         self::DAO_Campos_Retira($campos, 'motivoid');
         // Chama Formulario
-       return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, FALSE,'html', FALSE);
+       return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, false,'html', false);
     }
     public function Biblioteca_Dinamica_Add2($motivo, $motivoid, $camada) {
         $resultado = $this->_Modelo->db->Sql_Select('Biblioteca_Acesso', '{sigla}motivo=\''.$motivo.'\' AND {sigla}motivoid=\''.$motivoid.'\'',1);
         if (is_object($resultado)) {
-            biblioteca_BibliotecaControle::Biblioteca_Dinamica($motivo, $motivoid, $camada, FALSE);
-            return TRUE;
+            biblioteca_BibliotecaControle::Biblioteca_Dinamica($motivo, $motivoid, $camada, false);
+            return true;
         }
         $titulo     = __('Conexão de Pasta Feita com Sucesso');
         $dao        = 'Biblioteca_Acesso';

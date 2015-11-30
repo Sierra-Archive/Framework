@@ -40,8 +40,8 @@ class gettext_reader {
    //private:
   var $BYTEORDER = 0;        // 0: low endian, 1: big endian
   var $STREAM = NULL;
-  var $short_circuit = FALSE;
-  var $enable_cache = FALSE;
+  var $short_circuit = false;
+  var $enable_cache = false;
   var $originals = NULL;      // offset of original table
   var $translations = NULL;    // offset of translation table
   var $pluralheader = NULL;    // cache header field for plural forms
@@ -98,10 +98,10 @@ class gettext_reader {
    * @param object Reader the StreamReader object
    * @param boolean enable_cache Enable or disable caching of strings (default on)
    */
-  function gettext_reader($Reader, $enable_cache = TRUE) {
+  function gettext_reader($Reader, $enable_cache = true) {
     // If there isn't a StreamReader, turn on short circuit mode.
     if (! $Reader || isset($Reader->error) ) {
-      $this->short_circuit = TRUE;
+      $this->short_circuit = true;
       return;
     }
 
@@ -119,7 +119,7 @@ class gettext_reader {
       $this->BYTEORDER = 0;
     } else {
       $this->error = 1; // not MO file
-      return FALSE;
+      return false;
     }
 
     // FIXME: Do we care about revision? We should.
@@ -410,7 +410,7 @@ class gettext_reader {
   function pgettext($context, $msgid) {
     $key = $context . chr(4) . $msgid;
     $ret = $this->translate($key);
-    if (strpos($ret, "\004") !== FALSE) {
+    if (strpos($ret, "\004") !== false) {
       return $msgid;
     } else {
       return $ret;
@@ -420,7 +420,7 @@ class gettext_reader {
   function npgettext($context, $singular, $plural, $number) {
     $key = $context . chr(4) . $singular;
     $ret = $this->ngettext($key, $plural, $number);
-    if (strpos($ret, "\004") !== FALSE) {
+    if (strpos($ret, "\004") !== false) {
       return $singular;
     } else {
       return $ret;

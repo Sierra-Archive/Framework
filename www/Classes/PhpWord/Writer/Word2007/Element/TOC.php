@@ -45,12 +45,12 @@ class TOC extends AbstractElement
         }
 
         $titles = $element->getTitles();
-        $writeFieldMark = TRUE;
+        $writeFieldMark = true;
 
         foreach ($titles as $title) {
             $this->writeTitle($xmlWriter, $element, $title, $writeFieldMark);
             if ($writeFieldMark) {
-                $writeFieldMark = FALSE;
+                $writeFieldMark = false;
             }
         }
 

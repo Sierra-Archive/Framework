@@ -18,7 +18,7 @@ class categoria_categoriaModelo extends categoria_Modelo
      * @return int
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Categorias_alterar($id, $nome, $parent, $tipo) {
         global $config;
@@ -73,7 +73,7 @@ class categoria_categoriaModelo extends categoria_Modelo
      * @return 1
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Categorias_inserir($nome, $parent, $tipo, $subtab='') {
         global $config;

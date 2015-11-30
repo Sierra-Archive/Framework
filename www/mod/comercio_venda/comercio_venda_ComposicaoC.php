@@ -13,7 +13,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -30,17 +30,17 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Main() {
-        return FALSE;
+        return false;
     }
-    static function Endereco_Composicao($true= TRUE ) {
+    static function Endereco_Composicao($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Cardápio');
         $link = 'comercio_venda/Composicao/Composicoes';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,10 +49,10 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Composicoes($export = FALSE) {
-        self::Endereco_Composicao(FALSE);
+    public function Composicoes($export = false) {
+        self::Endereco_Composicao(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -62,9 +62,9 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'comercio_venda/Composicao/Composicoes',
             )
         )));
@@ -72,7 +72,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $composicoes = $this->_Modelo->db->Sql_Select('Comercio_Venda_Composicao');
         $produtos_usados = $this->_Modelo->db->Sql_Select('Comercio_Venda_Composicao_Produtos');
         $produtos_usados_array = Array();
-        if ($produtos_usados !== FALSE && !empty($produtos_usados)) {
+        if ($produtos_usados !== false && !empty($produtos_usados)) {
             if (is_object($produtos_usados)) $produtos_usados = Array(0=>$produtos_usados);
             reset($produtos_usados);
             foreach ($produtos_usados as $indice=>&$valor) {
@@ -84,30 +84,30 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
                 $produtos_usados_array[$valor->composicao] .= '<b>'.$valor->produto2.'</b> (x'.$valor->qnt.')';
             }
         }
-        if ($composicoes !== FALSE && !empty($composicoes)) {
+        if ($composicoes !== false && !empty($composicoes)) {
             if (is_object($composicoes)) $composicoes = Array(0=>$composicoes);
             reset($composicoes);
             foreach ($composicoes as $indice=>&$valor) {
-                $table['#Id'][$i]       = '#'.$valor->id;
-                if ($valor->foto==='' || $valor->foto === FALSE) {
+                $table[__('#Id')][$i]       = '#'.$valor->id;
+                if ($valor->foto==='' || $valor->foto === false) {
                     $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
                 } else {
                     $foto = $valor->foto;
                 }
-                $table['Foto'][$i]      = '<img alt="'.__('Foto do Item do Cardápio').'" src="'.$foto.'" style="max-width:100px;" />';
-                $table['Nome'][$i]      = $valor->nome;
-                $table['Descrição'][$i] = $valor->descricao;
+                $table[__('Foto')][$i]      = '<img alt="'.__('Foto do Item do Cardápio').'" src="'.$foto.'" style="max-width:100px;" />';
+                $table[__('Nome')][$i]      = $valor->nome;
+                $table[__('Descrição')][$i] = $valor->descricao;
                 if (isset($produtos_usados_array[$valor->id])) {
-                    $table['Produtos Usados'][$i] = $produtos_usados_array[$valor->id];
+                    $table[__('Produtos Usados')][$i] = $produtos_usados_array[$valor->id];
                 } else {
-                    $table['Produtos Usados'][$i] = __('Nenhum');
+                    $table[__('Produtos Usados')][$i] = __('Nenhum');
                 }
-                $table['Preço'][$i]     = $valor->preco;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Item do Cardápio'        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Item do Cardápio'       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,__('Deseja realmente deletar esse item do Cardápio ?')));
+                $table[__('Preço')][$i]     = $valor->preco;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Item do Cardápio')        ,'comercio_venda/Composicao/Composicoes_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Item do Cardápio')       ,'comercio_venda/Composicao/Composicoes_Del/'.$valor->id.'/'     ,__('Deseja realmente deletar esse item do Cardápio ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Comercio Vendas - Cardápio');
             } else {
                 $this->_Visual->Show_Tabela_DataTable($table);
@@ -125,10 +125,10 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Composicoes_Add() {
-        self::Endereco_Composicao(TRUE);
+        self::Endereco_Composicao(true);
         // Carrega Config
         $titulo1    = __('Adicionar Cardápio');
         $titulo2    = __('Salvar Cardápio');
@@ -144,7 +144,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Composicoes_Add2() {
         $titulo     = __('Cardápio Adicionado com Sucesso');
@@ -159,10 +159,10 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Composicoes_Edit($id) {
-        self::Endereco_Composicao(TRUE);
+        self::Endereco_Composicao(true);
         // Carrega Config
         $titulo1    = 'Editar Cardápio (#'.$id.')';
         $titulo2    = __('Alteração de Cardápio');
@@ -178,7 +178,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Composicoes_Edit2($id) {
         $titulo     = __('Cardápio Editado com Sucesso');
@@ -194,7 +194,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Composicoes_Del($id) {
         
@@ -204,7 +204,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Venda_Composicao', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -222,7 +222,7 @@ class comercio_venda_ComposicaoControle extends comercio_venda_Controle
         $this->Composicoes();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Cardápio deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

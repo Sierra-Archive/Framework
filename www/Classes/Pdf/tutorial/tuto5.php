@@ -9,7 +9,7 @@ function LoadData($file)
 	// Read file lines
 	$lines = file($file);
 	$data = array();
-	foreach($lines as $line)
+	foreach ($lines as $line)
 		$data[] = explode(';',trim($line));
 	return $data;
 }
@@ -18,13 +18,13 @@ function LoadData($file)
 function BasicTable($header, $data)
 {
 	// Header
-	foreach($header as $col)
+	foreach ($header as $col)
 		$this->Cell(40,7, $col,1);
 	$this->Ln();
 	// Data
-	foreach($data as $row)
+	foreach ($data as $row)
 	{
-		foreach($row as $col)
+		foreach ($row as $col)
 			$this->Cell(40,6, $col,1);
 		$this->Ln();
 	}
@@ -40,7 +40,7 @@ function ImprovedTable($header, $data)
 		$this->Cell($w[$i],7, $header[$i],1,0,'C');
 	$this->Ln();
 	// Data
-	foreach($data as $row)
+	foreach ($data as $row)
 	{
 		$this->Cell($w[0],6, $row[0],'LR');
 		$this->Cell($w[1],6, $row[1],'LR');
@@ -64,15 +64,15 @@ function FancyTable($header, $data)
 	// Header
 	$w = array(40, 35, 40, 45);
 	for($i=0;$i<count($header);$i++)
-		$this->Cell($w[$i],7, $header[$i],1,0,'C',TRUE);
+		$this->Cell($w[$i],7, $header[$i],1,0,'C',true);
 	$this->Ln();
 	// Color and font restoration
 	$this->SetFillColor(224,235,255);
 	$this->SetTextColor(0);
 	$this->SetFont('');
 	// Data
-	$fill = FALSE;
-	foreach($data as $row)
+	$fill = false;
+	foreach ($data as $row)
 	{
 		$this->Cell($w[0],6, $row[0],'LR',0,'L', $fill);
 		$this->Cell($w[1],6, $row[1],'LR',0,'L', $fill);

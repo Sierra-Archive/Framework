@@ -10,7 +10,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -24,13 +24,13 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
-        return FALSE;
+        return false;
     }
-    protected function Endereco_Modulo($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Modulo($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Modulos'),'Desenvolvimento/Framework/Modulos');
         } else {
             $this->Tema_Endereco(__('Modulos'));
@@ -44,11 +44,11 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         if (is_object($modulos)) $modulos = Array(0=>$modulos);
         reset($modulos);
         foreach ($modulos as $indice=>&$valor) {
-            $table['#Id'][$i]          =   '#'.$valor->id;
-            $table['Submodulo'][$i]    =   $valor->submodulo2;
-            $table['Nome'][$i]         =   $valor->nome;
-            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Modulo'        ,'Desenvolvimento/Framework/Modulos_Edit/'.$valor->id.'/'    , '')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Modulo'       ,'Desenvolvimento/Framework/Modulos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Modulo ?'));
+            $table[__('#Id')][$i]          =   '#'.$valor->id;
+            $table[__('Submodulo')][$i]    =   $valor->submodulo2;
+            $table[__('Nome')][$i]         =   $valor->nome;
+            $table[__('Funções')][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Modulo')        ,'Desenvolvimento/Framework/Modulos_Edit/'.$valor->id.'/'    , '')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Modulo')       ,'Desenvolvimento/Framework/Modulos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Modulo ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -56,10 +56,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Modulos($export = FALSE) {
-        $this->Endereco_Modulo(FALSE);
+    public function Modulos($export = false) {
+        $this->Endereco_Modulo(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -69,17 +69,17 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Desenvolvimento/Framework/Modulos',
             )
         )));
         // Query
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo');
-        if ($modulos !== FALSE && !empty($modulos)) {
+        if ($modulos !== false && !empty($modulos)) {
             list($table, $i) = self::Modulos_Tabela($modulos);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Modulos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -107,7 +107,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modulos_Add() {
         $this->Endereco_Modulo();
@@ -125,7 +125,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modulos_Add2() {
         $titulo     = __('Modulo Adicionado com Sucesso');
@@ -140,7 +140,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modulos_Edit($id) {
         $this->Endereco_Modulo();
@@ -159,7 +159,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modulos_Edit2($id) {
         $titulo     = __('Modulo Editado com Sucesso');
@@ -175,7 +175,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Modulos_Del($id) {
         
@@ -185,7 +185,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $modulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Modulo', '{sigla}id=\''.$id.'\'');
         $sucesso =  $this->_Modelo->db->Sql_Delete($modulos);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -203,12 +203,12 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $this->Modulos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Modulo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
     
-    protected function Endereco_Submodulo($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Submodulo($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Submodulos'),'Desenvolvimento/Framework/Submodulos');
         } else {
             $this->Tema_Endereco(__('Submodulos'));
@@ -222,11 +222,11 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         if (is_object($submodulos)) $submodulos = Array(0=>$submodulos);
         reset($submodulos);
         foreach ($submodulos as $indice=>&$valor) {
-            $table['#Id'][$i]          =   '#'.$valor->id;
-            $table['Modulo'][$i]       =   $valor->modulo2;
-            $table['Nome'][$i]         =   $valor->nome;
-            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Submodulo'        ,'Desenvolvimento/Framework/Submodulos_Edit/'.$valor->id.'/'    , '')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Submodulo'       ,'Desenvolvimento/Framework/Submodulos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Submodulo ?'));
+            $table[__('#Id')][$i]          =   '#'.$valor->id;
+            $table[__('Modulo')][$i]       =   $valor->modulo2;
+            $table[__('Nome')][$i]         =   $valor->nome;
+            $table[__('Funções')][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Submodulo')        ,'Desenvolvimento/Framework/Submodulos_Edit/'.$valor->id.'/'    , '')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Submodulo')       ,'Desenvolvimento/Framework/Submodulos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Submodulo ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -234,10 +234,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Submodulos($export = FALSE) {
-        $this->Endereco_Submodulo(FALSE);
+    public function Submodulos($export = false) {
+        $this->Endereco_Submodulo(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -247,17 +247,17 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Desenvolvimento/Framework/Submodulos',
             )
         )));
         // Query
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo');
-        if ($submodulos !== FALSE && !empty($submodulos)) {
+        if ($submodulos !== false && !empty($submodulos)) {
             list($table, $i) = self::Submodulos_Tabela($submodulos);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Submodulos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -285,7 +285,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Submodulos_Add() {
         $this->Endereco_Submodulo();
@@ -303,7 +303,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Submodulos_Add2() {
         $titulo     = __('Submodulo Adicionado com Sucesso');
@@ -318,7 +318,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Submodulos_Edit($id) {
         $this->Endereco_Submodulo();
@@ -337,7 +337,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Submodulos_Edit2($id) {
         $titulo     = __('Submodulo Editado com Sucesso');
@@ -353,7 +353,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Submodulos_Del($id) {
         
@@ -363,7 +363,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $submodulos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Submodulo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($submodulos);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -381,12 +381,12 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $this->Submodulos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Submodulo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     
     
-    protected function Endereco_Metodo($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Metodo($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Metodos'),'Desenvolvimento/Framework/Metodos');
         } else {
             $this->Tema_Endereco(__('Metodos'));
@@ -400,10 +400,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         if (is_object($metodos)) $metodos = Array(0=>$metodos);
         reset($metodos);
         foreach ($metodos as $indice=>&$valor) {
-            $table['#Id'][$i]          =   '#'.$valor->id;
-            $table['Nome'][$i]         =   $valor->nome;
-            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Metodo'        ,'Desenvolvimento/Framework/Metodos_Edit/'.$valor->id.'/'    , '')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Metodo'       ,'Desenvolvimento/Framework/Metodos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Metodo ?'));
+            $table[__('#Id')][$i]          =   '#'.$valor->id;
+            $table[__('Nome')][$i]         =   $valor->nome;
+            $table[__('Funções')][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Metodo')        ,'Desenvolvimento/Framework/Metodos_Edit/'.$valor->id.'/'    , '')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Metodo')       ,'Desenvolvimento/Framework/Metodos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Metodo ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -411,10 +411,10 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Metodos($export = FALSE) {
-        $this->Endereco_Metodo(FALSE);
+    public function Metodos($export = false) {
+        $this->Endereco_Metodo(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -424,17 +424,17 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Desenvolvimento/Framework/Metodos',
             )
         )));
         // Query
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo');
-        if ($metodos !== FALSE && !empty($metodos)) {
+        if ($metodos !== false && !empty($metodos)) {
             list($table, $i) = self::Metodos_Tabela($metodos);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Metodos');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -462,7 +462,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Metodos_Add() {
         $this->Endereco_Metodo();
@@ -480,7 +480,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Metodos_Add2() {
         $titulo     = __('Metodo Adicionado com Sucesso');
@@ -495,7 +495,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Metodos_Edit($id) {
         $this->Endereco_Metodo();
@@ -514,7 +514,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Metodos_Edit2($id) {
         $titulo     = __('Metodo Editado com Sucesso');
@@ -530,7 +530,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Metodos_Del($id) {
         
@@ -540,7 +540,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $metodos = $this->_Modelo->db->Sql_Select('Desenvolvimento_Framework_Metodo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($metodos);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -558,7 +558,7 @@ class Desenvolvimento_FrameworkControle extends Desenvolvimento_Controle
         $this->Metodos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Metodo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

@@ -115,7 +115,7 @@ and click [Update].</p>
 
 <div id=results class=hide>
 
-<h2>Minify URI</h2>
+<h2>'.__('Minify URI').'</h2>
 <p>Place this URI in your HTML to serve the files above combined, minified, compressed and
 with cache headers.</p>
 <table id=uriTable>
@@ -123,7 +123,7 @@ with cache headers.</p>
     <tr><th>HTML</th><td><input id=uriHtml type=text size=100 readonly></td></tr>
 </table>
 
-<h2>How to serve these files as a group</h2>
+<h2>'.__('How to serve these files as a group').'</h2>
 <p>For the best performance you can serve these files as a pre-defined group with a URI
 like: <code><span class=minRoot>/min/?</span>g=keyName</code></p>
 <p>To do this, add a line like this to /min/groupsConfig.php:</p>
@@ -137,7 +137,7 @@ like: <code><span class=minRoot>/min/?</span>g=keyName</code></p>
 </div>
 
 <div id=getBm>
-<h3>Find URIs on a Page</h3>
+<h3>'.__('Find URIs on a Page').'</h3>
 <p>You can use the bookmarklet below to fetch all CSS &amp; Javascript URIs from a page
 on your site. When you active it, this page will open in a new window with a list of
 available URIs to add.</p>
@@ -153,7 +153,7 @@ in your list, and move any others to the top of the first file in your list
 <p>If you desire, you can use Minify URIs in imports and they will not be touched
 by Minify. E.g. <code>@import "<span class=minRoot>/min/?</span>g=css2";</code></p>
 
-<h3>Debug Mode</h3>
+<h3>'.__('Debug Mode').'</h3>
 <p>When /min/config.php has <code>$min_allowDebugFlag = <strong>true</strong>;</code>
  you can get debug output by appending <code>&amp;debug</code> to a Minify URL, or
  by sending the cookie <code>minDebug=&lt;match&gt;</code>, where <code>&lt;match&gt;</code>
@@ -235,6 +235,6 @@ Minify::serve('Page', array(
         ,filemtime(dirname(__FILE__) . '/../config.php')
         ,filemtime(dirname(__FILE__) . '/../lib/Minify.php')
     )
-    ,'minifyAll' => TRUE
+    ,'minifyAll' => true
     ,'encodeOutput' => $encodeOutput
 ));

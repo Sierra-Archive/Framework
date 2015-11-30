@@ -50,7 +50,7 @@ class XMLReader
      */
     public function getDomFromZip($zipFile, $xmlFile)
     {
-        if (file_exists($zipFile) === FALSE) {
+        if (file_exists($zipFile) === false) {
             throw new Exception('Cannot find archive file.');
         }
 
@@ -59,8 +59,8 @@ class XMLReader
         $content = $zip->getFromName($xmlFile);
         $zip->close();
 
-        if ($content === FALSE) {
-            return FALSE;
+        if ($content === false) {
+            return false;
         } else {
             return $this->getDomFromString($content);
         }

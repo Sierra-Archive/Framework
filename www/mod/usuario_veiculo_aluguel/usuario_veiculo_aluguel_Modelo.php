@@ -10,7 +10,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -86,7 +86,7 @@ class usuario_veiculo_aluguel_Modelo extends \Framework\App\Modelo
             $veiculo = $campo->MARCA.' '.$campo->modelo.' '.$campo->cc.'cc';
         }
         if ($i==0) return 'Erro';
-        return  Array('Aluguel', $veiculo);
+        return  Array(__('Aluguel'), $veiculo);
     }
 }
 ?>

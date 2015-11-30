@@ -13,7 +13,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,18 +27,18 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Assunto/Assuntos/');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Assunto($true= TRUE ) {
+    static function Endereco_Assunto($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Assuntos');
         $link = 'usuario_mensagem/Assunto/Assuntos';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -47,17 +47,17 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Assuntos($export = FALSE) {
-        self::Endereco_Assunto(FALSE);
+    public function Assuntos($export = false) {
+        self::Endereco_Assunto(false);
         
         $table = Array(
-            'Setor', 'Nome', 'Tempo de Resposta', 'Funções'
+            __('Setor'), __('Nome'), __('Tempo de Resposta'),__('Funções')
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($table,'usuario_mensagem/Assunto/Assuntos');
         $titulo = __('Listagem de Assuntos').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add', 'nome'=>'Adicionar Assunto'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"usuario_mensagem/Assunto/Assuntos_Add",'icon'=>'add', 'nome' => __('Adicionar Assunto')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Assuntos'));
@@ -65,10 +65,10 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Assuntos_Add() {
-        self::Endereco_Assunto(TRUE);
+        self::Endereco_Assunto(true);
         // Carrega Config
         $titulo1    = __('Adicionar Assunto');
         $titulo2    = __('Salvar Assunto');
@@ -83,7 +83,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Assuntos_Add2() {
         $titulo     = __('Assunto Adicionado com Sucesso');
@@ -98,10 +98,10 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Assuntos_Edit($id) {
-        self::Endereco_Assunto(TRUE);
+        self::Endereco_Assunto(true);
         $id = (int) $id;
         // Carrega campos e retira os que nao precisam
         $campos = Usuario_Mensagem_Assunto_DAO::Get_Colunas();
@@ -124,7 +124,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Assuntos_Edit2($id) {
         
@@ -136,7 +136,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         // Atualiza
         $this->Assuntos();
         // Mensagem
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Assunto Alterado com Sucesso'),
@@ -152,14 +152,14 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);  
         //Json
         $this->_Visual->Json_Info_Update('Titulo', __('Assunto Editado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);    
+        $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Assuntos_Del($id) {
         
@@ -169,7 +169,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $assunto = $this->_Modelo->db->Sql_Select('Usuario_Mensagem_Assunto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($assunto);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -187,7 +187,7 @@ class usuario_mensagem_AssuntoControle extends usuario_mensagem_Controle
         $this->Assuntos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Assunto deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

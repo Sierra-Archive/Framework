@@ -10,7 +10,7 @@ class banner_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public $campos = Array();
     public function __construct() {
@@ -29,7 +29,7 @@ class banner_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function retorna_banners(&$banners, $categoria=0, $ativado=1) {
         $i = 0;
@@ -52,7 +52,7 @@ class banner_Modelo extends \Framework\App\Modelo
      * @return string
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function retorna_banner($id) {
         $id = (int) $id;

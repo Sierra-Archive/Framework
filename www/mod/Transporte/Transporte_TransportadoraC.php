@@ -5,12 +5,12 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     public function __construct() {
         parent::__construct();
     }
-    static function Endereco_Transportadora($true= TRUE ) {
+    static function Endereco_Transportadora($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Transportadoras');
         $link = 'Transporte/Transportadora/Transportadoras';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -19,11 +19,11 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Transporte/Transportadora/Transportadoras');
-        return FALSE;
+        return false;
     }
     static function Transportadoras_Tabela(&$transportadora) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -33,17 +33,17 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         if (is_object($transportadora)) $transportadora = Array(0=>$transportadora);reset($transportadora);
         $perm_view = $Registro->_Acl->Get_Permissao_Url('Transporte/Transportadora/Visualizar');
         foreach ($transportadora as &$valor) {                
-            $table['Id'][$i]           = '#'.$valor->id;
-            $table['Razão Social'][$i] = $valor->usuario2;
-            $table['Categoria'][$i]    = $valor->categoria2;
-            $table['Observação'][$i]   = $valor->obs;
-            $table['Visualizar'][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array('Visualizar'        ,'Transporte/Transportadora/Visualizar/'.$valor->id    , ''), $perm_view);
+            $table[__('Id')][$i]           = '#'.$valor->id;
+            $table[__('Razão Social')][$i] = $valor->usuario2;
+            $table[__('Categoria')][$i]    = $valor->categoria2;
+            $table[__('Observação')][$i]   = $valor->obs;
+            $table[__('Visualizar')][$i]   = $Visual->Tema_Elementos_Btn('Visualizar'     ,Array(__('Visualizar')        ,'Transporte/Transportadora/Visualizar/'.$valor->id    , ''), $perm_view);
             
             ++$i;
         }
         return Array($table, $i);
     }
-    public function Visualizar($id, $export = FALSE) {
+    public function Visualizar($id, $export = false) {
         
         
         $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora', 'TT.id=\''.((int) $id).'\'',1);
@@ -55,24 +55,24 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Transportadoras($export = FALSE) {
+    public function Transportadoras($export = false) {
         $i = 0;
-        self::Endereco_Transportadora(FALSE);
+        self::Endereco_Transportadora(false);
         $transportadora = $this->_Modelo->db->Sql_Select('Transporte_Transportadora');
         if (is_object($transportadora)) $transportadora = Array(0=>$transportadora);
-        if ($transportadora !== FALSE && !empty($transportadora)) {
+        if ($transportadora !== false && !empty($transportadora)) {
             list($table, $i) = self::Transportadoras_Tabela($transportadora);
             // SE exportar ou mostra em tabela
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Transportadoras');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -82,7 +82,7 @@ class Transporte_TransportadoraControle extends Transporte_Controle
             }
             unset($table);
         } else {
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 $mensagem = __('Nenhum Transportadora Cadastrada para exportar');
             } else {
                 $mensagem = __('Nenhum Transportadora Cadastrada');
@@ -97,29 +97,29 @@ class Transporte_TransportadoraControle extends Transporte_Controle
     /**
      * Painel Adminstrativo de Transportadoras
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Painel() {
-        return TRUE;
+        return true;
     }
-    static function Painel_Transportadora($camada, $retornar= TRUE ) {
-        $existe = FALSE;
-        if ($retornar==='false') $retornar = FALSE;
+    static function Painel_Transportadora($camada, $retornar= true ) {
+        $existe = false;
+        if ($retornar==='false') $retornar = false;
         // Verifica se Existe Conexao, se nao tiver abre o adicionar conexao, se nao, abre a pasta!
         $Registro = &\Framework\App\Registro::getInstacia();
         $resultado = $Registro->_Modelo->db->Sql_Select('Transporte_Transportadora', '{sigla}usuario=\''.$Registro->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
-            $existe = TRUE;
+            $existe = true;
         }
         
         // Dependendo se Existir Cria Formulario ou Lista arquivos
-        if ($existe === FALSE) {
-            $html = '<b>Ainda faltam insformações sobre vocês</b><br>'.self::Painel_Transportadora_Add($camada);
+        if ($existe === false) {
+            $html = '<b>'.__('Ainda faltam insformações sobre vocês').'</b><br>'.self::Painel_Transportadora_Add($camada);
         } else {
             $html = __('Painel');
         }
         
-        if ($retornar === TRUE) {
+        if ($retornar === true) {
             return $html;
         } else {
             $conteudo = array(
@@ -134,8 +134,8 @@ class Transporte_TransportadoraControle extends Transporte_Controle
                     Array(
                         'span'      =>      5,
                         'conteudo'  =>  Array(Array(
-                            'div_ext'   =>      FALSE,
-                            'title_id'  =>      FALSE,
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
                             'title'     =>      $titulo.' #'.$identificador->id,
                             'html'      =>      $html,
                         ),),
@@ -143,19 +143,19 @@ class Transporte_TransportadoraControle extends Transporte_Controle
                     Array(
                         'span'      =>      7,
                         'conteudo'  =>  Array(Array(
-                            'div_ext'   =>      FALSE,
-                            'title_id'  =>      FALSE,
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
                             'title'     =>      'Pasta da '.$titulo.' #'.$identificador->id.' na Transportadora',
                             'html'      =>      '<span id="proposta_'.$identificador->id.'">'.self::Painel_Transportadora('comercio_Proposta', $identificador->id,'proposta_'.$identificador->id).'</span>',
                         )/*,Array(
-                            'div_ext'   =>      FALSE,
-                            'title_id'  =>      FALSE,
+                            'div_ext'   =>      false,
+                            'title_id'  =>      false,
                             'title'     =>      'Sub-'.$tema,
                             'html'      =>      ' Aqui tem !',
                         ),*//*),
                     )
                 ));*/
-        return TRUE;
+        return true;
     }
     static protected function Painel_Transportadora_Add($camada) {
         // Carrega Config
@@ -168,13 +168,13 @@ class Transporte_TransportadoraControle extends Transporte_Controle
         // Remove Essas Colunas
         self::DAO_Campos_Retira($campos, 'usuario');
         // Chama Formulario
-       return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, FALSE,'html', FALSE);
+       return \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, false,'html', false);
     }
     public function Painel_Transportadora_Add2($camada) {
         $resultado = $this->_Modelo->db->Sql_Select('Transporte_Transportadora', '{sigla}usuario=\''.$this->_Acl->Usuario_GetID().'\'',1);
         if (is_object($resultado)) {
-            self::Painel_Transportadora($camada, FALSE);
-            return TRUE;
+            self::Painel_Transportadora($camada, false);
+            return true;
         }
         $titulo     = __('Dados Atualizados com Sucesso');
         $dao        = 'Transporte_Transportadora';

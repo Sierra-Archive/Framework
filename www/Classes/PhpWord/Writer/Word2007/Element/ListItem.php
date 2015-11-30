@@ -42,8 +42,8 @@ class ListItem extends AbstractElement
         $textObject = $element->getTextObject();
 
         $styleWriter = new ParagraphStyleWriter($xmlWriter, $textObject->getParagraphStyle());
-        $styleWriter->setWithoutPPR(TRUE);
-        $styleWriter->setIsInline(TRUE);
+        $styleWriter->setWithoutPPR(true);
+        $styleWriter->setIsInline(true);
 
         $xmlWriter->startElement('w:p');
 
@@ -61,7 +61,7 @@ class ListItem extends AbstractElement
 
         $xmlWriter->endElement(); // w:pPr
 
-        $elementWriter = new Text($xmlWriter, $textObject, TRUE);
+        $elementWriter = new Text($xmlWriter, $textObject, true);
         $elementWriter->write();
 
         $xmlWriter->endElement(); // w:p

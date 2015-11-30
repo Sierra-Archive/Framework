@@ -11,7 +11,7 @@ class usuario_mensagem_OrigemModelo extends usuario_mensagem_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,16 +27,16 @@ class usuario_mensagem_OrigemModelo extends usuario_mensagem_Modelo
         
         if ($permissionEdit && $permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Origem'        ,'usuario_mensagem/Origem/Origens_Edit/'.$d.'/'    , ''),TRUE).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     ,'Deseja realmente deletar essa Origem ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Origem')        ,'usuario_mensagem/Origem/Origens_Edit/'.$d.'/'    , ''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Origem')       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     , __('Deseja realmente deletar essa Origem ?')),true);
             };
         } else if ($permissionEdit) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Origem'        ,'usuario_mensagem/Origem/Origens_Edit/'.$d.'/'    , ''),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Origem')        ,'usuario_mensagem/Origem/Origens_Edit/'.$d.'/'    , ''),true);
             };
         } else if ($permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Origem'       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     ,'Deseja realmente deletar essa Origem ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Origem')       ,'usuario_mensagem/Origem/Origens_Del/'.$d.'/'     , __('Deseja realmente deletar essa Origem ?')),true);
             };
         } else {
             $function = function( $d, $row ) {

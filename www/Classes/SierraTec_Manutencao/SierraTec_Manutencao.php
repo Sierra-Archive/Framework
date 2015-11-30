@@ -53,7 +53,7 @@ class SierraTec_Manutencao {
             $this->Atualiza_Dependencia_Banco_De_Dados(CLASS_PATH)
         );
         $modulos = config_modulos();
-        foreach($modulos as &$valor) {
+        foreach ($modulos as &$valor) {
             /*var_dump($dependencia_dao);
             echo "\n\nProximo:".$valor;*/
             $dependencia_dao = array_merge($dependencia_dao, $this->Atualiza_Dependencia_Banco_De_Dados(MOD_PATH.$valor.DS));
@@ -143,7 +143,7 @@ class SierraTec_Manutencao {
         
         // Adiciona as COnstantes a Classe
         $tables = &\Framework\App\Conexao::$tables;
-        foreach($tables as &$valor) {
+        foreach ($tables as &$valor) {
             if (in_array($valor['nome'], $dependencia_dao_CONSTANTE)) {
                 //var_dump($valor['nome'], $valor['class']); echo "\n\n";
                 $dependencia_dao[$valor['class']] = $valor['class'];
@@ -189,7 +189,7 @@ class SierraTec_Manutencao {
      * @param type $config
      * @return type
      */
-    public function Alterar_Config($nome, $valor = FALSE, $config='config') {
+    public function Alterar_Config($nome, $valor = false, $config='config') {
         
         // Carrega CONFIG
         $arq = INI_PATH.SRV_NAME.DS.$config.'.php'; 
@@ -197,7 +197,7 @@ class SierraTec_Manutencao {
             chmod ($arq, 0777);
             $conteudo = file_get_contents($arq);
             // Caso valor seja falso, apenas retorna valor
-            if ($valor === FALSE) {
+            if ($valor === false) {
                 return $this->Cod_Atualiza_Constante($conteudo, $nome, $valor);
             } else {
                 // SE nao, pega o novo conteudo e altera no arquivo.
@@ -208,7 +208,7 @@ class SierraTec_Manutencao {
             file_put_contents($arq, $conteudo);
                     
             //Retorna
-            return TRUE;
+            return true;
         } else {
             $arquivo = fopen ($arq, 'w');
             if (is_int($valor)) {
@@ -315,11 +315,11 @@ class SierraTec_Manutencao {
      * @param type $novo Nome antigo
      * @param type $antigo Nome Novo
      */
-    public function Tranferencia_DB_Servidor($novo, $antigo = FALSE) {
+    public function Tranferencia_DB_Servidor($novo, $antigo = false) {
         $tables = &\Framework\App\Conexao::$tables;
-        foreach($tables as $indice=>&$valor) {
-            if ($valor['static'] === FALSE) {
-                if ($antigo !== FALSE) {
+        foreach ($tables as $indice=>&$valor) {
+            if ($valor['static'] === false) {
+                if ($antigo !== false) {
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\' WHERE servidor=\''.$antigo.'\'');
                 } else {
                     $this->_Conexao->query('UPDATE '.$indice.' SET servidor=\''.$novo.'\'');
@@ -340,13 +340,13 @@ class SierraTec_Manutencao {
             $qnt = Array();
             $qnt['deupau'] = 0;
             $sucesso = 0;
-            $foi = FALSE;
+            $foi = false;
             // Acrescentar Categoria em Todos os Financeiros
             $atualizar = Array();
-            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno', FALSE,0, ''/*,'motivo,motivoid,categoria'*/);
+            $financeiro = $this->_Conexao->Sql_Select('Financeiro_Pagamento_Interno', false,0, ''/*,'motivo,motivoid,categoria'*/);
             if (is_object($financeiro)) $financeiro = Array($financeiro);
             if (!empty($financeiro)) {
-                foreach($financeiro as $valor) {
+                foreach ($financeiro as $valor) {
                     $valor->categoria = (int) $valor->categoria;
                     if ($valor->motivo=='comercio_Estoque' && ($valor->categoria=='' || $valor->categoria==0 || $valor->categoria==NULL)) {
                         $valor_motivo = $this->_Conexao->Sql_Select('Comercio_Fornecedor_Material',Array('id'=>$valor->motivoid),1, '', 'categoria');
@@ -440,7 +440,7 @@ class SierraTec_Manutencao {
      * @param type $nome_Constante
      * @param type $alterarvalor
      */
-    private function Cod_Atualiza_Constante($codigo, $nome_Constante, $alterarvalor = FALSE) {
+    private function Cod_Atualiza_Constante($codigo, $nome_Constante, $alterarvalor = false) {
         // Procura CONSTANTES DE BANCO DE DADOS
         $achado = Array();
         $resultado = preg_match_all(
@@ -455,7 +455,7 @@ class SierraTec_Manutencao {
         // Caso nao tenha resultado
         if ($resultado == 0) {
             // Caso tenha valor, cria a constante
-            if ($alterarvalor !== FALSE) {
+            if ($alterarvalor !== false) {
                 if (is_bool($alterarvalor)) {
                     $resultado = 'true';
                 } else if ($alterarvalor==='false' || $alterarvalor==='falso') {
@@ -480,17 +480,17 @@ class SierraTec_Manutencao {
             $resultado = $achado[1][0];
             
             // CAso alterar valor seja falso, retorna no mesmo tipo e nao como string usando eval
-            if ($alterarvalor === FALSE) {
+            if ($alterarvalor === false) {
                 return eval('return '.$resultado.';');
             }
             
             // CAso seja inteiro, boleano ou string
-            if (strpos($resultado, '\'') !== FALSE || strtolower($resultado)=='null') {
+            if (strpos($resultado, '\'') !== false || strtolower($resultado)=='null') {
                 $tipo = 'string';
                 $resultado = '\''.$alterarvalor.'\'';
             } else if (strtolower($resultado)=='false' || strtolower($resultado)=='true') {
                 $tipo = 'boleano';
-                if ($alterarvalor === TRUE || $alterarvalor==='true') {
+                if ($alterarvalor === true || $alterarvalor==='true') {
                     $resultado = 'true';
                 } else if ($alterarvalor==='false' || $alterarvalor==='falso') {
                     $resultado = 'false';
@@ -535,7 +535,7 @@ class SierraTec_Manutencao {
         );
         $i = 0;
         if ($resultado >= 1) {
-            foreach($achado[2] as $indice=>$valor) {
+            foreach ($achado[2] as $indice=>$valor) {
                 if ($valor=='__construct') continue;
                 
                 //Verifica Privacidade
@@ -556,20 +556,20 @@ class SierraTec_Manutencao {
                 );
                 
                 if (isset($achado[3][$indice]) && $achado[3][$indice]!=='') {
-                    $argumentos = explode(', ', $achado[3][$indice]);
-                    foreach($argumentos as $valor2) {
+                    $argumentos = explode(',', $achado[3][$indice]);
+                    foreach ($argumentos as $valor2) {
                         $argumentos_item = explode('=', $valor2);
                         if (isset($argumentos_item[1])) {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
-                                'Opcional'      => TRUE,
+                                'Opcional'      => true,
                                 'Padrao'        => $argumentos_item[1]
                             );
                         } else {
                             $metodos[$i]['Args'][] = Array(
                                 'Nome'          => $valor,
-                                'Opcional'      => FALSE,
-                                'Padrao'        => FALSE
+                                'Opcional'      => false,
+                                'Padrao'        => false
                             );
                         }
                     }
@@ -588,7 +588,7 @@ class SierraTec_Manutencao {
     // BUsca Todas As Classes dentro de Um arquivo
     public function Cod_Busca_Classes() {
         $classes = Array();
-        foreach($classes as $valor) {
+        foreach ($classes as $valor) {
             $this->Cod_Busca_Classes_Metodos($valor);
         }
     }
@@ -599,8 +599,8 @@ class SierraTec_Manutencao {
     public function Cod_Busca_Classes_Metodos($cod) {
         $metodos = Array();
         //Procura DAO SENDO USADO
-        foreach($metodos as $valor) {
-            foreach($tables as $valor2) {
+        foreach ($metodos as $valor) {
+            foreach ($tables as $valor2) {
                 $this->Cod_Busca_Valor($valor, $valor2);
             }
             $this->Cod_Busca_ClassesUsadas($valor);

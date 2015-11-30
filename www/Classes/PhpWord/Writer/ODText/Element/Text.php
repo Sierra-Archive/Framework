@@ -41,7 +41,7 @@ class Text extends AbstractElement
 
         // @todo Commented for TextRun. Should really checkout this value
         // $fStyleIsObject = ($fontStyle instanceof Font) ? true : false;
-        $fStyleIsObject = FALSE;
+        $fStyleIsObject = false;
 
         if ($fStyleIsObject) {
             // Don't never be the case, because I browse all sections for cleaning all styles not declared

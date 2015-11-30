@@ -184,7 +184,7 @@ class FirePHP {
    * 
    * @var boolean
    */
-  protected $enabled = TRUE;
+  protected $enabled = true;
   
   /**
    * The object constructor
@@ -192,8 +192,8 @@ class FirePHP {
   function __construct() {
     $this->options['maxObjectDepth'] = 10;
     $this->options['maxArrayDepth'] = 20;
-    $this->options['useNativeJsonEncode'] = TRUE;
-    $this->options['includeLineNumbers'] = TRUE;
+    $this->options['useNativeJsonEncode'] = true;
+    $this->options['includeLineNumbers'] = true;
   }
     
   /**
@@ -211,8 +211,8 @@ class FirePHP {
    * @param boolean $AutoCreate
    * @return FirePHP
    */
-  public static function getInstance($AutoCreate = FALSE) {
-    if ($AutoCreate === TRUE && !self::$instance) {
+  public static function getInstance($AutoCreate = false) {
+    if ($AutoCreate === true && !self::$instance) {
       self::init();
     }
     return self::$instance;
@@ -230,7 +230,7 @@ class FirePHP {
   /**
    * Enable and disable logging to Firebug
    * 
-   * @param boolean $Enabled TRUE to enable, FALSE to disable
+   * @param boolean $Enabled true to enable, false to disable
    * @return void
    */
   public function setEnabled($Enabled) {
@@ -240,7 +240,7 @@ class FirePHP {
   /**
    * Check if logging is enabled
    * 
-   * @return boolean TRUE if enabled
+   * @return boolean true if enabled
    */
   public function getEnabled() {
     return $this->enabled;
@@ -265,8 +265,8 @@ class FirePHP {
    * Options:
    *  - maxObjectDepth: The maximum depth to traverse objects (default: 10)
    *  - maxArrayDepth: The maximum depth to traverse arrays (default: 20)
-   *  - useNativeJsonEncode: If true will use json_encode() (default: TRUE)
-   *  - includeLineNumbers: If true will include line numbers and filenames (default: TRUE)
+   *  - useNativeJsonEncode: If true will use json_encode() (default: true)
+   *  - includeLineNumbers: If true will include line numbers and filenames (default: true)
    * 
    * @param array $Options The options to be set
    * @return void
@@ -473,9 +473,9 @@ class FirePHP {
     /* Check if FirePHP is installed on client */
     if (!@preg_match_all('/\sFirePHP\/([\.|\d]*)\s?/si', $this->getUserAgent(), $m) ||
        !version_compare($m[1][0],'0.0.6', '>=')) {
-      return FALSE;
+      return false;
     }
-    return TRUE;    
+    return true;    
   }
  
   /**
@@ -483,13 +483,13 @@ class FirePHP {
    * 
    * @see http://www.firephp.org/Wiki/Reference/Fb
    * @param mixed $Object The variable to be logged
-   * @return true Return TRUE if message was added to headers, FALSE otherwise
+   * @return true Return true if message was added to headers, false otherwise
    * @throws Exception
    */
   public function fb($Object) {
   
     if (!$this->enabled) {
-      return FALSE;
+      return false;
     }
   
     if (headers_sent($filename, $linenum)) {
@@ -529,11 +529,11 @@ class FirePHP {
   
   
     if (!$this->detectClientExtension()) {
-      return FALSE;
+      return false;
     }
   
     $meta = array();
-    $skipFinalObjectEncode = FALSE;
+    $skipFinalObjectEncode = false;
   
     if ($Object instanceof Exception) {
 
@@ -547,7 +547,7 @@ class FirePHP {
          && isset($trace[0]['class'])
          && $trace[0]['class']=='FirePHP') {
            
-        $severity = FALSE;
+        $severity = false;
         switch($Object->getSeverity()) {
           case E_WARNING: $severity = 'E_WARNING'; break;
           case E_NOTICE: $severity = 'E_NOTICE'; break;
@@ -566,7 +566,7 @@ class FirePHP {
                         'Line'=>$Object->getLine(),
                         'Type'=>'trigger',
                         'Trace'=>$this->_escapeTrace(array_splice($trace,2)));
-        $skipFinalObjectEncode = TRUE;
+        $skipFinalObjectEncode = true;
       } else {
         $Object = array('Class'=>get_class($Object),
                         'Message'=>$Object->getMessage(),
@@ -574,7 +574,7 @@ class FirePHP {
                         'Line'=>$Object->getLine(),
                         'Type'=>'throw',
                         'Trace'=>$this->_escapeTrace($trace));
-        $skipFinalObjectEncode = TRUE;
+        $skipFinalObjectEncode = true;
       }
       $Type = self::EXCEPTION;
       
@@ -582,7 +582,7 @@ class FirePHP {
     if ($Type==self::TRACE) {
       
       $trace = debug_backtrace();
-      if (!$trace) return FALSE;
+      if (!$trace) return false;
       for( $i=0 ; $i<sizeof($trace) ; $i++ ) {
 
         if (isset($trace[$i]['class'])
@@ -611,7 +611,7 @@ class FirePHP {
                           'Args'=>isset($trace[$i]['args'])?$this->encodeObject($trace[$i]['args']):'',
                           'Trace'=>$this->_escapeTrace(array_splice($trace, $i+1)));
 
-          $skipFinalObjectEncode = TRUE;
+          $skipFinalObjectEncode = true;
           $meta['file'] = isset($trace[$i]['file'])?$this->_escapeTraceFile($trace[$i]['file']):'';
           $meta['line'] = isset($trace[$i]['line'])?$trace[$i]['line']:'';
           break;
@@ -627,7 +627,7 @@ class FirePHP {
         $Object = $this->encodeTable($Object);
       }
 
-      $skipFinalObjectEncode = TRUE;
+      $skipFinalObjectEncode = true;
       
     } else {
       if ($Type===null) {
@@ -726,7 +726,7 @@ class FirePHP {
 
   	$this->setHeader('X-Wf-1-Index', $this->messageIndex-1);
 
-    return TRUE;
+    return true;
   }
   
   /**
@@ -792,7 +792,7 @@ class FirePHP {
    * @return string|false
    */
   protected function getUserAgent() {
-    if (!isset($_SERVER['HTTP_USER_AGENT'])) return FALSE;
+    if (!isset($_SERVER['HTTP_USER_AGENT'])) return false;
     return $_SERVER['HTTP_USER_AGENT'];
   }
 
@@ -814,14 +814,14 @@ class FirePHP {
    * @param object $Object The object to be encoded
    * @return string The JSON string
    */
-  protected function jsonEncode($Object, $skipObjectEncode = FALSE)
+  protected function jsonEncode($Object, $skipObjectEncode = false)
   {
     if (!$skipObjectEncode) {
       $Object = $this->encodeObject($Object);
     }
     
     if (function_exists('json_encode')
-       && $this->options['useNativeJsonEncode'] !== FALSE) {
+       && $this->options['useNativeJsonEncode'] !== false) {
 
       return json_encode($Object);
     } else {
@@ -876,13 +876,13 @@ class FirePHP {
 
         $reflectionClass = new ReflectionClass($class);  
         $properties = array();
-        foreach( $reflectionClass->getProperties() as $property) {
+        foreach ( $reflectionClass->getProperties() as $property) {
           $properties[$property->getName()] = $property;
         }
             
         $members = (array)$Object;
             
-        foreach( $properties as $raw_name => $property ) {
+        foreach ( $properties as $raw_name => $property ) {
           
           $name = $raw_name;
           if ($property->isStatic()) {
@@ -911,7 +911,7 @@ class FirePHP {
             
             } else {
               if (method_exists($property,'setAccessible')) {
-                $property->setAccessible(TRUE);
+                $property->setAccessible(true);
                 $return[$name] = $this->encodeObject($property->getValue($Object), $ObjectDepth + 1, 1);
               } else
               if ($property->isPublic()) {
@@ -927,7 +927,7 @@ class FirePHP {
         
         // Include all members that are not defined in the class
         // but exist in the object
-        foreach( $members as $raw_name => $value ) {
+        foreach ( $members as $raw_name => $value ) {
           
           $name = $raw_name;
           
@@ -995,23 +995,23 @@ class FirePHP {
     for($i=0; $i<$len; $i++) {
         $c=ord($str[$i]);
         if ($c > 128) {
-            if (($c >= 254)) return FALSE;
+            if (($c >= 254)) return false;
             elseif ($c >= 252) $bits=6;
             elseif ($c >= 248) $bits=5;
             elseif ($c >= 240) $bits=4;
             elseif ($c >= 224) $bits=3;
             elseif ($c >= 192) $bits=2;
-            else return FALSE;
-            if (($i+$bits) > $len) return FALSE;
+            else return false;
+            if (($i+$bits) > $len) return false;
             while ($bits > 1) {
                 $i++;
                 $b=ord($str[$i]);
-                if ($b < 128 || $b > 191) return FALSE;
+                if ($b < 128 || $b > 191) return false;
                 $bits--;
             }
         }
     }
-    return TRUE;
+    return true;
   } 
 
   /**
@@ -1168,7 +1168,7 @@ class FirePHP {
 
                   $ord_var_c = ord($var{$c});
 
-                  switch (TRUE) {
+                  switch (true) {
                       case $ord_var_c == 0x08:
                           $ascii .= '\b';
                           break;
@@ -1290,13 +1290,13 @@ class FirePHP {
 
                   array_pop($this->json_objectStack);
 
-                  foreach($properties as $property) {
+                  foreach ($properties as $property) {
                       if ($property instanceof Exception) {
                           return $property;
                       }
                   }
 
-                  return '{' . join(', ', $properties) . '}';
+                  return '{' . join(',', $properties) . '}';
               }
 
               $this->json_objectStack[] = $var;
@@ -1306,13 +1306,13 @@ class FirePHP {
 
               array_pop($this->json_objectStack);
 
-              foreach($elements as $element) {
+              foreach ($elements as $element) {
                   if ($element instanceof Exception) {
                       return $element;
                   }
               }
 
-              return '[' . join(', ', $elements) . ']';
+              return '[' . join(',', $elements) . ']';
 
           case 'object':
               $vars = self::encodeObject($var);
@@ -1325,13 +1325,13 @@ class FirePHP {
 
               array_pop($this->json_objectStack);
               
-              foreach($properties as $property) {
+              foreach ($properties as $property) {
                   if ($property instanceof Exception) {
                       return $property;
                   }
               }
                      
-              return '{' . join(', ', $properties) . '}';
+              return '{' . join(',', $properties) . '}';
 
           default:
               return null;

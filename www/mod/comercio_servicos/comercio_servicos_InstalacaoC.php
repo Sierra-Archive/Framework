@@ -13,7 +13,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,52 +29,52 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio_servicos/Instalacao/Btu/');
-        return FALSE;
+        return false;
     }/*
-    static function Endereco_Ar($true= TRUE ) {
+    static function Endereco_Ar($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Adicional de Ar'),'comercio_servicos/Instalacao/Ar');
         } else {
             $_Controle->Tema_Endereco(__('Adicional de Ar'));
         }
     }
-    static function Endereco_Gas($true= TRUE ) {
+    static function Endereco_Gas($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Adicional de Gás'),'comercio_servicos/Instalacao/Gas');
         } else {
             $_Controle->Tema_Endereco(__('Adicional de Gás'));
         }
     }
-    static function Endereco_Linha($true= TRUE ) {
+    static function Endereco_Linha($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Adicional de Linha'),'comercio_servicos/Instalacao/Linha');
         } else {
             $_Controle->Tema_Endereco(__('Adicional de Linha'));
         }
     }*/
-    static function Endereco_Btu($true= TRUE ) {
+    static function Endereco_Btu($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Btu'),'comercio_servicos/Instalacao/Btu');
         } else {
             $_Controle->Tema_Endereco(__('Btu'));
         }
     }
-    static function Endereco_Suporte($true= TRUE ) {
+    static function Endereco_Suporte($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Suporte'),'comercio_servicos/Instalacao/Suporte');
         } else {
             $_Controle->Tema_Endereco(__('Suporte'));
@@ -83,20 +83,20 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Btu() {
-        self::Endereco_Btu(FALSE);
+        self::Endereco_Btu(false);
         
-        $table_colunas = Array();
+        $tableColumns = Array();
         
-        $table_colunas[] = __('Nome');
-        $table_colunas[] = __('Valor Equipamento');
-        $table_colunas[] = __('Valor Add de Gás');
-        $table_colunas[] = __('Valor Add de Linha');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Nome');
+        $tableColumns[] = __('Valor Equipamento');
+        $tableColumns[] = __('Valor Add de Gás');
+        $tableColumns[] = __('Valor Add de Linha');
+        $tableColumns[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio_servicos/Instalacao/Btu');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio_servicos/Instalacao/Btu');
         $titulo = 'Listagem de Btu / Equipamento';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Instalacao/Btu_Add",'icon'=>'add', 'nome'=>'Adicionar Btu / Equipamento'));
         
@@ -106,7 +106,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Btu_Add() {
         self::Endereco_Btu();
@@ -124,7 +124,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Btu_Add2() {
         $titulo     = __('Btu adicionado com Sucesso');
@@ -139,7 +139,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Btu_Edit($id) {
         self::Endereco_Btu();
@@ -158,7 +158,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Btu_Edit2($id) {
         $titulo     = __('Btu editado com Sucesso');
@@ -174,7 +174,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Btu_Del($id) {
         
@@ -184,7 +184,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Btu', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -202,24 +202,24 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $this->Btu();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Btu deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte() {
-        self::Endereco_Suporte(FALSE);
+        self::Endereco_Suporte(false);
         
-        $table_colunas = Array();
-        $table_colunas[] = __('Tipo');
-        $table_colunas[] = __('Valor');
-        $table_colunas[] = __('Funções');
+        $tableColumns = Array();
+        $tableColumns[] = __('Tipo');
+        $tableColumns[] = __('Valor');
+        $tableColumns[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio_servicos/Instalacao/Suporte');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio_servicos/Instalacao/Suporte');
         $titulo = __('Listagem de Suportes');
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add', 'nome'=>'Adicionar Suporte'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo.' (<span id="DataTable_Contador">0</span>)', '',10,Array("link"=>"comercio_servicos/Instalacao/Suporte_Add",'icon'=>'add', 'nome' => __('Adicionar Suporte')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Suportes'));
@@ -227,7 +227,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte_Add() {
         self::Endereco_Suporte();
@@ -245,7 +245,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte_Add2() {
         $titulo     = __('Suporte adicionado com Sucesso');
@@ -260,7 +260,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte_Edit($id) {
         self::Endereco_Suporte();
@@ -279,7 +279,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte_Edit2($id) {
         $titulo     = __('Suporte editado com Sucesso');
@@ -295,7 +295,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Suporte_Del($id) {
         
@@ -305,7 +305,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $setor = $this->_Modelo->db->Sql_Select('Comercio_Servicos_Suporte', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Deletado'),
@@ -323,7 +323,7 @@ class comercio_servicos_InstalacaoControle extends comercio_servicos_Controle
         $this->Suporte();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Suporte deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

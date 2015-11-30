@@ -56,7 +56,7 @@ class Row extends AbstractElement
     public function __construct($height = null, $style = null)
     {
         $this->height = $height;
-        $this->style = $this->setNewStyle(new RowStyle(), $style, TRUE);
+        $this->style = $this->setNewStyle(new RowStyle(), $style, true);
     }
 
     /**

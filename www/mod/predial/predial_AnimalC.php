@@ -15,18 +15,18 @@ class predial_AnimalControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Animal/Animais');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Animal($true= TRUE ) {
+    static function Endereco_Animal($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Animais');
         $link = 'predial/Animal/Animais';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -40,11 +40,11 @@ class predial_AnimalControle extends predial_Controle
         if (is_object($animais)) $animais = Array(0=>$animais);
         reset($animais);
         foreach ($animais as &$valor) {
-            $table['Bloco'][$i]            = $valor->bloco2;
-            $table['Apartamento'][$i]      = $valor->apart2;
-            $table['Nome'][$i]             = $valor->nome;
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Animal'        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    , '')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Animal'       ,'predial/Animal/Animais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Animal ?'));
+            $table[__('Bloco')][$i]            = $valor->bloco2;
+            $table[__('Apartamento')][$i]      = $valor->apart2;
+            $table[__('Nome')][$i]             = $valor->nome;
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Animal')        ,'predial/Animal/Animais_Edit/'.$valor->id.'/'    , '')).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Animal')       ,'predial/Animal/Animais_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Animal ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -52,10 +52,10 @@ class predial_AnimalControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Animais() {
-        self::Endereco_Animal(FALSE);
+        self::Endereco_Animal(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -65,15 +65,15 @@ class predial_AnimalControle extends predial_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Animal/Animais',
             )
         )));
         // Busca
         $animais = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal');
-        if ($animais !== FALSE && !empty($animais)) {
+        if ($animais !== false && !empty($animais)) {
             list($table, $i) = self::Animais_Tabela($animais);
             $this->_Visual->Show_Tabela_DataTable($table);
             unset($table);
@@ -89,7 +89,7 @@ class predial_AnimalControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Animais_Add() {
         self::Endereco_Animal();
@@ -107,7 +107,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Animais_Add2() {
         $titulo     = __('Animal Adicionado com Sucesso');
@@ -122,7 +122,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Animais_Edit($id) {
         self::Endereco_Animal();
@@ -141,7 +141,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Animais_Edit2($id) {
         $titulo     = __('Animal Editado com Sucesso');
@@ -157,7 +157,7 @@ class predial_AnimalControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Animais_Del($id) {
         
@@ -167,7 +167,7 @@ class predial_AnimalControle extends predial_Controle
         $animal = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Animal', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($animal);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -185,7 +185,7 @@ class predial_AnimalControle extends predial_Controle
         $this->Animais();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Animal deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

@@ -11,7 +11,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();
@@ -25,7 +25,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
         } else {
             $html .= '<div class="col-sm-12 bio">';
         }
-        $html .= '<h2>Dados da Proposta</h2>';
+        $html .= '<h2>'.__('Dados da Proposta').'</h2>';
     
         if ($proposta->idcliente2!=='') {
             $html .= '<p><label style="width:150px;">Cliente</label>: '.$proposta->idcliente2.'</p>';
@@ -84,7 +84,7 @@ class comercio_certificado_PropostaVisual extends comercio_certificado_Visual
         
         '<div class="space15"></div>';
         /*if ($proposta->obs!='') {
-            $html .= '<h2>Observação</h2>';
+            $html .= '<h2>'.__('Observação').'</h2>';
             $html .= '<p>'.$proposta->obs.'</p>';
         }
         $html .= '<div class="space15"></div>';*/

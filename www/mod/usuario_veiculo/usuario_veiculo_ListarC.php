@@ -13,7 +13,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -32,13 +32,13 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         //mostra veiculos
         $veiculos = Array();
-        $i = $this->_Modelo->retorna_veiculos($veiculos,TRUE);
-        foreach($veiculos as $indice=>&$valor) {
+        $i = $this->_Modelo->retorna_veiculos($veiculos,true);
+        foreach ($veiculos as $indice=>&$valor) {
             $this->_Visual->Blocar($this->_Visual->Show_Veiculos($valor));
             $this->_Visual->Bloco_Unico_CriaTitulo($indice.' ('.$i[$indice].')',2);
             $this->_Visual->Bloco_Unico_CriaConteudo(1);
@@ -135,7 +135,7 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
                 );
                 $this->_Visual->Json_IncluiTipo('Popup', $conteudo);
                 //$this->_Visual->Json_IncluiTipo('JavascriptInterno', $this->_Visual->Javascript_Executar());
-                //$this->_Visual->Javascript_Executar(FALSE);
+                //$this->_Visual->Javascript_Executar(false);
             }
         } else {
             $mensagens = array(
@@ -153,10 +153,10 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
         $form->Select_Novo('Veiculo', 'selectveiculos', 'selectveiculos');
         $form->Select_Opcao($nomeveiculo, $idveiculo,1);
         $form->Select_Fim();
-        $form->Input_Novo('Data Inicial', 'data_inicial', $datainicial,'text', 10, 'obrigatorio', '',TRUE); 
-        $form->Input_Novo('Data Final', 'data_final', $datafinal,'text', 10, 'obrigatorio', '',TRUE); 
-        $form->Input_Novo('Franquia', 'franquia', 'R$'.number_format($franquia, 2, ', ', '.'),'text', 30, 'inactive', '',TRUE);  
-        $form->Input_Novo('Valor', 'valor', 'R$'.number_format($valor, 2, ', ', '.'),'text', 30, 'inactive', '',TRUE); 
+        $form->Input_Novo(__('Data Inicial'), 'data_inicial', $datainicial,'text', 10, 'obrigatorio', '',true); 
+        $form->Input_Novo(__('Data Final'), 'data_final', $datafinal,'text', 10, 'obrigatorio', '',true); 
+        $form->Input_Novo(__('Franquia'), 'franquia', \Framework\App\Sistema_Funcoes::Tranf_Float_Real($franquia),'text', 30, 'inactive', '',true);  
+        $form->Input_Novo(__('Valor'), 'valor', \Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor),'text', 30, 'inactive', '',true); 
     }
      /**
      * Inserir
@@ -169,10 +169,10 @@ class usuario_veiculo_ListarControle extends usuario_veiculo_Controle
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function agendamento_inserir() {
-        if (!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return FALSE;
+        if (!isset($_POST["selectveiculos"]) || !isset($_POST["valor"]) || !isset($_POST["data_inicial"]) || !isset($_POST["data_final"])) return false;
         
         $veiculoid = (int) \Framework\App\Conexao::anti_injection($_POST["selectveiculos"]);
         $valor = \Framework\App\Conexao::anti_injection($_POST["valor"]);

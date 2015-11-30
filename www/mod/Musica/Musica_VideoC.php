@@ -15,24 +15,24 @@ class Musica_VideoControle extends Musica_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Video/Videos');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Video($true= TRUE, $artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
+    static function Endereco_Video($true= true, $artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($artista === FALSE) {
+        if ($artista === false) {
             $titulo = __('Todos os Videos');
             $link   = 'Musica/Video/Videos';
         } else {
-            if ($album !== FALSE) {
-                if ($musica !== FALSE) {
+            if ($album !== false) {
+                if ($musica !== false) {
                     Musica_MusicaControle::Endereco_Musica(true, $artista, $album);
                     $titulo = $musica->nome;
                     $link   = 'Musica/Video/Videos/'.$artista->id.'/'.$album->id.'/'.$musica->id;
@@ -47,16 +47,16 @@ class Musica_VideoControle extends Musica_Controle
                 $link   = 'Musica/Video/Videos/'.$artista->id;
             }
         }
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
     }
-    static function Videos_Tabela(&$videos, $artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
+    static function Videos_Tabela(&$videos, $artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
         $Registro   = &\Framework\App\Registro::getInstacia();
         $Modelo     = &$Registro->_Modelo;
         $Visual     = &$Registro->_Visual;
@@ -65,37 +65,37 @@ class Musica_VideoControle extends Musica_Controle
         if (is_object($videos)) $videos = Array(0=>$videos);
         reset($videos);
         foreach ($videos as &$valor) {
-            if ($artista !== FALSE && $artista!=0) {
-                if ($album !== FALSE && $album!=0) {
-                    if ($musica !== FALSE && $musica!=0) {
+            if ($artista !== false && $artista!=0) {
+                if ($album !== false && $album!=0) {
+                    if ($musica !== false && $musica!=0) {
                         $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
                         $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/'.$valor->musica.'/';
                     } else {
-                        $table['Musica'][$i]   = $valor->musica2;
+                        $table[__('Musica')][$i]   = $valor->musica2;
                         $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
                         $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/'.$valor->album.'/';
                     }
                 } else {
-                    $table['Album'][$i]     = $valor->album2;
-                    $table['Musica'][$i]   = $valor->musica2;
+                    $table[__('Album')][$i]     = $valor->album2;
+                    $table[__('Musica')][$i]   = $valor->musica2;
                     $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/'.$valor->artista.'/';
                     $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/'.$valor->artista.'/';
                 }
             } else {
-                $table['Artista'][$i]   = $valor->artista2;
-                $table['Album'][$i]     = $valor->album2;
-                $table['Musica'][$i]   = $valor->musica2;
+                $table[__('Artista')][$i]   = $valor->artista2;
+                $table[__('Album')][$i]     = $valor->album2;
+                $table[__('Musica')][$i]   = $valor->musica2;
                 $edit_url   = 'Musica/Video/Videos_Edit/'.$valor->id.'/';
                 $del_url    = 'Musica/Video/Videos_Del/'.$valor->id.'/';
             }
-            if ($valor->foto==='' || $valor->foto === FALSE) {
+            if ($valor->foto==='' || $valor->foto === false) {
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
             } else {
                 $foto = $valor->foto;
             }
-            $table['Foto'][$i]                         = '<img alt="'.__('Foto de Video').' src="'.$foto.'" style="max-width:100px;" />';
-            $table['Nome do Video'][$i]                = $valor->nome;
-            $table['Data Registrado no Sistema'][$i]   = $valor->log_date_add;
+            $table[__('Foto')][$i]                         = '<img alt="'.__('Foto de Video').'" src="'.$foto.'" style="max-width:100px;" />';
+            $table[__('Nome do Video')][$i]                = $valor->nome;
+            $table[__('Data Registrado no Sistema')][$i]   = $valor->log_date_add;
             $status                                     = $valor->status;
             $destaque                                     = $valor->destaque;
             if ($status!=1) {
@@ -105,7 +105,7 @@ class Musica_VideoControle extends Musica_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array('Visualizar Video'    ,'Musica/Video/Videos_Ver/'.$valor->id    , '', 'youtube', 'inverse')).
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Personalizado'   ,Array(__('Visualizar Video')    ,'Musica/Video/Videos_Ver/'.$valor->id    , '', 'youtube', 'inverse')).
                                             '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Video/Status/'.$valor->id.'/'    , '')).'</span>';
             if ($destaque==1) {
                 $destaque = 1;
@@ -114,9 +114,9 @@ class Musica_VideoControle extends Musica_Controle
                 $destaque = 0;
                 $texto = __('Não está em destaque');
             }
-            $table['Funções'][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Musica/Video/Destaques/'.$valor->id.'/'    , '')).'</span>'.            
-                                            $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Video'        , $edit_url    , '')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Video'       , $del_url     ,'Deseja realmente deletar essa Video ?'));
+            $table[__('Funções')][$i]      .= '<span id="destaques'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Destaque'.$destaque   ,Array($texto   ,'Musica/Video/Destaques/'.$valor->id.'/'    , '')).'</span>'.            
+                                            $Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Video')        , $edit_url    , '')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Video')       , $del_url     , __('Deseja realmente deletar essa Video ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -124,23 +124,23 @@ class Musica_VideoControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Videos($artista = FALSE, $album = FALSE, $musica = FALSE, $export = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0)  $musica     = FALSE;
-        if ($artista !== FALSE) {
+    public function Videos($artista = false, $album = false, $musica = false, $export = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0)  $musica     = false;
+        if ($artista !== false) {
             $artista = (int) $artista;
             if ($artista==0) {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
-                if ($artista_registro === FALSE) {
+                if ($artista_registro === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if ($artista_registro === FALSE) {
+                if ($artista_registro === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
@@ -148,33 +148,33 @@ class Musica_VideoControle extends Musica_Controle
                 'artista'   => $artista,
             );
             // Albuns
-            if ($album !== FALSE) {
+            if ($album !== false) {
                 $album = (int) $album;
                 if ($album==0) {
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array(),1,'id DESC');
-                    if ($album_registro === FALSE) {
+                    if ($album_registro === false) {
                         return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                     }
                     $album = $album_registro->id;
                 } else {
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$artista),1);
-                    if ($album_registro === FALSE) {
+                    if ($album_registro === false) {
                         return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                     }
                 }
                 $where['album'] = $album;
                 // Musicas
-                if ($musica !== FALSE) {
+                if ($musica !== false) {
                     $musica = (int) $musica;
                     if ($musica==0) {
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
-                        if ($musica_registro === FALSE) {
+                        if ($musica_registro === false) {
                             return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                         }
                         $musica = $musica_registro->id;
                     } else {
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array('id'=>$musica),1);
-                        if ($musica_registro === FALSE) {
+                        if ($musica_registro === false) {
                             return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                         }
                     }
@@ -183,20 +183,20 @@ class Musica_VideoControle extends Musica_Controle
                     $url_add = '/'.$artista.'/'.$album.'/'.$musica;
                     $erro = __('Nenhum Video dessa Musica');
                     $titulo = 'Listagem de Videos: '.$artista_registro->nome;
-                    self::Endereco_Video(FALSE, $artista_registro, $album_registro, $musica_registro);
+                    self::Endereco_Video(false, $artista_registro, $album_registro, $musica_registro);
                 } else {
                     $titulo_add = 'Adicionar novo Video ao album '.$album_registro->nome;
                     $url_add = '/'.$artista.'/'.$album.'/false';
                     $erro = __('Nenhum Video desse Album');
                     $titulo = 'Listagem de Videos: '.$artista_registro->nome;
-                    self::Endereco_Video(FALSE, $artista_registro, $album_registro, FALSE);
+                    self::Endereco_Video(false, $artista_registro, $album_registro, false);
                 }
             } else {
                 $titulo_add = 'Adicionar novo Video a '.$artista_registro->nome;
                 $url_add = '/'.$artista.'/false/false';
                 $erro = __('Nenhum Video nesse Artista');
                 $titulo = 'Listagem de Videos: '.$artista_registro->nome;
-                self::Endereco_Video(FALSE, $artista_registro, FALSE, FALSE);
+                self::Endereco_Video(false, $artista_registro, false, false);
             }
         } else {
             $titulo_add = __('Adicionar novo Video');
@@ -204,7 +204,7 @@ class Musica_VideoControle extends Musica_Controle
             $erro = __('Nenhum Video de nenhum Artista');
             $titulo = __('Listagem de Videos em Todos os Artistas');
             $where = Array();
-            self::Endereco_Video(FALSE, FALSE, FALSE, FALSE);
+            self::Endereco_Video(false, false, false, false);
         }
         $add_url = 'Musica/Video/Videos_Add'.$url_add;
         $i = 0;
@@ -215,24 +215,24 @@ class Musica_VideoControle extends Musica_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Musica/Video/Videos'.$url_add,
             )
         )));
         $videos = $this->_Modelo->db->Sql_Select('Musica_Video', $where);
-        if ($videos !== FALSE && !empty($videos)) {
+        if ($videos !== false && !empty($videos)) {
             list($table, $i) = self::Videos_Tabela($videos, $artista, $album, $musica);
             $titulo = $titulo.' ('.$i.')';
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, $titulo);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -253,63 +253,63 @@ class Musica_VideoControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Videos_Add($artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
+    public function Videos_Add($artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
         // Carrega Config
         $formid     = 'form_Sistema_Admin_Videos';
         $formbt     = __('Salvar');
         $campos     = Musica_Video_DAO::Get_Colunas();
-        if ($artista === FALSE) {
+        if ($artista === false) {
             $formlink   = 'Musica/Video/Videos_Add2';
             $titulo1    = __('Adicionar Video');
             $titulo2    = __('Salvar Video');
-            self::Endereco_Video(true, FALSE);
+            self::Endereco_Video(true, false);
         } else {
             $artista = (int) $artista;
             if ($artista==0) {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
-                if ($artista_registro === FALSE) {
+                if ($artista_registro === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if ($artista_registro === FALSE) {
+                if ($artista_registro === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'artista');
-            if ($album !== FALSE) {
+            if ($album !== false) {
                 $album = (int) $album;
                 if ($album==0) {
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array(),1,'id DESC');
-                    if ($album_registro === FALSE) {
+                    if ($album_registro === false) {
                         return _Sistema_erroControle::Erro_Fluxo('Não existe nenhum album:',404);
                     }
                     $album = $album_registro->id;
                 } else {
                     $album_registro = $this->_Modelo->db->Sql_Select('Musica_Album',Array('id'=>$album),1);
-                    if ($album_registro === FALSE) {
+                    if ($album_registro === false) {
                         return _Sistema_erroControle::Erro_Fluxo('Esse Album não existe:',404);
                     }
                 }
                 self::DAO_Campos_Retira($campos,'album');
-                if ($musica !== FALSE) {
+                if ($musica !== false) {
                     self::DAO_Campos_Retira($campos,'musica');
                     $musica = (int) $musica;
                     if ($musica==0) {
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array(),1,'id DESC');
-                        if ($musica_registro === FALSE) {
+                        if ($musica_registro === false) {
                             return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma musica:',404);
                         }
                         $musica = $musica_registro->id;
                     } else {
                         $musica_registro = $this->_Modelo->db->Sql_Select('Musica',Array('id'=>$musica),1);
-                        if ($musica_registro === FALSE) {
+                        if ($musica_registro === false) {
                             return _Sistema_erroControle::Erro_Fluxo('Esse Musica não existe:',404);
                         }
                     }
@@ -337,23 +337,23 @@ class Musica_VideoControle extends Musica_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Videos_Add2($artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
+    public function Videos_Add2($artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
         $titulo     = __('Video Adicionada com Sucesso');
         $dao        = 'Musica_Video';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Video cadastrada com sucesso.');
-        if ($artista !== FALSE) {
+        if ($artista !== false) {
             $artista = (int) $artista;
             $alterar    = Array('artista'=>$artista);
-            if ($album !== FALSE) {
+            if ($album !== false) {
                 $album = (int) $album;
                 $alterar['album'] = $album;
-                if ($musica !== FALSE) {
+                if ($musica !== false) {
                     $musica = (int) $musica;
                     $alterar['musica'] = $musica;
                     $function     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
@@ -374,17 +374,17 @@ class Musica_VideoControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Videos_Edit($id, $artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
-        if ($id === FALSE) {
+    public function Videos_Edit($id, $artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
+        if ($id === false) {
             return _Sistema_erroControle::Erro_Fluxo('Video não existe:'. $id,404);
         }
         $id         = (int) $id;
-        if ($artista !== FALSE) {
+        if ($artista !== false) {
             $artista    = (int) $artista;
         }
         // Carrega Config
@@ -393,30 +393,30 @@ class Musica_VideoControle extends Musica_Controle
         $campos = Musica_Video_DAO::Get_Colunas();
         
         
-        if ($artista === FALSE) {
+        if ($artista === false) {
             $formlink   = 'Musica/Video/Videos_Edit2/'.$id;
             $titulo1    = 'Editar Video (#'.$id.')';
             $titulo2    = 'Alteração de Video (#'.$id.')';
-            self::Endereco_Video(true, FALSE);
+            self::Endereco_Video(true, false);
         } else {
             $artista = (int) $artista;
             if ($artista==0) {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array(),1,'id DESC');
-                if ($artista_registro === FALSE) {
+                if ($artista_registro === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Não existe nenhuma artista:',404);
                 }
                 $artista = $artista_registro->id;
             } else {
                 $artista_registro = $this->_Modelo->db->Sql_Select('Musica_Album_Artista',Array('id'=>$artista),1);
-                if ($artista_registro === FALSE) {
+                if ($artista_registro === false) {
                     return _Sistema_erroControle::Erro_Fluxo('Esse Artista não existe:',404);
                 }
             }
             self::DAO_Campos_Retira($campos,'artista');
-            if ($album !== FALSE) {
+            if ($album !== false) {
                 $album = (int) $album;
                 self::DAO_Campos_Retira($campos,'album');
-                if ($musica !== FALSE) {
+                if ($musica !== false) {
                     $musica = (int) $musica;
                     $formlink   = 'Musica/Video/Videos_Edit2/'.$id.'/'.$artista.'/'.$album.'/'.$musica;
                     $titulo1    = 'Editar Video (#'.$id.'): '.$artista_registro->nome ;
@@ -443,25 +443,25 @@ class Musica_VideoControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Videos_Edit2($id, $artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
-        if ($id === FALSE) {
+    public function Videos_Edit2($id, $artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
+        if ($id === false) {
             return _Sistema_erroControle::Erro_Fluxo('Video não existe:'. $id,404);
         }
         $id         = (int) $id;
         $titulo     = __('Video Editado com Sucesso');
         $dao        = Array('Musica_Video', $id);
-        if ($artista !== FALSE) {
+        if ($artista !== false) {
             $artista = (int) $artista;
             $alterar    = Array('artista'=>$artista);
-            if ($album !== FALSE) {
+            if ($album !== false) {
                 $album = (int) $album;
                 $alterar['album'] = $album;
-                if ($musica !== FALSE) {
+                if ($musica !== false) {
                     $musica = (int) $musica;
                     $alterar['musica'] = $musica;
                     $function     = '$this->Videos('.$artista.', '.$album.', '.$musica.');';
@@ -485,25 +485,25 @@ class Musica_VideoControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Videos_Del($id = FALSE, $artista = FALSE, $album = FALSE, $musica = FALSE) {
-        if ($artista ==='false' || $artista ===0)  $artista    = FALSE;
-        if ($album ==='false' || $album ===0)  $album      = FALSE;
-        if ($musica ==='false' || $musica ===0) $musica     = FALSE;
+    public function Videos_Del($id = false, $artista = false, $album = false, $musica = false) {
+        if ($artista ==='false' || $artista ===0)  $artista    = false;
+        if ($album ==='false' || $album ===0)  $album      = false;
+        if ($musica ==='false' || $musica ===0) $musica     = false;
         
-        if ($id === FALSE) {
+        if ($id === false) {
             return _Sistema_erroControle::Erro_Fluxo('Video não existe:'. $id,404);
         }
         // Antiinjection
     	$id = (int) $id;
-        if ($artista !== FALSE) {
+        if ($artista !== false) {
             $artista    = (int) $artista;
             $where = Array('artista'=>$artista,'id'=>$id);
-            if ($album !== FALSE) {
+            if ($album !== false) {
                 $album    = (int) $album;
                 $where['album'] = $album;
-                if ($musica !== FALSE) {
+                if ($musica !== false) {
                     $musica    = (int) $musica;
                     $where['musica'] = $musica;
                 }
@@ -515,7 +515,7 @@ class Musica_VideoControle extends Musica_Controle
         $video = $this->_Modelo->db->Sql_Select('Musica_Video', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($video);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -530,9 +530,9 @@ class Musica_VideoControle extends Musica_Controle
         }
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         // Recupera Videos
-        if ($artista !== FALSE) {
-            if ($album !== FALSE) {
-                if ($musica !== FALSE) {
+        if ($artista !== false) {
+            if ($album !== false) {
+                if ($musica !== false) {
                     $this->Videos($artista, $album, $musica);
                 } else {
                     $this->Videos($artista, $album);
@@ -545,17 +545,17 @@ class Musica_VideoControle extends Musica_Controle
         }
         
         $this->_Visual->Json_Info_Update('Titulo', __('Video deletado com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Videos_Ver($video = FALSE) {
-        if ($video === FALSE) {
-            return FALSE;
+    public function Videos_Ver($video = false) {
+        if ($video === false) {
+            return false;
         }
         $video = (int) $video;
         $where = Array('id'=>$video);
         $video = $this->_Modelo->db->Sql_Select('Musica_Video', $where);
-        if ($video === FALSE) {
-            return FALSE;
+        if ($video === false) {
+            return false;
         }
         $html = '<iframe width="560" height="315" src="http://www.youtube.com/embed/'.$video->youtube.'" frameborder="0" allowfullscreen></iframe>';
         $conteudo = array(
@@ -570,15 +570,15 @@ class Musica_VideoControle extends Musica_Controle
             'html' => $html
         );
         $this->_Visual->Json_IncluiTipo('Popup', $conteudo);
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id = FALSE) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Status($id = false) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Video', Array('id'=>$id),1);
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         if ($resultado->status=='1') {
             $resultado->status='0';
@@ -609,15 +609,15 @@ class Musica_VideoControle extends Musica_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Destaques($id = FALSE) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Destaques($id = false) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Video', Array('id'=>$id),1);
         if (!is_object($resultado)) {
-            return FALSE;
+            return false;
         }
         if ($resultado->destaque==1 || $resultado->destaque=='1') {
             $resultado->destaque='0';
@@ -648,7 +648,7 @@ class Musica_VideoControle extends Musica_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

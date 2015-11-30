@@ -693,7 +693,7 @@
 	<!-- END GLOBAL AND THEME VENDORS -->
 
 	<!-- BEGIN PLUGINS AREA -->
-	<?php /*<script src="http://maps.google.com/maps/api/js?sensor= TRUE&amp;libraries=places"></script>
+	<?php /*<script src="http://maps.google.com/maps/api/js?sensor= true&amp;libraries=places"></script>
 	<script src="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/plugins/gmaps/gmaps.js"></script>*/?>
 	<script src="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/plugins/bxslider/jquery.bxslider.min.js"></script>
 	<?php /*<script src="<?php echo \Framework\App\Visual::get_template_url(); ?>assets/globals/plugins/audiojs/audio.js"></script>*/?>

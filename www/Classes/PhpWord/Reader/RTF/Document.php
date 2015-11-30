@@ -98,14 +98,14 @@ class Document
      *
      * @var bool
      */
-    private $isControl = FALSE;
+    private $isControl = false;
 
     /**
      * First character flag: watch out for control symbols
      *
      * @var bool
      */
-    private $isFirst = FALSE;
+    private $isFirst = false;
 
     /**
      * Group groups
@@ -148,7 +148,7 @@ class Document
         $this->textrun = $this->section->addTextRun();
         $this->length = strlen($this->rtf);
 
-        $this->flags['paragraph'] = TRUE; // Set paragraph flag from the beginning
+        $this->flags['paragraph'] = true; // Set paragraph flag from the beginning
 
         // Walk each characters
         while ($this->offset < $this->length) {
@@ -159,18 +159,18 @@ class Document
                 $markerFunction = $markers[$ascii];
                 $this->$markerFunction();
             } else {
-                if ($this->isControl === FALSE) { // Non control word: Push character
+                if ($this->isControl === false) { // Non control word: Push character
                     $this->pushText($char);
                 } else {
                     if (preg_match("/^[a-zA-Z0-9-]?$/", $char)) { // No delimiter: Buffer control
                         $this->control .= $char;
-                        $this->isFirst = FALSE;
+                        $this->isFirst = false;
                     } else { // Delimiter found: Parse buffered control
                         if ($this->isFirst) {
-                            $this->isFirst = FALSE;
+                            $this->isFirst = false;
                         } else {
                             if ($char == ' ') { // Discard space as a control word delimiter
-                                $this->flushControl(TRUE);
+                                $this->flushControl(true);
                             }
                         }
                     }
@@ -188,7 +188,7 @@ class Document
      */
     private function markOpening()
     {
-        $this->flush(TRUE);
+        $this->flush(true);
         array_push($this->groups, $this->flags);
     }
 
@@ -199,7 +199,7 @@ class Document
      */
     private function markClosing()
     {
-        $this->flush(TRUE);
+        $this->flush(true);
         $this->flags = array_pop($this->groups);
     }
 
@@ -211,11 +211,11 @@ class Document
     private function markBackslash()
     {
         if ($this->isFirst) {
-            $this->setControl(FALSE);
+            $this->setControl(false);
             $this->text .= '\\';
         } else {
             $this->flush();
-            $this->setControl(TRUE);
+            $this->setControl(true);
             $this->control = '';
         }
     }
@@ -228,7 +228,7 @@ class Document
     private function markNewline()
     {
         if ($this->isControl) {
-            $this->flushControl(TRUE);
+            $this->flushControl(true);
         }
     }
 
@@ -238,7 +238,7 @@ class Document
      * @param bool $isControl
      * @return void
      */
-    private function flush($isControl = FALSE)
+    private function flush($isControl = false)
     {
         if ($this->isControl) {
             $this->flushControl($isControl);
@@ -253,15 +253,15 @@ class Document
      * @param bool $isControl
      * @return void
      */
-    private function flushControl($isControl = FALSE)
+    private function flushControl($isControl = false)
     {
         if (preg_match("/^([A-Za-z]+)(-?[0-9]*) ?$/", $this->control, $match) === 1) {
             list(, $control, $parameter) = $match;
             $this->parseControl($control, $parameter);
         }
 
-        if ($isControl === TRUE) {
-            $this->setControl(FALSE);
+        if ($isControl === true) {
+            $this->setControl(false);
         }
     }
 
@@ -276,8 +276,8 @@ class Document
             if (isset($this->flags['property'])) { // Set property
                 $this->flags['value'] = $this->text;
             } else { // Set text
-                if ($this->flags['paragraph'] === TRUE) {
-                    $this->flags['paragraph'] = FALSE;
+                if ($this->flags['paragraph'] === true) {
+                    $this->flags['paragraph'] = false;
                     $this->flags['text'] = $this->text;
                 }
             }
@@ -330,11 +330,11 @@ class Document
     private function parseControl($control, $parameter)
     {
         $controls = array(
-            'par'       => array(self::PARA,    'paragraph',    TRUE),
-            'b'         => array(self::STYL,    'font', 'bold',         TRUE),
-            'i'         => array(self::STYL,    'font', 'italic',       TRUE),
-            'u'         => array(self::STYL,    'font', 'underline',    TRUE),
-            'strike'    => array(self::STYL,    'font', 'strikethrough',TRUE),
+            'par'       => array(self::PARA,    'paragraph',    true),
+            'b'         => array(self::STYL,    'font', 'bold',         true),
+            'i'         => array(self::STYL,    'font', 'italic',       true),
+            'u'         => array(self::STYL,    'font', 'underline',    true),
+            'strike'    => array(self::STYL,    'font', 'strikethrough',true),
             'fs'        => array(self::STYL,    'font', 'size',         $parameter),
             'qc'        => array(self::STYL,    'paragraph', 'align', 'center'),
             'sa'        => array(self::STYL,    'paragraph', 'spaceAfter',   $parameter),
@@ -396,7 +396,7 @@ class Document
     {
         list($property) = $directives;
         $this->flags['property'] = $property;
-        $this->flags['skipped'] = TRUE;
+        $this->flags['skipped'] = true;
     }
 
     /**

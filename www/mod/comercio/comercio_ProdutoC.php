@@ -13,7 +13,7 @@ class comercio_ProdutoControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,16 +29,16 @@ class comercio_ProdutoControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Produto/Produtos');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Produto($true= TRUE ) {
+    static function Endereco_Produto($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Produtos'),'comercio/Produto/Produtos');
         } else {
             $_Controle->Tema_Endereco(__('Produtos'));
@@ -47,45 +47,45 @@ class comercio_ProdutoControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos() {
-        self::Endereco_Produto(FALSE);
+        self::Endereco_Produto(false);
         $comercio_Produto_Cod       = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Cod');
         $comercio_Produto_Familia   = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia');
         $comercio_Estoque           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Estoque');
         $comercio_Unidade           = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Unidade');
         $comercio_marca             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca');
 
-        $table_colunas = Array();
+        $tableColumns = Array();
 
         if ($comercio_Produto_Cod) {
-            $table_colunas[] = __('#Cod');
+            $tableColumns[] = __('#Cod');
         }
-        if ($comercio_marca === TRUE) {
+        if ($comercio_marca === true) {
             if ($comercio_Produto_Familia=='Familia') {
-                $table_colunas[] = __('Familia');
+                $tableColumns[] = __('Familia');
             } else {
-                $table_colunas[] = __('Marca');
-                $table_colunas[] = __('Linha');
+                $tableColumns[] = __('Marca');
+                $tableColumns[] = __('Linha');
             }
         }
-        $table_colunas[] = __('Nome');
+        $tableColumns[] = __('Nome');
 
         // Coloca Preco
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Vendas')) {
-            $table_colunas[] = __('Preço');
+            $tableColumns[] = __('Preço');
         }
 
         if ($comercio_Estoque) {
-            $table_colunas[] = __('Estoque');
+            $tableColumns[] = __('Estoque');
         }
         if ($comercio_Unidade) {
-            $table_colunas[] = __('Unidade');
+            $tableColumns[] = __('Unidade');
         }
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'comercio/Produto/Produtos');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio/Produto/Produtos');
         $titulo = __('Listagem de Produtos').' (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Produto/Produtos_Add",'icon'=>'add', 'nome'=>__('Adicionar Produto')));
         
@@ -113,7 +113,7 @@ class comercio_ProdutoControle extends comercio_Controle
             self::DAO_Campos_Retira($campos,'preco',0);
         }
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca') === TRUE) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Marca') === true) {
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Produto_Familia')==='Familia') {
                 self::DAO_Campos_Retira($campos, 'marca');
                 self::DAO_Campos_Retira($campos, 'linha');
@@ -136,7 +136,7 @@ class comercio_ProdutoControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Add() {
         self::Endereco_Produto();
@@ -155,7 +155,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Add2() {
         $titulo     = __('Produto Adicionado com Sucesso');
@@ -171,7 +171,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Edit($id) {
         self::Endereco_Produto();
@@ -191,7 +191,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Edit2($id) {
         $titulo     = __('Produto Editado com Sucesso');
@@ -207,7 +207,7 @@ class comercio_ProdutoControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Del($id) {
         
@@ -217,7 +217,7 @@ class comercio_ProdutoControle extends comercio_Controle
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($produto);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -235,19 +235,19 @@ class comercio_ProdutoControle extends comercio_Controle
         $this->Produtos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
-    public function Estoque_Reduzir($produto = FALSE) {
+    public function Estoque_Reduzir($produto = false) {
         
         $campos = Comercio_Produto_Estoque_Reduzir_DAO::Get_Colunas();
-        if ($produto === FALSE || $produto==0) {
+        if ($produto === false || $produto==0) {
             $produto = '';
         } else {
             $produto = (int) $produto;
             self::DAO_Campos_Retira($campos, 'produto');
         }
         
-        self::Endereco_Produto(TRUE);
+        self::Endereco_Produto(true);
          // Carrega Config
         $titulo1    = __('Reduzir Estoque de Produto');
         $titulo2    = __('Salvar Redução de Estoque');
@@ -259,14 +259,14 @@ class comercio_ProdutoControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Estoque_Reduzir2($produto = FALSE) {        
+    public function Estoque_Reduzir2($produto = false) {        
         $titulo     = __('Estoque Reduzido com Sucesso');
         $dao        = 'Comercio_Produto_Estoque_Reduzir';
         $sucesso1   = __('Sucesso');
         $sucesso2   = __('Redução Finalizada com Sucesso');
-        if ($produto === FALSE || $produto==0) {
+        if ($produto === false || $produto==0) {
             //$function     = '$this->Produtos(0);';
             $alterar    = Array();
         } else {
@@ -276,7 +276,7 @@ class comercio_ProdutoControle extends comercio_Controle
         }
         $function     = '$this->Produtos();';
         $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $motivo = 'comercio_Produto';
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Produto_Estoque_Reduzir', Array(),1,'id DESC');
             $prod  = (int) $identificador->produto;

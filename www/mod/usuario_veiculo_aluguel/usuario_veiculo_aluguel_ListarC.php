@@ -13,7 +13,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -33,7 +33,7 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         $aluguel = Array();
@@ -42,15 +42,15 @@ class usuario_veiculo_aluguel_ListarControle extends usuario_veiculo_aluguel_Con
             reset($aluguel);
             $i = 0;
             foreach ($aluguel as $indice=>&$valor) {
-                $table['Pedido'][$i] = '#'.$aluguel[$indice]['id'];
-                $table['Veiculo'][$i] = $aluguel[$indice]['veiculo'];
-                $table['Data Inicial'][$i] = date_replace($aluguel[$indice]['data_inicial'], "d/m/Y");
-                $table['Data Final'][$i] = date_replace($aluguel[$indice]['data_final'], "d/m/Y");
-                $table['Valor'][$i] = 'R$ '.number_format($aluguel[$indice]['valor'], 2, ', ', '.');
+                $table[__('Pedido')][$i] = '#'.$aluguel[$indice]['id'];
+                $table[__('Veiculo')][$i] = $aluguel[$indice]['veiculo'];
+                $table[__('Data Inicial')][$i] = date_replace($aluguel[$indice]['data_inicial'], "d/m/Y");
+                $table[__('Data Final')][$i] = date_replace($aluguel[$indice]['data_final'], "d/m/Y");
+                $table[__('Valor')][$i] = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($aluguel[$indice]['valor']);
                 if ($aluguel[$indice]['pago']==1) {
-                    $table['Status'][$i] = __('Confirmado');
+                    $table[__('Status')][$i] = __('Confirmado');
                 } else {
-                    $table['Status'][$i] = '<font color="#FF0000">Pendente</font>';
+                    $table[__('Status')][$i] = '<font color="#FF0000">Pendente</font>';
                 }
                 ++$i;
             }

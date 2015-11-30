@@ -55,7 +55,7 @@ abstract class AbstractStyle
      * @var bool
      * @since 0.11.0
      */
-    private $isAuto = FALSE;
+    private $isAuto = false;
 
     /**
      * Get style name
@@ -119,7 +119,7 @@ abstract class AbstractStyle
      * @param bool $value
      * @return self
      */
-    public function setAuto($value = TRUE)
+    public function setAuto($value = true)
     {
         $this->isAuto = $this->setBoolVal($value, $this->isAuto);
 
@@ -284,7 +284,7 @@ abstract class AbstractStyle
     protected function setEnumVal($value = null, $enum = array(), $default = null)
     {
         if ($value != null && trim($value) != '' && !empty($enum) && !in_array($value, $enum)) {
-            throw new \InvalidArgumentException("Invalid style value: {$value} Options:".join(', ', $enum));
+            throw new \InvalidArgumentException("Invalid style value: {$value} Options:".join(',', $enum));
         } elseif ($value === null || trim($value) == '') {
             $value = $default;
         }
@@ -327,8 +327,8 @@ abstract class AbstractStyle
     protected function setPairedVal(&$property, &$pairProperty, $value)
     {
         $property = $this->setBoolVal($value, $property);
-        if ($value == TRUE) {
-            $pairProperty = FALSE;
+        if ($value == true) {
+            $pairProperty = false;
         }
 
         return $this;

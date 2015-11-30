@@ -13,7 +13,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,14 +29,14 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Engenharia/Equipamento/Equipamentos');
-        return FALSE;
+        return false;
     }
-    protected function Endereco_Equipamento($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Equipamento($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Equipamentos'),'Engenharia/Equipamento/Equipamentos');
         } else {
             $this->Tema_Endereco(__('Equipamentos'));
@@ -45,10 +45,10 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos() {
-        $this->Endereco_Equipamento(FALSE);
+        $this->Endereco_Equipamento(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -58,25 +58,25 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Engenharia/Equipamento/Equipamentos',
             )
         )));
         // Conexao
         $equipamentos = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento');
-        if ($equipamentos !== FALSE && !empty($equipamentos)) {
+        if ($equipamentos !== false && !empty($equipamentos)) {
             if (is_object($equipamentos)) $equipamentos = Array(0=>$equipamentos);
             reset($equipamentos);
             foreach ($equipamentos as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Tipo de Equipamento'][$i]  =   $valor->categoria2;
-                $table['Equipamento'][$i]          =   $valor->nome;
-                $table['Data Aquisição'][$i]       =   $valor->data_aquisicao;
-                $table['Valor'][$i]                =   $valor->valor;
-                $table['Funções'][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Equipamento'        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
-                                                        $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Equipamento'       ,'Engenharia/Equipamento/Equipamentos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Equipamento ?'));
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Tipo de Equipamento')][$i]  =   $valor->categoria2;
+                $table[__('Equipamento')][$i]          =   $valor->nome;
+                $table[__('Data Aquisição')][$i]       =   $valor->data_aquisicao;
+                $table[__('Valor')][$i]                =   $valor->valor;
+                $table[__('Funções')][$i]              =   $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Equipamento')        ,'Engenharia/Equipamento/Equipamentos_Edit/'.$valor->id.'/'    , '')).
+                                                        $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Equipamento')       ,'Engenharia/Equipamento/Equipamentos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Equipamento ?')));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($table);
@@ -93,7 +93,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Add() {  
         $this->Endereco_Equipamento();      
@@ -110,7 +110,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Add2() {
         $titulo     = __('Equipamento Adicionado com Sucesso');
@@ -125,7 +125,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Edit($id) {
         $this->Endereco_Equipamento();      
@@ -143,7 +143,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Edit2($id) {
         $titulo     = __('Equipamento Editado com Sucesso');
@@ -159,7 +159,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Equipamentos_Del($id) {
         
@@ -169,7 +169,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $equipamento = $this->_Modelo->db->Sql_Select('Engenharia_Equipamento', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($equipamento);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -187,7 +187,7 @@ class Engenharia_EquipamentoControle extends Engenharia_Controle
         $this->Equipamentos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Equipamento deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

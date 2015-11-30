@@ -18,7 +18,7 @@ define('CACHE_PATH',        ROOT_PADRAO.'Cache');
 /**
  * Allow use of the Minify URI Builder app. Only set this to true while you need it.
  */
-$min_enableBuilder = FALSE;
+$min_enableBuilder = false;
 
 /**
  * If non-empty, the Builder will be protected with HTTP Digest auth.
@@ -35,7 +35,7 @@ $min_builderPassword = 'admin';
  * If you want to use a custom error logger, set this to your logger
  * instance. Your object should have a method log(string $message).
  */
-$min_errorLogger = TRUE;
+$min_errorLogger = true;
 
 
 /**
@@ -50,7 +50,7 @@ $min_errorLogger = TRUE;
  * In 'debug' mode, Minify combines files with no minification and adds comments
  * to indicate line #s of the original files.
  */
-$min_allowDebugFlag = TRUE;
+$min_allowDebugFlag = true;
 
 
 /**
@@ -88,7 +88,7 @@ $min_documentRoot = '';
  * Cache file locking. Set to false if filesystem is NFS. On at least one 
  * NFS system flock-ing attempts stalled PHP for 30 seconds!
  */
-$min_cacheFileLocking = TRUE;
+$min_cacheFileLocking = true;
 
 
 /**
@@ -99,7 +99,7 @@ $min_cacheFileLocking = TRUE;
  * move all @imports to the top of the output. Note that moving @imports could 
  * affect CSS values (which is why this option is disabled by default).
  */
-$min_serveOptions['bubbleCssImports'] = FALSE;
+$min_serveOptions['bubbleCssImports'] = false;
 
 
 /**
@@ -135,7 +135,7 @@ $min_serveOptions['maxAge'] = 18000;
  * Set to true to disable the "f" GET parameter for specifying files.
  * Only the "g" parameter will be considered.
  */
-$min_serveOptions['minApp']['groupsOnly'] = FALSE;
+$min_serveOptions['minApp']['groupsOnly'] = false;
 
 
 /**

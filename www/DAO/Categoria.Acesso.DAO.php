@@ -4,7 +4,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
     protected $categoria;
     protected $mod_acc;
     protected $user_criacao;
-    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_CAT_ACESSO;
     }
     /**
@@ -12,7 +12,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return FALSE;
+        return false;
     }
     public static function Get_Sigla() {
         return 'CA';
@@ -45,43 +45,43 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => FALSE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => TRUE,
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => true,
                 'mysql_estrangeira' => 'C.id|C.nome', // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'mod_acc',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 255,
-                'mysql_null'        => FALSE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => TRUE,
-                'mysql_estrangeira' => FALSE, // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_null'        => false,
+                'mysql_default'     => false,
+                'mysql_primary'     => true,
+                'mysql_estrangeira' => false, // chave estrangeira
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'user_criacao',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => TRUE,
-                'mysql_default'     => FALSE,
-                'mysql_primary'     => FALSE,
+                'mysql_null'        => true,
+                'mysql_default'     => false,
+                'mysql_primary'     => false,
                 'mysql_estrangeira' => 'U.id|U.nome-U.razao_social', // chave estrangeira
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
             )
         );
     }
@@ -223,12 +223,12 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
      * @return type
      * @throws Exception
      */
-    public static function Mod_Acesso_Get($tipo = FALSE) {
-        if ($tipo !== FALSE) {
+    public static function Mod_Acesso_Get($tipo = false) {
+        if ($tipo !== false) {
             $array = Array();
             // Percorre os modulos que aceitam categorias
             $percorrer = Categoria_Acesso_DAO::Mod_Acesso();
-            foreach($percorrer as &$value) {
+            foreach ($percorrer as &$value) {
                 if (strtoupper($tipo)===strtoupper($value['chave'])) return $value;
             }
             return _Sistema_erroControle::Erro_Fluxo('Categoria de Acesso não encontrado. Tipo:'.$tipo,404);
@@ -236,11 +236,11 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
             $array = Array();
             // Percorre os modulos que aceitam categorias
             $percorrer = Categoria_Acesso_DAO::Mod_Acesso();
-            foreach($percorrer as $indice=>&$value) {
+            foreach ($percorrer as $indice=>&$value) {
                 // Verifica se é do modulo inteiro ou de um submodulo
-                if (strpos($indice, '|') === FALSE) {
+                if (strpos($indice, '|') === false) {
                     $modulo     = $indice;
-                    $submodulo  = FALSE;
+                    $submodulo  = false;
                 } else {
                     $indice = explode('|', $indice);
                     $modulo     = $indice[0];
@@ -257,7 +257,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
     public static function Mod_Acesso_Get_Nome($chave) {
         // Percorre os modulos que aceitam categorias
         $percorrer = self::Mod_Acesso();
-        foreach($percorrer as &$value) {
+        foreach ($percorrer as &$value) {
             if (strtoupper($chave)===strtoupper($value['chave'])) {
                 return $value['nome'];
             }
@@ -266,7 +266,7 @@ final Class Categoria_Acesso_DAO extends Framework\App\Dao
     }
     public static function Mod_Acesso_Get_Chave() {
         $repassar = self::Mod_Acesso_Get();
-        foreach($repassar AS &$valor) {
+        foreach ($repassar AS &$valor) {
             $valor = $valor['chave'];
         }
         return $repassar;

@@ -1512,10 +1512,10 @@ class MsDoc extends AbstractReader implements ReaderInterface
                 $length = 1;
                 switch(dechex($operand)) {
                     case 0x00:
-                        $operand = FALSE;
+                        $operand = false;
                         break;
                     case 0x01:
-                        $operand = TRUE;
+                        $operand = true;
                         break;
                     case 0x80:
                         $operand = self::SPRA_VALUE;
@@ -1618,10 +1618,10 @@ class MsDoc extends AbstractReader implements ReaderInterface
                                     $oStylePrl->styleFont['italic'] = $operand;
                                     break;
                                 case self::SPRA_VALUE:
-                                    $oStylePrl->styleFont['italic'] = FALSE;
+                                    $oStylePrl->styleFont['italic'] = false;
                                     break;
                                 case self::SPRA_VALUE_OPPOSITE:
-                                    $oStylePrl->styleFont['italic'] = TRUE;
+                                    $oStylePrl->styleFont['italic'] = true;
                                     break;
                             }
                             break;
@@ -1638,10 +1638,10 @@ class MsDoc extends AbstractReader implements ReaderInterface
                                     $oStylePrl->styleFont['bold'] = $operand;
                                     break;
                                 case self::SPRA_VALUE:
-                                    $oStylePrl->styleFont['bold'] = FALSE;
+                                    $oStylePrl->styleFont['bold'] = false;
                                     break;
                                 case self::SPRA_VALUE_OPPOSITE:
-                                    $oStylePrl->styleFont['bold'] = TRUE;
+                                    $oStylePrl->styleFont['bold'] = true;
                                     break;
                             }
                             break;
@@ -1654,10 +1654,10 @@ class MsDoc extends AbstractReader implements ReaderInterface
                                     $oStylePrl->styleFont['strikethrough'] = $operand;
                                     break;
                                 case self::SPRA_VALUE:
-                                    $oStylePrl->styleFont['strikethrough'] = FALSE;
+                                    $oStylePrl->styleFont['strikethrough'] = false;
                                     break;
                                 case self::SPRA_VALUE_OPPOSITE:
-                                    $oStylePrl->styleFont['strikethrough'] = TRUE;
+                                    $oStylePrl->styleFont['strikethrough'] = true;
                                     break;
                             }
                             break;
@@ -1784,20 +1784,20 @@ class MsDoc extends AbstractReader implements ReaderInterface
                         // sprmCIss
                         case 0x48:
                             if (!isset($oStylePrl->styleFont['superScript'])) {
-                                $oStylePrl->styleFont['superScript'] = FALSE;
+                                $oStylePrl->styleFont['superScript'] = false;
                             }
                             if (!isset($oStylePrl->styleFont['subScript'])) {
-                                $oStylePrl->styleFont['subScript'] = FALSE;
+                                $oStylePrl->styleFont['subScript'] = false;
                             }
                             switch (dechex($operand)) {
                                 case 0x00:
                                     // Normal text
                                     break;
                                 case 0x01:
-                                    $oStylePrl->styleFont['superScript'] = TRUE;
+                                    $oStylePrl->styleFont['superScript'] = true;
                                     break;
                                 case 0x02:
-                                    $oStylePrl->styleFont['subScript'] = TRUE;
+                                    $oStylePrl->styleFont['subScript'] = true;
                                     break;
                             }
                             break;

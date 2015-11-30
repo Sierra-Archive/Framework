@@ -11,7 +11,7 @@ class comercio_LinhaModelo extends comercio_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,16 +27,16 @@ class comercio_LinhaModelo extends comercio_Modelo
         
         if ($permissionEdit && $permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    , ''),TRUE).
-                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Linha')        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    , ''),true).
+                       Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Linha')       ,'comercio/Linha/Linhas_Del/'.$d.'/'     , __('Deseja realmente deletar essa Linha ?')),true);
             };
         } else if ($permissionEdit) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Linha'        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    , ''),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Linha')        ,'comercio/Linha/Linhas_Edit/'.$d.'/'    , ''),true);
             };
         } else if ($permissionDelete) {
             $function = function( $d, $row ) {
-                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Linha'       ,'comercio/Linha/Linhas_Del/'.$d.'/'     ,'Deseja realmente deletar essa Linha ?'),TRUE);
+                return Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Linha')       ,'comercio/Linha/Linhas_Del/'.$d.'/'     , __('Deseja realmente deletar essa Linha ?')),true);
             };
         } else {
             $function = function( $d, $row ) {

@@ -1,33 +1,33 @@
 <?php
 // Principais
 if (!defined('SISTEMA_PROXY')) {
-    define('SISTEMA_PROXY',        FALSE); //'http://213.85.92.10:80');
+    define('SISTEMA_PROXY',        false); //'http://213.85.92.10:80');
 }
 if (!defined('SISTEMA_DEBUG')) {
-    define('SISTEMA_DEBUG',        FALSE);
+    define('SISTEMA_DEBUG',        false);
 }
 if (!defined('SISTEMA_SERVIDORES')) {
-    define('SISTEMA_SERVIDORES',        FALSE); // SE é central
+    define('SISTEMA_SERVIDORES',        false); // SE é central
 }
 if (!defined('SISTEMA_DEDICADO')) {
-    define('SISTEMA_DEDICADO',        FALSE); // SE esta em um dedicado
+    define('SISTEMA_DEDICADO',        false); // SE esta em um dedicado
 }
 if (!defined('SISTEMA_CACHE_PAGINAS')) {
-    define('SISTEMA_CACHE_PAGINAS',        FALSE);
+    define('SISTEMA_CACHE_PAGINAS',        false);
 }
 
 // RESTRITO AO SISTEMA
 if (!defined('SISTEMA_CFG_VERSION')) {
-    define('SISTEMA_CFG_VERSION', '0.4.0'); // 
+    define('SISTEMA_CFG_VERSION', '0.4.244'); // 
 }
 
 
 // DINAMICA DO SISTEMA
 if (!defined('SISTEMA_EXPORTAR_PDF')) {
-    define('SISTEMA_EXPORTAR_PDF',        FALSE); // 
+    define('SISTEMA_EXPORTAR_PDF',        false); // 
 }
 if (!defined('SISTEMA_EXPORTAR_EXCEL')) {
-    define('SISTEMA_EXPORTAR_EXCEL',        TRUE); // 
+    define('SISTEMA_EXPORTAR_EXCEL',        true); // 
 }
 
 
@@ -51,7 +51,7 @@ if (!defined('CONFIG_PADRAO_TECLADO')) {
 }
 // BANCO DE DADOS
 if (!defined('SQL_MAIUSCULO')) {
-    define('SQL_MAIUSCULO',  FALSE);
+    define('SQL_MAIUSCULO',  false);
 }
 // CONFIGS DEBUG
 if (!defined('SRV_NAME_SQL')) {
@@ -89,7 +89,7 @@ if (!defined('ROOT')) {
 // Configs TEMAS
 if (!defined('TEMA_LOGIN')) {
     // Separa tela de login ?
-    define('TEMA_LOGIN',  TRUE);
+    define('TEMA_LOGIN',  true);
 }if (!defined('TEMA_PADRAO')) {
     define('TEMA_PADRAO', 'metrolab');
 }if (!defined('TEMA_COLOR')) {
@@ -97,7 +97,7 @@ if (!defined('TEMA_LOGIN')) {
 }if (!defined('TEMA_LOGO')) {
     define('TEMA_LOGO', 'png');
 }if (!defined('TEMA_BUSCAR')) {
-    define('TEMA_BUSCAR',  TRUE);
+    define('TEMA_BUSCAR',  true);
 }
 
 
@@ -156,7 +156,7 @@ if (!defined('CFG_TEC_CAT_ID_FUNCIONARIOS')) {
 
 
 if (!defined('CFG_TEC_PAISES_EXTRAGEIROS')) {
-    define('CFG_TEC_PAISES_EXTRAGEIROS',        FALSE);
+    define('CFG_TEC_PAISES_EXTRAGEIROS',        false);
 }
 
 /*****************************************************************
@@ -188,7 +188,7 @@ if (!defined('CFG_TXT_COMERCIO_OS_PLURAL')) {
 }
 // IMPRESSAO
 if (!defined('CFG_IMPRESSAO_TITULO_REPETIR')) {
-    define('CFG_IMPRESSAO_TITULO_REPETIR',    FALSE);
+    define('CFG_IMPRESSAO_TITULO_REPETIR',    false);
 }
 
 
@@ -467,6 +467,9 @@ if (!defined('MYSQL_COMERCIO_SERVICO_SUPORTE')) {
 if (!defined('MYSQL_USUARIO_EXPEDIENTE')) {
     define('MYSQL_USUARIO_EXPEDIENTE', 'Usuario_Expediente');
 }
+if (!defined('MYSQL_USUARIO_NOTIFICACAO')) {
+    define('MYSQL_USUARIO_NOTIFICACAO', 'Usuario_Notificacao');
+}
 if (!defined('MYSQL_USUARIO_ANEXO')) {
     define('MYSQL_USUARIO_ANEXO', 'Usuario_Anexo');
 }
@@ -564,6 +567,8 @@ if (!defined('MYSQL_CAT')) {
     define('MYSQL_SIS_FILIAL', 'Sistema_Filial');
 }if (!defined('MYSQL_SIS_CONFIG')) {
     define('MYSQL_SIS_CONFIG', 'Sistema_Config');
+} if (!defined('MYSQL_SIS_CONFIG_PUBLIC')) {
+    define('MYSQL_SIS_CONFIG_PUBLIC', 'Sistema_Config_Public');
 } if (!defined('MYSQL_SIS_GRUPO')) {
     define('MYSQL_SIS_GRUPO', 'Sistema_Grupo');
 } if (!defined('MYSQL_SIS_GRUPO_PERMISSAO')) {

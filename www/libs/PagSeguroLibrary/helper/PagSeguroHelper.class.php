@@ -150,7 +150,7 @@ class PagSeguroHelper
      */
     public static function isNotificationEmpty(array $notification_data)
     {
-        $isEmpty = TRUE;
+        $isEmpty = true;
 
         if (isset($notification_data['notificationCode']) && isset($notification_data['notificationType'])) {
             $isEmpty = (PagSeguroHelper::isEmpty($notification_data['notificationCode']) ||

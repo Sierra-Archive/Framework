@@ -56,17 +56,17 @@ class PagSeguroLibrary
     private static function verifyDependencies()
     {
 
-        $dependencies = TRUE;
+        $dependencies = true;
 
         try {
 
             if (!function_exists('curl_init')) {
-                $dependencies = FALSE;
+                $dependencies = false;
                 throw new Exception('PagSeguroLibrary: cURL library is required.');
             }
 
             if (!class_exists('DOMDocument')) {
-                $dependencies = FALSE;
+                $dependencies = false;
                 throw new Exception('PagSeguroLibrary: DOM XML extension is required.');
             }
 

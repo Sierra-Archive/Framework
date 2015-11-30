@@ -102,7 +102,7 @@ class PagSeguroShippingType
         if (isset(self::$typeList[$type])) {
             return self::$typeList[$type];
         } else {
-            return FALSE;
+            return false;
         }
     }
 

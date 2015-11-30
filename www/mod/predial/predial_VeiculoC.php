@@ -15,18 +15,18 @@ class predial_VeiculoControle extends predial_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'predial/Veiculo/Veiculos');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Veiculo($true= TRUE ) {
+    static function Endereco_Veiculo($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Veiculos');
         $link = 'predial/Veiculo/Veiculos';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -40,13 +40,13 @@ class predial_VeiculoControle extends predial_Controle
         if (is_object($veiculos)) $veiculos = Array(0=>$veiculos);
         reset($veiculos);
         foreach ($veiculos as &$valor) {
-            $table['Bloco'][$i]            = $valor->bloco2;
-            $table['Apartamento'][$i]      = $valor->apart2;
-            $table['Modelo'][$i]           = $valor->modelo;
-            $table['Placa'][$i]            = $valor->placa;
-            $table['Marca'][$i]            = $valor->marca;
-            $table['Funções'][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Veiculo'        ,'predial/Veiculo/Veiculos_Edit/'.$valor->id.'/'    , '')).
-                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Veiculo'       ,'predial/Veiculo/Veiculos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Veiculo ?'));
+            $table[__('Bloco')][$i]            = $valor->bloco2;
+            $table[__('Apartamento')][$i]      = $valor->apart2;
+            $table[__('Modelo')][$i]           = $valor->modelo;
+            $table[__('Placa')][$i]            = $valor->placa;
+            $table[__('Marca')][$i]            = $valor->marca;
+            $table[__('Funções')][$i]          = $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Veiculo')        ,'predial/Veiculo/Veiculos_Edit/'.$valor->id.'/'    , '')).
+                                              $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Veiculo')       ,'predial/Veiculo/Veiculos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Veiculo ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -54,10 +54,10 @@ class predial_VeiculoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Veiculos() {
-        self::Endereco_Veiculo(FALSE);
+        self::Endereco_Veiculo(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -67,15 +67,15 @@ class predial_VeiculoControle extends predial_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'predial/Veiculo/Veiculos',
             )
         )));
         // Busca
         $veiculos = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo');
-        if ($veiculos !== FALSE && !empty($veiculos)) {
+        if ($veiculos !== false && !empty($veiculos)) {
             list($table, $i) = self::Veiculos_Tabela($veiculos);
             $this->_Visual->Show_Tabela_DataTable($table);
             unset($table);
@@ -91,7 +91,7 @@ class predial_VeiculoControle extends predial_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Veiculos_Add() {
         self::Endereco_Veiculo();
@@ -109,7 +109,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Veiculos_Add2() {
         $titulo     = __('Veiculo Adicionado com Sucesso');
@@ -124,7 +124,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Veiculos_Edit($id) {
         self::Endereco_Veiculo();
@@ -143,7 +143,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Veiculos_Edit2($id) {
         $titulo     = __('Veiculo Editado com Sucesso');
@@ -159,7 +159,7 @@ class predial_VeiculoControle extends predial_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Veiculos_Del($id) {
         
@@ -169,7 +169,7 @@ class predial_VeiculoControle extends predial_Controle
         $veiculo = $this->_Modelo->db->Sql_Select('Predial_Bloco_Apart_Veiculo', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($veiculo);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -187,7 +187,7 @@ class predial_VeiculoControle extends predial_Controle
         $this->Veiculos();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Veiculo deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

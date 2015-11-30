@@ -14,7 +14,7 @@ class usuario_PerfilControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -26,7 +26,7 @@ class usuario_PerfilControle extends usuario_Controle
         // Verifica Permissao e Puxa Usuário
         $usuario = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$usuarioid),1); // Banco DAO, Condicao e LIMITE
         // Resgata DAdos e Manda pra View
-        if ($usuario === FALSE)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
+        if ($usuario === false)            return _Sistema_erroControle::Erro_Fluxo('Usuario não Existe',404);
         $id = $usuario->id;
         // Carrega Mensagens
         /*if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
@@ -47,7 +47,7 @@ class usuario_PerfilControle extends usuario_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         $this->Perfil_Edit();
@@ -100,11 +100,11 @@ class usuario_PerfilControle extends usuario_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
         if ($_Acl->logado_usuario->foto_res=='') {
-            $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu seu comprovante de Residencia</b></font><br>');
+            $Visual->Blocar('<font color="#FF0000"><b>'.__('Você ainda não subiu seu comprovante de Residencia').'</b></font><br>');
         } else {
-            if ($_Acl->logado_usuario->foto_res_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação</b></font><br>');
-            else if ($_Acl->logado_usuario->foto_res_apv==2) $Visual->Blocar('<b>Aprovado</b><br>');
-            else                                             $Visual->Blocar('<font color="#FF0000"><b>Negado</b></font><br>');
+            if ($_Acl->logado_usuario->foto_res_apv==0) $Visual->Blocar('<font color="#FF0000"><b>'.__('Aguardando Aprovação').'</b></font><br>');
+            else if ($_Acl->logado_usuario->foto_res_apv==2) $Visual->Blocar('<b>'.__('Aprovado').'</b><br>');
+            else                                             $Visual->Blocar('<font color="#FF0000"><b>'.__('Negado').'</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'RESFoto', 'User_RES_Imagem'.$_Acl->logado_usuario->id, $_Acl->logado_usuario->foto_res,'usuario'.DS, $_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer upload de Comprovante de Residência')); 
@@ -131,11 +131,11 @@ class usuario_PerfilControle extends usuario_Controle
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Acl = $Registro->_Acl();
         if ($_Acl->logado_usuario->foto_cnh=='') {
-            $Visual->Blocar('<font color="#FF0000"><b>Você ainda não subiu sua CNH</b></font><br>');
+            $Visual->Blocar('<font color="#FF0000"><b>'.__('Você ainda não subiu sua CNH').'</b></font><br>');
         } else {
-            if ($_Acl->logado_usuario->foto_cnh_apv==0) $Visual->Blocar('<font color="#FF0000"><b>Aguardando Aprovação da CNH</b></font><br>');
-            else if ($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>CNH Aprovada</b><br>');
-            else                                             $Visual->Blocar('<font color="#FF0000"><b>CNH Negada</b></font><br>');
+            if ($_Acl->logado_usuario->foto_cnh_apv==0) $Visual->Blocar('<font color="#FF0000"><b>'.__('Aguardando Aprovação da CNH').'</b></font><br>');
+            else if ($_Acl->logado_usuario->foto_cnh_apv==2) $Visual->Blocar('<b>'.__('CNH Aprovada').'</b><br>');
+            else                                             $Visual->Blocar('<font color="#FF0000"><b>'.__('CNH Negada').'</b></font><br>');
         }
         $Visual->Blocar($Visual->Show_Upload('usuario', 'Perfil', 'CNHFoto', 'User_CNH_Imagem'.$_Acl->logado_usuario->id, $_Acl->logado_usuario->foto_cnh,'usuario'.DS, $_Acl->logado_usuario->id));
         $Visual->Bloco_Menor_CriaJanela(__('Fazer Upload da CNH')); 
@@ -163,21 +163,21 @@ class usuario_PerfilControle extends usuario_Controle
         $alterar    = Array();
         $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);   
         
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $this->_Modelo->Usuario_Logar('', $usuario->senha, '');
         }
     }
-    public function Perfil_Edit($tipo = FALSE) {
+    public function Perfil_Edit($tipo = false) {
         $id = (int) $this->_Acl->Usuario_GetID();
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         
         //Verifica Usuario
         if (!is_object($usuario)) {
-            return FALSE;
+            return false;
         }
         
         // Verifica Tipo
-        if ($tipo === FALSE) {
+        if ($tipo === false) {
             if ($usuario->grupo==CFG_TEC_IDCLIENTE) {
                 $tipo   = __('Cliente');
                 $tipo2  = 'cliente';
@@ -225,9 +225,9 @@ class usuario_PerfilControle extends usuario_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Perfil_Edit2($tipo = FALSE) {
+    public function Perfil_Edit2($tipo = false) {
         if (isset($_POST["nome"])) {
             $nome = $_POST["nome"];
         } else {

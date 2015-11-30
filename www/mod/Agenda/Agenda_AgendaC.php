@@ -13,7 +13,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,15 +29,15 @@ class Agenda_AgendaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         $this->Agendas();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Agendas')); 
     }
-    protected function Endereco_Agenda($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Agenda($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Agendas'),'Agenda/Agenda/Agendas');
         } else {
             $this->Tema_Endereco(__('Agendas'));
@@ -49,23 +49,23 @@ class Agenda_AgendaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Agendas($export = FALSE) {
+    public function Agendas($export = false) {
         $i = 0;
-        $this->Endereco_Agenda(FALSE);
+        $this->Endereco_Agenda(false);
         // Botao Add
         
-        $table_colunas = Array();
+        $tableColumns = Array();
 
-        $table_colunas[] = __('Id');
-        $table_colunas[] = __('Motivo');
-        $table_colunas[] = __('Motivo ID');
-        $table_colunas[] = __('Data Inicio');
-        $table_colunas[] = __('Data Fim');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Id');
+        $tableColumns[] = __('Motivo');
+        $tableColumns[] = __('Motivo ID');
+        $tableColumns[] = __('Data Inicio');
+        $tableColumns[] = __('Data Fim');
+        $tableColumns[] = __('Funções');
 
-        $this->_Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Agenda/Agenda/Agendas');
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'Agenda/Agenda/Agendas');
         $titulo = __('Listagem de Agendas').' (<span id="DataTable_Contador">0</span>)';
         $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"Agenda/Agenda/Agendas_Add",'icon'=>'add', 'nome'=>__('Adicionar Agenda')));
         
@@ -76,7 +76,7 @@ class Agenda_AgendaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Agendas_Add() { 
         $this->Endereco_Agenda();  
@@ -93,7 +93,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Agendas_Add2() {
         $titulo     = __('Agenda Adicionada com Sucesso');
@@ -108,7 +108,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Agendas_Edit($id) {
         $this->Endereco_Agenda();
@@ -126,7 +126,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Agendas_Edit2($id) {
         $titulo     = __('Agenda Editada com Sucesso');
@@ -141,7 +141,7 @@ class Agenda_AgendaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Agendas_Del($id) {
     	$id = (int) $id;
@@ -149,7 +149,7 @@ class Agenda_AgendaControle extends Agenda_Controle
         $compromisso = $this->_Modelo->db->Sql_Select('Agenda', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($compromisso);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -167,7 +167,7 @@ class Agenda_AgendaControle extends Agenda_Controle
         $this->Agendas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Agenda deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

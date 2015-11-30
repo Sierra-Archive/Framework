@@ -31,7 +31,7 @@ class Tabela
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function addcabecario($array) {
         $config = Array(
@@ -55,17 +55,17 @@ class Tabela
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function addcorpo($array) {
         if (!is_array($array)) {
-            return FALSE;
+            return false;
         }
         // Percorre Array
         reset($array);
         while (key($array) !== null) {
             $current = current($array);
-            if (!isset($current["class"]) || $current["class"] === FALSE) {
+            if (!isset($current["class"]) || $current["class"] === false) {
                 $array[key($array)]["class"] = '';
             }
             next($array);
@@ -91,7 +91,7 @@ class Tabela
     * @return string Retorna Toda a Tabela
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function retornatabela() {
         $config = Array(

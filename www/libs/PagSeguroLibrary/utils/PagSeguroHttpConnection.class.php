@@ -74,13 +74,13 @@ class PagSeguroHttpConnection
             $postFields = ($data ? http_build_query($data, '', '&') : "");
             $contentLength = "Content-length: " . strlen($postFields);
             $methodOptions = array(
-                CURLOPT_POST => TRUE,
+                CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => $postFields,
             );
         } else {
             $contentLength = null;
             $methodOptions = array(
-                CURLOPT_HTTPGET => TRUE
+                CURLOPT_HTTPGET => true
             );
         }
 
@@ -93,9 +93,9 @@ class PagSeguroHttpConnection
                 'language-engine-description: php:' . PagSeguroLibrary::getPHPVersion()
             ),
             CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => TRUE,
-            CURLOPT_HEADER => FALSE,
-            CURLOPT_SSL_VERIFYPEER => FALSE,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_CONNECTTIMEOUT => $timeout,
             //CURLOPT_TIMEOUT => $timeout
             );
@@ -124,7 +124,7 @@ class PagSeguroHttpConnection
         if ($error) {
             throw new Exception("CURL can't connect: $errorMessage");
         } else {
-            return TRUE;
+            return true;
         }
     }
 }

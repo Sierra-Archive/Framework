@@ -63,12 +63,12 @@ class Minify_Build {
      * </code>
      *
      * @param string $uri
-     * @param boolean $forceAmpersand (default = FALSE) Force the use of ampersand to 
+     * @param boolean $forceAmpersand (default = false) Force the use of ampersand to 
      * append the timestamp to the URI.
      * @return string
      */
-    public function uri($uri, $forceAmpersand = FALSE) {
-        $sep = ($forceAmpersand || strpos($uri, '?') !== FALSE)
+    public function uri($uri, $forceAmpersand = false) {
+        $sep = ($forceAmpersand || strpos($uri, '?') !== false)
             ? self::$ampersand
             : '?';
         return "{$uri}{$sep}{$this->lastModified}";

@@ -27,7 +27,7 @@ Minify::setCache(
 
 if ($min_documentRoot) {
     $_SERVER['DOCUMENT_ROOT'] = $min_documentRoot;
-    Minify::$isDocRootSet = TRUE;
+    Minify::$isDocRootSet = true;
 }
 
 $min_serveOptions['minifierOptions']['text/css']['symlinks'] = $min_symlinks;
@@ -42,7 +42,7 @@ if ($min_allowDebugFlag) {
 
 if ($min_errorLogger) {
     if (true === $min_errorLogger) {
-        $min_errorLogger = FirePHP::getInstance(TRUE);
+        $min_errorLogger = FirePHP::getInstance(true);
     }
     Minify_Logger::setLogger($min_errorLogger);
 }

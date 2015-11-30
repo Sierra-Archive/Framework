@@ -3,7 +3,7 @@ require('../fpdf.php');
 
 class PDF extends FPDF
 {
-    private $logo = FALSE;
+    private $logo = false;
 function PDF($titulo, $logo, $orientation='P', $unit='mm', $size='A4')
 {
         $pdf->SetTitle($arquivo_nome);
@@ -30,7 +30,7 @@ function Header()
 	// Thickness of frame (1 mm)
 	$this->SetLineWidth(1);
 	// Title
-	$this->Cell($w,9, $title,1,1,'C',TRUE);
+	$this->Cell($w,9, $title,1,1,'C',true);
 	// Line break
 	$this->Ln(10);
 }
@@ -54,7 +54,7 @@ function ChapterTitle($num, $label)
 	// Background color
 	$this->SetFillColor(200,220,255);
 	// Title
-	$this->Cell(0,6,"Chapter $num : $label",0,1,'L',TRUE);
+	$this->Cell(0,6,"Chapter $num : $label",0,1,'L',true);
 	// Line break
 	$this->Ln(4);
 }

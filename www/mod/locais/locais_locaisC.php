@@ -6,12 +6,12 @@ class locais_locaisControle extends locais_Controle
         parent::__construct();
     }
     public function Main() {
-        return FALSE;   
+        return false;   
     }
-    static function Endereco_Local($true= TRUE ) {
+    static function Endereco_Local($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Locais'),'locais/locais/Locais');
         } else {
             $_Controle->Tema_Endereco(__('Locais'));
@@ -20,10 +20,10 @@ class locais_locaisControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Locais($export = FALSE) {
-        self::Endereco_Local(FALSE);
+    public function Locais($export = false) {
+        self::Endereco_Local(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -33,25 +33,25 @@ class locais_locaisControle extends locais_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'locais/locais/Locais',
             )
         )));
         // Query
         $setores = $this->_Modelo->db->Sql_Select('Local');
-        if ($setores !== FALSE && !empty($setores)) {
+        if ($setores !== false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $table['Tipo de Local'][$i]             = $valor->categoria2;
-                $table['Nome'][$i]             = $valor->nome;
-                $table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Local'        ,'locais/locais/Locais_Edit/'.$valor->id.'/'    , '')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Local'       ,'locais/locais/Locais_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Local ?'));
+                $table[__('Tipo de Local')][$i]             = $valor->categoria2;
+                $table[__('Nome')][$i]             = $valor->nome;
+                $table[__('Funções')][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Local')        ,'locais/locais/Locais_Edit/'.$valor->id.'/'    , '')).
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Local')       ,'locais/locais/Locais_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Local ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Locais');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -79,10 +79,10 @@ class locais_locaisControle extends locais_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Locais_Add() {
-        self::Endereco_Local(TRUE);
+        self::Endereco_Local(true);
         // Carrega Config
         $titulo1    = __('Adicionar Local');
         $titulo2    = __('Salvar Local');
@@ -97,7 +97,7 @@ class locais_locaisControle extends locais_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Locais_Add2() {
         $titulo     = __('Local Adicionado com Sucesso');
@@ -112,10 +112,10 @@ class locais_locaisControle extends locais_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Locais_Edit($id) {
-        self::Endereco_Local(TRUE);
+        self::Endereco_Local(true);
         // Carrega Config
         $titulo1    = 'Editar Local (#'.$id.')';
         $titulo2    = __('Alteração de Local');
@@ -131,7 +131,7 @@ class locais_locaisControle extends locais_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Locais_Edit2($id) {
         $titulo     = __('Local Editado com Sucesso');
@@ -147,7 +147,7 @@ class locais_locaisControle extends locais_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Locais_Del($id) {
         
@@ -157,7 +157,7 @@ class locais_locaisControle extends locais_Controle
         $setor = $this->_Modelo->db->Sql_Select('Local', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -175,7 +175,7 @@ class locais_locaisControle extends locais_Controle
         $this->Locais();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Local deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

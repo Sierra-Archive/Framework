@@ -181,11 +181,11 @@ class TextBox extends Image
      */
     public function hasInnerMargins()
     {
-        $hasInnerMargins = FALSE;
+        $hasInnerMargins = false;
         $margins = $this->getInnerMargin();
         for ($i = 0; $i < count($margins); $i++) {
             if ($margins[$i] !== null) {
-                $hasInnerMargins = TRUE;
+                $hasInnerMargins = true;
             }
         }
 

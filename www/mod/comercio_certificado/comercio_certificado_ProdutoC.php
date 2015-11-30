@@ -13,7 +13,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,7 +29,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         ///$this->Propostas();
@@ -37,13 +37,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             Array(
                 'span'      =>      5,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      FALSE,
+                    'div_ext'   =>      false,
                     'title_id'  =>      'produtosmodificar_titulo',
                     'title'     =>      'Cadastrar Produto',
-                    'html'      =>      '<span id="produtosmodificar">'.$this->Produtos_Add(TRUE).'</span>',
+                    'html'      =>      '<span id="produtosmodificar">'.$this->Produtos_Add(true).'</span>',
                 ),Array(
                     'div_ext'   =>      ' style="display:none;"  id="produtos_auditorias"',
-                    'title_id'  =>      FALSE,
+                    'title_id'  =>      false,
                     'title'     =>      'Auditoria',
                     'html'      =>      '<span id="produtos_auditoriascorpo">Produtos</span>',
                 ),),
@@ -51,8 +51,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             Array(
                 'span'      =>      7,
                 'conteudo'  =>  Array(Array(
-                    'div_ext'   =>      FALSE,
-                    'title_id'  =>      FALSE,
+                    'div_ext'   =>      false,
+                    'title_id'  =>      false,
                     'title'     =>      'Produtos Cadastrados',
                     'html'      =>      $this->Produtos(),
                 ),),
@@ -65,23 +65,23 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos() {
         $i = 0;
         $html = '<span id="prodaddmostrar" style="display: none;"><a title="Adicionar Produto" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio_certificado/Produto/Produtos_Add">Adicionar novo Produto</a><div class="space15"></div></span>';
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto');
-        if ($produto !== FALSE && !empty($produto)) {
+        if ($produto !== false && !empty($produto)) {
             if (is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
             foreach ($produto as $indice=>&$valor) {
-                $table['Sigla'][$i]     = $valor->sigla;
-                $table['Descrição'][$i] = $valor->obs;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
+                $table[__('Sigla')][$i]     = $valor->sigla;
+                $table[__('Descrição')][$i] = $valor->obs;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Produto')        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Produto')       ,'comercio_certificado/Produto/Produtos_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Produto ?')));
                 ++$i;
             }
-            return $html.$this->_Visual->Show_Tabela_DataTable($table, '', FALSE);
+            return $html.$this->_Visual->Show_Tabela_DataTable($table, '', false);
         } else {
             $html .= '<center><b><font color="#FF0000" size="5">Nenhum Produto</font></b></center>';            
             return $html;
@@ -95,13 +95,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         self::DAO_Campos_Retira($campos,'familia',0);
         self::DAO_Campos_Retira($campos,'nome',0);
         self::DAO_Campos_Retira($campos,'unidade',0);
+        self::DAO_Campos_Retira($campos,'caracteristica',0);
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Produtos_Add($direto = FALSE) {
+    public function Produtos_Add($direto = false) {
         // Carrega campos e retira os que nao precisam
         $campos = Comercio_Produto_DAO::Get_Colunas();
         self::Retirar_Nao_necessarios($campos);
@@ -109,14 +110,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $form = new \Framework\Classes\Form('form_Sistema_Admin_Produtos', 'comercio_certificado/Produto/Produtos_Add2/', 'formajax');
         \Framework\App\Controle::Gerador_Formulario($campos, $form);
         $formulario = $form->retorna_form('Cadastrar');
-        if ($direto === TRUE) {
+        if ($direto === true) {
             return $formulario;
         } else {
             // Json
             $conteudo = array(
                 'location'  =>  '#produtosmodificar_titulo',
                 'js'        =>  '$("#produtos_auditorias").hide();',
-                'html'      =>  'Cadastrar Produto'
+                'html'      =>  __('Cadastrar Produto')
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $conteudo = array(
@@ -126,14 +127,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             );
             $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
             $this->_Visual->Json_Info_Update('Titulo', __('Cadastrar Produto'));
-            $this->_Visual->Json_Info_Update('Historico', FALSE);
+            $this->_Visual->Json_Info_Update('Historico', false);
         }
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Edit($id) {
         $id = (int) $id;
@@ -170,14 +171,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // Info Pagina
         $this->_Visual->Json_Info_Update('Titulo', 'Editar Produto (#'.$id.')');
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
     /**
      * 
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Add2() {
         
@@ -191,7 +192,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->Main();  
         
         // Mostra Mensagem de Sucesso
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Inserção bem sucedida'),
@@ -207,14 +208,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens); 
         // Json
         $this->_Visual->Json_Info_Update('Titulo', __('Produto Adicionado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Edit2($id) {
         
@@ -226,7 +227,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         // Atualiza
         $this->Main();
         // Mensagem
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Produto Alterado com Sucesso'),
@@ -244,14 +245,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         
         //Json
         $this->_Visual->Json_Info_Update('Titulo', __('Produto Editado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);    
+        $this->_Visual->Json_Info_Update('Historico', false);    
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Produtos_Del($id) {
         
@@ -261,7 +262,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($produto);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -279,7 +280,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->Main();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Produto deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     public function Auditorias($produtos=0) {
         $auditorias = $this->_Modelo->db->Sql_Select(
@@ -287,20 +288,20 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 Array('idproduto'=>$produtos),0,'id'
         );
         // Carrega Formulario
-        $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add', '#', 'return inputadd();'));
+        $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array(__('Add'), '#', 'return inputadd();'));
         $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias', 'comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');
         $formulario->addtexto('<span id="Formulario_de_Auditorias_Input">');
-        if ($auditorias === FALSE) {
+        if ($auditorias === false) {
             $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria 1', 'auditoria[]', 0, 'text', 11, '', '(Meses)'));
         } else {
             $i      = 0 ;
-            foreach($auditorias as $indice=>&$valor) {
+            foreach ($auditorias as $indice=>&$valor) {
                 if ($valor->meses!='' && $valor->meses!=0 && $valor->meses!=NULL) {
                     if ($i==0) {
-                        $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '', '(Meses)'));
+                        $input = \Framework\App\Sistema_Funcoes::HTML_min($formulario->Input_Novo(__('Auditoria ').($i+1), 'auditoria[]', $valor->meses, 'text', 11, '', '(Meses)'));
                         $input = str_replace(Array('value="4"'), Array('value="0"'), $input);
                     } else {
-                        $formulario->Input_Novo('Auditoria '.($i+1), 'auditoria[]', $valor->meses, 'text', 11, '', '(Meses)');
+                        $formulario->Input_Novo(__('Auditoria ').($i+1), 'auditoria[]', $valor->meses, 'text', 11, '', '(Meses)');
                     }
                     ++$i;
                 } else {
@@ -318,14 +319,14 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                             'var quant = 1+$("#Formulario_de_Auditorias_Input input").size();'.
                             'if (quant>=10) $("#produtos_auditorias > .widget-body > .clearfix").hide();'.
                             '$(\'#Formulario_de_Auditorias_Input\').append( \''.$input.'\' );'.
-                            'return FALSE;'.
+                            'return false;'.
                         ' }</script>';
         // Faz o Retorno
         return $html;
     }
     public function Auditorias_Modificar($produtos=0) {
         
-        if ($produtos==0) return FALSE;
+        if ($produtos==0) return false;
         #update
         $auditorias_post = \Framework\App\Conexao::anti_injection($_POST['auditoria']);
         $auditorias_post2 = Array();
@@ -338,7 +339,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         if (!is_array($auditorias_post)) $auditorias_post = Array($auditorias_post);
         if (is_object($auditorias_sql))  $auditorias_sql  = Array($auditorias_sql );
         // Foreach, tira os que tiverem mes 0
-        foreach($auditorias_post as $valor) {
+        foreach ($auditorias_post as $valor) {
             if ($valor!=0 && $valor!=NULL && $valor!='') {
                 $valor = (int) $valor;
                 $auditorias_post2[$i] = $valor;
@@ -347,8 +348,8 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         }
         $auditorias_post = $auditorias_post2;
         $j = 0;
-        if ($auditorias_sql !== FALSE && !empty($auditorias_sql)) {
-            foreach($auditorias_sql as $valor) {
+        if ($auditorias_sql !== false && !empty($auditorias_sql)) {
+            foreach ($auditorias_sql as $valor) {
                 if ($i>=$j) {
                     $auditorias_sql[$j]->meses = $auditorias_post[$j];
                     $auditorias_sql[$j]->ordem = $j+1;
@@ -370,7 +371,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             ++$j;
         }
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Modificado'),
@@ -393,7 +394,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         // Titulo da Pagina
         $this->_Visual->Json_Info_Update('Titulo', __('Auditoria editada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

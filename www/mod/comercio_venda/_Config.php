@@ -5,7 +5,7 @@ $configModule = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '0.2.1',
-        'Dependencias'              =>  FALSE,
+        'Dependencias'              =>  false,
     );
 };
 $configMenu = function () {
@@ -16,40 +16,40 @@ $configMenu = function () {
             'Gravidade'             => 200,
             'Img'                   => 'turboadmin/m-dashboard.png',
             'Icon'                  => 'barcode',
-            'Filhos'                => Array('Mesas'=>Array(
+            'Filhos'                => Array(__('Mesas')=>Array(
                 'Nome'                  => __('Mesas'),
                 'Link'                  => 'comercio_venda/Carrinho/Mesas',
                 'Gravidade'             => 10,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'truck',
                 'Permissao_Func'        => Array(// Permissoes NEcessarias
-                    'comercio_venda_mesa' => TRUE
+                    'comercio_venda_mesa' => true
                 ),
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),'Caixa'=>Array(
                 'Nome'                  => __('Caixa'),
                 'Link'                  => 'comercio_venda/Carrinho/Carrinhos',
                 'Gravidade'             => 8,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'shopping-cart',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),'Cardápio'=>Array(
                 'Nome'                  => __('Cardápio'),
                 'Link'                  => 'comercio_venda/Composicao/Composicoes',
                 'Gravidade'             => 6,
                 'Img'                   => 'turboadmin/m-dashboard.png',
                 'Icon'                  => 'leaf',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),),
         ),
         /*'Relatório'=>Array(
-            'Filhos'                => Array('Processos'=>Array(
+            'Filhos'                => Array(__('Processos')=>Array(
                 'Nome'                  => __('Processos'),
                 'Link'                  => 'comercio_venda/Relatorio/Main',
                 'Gravidade'             => 70,
                 'Img'                   => 'menusuperior/varas.png',
                 'Icon'                  => '',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),),
         ),*/
     );
@@ -64,9 +64,9 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Mesas',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Mesas',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Mesas',  // Metodos referentes separados por virgula // Endereco da url de permissão
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => TRUE
+                'comercio_venda_mesa' => true
             )
         ),
         Array(
@@ -76,9 +76,9 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Mesas_Add',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Mesas_Add,Mesas_Add2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Mesas_Add,Mesas_Add2',  // Metodos referentes separados por virgula // Endereco da url de permissão
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => TRUE
+                'comercio_venda_mesa' => true
             )
         ),
         Array(
@@ -88,9 +88,9 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Mesas_Edit',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Mesas_Edit,Mesas_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Mesas_Edit,Mesas_Edit2',  // Metodos referentes separados por virgula // Endereco da url de permissão
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => TRUE
+                'comercio_venda_mesa' => true
             )
         ),
         Array(
@@ -100,9 +100,9 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Mesas_Del',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Mesas_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Mesas_Del',  // Metodos referentes separados por virgula // Endereco da url de permissão
             'Permissao_Func'        => Array(// Permissoes NEcessarias
-                'comercio_venda_mesa' => TRUE
+                'comercio_venda_mesa' => true
             )
         ),
         
@@ -115,7 +115,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Carrinhos',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Carrinhos',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Carrinhos',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Caixa) - Adicionar'),
@@ -124,7 +124,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Carrinhos_Add',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Carrinhos_Add,Carrinhos_Add2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Carrinhos_Add,Carrinhos_Add2',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Caixa) - Editar'),
@@ -133,7 +133,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Carrinhos_Edit',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Carrinhos_Edit,Carrinhos_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Carrinhos_Edit,Carrinhos_Edit2',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Caixa) - Deletar'),
@@ -142,7 +142,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/Carrinhos_Del',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'Carrinhos_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Carrinhos_Del',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Caixa) - Pagamento Rapido'),
@@ -151,7 +151,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Carrinho/StatusCarrinhos',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Carrinho',   // Submodulo Referente
-            'Metodo'                => 'StatusCarrinhos',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'StatusCarrinhos',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         
         
@@ -163,7 +163,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Composicao/Composicoes',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Composicao',   // Submodulo Referente
-            'Metodo'                => 'Composicoes',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Composicoes',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Cardápio) - Adicionar'),
@@ -172,7 +172,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Composicao/Composicoes_Add',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Composicao',   // Submodulo Referente
-            'Metodo'                => 'Composicoes_Add,Composicoes_Add2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Composicoes_Add,Composicoes_Add2',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Cardápio) - Editar'),
@@ -181,7 +181,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Composicao/Composicoes_Edit',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Composicao',   // Submodulo Referente
-            'Metodo'                => 'Composicoes_Edit,Composicoes_Edit2',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Composicoes_Edit,Composicoes_Edit2',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         Array(
             'Nome'                  => __('Comercio Vendas (Cardápio) - Deletar'),
@@ -190,7 +190,7 @@ $config_Permissoes = function () {
             'End'                   => 'comercio_venda/Composicao/Composicoes_Del',
             'Modulo'                => 'comercio_venda', // Modulo Referente
             'SubModulo'             => 'Composicao',   // Submodulo Referente
-            'Metodo'                => 'Composicoes_Del',  // Metodos referentes separados por virgula // Endereco que deve conter a url para permitir acesso
+            'Metodo'                => 'Composicoes_Del',  // Metodos referentes separados por virgula // Endereco da url de permissão
         ),
         /*Array(
             'Nome'                  => __('Visualizar Relatórios'),
@@ -209,13 +209,13 @@ $config_Permissoes = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function () {
+$configFunctional = function () {
     return Array(
         'comercio_venda_mesa'  => Array(
             'Nome'                  => __('Se Possui Sistema de Mesas?'),
             'Desc'                  => __('Se possue Mesas'),
             'chave'                 => 'comercio_venda_mesa',
-            'Valor'                 => FALSE
+            'Valor'                 => false
         ),
     );
 };
@@ -225,7 +225,7 @@ $config_Funcional = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function () {
+$configPublic = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

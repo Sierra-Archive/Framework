@@ -11,7 +11,7 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -24,7 +24,7 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
         // Titulos
         $titulo             = \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Titulo');
         $titulo2            = Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
-        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2) === TRUE) {
+        if (Framework\Classes\Texto::Captura_Palavra_Masculina($titulo2) === true) {
             $titulo_com_sexo    = 'o '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
         } else {
             $titulo_com_sexo    = 'a '.Framework\Classes\Texto::Transformar_Plural_Singular($titulo);
@@ -35,10 +35,10 @@ class comercio_servicos_ServicoModelo extends comercio_servicos_Modelo
         
         $function = '';
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$titulo2.'\'        ,\'comercio_servicos/Servico/Servicos_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(\'Editar '.$titulo2.'\'        ,\'comercio_servicos/Servico/Servicos_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$titulo2.'\'       ,\'comercio_servicos/Servico/Servicos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar ess'.$titulo_com_sexo.' ?\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(\'Deletar '.$titulo2.'\'       ,\'comercio_servicos/Servico/Servicos_Del/\'.$d.\'/\'     ,\'Deseja realmente deletar ess'.$titulo_com_sexo.' ?\'),true);';
         }
 
         

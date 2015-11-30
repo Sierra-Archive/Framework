@@ -147,13 +147,13 @@ abstract class AbstractElement extends HTMLAbstractElement
         $styleWriter = new FontStyleWriter($this->fontStyle);
         if ($this->fontStyle->getColor() != null) {
             $colorIndex = array_search($this->fontStyle->getColor(), $parentWriter->getColorTable());
-            if ($colorIndex !== FALSE) {
+            if ($colorIndex !== false) {
                 $styleWriter->setColorIndex($colorIndex + 1);
             }
         }
         if ($this->fontStyle->getName() != null) {
             $fontIndex = array_search($this->fontStyle->getName(), $parentWriter->getFontTable());
-            if ($fontIndex !== FALSE) {
+            if ($fontIndex !== false) {
                 $styleWriter->setNameIndex($fontIndex);
             }
         }

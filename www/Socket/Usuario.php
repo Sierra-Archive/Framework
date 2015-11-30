@@ -10,14 +10,14 @@ $endereco_notificacao = 'Notificacao.tmp';
 
 // Verifica se Tem Notificacao
 $notificacao = Array();
-$modificar = FALSE;
+$modificar = false;
 if (file_exists($endereco_notificacao) && is_readable($endereco_notificacao)) {
     $resultado = unserialize(file_get_contents($endereco_notificacao));
 } else {
-    $resultado = FALSE;
+    $resultado = false;
 }
-if ($resultado !== FALSE && !empty($resultado)) {
-    foreach($resultado as $indice->$valor) {
+if ($resultado !== false && !empty($resultado)) {
+    foreach ($resultado as $indice->$valor) {
             if ($timestamp>$valor['timestamp']) {
                 if ($valor['user']!=\Framework\App\Acl::Usuario_GetID_Static() && \Framework\App\Acl::Permissao($valor['url']))
                     $notificacao[] = Array(
@@ -26,7 +26,7 @@ if ($resultado !== FALSE && !empty($resultado)) {
                     );
             } else if ($timestamp<$timestamp_minimo) {
                     unset($resultado[$indice]);
-                    $modificar = TRUE;
+                    $modificar = true;
             }
     }
 }

@@ -5,7 +5,7 @@
             <?php
             
             /*BOTAO EXTRA*/
-            if ($params['btn_extra'] !== FALSE) { ?>
+            if ($params['btn_extra'] !== false) { ?>
                 <div class="panel-buttons"><div class="btn-group portlet-handle-cancel">
                 <?php if (is_array($params['btn_extra'])) { ?>
                     <div class="update-btn">
@@ -26,14 +26,14 @@
             } ?>
         </div></div>
         <?php if ($params['conteudo']!='') { ?>
-        <div class="panel-body"<?php if (isset($params['opc_fechada']) && $params['opc_fechada'] === TRUE)  echo ' style="display: none;"'; ?>>
+        <div class="panel-body"<?php if (isset($params['opc_fechada']) && $params['opc_fechada'] === true)  echo ' style="display: none;"'; ?>>
             <?php echo $params['conteudo']; ?>
         </div>
         <?php } ?>
     </div>
 <?php } else { ?>
     <div class="row">
-    <?php foreach($params['tamanho'] as $indice=>$span) { ?>
+    <?php foreach ($params['tamanho'] as $indice=>$span) { ?>
         <div class="col-md-<?php echo $span; ?>">
               <?php echo $params['conteudo'][$indice];  ?>
         </div>

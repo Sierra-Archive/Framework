@@ -13,7 +13,7 @@ class comercio_LinhaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,18 +29,18 @@ class comercio_LinhaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Linha/Linhas');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Linha($true= TRUE ) {
+    static function Endereco_Linha($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Linhas');
         $link = 'comercio/Linha/Linhas';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,17 +49,17 @@ class comercio_LinhaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Linhas($export = FALSE) {
-        self::Endereco_Linha(FALSE);
+    public function Linhas($export = false) {
+        self::Endereco_Linha(false);
         
         $table = Array(
-            'Id', 'Nome', 'Linha', 'Funções'
+            __('Id'), __('Nome'), __('Linha'),__('Funções')
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($table,'comercio/Linha/Linhas');
         $titulo = __('Listagem de Linhas').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add', 'nome'=>'Adicionar Linha'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Linha/Linhas_Add",'icon'=>'add', 'nome' => __('Adicionar Linha')));
         
         
         //Carrega Json
@@ -68,10 +68,10 @@ class comercio_LinhaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Linhas_Add() {
-        self::Endereco_Linha(TRUE);
+        self::Endereco_Linha(true);
         // Carrega Config
         $titulo1    = __('Adicionar Linha');
         $titulo2    = __('Salvar Linha');
@@ -86,7 +86,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Linhas_Add2() {
         $titulo     = __('Linha Adicionada com Sucesso');
@@ -101,10 +101,10 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Linhas_Edit($id) {
-        self::Endereco_Linha(TRUE);
+        self::Endereco_Linha(true);
         // Carrega Config
         $titulo1    = 'Editar Linha (#'.$id.')';
         $titulo2    = __('Alteração de Linha');
@@ -120,7 +120,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Linhas_Edit2($id) {
         $titulo     = __('Linha Editada com Sucesso');
@@ -136,7 +136,7 @@ class comercio_LinhaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Linhas_Del($id) {
         
@@ -146,7 +146,7 @@ class comercio_LinhaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Linha', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -164,7 +164,7 @@ class comercio_LinhaControle extends comercio_Controle
         $this->Linhas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Linha deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

@@ -597,7 +597,7 @@ class PagSeguroTransaction
         $transaction['status'] = $this->status ? $this->status->getValue() : "null";
         $transaction['itemsCount'] = is_array($this->items) ? count($this->items) : "null";
 
-        $transaction = "Transaction: " . var_export($transaction, TRUE);
+        $transaction = "Transaction: " . var_export($transaction, true);
 
         return $transaction;
 

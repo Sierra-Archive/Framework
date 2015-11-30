@@ -80,10 +80,10 @@ class XMLWriter
         // Set xml Compatibility
         $compatibility = Settings::hasCompatibility();
         if ($compatibility) {
-            $this->xmlWriter->setIndent(FALSE);
+            $this->xmlWriter->setIndent(false);
             $this->xmlWriter->setIndentString('');
         } else {
-            $this->xmlWriter->setIndent(TRUE);
+            $this->xmlWriter->setIndent(true);
             $this->xmlWriter->setIndentString('  ');
         }
     }
@@ -112,7 +112,7 @@ class XMLWriter
     public function __call($function, $args)
     {
         // Catch exception
-        if (method_exists($this->xmlWriter, $function) === FALSE) {
+        if (method_exists($this->xmlWriter, $function) === false) {
             throw new \BadMethodCallException("Method '{$function}' does not exists.");
         }
 
@@ -132,7 +132,7 @@ class XMLWriter
     public function getData()
     {
         if ($this->tempFile == '') {
-            return $this->xmlWriter->outputMemory(TRUE);
+            return $this->xmlWriter->outputMemory(true);
         } else {
             $this->xmlWriter->flush();
             return file_get_contents($this->tempFile);
@@ -174,7 +174,7 @@ class XMLWriter
      */
     public function writeElementIf($condition, $element, $attribute = null, $value = null)
     {
-        if ($condition == TRUE) {
+        if ($condition == true) {
             if (is_null($attribute)) {
                 $this->xmlWriter->writeElement($element, $value);
             } else {
@@ -195,7 +195,7 @@ class XMLWriter
      */
     public function writeAttributeIf($condition, $attribute, $value)
     {
-        if ($condition == TRUE) {
+        if ($condition == true) {
             $this->xmlWriter->writeAttribute($attribute, $value);
         }
     }

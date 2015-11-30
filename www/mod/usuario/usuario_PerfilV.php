@@ -11,12 +11,12 @@ class usuario_PerfilVisual extends usuario_Visual
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();
     }
-    static function Show_HTML(&$usuario, $tipo='Cliente', $mensagens = FALSE) {
+    static function Show_HTML(&$usuario, $tipo='Cliente', $mensagens = false) {
         $html = '';
         if ($tipo=='cliente')                                                                                                    $tipo = "Cliente";
         if ($tipo=='Funcionrio' || $tipo=="Funcionario" || $tipo=="funcionario" || $tipo=="funcionário" || $tipo=="funcionrio")  $tipo = "Funcionário";
@@ -95,18 +95,18 @@ class usuario_PerfilVisual extends usuario_Visual
         '<div class="space15"></div>';
         if ($usuario->obs!='') {
             if (\Framework\App\Sistema_Funcoes::Perm_Modulos('usuario_mensagem')) {
-                $html .= '<h2>Mensagem</h2>';
+                $html .= '<h2>'.__('Mensagem').'</h2>';
             } else {
-                $html .= '<h2>Observação</h2>';
+                $html .= '<h2>'.__('Observação').'</h2>';
             }
            $html .= '<p>'.$usuario->obs.'</p>';
         }
         $html .= '<div class="space15"></div>';
         if (LAYOULT_IMPRIMIR!='AJAX') {
             $html .= '</div>';
-            if ($mensagens !== FALSE) {
+            if ($mensagens !== false) {
                 $html .= '<div class="col-sm-4">';
-                foreach($mensagens AS &$valor) {
+                foreach ($mensagens AS &$valor) {
                     $html .= '';
                 }
                 $html .= '</div>';

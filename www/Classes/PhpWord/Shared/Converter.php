@@ -266,7 +266,7 @@ class Converter
         } elseif (strlen($value) == 3) {
             list($red, $green, $blue) = array($value[0] . $value[0], $value[1] . $value[1], $value[2] . $value[2]);
         } else {
-            return FALSE;
+            return false;
         }
 
         $red = hexdec($red);

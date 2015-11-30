@@ -128,15 +128,15 @@ class Minify_Cache_ZendPlatform {
     private function _fetch($id)
     {
         if ($this->_id === $id) {
-            return TRUE;
+            return true;
         }
         $ret = output_cache_get($id, $this->_exp);
         if (false === $ret) {
             $this->_id = null;
-            return FALSE;
+            return false;
         }
         list($this->_lm, $this->_data) = explode('|', $ret, 2);
         $this->_id = $id;
-        return TRUE;
+        return true;
     }
 }

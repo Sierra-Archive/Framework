@@ -234,7 +234,7 @@ class html2text
      *  @access private
      *  @see $html, $text
      */
-    private $_converted = FALSE;
+    private $_converted = false;
 
     /**
      *  Contains URL addresses from links to be rendered in plain text.
@@ -280,7 +280,7 @@ class html2text
      *  @access public
      *  @return void
      */
-    public function __construct( $source = '', $from_file = FALSE, $options = array() )
+    public function __construct( $source = '', $from_file = false, $options = array() )
     {
         $this->_options = array_merge($this->_options, $options);
 
@@ -307,7 +307,7 @@ class html2text
         else
             $this->html = $source;
 
-        $this->_converted = FALSE;
+        $this->_converted = false;
     }
 
     /**
@@ -413,7 +413,7 @@ class html2text
 
         $this->text = $text;
 
-        $this->_converted = TRUE;
+        $this->_converted = true;
     }
 
     /**
@@ -511,7 +511,7 @@ class html2text
 
         if ($link_method == 'table')
         {
-            if (($index = array_search($url, $this->_link_list)) === FALSE) {
+            if (($index = array_search($url, $this->_link_list)) === false) {
                 $index = count($this->_link_list);
                 $this->_link_list[] = $url;
             }

@@ -15,16 +15,16 @@ class Musica_ArtistaControle extends Musica_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Musica/Artista/Artistas');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Artista($true= TRUE ) {
+    static function Endereco_Artista($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Artistas'),'Musica/Artista/Artistas');
         } else {
             $_Controle->Tema_Endereco(__('Artistas'));
@@ -39,15 +39,15 @@ class Musica_ArtistaControle extends Musica_Controle
         if (is_object($artistas)) $artistas = Array(0=>$artistas);
         reset($artistas);
         foreach ($artistas as &$valor) {
-            $table['Nome do Artista'][$i]          =   $valor->nome;
+            $table[__('Nome do Artista')][$i]          =   $valor->nome;
             
-            if ($valor->foto==='' || $valor->foto === FALSE) {
+            if ($valor->foto==='' || $valor->foto === false) {
                 $foto = WEB_URL.'img'.US.'icons'.US.'clientes.png';
             } else {
                 $foto = $valor->foto;
             }
-            $table['Foto'][$i]                     = '<img alt="'.__('Foto de Artista').' src="'.$foto.'" style="max-width:100px;" />';
-            $table['Data Cadastrada'][$i]          =   $valor->log_date_add;
+            $table[__('Foto')][$i]                     = '<img alt="'.__('Foto de Artista').'" src="'.$foto.'" style="max-width:100px;" />';
+            $table[__('Data Cadastrada')][$i]          =   $valor->log_date_add;
             $status                                 = $valor->status;
             if ($status!=1) {
                 $status = 0;
@@ -56,10 +56,10 @@ class Musica_ArtistaControle extends Musica_Controle
                 $status = 1;
                 $texto = __('Ativado');
             }
-            $table['Status'][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Artista/Status/'.$valor->id.'/'    , '')).'</span>';
-            $table['Funções'][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar Albuns do Artista'    ,'Musica/Album/Albuns/'.$valor->id.'/'    , '')).
-                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Artista'        ,'Musica/Artista/Artistas_Edit/'.$valor->id.'/'    , '')).
-                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Artista'       ,'Musica/Artista/Artistas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Artista ?'));
+            $table[__('Status')][$i]                   = '<span id="status'.$valor->id.'">'.$Visual->Tema_Elementos_Btn('Status'.$status     ,Array($texto        ,'Musica/Artista/Status/'.$valor->id.'/'    , '')).'</span>';
+            $table[__('Funções')][$i]                  =   $Visual->Tema_Elementos_Btn('Visualizar' ,Array(__('Visualizar Albuns do Artista')    ,'Musica/Album/Albuns/'.$valor->id.'/'    , '')).
+                                                        $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Artista')        ,'Musica/Artista/Artistas_Edit/'.$valor->id.'/'    , '')).
+                                                        $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Artista')       ,'Musica/Artista/Artistas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Artista ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -67,10 +67,10 @@ class Musica_ArtistaControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Artistas($export = FALSE) {
-        self::Endereco_Artista(FALSE);
+    public function Artistas($export = false) {
+        self::Endereco_Artista(false);
         $i = 0;
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
             Array(
@@ -79,24 +79,24 @@ class Musica_ArtistaControle extends Musica_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Musica/Artista/Artistas',
             )
         )));
         $artistas = $this->_Modelo->db->Sql_Select('Musica_Album_Artista');
-        if ($artistas !== FALSE && !empty($artistas)) {
+        if ($artistas !== false && !empty($artistas)) {
             list($table, $i) = self::Artistas_Tabela($artistas);
             
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Artistas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
                     $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
-                    FALSE,        // Apagar primeira coluna ?
+                    false,        // Apagar primeira coluna ?
                     Array(       // Ordenacao
                         Array(
                             0,'desc'
@@ -117,7 +117,7 @@ class Musica_ArtistaControle extends Musica_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Artistas_Add() {
         self::Endereco_Artista();
@@ -135,7 +135,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Artistas_Add2() {
         $titulo     = __('Artista Adicionado com Sucesso');
@@ -150,7 +150,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Artistas_Edit($id) {
         self::Endereco_Artista();
@@ -169,7 +169,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Artistas_Edit2($id) {
         $titulo     = __('Artista Editado com Sucesso');
@@ -185,7 +185,7 @@ class Musica_ArtistaControle extends Musica_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Artistas_Del($id) {
         
@@ -195,7 +195,7 @@ class Musica_ArtistaControle extends Musica_Controle
         $artista = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($artista);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -213,15 +213,15 @@ class Musica_ArtistaControle extends Musica_Controle
         $this->Artistas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Artista deletado com Sucesso'));
-        $this->_Visual->Json_Info_Update('Historico', FALSE);
+        $this->_Visual->Json_Info_Update('Historico', false);
     }
-    public function Status($id = FALSE) {
-        if ($id === FALSE) {
-            return FALSE;
+    public function Status($id = false) {
+        if ($id === false) {
+            return false;
         }
         $resultado = $this->_Modelo->db->Sql_Select('Musica_Album_Artista', Array('id'=>$id),1);
-        if ($resultado === FALSE || !is_object($resultado)) {
-            return FALSE;
+        if ($resultado === false || !is_object($resultado)) {
+            return false;
         }
         if ($resultado->status=='1') {
             $resultado->status='0';
@@ -252,7 +252,7 @@ class Musica_ArtistaControle extends Musica_Controle
 
             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
         }
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

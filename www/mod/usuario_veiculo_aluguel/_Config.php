@@ -5,7 +5,7 @@ $configModule = function () {
         'Descrição'                 =>  '',
         'System_Require'            =>  '3.1.0',
         'Version'                   =>  '3.1.1',
-        'Dependencias'              =>  FALSE,
+        'Dependencias'              =>  false,
     );
 };
 $configMenu = function () {
@@ -16,20 +16,20 @@ $configMenu = function () {
             'Gravidade'             => 5,
             'Img'                   => 'menusuperior/alugueis-locar.png',
             'Icon'                  => '',
-            'Filhos'                => Array('Veiculos'=>Array(
+            'Filhos'                => Array(__('Veiculos')=>Array(
                 'Nome'                  => __('Meus Aluguéis'),
                 'Link'                  => 'usuario_veiculo_aluguel/Listar/Main',
                 'Gravidade'             => 80,
                 'Img'                   => 'menusuperior/alugueis-locar.png',
                 'Icon'                  => 'truck',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),'Veiculos'=>Array(
                 'Nome'                  => __('Veiculos'),
                 'Link'                  => 'usuario_veiculo/Listar/Main',
                 'Gravidade'             => 10,
                 'Img'                   => 'menusuperior/alugueis-locar.png',
                 'Icon'                  => 'road',
-                'Filhos'                => FALSE,
+                'Filhos'                => false,
             ),),
         ),
     );
@@ -40,7 +40,7 @@ $config_Permissoes = function () {
             'Nome'                  => __('Veiculo (Alugueis) - Visualizar'),
             'Desc'                  => '',
             'Chave'                 => 'usuario_veiculo_aluguel_Listar',
-            'End'                   => 'usuario_veiculo_aluguel/Listar', // Endereco que deve conter a url para permitir acesso
+            'End'                   => 'usuario_veiculo_aluguel/Listar', // Endereco da url de permissão
             'Modulo'                => 'usuario_veiculo_aluguel', // Modulo Referente
             'SubModulo'             => 'Listar',   // Submodulo Referente
             'Metodo'                => '*',  // Metodos referentes separados por virgula
@@ -53,7 +53,7 @@ $config_Permissoes = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Funcional = function () {
+$configFunctional = function () {
     return Array();
 };
 /**
@@ -62,7 +62,7 @@ $config_Funcional = function () {
  * 
  * @author Ricardo Sierra <web@ricardosierra.com.br>
  */
-$config_Publico = function () {
+$configPublic = function () {
     return Array(
         /*'{chave}'  => Array(
             'Nome'                  => 'Nome',

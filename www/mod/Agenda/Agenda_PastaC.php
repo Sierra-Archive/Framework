@@ -13,7 +13,7 @@ class Agenda_PastaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,23 +29,23 @@ class Agenda_PastaControle extends Agenda_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         $this->Pastas();
         // ORGANIZA E MANDA CONTEUDO
         $this->_Visual->Json_Info_Update('Titulo', __('Pastas')); 
     }
-    protected function Endereco_Pasta($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Pasta($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Pastas'),'Agenda/Pasta/Pastas');
         } else {
             $this->Tema_Endereco(__('Pastas'));
         }
     }
-    protected function Endereco_Cor($true= TRUE ) {
+    protected function Endereco_Cor($true= true ) {
         $this->Endereco_Pasta();
-        if ($true === TRUE) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Cores'),'Agenda/Pasta/Cores');
         } else {
             $this->Tema_Endereco(__('Cores'));
@@ -59,14 +59,14 @@ class Agenda_PastaControle extends Agenda_Controle
         if (is_object($pastas)) $pastas = Array(0=>$pastas);
         reset($pastas);
         foreach ($pastas as $indice=>&$valor) {
-            //$table['#Id'][$i]       = '#'.$valor->id;
-            $table['Tipo de Pasta'][$i]        =   $valor->categoria2;
-            $table['Cor'][$i]                  =   $valor->cor2;
-            $table['Número'][$i]               =   $valor->num;
-            $table['Nome'][$i]                 =   $valor->nome;
-            $table['Observação'][$i]           =   $valor->obs;
-            $table['Funções'][$i]              =   $Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Pasta'        ,'Agenda/Pasta/Pastas_Edit/'.$valor->id.'/'    , '')).
-                                                    $Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Pasta'       ,'Agenda/Pasta/Pastas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Pasta ?'));
+            //$table[__('#Id')][$i]       = '#'.$valor->id;
+            $table[__('Tipo de Pasta')][$i]        =   $valor->categoria2;
+            $table[__('Cor')][$i]                  =   $valor->cor2;
+            $table[__('Número')][$i]               =   $valor->num;
+            $table[__('Nome')][$i]                 =   $valor->nome;
+            $table[__('Observação')][$i]           =   $valor->obs;
+            $table[__('Funções')][$i]              =   $Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Pasta')        ,'Agenda/Pasta/Pastas_Edit/'.$valor->id.'/'    , '')).
+                                                    $Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Pasta')       ,'Agenda/Pasta/Pastas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Pasta ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -74,10 +74,10 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Pastas($export = FALSE) {
-        $this->Endereco_Pasta(FALSE);
+    public function Pastas($export = false) {
+        $this->Endereco_Pasta(false);
         self::Pastas_Listar($export, $this->_Modelo, $this->_Visual);
         
         //Carrega Json
@@ -90,17 +90,17 @@ class Agenda_PastaControle extends Agenda_Controle
      * @param type $Visual
      * @param type $tipo
      */
-    static function Pastas_Listar($export = FALSE,&$Modelo,&$Visual, $tipo='Unico') {
-        $table_colunas = Array();
+    static function Pastas_Listar($export = false,&$Modelo,&$Visual, $tipo='Unico') {
+        $tableColumns = Array();
 
-        $table_colunas[] = __('Categoria');
-        $table_colunas[] = __('Cor');
-        $table_colunas[] = __('Numero');
-        $table_colunas[] = __('Nome');
-        $table_colunas[] = __('Obs');
-        $table_colunas[] = __('Funções');
+        $tableColumns[] = __('Categoria');
+        $tableColumns[] = __('Cor');
+        $tableColumns[] = __('Numero');
+        $tableColumns[] = __('Nome');
+        $tableColumns[] = __('Obs');
+        $tableColumns[] = __('Funções');
 
-        $Visual->Show_Tabela_DataTable_Massiva($table_colunas,'Agenda/Pasta/Pastas/', '', TRUE, FALSE);
+        $Visual->Show_Tabela_DataTable_Massiva($tableColumns,'Agenda/Pasta/Pastas/', '', true, false);
         
         $titulo = __('Arquivo de Pastas').' (<span id="DataTable_Contador">0</span>)';
         if ($tipo==='Unico') {
@@ -112,7 +112,7 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Pastas_Add() { 
         $this->Endereco_Pasta();  
@@ -129,7 +129,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Pastas_Add2() {
         $titulo     = __('Pasta Adicionado com Sucesso');
@@ -144,7 +144,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Pastas_Edit($id) {
         $this->Endereco_Pasta();
@@ -162,7 +162,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Pastas_Edit2($id) {
         $titulo     = __('Pasta Editado com Sucesso');
@@ -177,7 +177,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Pastas_Del($id) {
         
@@ -186,7 +186,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $pasta = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($pasta);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -204,15 +204,15 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->Pastas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Pasta deletado com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Cores($export = FALSE) {
-        $this->Endereco_Cor(FALSE);
+    public function Cores($export = false) {
+        $this->Endereco_Cor(false);
         $i = 0;
         // Botao Add
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -222,25 +222,25 @@ class Agenda_PastaControle extends Agenda_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Agenda/Pasta/Cores',
             )
         )));
         // Conexao
         $cores = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta_Cor');
-        if ($cores !== FALSE && !empty($cores)) {
+        if ($cores !== false && !empty($cores)) {
             if (is_object($cores)) $cores = Array(0=>$cores);
             reset($cores);
             foreach ($cores as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Nome'][$i]      = $valor->nome;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Cor'        ,'Agenda/Pasta/Cores_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Cor'       ,'Agenda/Pasta/Cores_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Cor ?'));
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Nome')][$i]      = $valor->nome;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Cor')        ,'Agenda/Pasta/Cores_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Cor')       ,'Agenda/Pasta/Cores_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Cor ?')));
                 ++$i;
             }
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Cores');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -268,7 +268,7 @@ class Agenda_PastaControle extends Agenda_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Cores_Add() {
         $this->Endereco_Cor();
@@ -285,7 +285,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Cores_Add2() {
         $titulo     = __('Cor Adicionada com Sucesso');
@@ -300,7 +300,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Cores_Edit($id) {
         $this->Endereco_Cor();
@@ -318,7 +318,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Cores_Edit2($id) {
         $titulo     = __('Cor Editada com Sucesso');
@@ -333,7 +333,7 @@ class Agenda_PastaControle extends Agenda_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Cores_Del($id) {
     	$id = (int) $id;
@@ -341,7 +341,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $pasta = $this->_Modelo->db->Sql_Select('Usuario_Agenda_Pasta_Cor', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($pasta);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -359,7 +359,7 @@ class Agenda_PastaControle extends Agenda_Controle
         $this->Cores();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Cor deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

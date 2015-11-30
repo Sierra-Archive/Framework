@@ -13,7 +13,7 @@ class comercio_MarcaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,18 +29,18 @@ class comercio_MarcaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Marca/Marcas');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Marca($true= TRUE ) {
+    static function Endereco_Marca($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Marcas');
         $link = 'comercio/Marca/Marcas';
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -49,17 +49,17 @@ class comercio_MarcaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas() {
-        self::Endereco_Marca(FALSE);
+        self::Endereco_Marca(false);
         
         $table = Array(
-            'Id', 'Nome', 'Funções'
+            __('Id'), __('Nome'),__('Funções')
         );
         $this->_Visual->Show_Tabela_DataTable_Massiva($table,'comercio/Marca/Marcas');
         $titulo = __('Listagem de Marcas').' (<span id="DataTable_Contador">0</span>)';  //
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Marca/Marcas_Add",'icon'=>'add', 'nome'=>'Adicionar Marca'));
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10,Array("link"=>"comercio/Marca/Marcas_Add",'icon'=>'add', 'nome' => __('Adicionar Marca')));
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Marcas'));
@@ -67,10 +67,10 @@ class comercio_MarcaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Add() {
-        self::Endereco_Marca(TRUE);
+        self::Endereco_Marca(true);
         // Carrega Config
         $titulo1    = __('Adicionar Marca');
         $titulo2    = __('Salvar Marca');
@@ -85,7 +85,7 @@ class comercio_MarcaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Add2() {
         $titulo     = __('Marca Adicionada com Sucesso');
@@ -100,10 +100,10 @@ class comercio_MarcaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Edit($id) {
-        self::Endereco_Marca(TRUE);
+        self::Endereco_Marca(true);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
         $titulo2    = __('Alteração de Marca');
@@ -119,7 +119,7 @@ class comercio_MarcaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
@@ -135,7 +135,7 @@ class comercio_MarcaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Del($id) {
         
@@ -145,7 +145,7 @@ class comercio_MarcaControle extends comercio_Controle
         $linha = $this->_Modelo->db->Sql_Select('Comercio_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -163,7 +163,7 @@ class comercio_MarcaControle extends comercio_Controle
         $this->Marcas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

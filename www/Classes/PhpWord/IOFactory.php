@@ -25,7 +25,7 @@ abstract class IOFactory
      */
     public static function createWriter(PhpWord $phpWord, $name = 'Word2007')
     {
-        if ($name !== 'WriterInterface' && !in_array($name, array('ODText', 'RTF', 'Word2007', 'HTML', 'PDF'), TRUE)) {
+        if ($name !== 'WriterInterface' && !in_array($name, array('ODText', 'RTF', 'Word2007', 'HTML', 'PDF'), true)) {
             throw new Exception("\"{$name}\" is not a valid writer.");
         }
 

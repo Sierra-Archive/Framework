@@ -11,7 +11,7 @@ class Simulador_TagModelo extends Simulador_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -27,8 +27,8 @@ class Simulador_TagModelo extends Simulador_Modelo
         $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('Simulador/Tag/Tags_Del');
         
         $function = '';
-        if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),TRUE);';
-        if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),TRUE);';
+        if ($permissionEdit) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Pasta\')        ,\'Simulador/Tag/Tags_Edit/\'.$d    ,\'\'),true);';
+        if ($permissionDelete) $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'    ,Array(__(\'Deletar Pasta\')       ,\'Simulador/Tag/Tags_Del/\'.$d     ,__(\'Deseja realmente deletar essa Caracteristica ?\')),true);';
 
         $columns = Array();
         

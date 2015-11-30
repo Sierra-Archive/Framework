@@ -9,10 +9,10 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
     protected $nome;
     protected $descricao;
     
-    // Padrao é FALSE, ou array com os campos que nao aceita
-    protected static $aceita_config       = FALSE;
+    // Padrao é false, ou array com os campos que nao aceita
+    protected static $aceita_config       = false;
     protected static $campos_naoaceita_config  = Array('chave', 'modulo', 'submodulo', 'metodo', 'end');
-    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_SIS_PERMISSAO;
     }
     /**
@@ -20,7 +20,7 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
      * @return string
      */
     public static function Permissao_Copia() {
-        return FALSE;
+        return false;
     }
     public static function Get_Sigla() {
         return 'SP';
@@ -43,20 +43,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'chave',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => TRUE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => true,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Chave'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -68,20 +68,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'modulo',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 200,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Modulo'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Somente Letras'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -93,20 +93,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'submodulo',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 200,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('SubModulo'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Somente Letras'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -118,20 +118,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'metodo',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 200,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Metodo'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => '* Ou separado por ,',
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -144,20 +144,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'end',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 200,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Endereço'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -170,20 +170,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Nome Completo'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -196,20 +196,20 @@ final Class Sistema_Permissao_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'descricao',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 100,
-                'mysql_null'        => TRUE,  // nulo ?
+                'mysql_null'        => true,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => FALSE,  // chave primaria
-                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => FALSE,
-                'mysql_comment'     => FALSE,
-                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => __('Descrição'),
-                    'valor_padrao'      => FALSE,
-                    'readonly'          => FALSE,
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
                     'input'             => array(

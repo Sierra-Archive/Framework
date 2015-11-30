@@ -9,8 +9,8 @@ $class = Array(
     'block-azul' => 'blue',
 );
 ?><div class="display-animation"><div class="row image-row margin-bottom-40"><?php $cont=0;
-foreach($params['widgets'] as $v) {
-    if ( isset($v['duplo']) && $v['duplo'] === TRUE) {
+foreach ($params['widgets'] as $v) {
+    if ( isset($v['duplo']) && $v['duplo'] === true) {
         $duplo=' double';
     } else {
         $duplo='';

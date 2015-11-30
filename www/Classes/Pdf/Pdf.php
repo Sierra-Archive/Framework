@@ -6,9 +6,9 @@ require(dirname(__FILE__).'/fpdf.php');
 
 class Pdf extends FPDF
 {
-    private $titulo = FALSE;
-    private $logo = FALSE;
-    function __construct($titulo, $logo = FALSE, $orientation='P', $unit='mm', $size='A4')
+    private $titulo = false;
+    private $logo = false;
+    function __construct($titulo, $logo = false, $orientation='P', $unit='mm', $size='A4')
     {
 	// Call parent constructor
 	$this->FPDF($orientation, $unit, $size);
@@ -19,7 +19,7 @@ class Pdf extends FPDF
         $this->SetAuthor(utf8_decode('Ricardo Rebello Sierra'));
         $this->SetFont('Arial', '',10);
         // Logo Caso Solicitado
-        if ($logo !== FALSE) {
+        if ($logo !== false) {
             $this->logo = $logo;
         } else {
             $this->logo = ARQ_URL.'_Sistema/logo.png';
@@ -58,14 +58,14 @@ class Pdf extends FPDF
         $colunas = count($table);
         $largura = 190/$colunas;
         // Header
-        foreach($table as $indice=>&$valor) {
+        foreach ($table as $indice=>&$valor) {
             $this->Cell($largura,7,utf8_decode($indice),1);
         }
         
         $this->SetFont('Arial', '',8);
         $this->Ln();
         for ($i=0;$i<$colunas;++$i) {
-            foreach($table as &$valor) {
+            foreach ($table as &$valor) {
                 if (!isset($valor[$i]) || $valor[$i]=='') {
                     $this->Cell($largura,6,' ',1);
                 } else {
@@ -88,7 +88,7 @@ class Pdf extends FPDF
                     $this->Cell($w[$i],7, $header[$i],1,0,'C');
             $this->Ln();
             // Data
-            foreach($data as $row)
+            foreach ($data as $row)
             {
                     $this->Cell($w[0],6, $row[0],'LR');
                     $this->Cell($w[1],6, $row[1],'LR');
@@ -112,15 +112,15 @@ class Pdf extends FPDF
             // Header
             $w = array(40, 35, 40, 45);
             for($i=0;$i<count($header);$i++)
-                    $this->Cell($w[$i],7, $header[$i],1,0,'C',TRUE);
+                    $this->Cell($w[$i],7, $header[$i],1,0,'C',true);
             $this->Ln();
             // Color and font restoration
             $this->SetFillColor(224,235,255);
             $this->SetTextColor(0);
             $this->SetFont('');
             // Data
-            $fill = FALSE;
-            foreach($data as $row)
+            $fill = false;
+            foreach ($data as $row)
             {
                     $this->Cell($w[0],6, $row[0],'LR',0,'L', $fill);
                     $this->Cell($w[1],6, $row[1],'LR',0,'L', $fill);

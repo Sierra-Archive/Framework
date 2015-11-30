@@ -34,10 +34,10 @@ class _Sistema_FilialModelo extends _Sistema_Modelo
 
         $function = '';
         if ($permissionEdit) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Filial\')        ,\'_Sistema/Filial/Filiais_Edit/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Editar\'     ,Array(__(\'Editar Filial\')        ,\'_Sistema/Filial/Filiais_Edit/\'.$d.\'/\'    ,\'\'),true);';
         }
         if ($permissionDelete) {
-            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Filial\')        ,\'_Sistema/Filial/Filiais_Del/\'.$d.\'/\'    ,\'\'),TRUE);';
+            $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Deletar\'     ,Array(__(\'Deletar Filial\')        ,\'_Sistema/Filial/Filiais_Del/\'.$d.\'/\'    ,\'\'),true);';
         }
         
         ++$numero;

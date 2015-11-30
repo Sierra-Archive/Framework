@@ -2,13 +2,14 @@
 namespace Framework\App\Resource\Validation;
 class Cpf 
 {  
-    public static function Validates($cpf) {  
+    public static function Validates($cpf) { 
         if (strlen($cpf) === 14) {
-            return (bool) (self::calcDigVerif(
+            return (bool) (
+                self::calcDigVerif(
                     substr(
                         str_replace(
                             Array('.', '-'),
-                            '', 
+                            Array('', ''),
                             $cpf
                         ),
                         0, 
@@ -18,7 +19,7 @@ class Cpf
                     substr(
                         str_replace(
                             Array('.', '-'), 
-                            '', 
+                            Array('', ''),
                             $cpf
                         ),
                         9, 
@@ -28,9 +29,11 @@ class Cpf
             );       
         }
         if (strlen($cpf) !== 11) {
-            return FALSE;
+            return false;
         }
-        return (bool) (self::calcDigVerif(substr($cpf,0, 9))==(substr($cpf,9, 11)));       
+        return (bool) (
+            self::calcDigVerif(substr($cpf, 0, 9))==(substr($cpf, 9, 11))
+        );       
     }      
     
     public static function Generate() {       
@@ -56,29 +59,41 @@ class Cpf
         return (int) str_replace(Array('.', '-'), '', $cpf);
     }
     
-    private static function calcDigVerif($num) {    
+    public static function calcDigVerif($cpf) {   
+        //Pega Somente os NUmeros
+        $num = str_replace(
+            Array('.', '-'),
+            Array('', ''),
+            $cpf
+        );
    
-        $soma = 0;
-        $peso = 10;       
+        // Primeiro Digito
+        $soma1 = 0;
+        $peso1 = 10;       
         for ($i = 0; $i < strlen($num); $i++) {     
-            $soma += (int) ((substr($num, $i, $i + 1)) * $peso--);
+            $soma1 += (int) ((substr($num, $i, 1)) * $peso1 );
+            $peso1 = $peso1 - 1;
         }
-
-        if ($soma % 11 == 0 | $soma % 11 == 1)       
+        if ($soma1 % 11 == 0 || $soma1 % 11 == 1){ 
             $primDig = (int) (0);       
-        else       
-            $primDig = (int) (11 - ($soma % 11));       
-
-        $soma = 0;       
-        $peso = 11;       
-        for ($i = 0; $i < strlen($num); $i++)       
-               $soma += (int) (substr($num, $i, $i + 1)) * $peso--;       
-
-        $soma += ((int)$primDig) * 2;       
-        if ($soma % 11 == 0 | $soma % 11 == 1)       
+        } else {
+            $primDig = (int) (11 - ($soma1 % 11)); 
+        }
+   
+        
+        // Segundo Digito
+        $soma2 = 0;       
+        $peso2 = 11;       
+        for ($i = 0; $i < strlen($num); $i++){   
+            $soma2 += ( ( (int) substr($num, $i, 1)) * $peso2 );
+            $peso2 = $peso2 - 1;
+        }
+        $soma2 += (( (int) $primDig ) * $peso2); 
+        if ($soma2 % 11 == 0 || $soma2 % 11 == 1) {      
             $segDig = 0;       
-        else       
-            $segDig = (int) (11 - ($soma % 11));       
+        } else {
+            $segDig = (int) (11 - ($soma2 % 11));   
+        }
 
         return (string) $primDig.$segDig;       
     }       

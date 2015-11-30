@@ -177,11 +177,11 @@ abstract class AbstractRenderer extends HTML
         $fileHandle = fopen($filename, 'w');
         // @codeCoverageIgnoreStart
         // Can't find any test case. Uncomment when found.
-        if ($fileHandle === FALSE) {
+        if ($fileHandle === false) {
             throw new Exception("Could not open file $filename for writing.");
         }
         // @codeCoverageIgnoreEnd
-        $this->isPdf = TRUE;
+        $this->isPdf = true;
 
         return $fileHandle;
     }

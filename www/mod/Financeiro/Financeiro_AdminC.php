@@ -13,7 +13,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -30,7 +30,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         $this->usuarios_naodevendo();
@@ -52,7 +52,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function usuarios_devendo() {
         $usuarios = Array();
@@ -85,15 +85,15 @@ class Financeiro_AdminControle extends Financeiro_Controle
         reset($usuarios);
         foreach ($usuarios as $indice=>&$valor) {
 
-            $table['Id'][$i] = $usuarios[$indice]['id'];
-            $table['Nome'][$i] = $usuarios[$indice]['nome'];
-            $table['Email'][$i] = $usuarios[$indice]['email'];
-            $table['Grupo'][$i] = $usuarios[$indice]['grupo'];
-            $table['Saldo'][$i] = $usuarios[$indice]['saldo'];
-            $table['Funções'][$i] = '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
-            '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Retirada da Empresa').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
-            '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_carregajanelaEdit/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-            '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+            $table[__('Id')][$i] = $usuarios[$indice]['id'];
+            $table[__('Nome')][$i] = $usuarios[$indice]['nome'];
+            $table[__('Email')][$i] = $usuarios[$indice]['email'];
+            $table[__('Grupo')][$i] = $usuarios[$indice]['grupo'];
+            $table[__('Saldo')][$i] = $usuarios[$indice]['saldo'];
+            $table[__('Funções')][$i] = '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Depósito da Empresa').'" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+            '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Armazenar Retirada da Empresa').'" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+            '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_carregajanelaEdit/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Editar Usuário').'" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+            '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$usuarios[$indice]['id'].'/"><img alt="'.__('Deletar Usuário').'" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
             ++$i;
         }
         $this->_Visual->Show_Tabela_DataTable($table);
@@ -113,14 +113,14 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function pagamentos_Del($id) {
         
         
     	$id = (int) $id;
     	$sucesso = $this->_Modelo->pagamentos_Del($id);
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -161,7 +161,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function financas_carregajanelaadd(&$controle, &$Modelo, &$Visual, $usuario=0) {
         
@@ -201,13 +201,13 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return int $i Quantidades de Registros Retornada
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function financas_formcadastro(&$controle, &$Modelo, &$Visual, $user) {
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir', 'Financeiro/Admin/financas_inserir/', 'formajax');
-        $form->Input_Novo('user', 'user', $user,'hidden', FALSE, 'obrigatorio'); 
+        $form->Input_Novo(__('user'), 'user', $user,'hidden', false, 'obrigatorio'); 
         $form->Input_Novo(__('Valor'),'valor', '', 'text', 30, 'obrigatorio'); 
 
         $form->Input_Novo(__('Observação'),'obs', '', 'text', 255);
@@ -220,7 +220,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         
        
         $form = new \Framework\Classes\Form('adminfinanceiroinserir', 'Financeiro/Admin/financas_retirar/', 'formajax');
-        $form->Input_Novo('user', 'user', $user,'hidden', FALSE, 'obrigatorio'); 
+        $form->Input_Novo(__('user'), 'user', $user,'hidden', false, 'obrigatorio'); 
         $form->Input_Novo(__('Valor'),'valor', '', 'text', 30, 'obrigatorio'); 
 
         $form->Input_Novo(__('Observação'),'obs', '', 'text', 255);
@@ -247,11 +247,11 @@ class Financeiro_AdminControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function financas_inserir() {
         if (!isset($_POST["valor"]) || !isset($_POST["obs"]) || !isset($_POST["user"])) {
-            return FALSE;
+            return false;
         }
         
         //data_hora_brasil_eua()
@@ -260,7 +260,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user, $valor, $obs,1);
         $this->Main();
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Depositado com Sucesso'),
@@ -281,7 +281,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
     }
     public function financas_retirar() {
         if (!isset($_POST["valor"]) || !isset($_POST["user"]) || !isset($_POST["obs"])) {
-            return FALSE;
+            return false;
         }
         
         //data_hora_brasil_eua()
@@ -290,7 +290,7 @@ class Financeiro_AdminControle extends Financeiro_Controle
         $obs = \Framework\App\Conexao::anti_injection($_POST["obs"]);
         $sucesso =  $this->_Modelo->MovExt_Inserir($user, $valor, $obs,0);
         $this->Main();
-        if ($sucesso === TRUE) {
+        if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Retirado com Sucesso'),

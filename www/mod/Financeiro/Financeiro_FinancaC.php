@@ -15,16 +15,16 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'Financeiro/Financa/Financas');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Financa($true= TRUE ) {
+    static function Endereco_Financa($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco(__('Finanças'),'Financeiro/Financa/Financas');
         } else {
             $_Controle->Tema_Endereco(__('Finanças'));
@@ -33,10 +33,10 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Financas() {
-        self::Endereco_Financa(FALSE);
+        self::Endereco_Financa(false);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -46,24 +46,24 @@ class Financeiro_FinancaControle extends Financeiro_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'     => 'Financeiro/Financa/Financas',
             )
         )));
         // CONEXAO
         $setores = $this->_Modelo->db->Sql_Select('Financeiro_Financa');
-        if ($setores !== FALSE && !empty($setores)) {
+        if ($setores !== false && !empty($setores)) {
             if (is_object($setores)) $setores = Array(0=>$setores);
             reset($setores);
             foreach ($setores as $indice=>&$valor) {
-                $table['Id'][$i]               = $valor->id;
-                $table['Tipo de Conta'][$i]        = $valor->categoria2;
-                $table['Valor'][$i]            = $valor->valor;
-                $table['Data Pago'][$i]        = $valor->data;
-                /*$table['Funções'][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Finança'        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    , '')).
-                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Finança'       ,'Financeiro/Financa/Financas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Finança ?'));*/
+                $table[__('Id')][$i]               = $valor->id;
+                $table[__('Tipo de Conta')][$i]        = $valor->categoria2;
+                $table[__('Valor')][$i]            = $valor->valor;
+                $table[__('Data Pago')][$i]        = $valor->data;
+                /*$table[__('Funções')][$i]          = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Finança')        ,'Financeiro/Financa/Financas_Edit/'.$valor->id.'/'    , '')).
+                                                  $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Finança')       ,'Financeiro/Financa/Financas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Finança ?')));*/
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($table, '', true, true, Array(Array(0,'asc')));
@@ -80,7 +80,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Financas_Add() {
         self::Endereco_Financa();
@@ -98,7 +98,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Financas_Add2() {
         $titulo     = __('Finança Adicionada com Sucesso');
@@ -131,7 +131,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Financas_Edit($id) {
         self::Endereco_Financa();
@@ -150,7 +150,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Financas_Edit2($id) {
         $titulo     = __('Finança Editada com Sucesso');
@@ -166,7 +166,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Financas_Del($id) {
         
@@ -176,7 +176,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $setor = $this->_Modelo->db->Sql_Select('Financeiro_Financa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($setor);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -194,7 +194,7 @@ class Financeiro_FinancaControle extends Financeiro_Controle
         $this->Financas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Finança deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

@@ -11,16 +11,16 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
     /**
      * Home
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Home() {
         $tempo = new \Framework\App\Tempo('HOME');   
-        $this->layoult_endereco_alterado = TRUE;
+        $this->layoult_endereco_alterado = true;
         $this->layoult_endereco = Array(
-            Array(__('Página Inicial'), FALSE)
+            Array(__('Página Inicial'), false)
         );
         // Carrega Conteudo dos Modulos
-        foreach($this->ModulosHome as $value) {
+        foreach ($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval($value.'_Principal::Home($this, $this->_Modelo, $this->_Visual);');
             }
@@ -29,16 +29,29 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
             _Sistema_AdminControle::AdminWidgets();
         }*/
         \Framework\App\Visual::Layoult_Home_Widgets_Show();
+        
+        //Usuarios Ativos
+        $tableColumns = [
+            __('Id de Usuário'),
+            __('Usuário'),
+            __('Entrada no Sistema'),
+            __('Última Atualização')
+        ];
+        $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns, '_Sistema/Principal/userActive');
+        $titulo = __('Usuários Ativos').' (<span id="DataTable_Contador">0</span>)';
+        $this->_Visual->Bloco_Menor_CriaJanela($titulo, '',10);
+        
+        
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Página Principal'));
     }
     /**
      * Busca
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Busca($busca = FALSE) {
-        if ($busca === FALSE) {
+    public function Busca($busca = false) {
+        if ($busca === false) {
             if (isset($_POST['busca'])) {
                 $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
             } else
@@ -48,10 +61,10 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         }
         // Carrega Buscador dos Modulos
         $i = 0;
-        foreach($this->ModulosHome as $value) {
+        foreach ($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
-                if ($retorno !== FALSE) {
+                if ($retorno !== false) {
                     $i = $i + $retorno;
                 }
             }
@@ -64,17 +77,17 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
-    public function Relatorio($busca = FALSE) {
+    public function Relatorio($busca = false) {
         $html = '';
         $i = 0;
-        if ($busca == FALSE) {
+        if ($busca == false) {
             $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
-        foreach($this->ModulosHome as $value) {
+        foreach ($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
-                if ($retorno !== FALSE) {
+                if ($retorno !== false) {
                     $i = $i + $retorno;
                 }
             }
@@ -88,17 +101,17 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
-    public function Estatistica($busca = FALSE) {
+    public function Estatistica($busca = false) {
         $html = '';
         $i = 0;
-        if ($busca == FALSE) {
+        if ($busca == false) {
             $busca = \Framework\App\Conexao::anti_injection($_POST['busca']);
         }
         // Carrega Buscador dos Modulos
-        foreach($this->ModulosHome as $value) {
+        foreach ($this->ModulosHome as $value) {
             if ($value!='_Sistema') {
                 eval('$retorno = '.$value.'_Principal::Busca($this, $this->_Modelo, $this->_Visual, $busca);');
-                if ($retorno !== FALSE) {
+                if ($retorno !== false) {
                     $i = $i + $retorno;
                 }
             }
@@ -112,11 +125,11 @@ class _Sistema_PrincipalControle extends _Sistema_Controle
         //Carrega Json
        $this->_Visual->Json_Info_Update('Titulo', __('Busca'));
     }
-    public function Release($versao = FALSE, $melhoria='', $melhoria_qnt = 0, $bugs='', $bugs_qnt = 0) {
+    public function Release($compatibility,$improvement,$bug, $melhoria='', $melhoria_qnt = 0, $bugs='', $bugs_qnt = 0) {
         if ($versao<0.4) {
-            $melhoria .= "\n".'- Possibilidade de Instalação no IOS: Possibilidade'; ++$melhoria_qnt;
-            $bugs .= "\n".'- Responsividade: Melhoria'; ++$bugs_qnt;
-            $bugs .= "\n".'- Outros: Outros Bugs Consertados'; ++$bugs_qnt;
+            $melhoria .= "\n".'- '.__('Armazena Histórico de Logins e Mostra Usuários Online'); ++$melhoria_qnt;
+            $bugs .= "\n".'- '.__('Responsividade: Melhoria'); ++$bugs_qnt;
+            $bugs .= "\n".'- '.__('Outros: Outros Bugs Consertados'); ++$bugs_qnt;
         }
     }
 }

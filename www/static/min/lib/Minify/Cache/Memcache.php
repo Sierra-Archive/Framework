@@ -61,7 +61,7 @@ class Minify_Cache_Memcache {
     public function getSize($id)
     {
         if (! $this->_fetch($id)) {
-            return FALSE;
+            return false;
         }
         return (function_exists('mb_strlen') && ((int)ini_get('mbstring.func_overload') & 2))
             ? mb_strlen($this->_data, '8bit')
@@ -126,15 +126,15 @@ class Minify_Cache_Memcache {
     private function _fetch($id)
     {
         if ($this->_id === $id) {
-            return TRUE;
+            return true;
         }
         $ret = $this->_mc->get($id);
         if (false === $ret) {
             $this->_id = null;
-            return FALSE;
+            return false;
         }
         list($this->_lm, $this->_data) = explode('|', $ret, 2);
         $this->_id = $id;
-        return TRUE;
+        return true;
     }
 }

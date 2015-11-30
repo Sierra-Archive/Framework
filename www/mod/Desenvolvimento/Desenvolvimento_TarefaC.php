@@ -13,13 +13,13 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
     }
-    protected function Endereco_Tarefa($true= TRUE ) {
-        if ($true === TRUE) {
+    protected function Endereco_Tarefa($true= true ) {
+        if ($true === true) {
             $this->Tema_Endereco(__('Tarefas'),'Desenvolvimento/Tarefa/Tarefas');
         } else {
             $this->Tema_Endereco(__('Tarefas'));
@@ -36,10 +36,10 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
-        return FALSE;
+        return false;
     }
     static function Tarefas_Tabela($tarefas) {
         $Registro   = &\Framework\App\Registro::getInstacia();
@@ -49,16 +49,16 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         if (is_object($tarefas)) $tarefas = Array(0=>$tarefas);
         reset($tarefas);
         foreach ($tarefas as $indice=>&$valor) {
-            $table['#Id'][$i]          =   '#'.$valor->id;
-            $table['Categoria'][$i]    =   $valor->categoria2;
-            $table['Projeto'][$i]      =   $valor->projeto2;
-            $table['Fk'][$i]            =   $valor->framework;
+            $table[__('#Id')][$i]          =   '#'.$valor->id;
+            $table[__('Categoria')][$i]    =   $valor->categoria2;
+            $table[__('Projeto')][$i]      =   $valor->projeto2;
+            $table[__('Fk')][$i]            =   $valor->framework;
             $table['Fk - Mód'][$i]     =   $valor->framework_modulo;
             $table['Fk - SubMód'][$i]  =   $valor->framework_submodulo;
             $table['Fk - Mét'][$i]     =   $valor->framework_metodo;
-            $table['Descrição'][$i]    =   $valor->descricao;
-            $table['Funções'][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Tarefa'        ,'Desenvolvimento/Tarefa/Tarefas_Edit/'.$valor->id.'/'    , '')).
-                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Tarefa'       ,'Desenvolvimento/Tarefa/Tarefas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Tarefa ?'));
+            $table[__('Descrição')][$i]    =   $valor->descricao;
+            $table[__('Funções')][$i]      =   $Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Tarefa')        ,'Desenvolvimento/Tarefa/Tarefas_Edit/'.$valor->id.'/'    , '')).
+                                            $Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Tarefa')       ,'Desenvolvimento/Tarefa/Tarefas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse Tarefa ?')));
             ++$i;
         }
         return Array($table, $i);
@@ -66,10 +66,10 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Tarefas($export = FALSE) {
-        $this->Endereco_Tarefa(FALSE);
+    public function Tarefas($export = false) {
+        $this->Endereco_Tarefa(false);
         $i = 0;
         // Add BOtao
         $this->_Visual->Blocar($this->_Visual->Tema_Elementos_Btn('Superior'     ,Array(
@@ -79,17 +79,17 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
                 ''
             ),
             Array(
-                'Print'     => TRUE,
-                'Pdf'       => TRUE,
-                'Excel'     => TRUE,
+                'Print'     => true,
+                'Pdf'       => true,
+                'Excel'     => true,
                 'Link'      => 'Desenvolvimento/Tarefa/Tarefas',
             )
         )));
         // Query
         $tarefas = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa');
-        if ($tarefas !== FALSE && !empty($tarefas)) {
+        if ($tarefas !== false && !empty($tarefas)) {
             list($table, $i) = self::Tarefas_Tabela($tarefas);
-            if ($export !== FALSE) {
+            if ($export !== false) {
                 self::Export_Todos($export, $table, 'Tarefas');
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
@@ -117,7 +117,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tarefas_Add() {
         $this->Endereco_Tarefa();
@@ -135,7 +135,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tarefas_Add2() {
         $titulo     = __('Tarefa Adicionada com Sucesso');
@@ -150,7 +150,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tarefas_Edit($id) {
         $this->Endereco_Tarefa();
@@ -169,7 +169,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tarefas_Edit2($id) {
         $titulo     = __('Tarefa Editada com Sucesso');
@@ -185,7 +185,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Tarefas_Del($id) {
         
@@ -195,7 +195,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $linha = $this->_Modelo->db->Sql_Select('Desenvolvimento_Projeto_Tarefa', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -213,7 +213,7 @@ class Desenvolvimento_TarefaControle extends Desenvolvimento_Controle
         $this->Tarefas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Tarefa Deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 

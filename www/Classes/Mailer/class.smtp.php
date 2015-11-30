@@ -96,7 +96,7 @@ class SMTP
      * Whether to use VERP.
      * @type bool
      */
-    public $do_verp = FALSE;
+    public $do_verp = false;
 
     /**
      * The timeout value for connection, in seconds.
@@ -193,7 +193,7 @@ class SMTP
         if ($this->connected()) {
             // Already connected, generate error
             $this->error = array('error' => 'Already connected to a server');
-            return FALSE;
+            return false;
         }
 
         if (empty($port)) {
@@ -231,7 +231,7 @@ class SMTP
                     . ": $errstr ($errno)"
                 );
             }
-            return FALSE;
+            return false;
         }
         if ($this->do_debug >= 3) {
             $this->edebug('Connection: opened');
@@ -254,7 +254,7 @@ class SMTP
             $this->edebug('SERVER -> CLIENT: ' . $announce);
         }
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -265,7 +265,7 @@ class SMTP
     public function startTLS()
     {
         if (!$this->sendCommand("STARTTLS", "STARTTLS", 220)) {
-            return FALSE;
+            return false;
         }
         // Begin encrypted connection
         if (!stream_socket_enable_crypto(
@@ -274,9 +274,9 @@ class SMTP
             STREAM_CRYPTO_METHOD_TLS_CLIENT
         )
         ) {
-            return FALSE;
+            return false;
         }
-        return TRUE;
+        return true;
     }
 
     /**
@@ -306,7 +306,7 @@ class SMTP
             case 'PLAIN':
                 // Start authentication
                 if (!$this->sendCommand('AUTH', 'AUTH PLAIN', 334)) {
-                    return FALSE;
+                    return false;
                 }
                 // Send encoded username and password
                 if (!$this->sendCommand(
@@ -315,19 +315,19 @@ class SMTP
                     235
                 )
                 ) {
-                    return FALSE;
+                    return false;
                 }
                 break;
             case 'LOGIN':
                 // Start authentication
                 if (!$this->sendCommand('AUTH', 'AUTH LOGIN', 334)) {
-                    return FALSE;
+                    return false;
                 }
                 if (!$this->sendCommand("Username", base64_encode($username), 334)) {
-                    return FALSE;
+                    return false;
                 }
                 if (!$this->sendCommand("Password", base64_encode($password), 235)) {
-                    return FALSE;
+                    return false;
                 }
                 break;
             case 'NTLM':
@@ -351,7 +351,7 @@ class SMTP
                             . $this->error['error']
                         );
                     }
-                    return FALSE;
+                    return false;
                 }
                 //msg1
                 $msg1 = $ntlm_client->TypeMsg1($realm, $workstation); //msg1
@@ -362,7 +362,7 @@ class SMTP
                     334
                 )
                 ) {
-                    return FALSE;
+                    return false;
                 }
 
                 //Though 0 based, there is a white space after the 3 digit number
@@ -386,7 +386,7 @@ class SMTP
             case 'CRAM-MD5':
                 // Start authentication
                 if (!$this->sendCommand('AUTH CRAM-MD5', 'AUTH CRAM-MD5', 334)) {
-                    return FALSE;
+                    return false;
                 }
                 // Get the challenge
                 $challenge = base64_decode(substr($this->last_reply, 4));
@@ -398,7 +398,7 @@ class SMTP
                 return $this->sendCommand('Username', base64_encode($response), 235);
                 break;
         }
-        return TRUE;
+        return true;
     }
 
     /**
@@ -454,11 +454,11 @@ class SMTP
                     );
                 }
                 $this->close();
-                return FALSE;
+                return false;
             }
-            return TRUE; // everything looks good
+            return true; // everything looks good
         }
-        return FALSE;
+        return false;
     }
 
     /**
@@ -497,7 +497,7 @@ class SMTP
     public function data($msg_data)
     {
         if (!$this->sendCommand('DATA', 'DATA', 354)) {
-            return FALSE;
+            return false;
         }
 
         /* The server is ready to accept data!
@@ -526,9 +526,9 @@ class SMTP
          */
 
         $field = substr($lines[0], 0, strpos($lines[0], ':'));
-        $in_headers = FALSE;
+        $in_headers = false;
         if (!empty($field) && !strstr($field, ' ')) {
-            $in_headers = TRUE;
+            $in_headers = true;
         }
 
         //RFC 2822 section 2.1.1 limit
@@ -537,7 +537,7 @@ class SMTP
         foreach ($lines as $line) {
             $lines_out = null;
             if ($line == '' && $in_headers) {
-                $in_headers = FALSE;
+                $in_headers = false;
             }
             // ok we need to break this line up into several smaller lines
             while (strlen($line) > $max_line_length) {
@@ -592,11 +592,11 @@ class SMTP
         // Try extended hello first (RFC 2821)
         if (!$this->sendHello('EHLO', $host)) {
             if (!$this->sendHello('HELO', $host)) {
-                return FALSE;
+                return false;
             }
         }
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -644,7 +644,7 @@ class SMTP
      * @access public
      * @return bool
      */
-    public function quit($close_on_error = TRUE)
+    public function quit($close_on_error = true)
     {
         $noerror = $this->sendCommand('QUIT', 'QUIT', 221);
         $e = $this->error; //Save any error
@@ -699,7 +699,7 @@ class SMTP
             $this->error = array(
                 "error" => "Called $command without being connected"
             );
-            return FALSE;
+            return false;
         }
         $this->client_send($commandstring . self::CRLF);
 
@@ -722,12 +722,12 @@ class SMTP
                     'SMTP ERROR: ' . $this->error['error'] . ': ' . $reply
                 );
             }
-            return FALSE;
+            return false;
         }
 
         $this->last_reply = $reply;
         $this->error = null;
-        return TRUE;
+        return true;
     }
 
     /**
@@ -787,14 +787,14 @@ class SMTP
         if ($this->do_debug >= 1) {
             $this->edebug('SMTP NOTICE: ' . $this->error['error']);
         }
-        return FALSE;
+        return false;
     }
 
     /**
      * Send raw data to the server.
      * @param string $data The data to send
      * @access public
-     * @return int|bool The number of bytes sent to the server or FALSE on error
+     * @return int|bool The number of bytes sent to the server or false on error
      */
     public function client_send($data)
     {
@@ -889,7 +889,7 @@ class SMTP
      * Enable or disable VERP address generation.
      * @param bool $enabled
      */
-    public function setVerp($enabled = FALSE)
+    public function setVerp($enabled = false)
     {
         $this->do_verp = $enabled;
     }

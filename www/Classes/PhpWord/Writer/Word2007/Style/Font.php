@@ -29,7 +29,7 @@ class Font extends AbstractStyle
      *
      * @var bool
      */
-    private $isInline = FALSE;
+    private $isInline = false;
 
     /**
      * Write style.
@@ -68,7 +68,7 @@ class Font extends AbstractStyle
         $xmlWriter->startElement('w:rPr');
 
         // Style name
-        if ($this->isInline === TRUE) {
+        if ($this->isInline === true) {
             $styleName = $style->getStyleName();
             $xmlWriter->writeElementIf($styleName !== null, 'w:rStyle', 'w:val', $styleName);
         }
@@ -131,7 +131,7 @@ class Font extends AbstractStyle
         }
         
         // RTL
-        if ($this->isInline === TRUE) {
+        if ($this->isInline === true) {
             $styleName = $style->getStyleName();
             $xmlWriter->writeElementIf($styleName === null && $style->isRTL(), 'w:rtl');
         }

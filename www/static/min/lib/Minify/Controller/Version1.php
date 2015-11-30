@@ -55,7 +55,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
             return $options;
         }
 
-        $files = explode(', ', $_GET['files']);
+        $files = explode(',', $_GET['files']);
         if (count($files) > MINIFY_MAX_FILES) {
             return $options;
         }
@@ -66,7 +66,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
         $prependAbsPaths = $_SERVER['DOCUMENT_ROOT'];
         
         $goodFiles = array();
-        $hasBadSource = FALSE;
+        $hasBadSource = false;
         
         $allowDirs = isset($options['allowDirs'])
             ? $options['allowDirs']
@@ -87,7 +87,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
                 );
                 $this->sources[] = new Minify_Source($srcOptions);
             } else {
-                $hasBadSource = TRUE;
+                $hasBadSource = true;
                 break;
             }
         }
@@ -95,7 +95,7 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
             $this->sources = array();
         }
         if (! MINIFY_REWRITE_CSS_URLS) {
-            $options['rewriteCssUris'] = FALSE;
+            $options['rewriteCssUris'] = false;
         }
         return $options;
     }
@@ -106,8 +106,8 @@ class Minify_Controller_Version1 extends Minify_Controller_Base {
             'MINIFY_BASE_DIR' => realpath($_SERVER['DOCUMENT_ROOT'])
             ,'MINIFY_ENCODING' => 'utf-8'
             ,'MINIFY_MAX_FILES' => 16
-            ,'MINIFY_REWRITE_CSS_URLS' => TRUE
-            ,'MINIFY_USE_CACHE' => TRUE
+            ,'MINIFY_REWRITE_CSS_URLS' => true
+            ,'MINIFY_USE_CACHE' => true
         );
         foreach ($defaults as $const => $val) {
             if (! defined($const)) {

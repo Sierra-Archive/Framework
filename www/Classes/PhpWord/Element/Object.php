@@ -58,7 +58,7 @@ class Object extends AbstractElement
      *
      * @var bool
      */
-    protected $mediaRelation = TRUE;
+    protected $mediaRelation = true;
 
     /**
      * Create a new Ole-Object Element
@@ -79,7 +79,7 @@ class Object extends AbstractElement
             }
 
             $this->source = $source;
-            $this->style = $this->setNewStyle(new ImageStyle(), $style, TRUE);
+            $this->style = $this->setNewStyle(new ImageStyle(), $style, true);
             $this->icon = realpath(__DIR__ . "/../resources/{$ext}.png");
 
             return $this;

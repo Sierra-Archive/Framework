@@ -101,7 +101,7 @@ class Datatable {
             //\setcookie('TabelaOrdenar_'.$url, $cookie_ordenar, (time() + (70 * 24 * 3600)));
             //print_r($_COOKIE);
 
-            $order = 'ORDER BY '.implode(', ', $orderBy);
+            $order = 'ORDER BY '.implode(',', $orderBy);
         }
         return $order;
     }
@@ -119,13 +119,13 @@ class Datatable {
     * sql_exec() function
     * @return string SQL where clause
     */
-    static function filter ( $request, $columns, &$bindings, $class='', $sql_tabela_sigla = FALSE, $table_campos_valores  = FALSE, $retornar_extrangeiras_usadas = FALSE)
+    static function filter ( $request, $columns, &$bindings, $class='', $sql_tabela_sigla = false, $table_campos_valores  = false, $retornar_extrangeiras_usadas = false)
     {
         $globalSearch = array();
         $columnSearch = array();
         $dtColumns = self::pluck( $columns, 'dt' );
         
-        $objeto = FALSE;
+        $objeto = false;
         if ($class!=='') {
             $objeto = new $class();
         }
@@ -138,7 +138,7 @@ class Datatable {
                 $column = $columns[ $columnIdx ];
                 $column_db = $column["db"];
                 if ( $requestColumn['searchable'] == 'true' ) {
-                    if ($objeto !== FALSE) {
+                    if ($objeto !== false) {
                         $str_temp = $objeto->bd_set($column_db, $str);
                     } else {
                         $str_temp = $str;
@@ -146,7 +146,7 @@ class Datatable {
                     // Se Existir Funcao de Procura (Funcao Inversa), executa
                     if (isset($column['search'])) {
                         $resultado = $column['search']($str_temp);
-                        if ($resultado !== FALSE) {
+                        if ($resultado !== false) {
                             $binding = self::bind( $bindings, '%'.$resultado.'%', 's' );
                         } else {
                             continue;
@@ -157,9 +157,9 @@ class Datatable {
                         $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                     }
                     // Se for da propria tabela, coloca sigla pra nao ter conflito
-                    if ($table_campos_valores !== FALSE && array_key_exists($column['db'], $table_campos_valores)) {
+                    if ($table_campos_valores !== false && array_key_exists($column['db'], $table_campos_valores)) {
                         $globalSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                    } else if ($retornar_extrangeiras_usadas !== FALSE && isset($retornar_extrangeiras_usadas[$column['db']])) {
+                    } else if ($retornar_extrangeiras_usadas !== false && isset($retornar_extrangeiras_usadas[$column['db']])) {
                         $globalSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                     } else {
                         $globalSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -177,7 +177,7 @@ class Datatable {
             if ( $requestColumn['searchable'] == 'true' &&
             $str != '' ) {
                 // Trata Colunas pelo Framework se $objeto for um objeto
-                if ($objeto !== FALSE) {
+                if ($objeto !== false) {
                     $str_temp = $objeto->bd_set($column_db, $str);
                 } else {
                     $str_temp = $str;
@@ -185,16 +185,16 @@ class Datatable {
                 // Se Existir Funcao de Procura (Funcao Inversa)
                 if (isset($column['search'])) {
                     $resultado = $column['search']($str_temp);
-                    if ($resultado !== FALSE) {
+                    if ($resultado !== false) {
                         $binding = self::bind( $bindings, '%'.$resultado.'%', 's' );
                         continue;
                     }
                 }
                 $binding = self::bind( $bindings, '%'.$str_temp.'%', 's' );
                 // Se for da propria tabela, coloca sigla pra nao ter conflito
-                if ($table_campos_valores !== FALSE && array_key_exists($column['db'], $table_campos_valores)) {
+                if ($table_campos_valores !== false && array_key_exists($column['db'], $table_campos_valores)) {
                     $columnSearch[] = "".$sql_tabela_sigla.'.'.$column['db']." LIKE ".$binding;
-                } else if ($retornar_extrangeiras_usadas !== FALSE && isset($retornar_extrangeiras_usadas[$column['db']])) {
+                } else if ($retornar_extrangeiras_usadas !== false && isset($retornar_extrangeiras_usadas[$column['db']])) {
                     $columnSearch[] = "".$retornar_extrangeiras_usadas[$column['db']]." LIKE ".$binding;
                 } else {
                     $columnSearch[] = "`".$column['db']."` LIKE ".$binding;
@@ -310,7 +310,7 @@ class Datatable {
         $table_class = $table_class.'_DAO';      
         $table = \Framework\App\Conexao::$tables[$table_class]['nome'];
         $colunas = \Framework\App\Conexao::$tables[$table_class]['colunas'];
-        $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',TRUE);
+        $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',true);
 
         list(
             $sql,
@@ -319,7 +319,7 @@ class Datatable {
             $table_campos_valores,
             $tables_usadas, $j,
             $retornar_extrangeiras_usadas
-        ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',TRUE);
+        ) = $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',true);
         
         // Add Condicao
         if ($whereAll==null) $whereAll = $sql_condicao;
@@ -465,15 +465,15 @@ class Datatable {
         while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
             /*;
             $class = new $class;
-            foreach($colunas as $valor) {
-                if (isset($row[$valor["mysql_titulo"]]) && isset($valor["mysql_outside"]) && $valor["mysql_outside"] !== FALSE) {
+            foreach ($colunas as $valor) {
+                if (isset($row[$valor["mysql_titulo"]]) && isset($valor["mysql_outside"]) && $valor["mysql_outside"] !== false) {
                     $row[$valor["mysql_titulo"] = $valor["mysql_outside"];
                 }
             }*/
             
             if ($class!=='') {
                 $objeto = new $class();
-                foreach($row as $indice=>$valor) {
+                foreach ($row as $indice=>$valor) {
                     if ($valor==='' || $valor===NULL) continue;
                     $objeto->bd_get($indice, $valor);
                     $row[$indice] = $objeto->$indice;

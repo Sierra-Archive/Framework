@@ -13,7 +13,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         // construct
@@ -28,11 +28,11 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_mensagem/Admin/Mensagem/');
-        return FALSE;
+        return false;
     }
     public function Mensagem() {
         if ($this->_Acl->Usuario_GetID()!=0) {
@@ -40,9 +40,9 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
             //$this->Mensagem_formulario();
             // ORGANIZA E MANDA CONTEUDO
             $this->_Visual->Json_Info_Update('Titulo', __('Tickets'));  
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
     public function Mensagem_Editar($mensagem=0) {
         $mensagem = (int) $mensagem;
@@ -77,7 +77,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Mensagem_Del($id) {
         
@@ -87,7 +87,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $mensagem = $this->_Modelo->db->Sql_Select('Usuario_Mensagem', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($mensagem);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -105,7 +105,7 @@ class usuario_mensagem_AdminControle extends usuario_mensagem_Controle
         $this->Mensagem();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Mensagem deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

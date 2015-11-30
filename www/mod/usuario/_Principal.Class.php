@@ -18,7 +18,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
     * @return void 
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
@@ -37,7 +37,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 '</a>'.
             '</li>');
         }
-        return TRUE;
+        return true;
     }             
     static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $where = Array(Array(
@@ -52,31 +52,31 @@ class usuario_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         // add botao
-        $usuario = $Modelo->db->Sql_Select('Usuario', $where,0, '',TRUE);
-        if ($usuario === FALSE) return FALSE;
+        $usuario = $Modelo->db->Sql_Select('Usuario', $where,0, '',true);
+        if ($usuario === false) return false;
         $Visual->Blocar('<a title="Adicionar Usuário" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add">Adicionar novo Usuário</a><div class="space15"></div>');
         if (is_object($usuario)) $usuario = Array(0=>$usuario);
-        if ($usuario !== FALSE && !empty($usuario)) {
+        if ($usuario !== false && !empty($usuario)) {
             reset($usuario);
             foreach ($usuario as $indice=>&$valor) {
-                //$table['#Id'][$i]               = '#'.$valor->id;
-                $table['Nome'][$i]             = $valor->nome;
-                $table['Email'][$i]            = $valor->email;
-                $table['Telefone'][$i]         = $valor->telefone;
-                $table['Celular'][$i]          = $valor->celular;
-                //if ($grupo == FALSE) {
-                    $table['Grupo'][$i]        = $valor->grupo;
+                //$table[__('#Id')][$i]               = '#'.$valor->id;
+                $table[__('Nome')][$i]             = $valor->nome;
+                $table[__('Email')][$i]            = $valor->email;
+                $table[__('Telefone')][$i]         = $valor->telefone;
+                $table[__('Celular')][$i]          = $valor->celular;
+                //if ($grupo == false) {
+                    $table[__('Grupo')][$i]        = $valor->grupo;
                 //}
-                //$table['Nivel de Usuário'][$i] = $niveluser;
-                //$table['Nivel de Admin'][$i]   = $niveladmin;
-                if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $table['Saldo'][$i]            = $valor->saldo;
-                $table['Funções'][$i]          = '';
+                //$table[__('Nivel de Usuário')][$i] = $niveluser;
+                //$table[__('Nivel de Admin')][$i]   = $niveladmin;
+                if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) $table[__('Saldo')][$i]            = $valor->saldo;
+                $table[__('Funções')][$i]          = '';
                 if (\Framework\App\Sistema_Funcoes::Perm_Modulos('Financeiro')) {
-                    $table['Funções'][$i]     .= '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img alt="'.__('Armazenar Depósito').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
-                    '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img alt="'.__('Armazenar Retirada').' src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
+                    $table[__('Funções')][$i]     .= '<a data-confirma="O cliente realizou um deposito para a empresa?" title="Add quantia ao Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_deposito/'.$valor->id.'/"><img alt="'.__('Armazenar Depósito').'" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>'.
+                    '<a data-confirma="O cliente confirmou o saque?" title="Remover Quantia do Saldo do Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Financeiro/Admin/financeiro_retirar/'.$valor->id.'/"><img alt="'.__('Armazenar Retirada').'" src="'.WEB_URL.'img/icons/cifrao_16x16.png"></a>';
                 }
-                $table['Funções'][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img alt="'.__('Editar Usuário').' src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
-                '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$valor->id.'/"><img alt="'.__('Deletar Usuário').' src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
+                $table[__('Funções')][$i]         .= '<a title="Editar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Edit/'.$valor->id.'/"><img alt="'.__('Editar Usuário').'" src="'.WEB_URL.'img/icons/icon_edit.png"></a> '.
+                '<a data-confirma="Deseja realmente deletar esse usuário?" title="Deletar Usuário" class="lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario/Admin/usuarios_Del/'.$valor->id.'/"><img alt="'.__('Deletar Usuário').'" src="'.WEB_URL.'img/icons/icon_bad.png"></a>';
                 ++$i;
             }
             $Visual->Show_Tabela_DataTable($table);;
@@ -89,22 +89,22 @@ class usuario_Principal implements \Framework\PrincipalInterface
         return $i;
     }
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
         $Modelo = &$Registro->_Modelo;
         $Visual = &$Registro->_Visual;
-        //if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Principal_Widgets')) return FALSE;
+        //if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Principal_Widgets')) return false;
         if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('usuario_Admin_Funcionario')) {
             $where = Array(
                 'EXTA.categoria'    =>  CFG_TEC_CAT_ID_FUNCIONARIOS,
@@ -119,7 +119,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 'group', 
                 $funcionario_qnt, 
                 'light-brown', 
-                FALSE, 
+                false, 
                 140
             );
         } else {
@@ -136,7 +136,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 'unlock-alt',
                 $usuario_qnt,
                 'deep-gray',
-                FALSE,
+                false,
                 111
             );
             
@@ -155,7 +155,7 @@ class usuario_Principal implements \Framework\PrincipalInterface
                 'user', 
                 $cliente_qnt, 
                 'block-purple', 
-                FALSE, 
+                false, 
                 260
             );
         }

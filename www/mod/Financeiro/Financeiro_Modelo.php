@@ -10,7 +10,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -151,7 +151,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             return 0;
         }
     }
-    static function Carregar_Saldo($Modelo, $usuarioid, $completo = FALSE) {
+    static function Carregar_Saldo($Modelo, $usuarioid, $completo = false) {
         // bloqueia se usuario nao existe
         if (!isset($usuarioid) || $usuarioid==0) {
           return 0;
@@ -187,11 +187,11 @@ class Financeiro_Modelo extends \Framework\App\Modelo
                 $valor = $valor - $campo->valor;
             }
         }
-        if ($completo === TRUE) {
+        if ($completo === true) {
             if ($valor<0) {
-                $valor = '<font color="red">- R$ '.number_format($valor*-1, 2, ', ', '.').'</font>';
+                $valor = '<font color="red">- '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor*-1).'</font>';
             } else {
-                $valor = 'R$ '.number_format($valor, 2, ', ', '.');
+                $valor = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor);
             }
             return $valor;
         } else {
@@ -210,7 +210,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
             ++$i;
         }
         if ($i==0) return 'Erro';
-        return Array('Transferencia', $nome);
+        return Array(__('Transferencia'), $nome);
     }
     
     /**
@@ -218,7 +218,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
      */
     
     
-    public function Movimentacao_Interna($where = FALSE, $tipo='Mini', $total = FALSE, $endereco='') {
+    public function Movimentacao_Interna($where = false, $tipo='Mini', $total = false, $endereco='') {
         if ($where==='') {
             $where = 'pago = 1';
         }
@@ -263,7 +263,7 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         
         //'#Vencimento';
         ++$numero;
-        if ($permissionEditvencimento === TRUE) {
+        if ($permissionEditvencimento === true) {
             $columns[] = array( 'db' => 'dt_vencimento', 'dt' => $numero,
             'formatter' => function($d, $row) {
                 return '<a href="'.URL_PATH.'Financeiro/Pagamento/Financeiros_VencimentoEdit/'.$row['id'].'" class="lajax" data-acao=""><span id="financeirovenc'.$row['id'].'">'.$d.'</span></a>';
@@ -289,8 +289,8 @@ class Financeiro_Modelo extends \Framework\App\Modelo
         });
 
         $function = '';
-        if ($perm_visualizar)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(__(\'Visualizar\')    ,\'Financeiro/Pagamento/Financeiro_View/\'.$d.\'/\'    ,\'\'),TRUE);';
-        if ($perm_naopagar)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(__(\'Desfazer Pagamento\')  ,\'Financeiro/Pagamento/Financeiros_NaoPagar/\'.$d.\'/'.$endereco.'/\'    ,\'\',\'download\',\'default\'),TRUE);';
+        if ($perm_visualizar)      $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Visualizar\' ,Array(__(\'Visualizar\')    ,\'Financeiro/Pagamento/Financeiro_View/\'.$d.\'/\'    ,\'\'),true);';
+        if ($perm_naopagar)   $function .= ' $html .= Framework\App\Registro::getInstacia()->_Visual->Tema_Elementos_Btn(\'Personalizado\'   ,Array(__(\'Desfazer Pagamento\')  ,\'Financeiro/Pagamento/Financeiros_NaoPagar/\'.$d.\'/'.$endereco.'/\'    ,\'\',\'download\',\'default\'),true);';
 
         
         ++$numero;

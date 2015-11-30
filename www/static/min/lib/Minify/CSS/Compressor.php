@@ -45,7 +45,7 @@ class Minify_CSS_Compressor {
      *
      * @var bool
      */
-    protected $_inHack = FALSE;
+    protected $_inHack = false;
     
     
     /**
@@ -199,23 +199,23 @@ class Minify_CSS_Compressor {
                     /\\*             # ends like /*/ or /**/
                 @x', $m, $n)) {
                 // end hack mode after this comment, but preserve the hack and comment content
-                $this->_inHack = FALSE;
+                $this->_inHack = false;
                 return "/*/{$n[1]}/**/";
             }
         }
         if (substr($m, -1) === '\\') { // comment ends like \*/
             // begin hack mode and preserve hack
-            $this->_inHack = TRUE;
+            $this->_inHack = true;
             return '/*\\*/';
         }
         if ($m !== '' && $m[0] === '/') { // comment looks like /*/ foo */
             // begin hack mode and preserve hack
-            $this->_inHack = TRUE;
+            $this->_inHack = true;
             return '/*/*/';
         }
         if ($this->_inHack) {
             // a regular comment ends hack mode but should be preserved
-            $this->_inHack = FALSE;
+            $this->_inHack = false;
             return '/**/';
         }
         // Issue 107: if there's any surrounding whitespace, it may be important, so 

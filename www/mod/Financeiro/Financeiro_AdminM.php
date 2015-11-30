@@ -11,7 +11,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
       parent::__construct();
@@ -34,7 +34,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
         while ($campo = $sql->fetch_object()) {
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
             if ($saldo<0) {
-                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- R$ '.number_format(abs($saldo), 2, ', ', '.').'</font>';
+                $usuarios[$i]['saldo'] = '<font style="color:#FF0000;">- '.\Framework\App\Sistema_Funcoes::Tranf_Float_Real($saldo).'</font>';
                 $usuarios[$i]['id'] = $campo->id;
                 $usuarios[$i]['nome'] = $campo->nome;
                 $usuarios[$i]['email'] = $campo->email;
@@ -52,7 +52,7 @@ class Financeiro_AdminModelo extends Financeiro_Modelo
         while ($campo = $sql->fetch_object()) {
             $saldo = Financeiro_Modelo::Carregar_Saldo($this, $campo->id);
             if ($saldo>=0) {
-                $usuarios[$i]['saldo'] = 'R$ '.number_format(abs($saldo), 2, ', ', '.').'';
+                $usuarios[$i]['saldo'] = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($saldo);
                 $usuarios[$i]['id'] = $campo->id;
                 $usuarios[$i]['nome'] = $campo->nome;
                 $usuarios[$i]['email'] = $campo->email;

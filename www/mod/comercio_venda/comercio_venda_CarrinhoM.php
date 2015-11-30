@@ -11,7 +11,7 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -28,15 +28,15 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Comercio_Venda_Carrinho',Array('id'=>$motivoid),1);
-        if ($retirada === FALSE) {
-            return Array('Caixa Não existente', 'Não existe');
+        if ($retirada === false) {
+            return Array(__('Caixa Não existente'), __('Não existe'));
         }
         if ($retirada->cliente2=='' || $retirada->cliente2==NULL) {
             $cliente = __('Não Cadastrado');
         } else {
             $cliente = $retirada->cliente2;
         }
-        return Array('Caixa:'.$motivoid,'Cliente '.$cliente);
+        return Array(__('Caixa:').$motivoid,'Cliente '.$cliente);
     }
     /**
      * 
@@ -49,7 +49,7 @@ class comercio_venda_CarrinhoModelo extends comercio_vendaModelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $caixa = $_Modelo->db->Sql_Select('Comercio_Venda_Carrinho',Array('id'=>$motivoid),1);
-        if ($caixa === FALSE) return 'Caixa não Encontrado';
+        if ($caixa === false) return 'Caixa não Encontrado';
         return Array('Caixa: #'.$motivoid, $caixa->cliente2);
     }
 }

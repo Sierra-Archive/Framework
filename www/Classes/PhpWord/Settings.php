@@ -76,7 +76,7 @@ class Settings
      *
      * @var bool
      */
-    private static $xmlWriterCompatibility = TRUE;
+    private static $xmlWriterCompatibility = true;
 
     /**
      * Name of the class used for Zip file management
@@ -149,7 +149,7 @@ class Settings
         $compatibility = (bool)$compatibility;
         self::$xmlWriterCompatibility = $compatibility;
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -172,10 +172,10 @@ class Settings
     {
         if (in_array($zipClass, array(self::PCLZIP, self::ZIPARCHIVE, self::OLD_LIB))) {
             self::$zipClass = $zipClass;
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -188,7 +188,7 @@ class Settings
     public static function setPdfRenderer($libraryName, $libraryBaseDir)
     {
         if (!self::setPdfRendererName($libraryName)) {
-            return FALSE;
+            return false;
         }
 
         return self::setPdfRendererPath($libraryBaseDir);
@@ -214,11 +214,11 @@ class Settings
     {
         $pdfRenderers = array(self::PDF_RENDERER_DOMPDF, self::PDF_RENDERER_TCPDF, self::PDF_RENDERER_MPDF);
         if (!in_array($libraryName, $pdfRenderers)) {
-            return FALSE;
+            return false;
         }
         self::$pdfRendererName = $libraryName;
 
-        return TRUE;
+        return true;
     }
 
 
@@ -241,11 +241,11 @@ class Settings
     public static function setPdfRendererPath($libraryBaseDir)
     {
         if (false === file_exists($libraryBaseDir) || false === is_readable($libraryBaseDir)) {
-            return FALSE;
+            return false;
         }
         self::$pdfRendererPath = $libraryBaseDir;
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -269,11 +269,11 @@ class Settings
         $units = array(self::UNIT_TWIP, self::UNIT_CM, self::UNIT_MM, self::UNIT_INCH,
             self::UNIT_POINT, self::UNIT_PICA);
         if (!in_array($value, $units)) {
-            return FALSE;
+            return false;
         }
         self::$measurementUnit = $value;
 
-        return TRUE;
+        return true;
     }
 
     /**
@@ -327,10 +327,10 @@ class Settings
     {
         if (is_string($value) && trim($value) !== '') {
             self::$defaultFontName = $value;
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -354,10 +354,10 @@ class Settings
         $value = intval($value);
         if ($value > 0) {
             self::$defaultFontSize = $value;
-            return TRUE;
+            return true;
         }
 
-        return FALSE;
+        return false;
     }
 
     /**
@@ -387,7 +387,7 @@ class Settings
         $config = array();
         if ($configFile !== null) {
             $config = @parse_ini_file($configFile);
-            if ($config === FALSE) {
+            if ($config === false) {
                 return $config;
             }
         }

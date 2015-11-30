@@ -13,7 +13,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -29,21 +29,21 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main() {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'usuario_veiculo/Marca/Marcas');
-        return FALSE;
+        return false;
     }
-    static function Endereco_Veiculo_Marca($true= TRUE ) {
+    static function Endereco_Veiculo_Marca($true= true ) {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Marcas');
         $link = 'usuario_veiculo/Marca/Marcas';
         // Chama Veiculo
-        usuario_veiculo_VeiculoControle::Endereco_Veiculo(TRUE);
+        usuario_veiculo_VeiculoControle::Endereco_Veiculo(true);
         //Chama
-        if ($true === TRUE) {
+        if ($true === true) {
             $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
@@ -52,21 +52,21 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas() {
         $i = 0;
-        self::Endereco_Veiculo_Marca(FALSE);
+        self::Endereco_Veiculo_Marca(false);
         $this->_Visual->Blocar('<a title="Adicionar Marca" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'usuario_veiculo/Marca/Marcas_Add">Adicionar nova Marca</a><div class="space15"></div>');
         $linhas = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Marca');
-        if ($linhas !== FALSE && !empty($linhas)) {
+        if ($linhas !== false && !empty($linhas)) {
             if (is_object($linhas)) $linhas = Array(0=>$linhas);
             reset($linhas);
             foreach ($linhas as $indice=>&$valor) {
-                //$table['#Id'][$i]       = '#'.$valor->id;
-                $table['Nome'][$i]      = $valor->nome;
-                $table['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Marca'        ,'usuario_veiculo/Marca/Marcas_Edit/'.$valor->id.'/'    , '')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Marca'       ,'usuario_veiculo/Marca/Marcas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa Marca ?'));
+                //$table[__('#Id')][$i]       = '#'.$valor->id;
+                $table[__('Nome')][$i]      = $valor->nome;
+                $table[__('Funções')][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar Marca')        ,'usuario_veiculo/Marca/Marcas_Edit/'.$valor->id.'/'    , '')).
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar Marca')       ,'usuario_veiculo/Marca/Marcas_Del/'.$valor->id.'/'     , __('Deseja realmente deletar essa Marca ?')));
                 ++$i;
             }
             $this->_Visual->Show_Tabela_DataTable($table);
@@ -83,10 +83,10 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Add() {
-        self::Endereco_Veiculo_Marca(TRUE);
+        self::Endereco_Veiculo_Marca(true);
         // Carrega Config
         $titulo1    = __('Adicionar Marca');
         $titulo2    = __('Salvar Marca');
@@ -101,7 +101,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Add2() {
         $titulo     = __('Marca Adicionada com Sucesso');
@@ -116,10 +116,10 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Edit($id) {
-        self::Endereco_Veiculo_Marca(TRUE);
+        self::Endereco_Veiculo_Marca(true);
         // Carrega Config
         $titulo1    = 'Editar Marca (#'.$id.')';
         $titulo2    = __('Alteração de Marca');
@@ -135,7 +135,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Edit2($id) {
         $titulo     = __('Marca Editada com Sucesso');
@@ -151,7 +151,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Marcas_Del($id) {
         
@@ -161,7 +161,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         $linha = $this->_Modelo->db->Sql_Select('Usuario_Veiculo_Marca', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($linha);
         // Mensagem
-    	if ($sucesso === TRUE) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletada'),
@@ -179,7 +179,7 @@ class usuario_veiculo_MarcaControle extends usuario_veiculo_Controle
         $this->Marcas();
         
         $this->_Visual->Json_Info_Update('Titulo', __('Marca deletada com Sucesso'));  
-        $this->_Visual->Json_Info_Update('Historico', FALSE);  
+        $this->_Visual->Json_Info_Update('Historico', false);  
     }
 }
 ?>

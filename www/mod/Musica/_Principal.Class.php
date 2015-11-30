@@ -17,11 +17,11 @@ class Musica_Principal implements \Framework\PrincipalInterface
      * @return void 
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Home(&$controle, &$Modelo, &$Visual) {
         self::Widgets();
-        return TRUE;
+        return true;
     }
     static function Widget(&$_Controle) {
         $_Controle->Widget_Add('Superior',
@@ -30,53 +30,53 @@ class Musica_Principal implements \Framework\PrincipalInterface
                 '<i class="fa fa-music"></i>'.
             '</a>'.
         '</li>');
-        return TRUE;
+        return true;
     }     
     /**
      * 
      * @return boolean
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     static function Config() {
-        return FALSE;
+        return false;
     }
     
-    static function Relatorio($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Relatorio($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
-    static function Estatistica($data_inicio, $data_final, $filtro = FALSE) {
-        return FALSE;
+    static function Estatistica($data_inicio, $data_final, $filtro = false) {
+        return false;
     }
     
     static function Busca(&$controle, &$Modelo, &$Visual, $busca) {
         $i = 0;
         // Busca Musicas
         $result = self::Busca_Artistas($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Busca Albuns
         $result = self::Busca_Albuns($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Busca Musicas
         $result = self::Busca_Musicas($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Busca Videos
         $result = self::Busca_Videos($controle, $Modelo, $Visual, $busca);
-        if ($result !== FALSE) {
+        if ($result !== false) {
             $i = $i + $result;
         }
         // Retorna
         if (is_int($i) && $i>0) {
             return $i;
         } else {
-            return FALSE;
+            return false;
         }
     }
     
@@ -90,11 +90,11 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $artistas = $Modelo->db->Sql_Select('Musica_Album_Artista', $where);
-        if ($artistas === FALSE) return FALSE;
+        if ($artistas === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Artista" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Artista/Artistas_Add">Adicionar novo Artista</a><div class="space15"></div>');
         if (is_object($artistas)) $artistas = Array(0=>$artistas);
-        if ($artistas !== FALSE && !empty($artistas)) {
+        if ($artistas !== false && !empty($artistas)) {
             list($table, $i) = Musica_ArtistaControle::Artistas_Tabela($artistas);
             $Visual->Show_Tabela_DataTable($table);
         } else {         
@@ -111,11 +111,11 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Musica_Album', $where);
-        if ($albuns === FALSE) return FALSE;
+        if ($albuns === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Album" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Album/Albuns_Add">Adicionar novo Album</a><div class="space15"></div>');
         if (is_object($albuns)) $albuns = Array(0=>$albuns);
-        if ($albuns !== FALSE && !empty($albuns)) {
+        if ($albuns !== false && !empty($albuns)) {
             list($table, $i) = Musica_AlbumControle::Albuns_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($table);
         } else {        
@@ -132,11 +132,11 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Musica', $where);
-        if ($albuns === FALSE) return FALSE;
+        if ($albuns === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Musica" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Musica/Musicas_Add">Adicionar nova Musica</a><div class="space15"></div>');
         if (is_object($albuns)) $albuns = Array(0=>$albuns);
-        if ($albuns !== FALSE && !empty($albuns)) {
+        if ($albuns !== false && !empty($albuns)) {
             list($table, $i) = Musica_AlbumControle::Albuns_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($table);
         } else {      
@@ -153,11 +153,11 @@ class Musica_Principal implements \Framework\PrincipalInterface
         ));
         $i = 0;
         $albuns = $Modelo->db->Sql_Select('Musica_Video', $where);
-        if ($albuns === FALSE) return FALSE;
+        if ($albuns === false) return false;
         // add botao
         $Visual->Blocar('<a title="Adicionar Video" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'Musica/Video/Videos_Add">Adicionar novo Video</a><div class="space15"></div>');
         if (is_object($albuns)) $albuns = Array(0=>$albuns);
-        if ($albuns !== FALSE && !empty($albuns)) {
+        if ($albuns !== false && !empty($albuns)) {
             list($table, $i) = Musica_AlbumControle::Albuns_Tabela($albuns);
             $Visual->Show_Tabela_DataTable($table);
         } else {           
@@ -170,7 +170,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public static function Widgets() {
         $Registro = &\Framework\App\Registro::getInstacia();
@@ -185,7 +185,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
             'group', 
             $artista_qnt, 
             'block-orange', 
-            FALSE, 
+            false, 
             14
         );
         // Albuns
@@ -197,7 +197,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
             'hdd', 
             $album_qnt, 
             'block-yellow', 
-            FALSE, 
+            false, 
             16
         );
         // Musicas
@@ -209,7 +209,7 @@ class Musica_Principal implements \Framework\PrincipalInterface
             'music', 
             $musica_qnt, 
             'block-grey', 
-            FALSE, 
+            false, 
             18
         );
         // Videos

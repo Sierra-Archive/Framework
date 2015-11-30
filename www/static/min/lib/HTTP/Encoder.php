@@ -59,7 +59,7 @@ class HTTP_Encoder {
      * 
      * @var bool
      */
-    public static $encodeToIe6 = TRUE;
+    public static $encodeToIe6 = true;
     
     
     /**
@@ -189,7 +189,7 @@ class HTTP_Encoder {
      * alias of that method to use in the Content-Encoding header (some browsers
      * call gzip "x-gzip" etc.)
      */
-    public static function getAcceptedEncoding($allowCompress = true, $allowDeflate = TRUE)
+    public static function getAcceptedEncoding($allowCompress = true, $allowDeflate = true)
     {
         // @link http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html
         
@@ -262,7 +262,7 @@ class HTTP_Encoder {
             || ($compressionLevel == 0)
             || !extension_loaded('zlib'))
         {
-            return FALSE;
+            return false;
         }
         if ($this->_encodeMethod[0] === 'deflate') {
             $encoded = gzdeflate($this->_content, $compressionLevel);
@@ -272,14 +272,14 @@ class HTTP_Encoder {
             $encoded = gzcompress($this->_content, $compressionLevel);
         }
         if (false === $encoded) {
-            return FALSE;
+            return false;
         }
         $this->_headers['Content-Length'] = $this->_useMbStrlen
             ? (string)mb_strlen($encoded, '8bit')
             : (string)strlen($encoded);
         $this->_headers['Content-Encoding'] = $this->_encodeMethod[1];
         $this->_content = $encoded;
-        return TRUE;
+        return true;
     }
     
     /**
@@ -313,13 +313,13 @@ class HTTP_Encoder {
     public static function isBuggyIe()
     {
         if (empty($_SERVER['HTTP_USER_AGENT'])) {
-            return FALSE;
+            return false;
         }
         $ua = $_SERVER['HTTP_USER_AGENT'];
         // quick escape for non-IEs
         if (0 !== strpos($ua, 'Mozilla/4.0 (compatible; MSIE ')
             || false !== strpos($ua, 'Opera')) {
-            return FALSE;
+            return false;
         }
         // no regex = faaast
         $version = (float)substr($ua, 30);
@@ -331,5 +331,5 @@ class HTTP_Encoder {
     protected $_content = '';
     protected $_headers = array();
     protected $_encodeMethod = array('', '');
-    protected $_useMbStrlen = FALSE;
+    protected $_useMbStrlen = false;
 }

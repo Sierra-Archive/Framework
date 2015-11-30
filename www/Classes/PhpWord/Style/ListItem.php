@@ -249,7 +249,7 @@ class ListItem extends AbstractStyle
         $style = $listTypeStyles[$this->listType];
         foreach ($style['levels'] as $key => $value) {
             $level = array();
-            $levelProperties = explode(', ', $value);
+            $levelProperties = explode(',', $value);
             $level['level'] = $key;
             for ($i = 0; $i < count($properties); $i++) {
                 $property = $properties[$i];

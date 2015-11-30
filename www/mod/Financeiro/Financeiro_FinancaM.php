@@ -11,7 +11,7 @@ class Financeiro_FinancaModelo extends Financeiro_Modelo
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -21,7 +21,7 @@ class Financeiro_FinancaModelo extends Financeiro_Modelo
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Modelo = &$Registro->_Modelo;
         $retirada = $_Modelo->db->Sql_Select('Financeiro_Financa',Array('id'=>$motivoid),1);
-        if ($retirada === FALSE) return '';
-        return  Array('<b>Gasto com Finanças</b>', $retirada->categoria2);
+        if ($retirada === false) return '';
+        return  Array('<b>'.__('Gasto com Finanças').'</b>', $retirada->categoria2);
     }
 }
