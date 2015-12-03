@@ -14,7 +14,7 @@ abstract class Controle
     
     protected $_acl;
     
-    protected $sistema_linguagem = 'ptBR';
+    protected $sistema_linguagem = 'pt_BR';
     
     protected $layoult_zerar = 'naousado'; // 
     public static $config_template;
@@ -343,6 +343,70 @@ readfile($link);*/
 	 
 	// Envia o arquivo para o cliente
 	readfile($arquivoLocal);
+    }
+    protected function Gerador_Grafico_Padrao($titulo, $x_nome='EixoX', $y_nome='EixoY', $dados=Array(), $tipo = 'points', $larg=600, $alt=400, $convert_real= true ) {
+        // Se nao existir cria
+        $folder     = TEMP_PATH.'Grafico';
+        $folderUrl = TEMP_URL.'Grafico';
+        if (!file_exists($folder))
+        {
+            mkdir($folder, 0777);
+        }
+
+
+        // Inclui funcao
+        //require_once("libs/phplot/phplot.php");
+        $plot = new \Framework\Classes\PHPlot($larg, $alt);
+        $plot->SetTitle(utf8_decode($titulo));
+        $plot->SetXTitle(utf8_decode($x_nome));
+        $plot->SetYTitle(utf8_decode($y_nome));
+        
+        // Passar para Real
+        // setar o valores no eixo Y no formato moeda
+        // este metodo aceita uma função quando o parametro custom é setado
+        $plot->SetYLabelType('custom', '\Framework\App\Sistema_Funcoes::Tranf_Float_Real');
+
+
+        /*# Definimos os dados do gráfico
+        $dados = array(
+                array(__('Janeiro'), 10),
+                array(__('Fevereiro'), 5),
+                array(__('Março'), 4),
+                array(__('Abril'), 8),
+                array(__('Maio'), 7),
+                array(__('Junho'), 5),
+        );*/
+        $nameFile       = md5(serialize($dados)).'.png';
+        $nameFileUrl    = $folderUrl.  \US .$nameFile;
+        $nameFile       = $folder.DS.$nameFile;
+        $plot->SetIsInline(true);
+        $plot->SetDataValues($dados);
+        $plot->SetOutputFile($nameFile);
+
+        # Mostramos o gráfico na tela
+        //$plot->SetPlotType($tipo); //points, pie, bars
+
+        $plot->DrawGraph();
+        return $nameFileUrl;
+    }
+    protected function Gerador_Grafico_Pizza($titulo, $x_nome='EixoX', $y_nome='EixoY', $x_dados=Array(), $y_dados=Array(), $tipo = 'points', $larg=300, $alt=200) {
+        // Inclui funcao
+        require_once("libs/phplot/phplot.php");
+
+        $larg = $_GET['larg'];
+        $alt = $_GET['alt'];
+        $titulo = $_GET['titulo'];
+        $data = unserialize($_GET['data']);
+        $settings = unserialize($_GET['settings']);
+
+        $plot = new PHPlot($larg, $alt);
+        $plot->SetTitle($titulo);
+        $plot->SetDataValues($data);
+        $plot->SetDataType('text-data-single');
+        $plot->SetPlotType('pie');
+        foreach ($data as $row) $plot->SetLegend($row[0]);
+        $plot->SetCallback('draw_graph', 'draw_data_table', $settings);
+        $plot->DrawGraph();
     }
     
     protected function Export_Todos($tipo,&$conteudo,$arquivo_nome='Relatorio'){
@@ -1249,7 +1313,11 @@ readfile($link);*/
                 if(!is_array($editar))throw new \Exception('Variavel nao e um Array: '.$editar,2800);
                 
                 // PRIMARIA
-                $class_usada = $editar[0].'_DAO';
+                if (strpos($editar[0], '_DAO') === false) {
+                    $class_usada      = $editar[0].'_DAO';
+                }else{
+                    $class_usada      = $editar[0];
+                }
                 $primaria = new $class_usada;
                 unset($class_usada);
                 $primaria = $primaria->Get_Primaria();
@@ -1339,7 +1407,11 @@ readfile($link);*/
             
             
             // PRIMARIA
-            $class_usada = $tab.'_DAO';
+            if (strpos($tab, '_DAO') === false) {
+                $class_usada = $tab.'_DAO';
+            }else{
+                $class_usada = $tab;
+            }
             $primaria = new $class_usada;
             unset($class_usada);
             $primaria = $primaria->Get_Primaria();
@@ -1356,7 +1428,11 @@ readfile($link);*/
         }else{
             $tipo           = 'add';
             $tab            = \anti_injection($dao);
-            $class_usada    = $tab.'_DAO';
+            if (strpos($tab, '_DAO') === false) {
+                $class_usada = $tab.'_DAO';
+            }else{
+                $class_usada = $tab;
+            }
             $identificador  = false;
             // Cria novo Origem
             $objeto         = new $class_usada;
@@ -1428,7 +1504,11 @@ readfile($link);*/
         }
         
         // Trata AS EXTRANGEIRAS MUITOS PARA MUITOS (LINKADAS)
-        $dao_completo = $tab.'_DAO';
+        if (strpos($tab, '_DAO') === false) {
+            $dao_completo = $tab.'_DAO';
+        }else{
+            $dao_completo = $tab;
+        }
         $sigla = $dao_completo::Get_Sigla();
         $links = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($sigla);
         $campos = &Conexao::Tabelas_GetCampos_Recolher($sigla);

@@ -1,6 +1,9 @@
 nbproject/private/
 www/arq/**/*
 www/arq/**/!.htaccess
+www/media/**/*
+www/media/**/!.htaccess
+www/Temp/**
 www/Cache/**/*
 www/Cache/**/!.htaccess
 www/Ini/**/*
@@ -9,3 +12,6 @@ www/Ini/**/!.htaccess
 www/Ini/**/!.htaccess
 www/mod/usuario_social/*
 www/DAO/Usuario.Social.**/*
+www/mod/social/*
+www/DAO/Social.**/*
+www/Lib/**

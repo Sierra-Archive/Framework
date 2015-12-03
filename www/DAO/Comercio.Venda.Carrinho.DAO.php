@@ -11,32 +11,32 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
     protected $forma_pagar;
     protected $condicao_pagar;
     protected $obs;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_COMERCIO_VENDA_CARRINHO;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'CVCa';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -51,7 +51,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'mesa',
@@ -66,9 +66,9 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio_venda/Carrinho/Mesas_Add',
+                'linkextra'         => 'comercio_venda/Carrinho/Mesas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Mesa',
+                    'Nome'              => __('Mesa'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -97,15 +97,14 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
-                    'formtipo'          => 'input',
-                    'input'             => array(
-                        'tipo'              => 'text',
+                    'aviso'             => __('Minimo 3 caracteres'),
+                    'formtipo'          => 'select',
+                    'select'             => array(
                         'class'             => 'obrigatorio',
                         'opcoes'            => array(
                             array(
@@ -129,14 +128,14 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Aberta',
+                    'Nome'              => __('Data Aberta'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_DataTime',
+                    'validar'           => 'Control_Layoult_Valida_DataHora',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio masc_data_hora'
@@ -156,14 +155,14 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_hora_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_hora_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Fechada',
+                    'Nome'              => __('Data Fechada'),
                     'valor_padrao'      => APP_HORA_BR,
                     'readonly'          => false,
                     'aviso'             => '',
                     'formtipo'          => 'input',
-                    'validar'           => 'Control_Layoult_Valida_DataTime',
+                    'validar'           => 'Control_Layoult_Valida_DataHora',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio masc_data_hora'
@@ -183,9 +182,9 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Pago',
+                    'Nome'              => __('Pago'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -216,7 +215,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
             ),
             // PRODUTOS
             Array(
@@ -224,7 +223,7 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                     'Pai'               => 'CVCa', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CVCC', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Itens do Cardápio', // Nome no FOrmulario
+                    'Nome'              => __('Itens do Cardápio'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -254,9 +253,9 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Financeiro/Pagamento/Formas_Add/', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Financeiro/Pagamento/Formas_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Forma de Pagamento',
+                    'Nome'              => __('Forma de Pagamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -280,9 +279,9 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'Financeiro/Pagamento/Condicoes_Add/', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'Financeiro/Pagamento/Condicoes_Add/', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Condição de Pagamento',
+                    'Nome'              => __('Condição de Pagamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -306,9 +305,9 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação sobre o Contato',
+                    'Nome'              => __('Observação sobre o Contato'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -322,4 +321,4 @@ final Class Comercio_Venda_Carrinho_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

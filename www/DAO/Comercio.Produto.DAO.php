@@ -12,32 +12,32 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
     protected $obs;
     protected $preco;
     protected $referencia;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_COMERCIO_PRODUTO;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'CP';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -52,7 +52,7 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'cod',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -66,13 +66,13 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Código do Produto',
+                    'Nome'              => __('Código do Produto'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Só Números',
+                    'aviso'             => __('Só Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -92,9 +92,9 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Familia/Familias_Add',
+                'linkextra'         => 'comercio/Familia/Familias_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Familia do Produto',
+                    'Nome'              => __('Familia do Produto'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -118,9 +118,9 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Marca/Marcas_Add',
+                'linkextra'         => 'comercio/Marca/Marcas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Marca da Linha',
+                    'Nome'              => __('Marca da Linha'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -143,9 +143,9 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Linha/Linhas_Add',
+                'linkextra'         => 'comercio/Linha/Linhas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Linha do Produto',
+                    'Nome'              => __('Linha do Produto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -168,12 +168,12 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Produto',
+                    'Nome'              => __('Nome do Produto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -193,9 +193,9 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Unidade/Unidades_Add',
+                'linkextra'         => 'comercio/Unidade/Unidades_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Unidade do Produto',
+                    'Nome'              => __('Unidade do Produto'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -218,17 +218,41 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Sigla do Produto',
+                    'Nome'              => __('Sigla do Produto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
                     )
+                )
+            ),
+            /**
+             * Instacao
+             */
+            Array(
+                'TabelaLinkada'     => Array(
+                    'Pai'               => 'CP', // TABELA que vai manipular a conexao
+                    'Tabela'            => 'SiTC', // TABELA de LINK A SER CONECTADA
+                    'valor_padrao'      => false, // id do pai
+                    'Nome'              => __('Caracteristicas'), // Nome no FOrmulario
+                    'Class'             => 'obrigatorio', // Classe no formulario
+                    'aviso'             => '', // Aviso no formulario
+                    'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
+                    'SelectMultiplo'   => Array(
+                        'Extrangeira'       => 'SiT.id|SiT.nome',
+                        'Linkar'            => 'motivoid', // CAmpo a ser encaixado id do pai
+                        'Linkado'           => 'caracteristica',// CAmpo a ser encaixado id do link
+                        'Campos'            => Array(
+                            'valor'
+                        ),
+                        'infonulo'          => 'Escolha pelo menos uma Caracteristica',
+                        'linkextra'         => false
+                    ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),Array(
                 'mysql_titulo'      => 'obs',
@@ -243,12 +267,12 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição',
+                    'Nome'              => __('Descrição'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -269,13 +293,13 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Preco',
+                    'Nome'              => __('Preco'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -295,9 +319,9 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Documento Referência',
+                    'Nome'              => __('Documento Referência'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -311,4 +335,4 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

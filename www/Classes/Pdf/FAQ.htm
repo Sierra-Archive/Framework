@@ -97,10 +97,10 @@ some cleaning in order to delete the temporary files. For example:
     $h = opendir($dir);
     while($file=readdir($h))
     {
-        if(substr($file,0,3)=='tmp' &amp;&amp; substr($file,-4)=='.pdf')
+        if (substr($file,0,3)=='tmp' &amp;&amp; substr($file,-4)=='.pdf')
         {
             $path = $dir.'/'.$file;
-            if($t-filemtime($path)&gt;3600)
+            if ($t-filemtime($path)&gt;3600)
                 @unlink($path);
         }
     }
@@ -212,7 +212,7 @@ Simply test the page number:
 <div class="doc-source">
 <pre><code>function Header()
 {
-    if($this-&gt;PageNo()==1)
+    if ($this-&gt;PageNo()==1)
     {
         //First page
         ...

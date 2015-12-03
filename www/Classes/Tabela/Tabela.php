@@ -31,16 +31,16 @@ class Tabela
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 0.4.24
     */
-    public function addcabecario($array){
+    public function addcabecario($array) {
         $config = Array(
             'Tipo'      => 'Head',
             'Opcao'     => Array(
                 'Campos'          => $array
             )
         );
-        $this->cabeca .= $this->_Visual->renderizar_bloco('template_tabela',$config);
+        $this->cabeca .= $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
     /**
     * Add Corpo de uma tabela
@@ -55,17 +55,17 @@ class Tabela
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 0.4.24
     */
-    public function addcorpo($array){
-        if(!is_array($array)){
+    public function addcorpo($array) {
+        if (!is_array($array)) {
             return false;
         }
         // Percorre Array
         reset($array);
         while (key($array) !== null) {
             $current = current($array);
-            if(!isset($current["class"]) || $current["class"]===false){
+            if (!isset($current["class"]) || $current["class"] === false) {
                 $array[key($array)]["class"] = '';
             }
             next($array);
@@ -77,7 +77,7 @@ class Tabela
                 //'Classes'       => $class,
             )
         );
-        $this->corpo .= $this->_Visual->renderizar_bloco('template_tabela',$config);
+        $this->corpo .= $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
     /**
     * Retorna a tabela
@@ -91,9 +91,9 @@ class Tabela
     * @return string Retorna Toda a Tabela
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 2.0
+    * @version 0.4.24
     */
-    public function retornatabela(){
+    public function retornatabela() {
         $config = Array(
             'Tipo'      => 'Escopo',
             'Opcao'     => Array(
@@ -101,7 +101,7 @@ class Tabela
                 'body'          => $this->corpo
             )
         );
-        return $this->_Visual->renderizar_bloco('template_tabela',$config);
+        return $this->_Visual->renderizar_bloco('template_tabela', $config);
     }
 }
-?>
+

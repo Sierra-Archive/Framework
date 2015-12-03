@@ -14,23 +14,23 @@ final Class Banner_DAO extends Framework\App\Dao
     protected $url;
     protected $status;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_BANNERS;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'B';
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -45,7 +45,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'user_criacao',
@@ -60,7 +60,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'categoria',
@@ -75,9 +75,9 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/banner', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/banner', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Banner',
+                    'Nome'              => __('Tipo de Banner'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -101,7 +101,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'nome',
@@ -116,12 +116,12 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados,
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Titulo do Banner',
+                    'Nome'              => __('Titulo do Banner'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras.',
+                    'aviso'             => __('Apenas letras.'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -142,9 +142,9 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'URL do Banner',
+                    'Nome'              => __('URL do Banner'),
                     'valor_padrao'      => 'http://',
                     'readonly'          => false,
                     'aviso'             => 'Ex: http://google.com.br',
@@ -168,9 +168,9 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Descrição do Banner',
+                    'Nome'              => __('Descrição do Banner'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -194,7 +194,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => ''  ,//0 ninguem, 1 admin, 2 todos
+                'linkextra'         => ''  ,//0 ninguem, 1 admin, 2 todos
             ),
             Array(
                 'mysql_titulo'      => 'cliq',
@@ -209,7 +209,7 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => ''  ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => ''  ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'limite_ixi',
@@ -224,9 +224,9 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Limite de Exibições',
+                    'Nome'              => __('Limite de Exibições'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -251,9 +251,9 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Limite de Cliques',
+                    'Nome'              => __('Limite de Cliques'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -278,9 +278,9 @@ final Class Banner_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Status do Banner',
+                    'Nome'              => __('Status do Banner'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -302,4 +302,4 @@ final Class Banner_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

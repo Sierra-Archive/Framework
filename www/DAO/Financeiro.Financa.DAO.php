@@ -7,32 +7,32 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
     protected $data;
     protected $obs;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_FINANCEIRO_FINANCAS;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'FF';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -47,7 +47,7 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -61,9 +61,9 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/Financeiro_Financa',
+                'linkextra'         => 'categoria/Admin/Categorias_Add/Financeiro_Financa',
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Conta',
+                    'Nome'              => __('Tipo de Conta'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -87,9 +87,9 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor',
+                    'Nome'              => __('Valor'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -114,9 +114,9 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Pagamento',
+                    'Nome'              => __('Data do Pagamento'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => APP_DATA_BR,
                     'readonly'          => false,
@@ -142,9 +142,9 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -158,4 +158,4 @@ final Class Financeiro_Financa_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

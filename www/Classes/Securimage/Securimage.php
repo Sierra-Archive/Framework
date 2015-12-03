@@ -104,17 +104,17 @@ namespace Framework\Classes;
  - Add static methods for creating and validating captcha by ID
  - Automatic clearing of old codes from SQLite database
 
- 3.0.3Beta
+ 3.1.3Beta
  - Add improved mixing function to WavFile class (Paul Voegler)
  - Improve performance and security of captcha audio (Paul Voegler, Drew Phillips)
  - Add option to use random file as background noise in captcha audio
  - Add new securimage options for audio files
 
- 3.0.2Beta
+ 3.1.2Beta
  - Fix issue with session variables when upgrading from 2.0 - 3.0
  - Improve audio captcha, switch to use WavFile class, make mathematical captcha audio work
 
- 3.0.1
+ 3.1.1
  - Bugfix: removed use of deprecated variable in addSignature method that would cause errors with display_errors on
 
  3.0
@@ -645,7 +645,7 @@ class Securimage
      *
      * Default: securimage/audio/noise
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @see Securimage::$audio_noise_path audio_noise_path property
      * @var bool true = mix, false = no
      */
@@ -676,7 +676,7 @@ class Securimage
      *     The threshold above which amplitudes are comressed linearly.
      *     e.g. -0.6 to leave amplitudes up to 60% "as is" and compress above.
      *
-     * @since 3.0.4
+     * @since 3.1.4
      * @var float
      */
     public $audio_mix_normalization = 0.8;
@@ -689,7 +689,7 @@ class Securimage
      *
      * Default: true
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @var bool
      */
     public $degrade_audio;
@@ -697,7 +697,7 @@ class Securimage
     /**
      * Minimum delay to insert between captcha audio letters in milliseconds
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @var float
      */
     public $audio_gap_min = 0;
@@ -705,7 +705,7 @@ class Securimage
     /**
      * Maximum delay to insert between captcha audio letters in milliseconds
      *
-     * @since 3.0.3
+     * @since 3.1.3
      * @var float
      */
     public $audio_gap_max = 3000;
@@ -888,7 +888,7 @@ class Securimage
         $this->securimage_path = dirname(__FILE__);
 
         if (is_array($options) && sizeof($options) > 0) {
-            foreach($options as $prop => $val) {
+            foreach ($options as $prop => $val) {
                 if ($prop == 'captchaId') {
                     Securimage::$_captchaId = $val;
                     $this->use_database     = true;
@@ -1068,7 +1068,7 @@ class Securimage
     {
         set_error_handler(array(&$this, 'errorHandler'));
 
-        if($background_image != '' && is_readable($background_image)) {
+        if ($background_image != '' && is_readable($background_image)) {
             $this->bgimg = $background_image;
         }
 
@@ -1183,7 +1183,7 @@ class Securimage
 
         $image_attrs['alt'] = $image_alt;
 
-        foreach($image_attrs as $name => $val) {
+        foreach ($image_attrs as $name => $val) {
             $image_attr .= sprintf('%s="%s" ', $name, htmlspecialchars($val));
         }
 
@@ -1252,7 +1252,7 @@ class Securimage
         $input_attrs['name'] = $input_name;
         $input_attrs['id']   = $input_id;
 
-        foreach($input_attrs as $name => $val) {
+        foreach ($input_attrs as $name => $val) {
             $input_attr .= sprintf('%s="%s" ', $name, htmlspecialchars($val));
         }
 
@@ -1405,7 +1405,7 @@ class Securimage
      */
     protected function doImage()
     {
-        if( ($this->use_transparent_text == true || $this->bgimg != '') && function_exists('imagecreatetruecolor')) {
+        if ( ($this->use_transparent_text == true || $this->bgimg != '') && function_exists('imagecreatetruecolor')) {
             $imagecreate = 'imagecreatetruecolor';
         } else {
             $imagecreate = 'imagecreate';
@@ -1552,18 +1552,18 @@ class Securimage
         }
 
         $dat = @getimagesize($this->bgimg);
-        if($dat == false) {
+        if ($dat == false) {
             return;
         }
 
         switch($dat[2]) {
-            case 1:  $newim = @imagecreatefromgif($this->bgimg); break;
+            case 1:  $newim = @imagecreatefromgif ($this->bgimg); break;
             case 2:  $newim = @imagecreatefromjpeg($this->bgimg); break;
             case 3:  $newim = @imagecreatefrompng($this->bgimg); break;
             default: return;
         }
 
-        if(!$newim) return;
+        if (!$newim) return;
 
         imagecopyresized($this->im, $newim, 0, 0, 0, 0,
                          $this->image_width, $this->image_height,
@@ -1854,7 +1854,7 @@ class Securimage
                     break;
                 case self::SI_IMAGE_GIF:
                     if ($this->send_headers) header("Content-Type: image/gif");
-                    imagegif($this->im);
+                    imagegif ($this->im);
                     break;
                 default:
                     if ($this->send_headers) header("Content-Type: image/png");
@@ -2330,7 +2330,7 @@ class Securimage
 
         $this->pdo_conn->beginTransaction();
 
-        foreach($queries as $query) {
+        foreach ($queries as $query) {
             $result = $this->pdo_conn->query($query);
 
             if (!$result) {
@@ -2637,7 +2637,7 @@ class Securimage
 
         if (!is_array($effects)) $effects = array($effects);
 
-        foreach($effects as $effect) {
+        foreach ($effects as $effect) {
             $effect = $effectsList[$effect];
 
             switch($effect)
@@ -2646,7 +2646,7 @@ class Securimage
                     $delay = mt_rand(0, 15) / 100.0;
                     $cents = mt_rand(-120, 120);
                     $dur   = mt_rand(75, 400) / 100.0;
-                    $outEffects[] = "$effect $delay,$cents,$dur";
+                    $outEffects[] = "$effect $delay, $cents, $dur";
                     break;
 
                 case 'chorus':

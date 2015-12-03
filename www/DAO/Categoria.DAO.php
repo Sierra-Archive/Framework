@@ -6,32 +6,32 @@ final Class Categoria_DAO extends Framework\App\Dao
     protected $subtab;
     protected $nome;
     protected $obs;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_CAT;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'C';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -62,7 +62,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Pai',
+                    'Nome'              => __('Pai'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -107,7 +107,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Nome',
+                    'Nome'              => __('Nome'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -123,7 +123,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                     'Pai'               => 'C', // TABELA que vai manipular a conexao
                     'Tabela'            => 'CA', // TABELA de LINK A SER CONECTADA
                     'valor_padrao'      => false, // ID DO PAI
-                    'Nome'              => 'Modulos Liberados', // Nome no FOrmulario
+                    'Nome'              => __('Modulos Liberados'), // Nome no FOrmulario
                     'Class'             => '', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'BoleanoMultiplo',  // Tipo de formulario
@@ -150,7 +150,7 @@ final Class Categoria_DAO extends Framework\App\Dao
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -164,4 +164,4 @@ final Class Categoria_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

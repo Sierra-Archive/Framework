@@ -202,7 +202,7 @@ class Cache {
         if (file_exists($folder) && is_dir($folder) && is_writable($folder)) {
             $this->folder = $folder;
         } else {
-            trigger_error('Não foi possível acessar a pasta de cache', E_USER_ERROR);
+            trigger_error('Não foi possível acessar a pasta de cache: '.$folder, E_USER_ERROR);
         }
     }
 

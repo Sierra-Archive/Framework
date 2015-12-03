@@ -21,32 +21,32 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
     protected $produto_dia_faturamento;
     protected $valor_mensal;
     protected $status;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_COMERCIO_CERTIFICADO_PROPOSTA;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'CCP';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -61,7 +61,7 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),Array(
                 'mysql_titulo'      => 'idcliente',
                 'mysql_tipovar'     => 'int', //varchar, int, 
@@ -75,9 +75,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '',
+                'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -100,9 +100,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio_certificado/Produto/Produtos',
+                'linkextra'         => 'comercio_certificado/Produto/Produtos',
                 'edicao'            => Array(
-                    'Nome'              => 'Produto',
+                    'Nome'              => __('Produto'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -125,12 +125,12 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Número da Proposta',
+                    'Nome'              => __('Número da Proposta'),
                     'valor_padrao'      => false,
                     'readonly'          => true,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -150,13 +150,13 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Número do Contrato',
+                    'Nome'              => __('Número do Contrato'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -176,13 +176,13 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Número do Certificado',
+                    'Nome'              => __('Número do Certificado'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Números',
+                    'aviso'             => __('Somente Números'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -202,9 +202,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data de Validade',
+                    'Nome'              => __('Data de Validade'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -229,9 +229,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data de Aceitação da Proposta',
+                    'Nome'              => __('Data de Aceitação da Proposta'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -256,9 +256,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data de Certificação',
+                    'Nome'              => __('Data de Certificação'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -283,9 +283,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Assinatura do Contrato',
+                    'Nome'              => __('Data da Assinatura do Contrato'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -310,9 +310,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Envio ao Cliente',
+                    'Nome'              => __('Envio ao Cliente'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -337,9 +337,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data de Envio do Certificado',
+                    'Nome'              => __('Data de Envio do Certificado'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -364,9 +364,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data Imetro',
+                    'Nome'              => __('Data Imetro'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -391,9 +391,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Comissão',
+                    'Nome'              => __('Data da Comissão'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -418,13 +418,13 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor do Contrato do Produto',
+                    'Nome'              => __('Valor do Contrato do Produto'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
@@ -444,9 +444,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor de Entrada do Produto',
+                    'Nome'              => __('Valor de Entrada do Produto'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -470,9 +470,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Números de Parcelas do Produto',
+                    'Nome'              => __('Números de Parcelas do Produto'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -496,9 +496,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Dia do Faturamento',
+                    'Nome'              => __('Dia do Faturamento'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -522,9 +522,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor Mensal',
+                    'Nome'              => __('Valor Mensal'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -550,9 +550,9 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Status',
+                    'Nome'              => __('Status'),
                     'valor_padrao'      => 0,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -578,4 +578,4 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

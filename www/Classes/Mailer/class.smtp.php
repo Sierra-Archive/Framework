@@ -794,7 +794,7 @@ class SMTP
      * Send raw data to the server.
      * @param string $data The data to send
      * @access public
-     * @return int|bool The number of bytes sent to the server or FALSE on error
+     * @return int|bool The number of bytes sent to the server or false on error
      */
     public function client_send($data)
     {

@@ -65,10 +65,10 @@ class PHPMailerLangTest extends PHPUnit_Framework_TestCase
                 $missing = array_diff(array_keys($definedStrings), array_keys($PHPMAILER_LANG));
                 $extra = array_diff(array_keys($PHPMAILER_LANG), array_keys($definedStrings));
                 if (!empty($missing)) {
-                    $err .= "\nMissing translations in $lang: " . implode(', ', $missing);
+                    $err .= "\nMissing translations in $lang: " . implode(',', $missing);
                 }
                 if (!empty($extra)) {
-                    $err .= "\nExtra translations in $lang: " . implode(', ', $extra);
+                    $err .= "\nExtra translations in $lang: " . implode(',', $extra);
                 }
             }
         }

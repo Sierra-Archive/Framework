@@ -30,7 +30,7 @@ mysql_select_db('mydb', $mysql);
 $result = mysql_query("SELECT full_name, email, photo FROM mailinglist WHERE sent = false", $mysql);
 
 while ($row = mysql_fetch_array($result)) {
-    $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
+    $mail->AltBody = __('To view the message, please use an HTML compatible email viewer!');
     $mail->msgHTML($body);
     $mail->addAddress($row['email'], $row['full_name']);
     $mail->addStringAttachment($row['photo'], 'YourPhoto.jpg'); //Assumes the image data is stored in the DB

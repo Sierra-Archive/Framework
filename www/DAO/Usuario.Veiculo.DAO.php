@@ -2,10 +2,12 @@
 final Class Usuario_Veiculo_DAO extends Framework\App\Dao 
 {
     protected $id;
+    protected $foto;
     protected $categoria;
     protected $marca;
     protected $modelo;
     protected $ano;
+    protected $franquia;
     protected $ipva;
     protected $ipva_valor;
     protected $ipva_data;
@@ -23,33 +25,37 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
     protected $valor1;
     protected $valor2;
     protected $valor3;
+    
+    // Padrao é false, ou array com os campos que nao aceita
+    protected static $campos_naoaceita_config  = Array('foto');
+    
     protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } 
-    public static function Get_Nome(){
+    public static function Get_Nome() {
         return MYSQL_USUARIO_VEICULO;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'UV';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -64,7 +70,33 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
+            ),
+            Array(
+                'mysql_titulo'      => 'foto',
+                'mysql_tipovar'     => 'longtext', //varchar, int, 
+                'mysql_tamanho'     => 10000,
+                'mysql_null'        => true,  // nulo ?
+                'mysql_default'     => '', // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Upload de Foto'),
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => __('Imagens somente do tipo GIF ou JPG'),
+                    'aviso_titulo'      => 'Importante',
+                    'formtipo'          => 'upload',
+                    'upload'            => array(
+                        'tipo'              => 'Imagem',
+                        'class'             => ''
+                    )
+                )
             ),
             Array(
                 'mysql_titulo'      => 'categoria',
@@ -79,9 +111,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/usuario_veiculo_Veiculo', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/usuario_veiculo_Veiculo', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Veiculo',
+                    'Nome'              => __('Tipo de Veiculo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -105,9 +137,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_veiculo/Marca/Marcas_Add',
+                'linkextra'         => 'usuario_veiculo/Marca/Marcas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Marca',
+                    'Nome'              => __('Marca'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -131,9 +163,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_veiculo/Modelo/Modelos_Add', 
+                'linkextra'         => 'usuario_veiculo/Modelo/Modelos_Add', 
                 'edicao'            => Array(
-                    'Nome'              => 'Modelo',
+                    'Nome'              => __('Modelo'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -145,8 +177,8 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 )
             ),Array(
                 'mysql_titulo'      => 'ano',
-                'mysql_tipovar'     => 'varchar', //varchar, int, 
-                'mysql_tamanho'     => 100,
+                'mysql_tipovar'     => 'int', //varchar, int, 
+                'mysql_tamanho'     => 4,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
                 'mysql_primary'     => false,
@@ -156,17 +188,43 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Ano',
+                    'Nome'              => __('Ano'),
                     'Mascara'           => 'Ano',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Minimo 3 caracteres',
+                    'aviso'             => __('Minimo 3 caracteres'),
                     'formtipo'          => 'input',
                     'input'             => array(
                         'tipo'              => 'text',
                         'class'             => 'obrigatorio'
+                    )
+                )
+            ),
+            Array(
+                'mysql_titulo'      => 'franquia',
+                'mysql_tipovar'     => 'varchar', //varchar, int, 
+                'mysql_tamanho'     => 30,
+                'mysql_null'        => false,  // nulo ?
+                'mysql_default'     => false, // valor padrao
+                'mysql_primary'     => false,  // chave primaria
+                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => false,
+                'mysql_comment'     => false,
+                'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'edicao'            => Array(
+                    'Nome'              => __('Franquia'),
+                    'Mascara'           => 'Real',
+                    'valor_padrao'      => false,
+                    'readonly'          => false,
+                    'aviso'             => '',
+                    'formtipo'          => 'input',
+                    'input'             => array(
+                        'tipo'              => 'text',
+                        'class'             => ''
                     )
                 )
             ),Array(
@@ -182,9 +240,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Placa',
+                    'Nome'              => __('Placa'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -207,7 +265,7 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'N° do Renavan',
                     'valor_padrao'      => false,
@@ -232,9 +290,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Vistoria',
+                    'Nome'              => __('Data da Vistoria'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -259,9 +317,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Próxima Vistoria',
+                    'Nome'              => __('Data da Próxima Vistoria'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -286,9 +344,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor do Veiculo',
+                    'Nome'              => __('Valor do Veiculo'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -312,9 +370,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Compra',
+                    'Nome'              => __('Data da Compra'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -339,9 +397,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Ipva',
+                    'Nome'              => __('Ipva'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -364,9 +422,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor do Ipva',
+                    'Nome'              => __('Valor do Ipva'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -390,9 +448,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Ipva',
+                    'Nome'              => __('Data do Ipva'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -417,9 +475,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Revisão',
+                    'Nome'              => __('Revisão'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -442,9 +500,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cilindradas',
+                    'Nome'              => __('Cilindradas'),
                     'Mascara'           => 'Numero',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -468,9 +526,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Aluguél Até 3 dias',
+                    'Nome'              => __('Aluguél Até 3 dias'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -494,9 +552,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Aluguél Entre 3 e 10 dias',
+                    'Nome'              => __('Aluguél Entre 3 e 10 dias'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -520,7 +578,7 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => 'Aluguél +10 dias',
                     'Mascara'           => 'Real',
@@ -547,9 +605,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Disponivel para Aluguél ?',
+                    'Nome'              => __('Disponivel para Aluguél ?'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -581,9 +639,9 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -597,4 +655,4 @@ final Class Usuario_Veiculo_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

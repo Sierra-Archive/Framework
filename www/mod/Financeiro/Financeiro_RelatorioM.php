@@ -11,11 +11,10 @@ class Financeiro_RelatorioModelo extends Financeiro_Modelo
      * @return void
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 2.0
+     * @version 0.4.24
      * 
      */
-    public function __construct(){
+    public function __construct() {
       parent::__construct();
     }
 }
-?>

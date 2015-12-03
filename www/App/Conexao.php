@@ -594,6 +594,9 @@ final class Conexao
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 0.0.1
      */
+    public function Sql_Insert(&$Objeto,$tempo=true){
+        return $this->Sql_Inserir($Objeto,$tempo);
+    }
     public function Sql_Inserir(&$Objeto,$tempo=true){
         if($tempo){
             $temponome  = 'Inserir';
@@ -946,7 +949,9 @@ final class Conexao
         if($class_dao==''){
             throw new \Exception('Dao não existe: '.$class_dao,3251);
         }else{
-            $class_dao = $class_dao.'_DAO';
+            if (strpos($class_dao, '_DAO') === false) {
+                $class_dao      = $class_dao.'_DAO';
+            }
         }
         // Captura Nome da Tabela
         $sql_tabela_nome    = call_user_func(array($class_dao, 'Get_Nome'));
@@ -1010,7 +1015,9 @@ final class Conexao
         $menor      = ' < ';
         $maiorigual = ' >= ';
         $menorigual = ' <= ';
-        $class_dao      = $class_dao.'_DAO';
+        if (strpos($class_dao, '_DAO') === false) {
+            $class_dao      = $class_dao.'_DAO';
+        }
         
         // Carrega Cache
         $Cache = $this->_Cache->Ler('Select-'.$class_dao.$campos);
@@ -1366,7 +1373,11 @@ final class Conexao
             $tabela_link = self::Tabelas_GetSiglas_Recolher($objeto['Tabela']);
             
             // Captura Colunas da tabela
-            $class_Executar = $tabela_link['classe'].'_DAO';
+            if (strpos($tabela_link['classe'], '_DAO') === false) {
+                $class_Executar = $tabela_link['classe'].'_DAO';
+            }else{
+                $class_Executar = $tabela_link['classe'];
+            }
             // Escolhe os Selecionados
             $selecionado    = Array();
             $where          = Array();
@@ -1481,7 +1492,11 @@ final class Conexao
                 $tipo = 'Tabela';
             }
             // PEga Classe para Percorrer valores do selectmultiplo selecionados
-            $classe_dao = $tabela_utilizada['classe'].'_DAO';
+            if (strpos($tabela_utilizada['classe'], '_DAO') === false) {
+                $class_dao      = $tabela_utilizada['classe'].'_DAO';
+            }else{
+                $class_dao      = $tabela_utilizada['classe'];
+            }
             // Guarda OS SELECIONADOS
             if($opcoes!==false){
                 foreach($opcoes as &$valor){

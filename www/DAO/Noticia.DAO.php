@@ -10,65 +10,65 @@ final Class Noticia_DAO extends Framework\App\Dao
     protected $destaque;
     protected $status;
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = FALSE;     protected static $mysql_colunas       = FALSE;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_NOTICIAS;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
-        return false;
+    public static function Permissao_Copia() {
+        return FALSE;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'N';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => true,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira
-                'mysql_autoadd'     => true,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_null'        => FALSE,  // nulo ?
+                'mysql_default'     => FALSE, // valor padrao
+                'mysql_primary'     => TRUE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira
+                'mysql_autoadd'     => TRUE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'categoria',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 11,
-                'mysql_null'        => true, // true NULL, false, NOT NULL
-                'mysql_default'     => false,//false -> NONE, outro -> default
-                'mysql_primary'     => false, // chave primaria
+                'mysql_null'        => TRUE, // true NULL, FALSE, NOT NULL
+                'mysql_default'     => FALSE,//false -> NONE, outro -> default
+                'mysql_primary'     => FALSE, // chave primaria
                 'mysql_estrangeira' => 'C.id|C.nome|CA.mod_acc=noticia', // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo
                 'linkextra'         => 'categoria/Admin/Categorias_Add/noticia', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo da Noticia',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
+                    'Nome'              => __('Tipo da Noticia'),
+                    'valor_padrao'      => FALSE,
+                    'readonly'          => FALSE,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'             => array(
@@ -81,19 +81,19 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'nome',
                 'mysql_tipovar'     => 'varchar', //varchar, int, 
                 'mysql_tamanho'     => 200,
-                'mysql_null'        => true,  // nulo ?
+                'mysql_null'        => TRUE,  // nulo ?
                 'mysql_default'     => 'Sem nome', // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Titulo da Noticia',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
+                    'Nome'              => __('Titulo da Noticia'),
+                    'valor_padrao'      => FALSE,
+                    'readonly'          => FALSE,
                     'aviso'             => '',
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -106,11 +106,11 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'N', // TABELA que vai manipular a conexao
                     'Tabela'            => 'NR', // TABELA de LINK A SER CONECTADA
-                    'Preencher'         => Array( // CAso exista e != de false, preenche automaticamente esses campos
+                    'Preencher'         => Array( // CAso exista e != de FALSE, preenche automaticamente esses campos
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
-                    'valor_padrao'      => false, // id do pai
-                    'Nome'              => 'Artistas', // Nome no FOrmulario
+                    'valor_padrao'      => FALSE, // id do pai
+                    'Nome'              => __('Artistas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario
@@ -118,9 +118,9 @@ final Class Noticia_DAO extends Framework\App\Dao
                         'Extrangeira'       => 'MAA.id|MAA.nome',
                         'Linkar'            => 'noticia', // CAmpo a ser encaixado id do pai
                         'Linkado'           => 'tabelaid',// CAmpo a ser encaixado id do link
-                        'Campos'            => false,
+                        'Campos'            => FALSE,
                         'infonulo'          => 'Escolha pelo menos um Artista',
-                      'linkextra'         => false
+                      'linkextra'         => FALSE
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
             ),
@@ -128,20 +128,20 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'data',
                 'mysql_tipovar'     => 'date', //varchar, int, 
                 'mysql_tamanho'     => 10,
-                'mysql_null'        => false,  // nulo ?
+                'mysql_null'        => FALSE,  // nulo ?
                 'mysql_default'     => '0000-00-00', // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
+                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Noticia',
+                    'Nome'              => __('Data da Noticia'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => APP_DATA_BR,
-                    'readonly'          => false,
+                    'readonly'          => FALSE,
                     'aviso'             => '',
                     'formtipo'          => 'input',
                     'validar'           => 'Control_Layoult_Valida_Data',
@@ -155,19 +155,19 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'texto',
                 'mysql_tipovar'     => 'longtext', //varchar, int, 
                 'mysql_tamanho'     => 10000,
-                'mysql_null'        => false,  // nulo ?
-                'mysql_default'     => false, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_null'        => FALSE,  // nulo ?
+                'mysql_default'     => FALSE, // valor padrao
+                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Texto da Noticia',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
+                    'Nome'              => __('Texto da Noticia'),
+                    'valor_padrao'      => FALSE,
+                    'readonly'          => FALSE,
                     'aviso'             => '',
                     'formtipo'          =>'textarea',
                    'textarea'             => array(
@@ -180,19 +180,19 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'destaque',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 3,
-                'mysql_null'        => true,  // nulo ?
+                'mysql_null'        => TRUE,  // nulo ?
                 'mysql_default'     => 0, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Destaque',
+                    'Nome'              => __('Destaque'),
                     'valor_padrao'      => 0,
-                    'readonly'          => false,
+                    'readonly'          => FALSE,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'            => array(
@@ -215,19 +215,19 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'status',
                 'mysql_tipovar'     => 'int', //varchar, int, 
                 'mysql_tamanho'     => 3,
-                'mysql_null'        => true,  // nulo ?
+                'mysql_null'        => TRUE,  // nulo ?
                 'mysql_default'     => 1, // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Ativado',
+                    'Nome'              => __('Ativado'),
                     'valor_padrao'      => 1,
-                    'readonly'          => false,
+                    'readonly'          => FALSE,
                     'aviso'             => '',
                     'formtipo'          => 'select',
                     'select'            => array(
@@ -250,20 +250,20 @@ final Class Noticia_DAO extends Framework\App\Dao
                 'mysql_titulo'      => 'foto',
                 'mysql_tipovar'     => 'longtext', //varchar, int, 
                 'mysql_tamanho'     => 10000,
-                'mysql_null'        => true,  // nulo ?
+                'mysql_null'        => TRUE,  // nulo ?
                 'mysql_default'     => '', // valor padrao
-                'mysql_primary'     => false,  // chave primaria
-                'mysql_estrangeira' => false, // chave estrangeira     ligacao|apresentacao|condicao
-                'mysql_autoadd'     => false,
-                'mysql_comment'     => false,
-                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
-                'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
+                'mysql_primary'     => FALSE,  // chave primaria
+                'mysql_estrangeira' => FALSE, // chave estrangeira     ligacao|apresentacao|condicao
+                'mysql_autoadd'     => FALSE,
+                'mysql_comment'     => FALSE,
+                'mysql_inside'      => FALSE, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => FALSE, // Funcao Executada quando o dado for retirado no banco de dados
+                'perm_copia'        => FALSE, //permissao funcional necessaria para campo 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Foto da Capa',
-                    'valor_padrao'      => false,
-                    'readonly'          => false,
-                    'aviso'             => 'Imagens somente do tipo GIF ou JPG',
+                    'Nome'              => __('Foto da Capa'),
+                    'valor_padrao'      => FALSE,
+                    'readonly'          => FALSE,
+                    'aviso'             => __('Imagens somente do tipo GIF ou JPG'),
                     'aviso_titulo'      => 'Importante',
                     'formtipo'          => 'upload',
                     'upload'            => array(
@@ -275,4 +275,4 @@ final Class Noticia_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

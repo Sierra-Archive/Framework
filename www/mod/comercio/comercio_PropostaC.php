@@ -13,7 +13,7 @@ class comercio_PropostaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function __construct() {
         parent::__construct();
@@ -23,7 +23,7 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Essa página não pode ser acessada.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $this->_Visual->Json_Info_Update('Historico', false);
             $this->layoult_zerar = false; 
             return false;
@@ -34,7 +34,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $true
      * @param type $tema
      */
-    static function Endereco_Proposta($true=true,$tema='Propostas') {
+    static function Endereco_Proposta($true= true, $tema='Propostas') {
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         if ($tema=='Propostas') {
@@ -44,8 +44,8 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo = CFG_TXT_COMERCIO_OS;
             $link = 'comercio/Proposta/Propostas/'.$tema;
         }
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === true) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -56,7 +56,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $tema
      * @param type $proposta
      */
-    static function Endereco_Proposta_Comentario($true=true,$tema='Propostas',$proposta=false) {
+    static function Endereco_Proposta_Comentario($true= true, $tema='Propostas', $proposta = false) {
         self::Endereco_Proposta();
         // Pega ID
         if (is_object($proposta)) {
@@ -69,8 +69,8 @@ class comercio_PropostaControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Comentários');
         $link = 'comercio/Proposta/Propostas_Comentario/'.$propostaid.'/'.$tema;
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === true) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -81,7 +81,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $tema
      * @param type $proposta
      */
-    static function Endereco_Proposta_Sub($true=true,$tema='Propostas',$proposta=false) {
+    static function Endereco_Proposta_Sub($true= true, $tema='Propostas', $proposta = false) {
         self::Endereco_Proposta();
         // Pega ID
         if (is_object($proposta)) {
@@ -94,8 +94,8 @@ class comercio_PropostaControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = 'Sub '.$tema;
         $link = 'comercio/Proposta/Propostas_Sub/'.$propostaid.'/'.$tema;
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === true) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -104,14 +104,14 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param type $true
      */
-    static function Endereco_CheckList($true=true) {
+    static function Endereco_CheckList($true= true) {
         self::Endereco_Proposta();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Checklist');
         $link = 'comercio/Proposta/Checklists';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === true) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -120,14 +120,14 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param type $true
      */
-    static function Endereco_Visita($true=true) {
+    static function Endereco_Visita($true= true) {
         self::Endereco_Proposta();
         $Registro = &\Framework\App\Registro::getInstacia();
         $_Controle = $Registro->_Controle;
         $titulo = __('Folhas de Visitas');
         $link = 'comercio/Proposta/Visitas';
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === true) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -137,7 +137,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $true
      * @param type $visita
      */
-    static function Endereco_Visita_Comentario($true=true,$visita=false) {
+    static function Endereco_Visita_Comentario($true= true, $visita = false) {
         self::Endereco_Visita();
         // Pega ID
         if (is_object($visita)) {
@@ -150,8 +150,8 @@ class comercio_PropostaControle extends comercio_Controle
         $_Controle = $Registro->_Controle;
         $titulo = __('Comentários');
         $link = 'comercio/Proposta/Visitas_Comentario/'.$visitaid;
-        if ($true===true) {
-            $_Controle->Tema_Endereco($titulo,$link);
+        if ($true === true) {
+            $_Controle->Tema_Endereco($titulo, $link);
         } else {
             $_Controle->Tema_Endereco($titulo);
         }
@@ -161,7 +161,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $campos
      * @param type $tema
      */
-    static function Campos_Deletar(&$campos,$tema='Propostas') {
+    static function Campos_Deletar(&$campos, $tema='Propostas') {
         // Retira Padroes
         if (!(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_servicos'))) {
             self::DAO_Campos_Retira($campos, 'Serviço');
@@ -222,7 +222,7 @@ class comercio_PropostaControle extends comercio_Controle
                 self::DAO_Campos_Retira($campos, 'valor_fixo');
             }
             // Se tiver Comissao Add
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')===false) {
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao') === false) {
                 self::DAO_Campos_Retira($campos, 'comissao');
             }   
             if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorExtra')) {
@@ -254,7 +254,7 @@ class comercio_PropostaControle extends comercio_Controle
     * @return void
     * 
     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-    * @version 0.4.2
+    * @version 0.4.24
     */
     public function Main($tema='Propostas') {
         \Framework\App\Sistema_Funcoes::Redirect(URL_PATH.'comercio/Proposta/Propostas/'.$tema);
@@ -263,20 +263,24 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas($tema='Propostas',$export=false) {
-        self::Endereco_Proposta(false,$tema);
+    public function Propostas($tema='Propostas', $export = false) {
+        self::Endereco_Proposta(false, $tema);
         if ($tema!='Propostas') {
             $where = Array(
-                'INstatus' => Array(1,2,'1','2')
+                'INstatus' => Array(1,2,'1', '2')
             );
             $titulo             = CFG_TXT_COMERCIO_OS;
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
-            $adicionar = false;
+            $adicionar = Array(
+                'Adicionar nova '.$titulo,
+                'comercio/Proposta/Propostas_Add/'.$tema.'',
+                ''
+            );
         } else {
             $where = Array(
-                'NOTINstatus' => Array(2,3,'2','3')
+                'NOTINstatus' => Array(2,3,'2', '3')
             );
             $titulo             = __('Proposta');
             $titulo_plural      = __('Propostas');
@@ -297,49 +301,75 @@ class comercio_PropostaControle extends comercio_Controle
         )));
         //
         $i = 0;
-        $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',$where,0,''/*,
+        $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta', $where,0, ''/*,
                 'id,propostatipo,cliente,cliente2,cuidados,cuidados2,condicao_pagar,condicao_pagar2,forma_pagar,forma_pagar2,pagar_lucro,pagar_desconto,valor'*/);
-        if ($proposta!==false && !empty($proposta)) {
+        if ($proposta !== false && !empty($proposta)) {
             if (is_object($proposta)) $proposta = Array(0=>$proposta);
             reset($proposta);
             //Permissoes
-            $perm_status = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/StatusPropostas');
+            $permissionStatus = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/StatusPropostas');
             $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_View');
-            $perm_sub = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Sub');
             $perm_comentario = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Comentario');
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Edit');
-            $perm_deletar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Del');
+            $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Edit');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Del');
             
             //
-            foreach ($proposta as $indice=>&$valor) {
-                $tabela['Número'][$i]       =  '#'.$valor->id;
+            foreach ($proposta as &$valor) {
+                // Se tiver faltando coloca
+                if($valor->propostaNewId==='' || $valor->propostaNewId===null || $valor->propostaNewId===false){
+                    $valor->propostaNewId = $valor->id.' - 1';
+                    $valor->propostaReferencia = '0';
+                    // Add Novo Status
+                    if($this->_Modelo->db->Sql_Select(
+                        'Comercio_Proposta_Status',
+                        '{sigla}proposta=\''.$valor->id.'\''.
+                        ' AND {sigla}data=\''.$valor->log_date_add.'\''.
+                        ' AND {sigla}status=\'0\'',
+                        1
+                    )===false){
+                        
+                        $newStatus = new Comercio_Proposta_Status_DAO();
+                        $newStatus->proposta = $valor->id;
+                        $newStatus->propostaNome = $valor->propostaNewId;
+                        $newStatus->cuidados = $valor->cuidados;
+                        $newStatus->cliente = $valor->cliente;
+                        $newStatus->data = $valor->log_date_add;
+                        $newStatus->status = '0';
+                        $this->_Modelo->db->Sql_Insert(
+                            $newStatus
+                        );
+                    }
+                    $this->_Modelo->db->Sql_Update($valor);
+                }
+
+                $table[__('Número')][$i]       =  '#'.$valor->propostaNewId;
                 if ($valor->propostatipo==1 || $valor->propostatipo=='1') {
-                    if (SQL_MAIUSCULO===true) {
+                    if (SQL_MAIUSCULO === true) {
                         $propostatipo = __('INSTALAÇÃO');
                     } else {
                         $propostatipo = __('Instalação');
                     }
                 } else {
-                    if (SQL_MAIUSCULO===true) {
+                    if (SQL_MAIUSCULO === true) {
                         $propostatipo = __('SERVIÇO');
                     } else {
                         $propostatipo = __('Serviço');
                     }
                 } // Retira de Instalação
                 if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Instalacao') || !(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_servicos'))) {
-                    $tabela['Tipo de '.$titulo][$i]         =  $propostatipo;
+                    $table['Tipo de '.$titulo][$i]         =  $propostatipo;
                 }
-                $tabela['Cliente'][$i]                      =  $valor->cliente2;
-                $tabela['Vendedor'][$i]                     =  $valor->cuidados2;
+                $table[__('Cliente')][$i]                      =  $valor->cliente2;
+                $table[__('Vendedor')][$i]                     =  $valor->cuidados2;
                 if ($tema!='Propostas') {
                     
                 } else {
-                    if (SQL_MAIUSCULO===true) {
+                    if (SQL_MAIUSCULO === true) {
                         $pagamento = $valor->condicao_pagar2.' EM '.$valor->forma_pagar2;
                     } else {
                         $pagamento = $valor->condicao_pagar2.' em '.$valor->forma_pagar2;
                     }
-                    $tabela['Pagamento'][$i]                    =  $pagamento;
+                    $table[__('Pagamento')][$i]                    =  $pagamento;
                     if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro')) {
                         $cf_lucro = true;
                     } else {
@@ -352,29 +382,28 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                     
                     // Nao deixa aparecer os dois
-                    if ($cf_lucro===true) {
-                        $tabela['Lucro'][$i]                        =  $valor->pagar_lucro;
+                    if ( $cf_lucro === true ) {
+                        $table[__('Lucro')][$i]                        =  $valor->pagar_lucro;
                     } else if ($cf_desconto) {
-                        $tabela['Desconto'][$i]                     =  $valor->pagar_desconto;
+                        $table[__('Desconto')][$i]                     =  $valor->pagar_desconto;
                     }
-                    $tabela['Valor Total'][$i]                  =  $valor->valor;
+                    $table[__('Valor Total')][$i]                  =  $valor->valor;
                 }
-                if ($perm_status) $tabela['Status'][$i]                       = '<span class="status'.$valor->id.'">'.self::label($valor,$tema).'</span>';
-                $tabela['Criado'][$i]                       = $valor->log_date_add;
-                $tabela['Ult. Alteração'][$i]                       = $valor->log_date_edit;
-                $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,''),$perm_view).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Sub '.$titulo    ,'comercio/Proposta/Propostas_Sub/'.$valor->id.'/'.$tema.'/'    ,'','collapse','warning'),$perm_sub).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'),$perm_comentario).
-                                            $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar '.$titulo             ,'comercio/Proposta/Propostas_Edit/'.$valor->id.'/'.$tema.'/'    ,''),$perm_editar).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar '.$titulo            ,'comercio/Proposta/Propostas_Del/'.$valor->id.'/'.$tema.'/'     ,'Deseja realmente deletar essa Proposta ? Isso irá afetar o sistema!'),$perm_deletar);
+                if ($permissionStatus) $table[__('Status')][$i]                       = '<span class="status'.$valor->id.'">'.self::label($valor, $tema).'</span>';
+                $table[__('Criado')][$i]                       = $valor->log_date_add;
+                $table[__('Ult. Alteração')][$i]                       = $valor->log_date_edit;
+                $table[__('Funções')][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array(__('Visualizar ').$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    , ''), $perm_view).
+                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array(__('Histórico da ').$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    , '', 'file', 'inverse'), $perm_comentario).
+                                            $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar ').$titulo             ,'comercio/Proposta/Propostas_Edit/'.$valor->id.'/'.$tema.'/'    , ''), $permissionEdit).
+                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar ').$titulo            ,'comercio/Proposta/Propostas_Del/'.$valor->id.'/'.$tema.'/'     ,'Deseja realmente deletar essa Proposta ? Isso irá afetar o sistema!'), $permissionDelete);
                 ++$i;
             }
                                                                                                                                                                                                         
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, $titulo_plural);
+            if ($export !== false) {
+                self::Export_Todos($export, $table, $titulo_plural);
             } else {
                 $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
+                    $table,     // Array Com a Tabela
                     '',          // style extra
                     true,        // true -> Add ao Bloco, false => Retorna html
                     false,        // Apagar primeira coluna ?
@@ -385,20 +414,25 @@ class comercio_PropostaControle extends comercio_Controle
                     )
                 );
             }
-            unset($tabela);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma '.$titulo.'</font></b></center>');
         }
         $titulo = 'Listagem de '.$titulo_plural.' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
         
         // Propostas/OS antigas
+        if ($tema!='Propostas') {
+            $where = 'status NOT IN (1, 2, \'1\', \'2\')';
+        } else {
+            $where = 'status IN (1, 2, \'1\', \'2\')';
+        }
         $this->_Visual->Blocar('<span id="proposta_outras" carregado="0"><center><font color="#FF0000" size="5">Carregando...</font></center></span>');
-        $bloco_identificador =  $this->_Visual->Bloco_Unico_CriaJanela('Outras '.$titulo_plural.'','',5,false,true);
+        $bloco_identificador =  $this->_Visual->Bloco_Unico_CriaJanela('Outras '.$titulo_plural.''.' (<span id="DataTable_Contador">'.$this->_Modelo->db->Sql_Contar('Comercio_Proposta', $where).'</span>)', '',5, false,true);
         $javascript_executar =  '$(document).on("click", \'a#'.$bloco_identificador.'_max\', function () {'. 
                                 'if ($(\'#proposta_outras\').attr("carregado")!==\'1\' && $(\'#proposta_outras\').attr("carregado")!==1) {'.
                                     '$(\'#proposta_outras\').attr("carregado",\'1\');'.
-                                    'Sierra.Modelo_Ajax_Chamar(\'comercio/Proposta/Outros/'.$tema.'\',\'\',\'get\',true,false,true);'.
+                                    'Sierra.Modelo_Ajax_Chamar(\'comercio/Proposta/Outros/'.$tema.'\',\'\',\'get\', true, false,true);'.
                                 '}});';
         $this->_Visual->Javascript_Executar($javascript_executar);
         
@@ -410,110 +444,113 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $tema
      * @param type $export
      */
-    public function Outros($tema='Propostas',$export=false) {
-        self::Endereco_Proposta(false,$tema);
+    public function Outros($tema='Propostas', $export = false) {
+        
         if ($tema!='Propostas') {
             $where = Array(
-                'NOTINstatus' => Array(1,2,'1','2')
+                'INstatus' => Array(1,2,'1', '2')
             );
             $titulo             = CFG_TXT_COMERCIO_OS;
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
+            $adicionar = false;
+            $tema = 'OS';
         } else {
             $where = Array(
-                'INstatus' => Array(2,3,'2','3')
+                'NOTINstatus' => Array(2,3,'2', '3')
             );
             $titulo             = __('Proposta');
             $titulo_plural      = __('Propostas');
-        }
-        //
-        $i = 0;
-        $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',$where);
-        if ($proposta!==false && !empty($proposta)) {
-            if (is_object($proposta)) $proposta = Array(0=>$proposta);
-            reset($proposta);
-            foreach ($proposta as $indice=>&$valor) {
-                $tabela['Número'][$i]       =  '#'.$valor->id;
-                if ($valor->propostatipo==1 || $valor->propostatipo=='1') {
-                    if (SQL_MAIUSCULO===true) {
-                        $propostatipo = __('INSTALAÇÃO');
-                    } else {
-                        $propostatipo = __('Instalação');
-                    }
-                } else {
-                    if (SQL_MAIUSCULO===true) {
-                        $propostatipo = __('SERVIÇO');
-                    } else {
-                        $propostatipo = __('Serviço');
-                    }
-                } // Retira de Instalação
-                if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Instalacao') || !(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_servicos'))) {
-                    $tabela['Tipo de '.$titulo][$i]         =  $propostatipo;
-                }
-                $tabela['Cliente'][$i]                      =  $valor->cliente2;
-                $tabela['Vendedor'][$i]                     =  $valor->cuidados2;
-                if ($tema!='Propostas') {
-                    
-                } else {
-                    if (SQL_MAIUSCULO===true) {
-                        $pagamento = $valor->condicao_pagar2.' EM '.$valor->forma_pagar2;
-                    } else {
-                        $pagamento = $valor->condicao_pagar2.' em '.$valor->forma_pagar2;
-                    }
-                    $tabela['Pagamento'][$i]                    =  $pagamento;
-                    if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro')) {
-                        $tabela['Lucro'][$i]                        =  $valor->pagar_lucro;
-                    }
-                    $tabela['Desconto'][$i]                     =  $valor->pagar_desconto;
-                    $tabela['Valor Total'][$i]                  =  $valor->valor;
-                }
-                $tabela['Status'][$i]                       =  '<span class="status'.$valor->id.'">'.self::label($valor,$tema,($tema!='Propostas' && $valor->status=='3'?true:false)).'</span>';
-                $tabela['Criado'][$i]                       = $valor->log_date_add;
-                $tabela['Ult. Alteração'][$i]                       = $valor->log_date_edit;
-                $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Visualizar' ,Array('Visualizar '.$titulo         ,'comercio/Proposta/Propostas_View/'.$valor->id.'/'.$tema.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da '.$titulo    ,'comercio/Proposta/Propostas_Comentario/'.$valor->id.'/'.$tema.'/'    ,'','file','inverse'));
-                ++$i;
-            }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, $titulo_plural);
-            } else {
-                $html = $this->_Visual->Show_Tabela_DataTable(
-                    $tabela,     // Array Com a Tabela
-                    '',          // style extra
-                    false,        // true -> Add ao Bloco, false => Retorna html
-                    false,        // Apagar primeira coluna ?
-                    Array(       // Ordenacao
-                        Array(
-                            0,'desc'
-                        )
-                    )
-                );
-            }
-            unset($tabela);
-        } else {           
-            $html = '<center><b><font color="#FF0000" size="5">Nenhuma '.$titulo.'</font></b></center>';
+            $adicionar = Array(
+                'Adicionar nova '.$titulo,
+                'comercio/Proposta/Propostas_Add/'.$tema.'',
+                ''
+            );
         }
         
+        $tableColumns[] = __('Número');
+        // Retira de Instalação
+        if (
+            \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_servicos_Instalacao')
+            ||
+            !(\Framework\App\Sistema_Funcoes::Perm_Modulos('comercio_servicos'))
+        ) {
+            $tableColumns[] = __('Tipo de '.$titulo);
+        }
+        $tableColumns[] = __('Cliente');
+        $tableColumns[] = __('Vendedor');
+        if ($tema=='Propostas') {
+            $tableColumns[] = __('Pagamento');
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro')) {
+                $tableColumns[] = __('Lucro');
+            }
+            $tableColumns[] = __('Desconto');
+            $tableColumns[] = __('Valor Total');
+        }
+        $tableColumns[] = __('Status');
+        $tableColumns[] = __('Criado');
+        $tableColumns[] = __('Ult. Alteração');
+        $tableColumns[] = __('Funções');
         
         $conteudo = array(
             'location' => '#proposta_outras',
             'js' => '',
-            'html' =>  $html
+            'html' =>  $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio/Proposta/Outros/'.$tema.'','',false)
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         $this->_Visual->Json_Info_Update('Historico', false);  
+    }
+    /**
+     * 
+     * @param type $id Id da Proposta
+     * @param type $layout Tipo de Retorno (Unico, Maior, Menor, HTML)
+     * @return boolean
+     * 
+     * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
+     * @version 0.4.24
+     */
+    private function propostasStatusTable($id, $layout = 'Unico') {
+        $propostaId = (int)$id;
+
+        $tableColumns = Array();
+
+        $tableColumns[] = __('Status');
+        $tableColumns[] = __('Data');
+
+        $titulo = __('Últimas alterações de Status').' (<span id="DataTable_Contador">0</span>)';
+        if( $layout === 'Unico') {
+            $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio/Proposta/propostasStatus/'.$propostaId);
+            $this->_Visual->Bloco_Unico_CriaJanela($titulo, '', 50);
+        } else if ($layout === 'Maior') {
+            $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio/Proposta/propostasStatus/'.$propostaId);
+            $this->_Visual->Bloco_Maior_CriaJanela($titulo, '', 50);
+        } else if ($layout === 'Maior') {
+            $this->_Visual->Show_Tabela_DataTable_Massiva($tableColumns,'comercio/Proposta/propostasStatus/'.$propostaId);
+            $this->_Visual->Bloco_Menor_CriaJanela($titulo, '', 50);
+        } else {
+            return $this->_Visual->Show_Tabela_DataTable_Massiva(
+                $tableColumns,
+                'comercio/Proposta/propostasStatus/'.$propostaId,
+                '',
+                false
+            );
+        }
+        
+        return true;
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_View($id,$tema='Propostas',$layoult='Unico') {
+    public function Propostas_View($id, $tema='Propostas', $layoult='Unico') {
         // Se for Excell Transfere
         if ($layoult=='Excel') {
-            $this->Propostas_View_Excell($id,$tema);
+            $this->Propostas_View_Excell($id, $tema);
             return true;
         }
+        
+        $propostaId = (int) $id;
         
         
         $html = '<span style="text-transform:uppercase;">';
@@ -531,20 +568,19 @@ class comercio_PropostaControle extends comercio_Controle
         // Verifica Permissao e Puxa Usuário
         $identificador = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false) {
+        if ($identificador === false) {
             return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         $id = $identificador->id;
         
         $cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false) {
+        if ($identificador === false) {
             return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
-        if ($cliente===false) {
+        if ($cliente === false) {
             return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
-        
         
         
         if ($layoult!=='Imprimir') {            
@@ -598,7 +634,7 @@ class comercio_PropostaControle extends comercio_Controle
             $telefone .= ' '.$cliente->celular2;
         }
         // Começa a escrever Dados Básicos
-        $html .= '<h3>Dados Principais</h3>';
+        $html .= '<h3>'.__('Dados Principais').'</h3>';
         // Tipo de Proposta
         if ($identificador->propostatipo===1 || $identificador->propostatipo==='1') {
             $propostatipo = __('Instalação');
@@ -638,7 +674,7 @@ class comercio_PropostaControle extends comercio_Controle
             if ($identificador->valor!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Valor Total da Proposta:</label> '.$identificador->valor.'</p>';
         }
         //Status
-        if ($identificador->status!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Status:</label> <span class="status'.$identificador->id.'">'.self::label($identificador,$tema,false).'</span></p>';
+        if ($identificador->status!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Status:</label> <span class="status'.$identificador->id.'">'.self::label($identificador, $tema, false).'</span></p>';
         
         //Status
         if ($identificador->obs!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Observação:</label>'.$identificador->obs.'</p>';
@@ -660,9 +696,9 @@ class comercio_PropostaControle extends comercio_Controle
                 )
             );
             // Pega os Valores do Serviço de Instalaçao
-            if ($produtos_reg!==false) {
+            if ($produtos_reg !== false) {
                 if (is_object($produtos_reg)) $produtos_reg = Array($produtos_reg);
-                foreach($produtos_reg as &$valor) {
+                foreach ($produtos_reg as &$valor) {
                     // Captura o Serviço de Instalaçao
                     $valor_reg  = $this->_Modelo->db->Sql_Select(
                         'Comercio_Produto', 
@@ -690,12 +726,12 @@ class comercio_PropostaControle extends comercio_Controle
             );
             $i = 0;
             // Pega os Valores do Serviço de Instalaçao
-            if ($instalacao!==false) {
+            if ($instalacao !== false) {
                 if (is_object($instalacao)) $instalacao = Array($instalacao);
-                foreach($instalacao as &$valor) {
+                foreach ($instalacao as &$valor) {
                     ++$i;
                     // Repete Impressao
-                    if (CFG_IMPRESSAO_TITULO_REPETIR===true && $i<=1 && $layoult==='Imprimir') {
+                    if (CFG_IMPRESSAO_TITULO_REPETIR === true && $i<=1 && $layoult==='Imprimir') {
                         $html .= self::Export_Imprimir_Rodape().'<div style="page-break-before: always" style="page-break-before: always;"></div>'.self::Export_Imprimir_Titulo();
                     }
                     
@@ -756,7 +792,7 @@ class comercio_PropostaControle extends comercio_Controle
                             ),
                             1
                         );
-                        if ($instalacao_btu!==false) {
+                        if ($instalacao_btu !== false) {
                             $instalacao_btu_ar      = $instalacao_btu->valor_ar;
                             $instalacao_btu_linha   = $instalacao_btu->valor_linha;
                             $instalacao_btu_gas     = $instalacao_btu->valor_gas;
@@ -774,7 +810,7 @@ class comercio_PropostaControle extends comercio_Controle
                             ),
                             1
                         );
-                        if ($instalacao_suporte!==false) {
+                        if ($instalacao_suporte !== false) {
                             $instalacao_suporte = $instalacao_suporte->valor;
                         } else {
                             $instalacao_suporte = 'R$ 0,00';
@@ -816,21 +852,27 @@ class comercio_PropostaControle extends comercio_Controle
             }
         } else {
             // Coloca Campos do Tipo
-            if ($identificador->referencia!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Referência:</label> '.$identificador->referencia.'</p>';
-            if ($identificador->telefone!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Telefone:</label> '.$identificador->telefone.'</p>';
+            if ($identificador->referencia!=''){
+                $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Referência:</label> '.
+                    $identificador->referencia.'</p>';
+            }
+            if ($identificador->telefone!=''){
+                $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Telefone:</label> '.
+                    $identificador->telefone.'</p>';
+            }
         
             $identificador->propostatipo=0;
             // Captura Tipo de Serviço
-            $servicotipo  = $this->_Modelo->db->Sql_Select(
+            $servicotipo = $this->_Modelo->db->Sql_Select(
                 'Comercio_Proposta_ServicoTipo', 
                 Array(
                     'proposta'     =>  $identificador->id
                 )
             );
             // Pega os Valores do Tipo de Serviço
-            if ($servicotipo!==false) {
+            if ($servicotipo !== false) {
                 if (is_object($servicotipo)) $servicotipo = Array($servicotipo);
-                foreach($servicotipo as &$valor) {
+                foreach ($servicotipo as &$valor) {
                     if ($valor->servicotipo2===NULL) continue;
                     // Exibe
                     $html .= '<div class="space15"></div>';
@@ -850,9 +892,9 @@ class comercio_PropostaControle extends comercio_Controle
                 )
             );
             // Pega os Valores do Serviço
-            if ($servico!==false) {
+            if ($servico !== false) {
                 if (is_object($servico)) $servico = Array($servico);
-                foreach($servico as &$valor) {
+                foreach ($servico as &$valor) {
                     if ($valor->servico2===NULL) continue;
                     // Captura Preço do SErviço
                     $servico2  = $this->_Modelo->db->Sql_Select(
@@ -883,12 +925,12 @@ class comercio_PropostaControle extends comercio_Controle
                     'proposta'     =>  $identificador->id
                 )
             );
-            if ($checklist!==false) {
+            if ($checklist !== false) {
                 if (is_object($checklist)) $checklist = Array($checklist);
                 $html .= '<div class="space15"></div>';
-                $html .= '<h3>Checklists</h3>';
+                $html .= '<h3>'.__('Checklists').'</h3>';
                 $i = 1;
-                foreach($checklist as &$valor) {
+                foreach ($checklist as &$valor) {
                     // Exibe
                     $html .= '<p><label style="width:250px; float:left; margin-right:5px;">'.$i.'º :</label> '.$valor->checklist2.'</p>';
                     ++$i;
@@ -900,6 +942,7 @@ class comercio_PropostaControle extends comercio_Controle
         $html .= '<div class="space15"></div>';
         
         $html .= '</span>';
+        
         // Caso seja pra Imprimir
         if ($layoult==='Imprimir') {
             if ($tema!=='Propostas') {
@@ -912,13 +955,13 @@ class comercio_PropostaControle extends comercio_Controle
                 '____________________________________________________________________________________________________ '. 
                 '____________________________________________________________________________________________________</p><br>';
             }
-            self::Export_Todos($layoult,$html, $titulo.' #'.$identificador->id);
+            self::Export_Todos($layoult, $html, $titulo.' #'.$identificador->id);
         } else {
             // Identifica tipo e cria conteudo
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true) {
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca') === true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca') === true) {
                 
                 // Coloca Endereco
-                self::Endereco_Proposta(true,$tema);
+                self::Endereco_Proposta(true, $tema);
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 
                 
@@ -939,13 +982,13 @@ class comercio_PropostaControle extends comercio_Controle
                             'div_ext'   =>      false,
                             'title_id'  =>      false,
                             'title'     =>      'Pasta da '.$titulo.' #'.$identificador->id.' na Biblioteca',
-                            'html'      =>      '<span id="proposta_'.$identificador->id.'">'.biblioteca_BibliotecaControle::Biblioteca_Dinamica('comercio_Proposta',$identificador->id,'proposta_'.$identificador->id).'</span>',
-                        )/*,Array(
+                            'html'      =>      '<span id="proposta_'.$identificador->id.'">'.biblioteca_BibliotecaControle::Biblioteca_Dinamica('comercio_Proposta', $identificador->id,'proposta_'.$identificador->id).'</span>',
+                        ),Array(
                             'div_ext'   =>      false,
                             'title_id'  =>      false,
-                            'title'     =>      'Sub-'.$tema,
-                            'html'      =>      ' Aqui tem !',
-                        ),*/),
+                            'title'     =>      __('Histórico de Status'),
+                            'html'      =>      $this->propostasStatusTable($propostaId, 'HTML'),
+                        )),
                     )
                 ));
             } else if (LAYOULT_IMPRIMIR=='AJAX') {
@@ -961,10 +1004,15 @@ class comercio_PropostaControle extends comercio_Controle
                     ),*/
                     'html'      => $html
                 );
-                $this->_Visual->Json_IncluiTipo('Popup',$popup);
+                $this->_Visual->Json_IncluiTipo('Popup', $popup);
             } else {
                 // Coloca Endereco
-                self::Endereco_Proposta(true,$tema);
+                self::Endereco_Proposta(true, $tema);
+                
+        
+                // Load Status History
+                $this->propostasStatusTable($propostaId, 'Menor');
+                
                 $this->Tema_Endereco('Visualizar '.$titulo);
                 // Coloca COnteudo em Janelas
                 $this->_Visual->Blocar($html);
@@ -982,10 +1030,10 @@ class comercio_PropostaControle extends comercio_Controle
             
             
             //Carrega Json
-            $this->_Visual->Json_Info_Update('Titulo',$titulo.' #'.$identificador->id);
+            $this->_Visual->Json_Info_Update('Titulo', $titulo.' #'.$identificador->id);
         }
     }
-    public function Propostas_View_Excell($id,$tema='Propostas') {
+    public function Propostas_View_Excell($id, $tema='Propostas') {
         // Definimos o nome do arquivo que será exportado
         
         
@@ -1003,7 +1051,7 @@ class comercio_PropostaControle extends comercio_Controle
         // Verifica Permissao e Puxa Usuário
         $identificador = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$id),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false) {
+        if ($identificador === false) {
             return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
         $id = $identificador->id;
@@ -1026,10 +1074,10 @@ class comercio_PropostaControle extends comercio_Controle
         // Busca Cliente
         $cliente = $this->_Modelo->db->Sql_Select('Usuario',Array('id'=>$identificador->cliente),1); // Banco DAO, Condicao e LIMITE
         // Verifica se Existe e Continua
-        if ($identificador===false) {
+        if ($identificador === false) {
             return _Sistema_erroControle::Erro_Fluxo('Proposta não Existe',404);
         }
-        if ($cliente===false) {
+        if ($cliente === false) {
             return _Sistema_erroControle::Erro_Fluxo('Cliente não existe',404);
         }
         
@@ -1039,7 +1087,7 @@ class comercio_PropostaControle extends comercio_Controle
         } else {
             $pagar_lucro_porc = 1;
         }
-        $data_criada = explode(' ',$identificador->log_date_add);
+        $data_criada = explode(' ', $identificador->log_date_add);
         $html .= '<tr><td rowspan="6" colspan="4"><img style="max-height: 80px;" alt="'.SISTEMA_NOME.'" src="'.ARQ_URL.'_Sistema/logo.png"></td>
             <td colspan="8" style="text-align:right;">'.$titulo.$id.'</td>	
             <td colspan="8" style="text-align:right;">'.$identificador->cuidados2.'</td>	
@@ -1086,8 +1134,8 @@ class comercio_PropostaControle extends comercio_Controle
             $telefone .= ' '.$cliente->celular2;
         }
         // Começa a escrever Dados Básicos
-        $html .= '<tr><td colspan="12" rowspan="2" bgcolor="#000000" style="color:#FFFFFF;text-align:center;"><b>ORÇAMENTO</b></td></tr><tr><td colspan="12">&nbsp;</td></tr>';
-        $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;"><b>DADOS DO CLIENTE</b></td></tr>';
+        $html .= '<tr><td colspan="12" rowspan="2" bgcolor="#000000" style="color:#FFFFFF;text-align:center;"><b>'.__('ORÇAMENTO').'</b></td></tr><tr><td colspan="12">&nbsp;</td></tr>';
+        $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;"><b>'.__('DADOS DO CLIENTE').'</b></td></tr>';
         // Tipo de Proposta
         if ($identificador->propostatipo===1 || $identificador->propostatipo==='1') {
             $propostatipo = __('Instalação');
@@ -1099,18 +1147,18 @@ class comercio_PropostaControle extends comercio_Controle
         //
         // Clientes
         if ($identificador->cliente2!='')   $html .= '<tr><td colspan="12"><b>Nome / Razão Social:</b> '.$identificador->cliente2.'</td></tr>';
-        //if ($endereco!=='')                 $html .= '<tr><td colspan="12"><b>Endereço do Cliente:</b> '.$endereco.'</td></tr>';
+        //if ($endereco!=='')                 $html .= '<tr><td colspan="12"><b>'.__('Endereço do Cliente:').'</b> '.$endereco.'</td></tr>';
         if ($telefone!=='')                 $html .= '<tr><td colspan="7"><b>Telefone(s):</b> '.$telefone.'</td>';
-        if ($emailcliente!=='')             $html .= '<td colspan="5"><b>Email:</b> '.$emailcliente.'</td></tr>';
+        if ($emailcliente!=='')             $html .= '<td colspan="5"><b>'.__('Email:').'</b> '.$emailcliente.'</td></tr>';
         
         // Vendedor
-        //if ($identificador->cuidados2!=='')  $html .= '<tr><td colspan="12"><b>Vendedor:</b> '.$identificador->cuidados2.'</td></tr>';
+        //if ($identificador->cuidados2!=='')  $html .= '<tr><td colspan="12"><b>'.__('Vendedor:').'</b> '.$identificador->cuidados2.'</td></tr>';
         
         //Status
-        //if ($identificador->status!='')  $html .= '<tr><td colspan="12"><b>Status:</b> <span class="status'.$identificador->id.'">'.self::label($identificador,$tema,false).'</span></td></tr>';
+        //if ($identificador->status!='')  $html .= '<tr><td colspan="12"><b>'.__('Status:').'</b> <span class="status'.$identificador->id.'">'.self::label($identificador, $tema, false).'</span></td></tr>';
         
         //Status
-        //if ($identificador->obs!='')  $html .= '<tr><td colspan="12"><b>Observação:</b>'.$identificador->obs.'</td></tr>';
+        //if ($identificador->obs!='')  $html .= '<tr><td colspan="12"><b>'.__('Observação:').'</b>'.$identificador->obs.'</td></tr>';
         
         
         
@@ -1129,17 +1177,17 @@ class comercio_PropostaControle extends comercio_Controle
                 )
             );
             // Pega os Valores do Serviço de Instalaçao
-            if ($produtos_reg!==false) {
+            if ($produtos_reg !== false) {
                 $total = 0;
                 if ($tema==='Propostas') {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS EQUIPAMENTOS</td></tr>'.
-                         '<tr><td colspan="3"><b>Produto</b></td><td colspan="3"><b>Unitário</b></td><td colspan="3"><b>Quantidade</b><td colspan="3"><b>R$ Total</b></td></tr>';
+                         '<tr><td colspan="3"><b>'.__('Produto').'</b></td><td colspan="3"><b>'.__('Unitário').'</b></td><td colspan="3"><b>'.__('Quantidade').'</b><td colspan="3"><b>R$ Total</b></td></tr>';
                 } else {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS EQUIPAMENTOS</td></tr>'.
-                         '<tr><td colspan="6"><b>Produto</b></td><td colspan="6"><b>Quantidade</b></tr>';
+                         '<tr><td colspan="6"><b>'.__('Produto').'</b></td><td colspan="6"><b>'.__('Quantidade').'</b></tr>';
                 }
                 if (is_object($produtos_reg)) $produtos_reg = Array($produtos_reg);
-                foreach($produtos_reg as &$valor) {
+                foreach ($produtos_reg as &$valor) {
                     // Captura o Serviço de Instalaçao
                     $valor_reg  = $this->_Modelo->db->Sql_Select(
                         'Comercio_Produto', 
@@ -1179,7 +1227,7 @@ class comercio_PropostaControle extends comercio_Controle
             );
             $i = 0;
             // Pega os Valores do Serviço de Instalaçao
-            if ($instalacao!==false) {
+            if ($instalacao !== false) {
                 $total = 0;
                 $instalacao_html = '';
                 /*$equipamentos_nome = Array();
@@ -1187,15 +1235,15 @@ class comercio_PropostaControle extends comercio_Controle
                 $equipamentos_precos = Array();
                 if ($tema=='Propostas') {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS EQUIPAMENTOS</td></tr>'.
-                    '<tr><td colspan="3"><b>Descrição</b></td><td colspan="3"><b>Unitário</b></td><td colspan="3"><b>Quantidade</b></td><td colspan="3"><b>R$ Total</b></td></tr>';
+                    '<tr><td colspan="3"><b>'.__('Descrição').'</b></td><td colspan="3"><b>'.__('Unitário').'</b></td><td colspan="3"><b>'.__('Quantidade').'</b></td><td colspan="3"><b>R$ Total</b></td></tr>';
 
                 } else {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS EQUIPAMENTOS</td></tr>'.
-                    '<tr><td colspan="6"><b>Descrição</b></td><td colspan="6"><b>Quantidade</b></td></tr>';
+                    '<tr><td colspan="6"><b>'.__('Descrição').'</b></td><td colspan="6"><b>'.__('Quantidade').'</b></td></tr>';
 
                 }*/
                 if (is_object($instalacao)) $instalacao = Array($instalacao);
-                foreach($instalacao as &$valor) {
+                foreach ($instalacao as &$valor) {
                     ++$i;
                     $instalacao_html .= '<tr>';
                     // Pega dados
@@ -1255,7 +1303,7 @@ class comercio_PropostaControle extends comercio_Controle
                             ),
                             1
                         );
-                        if ($instalacao_btu!==false) {
+                        if ($instalacao_btu !== false) {
                             $instalacao_btu_ar      = $instalacao_btu->valor_ar;
                             $instalacao_btu_linha   = $instalacao_btu->valor_linha;
                             $instalacao_btu_gas     = $instalacao_btu->valor_gas;
@@ -1277,7 +1325,7 @@ class comercio_PropostaControle extends comercio_Controle
                             ),
                             1
                         );
-                        if ($instalacao_suporte!==false) {
+                        if ($instalacao_suporte !== false) {
                             $instalacao_suporte = $instalacao_suporte->valor;
                         } else {
                             $instalacao_suporte = 'R$ 0,00';
@@ -1321,7 +1369,7 @@ class comercio_PropostaControle extends comercio_Controle
                 /*// Equipamentos
                 if (!empty($equipamentos_qnt)) {
                     $total = 0;
-                    foreach($equipamentos_qnt as $indice=>$valor) {
+                    foreach ($equipamentos_qnt as $indice=>$valor) {
                         if ($tema==='Propostas') {
                             $html .= '<tr><td colspan="3">'.$equipamentos_nome[$indice].'</td><td colspan="3">'.$equipamentos_precos[$indice].'</td><td colspan="3">'.$valor.'</td><td colspan="3">'.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor*Framework\App\Sistema_Funcoes::Tranf_Real_Float($equipamentos_precos[$indice])).'</td></tr>';
                             
@@ -1342,17 +1390,17 @@ class comercio_PropostaControle extends comercio_Controle
                 if ($tema==='Propostas') {
                     
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DA INSTALAÇÃO</td></tr>'.
-                         '<tr><td colspan="3"><b>Descrição</b></td><td colspan="3"><b>Unitário</b></td><td colspan="3"><b>Quantidade</b></td><td colspan="3"><b>R$ Total</b></td></tr>'.$instalacao_html;
+                         '<tr><td colspan="3"><b>'.__('Descrição').'</b></td><td colspan="3"><b>'.__('Unitário').'</b></td><td colspan="3"><b>'.__('Quantidade').'</b></td><td colspan="3"><b>R$ Total</b></td></tr>'.$instalacao_html;
                 } else {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DA INSTALAÇÃO</td></tr>'.
-                         '<tr><td colspan="6"><b>Descrição</b></td><td colspan="6"><b>Quantidade</b></td></tr>'.$instalacao_html;
+                         '<tr><td colspan="6"><b>'.__('Descrição').'</b></td><td colspan="6"><b>'.__('Quantidade').'</b></td></tr>'.$instalacao_html;
 
                 }
             }
         } else {
             // Coloca Campos do Tipo
-            //if ($identificador->referencia!='')  $html .= '<tr><td colspan="12"><b>Referência:</b> '.$identificador->referencia.'</td></tr>';
-            //if ($identificador->telefone!='')  $html .= '<tr><td colspan="12"><b>Telefone:</b> '.$identificador->telefone.'</td></tr>';
+            //if ($identificador->referencia!='')  $html .= '<tr><td colspan="12"><b>'.__('Referência:').'</b> '.$identificador->referencia.'</td></tr>';
+            //if ($identificador->telefone!='')  $html .= '<tr><td colspan="12"><b>'.__('Telefone:').'</b> '.$identificador->telefone.'</td></tr>';
         
             $identificador->propostatipo=0;
             // Captura Tipo de Serviço
@@ -1363,18 +1411,18 @@ class comercio_PropostaControle extends comercio_Controle
                 )
             );
             // Pega os Valores do Tipo de Serviço
-            if ($servicotipo!==false) {
+            if ($servicotipo !== false) {
                 $total = 0;
                 if ($tema==='Propostas') {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS SERVIÇOS</td></tr>'.
-                     '<tr><td colspan="8"><b>Descrição</b></td><td colspan="2"><b>Quantidade de Diárias</b></td><td colspan="2"><b>Custo da Diária</b></td></tr>';
+                     '<tr><td colspan="8"><b>'.__('Descrição').'</b></td><td colspan="2"><b>'.__('Quantidade de Diárias').'</b></td><td colspan="2"><b>'.__('Custo da Diária').'</b></td></tr>';
                 } else {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS SERVIÇOS</td></tr>'.
-                     '<tr><td colspan="6"><b>Descrição</b></td><td colspan="6"><b>Quantidade de Diárias</b></td></tr>';
+                     '<tr><td colspan="6"><b>'.__('Descrição').'</b></td><td colspan="6"><b>'.__('Quantidade de Diárias').'</b></td></tr>';
                 
                 }
                 if (is_object($servicotipo)) $servicotipo = Array($servicotipo);
-                foreach($servicotipo as &$valor) {
+                foreach ($servicotipo as &$valor) {
                     if ($valor->servicotipo2===NULL) continue;
                     // Exibe
                     if ($tema==='Propostas') {
@@ -1403,9 +1451,9 @@ class comercio_PropostaControle extends comercio_Controle
                     }
 
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">CONDIÇÕES COMERCIAIS DOS SERVIÇOS</td></tr>
-                    <tr><td colspan="12"><b>Forma de Pagamento:</b> '.$pagar.'</td></tr>
-                    <tr><td colspan="12"><b>Prazo da Instalação:</b>  CHEGADA DO EQUIPAMENTO COM CONFIRMAÇÃO DO CLIENTE</td></tr>
-                    <tr><td colspan="12"><b>Prazo de Garantia:</b> 180 DIAS</td></tr>';
+                    <tr><td colspan="12"><b>'.__('Forma de Pagamento:').'</b> '.$pagar.'</td></tr>
+                    <tr><td colspan="12"><b>'.__('Prazo da Instalação:').'</b>  CHEGADA DO EQUIPAMENTO COM CONFIRMAÇÃO DO CLIENTE</td></tr>
+                    <tr><td colspan="12"><b>'.__('Prazo de Garantia:').'</b> 180 DIAS</td></tr>';
                 }
             }
 
@@ -1417,18 +1465,18 @@ class comercio_PropostaControle extends comercio_Controle
                 )
             );
             // Pega os Valores do Serviço
-            if ($servico!==false) {
+            if ($servico !== false) {
                 $total = 0;
                 if ($tema==='Propostas') {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS SERVIÇOS</td></tr>'.
-                     '<tr><td colspan="8"><b>Descrição</b></td><td colspan="2"><b>Quantidade da mão de Obra</b></td><td colspan="2"><b>Custo do Serviço</b></td></tr>';
+                     '<tr><td colspan="8"><b>'.__('Descrição').'</b></td><td colspan="2"><b>'.__('Quantidade da mão de Obra').'</b></td><td colspan="2"><b>'.__('Custo do Serviço').'</b></td></tr>';
                 } else {
                     $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">ORÇAMENTO DOS SERVIÇOS</td></tr>'.
-                     '<tr><td colspan="6"><b>Descrição</b></td><td colspan="6"><b>Quantidade da mão de Obra</b></td></tr>';
+                     '<tr><td colspan="6"><b>'.__('Descrição').'</b></td><td colspan="6"><b>'.__('Quantidade da mão de Obra').'</b></td></tr>';
                 
                 }
                 if (is_object($servico)) $servico = Array($servico);
-                foreach($servico as &$valor) {
+                foreach ($servico as &$valor) {
                     if ($valor->servico2===NULL) continue;
                     // Captura Preço do SErviço
                     $servico2  = $this->_Modelo->db->Sql_Select(
@@ -1488,11 +1536,11 @@ class comercio_PropostaControle extends comercio_Controle
             //if ($identificador->valor!='')  $html .= '<p><label style="width:250px; float:left; margin-right:5px;">Valor Total da Proposta:</label> '.$identificador->valor.'</p>';
 
             $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">CONDIÇÕES COMERCIAIS DOS PRODUTOS</td></tr>
-            <tr><td colspan="12"><b>Forma de Pagamento:</b> '.$pagar.'</td></tr>
-            <tr><td colspan="12"><b>Validade:</b> '.$identificador->validade.'</td></tr>
-            <tr><td colspan="12"><b>Valor Total:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($total_geral).'</td></tr>
-            <tr><td colspan="12"><b>Desconto:</b> '.$identificador->pagar_desconto.'</td></tr>
-            <tr><td colspan="12"><b>Valor a Pagar:</b> '.$identificador->valor.'</td></tr>';
+            <tr><td colspan="12"><b>'.__('Forma de Pagamento:').'</b> '.$pagar.'</td></tr>
+            <tr><td colspan="12"><b>'.__('Validade:').'</b> '.$identificador->validade.'</td></tr>
+            <tr><td colspan="12"><b>'.__('Valor Total:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($total_geral).'</td></tr>
+            <tr><td colspan="12"><b>'.__('Desconto:').'</b> '.$identificador->pagar_desconto.'</td></tr>
+            <tr><td colspan="12"><b>'.__('Valor a Pagar:').'</b> '.$identificador->valor.'</td></tr>';
         }
         
         // Obrigatoriedade dos Clientes
@@ -1506,8 +1554,8 @@ class comercio_PropostaControle extends comercio_Controle
 
         // Observações
         $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr></table><table border="1"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">OBSERVAÇÔES</td></tr>
-        <tr><td colspan="12"><b>Prazo da Instalação:</b>  10 DIAS</td></tr>
-        <tr><td colspan="12"><b>Prazo de Garantia:</b> 180 DIAS</td></tr>';
+        <tr><td colspan="12"><b>'.__('Prazo da Instalação:').'</b>  10 DIAS</td></tr>
+        <tr><td colspan="12"><b>'.__('Prazo de Garantia:').'</b> 180 DIAS</td></tr>';
         
         // Assinatura do Cliente
         $html .= '</table><table><tr><td colspan="12">&nbsp;</td></tr><tr><td colspan="12">&nbsp;</td></tr></table><table border="0"><tr><td colspan="12" bgcolor="#000000" style="color:#FFFFFF;text-align:center;">Aceite do Cliente</td></tr>
@@ -1522,19 +1570,30 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Add($tema='Propostas') {
-        self::Endereco_Proposta(true,$tema);
+    public function Propostas_Add($tema='Propostas')
+    {
+        self::Endereco_Proposta(true, $tema);
+        // CAmpos
+        $campos = Comercio_Proposta_DAO::Get_Colunas();
+        self::Campos_Deletar($campos, $tema);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
             $titulo_plural      = CFG_TXT_COMERCIO_OS_PLURAL;
             $titulo_unico       = 'ordemdeservico';
+            self::DAO_Campos_Retira($campos, 'propostaNewId');
+            //self::DAO_Campos_Retira($campos, 'Produtos Vendidos');
+            //self::DAO_Campos_Retira($campos, 'Btus');
+            self::DAO_Campos_Retira($campos, 'cliente');
+            self::DAO_Campos_Retira($campos, 'cuidados');
         } else {
             $titulo             = __('Proposta');
             $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
+            self::DAO_Campos_Retira($campos, 'propostaReferencia');
+            self::DAO_Campos_Retira($campos, 'propostaNewId');
         }
         // Carrega Config
         $titulo1    = 'Adicionar '.$titulo;
@@ -1542,8 +1601,6 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = 'form_Sistema_Admin_'.$titulo_unico;
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Propostas_Add2/'.$tema;
-        $campos = Comercio_Proposta_DAO::Get_Colunas();
-        self::Campos_Deletar($campos,$tema);
         
         if ($tema==='Propostas') {
             $this->Proposta_Atualizar_Valor_Dinamico_Janela($formid);
@@ -1553,7 +1610,7 @@ class comercio_PropostaControle extends comercio_Controle
         }
         
         // Chama Formulario
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,false,$posicao);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, false, $posicao);
         
     }
     /**
@@ -1561,9 +1618,16 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Add2($tema='Propostas') {
+    public function Propostas_Add2($tema='Propostas')
+    {
+        if (isset($_POST['propostaReferencia'])) {
+            $propostaReferencia = (int) $_POST['propostaReferencia'];
+        } else {
+            $propostaReferencia = '0';
+        }
+        
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -1576,18 +1640,47 @@ class comercio_PropostaControle extends comercio_Controle
         }
         $titulo     = $titulo.' Adicionada com Sucesso';
         $dao        = 'Comercio_Proposta';
-        $funcao     = false;
+        $function     = false;
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = $titulo.' cadastrada com sucesso.';
-        $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
-        if ($sucesso===true && $tema==='Propostas') {
+        if ($tema!='Propostas') {
+            $propostaReferenciaRegistro = $this->_Modelo->db->Sql_Select('Comercio_Proposta', '{sigla}id=\''.$propostaReferencia.'\'',1);
+            if($propostaReferenciaRegistro===false){
+                return _Sistema_erroControle::Erro_Fluxo(__('Proposta de Referencia não existe'),3030);
+            }
+            $alterar    = Array(
+                //'propostaReferencia' => '3',
+                'propostaNewId' => $propostaReferencia.' - '.($this->_Modelo->db->Sql_Contar('Comercio_Proposta', '{sigla}propostaReferencia=\''.$propostaReferencia.'\'')+2),
+                'status' => '3',
+                'valor' => '0',
+                'cliente' => $propostaReferenciaRegistro->cliente,
+                'cuidados' => $propostaReferenciaRegistro->cuidados
+            );
+        } else {
+            $alterar    = Array(
+                'propostaReferencia' => '0'
+                //'propostaNewId' => '3'
+            );
+        }
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
+        if ($sucesso === true && $tema==='Propostas') {
             // Pega o ID
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array(),1,'id DESC');
-            $this->Proposta_Atualizar_Valor($identificador);
+            if ($tema=='Propostas') {
+                $this->Proposta_Atualizar_Valor($identificador);
+            }
+            
+            // Atualiza Status
+            $logStatus = new Comercio_Proposta_Status_DAO();
+            $logStatus->proposta = $identificador->proposta;
+            $logStatus->cuidados = $identificador->cuidados;
+            $logStatus->cliente = $identificador->cliente;
+            $logStatus->status = $identificador->status;
+            $logStatus->data = APP_HORA_BR;
+            $this->_Modelo->db->Sql_Insert($logStatus);
             
             // Se tiver essa opcao, cria a pasta automaticamente na biblioteca
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca_Automatico')===true) {
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca') === true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca') === true && \Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca_Automatico') === true) {
                 
                 
             }
@@ -1599,11 +1692,11 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Edit($id,$tema='Propostas') {
+    public function Propostas_Edit($id, $tema='Propostas') {
         $id = (int) $id;
-        self::Endereco_Proposta(true,$tema);
+        self::Endereco_Proposta(true, $tema);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -1621,7 +1714,7 @@ class comercio_PropostaControle extends comercio_Controle
         $formbt     = 'Alterar '.$titulo;
         $formlink   = 'comercio/Proposta/Propostas_Edit2/'.$id.'/'.$tema;
         $campos = Comercio_Proposta_DAO::Get_Colunas();
-        self::Campos_Deletar($campos,$tema);
+        self::Campos_Deletar($campos, $tema);
         
         // Valor da Proposta
         $editar = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array('id'=>$id),1);
@@ -1636,16 +1729,17 @@ class comercio_PropostaControle extends comercio_Controle
         }
         
         // Gerar Formulario
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar,$posicao);  
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar, $posicao);  
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Edit2($id,$tema='Propostas') {
+    public function Propostas_Edit2($id, $tema='Propostas')
+    {
         $id = (int) $id;
         // Nomes
         if ($tema!='Propostas') {
@@ -1658,16 +1752,27 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_unico       = 'propostas';
         }
         $titulo     = $titulo.' Editada com Sucesso';
-        $dao        = Array('Comercio_Proposta',$id);
-        $funcao     = false;
+        $dao        = Array('Comercio_Proposta', $id);
+        $function     = false;
         $sucesso1   = $titulo.' Alterada com Sucesso.';
         $sucesso2   = '#'.$id.' teve a alteração bem sucedida';
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
-        if ($sucesso===true && $tema==='Propostas') {
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
+        if ($sucesso === true) {
             // Pega o ID
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array('id'=>$id),1);
-            $this->Proposta_Atualizar_Valor($identificador);
+            if ($tema==='Propostas') {
+                $this->Proposta_Atualizar_Valor($identificador);
+            }
+            
+            // Atualiza Status
+            $logStatus = new Comercio_Proposta_Status_DAO();
+            $logStatus->proposta = $identificador->proposta;
+            $logStatus->cuidados = $identificador->cuidados;
+            $logStatus->cliente = $identificador->cliente;
+            $logStatus->status = $identificador->status;
+            $logStatus->data = APP_HORA_BR;
+            $this->_Modelo->db->Sql_Insert($logStatus);
         }
         // Recarrega
         $this->Propostas($tema);
@@ -1712,7 +1817,7 @@ class comercio_PropostaControle extends comercio_Controle
             $instalacao = \Framework\App\Conexao::anti_injection($_POST['btu']);
             // Pega os Valores do Serviço de Instalaçao
             if (!empty($instalacao)) {
-                foreach($instalacao as &$valor) {
+                foreach ($instalacao as &$valor) {
                     $valor = (int) $valor;
                     if ($valor===0 || $valor===NULL) continue;
                     // Captura Preço do Gas
@@ -1723,7 +1828,7 @@ class comercio_PropostaControle extends comercio_Controle
                         ),
                         1
                     );
-                    if ($instalacao_btu===false) continue;
+                    if ($instalacao_btu === false) continue;
                     $distancia  = (int) $_POST['distancia_'.$valor];
                     $suporte    = (int) $_POST['suporte_'.$valor];
                     // Adiciona Valor da Linha para acima de 5 metros
@@ -1744,7 +1849,7 @@ class comercio_PropostaControle extends comercio_Controle
                         ),
                         1
                     );
-                    if ($instalacao_suporte===false) continue;
+                    if ($instalacao_suporte === false) continue;
                     $valortotal = $valortotal + \Framework\App\Sistema_Funcoes::Tranf_Real_Float($instalacao_suporte->valor);
                 }
             }
@@ -1753,7 +1858,7 @@ class comercio_PropostaControle extends comercio_Controle
             $produto = \Framework\App\Conexao::anti_injection($_POST['produto']);
             // Pega os Valores do Serviço de Instalaçao
             if (!empty($produto)) {
-                foreach($produto as &$valor) {
+                foreach ($produto as &$valor) {
                     $valor = (int) $valor;
                     if ($valor===0 || $valor===NULL) continue;
                     // Captura Preço do SUPORTE
@@ -1783,7 +1888,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $servicotipo = \Framework\App\Conexao::anti_injection($_POST['servicotipo']);
                 // Pega os Valores do Tipo de Serviço
                 if (!empty($servicotipo)) {
-                    foreach($servicotipo as &$valor) {
+                    foreach ($servicotipo as &$valor) {
                         $valor = (int) $valor;
                         if ($valor===0 || $valor===NULL) continue;
                         $diarias_qnt = (int) $_POST['diarias_qnt_'.$valor];
@@ -1798,7 +1903,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $servico = \Framework\App\Conexao::anti_injection($_POST['servico']);
                 // Pega os Valores do Serviço
                 if (!empty($servico)) {
-                    foreach($servico as &$valor) {
+                    foreach ($servico as &$valor) {
                         $valor = (int) $valor;
                         if ($valor===0 || $valor===NULL) continue;
                         // Captura Preço do SErviço
@@ -1826,7 +1931,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $maodeobra = \Framework\App\Conexao::anti_injection($_POST['grupo']);
                 // Pega os Valores do Tipo de Serviço
                 if (!empty($maodeobra)) {
-                    foreach($maodeobra as &$valor) {
+                    foreach ($maodeobra as &$valor) {
                         $valor = (int) $valor;
                         if ($valor===0 || $valor===NULL) continue;
                         
@@ -1850,54 +1955,54 @@ class comercio_PropostaControle extends comercio_Controle
                     }
                 }
             }
-            $html .= '<b>Custo da Mão de Obra:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor_maodeobra_total).'<br>';
+            $html .= '<b>'.__('Custo da Mão de Obra:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valor_maodeobra_total).'<br>';
             $valortotal = $valortotal+$valor_maodeobra_total;
         }
         
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorExtra')!==false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorExtra') !== false) {
             $valortotal = $valortotal+Framework\App\Sistema_Funcoes::Tranf_Real_Float(\Framework\App\Conexao::anti_injection($_POST['valor_extra']));
-            $html .= '<b>Custo Extra:</b> '.(\Framework\App\Conexao::anti_injection($_POST['valor_extra'])?\Framework\App\Conexao::anti_injection($_POST['valor_extra']):'R$ 0,00').'<br>';
+            $html .= '<b>'.__('Custo Extra:').'</b> '.(\Framework\App\Conexao::anti_injection($_POST['valor_extra'])?\Framework\App\Conexao::anti_injection($_POST['valor_extra']):'R$ 0,00').'<br>';
         }
         
         // Calcula Valor de Custo da Proposta
-        $html .= '<b>Valor Total de Custo:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal).'<br><br>';
+        $html .= '<b>'.__('Valor Total de Custo:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal).'<br><br>';
         
         
         if (!\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorFinal')) {
             // Calcula Lucro
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Lucro')) {
-                $html .= '<b>Lucro:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($lucro*$valortotal).'<br>';
+                $html .= '<b>'.__('Lucro:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($lucro*$valortotal).'<br>';
                 $valortotal = $valortotal+($lucro*$valortotal);
             }
             // Calcula Desconto
             if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Desconto')) {
-                $html .= '<b>Desconto:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($desconto*$valortotal).'<br>';
+                $html .= '<b>'.__('Desconto:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($desconto*$valortotal).'<br>';
                 $valortotal = $valortotal-($desconto*$valortotal);
             }
             // Converte Valor Total para Real e Imprime   
         
-            $html .= '<b>Valor Total:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal);  
+            $html .= '<b>'.__('Valor Total:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal);  
         } else {
             $valor_total_form = \Framework\App\Conexao::anti_injection($_POST['valor_fixo']);
             $valor_total_form_lucro = \Framework\App\Sistema_Funcoes::Tranf_Float_Real((Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor_total_form)-$valortotal));
-            $html .= '<b>Lucro:</b> '.
+            $html .= '<b>'.__('Lucro:').'</b> '.
                     $valor_total_form_lucro
                     .'<br>';
             $valortotal = \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor_total_form);
-            $html .= '<b>Valor Total:</b> '.  $valor_total_form.'<br>';
+            $html .= '<b>'.__('Valor Total:').'</b> '.  $valor_total_form.'<br>';
         }
         
         // Se tiver IMPOSTO Add
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto')!==false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto') !== false) {
             $imposto = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['imposto']));
-            $html .= '<b>Imposto:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($imposto*$valortotal).'<br>';
+            $html .= '<b>'.__('Imposto:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($imposto*$valortotal).'<br>';
             $valortotal_semimposto = $valortotal-($imposto*$valortotal);
         }   
         
         // Se tiver Comissao Add
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')!==false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao') !== false) {
             $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['comissao']));
-            $html .= '<b>Comissão:</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($comissao*$valortotal_semimposto).'<br>';
+            $html .= '<b>'.__('Comissão:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($comissao*$valortotal_semimposto).'<br>';
             //$valortotal = $valortotal+($comissao*$valortotal);
         }        
         
@@ -1908,7 +2013,7 @@ class comercio_PropostaControle extends comercio_Controle
             'js'        =>  '',
             'html'      =>  $html
         );
-        $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+        $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         $this->_Visual->Json_Info_Update('Historico', false);  
         return true;
     }
@@ -1917,14 +2022,14 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $form_id
      * @param type $valor
      */
-    public function Proposta_Atualizar_Valor_Dinamico_Janela($form_id,$recalcular=false) {
+    public function Proposta_Atualizar_Valor_Dinamico_Janela($form_id, $recalcular = false) {
         $time = round(TEMPO_COMECO);
-        if ($recalcular===false) {
+        if ($recalcular === false) {
             $valor ='R$ 0,00';
         } else {
             $valor =__('Calculando');
             $this->_Visual->Javascript_Executar('params'.$time.'=$(\'#'.$form_id.'\').serialize();'
-                            . 'Sierra.Modelo_Ajax_Chamar(\'comercio/Proposta/Proposta_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\',true,false,false);');
+                            . 'NavigationCall.init(\'comercio/Proposta/Proposta_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\', true, false, false);');
         }
         // Janela De Valor Temporario
         $this->_Visual->Javascript_Executar('function Valor_Dinamico_Rodar() {var params'.$time.' = $(\'#'.$form_id.'\').serialize();'
@@ -1932,7 +2037,7 @@ class comercio_PropostaControle extends comercio_Controle
                 . 'if ($(\'#'.$form_id.'\').length) {'
                     . 'if (params'.$time.'!==$(\'#'.$form_id.'\').serialize()) {'
                         . 'params'.$time.'=$(\'#'.$form_id.'\').serialize();'
-                        . 'Sierra.Modelo_Ajax_Chamar(\'comercio/Proposta/Proposta_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\',true,false,false);'
+                        . 'NavigationCall.init(\'comercio/Proposta/Proposta_Atualizar_Valor_Dinamico/'.$time.'\',params'.$time.',\'POST\', true, false, false);'
                     . '}'
                 . '} else {'
                     . 'clearInterval(intervalo'.$time.');'
@@ -1941,7 +2046,7 @@ class comercio_PropostaControle extends comercio_Controle
         $this->_Visual->Blocar(/*'<script LANGUAGE="JavaScript" TYPE="text/javascript">'
             . 
             . '</script>'
-            . */'<span id="valortemporario'.$time.'"><b>Valor Total:</b> '.$valor.'</span>'
+            . */'<span id="valortemporario'.$time.'"><b>'.__('Valor Total:').'</b> '.$valor.'</span>'
             . '<br>');
         $this->_Visual->Bloco_Menor_CriaJanela(__('Informações Temporárias'));
     }
@@ -1972,9 +2077,9 @@ class comercio_PropostaControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Serviço de Instalaçao
-                if ($instalacao!==false) {
+                if ($instalacao !== false) {
                     if (is_object($instalacao)) $instalacao = Array($instalacao);
-                    foreach($instalacao as &$valor) {
+                    foreach ($instalacao as &$valor) {
                         // Captura Preço do Gas
                         $instalacao_btu  = $this->_Modelo->db->Sql_Select(
                             'Comercio_Servicos_Btu', 
@@ -2013,9 +2118,9 @@ class comercio_PropostaControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Serviço de Instalaçao
-                if ($produto!==false) {
+                if ($produto !== false) {
                     if (is_object($produto)) $produto = Array($produto);
-                    foreach($produto as &$valor) {
+                    foreach ($produto as &$valor) {
                         // Captura Preço do SUPORTE
                         $produto_registro  = $this->_Modelo->db->Sql_Select(
                             'Comercio_Produto', 
@@ -2044,9 +2149,9 @@ class comercio_PropostaControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Tipo de Serviço
-                if ($servicotipo!==false) {
+                if ($servicotipo !== false) {
                     if (is_object($servicotipo)) $servicotipo = Array($servicotipo);
-                    foreach($servicotipo as &$valor) {
+                    foreach ($servicotipo as &$valor) {
                         $valortotal = $valortotal + $valor->diarias_qnt*Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->diarias_valor);
                     }
                 }*/
@@ -2059,9 +2164,9 @@ class comercio_PropostaControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Serviço
-                if ($servico!==false) {
+                if ($servico !== false) {
                     if (is_object($servico)) $servico = Array($servico);
-                    foreach($servico as &$valor) {
+                    foreach ($servico as &$valor) {
                         // Captura Preço do SErviço
                         $servico2  = $this->_Modelo->db->Sql_Select(
                             'Comercio_Servicos_Servico', 
@@ -2070,7 +2175,7 @@ class comercio_PropostaControle extends comercio_Controle
                             ),
                             1
                         );
-                        if ($servico2===false)                        continue;
+                        if ($servico2 === false)                        continue;
                         $valortotal = $valortotal + $valor->qnt*Framework\App\Sistema_Funcoes::Tranf_Real_Float($servico2->preco);
                     }
                 }
@@ -2088,9 +2193,9 @@ class comercio_PropostaControle extends comercio_Controle
                     )
                 );
                 // Pega os Valores do Serviço
-                if ($maodeobra!==false) {
+                if ($maodeobra !== false) {
                     if (is_object($maodeobra)) $maodeobra = Array($maodeobra);
-                    foreach($maodeobra as &$valor) {
+                    foreach ($maodeobra as &$valor) {
                         $valor_maodeobra = $valor->maodeobra_qnt*$valor->maodeobra_dias*
                             (
                                 \Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->maodeobra_diaria)+
@@ -2104,7 +2209,7 @@ class comercio_PropostaControle extends comercio_Controle
                 $valortotal = $valortotal+$valor_maodeobra_total;
             }
         
-            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorExtra')!==false) {
+            if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_ValorExtra') !== false) {
                 $valortotal = $valortotal+Framework\App\Sistema_Funcoes::Tranf_Real_Float($valor->valor_extra);
             }
             
@@ -2124,19 +2229,20 @@ class comercio_PropostaControle extends comercio_Controle
         }
         
         /*// Se tiver Comissao Add
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao')!==false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao') !== false) {
             $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float($identificador->comissao);
             $valortotal = $valortotal+($comissao*$valortotal);
         }   
         
         // Se tiver Imposto Add
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto')!==false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Imposto') !== false) {
             $imposto = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float($identificador->imposto);
             $valortotal = $valortotal+($imposto*$valortotal);
         }*/
         
         // Atualiza Valor Total
         $identificador->valor = \Framework\App\Sistema_Funcoes::Tranf_Float_Real($valortotal);
+        $identificador->propostaNewId = $identificador->id.' - 1';
         $this->_Modelo->db->Sql_Update($identificador);
     }
     /**
@@ -2144,9 +2250,9 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Del($id,$tema='Propostas') {
+    public function Propostas_Del($id, $tema='Propostas') {
         
         
     	$id = (int) $id;
@@ -2163,10 +2269,12 @@ class comercio_PropostaControle extends comercio_Controle
         // Puxa fornecedor e deleta
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array('id'=>$id));
         $mov      = $this->_Modelo->db->Sql_Select('Financeiro_Pagamento_Interno', Array('motivo' => 'comercio_Proposta', 'motivoid'=>$id));
+        $logStatus = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Status', '{sigla}proposta=\''.$id.'\'');
         $sucesso1 =  $this->_Modelo->db->Sql_Delete($proposta);
         $sucesso2 =  $this->_Modelo->db->Sql_Delete($mov);
+        $sucesso3 =  $this->_Modelo->db->Sql_Delete($logStatus);
         // Mensagem
-    	if ($sucesso1===true) {
+    	if ($sucesso1 === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -2179,7 +2287,7 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Propostas($tema);
         
@@ -2192,15 +2300,16 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $tema
      * @throws Exception
      */
-    public function StatusPropostas($id=false,$tema='Propostas') {
+    public function StatusPropostas($id = false, $tema='Propostas')
+    {
         
-        if ($id===false) {
+        if ($id === false) {
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Proposta', Array('id'=>$id),1);
         
-        if ($resultado===false || !is_object($resultado)) {
+        if ($resultado === false || !is_object($resultado)) {
             return false;
         }
         
@@ -2231,13 +2340,13 @@ class comercio_PropostaControle extends comercio_Controle
             } else if ($resultado->status=='2') { // de Aprovada em Execução para Finalizada
                 
                 /* #update, colocar pra nao deixar finalizar quando nao tiver arquivo na biblioteca
-                if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca')===true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca')===true) {
+                if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Propostas_Biblioteca') === true && \Framework\App\Sistema_Funcoes::Perm_Modulos('biblioteca') === true) {
                     $mensagens = array(
                         "tipo"              => 'erro',
                         "mgs_principal"     => __('Erro'),
                         "mgs_secundaria"    => __('Essa OS não pode ser finalizada.')
                     );
-                    $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                    $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
 
                     $this->_Visual->Json_Info_Update('Historico', false);
                     return true;
@@ -2250,8 +2359,8 @@ class comercio_PropostaControle extends comercio_Controle
                 // Inserir Pagamento de Funcionários
                 /*$funcionarios = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Funcionario', Array('proposta'=>$id));
                 if (is_object($funcionarios)) $funcionarios = Array($funcionarios);
-                if ($funcionarios!==false) {
-                    foreach($funcionarios as &$valor) {
+                if ($funcionarios !== false) {
+                    foreach ($funcionarios as &$valor) {
                         $funcionarios_registro = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$valor->funcionario),1);
                         $valor_a_pagar = $valor->dias * (\Framework\App\Sistema_Funcoes::Tranf_Real_Float($funcionarios_registro->salariobase));
                         // Caso não consiga Criar Financeiro da Erro
@@ -2269,7 +2378,7 @@ class comercio_PropostaControle extends comercio_Controle
                                 "mgs_principal"     => __('Erro'),
                                 "mgs_secundaria"    => __('Condição de Pagamento Inválido na Proposta.')
                             );
-                            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+                            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
                             $this->_Visual->Json_Info_Update('Titulo', __('Erro')); 
                             $this->_Visual->Json_Info_Update('Historico', false);
                             return false;
@@ -2281,27 +2390,38 @@ class comercio_PropostaControle extends comercio_Controle
                 $resultado->status='1';
             }
         }
+        // Atualiza Proposta
         $sucesso = $this->_Modelo->db->Sql_Update($resultado);
+        // Cria Historico de Alteracao de Status
+        $logStatus = new Comercio_Proposta_Status_DAO();
+        $logStatus->proposta = $resultado->id;
+        $logStatus->propostaNome = $resultado->propostaNewId;
+        $logStatus->cuidados = $resultado->cuidados;
+        $logStatus->cliente = $resultado->cliente;
+        $logStatus->status = $resultado->status;
+        $logStatus->data = APP_HORA_BR;
+        $this->_Modelo->db->Sql_Insert($logStatus);
+        // Exibe MEnsagem
         if ($sucesso) {
             $mensagens = array(
                 "tipo"              => 'sucesso',
                 "mgs_principal"     => __('Sucesso'),
                 "mgs_secundaria"    => __('Status Alterado com Sucesso.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
             $conteudo = array(
                 'location' => '.status'.$resultado->id,
                 'js' => '',
-                'html' =>  self::label($resultado,$tema)
+                'html' =>  self::label($resultado, $tema)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -2312,9 +2432,18 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $link
      * @return string
      */
-    public static function label($objeto,$tema='Propostas',$link=true) {
-        $status = $objeto->status;
-        $id = $objeto->id;
+    public static function label($objeto, $tema='Propostas', $link= true) {
+        if(is_object($objeto)){
+            $status = $objeto->status;
+            $id = $objeto->id;
+            $condicaoPagar = $objeto->condicao_pagar;
+        }else{
+            $status = $objeto['status'];
+            $id = $objeto['id'];
+            $condicaoPagar = $objeto['condicao_pagar'];
+        }
+        
+        // Status
         if ($status=='0') {
             $tipo = 'warning';
             $nometipo = __('Pendente');
@@ -2336,7 +2465,7 @@ class comercio_PropostaControle extends comercio_Controle
             $nometipo = __('Recusada');
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if (/*$status!='3' && */$objeto->condicao_pagar!=NULL && $link===true) {
+        if (/*$status!='3' && */$condicaoPagar!=NULL && $link === true) {
             $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusPropostas/'.$id.'/'.$tema.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -2344,9 +2473,9 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Comentario($proposta_id = false,$tema='Propostas',$export=false) {
+    public function Propostas_Comentario($proposta_id = false, $tema='Propostas', $export = false) {
         if ($proposta_id==='false') $proposta_id = false;
         // Nomes
         if ($tema!='Propostas') {
@@ -2358,15 +2487,15 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
-        if ($proposta_id===false) {
+        if ($proposta_id === false) {
             $where = Array();
         } else {
             $where = Array('proposta'=>$proposta_id);
         }
-        self::Endereco_Proposta_Comentario(false,$tema,$proposta_id);
+        self::Endereco_Proposta_Comentario(false, $tema, $proposta_id);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
-        if ($proposta_id===false) {
+        if ($proposta_id === false) {
             $proposta_id_ir = 'false';
         }
         else{
@@ -2385,32 +2514,32 @@ class comercio_PropostaControle extends comercio_Controle
                 'Link'      => 'comercio/Proposta/Propostas_Comentario/'.$proposta_id_ir.'/'.$tema,
             )
         )));
-        $comentario = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Comentario',$where);
-        if ($comentario!==false && !empty($comentario)) {
+        $comentario = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Comentario', $where);
+        if ($comentario !== false && !empty($comentario)) {
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Comentario_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Propostas_Comentario_Del');
+            $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Comentario_Edit');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Propostas_Comentario_Del');
             foreach ($comentario as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário'        ,'comercio/Proposta/Propostas_Comentario_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,''),$perm_editar).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário'       ,'comercio/Proposta/Propostas_Comentario_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Comentário dessa '.$titulo.' ?'),$perm_del);
+                $table[__('#Id')][$i]          =   '#'.$valor->id;
+                $table[__('Comentário')][$i]   =   nl2br($valor->comentario);
+                $table[__('Data')][$i]         =   $valor->log_date_add;
+                $table[__('Funções')][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Comentário')        ,'comercio/Proposta/Propostas_Comentario_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    , ''), $permissionEdit).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Comentário')       ,'comercio/Proposta/Propostas_Comentario_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Comentário dessa '.$titulo.' ?'), $permissionDelete);
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Comercio ('.$titulo.') - Comentários');
+            if ($export !== false) {
+                self::Export_Todos($export, $table, 'Comercio ('.$titulo.') - Comentários');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));
+                $this->_Visual->Show_Tabela_DataTable($table, '', true, false, Array(Array(0,'desc')));
             }
             
-            unset($tabela);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário sobre a '.$titulo.'</font></b></center>');
         }
         $titulo = 'Comentários da '.$titulo.' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários da ').$titulo.'');
@@ -2418,16 +2547,16 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Comentario_Add($proposta_id = false,$tema='Propostas') {
+    public function Propostas_Comentario_Add($proposta_id = false, $tema='Propostas') {
         // Proteção E chama Endereço
         if ($proposta_id === false) {
             return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         }
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if ($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
-        self::Endereco_Proposta_Comentario(true,$tema,$proposta);
+        if ($proposta === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
+        self::Endereco_Proposta_Comentario(true, $tema, $proposta);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2448,17 +2577,17 @@ class comercio_PropostaControle extends comercio_Controle
         $formlink   = 'comercio/Proposta/Propostas_Comentario_Add2/'.$proposta_id.'/'.$tema;
         $campos = Comercio_Proposta_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'proposta');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Comentario_Add2($proposta_id = false,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
+    public function Propostas_Comentario_Add2($proposta_id = false, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2471,25 +2600,25 @@ class comercio_PropostaControle extends comercio_Controle
         }
         $titulo     = __('Comentário sobre a Proposta Adicionado com Sucesso');
         $dao        = 'Comercio_Proposta_Comentario';
-        $funcao     = '$this->Propostas_Comentario('.$proposta_id.',\''.$tema.'\');';
+        $function     = '$this->Propostas_Comentario('.$proposta_id.',\''.$tema.'\');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário de Proposta cadastrado com sucesso.');
         $alterar    = Array('proposta'=>$proposta_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Comentario_Edit($proposta_id = false,$id = 0,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+    public function Propostas_Comentario_Edit($proposta_id = false, $id = 0, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if ($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
-        self::Endereco_Proposta_Comentario(true,$tema,$proposta);
+        if ($proposta === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
+        self::Endereco_Proposta_Comentario(true, $tema, $proposta);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2507,20 +2636,20 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = 'form_Sistema_AdminC_PropostaEdit';
         $formbt     = 'Alterar Comentário da '.$titulo;
         $formlink   = 'comercio/Proposta/Propostas_Comentario_Edit2/'.$proposta_id.'/'.$id.'/'.$tema;
-        $editar     = Array('Comercio_Proposta_Comentario',$id);
+        $editar     = Array('Comercio_Proposta_Comentario', $id);
         $campos = Comercio_Proposta_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'proposta');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Comentario_Edit2($proposta_id = false,$id = 0,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+    public function Propostas_Comentario_Edit2($proposta_id = false, $id = 0, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Nomes
         if ($tema!='Propostas') {
@@ -2533,22 +2662,22 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_unico       = 'propostas';
         }
         $titulo     = 'Comentário de '.$titulo.' Editada com Sucesso';
-        $dao        = Array('Comercio_Proposta_Comentario',$id);
-        $funcao     = '$this->Propostas_Comentario('.$proposta_id.',\''.$tema.'\');';
+        $dao        = Array('Comercio_Proposta_Comentario', $id);
+        $function     = '$this->Propostas_Comentario('.$proposta_id.',\''.$tema.'\');';
         $sucesso1   = 'Comentário de '.$titulo.' Alterada com Sucesso.';
         $sucesso2   = '#'.$proposta_id.' teve a alteração bem sucedida';
         $alterar    = Array('proposta'=>$proposta_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Comentario_Del($proposta_id = false,$id = 0,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
+    public function Propostas_Comentario_Del($proposta_id = false, $id = 0, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
@@ -2568,7 +2697,7 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_unico       = 'propostas';
         }
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -2581,9 +2710,9 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
-        $this->Propostas_Comentario($proposta_id,$tema);
+        $this->Propostas_Comentario($proposta_id, $tema);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Comentário da ').$titulo.' deletada com Sucesso');  
         $this->_Visual->Json_Info_Update('Historico', false);  
@@ -2591,9 +2720,9 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Sub($proposta_id = false,$tema='Propostas',$export=false) {
+    public function Propostas_Sub($proposta_id = false, $tema='Propostas', $export = false) {
         if ($proposta_id==='false') $proposta_id = false;
         // Nomes
         if ($tema!='Propostas') {
@@ -2605,15 +2734,15 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_plural      = __('Propostas');
             $titulo_unico       = 'propostas';
         }
-        if ($proposta_id===false) {
+        if ($proposta_id === false) {
             $where = Array();
         } else {
             $where = Array('proposta'=>$proposta_id);
         }
-        self::Endereco_Proposta_Sub(false,$tema,$proposta_id);
+        self::Endereco_Proposta_Sub(false, $tema, $proposta_id);
         $i = 0;
         // BOTAO IMPRIMIR / ADD
-        if ($proposta_id===false) {
+        if ($proposta_id === false) {
             $proposta_id_ir = 'false';
         }
         else{
@@ -2632,33 +2761,33 @@ class comercio_PropostaControle extends comercio_Controle
                 'Link'      => 'comercio/Proposta/Propostas_Sub/'.$proposta_id_ir.'/'.$tema,
             )
         )));
-        $sub = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Sub',$where);
-        $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Sub_Edit');
-        $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Propostas_Sub_Del');
+        $sub = $this->_Modelo->db->Sql_Select('Comercio_Proposta', $where);
+        $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Propostas_Sub_Edit');
+        $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Estoque/Propostas_Sub_Del');
             
-        if ($sub!==false && !empty($sub)) {
+        if ($sub !== false && !empty($sub)) {
             if (is_object($sub)) $sub = Array(0=>$sub);
             reset($sub);
             foreach ($sub as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->proposta.' - '.($i+1);
-                $tabela['Obs'][$i]          =   nl2br($valor->obs);
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Sub proposta'        ,'comercio/Proposta/Propostas_Sub_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    ,''),$perm_editar).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Sub proposta'       ,'comercio/Proposta/Propostas_Sub_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Sub proposta dessa '.$titulo.' ?'),$perm_del);
+                $table[__('#Id')][$i]          =   '#'.$valor->proposta.' - '.($i+1);
+                $table[__('Obs')][$i]          =   nl2br($valor->obs);
+                $table[__('Data')][$i]         =   $valor->log_date_add;
+                $table[__('Funções')][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Sub proposta')        ,'comercio/Proposta/Propostas_Sub_Edit/'.$proposta_id.'/'.$valor->id.'/'.$tema    , ''), $permissionEdit).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Sub proposta')       ,'comercio/Proposta/Propostas_Sub_Del/'.$proposta_id.'/'.$valor->id.'/'.$tema     ,'Deseja realmente deletar esse Sub proposta dessa '.$titulo.' ?'), $permissionDelete);
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Comercio ('.$titulo.') - Sub propostas');
+            if ($export !== false) {
+                self::Export_Todos($export, $table, 'Comercio ('.$titulo.') - Sub propostas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));
+                $this->_Visual->Show_Tabela_DataTable($table, '', true, false, Array(Array(0,'desc')));
             }
             
-            unset($tabela);
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Sub proposta sobre a '.$titulo.'</font></b></center>');
         }
         $titulo = 'Sub propostas da '.$titulo.' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Sub propostas da ').$titulo.'');
@@ -2666,14 +2795,14 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Sub_Add($proposta_id = false,$tema='Propostas') {
+    public function Propostas_Sub_Add($proposta_id = false, $tema='Propostas') {
         // Proteção E chama Endereço
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if ($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
-        self::Endereco_Proposta_Sub(true,$tema,$proposta);
+        if ($proposta === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
+        self::Endereco_Proposta_Sub(true, $tema, $proposta);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2692,19 +2821,19 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = 'form_Sistema_Admin_Propostas_Sub';
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Propostas_Sub_Add2/'.$proposta_id.'/'.$tema;
-        $campos = Comercio_Proposta_Sub_DAO::Get_Colunas();
+        $campos = Comercio_Proposta_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'proposta');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Sub_Add2($proposta_id = false,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
+    public function Propostas_Sub_Add2($proposta_id = false, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2716,26 +2845,26 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_unico       = 'propostas';
         }
         $titulo     = __('Sub proposta sobre a Proposta Adicionado com Sucesso');
-        $dao        = 'Comercio_Proposta_Sub';
-        $funcao     = '$this->Propostas_Sub('.$proposta_id.',\''.$tema.'\');';
+        $dao        = 'Comercio_Proposta';
+        $function     = '$this->Propostas_Sub('.$proposta_id.',\''.$tema.'\');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Sub proposta de Proposta cadastrado com sucesso.');
         $alterar    = Array('proposta'=>$proposta_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Sub_Edit($proposta_id = false,$id = 0,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+    public function Propostas_Sub_Edit($proposta_id = false, $id = 0, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Sub proposta não informado',404);
         // Proteção E chama Endereço
         $proposta = $this->_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$proposta_id), 1);
-        if ($proposta===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
-        self::Endereco_Proposta_Sub(true,$tema,$proposta);
+        if ($proposta === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não existe:'.$proposta_id,404);
+        self::Endereco_Proposta_Sub(true, $tema, $proposta);
         // Nomes
         if ($tema!='Propostas') {
             $titulo             = CFG_TXT_COMERCIO_OS;
@@ -2753,20 +2882,20 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = 'form_Sistema_AdminC_PropostaEdit';
         $formbt     = 'Alterar Sub proposta da '.$titulo;
         $formlink   = 'comercio/Proposta/Propostas_Sub_Edit2/'.$proposta_id.'/'.$id.'/'.$tema;
-        $editar     = Array('Comercio_Proposta_Sub',$id);
-        $campos = Comercio_Proposta_Sub_DAO::Get_Colunas();
+        $editar     = Array('Comercio_Proposta', $id);
+        $campos = Comercio_Proposta_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'proposta');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Sub_Edit2($proposta_id = false,$id = 0,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
+    public function Propostas_Sub_Edit2($proposta_id = false, $id = 0, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Sub proposta não informado',404);
         // Nomes
         if ($tema!='Propostas') {
@@ -2779,29 +2908,29 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_unico       = 'propostas';
         }
         $titulo     = 'Sub proposta de '.$titulo.' Editada com Sucesso';
-        $dao        = Array('Comercio_Proposta_Sub',$id);
-        $funcao     = '$this->Propostas_Sub('.$proposta_id.',\''.$tema.'\');';
+        $dao        = Array('Comercio_Proposta', $id);
+        $function     = '$this->Propostas_Sub('.$proposta_id.',\''.$tema.'\');';
         $sucesso1   = 'Sub proposta de '.$titulo.' Alterada com Sucesso.';
         $sucesso2   = '#'.$proposta_id.' teve a alteração bem sucedida';
         $alterar    = Array('proposta'=>$proposta_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Propostas_Sub_Del($proposta_id = false,$id = 0,$tema='Propostas') {
-        if ($proposta_id===false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
+    public function Propostas_Sub_Del($proposta_id = false, $id = 0, $tema='Propostas') {
+        if ($proposta_id === false) return _Sistema_erroControle::Erro_Fluxo('Proposta não informada',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Sub proposta não informado',404);
         
         
     	$id = (int) $id;
         // Puxa linha e deleta
         $where = Array('id'=>$id);
-        $comentario = $this->_Modelo->db->Sql_Select('Comercio_Proposta_Sub', $where);
+        $comentario = $this->_Modelo->db->Sql_Select('Comercio_Proposta', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Nomes
         if ($tema!='Propostas') {
@@ -2814,7 +2943,7 @@ class comercio_PropostaControle extends comercio_Controle
             $titulo_unico       = 'propostas';
         }
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -2827,9 +2956,9 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
-        $this->Propostas_Sub($proposta_id,$tema);
+        $this->Propostas_Sub($proposta_id, $tema);
         
         $this->_Visual->Json_Info_Update('Titulo', __('Sub proposta da ').$titulo.' deletada com Sucesso');  
         $this->_Visual->Json_Info_Update('Historico', false);  
@@ -2837,7 +2966,7 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * Veio de OSC.php
      */
-    public function Checklists($export=false) {
+    public function Checklists($export = false) {
         self::Endereco_CheckList(false);
         //
         $i = 0;
@@ -2855,25 +2984,25 @@ class comercio_PropostaControle extends comercio_Controle
             )
         )));
         $checklist = $this->_Modelo->db->Sql_Select('Comercio_Checklist');
-        if ($checklist!==false && !empty($checklist)) {
+        if ($checklist !== false && !empty($checklist)) {
             if (is_object($checklist)) $checklist = Array(0=>$checklist);
             reset($checklist);
             foreach ($checklist as $indice=>&$valor) {
-                $tabela['Tipo de Equipamento'][$i]      =   $valor->categoria2;
-                $tabela[CFG_TXT_EQUIPAMENTOS_NOME][$i]  =   $valor->nome;
-                $tabela['Validade'][$i]                 =   $valor->validade;
-                $tabela['Observações'][$i]              =   $valor->obs;
-                $tabela['Status'][$i]     =  '<span class="statusChecklists'.$valor->id.'">'.self::labelChecklists($valor).'</span>';
-                $tabela['Funções'][$i]   =  $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar CheckList'                          ,'comercio/Proposta/Checklists_Edit/'.$valor->id.'/'    ,'')).
-                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar CheckList'                         ,'comercio/Proposta/Checklists_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse checklist?'));
+                $table[__('Tipo de Equipamento')][$i]      =   $valor->categoria2;
+                $table[CFG_TXT_EQUIPAMENTOS_NOME][$i]  =   $valor->nome;
+                $table[__('Validade')][$i]                 =   $valor->validade;
+                $table[__('Observações')][$i]              =   $valor->obs;
+                $table[__('Status')][$i]     =  '<span class="statusChecklists'.$valor->id.'">'.self::labelChecklists($valor).'</span>';
+                $table[__('Funções')][$i]   =  $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array(__('Editar CheckList')                          ,'comercio/Proposta/Checklists_Edit/'.$valor->id.'/'    , '')).
+                                            $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array(__('Deletar CheckList')                         ,'comercio/Proposta/Checklists_Del/'.$valor->id.'/'     , __('Deseja realmente deletar esse checklist?')));
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Checklists');
+            if ($export !== false) {
+                self::Export_Todos($export, $table, 'Checklists');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Checklist</font></b></center>');
         }
@@ -2888,15 +3017,15 @@ class comercio_PropostaControle extends comercio_Controle
      * @param int $id Chave Primária (Id do Registro)
      * @throws Exception
      */
-    public function StatusChecklists($id=false) {
+    public function StatusChecklists($id = false) {
         
-        if ($id===false) {
+        if ($id === false) {
             return false;
         }
         $id = (int) $id;
         $resultado = $this->_Modelo->db->Sql_Select('Comercio_Checklist', 'id = '.$id,1);
         
-        if ($resultado===false || !is_object($resultado)) {
+        if ($resultado === false || !is_object($resultado)) {
             return false;
         }
         
@@ -2917,14 +3046,14 @@ class comercio_PropostaControle extends comercio_Controle
                 'js' => '',
                 'html' =>  self::labelChecklists($resultado)
             );
-            $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
+            $this->_Visual->Json_IncluiTipo('Conteudo', $conteudo);
         } else {
             $mensagens = array(
                 "tipo"              => 'erro',
                 "mgs_principal"     => __('Erro'),
                 "mgs_secundaria"    => __('Ocorreu um Erro.')
             );
-            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         }
         $this->_Visual->Json_Info_Update('Historico', false);  
     }
@@ -2934,7 +3063,7 @@ class comercio_PropostaControle extends comercio_Controle
      * @param type $link
      * @return string
      */
-    public static function labelChecklists($objeto,$link=true) {
+    public static function labelChecklists($objeto, $link= true) {
         $status = $objeto->status;
         $id = $objeto->id;
         if ($status=='0') {
@@ -2954,7 +3083,7 @@ class comercio_PropostaControle extends comercio_Controle
             $nometipo = 'Em Quarentena';
         }
         $html = '<span class="badge badge-'.$tipo.'">'.$nometipo.'</span>';
-        if ($link===true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio/Proposta/StatusChecklists')!==false) {
+        if ($link === true && \Framework\App\Registro::getInstacia()->_Acl->Get_Permissao_Url('comercio/Proposta/StatusChecklists') !== false) {
             $html = '<a href="'.URL_PATH.'comercio/Proposta/StatusChecklists/'.$id.'" border="1" class="lajax explicar-titulo" title="'.$nometipo.'" data-acao="" data-confirma="Deseja Realmente alterar o Status?">'.$html.'</a>';
         }
         return $html;
@@ -2971,7 +3100,7 @@ class comercio_PropostaControle extends comercio_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Checklists_Add2/';
         $campos = Comercio_Checklist_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
         
     }
     /**
@@ -2979,22 +3108,22 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Checklists_Add2() {
         $titulo     = __('Checklist Adicionado com Sucesso');
         $dao        = 'Comercio_Checklist';
-        $funcao     = '$this->Checklists();';
+        $function     = '$this->Checklists();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Checklist cadastrado com sucesso.');
         $alterar    = Array();
-        $sucesso = $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $sucesso = $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Checklists_Edit($id) {
         self::Endereco_CheckList(true);
@@ -3004,32 +3133,32 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = 'form_Sistema_AdminC_OsEdit';
         $formbt     = __('Alterar Checklist');
         $formlink   = 'comercio/Proposta/Checklists_Edit2/'.$id;
-        $editar     = Array('Comercio_Checklist',$id);
+        $editar     = Array('Comercio_Checklist', $id);
         $campos = Comercio_Checklist_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);  
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);  
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Checklists_Edit2($id) {
         $titulo     = __('Checklist Editado com Sucesso');
-        $dao        = Array('Comercio_Checklist',$id);
-        $funcao     = '$this->Checklists();';
+        $dao        = Array('Comercio_Checklist', $id);
+        $function     = '$this->Checklists();';
         $sucesso1   = __('Checklist Alterado com Sucesso.');
         $sucesso2   = ''.$_POST["nome"].' teve a alteração bem sucedida';
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Checklists_Del($id) {
         
@@ -3039,7 +3168,7 @@ class comercio_PropostaControle extends comercio_Controle
         $checklist = $this->_Modelo->db->Sql_Select('Comercio_Checklist', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($checklist);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -3052,7 +3181,7 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Checklists();
         
@@ -3063,7 +3192,7 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      * @param type $export
      */
-    public function Visitas($export=false) {
+    public function Visitas($export = false) {
         self::Endereco_Visita(false);
         //
         $i = 0;
@@ -3081,29 +3210,29 @@ class comercio_PropostaControle extends comercio_Controle
             )
         )));
         $visita = $this->_Modelo->db->Sql_Select('Comercio_Visita');
-        if ($visita!==false && !empty($visita)) {
+        if ($visita !== false && !empty($visita)) {
             if (is_object($visita)) $visita = Array(0=>$visita);
             reset($visita);
             $perm_view = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario');
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Del');
+            $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Edit');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Del');
             
             foreach ($visita as $indice=>&$valor) {
-                $tabela['Cliente'][$i]         =  $valor->clientepossivel;
-                $tabela['Responsável'][$i]     =  $valor->responsavel2;
-                $tabela['Data do Contato'][$i] =  $valor->data;
-                $tabela['Próximo Contato'][$i] =  $valor->data_proximo;
-                $tabela['Funções'][$i]    =   $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array('Histórico da Visita'    ,'comercio/Proposta/Visitas_Comentario/'.$valor->id    ,'','file','inverse'),$perm_view);
-                $tabela['Funções'][$i]   .=   $this->_Visual->Tema_Elementos_Btn('Editar'           ,Array('Editar Agenda de Visita'                          ,'comercio/Proposta/Visitas_Edit/'.$valor->id.'/'    ,''),$perm_editar).
-                                              $this->_Visual->Tema_Elementos_Btn('Deletar'          ,Array('Deletar Agenda de Visita'                         ,'comercio/Proposta/Visitas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa agenda de Visita!'),$perm_del);
+                $table[__('Cliente')][$i]         =  $valor->clientepossivel;
+                $table[__('Responsável')][$i]     =  $valor->responsavel2;
+                $table[__('Data do Contato')][$i] =  $valor->data;
+                $table[__('Próximo Contato')][$i] =  $valor->data_proximo;
+                $table[__('Funções')][$i]    =   $this->_Visual->Tema_Elementos_Btn('Personalizado'    ,Array(__('Histórico da Visita')    ,'comercio/Proposta/Visitas_Comentario/'.$valor->id    , '', 'file', 'inverse'), $perm_view);
+                $table[__('Funções')][$i]   .=   $this->_Visual->Tema_Elementos_Btn('Editar'           ,Array(__('Editar Agenda de Visita')                          ,'comercio/Proposta/Visitas_Edit/'.$valor->id.'/'    , ''), $permissionEdit).
+                                              $this->_Visual->Tema_Elementos_Btn('Deletar'          ,Array(__('Deletar Agenda de Visita')                         ,'comercio/Proposta/Visitas_Del/'.$valor->id.'/'     ,'Deseja realmente deletar essa agenda de Visita!'), $permissionDelete);
                 ++$i;
             }
-            if ($export!==false) {
-                self::Export_Todos($export,$tabela, 'Agenda de Visitas');
+            if ($export !== false) {
+                self::Export_Todos($export, $table, 'Agenda de Visitas');
             } else {
-                $this->_Visual->Show_Tabela_DataTable($tabela);
+                $this->_Visual->Show_Tabela_DataTable($table);
             }
-            unset($tabela);
+            unset($table);
         } else {           
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhuma Agenda de Visita</font></b></center>');
         }
@@ -3125,7 +3254,7 @@ class comercio_PropostaControle extends comercio_Controle
         $formbt     = __('Salvar');
         $formlink   = 'comercio/Proposta/Visitas_Add2/';
         $campos = Comercio_Visita_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
         
     }
     /**
@@ -3133,23 +3262,23 @@ class comercio_PropostaControle extends comercio_Controle
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Add2() {
         $titulo     = __('Agenda de Visita Adicionada com Sucesso');
         $dao        = 'Comercio_Visita';
-        $funcao     = '$this->Visitas();';
+        $function     = '$this->Visitas();';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Agenda de Visita cadastrada com sucesso.');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
      
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Edit($id) {
         self::Endereco_Visita(true);
@@ -3159,32 +3288,32 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = 'form_Sistema_AdminC_OsEdit';
         $formbt     = __('Alterar Agenda de Visita');
         $formlink   = 'comercio/Proposta/Visitas_Edit2/'.$id;
-        $editar     = Array('Comercio_Visita',$id);
+        $editar     = Array('Comercio_Visita', $id);
         $campos = Comercio_Visita_DAO::Get_Colunas();
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);  
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);  
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Edit2($id) {
         $titulo     = __('Agenda de Visita Editada com Sucesso');
-        $dao        = Array('Comercio_Visita',$id);
-        $funcao     = '$this->Visitas();';
+        $dao        = Array('Comercio_Visita', $id);
+        $function     = '$this->Visitas();';
         $sucesso1   = __('Sucesso');
         $sucesso2   = __('Agenda de Visita teve a alteração bem sucedida');
         $alterar    = Array();
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Del($id) {
         
@@ -3194,7 +3323,7 @@ class comercio_PropostaControle extends comercio_Controle
         $visita = $this->_Modelo->db->Sql_Select('Comercio_Visita', Array('id'=>$id));
         $sucesso =  $this->_Modelo->db->Sql_Delete($visita);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -3207,7 +3336,7 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Visitas();
         
@@ -3217,39 +3346,39 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Comentario($visita_id = false) {
-        if ($visita_id===false) {
+        if ($visita_id === false) {
             $where = Array();
         } else {
             $where = Array('visita'=>$visita_id);
         }
-        self::Endereco_Visita_Comentario(false,$visita_id);
+        self::Endereco_Visita_Comentario(false, $visita_id);
         $i = 0;
         $this->_Visual->Blocar('<a title="Adicionar Comentário à Visita" class="btn btn-success lajax explicar-titulo" data-acao="" href="'.URL_PATH.'comercio/Proposta/Visitas_Comentario_Add/'.$visita_id.'">Adicionar novo comentário nesse Visita</a><div class="space15"></div>');
-        $comentario = $this->_Modelo->db->Sql_Select('Comercio_Visita_Comentario',$where);
-        if ($comentario!==false && !empty($comentario)) {
+        $comentario = $this->_Modelo->db->Sql_Select('Comercio_Visita_Comentario', $where);
+        if ($comentario !== false && !empty($comentario)) {
             if (is_object($comentario)) $comentario = Array(0=>$comentario);
             reset($comentario);
-            $perm_editar = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario_Edit');
-            $perm_del = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario_Del');
+            $permissionEdit = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario_Edit');
+            $permissionDelete = $this->_Registro->_Acl->Get_Permissao_Url('comercio/Proposta/Visitas_Comentario_Del');
             
             foreach ($comentario as $indice=>&$valor) {
-                $tabela['#Id'][$i]          =   '#'.$valor->id;
-                $tabela['Comentário'][$i]   =   nl2br($valor->comentario);
-                $tabela['Data'][$i]         =   $valor->log_date_add;
-                $tabela['Funções'][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array('Editar Comentário de Visita'        ,'comercio/Proposta/Visitas_Comentario_Edit/'.$visita_id.'/'.$valor->id    ,''),$perm_editar).
-                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array('Deletar Comentário de Visita'       ,'comercio/Proposta/Visitas_Comentario_Del/'.$visita_id.'/'.$valor->id     ,'Deseja realmente deletar esse Comentário desse Visita ?'),$perm_del);
+                $table[__('#Id')][$i]          =   '#'.$valor->id;
+                $table[__('Comentário')][$i]   =   nl2br($valor->comentario);
+                $table[__('Data')][$i]         =   $valor->log_date_add;
+                $table[__('Funções')][$i]      =   $this->_Visual->Tema_Elementos_Btn('Editar'          ,Array(__('Editar Comentário de Visita')        ,'comercio/Proposta/Visitas_Comentario_Edit/'.$visita_id.'/'.$valor->id    , ''), $permissionEdit).
+                                                $this->_Visual->Tema_Elementos_Btn('Deletar'         ,Array(__('Deletar Comentário de Visita')       ,'comercio/Proposta/Visitas_Comentario_Del/'.$visita_id.'/'.$valor->id     , __('Deseja realmente deletar esse Comentário desse Visita ?')), $permissionDelete);
                 ++$i;
             }
-            $this->_Visual->Show_Tabela_DataTable($tabela,'', true, false, Array(Array(0,'desc')));
-            unset($tabela);
+            $this->_Visual->Show_Tabela_DataTable($table, '', true, false, Array(Array(0,'desc')));
+            unset($table);
         } else {            
             $this->_Visual->Blocar('<center><b><font color="#FF0000" size="5">Nenhum Comentário sobre a Visita</font></b></center>');
         }
         $titulo = __('Comentários do Visita').' ('.$i.')';
-        $this->_Visual->Bloco_Unico_CriaJanela($titulo,'',10);
+        $this->_Visual->Bloco_Unico_CriaJanela($titulo, '',10);
         
         //Carrega Json
         $this->_Visual->Json_Info_Update('Titulo', __('Administrar Comentários do Visita'));
@@ -3257,14 +3386,14 @@ class comercio_PropostaControle extends comercio_Controle
     /**
      * 
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Comentario_Add($visita_id = false) {
         // Proteção E chama Endereço
-        if ($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+        if ($visita_id === false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         $visita = $this->_Modelo->db->Sql_Select('Comercio_Visita',Array('id'=>$visita_id), 1);
-        if ($visita===false) return _Sistema_erroControle::Erro_Fluxo('Visita não existe:'.$visita_id,404);
-        self::Endereco_Visita_Comentario(true,$visita);
+        if ($visita === false) return _Sistema_erroControle::Erro_Fluxo('Visita não existe:'.$visita_id,404);
+        self::Endereco_Visita_Comentario(true, $visita);
         // Começo
         $visita_id = (int) $visita_id;
         // Carrega Config
@@ -3275,38 +3404,38 @@ class comercio_PropostaControle extends comercio_Controle
         $formlink   = 'comercio/Proposta/Visitas_Comentario_Add2/'.$visita_id;
         $campos = Comercio_Visita_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'visita');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos);
     }
     /**
      * 
      * 
      *
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
     public function Visitas_Comentario_Add2($visita_id = false) {
-        if ($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+        if ($visita_id === false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         $titulo     = __('Comentário sobre a Visita Adicionado com Sucesso');
         $dao        = 'Comercio_Visita_Comentario';
-        $funcao     = '$this->Visitas_Comentario('.$visita_id.');';
+        $function     = '$this->Visitas_Comentario('.$visita_id.');';
         $sucesso1   = __('Inserção bem sucedida');
         $sucesso2   = __('Comentário de Visita cadastrado com sucesso.');
         $alterar    = Array('visita'=>$visita_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);
     }
     /**
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Visitas_Comentario_Edit($visita_id = false,$id = 0) {
-        if ($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+    public function Visitas_Comentario_Edit($visita_id = false, $id = 0) {
+        if ($visita_id === false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         // Proteção E chama Endereço
         $visita = $this->_Modelo->db->Sql_Select('Comercio_Visita',Array('id'=>$visita_id), 1);
-        if ($visita===false) return _Sistema_erroControle::Erro_Fluxo('Visita não existe:'.$visita_id,404);
-        self::Endereco_Visita_Comentario(true,$visita);
+        if ($visita === false) return _Sistema_erroControle::Erro_Fluxo('Visita não existe:'.$visita_id,404);
+        self::Endereco_Visita_Comentario(true, $visita);
         // Começo
         // Carrega Config
         $titulo1    = 'Editar Comentário sobre a Visita (#'.$id.')';
@@ -3314,38 +3443,38 @@ class comercio_PropostaControle extends comercio_Controle
         $formid     = __('form_Sistema_AdminC_VisitaEdit');
         $formbt     = __('Alterar Comentário de Visita');
         $formlink   = 'comercio/Proposta/Visitas_Comentario_Edit2/'.$visita_id.'/'.$id;
-        $editar     = Array('Comercio_Visita_Comentario',$id);
+        $editar     = Array('Comercio_Visita_Comentario', $id);
         $campos = Comercio_Visita_Comentario_DAO::Get_Colunas();
         self::DAO_Campos_Retira($campos, 'visita');
-        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1,$titulo2,$formlink,$formid,$formbt,$campos,$editar);
+        \Framework\App\Controle::Gerador_Formulario_Janela($titulo1, $titulo2, $formlink, $formid, $formbt, $campos, $editar);
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Visitas_Comentario_Edit2($visita_id = false,$id = 0) {
-        if ($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+    public function Visitas_Comentario_Edit2($visita_id = false, $id = 0) {
+        if ($visita_id === false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         $titulo     = __('Comentário de Visita Editado com Sucesso');
-        $dao        = Array('Comercio_Visita_Comentario',$id);
-        $funcao     = '$this->Visitas_Comentario('.$visita_id.');';
+        $dao        = Array('Comercio_Visita_Comentario', $id);
+        $function     = '$this->Visitas_Comentario('.$visita_id.');';
         $sucesso1   = __('Comentário de Visita Alterado com Sucesso.');
         $sucesso2   = '#'.$visita_id.' teve a alteração bem sucedida';
         $alterar    = Array('visita'=>$visita_id);
-        $this->Gerador_Formulario_Janela2($titulo,$dao,$funcao,$sucesso1,$sucesso2,$alterar);      
+        $this->Gerador_Formulario_Janela2($titulo, $dao, $function, $sucesso1, $sucesso2, $alterar);      
     }
     /**
      * 
      * 
      * @param int $id Chave Primária (Id do Registro)
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
-     * @version 0.4.2
+     * @version 0.4.24
      */
-    public function Visitas_Comentario_Del($visita_id = false,$id = 0) {
-        if ($visita_id===false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
+    public function Visitas_Comentario_Del($visita_id = false, $id = 0) {
+        if ($visita_id === false) return _Sistema_erroControle::Erro_Fluxo('Visita não informado',404);
         if ($id         == 0   ) return _Sistema_erroControle::Erro_Fluxo('Comentário não informado',404);
         
         
@@ -3355,7 +3484,7 @@ class comercio_PropostaControle extends comercio_Controle
         $comentario = $this->_Modelo->db->Sql_Select('Comercio_Visita_Comentario', $where);
         $sucesso =  $this->_Modelo->db->Sql_Delete($comentario);
         // Mensagem
-    	if ($sucesso===true) {
+    	if ($sucesso === true) {
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => __('Deletado'),
@@ -3368,7 +3497,7 @@ class comercio_PropostaControle extends comercio_Controle
                 "mgs_secundaria" => __('Erro')
             );
         }
-        $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+        $this->_Visual->Json_IncluiTipo('Mensagens', $mensagens);
         
         $this->Visitas_Comentario($visita_id);
         

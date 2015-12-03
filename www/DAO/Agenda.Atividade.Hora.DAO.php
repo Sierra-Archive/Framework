@@ -3,35 +3,35 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
 {
     protected $id;
     protected $atividade;
-    protected $dt_iniciado;
-    protected $dt_finalizado;
-    protected $tempo_total;
+    protected $dt_inicio;
+    protected $dt_fim;
+    protected $tempo;
    
 
 
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_AGENDA_ATIVIDADE_HORA;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'AAH';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Trigger(){
+    public static function Get_Trigger() {
         return Array(
             Array(
                 'Nome'      =>'',
@@ -39,10 +39,10 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
             )
         );
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -73,10 +73,10 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
                 'linkextra'         => false, //'usuario/Admin/Usuarios_Add/cliente',
                 'edicao'            => Array(
-                    'Nome'              => 'Atividade',
+                    'Nome'              => __('Atividade'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'obrigatorio',
+                    'aviso'             => __('obrigatorio'),
                     'formtipo'          => 'select',
                     'select'             => array(
                         'class'             => 'obrigatorio',
@@ -96,9 +96,9 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Vencimento',
+                    'Nome'              => __('Data do Vencimento'),
                     'Mascara'           => 'DataHora',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -123,9 +123,9 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data do Vencimento',
+                    'Nome'              => __('Data do Vencimento'),
                     'Mascara'           => 'DataHora',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -147,12 +147,12 @@ final Class Agenda_Atividade_Hora_DAO extends Framework\App\Dao
                 'mysql_estrangeira' => false, // chave estrangeira
                 'mysql_autoadd'     => false,
                 'mysql_comment'     => false,
-                'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
-                'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
+                'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
+                'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
             )
         );
     }
 }
-?>
+

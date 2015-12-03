@@ -14,32 +14,32 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
     protected $datacompra;
     protected $status;
     protected $obs;
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_USUARIO_VEICULO_EQUIPAMENTO;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'UVE';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -54,7 +54,7 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'categoria',
@@ -69,9 +69,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'categoria/Admin/Categorias_Add/usuario_veiculo_Equipamento', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => 'categoria/Admin/Categorias_Add/usuario_veiculo_Equipamento', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Tipo de Equipamento',
+                    'Nome'              => __('Tipo de Equipamento'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -94,9 +94,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Fornecedor/Fornecedores_Add',
+                'linkextra'         => 'comercio/Fornecedor/Fornecedores_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Fornecedor',
+                    'Nome'              => __('Fornecedor'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -115,9 +115,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_veiculo/Equipamento/Marcas_Add',
+                'linkextra'         => 'usuario_veiculo/Equipamento/Marcas_Add',
                 'edicao'            => Array(
-                    'Nome'              => 'Marca',
+                    'Nome'              => __('Marca'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -136,9 +136,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'usuario_veiculo/Equipamento/Modelos_Add', 
+                'linkextra'         => 'usuario_veiculo/Equipamento/Modelos_Add', 
                 'edicao'            => Array(
-                    'Nome'              => 'Modelo',
+                    'Nome'              => __('Modelo'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => ''
@@ -156,7 +156,7 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
                     'Nome'              => CFG_TXT_EQUIPAMENTOS_NOME,
                     'valor_padrao'      => false,
@@ -181,9 +181,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => '\Framework\App\Sistema_Funcoes::Tranf_Real_Float({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => '\Framework\App\Sistema_Funcoes::Tranf_Float_Real({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Valor',
+                    'Nome'              => __('Valor'),
                     'Mascara'           => 'Real',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -207,9 +207,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', // //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', // //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Número da Nota Fiscal',
+                    'Nome'              => __('Número da Nota Fiscal'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -233,13 +233,13 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '',
+                'linkextra'         => '',
                 'edicao'            => Array(
-                    'Nome'              => 'Data de Validade',
+                    'Nome'              => __('Data de Validade'),
                     'Mascara'           => 'Validade',
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Somente Mês e Ano',
+                    'aviso'             => __('Somente Mês e Ano'),
                     'validar'           => 'Control_Layoult_Valida_Validade',
                     'formtipo'          => 'input',
                     'input'             => array(
@@ -261,9 +261,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => 'data_brasil_eua({valor})', // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => 'data_eua_brasil({valor})', // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Data da Compra',
+                    'Nome'              => __('Data da Compra'),
                     'Mascara'           => 'Data',
                     'valor_padrao'      => false,
                     'readonly'          => false,
@@ -291,9 +291,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Status',
+                    'Nome'              => __('Status'),
                     'valor_padrao'      => 1,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -329,9 +329,9 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Observação',
+                    'Nome'              => __('Observação'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -345,4 +345,4 @@ final Class  Usuario_Veiculo_Equipamento_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

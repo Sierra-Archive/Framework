@@ -15,34 +15,34 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
     // Padrao é true, com false, a tabela nao é transformada em maiuscula
     protected static $aceita_config         = false;
     // Padrao é false, ou array com os campos que nao aceita
-    protected static $campos_naoaceita_config  = Array('email','email2');
+    protected static $campos_naoaceita_config  = Array('email', 'email2');
     
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_PREDIAL_BLOCO_APART;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'PBA';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             /* [ x N ] INICIO */
             Array(
@@ -62,10 +62,10 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => 'comercio/Produto/Produtos_Add',
+                'linkextra'         => 'comercio/Produto/Produtos_Add',
                 // Edicao sao as Partes Visuais do Formulario
                 'edicao'            => Array(
-                    'Nome'              => 'Produto',
+                    'Nome'              => __('Produto'),
                     'Mascara'           => 'Numero', // MAscara, pode ser false, ou Real, Numero, Porc, etc...
                     'valor_padrao'      => false,
                     'change'            => '',
@@ -75,6 +75,12 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                     'formtipo'          => 'input', // input, select, textarea
                     'input'             => array( // Indice respectivamente -> input, select, textarea, igual acima
                         'tipo'              => 'text', // text, password, hidden, etc..
+                        /**
+                         * Caso o tipo seja range pode ter mais dois em seguida
+                         * 
+                        'range_min'         => '0',
+                        'range_max'         => '5',
+                         */
                         'class'             => 'obrigatorio', // obrigatorio -> Torna o Campo Obrigatorio
                                                               // Tambem Pode Colocar qualquer outra classe, que ira entrar no input
                     ),
@@ -100,7 +106,7 @@ final Class Predial_Bloco_Apart_DAO extends Framework\App\Dao
                         'tabela'            => 'Musica_Album_Artista', // Campo e Resultado
                     ),
                     'valor_padrao'      => false, // ID do pai, usada para edicao, sempre false por padrao
-                    'Nome'              => 'Artistas', // Nome no FOrmulario
+                    'Nome'              => __('Artistas'), // Nome no FOrmulario
                     'Class'             => 'obrigatorio', // Classe no formulario
                     'aviso'             => '', // Aviso no formulario
                     'formtipo'          => 'SelectMultiplo',  // Tipo de formulario

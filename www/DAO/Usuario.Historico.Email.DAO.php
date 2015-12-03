@@ -14,32 +14,32 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
 
 
 
-    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome(){
+    protected static $objetocarregado     = false;     protected static $mysql_colunas       = false;     protected static $mysql_outside       = Array();     protected static $mysql_inside        = Array(); public function __construct() {  parent::__construct(); } public static function Get_Nome() {
         return MYSQL_USUARIOS_HISTORICO_EMAIL;
     }
     /**
      * Fornece Permissão de Copia da tabela
      * @return string
      */
-    public static function Permissao_Copia(){
+    public static function Permissao_Copia() {
         return false;
     }
-    public static function Get_Sigla(){
+    public static function Get_Sigla() {
         return 'UHE';
     }
-    public static function Get_Engine(){
+    public static function Get_Engine() {
         return 'InnoDB';
     }
-    public static function Get_Charset(){
+    public static function Get_Charset() {
         return 'latin1';
     }
-    public static function Get_Autoadd(){
+    public static function Get_Autoadd() {
         return 1;
     }
-    public static function Get_Class(){
-        return str_replace(Array('_DAO'), Array(''), get_class());
+    public static function Get_Class() {
+        return get_class() ; //return str_replace(Array('_DAO'), Array(''), get_class());
     }
-    public static function Gerar_Colunas(){
+    public static function Gerar_Colunas() {
         return Array(
             Array(
                 'mysql_titulo'      => 'id',
@@ -54,7 +54,7 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '' ,//0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '' ,//0 ninguem, 1 admin, 2 todos 
             ),
             Array(
                 'mysql_titulo'      => 'cliente',
@@ -69,9 +69,9 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Cliente',
+                    'Nome'              => __('Cliente'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -95,12 +95,12 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Titulo',
+                    'Nome'              => __('Titulo'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'form_escondido'    => true,
                     'input'             => array(
@@ -122,12 +122,12 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome Opcional',
+                    'Nome'              => __('Nome Opcional'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'form_escondido'    => true,
                     'input'             => array(
@@ -149,12 +149,12 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Email Opcional',
+                    'Nome'              => __('Email Opcional'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'form_escondido'    => true,
                     'input'             => array(
@@ -176,9 +176,9 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Mensagem',
+                    'Nome'              => __('Mensagem'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
                     'aviso'             => '',
@@ -202,12 +202,12 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Email do Usuário',
+                    'Nome'              => __('Email do Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'form_escondido'    => true,
                     'input'             => array(
@@ -229,12 +229,12 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Segundo Email do Usuário',
+                    'Nome'              => __('Segundo Email do Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'form_escondido'    => true,
                     'input'             => array(
@@ -256,12 +256,12 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
                 'mysql_inside'      => false, // Funcao Executada quando o dado for inserido no banco de dados
                 'mysql_outside'     => false, // Funcao Executada quando o dado for retirado no banco de dados
                 'perm_copia'        => false, //permissao funcional necessaria para campo 2 todos 
-                'linkextra'          => '', //0 ninguem, 1 admin, 2 todos 
+                'linkextra'         => '', //0 ninguem, 1 admin, 2 todos 
                 'edicao'            => Array(
-                    'Nome'              => 'Nome do Usuário',
+                    'Nome'              => __('Nome do Usuário'),
                     'valor_padrao'      => false,
                     'readonly'          => false,
-                    'aviso'             => 'Apenas letras',
+                    'aviso'             => __('Apenas letras'),
                     'formtipo'          => 'input',
                     'form_escondido'    => true,
                     'input'             => array(
@@ -273,4 +273,4 @@ final Class Usuario_Historico_Email_DAO extends Framework\App\Dao
         );
     }
 }
-?>
+

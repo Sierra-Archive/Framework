@@ -40,7 +40,11 @@ $('#produtocontrolador1 select').attr('id','produto1');
         // Pega ["tabela"] e ["class"] da tabela que estava sendo alterada no forum
         $dominio = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($dominiosigla);
         // Inicia Classe, Gera suas colunas e acha a coluna alterada
-        $alterado = $dominio['classe'].'_DAO';
+        if (strpos($dominio['classe'], '_DAO') === false) {
+            $alterado = $dominio['classe'].'_DAO';
+        }else{
+            $alterado = $dominio['classe'];
+        }
         $alterado = new $alterado();
         $alterado = $alterado->Get_Extrangeiras_ComExterna();
         foreach($alterado as $indice=>&$valor){
@@ -275,127 +279,5 @@ $('#produtocontrolador1 select').attr('id','produto1');
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    /*
-     * ANTIGOOOOOOOO
-    
-    public function Select_Recarrega_Extrangeira($dominiosigla,$alterado,$campo_alterado,$id=0){
-        
-        // Configura Json
-        $usados = Array();
-        $this->Json_Definir_zerar(false);
-        $this->_Visual->Json_Info_Update('Historico', false);
-        if($id==0 || !isset($id)){
-            return false;
-        }
-        
-        // Pega ["tabela"] e ["class"] da tabela que estava sendo alterada no forum
-        $dominio = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($dominiosigla);
-        // Inicia Classe e Captura Extrangeiras
-        $class = $dominio['classe'].'_DAO';
-        $class = new $class();
-        $extrangeiras1 = $class->Get_Extrangeiras();
-        
-        
-        // Externas da tabela que foi alterada
-        $extrangeiras2 = &Conexao::$tabelas_ext[$alterado];
-        
-        // Zera Valores
-        $ativado = 0;
-        $ext1 = Array();
-        $ext2 = Array();
-        // Verifica se ALTERADO existe em DOMINIO
-        foreach($extrangeiras1 as $valor){
-            $nome = explode('.',$valor['conect']);
-            $ext1[] = $nome[0];
-            if(strpos($valor['conect'], $alterado)!==false){ $ativado = 1; }
-        }
-        foreach($extrangeiras2 as $valor){
-            $ext2[] = $valor;
-        }
-        if($ativado!=1) return;
-        
-        // Pega Todas as Tabelas a serem Alteradas
-        // Bota UNICAS PQ na tabela usuario tem dois casos.
-        $ext = array_unique(array_intersect($ext1, $ext2));
-        
-        // Pega Campos da Tabela Dominio
-        $campos = \Framework\App\Conexao::$tabelas[$dominio['tabela']]['colunas'];
-        
-        // Percorre Tabelas Usadas em busca de resultados
-        foreach($ext as $valor){
-            $tabela_aser_carregada = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($valor);
-            // Percorre campos da tabela principal
-            foreach($campos as $valor2){
-                if(isset($valor2['mysql_estrangeira'])){
-                    if(strpos($valor2['mysql_estrangeira'], $valor.'.')!==false && strpos($valor2['mysql_estrangeira'], $valor.'.')==0){
-                         $html_camada_alterada = $valor2['mysql_titulo'];
-                         list($ligacao,$mostrar,$condicao) = $this->_Modelo->db->Extrangeiras_Quebra($valor2['mysql_estrangeira']);
-                    }
-                    if(strpos($valor2['mysql_estrangeira'], $alterado.'.')!==false && strpos($valor2['mysql_estrangeira'], $alterado.'.')==0){
-                        // ADICIONA CONDICAO EXTERNA
-                         $condicaoexterna = $valor2['mysql_titulo'];
-                    }
-                }
-            }
-            $where = Array($condicaoexterna => $id);
-            if($condicao!==false){
-                if(strpos($condicao[0], '.')!==false){
-                    $referencia = explode('.',$condicao[0]);
-                }else{
-                    $referencia = Array('',$condicao[0]);
-                }
-                if(strpos($condicao[1], '.')===false && $referencia[1]!=$condicaoexterna && $referencia[0]==Conexao::GetSigla($tabela_aser_carregada['tabela']) || $referencia[0]==''){
-                    $where[$condicao[0]] = $condicao[1];
-                }
-            }
-            // Verifica se ja foi usado se nao, continua
-            if(!in_array($tabela_aser_carregada['classe'],$usados)){
-                $usados[] = $tabela_aser_carregada['classe'];
-                // PEga as opçoes para enviar para o usuario
-                $opcoes = $this->_Modelo->db->Sql_Select($tabela_aser_carregada['classe'], $where);           
-                $html   = '';
-                $i      = 0;
-                $novoid = 0;
-                if($opcoes!==false && !empty($opcoes)){
-                    if(is_object($opcoes)) $opcoes = Array(0=>$opcoes);
-                    foreach ($opcoes as $indice2=>$valor2) {
-                        if($i==0){
-                            $novoid = $valor2->$ligacao[1];
-                            $seleciona = 1;
-                        }else{
-                            $seleciona = 0;
-                        }
-                        $html .= \Framework\Classes\Form::Select_Opcao_Stat($valor2->$mostrar[1], $valor2->$ligacao[1],$seleciona);
-                        ++$i;
-                    }
-                }else{
-                    $html .= \Framework\Classes\Form::Select_Opcao_Stat('', '',1);
-                }
-                // Json
-                $conteudo = array(
-                    'location'  =>  '#'.$html_camada_alterada,
-                    //'js'        =>  '$("#'.$html_camada_alterada.'").trigger("liszt:updated");',
-                    'js'        =>  '',
-                    'html'      =>  $html
-                );
-                $this->_Visual->Json_IncluiTipo('Conteudo',$conteudo);
-                // SE tiver dependente chama denovo 
-                $usados_novos = self::Select_Recarrega_Extrangeira($dominiosigla,$valor,$novoid);
-                if(!empty($usados_novos)){
-                    $usados = array_merge($usados, $usados_novos);
-                }
-            }
-        }
-        return $usados;
-    }
-     *
-     */
 }
 ?>

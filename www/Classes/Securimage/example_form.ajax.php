@@ -2,7 +2,7 @@
 session_start(); // this MUST be called prior to any output including whitespaces and line breaks!
 
 $GLOBALS['ct_recipient']   = 'YOU@EXAMPLE.COM'; // Change to your email address!
-$GLOBALS['ct_msg_subject'] = 'Securimage Test Contact Form';
+$GLOBALS['ct_msg_subject'] = __('Securimage Test Contact Form');
 
 $GLOBALS['DEBUG_MODE'] = 1;
 // CHANGE TO 0 TO TURN OFF DEBUG MODE
@@ -20,7 +20,7 @@ process_si_contact_form();
     <title>Securimage Example Form</title>
     <style type="text/css">
     <!--
-        #success_message { border: 1px solid #000; width: 550px; text-align: left; padding: 10px 7px; background: #33ff33; color: #000; font-weight; bold; font-size: 1.2em; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+        #success_message { border: 1px solid #000; width: 550px; text-align: left; padding: 10px 7px; background: #33ff33; color: #000; font-weight: bold; font-size: 1.2em; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
         fieldset { width: 90%; }
         legend { font-size: 24px; }
         .note { font-size: 18px; }
@@ -123,7 +123,7 @@ function process_si_contact_form()
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && @$_POST['do'] == 'contact') {
         // if the form has been submitted
 
-        foreach($_POST as $key => $value) {
+        foreach ($_POST as $key => $value) {
             if (!is_array($key)) {
                 // sanitize the input data
                 if ($key != 'ct_message') $value = strip_tags($value);
@@ -145,20 +145,20 @@ function process_si_contact_form()
 
             if (strlen($name) < 3) {
                 // name too short, add error
-                $errors['name_error'] = 'Your name is required';
+                $errors['name_error'] = __('Your name is required');
             }
 
             if (strlen($email) == 0) {
                 // no email address given
-                $errors['email_error'] = 'Email address is required';
+                $errors['email_error'] = __('Email address is required');
             } else if ( !preg_match('/^(?:[\w\d]+\.?)+@(?:(?:[\w\d]\-?)+\.)+\w{2,4}$/i', $email)) {
                 // invalid email format
-                $errors['email_error'] = 'Email address entered is invalid';
+                $errors['email_error'] = __('Email address entered is invalid');
             }
 
             if (strlen($message) < 20) {
                 // message length too short
-                $errors['message_error'] = 'Please enter a message';
+                $errors['message_error'] = __('Please enter a message');
             }
         }
 
@@ -169,7 +169,7 @@ function process_si_contact_form()
             $securimage = new Securimage();
 
             if ($securimage->check($captcha) == false) {
-                $errors['captcha_error'] = 'Incorrect security code entered';
+                $errors['captcha_error'] = __('Incorrect security code entered');
             }
         }
 
@@ -195,7 +195,7 @@ function process_si_contact_form()
             die(json_encode($return));
         } else {
             $errmsg = '';
-            foreach($errors as $key => $error) {
+            foreach ($errors as $key => $error) {
                 // set up error messages to display with each field
                 $errmsg .= " - {$error}\n";
             }

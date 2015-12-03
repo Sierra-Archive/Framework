@@ -19,7 +19,7 @@ class Visual
     public static $config_template;
     
     // Lang
-    protected $sistema_linguagem        = 'ptBR';
+    protected $sistema_linguagem        = 'pt_BR';
     protected $Layolt_Tipo              = 0;
 
     // Variaveis de Template
@@ -647,7 +647,7 @@ class Visual
         // Carrega Javascripts
         $array_js = Array(
             // Linguagem
-            'lang/'.$this->sistema_linguagem.'/Linguagem',
+            '../lang/'.$this->sistema_linguagem.'/Linguagem',
             
             // Identifica Oq cada Broser Suporta
             'sistema/modernizr/modernizr',
@@ -1107,6 +1107,54 @@ class Visual
     public function renderizar(&$calendario = 0,$config_dia = 0,$config_mes = 0,$config_ano = 0,$config_dataixi = 0) {
         //$imprimir = new \Framework\App\Tempo('Renderizar Json Visual - SEM SMARTY');
 	// logado =2 ajax
+        $titulo = $this->Json_Get_Titulo();
+        $head = '<title>'.SISTEMA_NOME.' - ';
+        if ($titulo=='') { 
+            $head .=  __('Sem Titulo'); 
+            
+        } else { 
+            $head .= $titulo;
+        } 
+        $head .= '</title>'
+        .'<meta charset="'.CONFIG_PADRAO_TECLADO.'">'
+        .'<meta name="viewport" content="width=device-width, initial-scale=1.0">'
+        .'<meta name="description" content="">'
+        .'<meta name="author" content="Ricardo Rebello Sierra - contato@ricardosierra.com.br">'
+        .'<meta name="robots" content="noindex">'
+        .'<link rel="icon" type="image/png" href="'.ARQ_URL.'favicon.ico"/>'
+        
+        // Trata Icones para Apple
+        .'<link rel="apple-touch-icon" sizes="57x57" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon" sizes="72x72" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon" sizes="114x114" href="'.ARQ_URL.'favicon.ico"/>'
+
+        .'<link rel="apple-touch-icon-precomposed" sizes="57x57" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon-precomposed" sizes="72x72" href="'.ARQ_URL.'favicon.ico"/>'
+        .'<link rel="apple-touch-icon-precomposed" sizes="114x114" href="'.ARQ_URL.'favicon.ico"/>'
+
+        .'<link rel="apple-touch-startup-image" href="'.ARQ_URL.'favicon.ico">'
+        .'<!-- BEGIN SHORTCUT AND TOUCH ICONS -->'
+        .'<link rel="shortcut icon" href="'.ARQ_URL.'favicon.ico">'
+        .'<link rel="apple-touch-icon" href="'.ARQ_URL.'favicon.ico">'
+        .'<!-- END SHORTCUT AND TOUCH ICONS -->'
+        
+        // Transforma App em Instalável
+        .'<meta name="mobile-web-app-capable" content="yes">'
+        .'<meta name="apple-mobile-web-app-capable" content="yes">'
+        .'<meta name="apple-mobile-web-app-title" content="'.SISTEMA_NOME.'">'
+        .'<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">'
+        .'<meta name="apple-touch-fullscreen" content="yes">'
+        
+        .'<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->'
+        .'<!--[if lt IE 9]>'
+        .'  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>'
+        .'  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>'
+        .'<![endif]-->';
+        
+        
+        
+        
+        
         $params = array(
             'site_titulo'   => $this->Json_Get_Titulo(),
             'url_css'       => $this->template_url.'css/',
@@ -1115,6 +1163,7 @@ class Visual
             'url_assets'    => $this->template_url.'assets/',
             'menu'          => '',
             'sistema'       => array(
+                'head'          => $head,
                 'css'           => $this->Sistema_Css(),
                 'extras'        => $this->Sistema_Extras()
             ),
@@ -1383,6 +1432,51 @@ class Visual
             $this->Blocar($this->renderizar_bloco('template_tabela',$config));
         }else{
             return $this->renderizar_bloco('template_tabela',$config);
+        }
+    }
+    /**
+     * Criação de Data Table com Muitos Dados
+     * Só Carrega o Necessário
+     * 
+     * @param array $table Array com a Tabela ja Prédefinida
+     * @param varchar $url Url que estará os Dados do Modelo que retornará os Dados
+     * @param varchar $style Folha de Estilos Opcional
+     * @param bolean $blocar Se Add ou não ao bloco
+     * @param bolean $apagado1 Se Apaga ou nao a PRimeira coluna
+     * @param array $aaSorting Array com a Ordenacao da Tabela será passado ao Datatable
+     * @param bolean $ColunasOrd Se possue ordenação de colunas
+     * @return string Retorna HTML ou se Blocar, um true
+     */
+    public function Show_Tabela_DataTable_Massiva($table, $url = false, $style='', $blocar= true, $apagado1 = false, $aaSorting=Array(Array(0,'asc')), $ColunasOrd = false) {
+       if ($url === false) {
+           $url = filter_input(INPUT_GET, 'url', FILTER_SANITIZE_URL);
+       }
+        
+        $aaSortingtxt = '';
+        $i = 0;
+        if (is_array($aaSorting)) {
+            foreach ($aaSorting as &$valor) {
+                if ($i>0) $aaSortingtxt .= ', ';
+                $aaSortingtxt .= '['.$valor[0].',\''.$valor[1].'\']';
+                ++$i;
+            }
+        }
+        $config = Array(
+            'Tipo'      => 'Massiva',
+            'Opcao'     => Array(
+                'Tabela'         => $table,
+                'Url'            => 'Modelo/'.$url,
+                'Style'          => $style,
+                'Apagado1'       => $apagado1,
+                'aaSorting'      => $aaSortingtxt,
+                'Colunas  '      => $ColunasOrd // Ordenacao das Colunas
+            )
+        );
+        if ($blocar === true) {
+            $this->Blocar($this->renderizar_bloco('template_tabela', $config));
+            return true;
+        } else {
+            return $this->renderizar_bloco('template_tabela', $config);
         }
     }
     /**

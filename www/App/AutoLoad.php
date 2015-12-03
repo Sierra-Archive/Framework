@@ -242,8 +242,8 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
             }else{
                 $function = 'Nao Reconhecido';
             }
-            $content .= '<tr valign=\'top\'><td><b>'.$linha['file'].':'.$linha['line'].'</b></td>'.
-                    '<td><pre>'.$linha['function'].'</pre></td>';
+            $content .= '<tr valign=\'top\'><td><b>'.$file.':'.$line.'</b></td>'.
+                    '<td><pre>'.$function.'</pre></td>';
             
             $content .= '<td>';
             $i = 1;
@@ -264,6 +264,16 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
 }
 function Erro_Email($errno, $errstr, $errfile, $errline){
     $mensagem = Erro_Formatar( $errno, $errstr, $errfile, $errline);
+    
+    // Verifica Existencia das Constantes
+    if (!defined('CLASS_PATH')) {
+        if (!defined('ROOT')) {
+            define('ROOT',  ROOT_PADRAO);
+        } 
+        define('CLASS_PATH',  ROOT      .'Classes'  .DS);
+    }   
+    
+    // Carrega se Nao tiver carregado
     require_once CLASS_PATH . 'Email'.DS.'Email'.'.php';
     $mailer = new \Framework\Classes\Email();
     $send	= $mailer->setTo('sierra.csi@gmail.com', 'Ricardo Sierra')
@@ -313,6 +323,15 @@ define('ARQ_URL',           URL_PATH.'arq'.US.SRV_NAME_SQL.US);
 define('ARQ_PATH',          ROOT.'arq'.DS.SRV_NAME_SQL.DS);
 define('CACHE_PATH',        ROOT.'Cache'.DS.SRV_NAME_SQL.DS);
 define('LANG_PATH',         ROOT.'i18n'.DS);
+
+/**
+ * Endereço de Pasta de Temnporarios no Servidor
+ */
+define('TEMP_PATH',         ROOT.'Temp'.DS.SRV_NAME_SQL.DS);
+/**
+ * Endereço de Pasta de Temnporarios para o Cliente
+ */
+define('TEMP_URL',          URL_PATH.'Temp'.US.SRV_NAME_SQL.US);
 // Cria e da Permissao na Pasta de Arquivos principal
 if(!is_dir(ROOT.'arq'.DS)){
     mkdir (ROOT.'arq'.DS, 0777 );
@@ -341,10 +360,22 @@ define('SERVER_URL',           $_SERVER['REQUEST_URI']);
  */
 $textdomain = "Framework";
 if (isset($_GET['locale']) && !empty($_GET['locale'])){
-    define('SISTEMA_LINGUAGEM', \anti_injection($_GET['locale']));
+    $locale = \anti_injection($_GET['locale']);
 }else{
-    define('SISTEMA_LINGUAGEM', SISTEMA_LINGUAGEM_PADRAO);
+    $locale = SISTEMA_LINGUAGEM_PADRAO;
 }
+
+// Faz Tratamento
+if (strlen($locale)==4) {
+    $locale = $locale[0].$locale[1].'_'.$locale[2].$locale[3];
+}
+//Verifica Se os Arquivos Existem
+if (!is_file(LANG_PATH.$locale.DS.'Linguagem.js')) {
+    throw new \Exception('Javascript da Linguagem não Encontrado: '.$locale,404);
+}
+
+// Carrega Internacionalização I18N
+define('SISTEMA_LINGUAGEM',  $locale);
 putenv('LANGUAGE=' . SISTEMA_LINGUAGEM);
 putenv('LANG=' . SISTEMA_LINGUAGEM);
 putenv('LC_ALL=' . SISTEMA_LINGUAGEM);

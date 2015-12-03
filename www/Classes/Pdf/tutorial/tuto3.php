@@ -4,13 +4,13 @@ require('../fpdf.php');
 class PDF extends FPDF
 {
     private $logo = false;
-function PDF($titulo,$logo,$orientation='P', $unit='mm', $size='A4')
+function PDF($titulo, $logo, $orientation='P', $unit='mm', $size='A4')
 {
         $pdf->SetTitle($arquivo_nome);
         $pdf->SetAuthor('Ricardo Rebello Sierra');
-        $pdf->SetFont('Arial','',14);
+        $pdf->SetFont('Arial', '',14);
 	// Call parent constructor
-	$this->FPDF($orientation,$unit,$size);
+	$this->FPDF($orientation, $unit, $size);
 	// Initialization
 	$this->logo = $logo;
 }
@@ -19,7 +19,7 @@ function Header()
 	global $title;
 
 	// Arial bold 15
-	$this->SetFont('Arial','B',15);
+	$this->SetFont('Arial', 'B',15);
 	// Calculate width of title and position
 	$w = $this->GetStringWidth($title)+6;
 	$this->SetX((210-$w)/2);
@@ -30,7 +30,7 @@ function Header()
 	// Thickness of frame (1 mm)
 	$this->SetLineWidth(1);
 	// Title
-	$this->Cell($w,9,$title,1,1,'C',true);
+	$this->Cell($w,9, $title,1,1,'C',true);
 	// Line break
 	$this->Ln(10);
 }
@@ -40,7 +40,7 @@ function Footer()
 	// Position at 1.5 cm from bottom
 	$this->SetY(-15);
 	// Arial italic 8
-	$this->SetFont('Arial','I',8);
+	$this->SetFont('Arial', 'I',8);
 	// Text color in gray
 	$this->SetTextColor(128);
 	// Page number
@@ -50,7 +50,7 @@ function Footer()
 function ChapterTitle($num, $label)
 {
 	// Arial 12
-	$this->SetFont('Arial','',12);
+	$this->SetFont('Arial', '',12);
 	// Background color
 	$this->SetFillColor(200,220,255);
 	// Title
@@ -64,29 +64,29 @@ function ChapterBody($file)
 	// Read text file
 	$txt = file_get_contents($file);
 	// Times 12
-	$this->SetFont('Times','',12);
+	$this->SetFont('Times', '',12);
 	// Output justified text
-	$this->MultiCell(0,5,$txt);
+	$this->MultiCell(0,5, $txt);
 	// Line break
 	$this->Ln();
 	// Mention in italics
-	$this->SetFont('','I');
+	$this->SetFont('', 'I');
 	$this->Cell(0,5,'(end of excerpt)');
 }
 
 function PrintChapter($num, $title, $file)
 {
 	$this->AddPage();
-	$this->ChapterTitle($num,$title);
+	$this->ChapterTitle($num, $title);
 	$this->ChapterBody($file);
 }
 }
 
 $pdf = new PDF();
-$title = '20000 Leagues Under the Seas';
+$title = __('20000 Leagues Under the Seas');
 $pdf->SetTitle($title);
 $pdf->SetAuthor('Jules Verne');
-$pdf->PrintChapter(1,'A RUNAWAY REEF','20k_c1.txt');
-$pdf->PrintChapter(2,'THE PROS AND CONS','20k_c2.txt');
+$pdf->PrintChapter(1,'A RUNAWAY REEF', '20k_c1.txt');
+$pdf->PrintChapter(2,'THE PROS AND CONS', '20k_c2.txt');
 $pdf->Output();
 ?>
