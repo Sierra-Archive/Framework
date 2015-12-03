@@ -140,7 +140,7 @@ class Agenda_AtividadesControle extends Agenda_Controle
      * 
      * 
      * 
-    * Função para gravar Relações entre tabelas e usuario_social, é uma funcao static e é chamada por diversos oturos modulos
+    * Função para gravar Relações entre tables e usuario_social, é uma funcao static e é chamada por diversos oturos modulos
     * 
     * @name Atividade_inserir
     * @access public

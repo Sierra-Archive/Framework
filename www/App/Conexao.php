@@ -44,11 +44,11 @@ final class Conexao
     protected $_Cache                   =  '';
     
     protected $mysqli;
-    static    $tabelas;
-    static    $tabelas_siglas           = Array();
-    static    $tabelas_ext              = Array();
-    static    $tabelas_Links            = Array();
-    static    $tabelas_Links_Invertido  = Array();
+    static    $tables;
+    static    $tables_siglas           = Array();
+    static    $tables_ext              = Array();
+    static    $tables_Links            = Array();
+    static    $tables_Links_Invertido  = Array();
     
     /**
      * Construtor
@@ -116,21 +116,21 @@ final class Conexao
                 $this->Tabelas_Variaveis_Gerar();
                 $cache_conexao = Array();
                 // Salva Variaveis para passar pro cache
-                $cache_conexao[] = &self::$tabelas;
-                $cache_conexao[] = &self::$tabelas_siglas;
-                $cache_conexao[] = &self::$tabelas_Links;
-                $cache_conexao[] = &self::$tabelas_Links_Invertido;
-                $cache_conexao[] = &self::$tabelas_ext;
+                $cache_conexao[] = &self::$tables;
+                $cache_conexao[] = &self::$tables_siglas;
+                $cache_conexao[] = &self::$tables_Links;
+                $cache_conexao[] = &self::$tables_Links_Invertido;
+                $cache_conexao[] = &self::$tables_ext;
 
                 $this->_Cache->Salvar('Conexao', $cache_conexao, '1200', true);
             }else{
                 // Recupera Cache
                 list(
-                    self::$tabelas,
-                    self::$tabelas_siglas,
-                    self::$tabelas_Links,
-                    self::$tabelas_Links_Invertido,
-                    self::$tabelas_ext
+                    self::$tables,
+                    self::$tables_siglas,
+                    self::$tables_Links,
+                    self::$tables_Links_Invertido,
+                    self::$tables_ext
                 ) = $cache_conexao;
                 unset($cache_conexao);
             }
@@ -142,7 +142,7 @@ final class Conexao
     private function __clone(){}
 
     public static function &Dao_GetColunas($nome){
-        return self::$tabelas[$nome]['colunas'];
+        return self::$tables[$nome]['colunas'];
     }
     /**
      * Carrega Query
@@ -356,7 +356,7 @@ final class Conexao
             }else{
                 return false;
             }
-            // Se tiverem varias tabelas escolhe a correta
+            // Se tiverem varias tables escolhe a correta
             $tabela_multi = explode(' ',$tabela);
             if(count($tabela_multi)>1){
                $tabela = $tabela_multi[0];
@@ -376,7 +376,7 @@ final class Conexao
             }else if($campo=='id'){
                 return $this->query('ALTER TABLE `'.$tabela.'` ADD `'.$campo.'`  INT( 11 ) NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT \'Chave Primária\';',false);
             }else{
-                $colunas = &self::$tabelas[$tabela]["colunas"];
+                $colunas = &self::$tables[$tabela]["colunas"];
                 $existe = false;
                 if(isset($colunas) && !empty($colunas)){
                     foreach($colunas as &$valor){
@@ -420,18 +420,18 @@ final class Conexao
                 $tabela = $tabela[0];
             }
             
-            if(!array_key_exists(strtolower($tabela), array_change_key_case(self::$tabelas))){
+            if(!array_key_exists(strtolower($tabela), array_change_key_case(self::$tables))){
                 throw new \Exception('Erro de Query: '.$erro,3200);
             }else{
                 // Acha a Tabela mesmo se tiver maiusculas e minusculas diferenciando
-                foreach(self::$tabelas as $indice=>&$valor){
+                foreach(self::$tables as $indice=>&$valor){
                     if(strtolower($tabela)==strtolower($indice)){
                         $tabela = $indice;
                     }
                 }
             }*/
             // Conserta query
-            $this->Sql_Query('criar tabela', self::$tabelas);
+            $this->Sql_Query('criar tabela', self::$tables);
             return true;
         }
         return false;
@@ -559,7 +559,7 @@ final class Conexao
                     
             }
         }else{
-            // Se for um conjunto de tabelas, faz em todas, recursivamente
+            // Se for um conjunto de tables, faz em todas, recursivamente
             foreach($tabela as &$valor) {
                 $this->Sql_Query($comando,$valor);
                 /*$query_somar = $this->Sql_Query($comando,$valor,false);
@@ -812,13 +812,13 @@ final class Conexao
         $sql_condicao   = (string) '';
         
         // Para extrangeiras
-        $tabelas_extrangeiras = Array();
+        $tables_extrangeiras = Array();
         $join     = '';
         $ext_campos      = '';
         $cont = 0;
         
-        // Todas as tabelas usadas ficam registradas aqui para controle
-        $tabelas_usadas = Array();
+        // Todas as tables usadas ficam registradas aqui para controle
+        $tables_usadas = Array();
         
         // Carrega Objeto e Asvariaveis dele
         $resultado_unico = new $class_dao;
@@ -829,7 +829,7 @@ final class Conexao
         $sql_tabela_nome    = call_user_func(array($class_dao, 'Get_Nome'));
         $sql_tabela_sigla   = call_user_func(array($class_dao, 'Get_Sigla'));
         $sql_tabela   = $sql_tabela_nome.' '.$sql_tabela_sigla;
-        $tabelas_usadas[$sql_tabela_sigla] = $sql_tabela_nome;
+        $tables_usadas[$sql_tabela_sigla] = $sql_tabela_nome;
         
         
         
@@ -897,7 +897,7 @@ final class Conexao
                     }
                     // Escreve as Tabelas
                     $join .= ' LEFT JOIN '.$tabela['tabela'].' AS '.$sigla;
-                    $tabelas_usadas[$sigla] = $tabela['tabela'];
+                    $tables_usadas[$sigla] = $tabela['tabela'];
                     $join  .= ' ON '.$sql_tabela_sigla.'.'.$valor['titulo'].' = '.$sigla.'.'.$ligacao[1];
                     ++$cont;
                 }
@@ -941,7 +941,7 @@ final class Conexao
             $sql.= ', ';
         }
         $sql .= $ext_campos.' FROM '.$sql_tabela.$join;
-        return Array($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j);
+        return Array($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tables_usadas,$j);
     }
     public function Sql_Contar($class_dao, $where = false){
         $tempo = new \Framework\App\Tempo('Conexao_Contar');   
@@ -1023,10 +1023,10 @@ final class Conexao
         $Cache = $this->_Cache->Ler('Select-'.$class_dao.$campos);
         if (!$Cache) {
             $Cache = $this->Sql_Select_Comeco($class_dao, $campos);
-            list($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j) = $Cache;
+            list($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tables_usadas,$j) = $Cache;
             $this->_Cache->Salvar('Select-'.$class_dao.$campos, $Cache);
         }else{
-            list($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tabelas_usadas,$j) = $Cache;
+            list($sql,$sql_tabela_sigla,$sql_condicao,$valores,$tables_usadas,$j) = $Cache;
         }
         
         // Roda todas as condicoes afim de nao trazer nada a mais..
@@ -1233,7 +1233,7 @@ final class Conexao
                             $sigla = explode('.', $indice);
                             $sigla = $sigla[0];
                             // Caso Sigla nao esteja na query, importa para ela !
-                            if(!isset($tabelas_usadas[$sigla])){
+                            if(!isset($tables_usadas[$sigla])){
                                 $link = self::Tabelas_GetLinks_Recolher($sql_tabela_sigla);
                                 if(!isset($link[$sigla])){
                                     throw new \Exception('Tabela não esta na query: '.$sigla,3121);
@@ -1241,7 +1241,7 @@ final class Conexao
                                     // Escreve as Tabelas
                                     $tabela = self::Tabelas_GetSiglas_Recolher($sigla);
                                     $sql .= ' LEFT JOIN '.$tabela['tabela'].' AS '.$sigla;
-                                    $tabelas_usadas[$sigla] = $tabela['tabela'];
+                                    $tables_usadas[$sigla] = $tabela['tabela'];
                                     //Faz o Campo de Procura
                                     $sql  .= ' ON '.$sql_tabela_sigla.'.id = '.$sigla.'.'.$link[$sigla];
                                 }
@@ -1568,7 +1568,7 @@ final class Conexao
         // Captura a Tabela a ser Utilizada
         $tabela_utilizada = self::Tabelas_GetSiglas_Recolher($ligacao[0]);
         if(!isset($tabela_utilizada['classe'])){
-            throw new \Exception('Faltando dados no dao ou tabelas extrangeiras'.$ligacao[0],3250);
+            throw new \Exception('Faltando dados no dao ou tables extrangeiras'.$ligacao[0],3250);
         }
         
         // Cria Condicoes para Achar as extrangeiras
@@ -1690,19 +1690,19 @@ final class Conexao
      */
     private static function Tabelas_Variaveis_Gerar(){
         //$tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas Gerar Variaveis');
-        $tabelas        = &self::$tabelas;
-        $siglas         = &self::$tabelas_siglas;
-        $links          = &self::$tabelas_Links;
-        $links2         = &self::$tabelas_Links_Invertido;
-        reset($tabelas);
-        while (key($tabelas) !== null) {
+        $tables        = &self::$tables;
+        $siglas         = &self::$tables_siglas;
+        $links          = &self::$tables_Links;
+        $links2         = &self::$tables_Links_Invertido;
+        reset($tables);
+        while (key($tables) !== null) {
             // Pega e Armazena por referencia
-            $current = current($tabelas);
+            $current = current($tables);
             $Link = &$current['Link'];
             $sigla = &$current['sigla'];
             
             $siglas[$sigla] = Array(
-                'tabela'    => key($tabelas),
+                'tabela'    => key($tables),
                 'classe'    => $current['class']
             );
             if($Link!==false){
@@ -1721,7 +1721,7 @@ final class Conexao
                     }
                 }
             }
-            next($tabelas);
+            next($tables);
         }
     }
     /**
@@ -1736,7 +1736,7 @@ final class Conexao
      * @version 0.0.1
      */
     public static function &Tabelas_GetSiglas_Recolher($sigla){
-        return self::$tabelas_siglas[$sigla];
+        return self::$tables_siglas[$sigla];
     }
     /**
      * 
@@ -1748,7 +1748,7 @@ final class Conexao
      */
     public static function &Tabelas_GetCampos_Recolher($sigla){
         $array = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($sigla);
-        return self::$tabelas[$array['tabela']]['colunas'];
+        return self::$tables[$array['tabela']]['colunas'];
     }
     /**
      * 
@@ -1763,12 +1763,12 @@ final class Conexao
      */
     public static function Tabelas_GetLinks_Recolher($sigla,$invertido=false){
         if($invertido){
-            if(isset(self::$tabelas_Links_Invertido[$sigla])){
-                return self::$tabelas_Links_Invertido[$sigla];
+            if(isset(self::$tables_Links_Invertido[$sigla])){
+                return self::$tables_Links_Invertido[$sigla];
             }
         }else{
-            if(isset(Conexao::$tabelas_Links[$sigla])){
-                return self::$tabelas_Links[$sigla];
+            if(isset(Conexao::$tables_Links[$sigla])){
+                return self::$tables_Links[$sigla];
             }
         }
         return false;
@@ -1799,8 +1799,8 @@ final class Conexao
         return $tab;
     }
     static function GetSigla($classe){
-        $tabelas        = &self::$tabelas;
-        return $tabelas[$classe]['sigla'];
+        $tables        = &self::$tables;
+        return $tables[$classe]['sigla'];
     }
     /**
      * 
@@ -1811,8 +1811,8 @@ final class Conexao
      */
     protected function Tabelas(){
         //$tempo = new \Framework\App\Tempo('Conexao - Processar Tabelas');
-        $tabelas        = &self::$tabelas;
-        $tabelas_ext    = &self::$tabelas_ext;
+        $tables        = &self::$tables;
+        $tables_ext    = &self::$tables_ext;
         
         // Carrega Todos os DAO
         $diretorio = dir(DAO_PATH);  
@@ -1822,8 +1822,8 @@ final class Conexao
             if(strpos($arquivo, 'DAO.php')!==false){
                 $arquivo                = str_replace(Array('.php','.'), Array('','_') , $arquivo);
                 $arquivo_nome           = $arquivo::Get_Nome();
-                $tabelas[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
-                $sigla = &$tabelas[$arquivo_nome]['sigla'];
+                $tables[$arquivo_nome] = self::Load($arquivo,$arquivo_nome);
+                $sigla = &$tables[$arquivo_nome]['sigla'];
                 
                 // Aproveita o while e Pega as extrangeiras
                 $resultado_unico = new $arquivo();
@@ -1835,7 +1835,7 @@ final class Conexao
                         list($ligacao,$mostrar,$extcondicao) = $this->Extrangeiras_Quebra($current['conect']);
                         
                         // ARMAZENA NA VARIAVEL DE CONTROLE AS SIGLAS
-                        $tabelas_ext[$ligacao[0]][$sigla] = $sigla;
+                        $tables_ext[$ligacao[0]][$sigla] = $sigla;
                         next($extrangeira);
                     }
                 }
@@ -1844,7 +1844,7 @@ final class Conexao
         $diretorio -> close();       
     }
     /**
-    * Retorna Subcategorias que sao de outras tabelas
+    * Retorna Subcategorias que sao de outras tables
     * 
     * @name Categorias_RetornaSub
     * @access public

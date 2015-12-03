@@ -59,8 +59,8 @@ abstract class Dao implements \DaoInterface
     /**
      * Caso Retorne False (padrao) nao é tabela de ligacao.
      * Mas se for tabela de mts pra mts vai retornar Array(
-     *      'tabelasigla1'=>'coluna extrangeira e primaria',
-     *      'tabelasigla2'=>'coluna extrangeira e primaria',
+     *      'tablesigla1'=>'coluna extrangeira e primaria',
+     *      'tablesigla2'=>'coluna extrangeira e primaria',
      *      [...]
      * )
      * @return boleano or Array

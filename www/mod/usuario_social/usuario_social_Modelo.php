@@ -5,7 +5,7 @@ class usuario_social_Modelo extends \Framework\App\Modelo
         parent::__construct();
     }
     /*
-    * Função para gravar Relações entre tabelas e usuario_social, é uma funcao static e é chamada por diversos oturos modulos
+    * Função para gravar Relações entre tables e usuario_social, é uma funcao static e é chamada por diversos oturos modulos
     * 
     * @name Inserir_Pers_Relacao
     * @access public

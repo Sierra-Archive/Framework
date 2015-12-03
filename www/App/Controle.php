@@ -1579,7 +1579,7 @@ readfile($link);*/
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
                         $nome_da_tab_classe = $nome_da_tab.'_DAO';
-                        // Pega as tabelas linkadas reversa para poder achar a outra tabela de ligacao
+                        // Pega as tables linkadas reversa para poder achar a outra tabela de ligacao
                         $links_reverso = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($tabelalinkada['Tabela'],true);
                         unset($links_reverso[$sigla]);
                         // Seleciona e Atualiza
@@ -1950,7 +1950,7 @@ readfile($link);*/
         return true;
     }
     /**
-     * Usado pelas tabelas extrangeiras, altera o valor {campo} usado, quando se tem
+     * Usado pelas tables extrangeiras, altera o valor {campo} usado, quando se tem
      * mts varios niveis de select tipo Pais, Estado, Cidade
      * 
      * @param type $objeto

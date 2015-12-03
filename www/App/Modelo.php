@@ -265,7 +265,7 @@ class Modelo
         else            return 0;
     }
     /**
-    * Retorna Subcategorias que sao de outras tabelas
+    * Retorna Subcategorias que sao de outras tables
     * 
     * @name Categorias_RetornaSub
     * @access public
