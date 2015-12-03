@@ -31,7 +31,7 @@ if (!defined('SISTEMA_EXPORTAR_EXCEL')) {
 }
 
 
-
+// protocolo 20150001192082
 // Linguagem Do Sistema
 if (!defined('SISTEMA_LINGUAGEM_PADRAO')) {
     define('SISTEMA_LINGUAGEM_PADRAO', 'pt_BR'); 

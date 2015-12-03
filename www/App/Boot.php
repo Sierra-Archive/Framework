@@ -41,7 +41,6 @@ class Boot {
         }
         
         
-        
         // Se nao tiver cache continua
         $tempo = new \Framework\App\Tempo('BOOT Inicial');   
         // Inicia SEssao e Classes PARTE 1

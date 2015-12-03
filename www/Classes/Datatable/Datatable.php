@@ -307,7 +307,9 @@ class Datatable {
         $localWhereAll = array();
         
         // Pega Colunas e Nome
-        $table_class = $table_class.'_DAO';      
+        if (strpos($table_class, '_DAO') === false) {
+            $table_class = $table_class.'_DAO';
+        }   
         $table = \Framework\App\Conexao::$tables[$table_class]['nome'];
         $colunas = \Framework\App\Conexao::$tables[$table_class]['colunas'];
         $db->Sql_Select_Dados($table_class,implode(",", self::pluck($columns, 'db')), '',true);

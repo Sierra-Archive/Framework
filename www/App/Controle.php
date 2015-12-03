@@ -1530,7 +1530,11 @@ readfile($link);*/
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
-                        $nome_da_tab_class  = $nome_da_tab.'_DAO';
+                        if (strpos($nome_da_tab, '_DAO') === false) {
+                            $nome_da_tab_class  = $nome_da_tab.'_DAO';
+                        }else{
+                            $nome_da_tab_class  = $nome_da_tab;
+                        }
 
                         // Seleciona Todas as Opções
                         $where = Array($tabelalinkada['SelectMultiplo']['Linkar'] => $identificador);
@@ -1578,7 +1582,11 @@ readfile($link);*/
                         // Busca AS caracteristicas da tabela mandando a sigla como parametro
                         $nome_da_tab        = \Framework\App\Conexao::Tabelas_GetSiglas_Recolher($tabelalinkada['Tabela']);
                         $nome_da_tab        = $nome_da_tab['classe'];
-                        $nome_da_tab_classe = $nome_da_tab.'_DAO';
+                        if (strpos($nome_da_tab, '_DAO') === false) {
+                            $nome_da_tab_class  = $nome_da_tab.'_DAO';
+                        }else{
+                            $nome_da_tab_class  = $nome_da_tab;
+                        }
                         // Pega as tables linkadas reversa para poder achar a outra tabela de ligacao
                         $links_reverso = \Framework\App\Conexao::Tabelas_GetLinks_Recolher($tabelalinkada['Tabela'],true);
                         unset($links_reverso[$sigla]);
@@ -1615,7 +1623,7 @@ readfile($link);*/
                                 if($valor2=='' || $valor===NULL) continue;
                                 // Confere o Resto
                                 if($ovalor===false){
-                                    $objeto2 = new $nome_da_tab_classe;
+                                    $objeto2 = new $nome_da_tab_class;
                                     $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                     $objeto2->$camponovo                        = $valor2;
                                     $sucesso = $this->_Modelo->db->Sql_Inserir($objeto2);
@@ -1626,7 +1634,7 @@ readfile($link);*/
                                     );
                                     $respostas2  = $this->_Modelo->db->Sql_Select($nome_da_tab, $where,1);
                                     if($respostas2===false){
-                                        $objeto2 = new $nome_da_tab_classe;
+                                        $objeto2 = new $nome_da_tab_class;
                                         $objeto2->$links[$tabelalinkada['Tabela']]  = $identificador;
                                         $objeto2->$camponovo                        = $valor2;
                                         $objeto2->$ovalor                           = '1';
@@ -2458,7 +2466,7 @@ readfile($link);*/
                     if($link!='#'){
                         $modulo = explode('/', $link);
                         //if(count($modulo)<3 || /*$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMIN || */$this->_Acl->logado_usuario->grupo==CFG_TEC_IDADMINDEUS || $this->_Permissao_Verificar_Modulo($modulo[0],$modulo[1])===true || $modulo[2]=='Home'){
-                        if(isset($this->_Acl->logado_usuario->grupo) && (($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDADMINDEUS && $modulo[2]!='Newsletter') || ($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDNEWSLETTER &&  $modulo[2]!='Newsletter'))){
+                        if(isset($this->_Acl->logado_usuario->grupo) && (($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDADMINDEUS && isset($modulo[2]) && $modulo[2]!='Newsletter') || ($this->_Acl->logado_usuario->grupo!=CFG_TEC_IDNEWSLETTER && isset($modulo[2]) && $modulo[2]!='Newsletter'))){
 
                             $this->_Visual->menu['link'][]  = $valor['link'];
                             $this->_Visual->menu['ext'][]   = $valor['ext'];

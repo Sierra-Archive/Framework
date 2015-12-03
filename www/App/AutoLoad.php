@@ -262,8 +262,8 @@ function Erro_Formatar( $errno, $errstr, $errfile, $errline, $previ = '', $trace
 
     return $content;
 }
-function Erro_Email($errno, $errstr, $errfile, $errline){
-    $mensagem = Erro_Formatar( $errno, $errstr, $errfile, $errline);
+function Erro_Email($errno, $errstr, $errfile, $errline, $previos, $trace){
+    $mensagem = Erro_Formatar( $errno, $errstr, $errfile, $errline, $previos, $trace);
     
     // Verifica Existencia das Constantes
     if (!defined('CLASS_PATH')) {

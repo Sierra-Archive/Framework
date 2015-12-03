@@ -319,7 +319,7 @@ class usuario_Controle extends \Framework\App\Controle
         )));
         // Continua Resto
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
-        $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
+        $usuario = $this->_Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add, deletado');
         if(is_object($usuario)){
             $usuario = Array(0=>$usuario);
         }

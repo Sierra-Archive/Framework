@@ -102,7 +102,7 @@ try{
 // Se der MERDA, Dispara Erro
 catch(Exception $e) {
     if (SISTEMA_DEBUG === true) {
-        echo Erro_Formatar($e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious());
+        echo Erro_Formatar($e->getCode(), $e->getMessage(), $e->getFile(), $e->getLine(), $e->getPrevious(), $e->getTrace());
         exit;
     } else {
         // Chama Erro
@@ -110,7 +110,7 @@ catch(Exception $e) {
             Erro_Email(
                 $e->getCode(), $e->getMessage(), 
                 $e->getFile(), $e->getLine(), 
-                $e->getPrevious(), $e->getTraceAsString()
+                $e->getPrevious(), $e->getTrace()
             );
         }
         // Redireciona
