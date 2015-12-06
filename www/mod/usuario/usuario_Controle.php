@@ -1053,7 +1053,7 @@ class usuario_Controle extends \Framework\App\Controle
             self::DAO_Campos_Retira($campos, 'email2');
             if($tipo=='cliente'){
                 self::Campos_Deletar_Fisica($tipo, $campos, $usuario);
-                self::DAO_Campos_Retira($campos, 'obs');
+                //self::DAO_Campos_Retira($campos, 'obs');
             }else{
                 self::Campos_Deletar_Juridica($tipo, $campos, $usuario);
                 
@@ -1075,6 +1075,14 @@ class usuario_Controle extends \Framework\App\Controle
         self::DAO_Campos_Retira($campos, 'foto_cnh_apv');
         self::DAO_Campos_Retira($campos, 'foto_res');
         self::DAO_Campos_Retira($campos, 'foto_res_apv');
+        self::DAO_Campos_Retira($campos, 'entrega_cep');
+        self::DAO_Campos_Retira($campos, 'entrega_endereco');
+        self::DAO_Campos_Retira($campos, 'entrega_pais');
+        self::DAO_Campos_Retira($campos, 'entrega_estado');
+        self::DAO_Campos_Retira($campos, 'entrega_cidade');
+        self::DAO_Campos_Retira($campos, 'entrega_bairro');
+        self::DAO_Campos_Retira($campos, 'entrega_numero');
+        self::DAO_Campos_Retira($campos, 'entrega_complemento');
     }
 }
 ?>
