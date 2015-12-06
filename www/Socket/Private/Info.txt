@@ -1,0 +1,4 @@
+Essa Pasta é protegida de acesso publico e serve para armazenar arquivos confidenciais
+que não podem ser acessados pelos usuarios de fora.
+
+Exemplos: Backups de Banco de Dados, etc...

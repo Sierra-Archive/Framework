@@ -16,5 +16,19 @@ class comercio_certificado_PropostaModelo extends comercio_certificado_Modelo
     public function __construct(){
         parent::__construct();
     }
+    /**
+     * 
+     * @param type $Modelo
+     * @param type $usuarioid
+     * @param type $motivoid
+     */
+    static function Financeiro_Motivo_Exibir($motivoid) {
+        $motivoid = (int) $motivoid;
+        $Registro = &\Framework\App\Registro::getInstacia();
+        $_Modelo = &$Registro->_Modelo;
+        $proposta = $_Modelo->db->Sql_Select('Comercio_Proposta',Array('id'=>$motivoid),1);
+        if ($proposta === false) return 'Proposta não Encontrada';
+        return Array('Proposta: #'.$motivoid, $proposta->cliente2);
+    }
 }
 ?>

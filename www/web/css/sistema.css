@@ -1,4 +1,6 @@
-
+.widget-body > .dataTables_wrapper {
+    margin-left:15px;
+}
 /*Form vertical, tem label de 100 %*/
 .form-vertical > .form-group > label {
     width: 100px;

@@ -193,6 +193,21 @@ final class Conexao
         }
         throw new \Exception('Colunas com classe '.$nome.' nao Existe: '.$this->mysqli->error,3251);
     }
+    public static function anti_injection($sql){
+        if(is_array($sql)){
+            $seg = Array();
+            foreach($sql as $indice=>&$valor){
+                $seg[Conexao::anti_injection($indice)] = Conexao::anti_injection($valor);
+            }
+        }else{
+           // remove palavras que contenham sintaxe sql
+           $seg = preg_replace("/(from|select|insert|delete|where|drop table|show tables|#|\*|--|\\\\)/i", '', $sql);
+           $seg = trim($seg);//limpa espa�os vazio
+           $seg = strip_tags($seg);//tira tags html e php
+           $seg = addslashes($seg);//Adiciona barras invertidas a uma string
+        }
+        return $seg;
+    }
     /**
      * Get Colunas Pelo NOme
      * 
@@ -1572,13 +1587,17 @@ final class Conexao
             }
         }else 
         // Se Tiver {sigla}, adiciona
-        if(strpos($condicao, '{sigla}')!==false){
-            if($sql_condicao!='') $sql_condicao .= ' AND ';
+        if(!is_array($condicao) && strpos($condicao, '{sigla}')!==false ) {
+            if($sql_condicao!=''){
+                $sql_condicao .= ' AND ';
+            }
             $sql_condicao .= str_replace('{sigla}', $sql_tabela_sigla.'.', $condicao);
-        }else if($condicao!==false && $condicao!==''){
-            if($sql_condicao!='') $sql_condicao .= ' AND ';
+        }else if(!is_array($condicao) && $condicao!==false && $condicao!==''){
+            if($sql_condicao!=''){
+                $sql_condicao .= ' AND ';
+            }
             $sql_condicao .= (string) $condicao;
-        }    
+        }
         
         // CHAMA TABELA E MONTA A QUERY
         if($sql_condicao!=''){

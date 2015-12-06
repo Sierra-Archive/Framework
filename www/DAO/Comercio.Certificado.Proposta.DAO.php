@@ -485,8 +485,8 @@ final Class Comercio_Certificado_Proposta_DAO extends Framework\App\Dao
                 )
             ),Array(
                 'mysql_titulo'      => 'produto_dia_faturamento',
-                'mysql_tipovar'     => 'text', //varchar, int, 
-                'mysql_tamanho'     => 1000,
+                'mysql_tipovar'     => 'date', //varchar, int, 
+                'mysql_tamanho'     => 10,
                 'mysql_null'        => true,
                 'mysql_default'     => false,
                 'mysql_primary'     => false,

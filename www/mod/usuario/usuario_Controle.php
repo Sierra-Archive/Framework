@@ -740,12 +740,12 @@ class usuario_Controle extends \Framework\App\Controle
             $nomedisplay_sing   = 'Usuário ';
             $nomedisplay_tipo   = 'Usuario';
             // Link
-            $Controle->Tema_Endereco('Usuários');
+            $this->Tema_Endereco('Usuários');
         }else{
             $categoria = (int) $grupo[0];
             
             // Pega GRUPOS VALIDOS
-            $sql_grupos = $Modelo->db->Sql_Select('Sistema_Grupo',Array('categoria'=>$categoria));
+            $sql_grupos = $registro->_Modelo->db->Sql_Select('Sistema_Grupo','categoria='.$categoria,0,'','id');
             $grupos_id = Array();
             if(is_object($sql_grupos)) $sql_grupos = Array(0=>$sql_grupos);
             if($sql_grupos!==false && !empty($sql_grupos)){
@@ -753,6 +753,8 @@ class usuario_Controle extends \Framework\App\Controle
                     $grupos_id[] = $valor->id;
                 }
             }
+            
+            if(empty($grupos_id)) throw new \Exception('Grupos não existe', 404);
             
             // cria where de acordo com parametros
             if($inverter){
@@ -772,6 +774,10 @@ class usuario_Controle extends \Framework\App\Controle
             // Link
             $Controle->Tema_Endereco($grupo[1]);
         }
+        
+        
+        
+        
         
         $linkextra = '';
         if($grupo!==false && $grupo[0]==CFG_TEC_CAT_ID_CLIENTES && $inverter===false){

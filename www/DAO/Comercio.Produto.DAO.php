@@ -234,7 +234,7 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
             /**
              * Instacao
              */
-            Array(
+            /*Array(
                 'TabelaLinkada'     => Array(
                     'Pai'               => 'CP', // TABELA que vai manipular a conexao
                     'Tabela'            => 'SiTC', // TABELA de LINK A SER CONECTADA
@@ -254,7 +254,7 @@ final Class Comercio_Produto_DAO extends Framework\App\Dao
                         'linkextra'         => false
                     ), // Campo Boleano da tabela LINK, caso false apaga os que nao forem puxados
                 )
-            ),Array(
+            ),*/Array(
                 'mysql_titulo'      => 'obs',
                 'mysql_tipovar'     => 'text', //varchar, int, 
                 'mysql_tamanho'     => 1000,

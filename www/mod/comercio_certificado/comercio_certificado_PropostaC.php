@@ -308,6 +308,42 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             // Periodicas
             $identificador  = $this->_Modelo->db->Sql_Select('Comercio_Certificado_Proposta', Array(),1,'id DESC');
             $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$identificador->id, \anti_injection($data_aceita));
+            
+            // Adiciona Financeiro
+            Financeiro_PagamentoControle::Condicao_GerarPagamento(
+            );
+            $i = 0;
+            $data = $identificador->produto_dia_faturamento;
+            // Entrada
+            Financeiro_Controle::FinanceiroInt(
+                'comercio_certificado_Proposta',          // Motivo
+                $identificador->id,                          // MotivoID
+                'Usuario',                    // Entrada_Motivo
+                $identificador->cliente,          // Entrada_MotivoID
+                'Servidor',                   // Saida_Motivo
+                SRV_NAME_SQL,                 // Saida_MotivoID
+                \Framework\App\Sistema_Funcoes::Tranf_Real_Float($identificador->produto_valor_entrada),            // Valor
+                $data,                   // Data Inicial
+                $i //,$categoria,$condicao->forma_pagar,$condicaoid,$pago
+            );
+            ++$i;
+            // Parcelas
+            while ($i<=$identificador->produto_num_parcelas) {
+                $data = \Framework\App\Sistema_Funcoes::Modelo_Data_Soma($data,0,1);
+                Financeiro_Controle::FinanceiroInt(
+                    'comercio_certificado_Proposta',          // Motivo
+                    $identificador->id,                          // MotivoID
+                    'Usuario',                    // Entrada_Motivo
+                    $identificador->cliente,          // Entrada_MotivoID
+                    'Servidor',                   // Saida_Motivo
+                    SRV_NAME_SQL,                 // Saida_MotivoID
+                    \Framework\App\Sistema_Funcoes::Tranf_Real_Float($identificador->valor_mensal),            // Valor
+                    $data,                   // Data Inicial
+                    $i //,$categoria,$condicao->forma_pagar,$condicaoid,$pago
+                );
+                ++$i;
+            }
+            
             // Recarrega Main
             $this->Propostas_DashBoard_Show($cliente);  
             Comercio_Certificado_PropostaControle::RecarregaLocalizar();
