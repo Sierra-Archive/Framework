@@ -2,6 +2,13 @@ body {
     color: #888888;
     /*background: #404040;*/
 }
+/*#update depois remover*/
+.widget {
+    border: 1px solid #0B412C !important;
+}
+.widget-title {
+    background: #0B412C !important;
+}
 
 a, a:hover {
     text-shadow: none !important;

@@ -390,7 +390,7 @@
 
     /****FEITO POR MIM***/
     #header.navbar-inverse .navbar-inner {
-        height: 60px !important; //height: 185px !important;
+        height: 60px !important; /*height: 185px !important;*/
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
         display: none !important;
@@ -790,7 +790,7 @@
 
     /****FEITO POR MIM***/
     #header.navbar-inverse .navbar-inner {
-        height: 60px !important; //height: 185px !important;
+        height: 60px !important; /*height: 185px !important;*/
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
         display: none !important;
@@ -956,7 +956,7 @@
 
     /****FEITO POR MIM***/
     #header.navbar-inverse .navbar-inner {
-        height: 60px !important; //height: 185px !important;
+        height: 60px !important; /*height: 185px !important;*/
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
         display: none !important;
@@ -1131,7 +1131,7 @@
 
     /****FEITO POR MIM***/
     #header.navbar-inverse .navbar-inner {
-        height: 60px !important; //height: 185px !important;
+        height: 60px !important; /*height: 185px !important;*/
     }
     ul.nav > li.dropdown > a.dropdown-toggle > span {
         display: none !important;

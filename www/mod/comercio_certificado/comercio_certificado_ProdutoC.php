@@ -75,10 +75,13 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             if(is_object($produto)) $produto = Array(0=>$produto);
             reset($produto);
             foreach ($produto as $indice=>&$valor) {
+                if($valor->id==0 || $valor->id=='' || is_null($valor->id)){
+                    continue;
+                }
                 $tabela['Sigla'][$i]     = $valor->sigla;
                 $tabela['Descrição'][$i] = $valor->obs;
                 $tabela['Funções'][$i]   = $this->_Visual->Tema_Elementos_Btn('Editar'     ,Array('Editar Produto'        ,'comercio_certificado/Produto/Produtos_Edit/'.$valor->id.'/'    ,'')).
-                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
+                                           $this->_Visual->Tema_Elementos_Btn('Deletar'    ,Array('Deletar Produto'       ,'comercio_certificado/Produto/Produtos_Del/'.$valor->id.'/'     ,'Deseja realmente deletar esse Produto ?'));
                 ++$i;
             }
             return $html.$this->_Visual->Show_Tabela_DataTable($tabela,'',false);
@@ -253,8 +256,21 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
      * @author Ricardo Rebello Sierra <web@ricardosierra.com.br>
      * @version 2.0
      */
-    public function Produtos_Del($id){
+    public function Produtos_Del($id=false){
         global $language;
+        
+        if(!isset($id) || $id===false || is_null($id)){
+            $id = 0;
+            $this->Main();
+
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => 'Produto não existe'
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens);
+            $this->_Visual->Json_Info_Update('Historico', false); 
+        }
         
     	$id = (int) $id;
         // Puxa produto e deleta
@@ -286,6 +302,9 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
                 'Comercio_Certificado_Auditoria', 
                 Array('idproduto'=>$produtos),0,'id'
         );
+        if (is_object($auditorias)) {
+            $auditorias = Array($auditorias);
+        }
         // Carrega Formulario
         $botao = $this->_Visual->Tema_Elementos_Btn('Superior',Array('Add','#','return inputadd();'));
         $formulario = new \Framework\Classes\Form('Formulario_de_Auditorias','comercio_certificado/Produto/Auditorias_Modificar/'.$produtos,'formajax');

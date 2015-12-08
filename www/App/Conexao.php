@@ -201,9 +201,9 @@ final class Conexao
             }
         }else{
            // remove palavras que contenham sintaxe sql
-           $seg = preg_replace("/(from|select|insert|delete|where|drop table|show tables|#|\*|--|\\\\)/i", '', $sql);
+           /*$seg = preg_replace("/(from|select|insert|delete|where|drop table|show tables|#|\*|--|\\\\)/i", '', $sql);
            $seg = trim($seg);//limpa espa�os vazio
-           $seg = strip_tags($seg);//tira tags html e php
+           $seg = strip_tags($seg);//tira tags html e php*/
            $seg = addslashes($seg);//Adiciona barras invertidas a uma string
         }
         return $seg;
@@ -353,7 +353,7 @@ final class Conexao
      */
     protected function Sql_Log($tabela,$campos,$valores,$tipo='Update'){
         $tempo = new \Framework\App\Tempo('Log');
-        $query = 'INSERT INTO '.MYSQL_LOG_SQL.' (tabela,campos,valores) VALUES (\''.$tabela.'\',\''.$campos.'\',\''.$valores.'\',\''.APP_HORA.'\')';
+        $query = 'INSERT INTO '.MYSQL_LOG_SQL.' (tabela,campos,valores) VALUES (\''.self::anti_injection($tabela).'\',\''.self::anti_injection($campos).'\',\''.self::anti_injection($valores).'\',\''.APP_HORA.'\')';
         $this->query($query,true);
         
     }

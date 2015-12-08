@@ -3,21 +3,28 @@ body {
     /*background: #404040;*/
 }
 
+.widget {
+    border: 1px solid #0B412C !important;
+}
+.widget-title {
+    background: #0B412C !important;
+}
+
 a, a:hover {
     text-shadow: none !important;
-    color: #0B412C; //79B82E
+    color: #0B412C; /*79B82E*/
 }
 ul.faq-list li a:hover, ul.faq-list li a.active{
-    background: #0B412C; //79B82E
+    background: #0B412C; /*79B82E*/
 }
 
 #header.navbar-inverse .navbar-inner {
-    background-color: #0B412C; //79B82E
-    background-image: -moz-linear-gradient(top, #0B412C, #0B412C); //#79b82e, #79b82e);
+    background-color: #0B412C; /*79B82E*/
+    background-image: -moz-linear-gradient(top, #0B412C, #0B412C); /*#79b82e, #79b82e);*/
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#79b82e), to(#79b82e));
-    background-image: -webkit-linear-gradient(top, #0B412C, #0B412C); //#79b82e, #79b82e);
-    background-image: -o-linear-gradient(top, #0B412C, #0B412C); //#79b82e, #79b82e);
-    background-image: linear-gradient(to bottom, #0B412C, #0B412C); //#79b82e, #79b82e);
+    background-image: -webkit-linear-gradient(top, #0B412C, #0B412C); /*#79b82e, #79b82e);*/
+    background-image: -o-linear-gradient(top, #0B412C, #0B412C); /*#79b82e, #79b82e);*/
+    background-image: linear-gradient(to bottom, #0B412C, #0B412C); /*#79b82e, #79b82e);*/
     background-repeat: repeat-x;
     border-color: #2d2d2d;
     color: #fff;
@@ -25,7 +32,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 }
 
 .sidebar-toggle-box {
-    background: #0B412C; //6ca429
+    background: #0B412C; /*6ca429*/
     color: #fff;
 }
 
@@ -60,7 +67,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 }
 
 #sidebar > ul > li.active > a, #sidebar > ul > li >a:hover, #sidebar > ul > li:hover>a{
-    background: #0B412C; //79B82E
+    background: #0B412C; /*79B82E*/
 }
 
 #sidebar > ul > li > ul.sub > li > a {
@@ -101,7 +108,7 @@ ul.faq-list li a:hover, ul.faq-list li a.active{
 }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
-    border:1px solid #0B412C; //79B82E
+    border:1px solid #0B412C; /*79B82E*/
     box-shadow: none;
 }
 
@@ -116,7 +123,7 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 /*--wizard--*/
 
 .custom-wizard-pills .nav-pills  li.active a, .custom-wizard-pills .nav-pills  li a:hover {
-    background: #0B412C; //79B82E
+    background: #0B412C; /*79B82E*/
 }
 
 

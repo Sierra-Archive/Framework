@@ -265,7 +265,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
         $registro = \Framework\App\Registro::getInstacia();
         $Visual = $registro->_Visual;
         // Localizar
-        $abas_id    = &Visual::$config_template['plugins']['abas_id'];
+        $abas_id    = &\Framework\App\Visual::$config_template['plugins']['abas_id'];
         $conteudo = array(
             'location'  =>  '#'.$abas_id.'1',
             'js'        =>  '',
