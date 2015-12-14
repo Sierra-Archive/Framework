@@ -200,8 +200,8 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     public function Usuarios_Add2($tipo=false){
         global $language;
         $registro   = &\Framework\App\Registro::getInstacia();
-        $Modelo     = $registro->_Modelo;
-        $Visual     = $registro->_Visual;
+        $Modelo     = &$registro->_Modelo;
+        $Visual     = &$registro->_Visual;
        
         if(isset($_POST['email'])){
             $email = \anti_injection($_POST['email']);
@@ -272,6 +272,7 @@ class comercio_certificado_Controle extends \Framework\App\Controle
 
             
             //insere usuario
+            $usuario->grupo = CFG_TEC_IDCLIENTE;
             $sucesso =  $Modelo->db->Sql_Inserir($usuario);
 
             // Recarrega Main

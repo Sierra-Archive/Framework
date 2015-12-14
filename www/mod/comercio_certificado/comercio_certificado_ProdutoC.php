@@ -222,6 +222,21 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
     public function Produtos_Edit2($id){
         global $language;
         $id = (int) $id;
+        if(!isset($_POST["obs"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
+        $obs = anti_injection($_POST["obs"]);
         // Puxa o produto, e altera seus valores, depois salva novamente
         $produto = $this->_Modelo->db->Sql_Select('Comercio_Produto', Array('id'=>$id));
         self::mysql_AtualizaValores($produto);
@@ -233,7 +248,7 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => 'Produto Alterado com Sucesso',
-                "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
+                "mgs_secundaria" => ''.$obs.' teve a alteração bem sucedida'
             );
         }else{
             $mensagens = array(
@@ -346,6 +361,20 @@ class comercio_certificado_ProdutoControle extends comercio_certificado_Controle
         GLOBAL $language;
         if($produtos==0) return false;
         #update
+        if(!isset($_POST["auditoria"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
         $auditorias_post = \anti_injection($_POST['auditoria']);
         $auditorias_post2 = Array();
         $i = 0;

@@ -726,7 +726,7 @@ class usuario_Controle extends \Framework\App\Controle
         
         
         
-        if($grupo===false){
+        if(!is_array($grupo)){
             $categoria = 0;
             if($inverter){
                 $where = 'ativado!='.$ativado;
@@ -818,8 +818,9 @@ class usuario_Controle extends \Framework\App\Controle
             )
         ));
         // Continua Resto
+        var_dump($where);
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
-        $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'','id,grupo,foto,nome,razao_social,email,email2,telefone,telefone2,celular,celular1,celular2,celular3,ativado,log_date_add');
+        $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'');
         if(is_object($usuario)) $usuario = Array(0=>$usuario);
         if($usuario!==false && !empty($usuario)){
             list($tabela,$i) = self::Usuarios_Tabela($usuario,$nomedisplay_sing,$linkextra, $grupo,$link_ver, $link_editar, $link_deletar);
