@@ -823,6 +823,9 @@ final class Conexao
             return false;
         }
     }
+    public function Sql_Insert(&$Objeto,$tempo=true,$retorna=false){
+        $this->Sql_Inserir($Objeto,$tempo,$retorna);
+    }
     /**
      * Pega um Objeto DAO ou um Array deles e deleta todos do banco de dados
      * 

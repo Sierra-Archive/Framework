@@ -283,6 +283,20 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
      */
     public function Propostas_Add2($cliente=0){
         global $language;
+        if(!isset($_POST["data_comissao"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
         $data_aceita = $_POST['data_comissao'];
         // Cria nova Proposta
         $proposta = new \Comercio_Certificado_Proposta_DAO();
@@ -310,8 +324,6 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $this->Periodicas_Add($proposta->idcliente,$proposta->idproduto,$identificador->id, \anti_injection($data_aceita));
             
             // Adiciona Financeiro
-            Financeiro_PagamentoControle::Condicao_GerarPagamento(
-            );
             $i = 0;
             $data = $identificador->produto_dia_faturamento;
             // Entrada

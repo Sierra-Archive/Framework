@@ -758,9 +758,9 @@ class usuario_Controle extends \Framework\App\Controle
             
             // cria where de acordo com parametros
             if($inverter){
-                $where = 'grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = '{sigla}grupo NOT IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             }else{
-                $where = 'grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
+                $where = '{sigla}grupo IN ('.implode(',',$grupos_id).') AND ativado='.$ativado;
             }
             
             if($ativado===false){
@@ -818,7 +818,6 @@ class usuario_Controle extends \Framework\App\Controle
             )
         ));
         // Continua Resto
-        var_dump($where);
         //$this->_Visual->Blocar('<a title="Adicionar " class="btn btn-success lajax explicar-titulo" acao="" href="'.URL_PATH.'usuario/Admin/Usuarios_Add'.$linkextra.'">Adicionar novo '.Framework\Classes\Texto::Transformar_Plural_Singular($nomedisplay).'</a><div class="space15"></div>');
         $usuario = $Modelo->db->Sql_Select('Usuario',$where,0,'');
         if(is_object($usuario)) $usuario = Array(0=>$usuario);
