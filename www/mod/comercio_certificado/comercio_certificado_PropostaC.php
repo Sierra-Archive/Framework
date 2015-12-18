@@ -387,6 +387,34 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
     public function Propostas_Edit2($id,$cliente=0){
         global $language;
         $id = (int) $id;
+        if(!isset($_POST["data_comissao"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
+        if(!isset($_POST["obs"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
         $data_aceita = $_POST['data_comissao'];
         $novoregistro = 0;
         // Puxa o proposta
@@ -422,7 +450,7 @@ class Comercio_Certificado_PropostaControle extends comercio_certificado_Control
             $mensagens = array(
                 "tipo" => 'sucesso',
                 "mgs_principal" => 'Proposta Alterada com Sucesso',
-                "mgs_secundaria" => ''.$_POST["nome"].' teve a alteração bem sucedida'
+                "mgs_secundaria" => ''.$_POST["obs"].' teve a alteração bem sucedida'
             );
         }else{
             $mensagens = array(

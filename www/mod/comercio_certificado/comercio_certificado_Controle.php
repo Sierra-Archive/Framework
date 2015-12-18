@@ -104,6 +104,20 @@ class comercio_certificado_Controle extends \Framework\App\Controle
         $Modelo     = $registro->_Modelo;
         $Visual     = $registro->_Visual;
         $id = (int) $id;
+        if(!isset($_POST["nome"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
         // Puxa o usuario, e altera seus valores, depois salva novamente
         $usuario = $Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         self::mysql_AtualizaValores($usuario);
@@ -306,6 +320,20 @@ class comercio_certificado_Controle extends \Framework\App\Controle
     public function Usuarios_Edit2($tipo='usuario',$id){
         global $language;
         $id = (int) $id;
+        if(!isset($_POST["nome"])){
+            $mensagens = array(
+                "tipo" => 'erro',
+                "mgs_principal" => $language['mens_erro']['erro'],
+                "mgs_secundaria" => $language['mens_erro']['erro']
+            );
+            $this->_Visual->Json_IncluiTipo('Mensagens',$mensagens); 
+
+
+            //Json
+            $this->_Visual->Json_Info_Update('Titulo', 'Erro');  
+            $this->_Visual->Json_Info_Update('Historico', false);   
+            return false;
+        }
         // Puxa o usuario, e altera seus valores, depois salva novamente
         $usuario = $this->_Modelo->db->Sql_Select('Usuario', Array('id'=>$id));
         self::mysql_AtualizaValores($usuario);

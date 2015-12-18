@@ -204,7 +204,7 @@ final class Conexao
            /*$seg = preg_replace("/(from|select|insert|delete|where|drop table|show tables|#|\*|--|\\\\)/i", '', $sql);
            $seg = trim($seg);//limpa espa�os vazio
            $seg = strip_tags($seg);//tira tags html e php*/
-           $seg = addslashes($seg);//Adiciona barras invertidas a uma string
+           $seg = addslashes($sql);//Adiciona barras invertidas a uma string
         }
         return $seg;
     }
