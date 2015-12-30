@@ -2300,8 +2300,8 @@ final class Conexao
         $idusuario = \Framework\App\Acl::Usuario_GetID_Static();
         $cliente_navegador      = serialize(Sistema_Funcoes::Detectar_Navegador());
         $cliente_ip             = isset($_SERVER['REMOTE_ADDR']) ? strtolower($_SERVER['REMOTE_ADDR']) : 'Desconhecido';
-        $server_post            = serialize($_POST);
-        $server_get             = serialize($_GET);
+        $server_post            = addslashes(serialize($_POST));
+        $server_get             = addslashes(serialize($_GET));
         $server_requisitado     = isset($_SERVER['HTTP_HOST']) ? strtolower($_SERVER['HTTP_HOST']) : 'Desconhecido';
         $server_scriptname      = isset($_SERVER['SCRIPT_FILENAME']) ? strtolower($_SERVER['SCRIPT_FILENAME']) : 'Desconhecido';
         $this->query('INSERT INTO '.MYSQL_LOGURL.' (servidor,ip,cliente_pc,url,server_get,server_post,user,tempo,cfg_localscript,log_date_add) VALUES (\''.$server_requisitado.'\',\''.$cliente_ip.'\',\''.$cliente_navegador.'\',\''.SERVER_URL.'\',\''.$server_get.'\',\''.$server_post.'\',\''.$idusuario.'\',\''.(microtime(true)-TEMPO_COMECO).'\',\''.$server_scriptname.'\',\''.APP_HORA.'\')');

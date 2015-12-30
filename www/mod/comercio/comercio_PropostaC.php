@@ -2000,7 +2000,7 @@ class comercio_PropostaControle extends comercio_Controle
         }   
         
         // Se tiver Comissao Add
-        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao') !== false) {
+        if (\Framework\App\Acl::Sistema_Modulos_Configs_Funcional('comercio_Proposta_Comissao') !== false && isset($_POST['comissao'])) {
             $comissao = \Framework\App\Sistema_Funcoes::Tranf_Porc_Float(\Framework\App\Conexao::anti_injection($_POST['comissao']));
             $html .= '<b>'.__('Comissão:').'</b> '.Framework\App\Sistema_Funcoes::Tranf_Float_Real($comissao*$valortotal_semimposto).'<br>';
             //$valortotal = $valortotal+($comissao*$valortotal);
